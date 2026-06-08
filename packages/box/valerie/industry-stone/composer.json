@@ -1,0 +1,22 @@
+{
+  "name": "valerie/box-industry-stone",
+  "description": "On-Premise (Box) Stone Industry module for VMS",
+  "type": "library",
+  "license": "proprietary",
+  "autoload": {
+    "psr-4": {
+      "Valerie\\Box\\IndustryStone\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Valerie\\Box\\IndustryStone\\ValerieStoneServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "php": "^8.5",
+    "nicole/box-core": "@dev"
+  }
+}

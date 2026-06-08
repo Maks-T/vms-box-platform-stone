@@ -1,0 +1,5516 @@
+{
+    "product_families": [
+        {
+            "code": "stone",
+            "name": {
+                "ru": "Искусственный камень"
+            }
+        },
+        {
+            "code": "sink",
+            "name": {
+                "ru": "Кухонные мойки"
+            }
+        },
+        {
+            "code": "faucet",
+            "name": {
+                "ru": "Смесители и дозаторы"
+            }
+        },
+        {
+            "code": "bowl",
+            "name": {
+                "ru": "Раковины для ванной"
+            }
+        },
+        {
+            "code": "accessory",
+            "name": {
+                "ru": "Комплектующие и бортики"
+            }
+        }
+    ],
+    "product_types": [
+        {
+            "code": "acrylic_stone",
+            "family_code": "stone",
+            "name": {
+                "ru": "Акриловый камень"
+            },
+            "payload": {
+                "step": 0.5,
+                "maxStack": 1,
+                "axisX": true,
+                "minPart": 12
+            }
+        },
+        {
+            "code": "quartz_stone",
+            "family_code": "stone",
+            "name": {
+                "ru": "Кварцевый агломерат"
+            },
+            "payload": {
+                "step": 1,
+                "maxStack": 1,
+                "axisX": false,
+                "minPart": 20
+            }
+        },
+        {
+            "code": "kitchen_sink",
+            "family_code": "sink",
+            "name": {
+                "ru": "Кухонная мойка"
+            },
+            "payload": null
+        },
+        {
+            "code": "faucet",
+            "family_code": "faucet",
+            "name": {
+                "ru": "Смеситель"
+            },
+            "payload": null
+        },
+        {
+            "code": "dispenser",
+            "family_code": "faucet",
+            "name": {
+                "ru": "Дозатор"
+            },
+            "payload": null
+        },
+        {
+            "code": "bathroom_sink",
+            "family_code": "bowl",
+            "name": {
+                "ru": "Раковина для ванной"
+            },
+            "payload": null
+        },
+        {
+            "code": "edge",
+            "family_code": "accessory",
+            "name": {
+                "ru": "Кромка (п.м.)"
+            },
+            "payload": null
+        },
+        {
+            "code": "skirting",
+            "family_code": "accessory",
+            "name": {
+                "ru": "Бортик (п.м.)"
+            },
+            "payload": null
+        }
+    ],
+    "categories": [
+        {
+            "id": 16,
+            "parent_id": null,
+            "name": {
+                "ru": "Искусственный камень"
+            },
+            "slug": "artificial-stone"
+        },
+        {
+            "id": 21,
+            "parent_id": null,
+            "name": {
+                "ru": "Передние кромки"
+            },
+            "slug": ""
+        },
+        {
+            "id": 22,
+            "parent_id": null,
+            "name": {
+                "ru": "Бортики"
+            },
+            "slug": ""
+        },
+        {
+            "id": 24,
+            "parent_id": null,
+            "name": {
+                "ru": "Мойки и раковины"
+            },
+            "slug": "kitchen-sinks-and-sinks"
+        },
+        {
+            "id": 37,
+            "parent_id": null,
+            "name": {
+                "ru": "Смесители и дозаторы"
+            },
+            "slug": "smesiteli-i-dozatory"
+        },
+        {
+            "id": 17,
+            "parent_id": 16,
+            "name": {
+                "ru": "Акриловый камень"
+            },
+            "slug": "acrylic-stone"
+        },
+        {
+            "id": 20,
+            "parent_id": 16,
+            "name": {
+                "ru": "Кварцевый агломерат"
+            },
+            "slug": "quartz-stone"
+        },
+        {
+            "id": 25,
+            "parent_id": 24,
+            "name": {
+                "ru": "Мойки для кухни"
+            },
+            "slug": "kitchen-sinks"
+        },
+        {
+            "id": 26,
+            "parent_id": 24,
+            "name": {
+                "ru": "Раковины для ванной"
+            },
+            "slug": "sinks"
+        },
+        {
+            "id": 38,
+            "parent_id": 37,
+            "name": {
+                "ru": "Смесители"
+            },
+            "slug": "smesiteli"
+        },
+        {
+            "id": 39,
+            "parent_id": 37,
+            "name": {
+                "ru": "Дозаторы"
+            },
+            "slug": "dozatory"
+        },
+        {
+            "id": 18,
+            "parent_id": 17,
+            "name": {
+                "ru": "Akrilika"
+            },
+            "slug": "akrilika"
+        },
+        {
+            "id": 19,
+            "parent_id": 17,
+            "name": {
+                "ru": "Apietra"
+            },
+            "slug": "apietra"
+        },
+        {
+            "id": 43,
+            "parent_id": 17,
+            "name": {
+                "ru": "Grandex"
+            },
+            "slug": "grandex"
+        },
+        {
+            "id": 23,
+            "parent_id": 20,
+            "name": {
+                "ru": "Alfa Quartz"
+            },
+            "slug": "alfa-quartz"
+        },
+        {
+            "id": 47,
+            "parent_id": 20,
+            "name": {
+                "ru": "Avant Quartz"
+            },
+            "slug": "avant-quartz"
+        },
+        {
+            "id": 44,
+            "parent_id": 20,
+            "name": {
+                "ru": "SmartQuartz"
+            },
+            "slug": "smartquartz"
+        },
+        {
+            "id": 46,
+            "parent_id": 20,
+            "name": {
+                "ru": "Symphony"
+            },
+            "slug": "symphony"
+        },
+        {
+            "id": 45,
+            "parent_id": 20,
+            "name": {
+                "ru": "Vicostone"
+            },
+            "slug": "vicostone"
+        },
+        {
+            "id": 48,
+            "parent_id": 20,
+            "name": {
+                "ru": "Aleph Stone"
+            },
+            "slug": "aleph-stone"
+        },
+        {
+            "id": 49,
+            "parent_id": 20,
+            "name": {
+                "ru": "Quantra Quartz"
+            },
+            "slug": "quantra-quartz"
+        }
+    ],
+    "attributes": [
+        {
+            "code": "product_type",
+            "type": "dictionary",
+            "is_filterable": false,
+            "name": {
+                "ru": "Тип товара"
+            }
+        },
+        {
+            "code": "effect_akril",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Эффект"
+            }
+        },
+        {
+            "code": "bend_akril",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Термоформинг"
+            }
+        },
+        {
+            "code": "texture",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Текстура"
+            }
+        },
+        {
+            "code": "inclusions_akril",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Вкрапления"
+            }
+        },
+        {
+            "code": "marketing_tags",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Теги"
+            }
+        },
+        {
+            "code": "polishing_quartz",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Поверхность"
+            }
+        },
+        {
+            "code": "brand",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Производитель"
+            }
+        },
+        {
+            "code": "set_sink",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Тип монтажа"
+            }
+        },
+        {
+            "code": "type_stone",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Вид камня"
+            }
+        },
+        {
+            "code": "material",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Материал"
+            }
+        },
+        {
+            "code": "steel_thickness_sink",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Толщина стали"
+            }
+        },
+        {
+            "code": "min_cab_width",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Мин. ширина шкафа, мм"
+            }
+        },
+        {
+            "code": "features_faucet",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Особенности"
+            }
+        },
+        {
+            "code": "type_faucet",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Тип продукта"
+            }
+        },
+        {
+            "code": "direction_division_stone",
+            "type": "dictionary",
+            "is_filterable": false,
+            "name": {
+                "ru": "Направление деления заготовки камня"
+            }
+        },
+        {
+            "code": "is_pattern_repeat_stone",
+            "type": "dictionary",
+            "is_filterable": false,
+            "name": {
+                "ru": "Деление в изделия/Повторяемый рисунок камня"
+            }
+        },
+        {
+            "code": "use_in_calc",
+            "type": "dictionary",
+            "is_filterable": false,
+            "name": {
+                "ru": "Использовать в калькуляторе"
+            }
+        },
+        {
+            "code": "is_separate_cutting_stone",
+            "type": "dictionary",
+            "is_filterable": false,
+            "name": {
+                "ru": "Раздельный раскрой изделий"
+            }
+        },
+        {
+            "code": "color_ref",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Цвет"
+            }
+        },
+        {
+            "code": "collection_stone_ref",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Коллекция"
+            }
+        }
+    ],
+    "dictionaries": {
+        "product_type": [
+            {
+                "slug": "stone_type",
+                "value": {
+                    "ru": "Камень"
+                }
+            },
+            {
+                "slug": "sink_type",
+                "value": {
+                    "ru": "Раковина для ванной"
+                }
+            },
+            {
+                "slug": "kitchen_sink_type",
+                "value": {
+                    "ru": "Кухонная мойка"
+                }
+            },
+            {
+                "slug": "faucet_type",
+                "value": {
+                    "ru": "Смеситель"
+                }
+            },
+            {
+                "slug": "dispenser_type",
+                "value": {
+                    "ru": "Дозатор"
+                }
+            },
+            {
+                "slug": "solutions_type",
+                "value": {
+                    "ru": "Готовое решение"
+                }
+            }
+        ],
+        "effect_akril": [
+            {
+                "slug": "no_effects",
+                "value": {
+                    "ru": "Без эффектов"
+                }
+            },
+            {
+                "slug": "sequins_effects",
+                "value": {
+                    "ru": "С блестками"
+                }
+            },
+            {
+                "slug": "light-permeable_effects",
+                "value": {
+                    "ru": "Светопроницаемые "
+                }
+            }
+        ],
+        "bend_akril": [
+            {
+                "slug": "no_bend",
+                "value": {
+                    "ru": "Нет, не гнется"
+                }
+            },
+            {
+                "slug": "yes_bend",
+                "value": {
+                    "ru": "Да, гнется"
+                }
+            }
+        ],
+        "texture": [
+            {
+                "slug": "solid_texture",
+                "value": {
+                    "ru": "Однотонные"
+                }
+            },
+            {
+                "slug": "monochrome_texture",
+                "value": {
+                    "ru": "Однородные вкрапления"
+                }
+            },
+            {
+                "slug": "marble_texture",
+                "value": {
+                    "ru": "Под мрамор"
+                }
+            },
+            {
+                "slug": "wood_texture",
+                "value": {
+                    "ru": "Под дерево"
+                }
+            },
+            {
+                "slug": "concrete_texture",
+                "value": {
+                    "ru": "Под бетон"
+                }
+            },
+            {
+                "slug": "loft_style_texture",
+                "value": {
+                    "ru": "В стиле лофт"
+                }
+            },
+            {
+                "slug": "travertine_texture",
+                "value": {
+                    "ru": "Под травертин"
+                }
+            },
+            {
+                "slug": "onyx_texture",
+                "value": {
+                    "ru": "Под оникс"
+                }
+            }
+        ],
+        "inclusions_akril": [
+            {
+                "slug": "without_inclusions",
+                "value": {
+                    "ru": "Без вкраплений"
+                }
+            },
+            {
+                "slug": "small_inclusions",
+                "value": {
+                    "ru": "Мелкие вкрапления"
+                }
+            },
+            {
+                "slug": "medium_inclusions",
+                "value": {
+                    "ru": "Средние вкрапления"
+                }
+            },
+            {
+                "slug": "large_inclusions",
+                "value": {
+                    "ru": "Крупные вкрапления"
+                }
+            }
+        ],
+        "marketing_tags": [
+            {
+                "slug": "new",
+                "value": {
+                    "ru": "new"
+                }
+            },
+            {
+                "slug": "hit",
+                "value": {
+                    "ru": "хит"
+                }
+            },
+            {
+                "slug": "sale",
+                "value": {
+                    "ru": "sale"
+                }
+            }
+        ],
+        "polishing_quartz": [
+            {
+                "slug": "glossy_ polishing",
+                "value": {
+                    "ru": "Полированная"
+                }
+            },
+            {
+                "slug": "matte_ polishing",
+                "value": {
+                    "ru": "Матовая"
+                }
+            }
+        ],
+        "brand": [
+            {
+                "slug": "omoikiri_brand",
+                "value": {
+                    "ru": "Omoikiri"
+                }
+            },
+            {
+                "slug": "akrilika_brand",
+                "value": {
+                    "ru": "Akrilika"
+                }
+            }
+        ],
+        "set_sink": [
+            {
+                "slug": "under_set",
+                "value": {
+                    "ru": "Подстольный"
+                }
+            },
+            {
+                "slug": "above_set",
+                "value": {
+                    "ru": "Надстольный"
+                }
+            }
+        ],
+        "type_stone": [
+            {
+                "slug": "akril",
+                "value": {
+                    "ru": "Акриловый камень"
+                }
+            },
+            {
+                "slug": "quartz",
+                "value": {
+                    "ru": "Кварцевый агломерат"
+                }
+            }
+        ],
+        "material": [
+            {
+                "slug": "stainless_steel",
+                "value": {
+                    "ru": "Нержавеющая сталь"
+                }
+            },
+            {
+                "slug": "composite",
+                "value": {
+                    "ru": "Искусственный гранит"
+                }
+            },
+            {
+                "slug": "acrylic",
+                "value": {
+                    "ru": "Акрил"
+                }
+            },
+            {
+                "slug": "metal_bottom",
+                "value": {
+                    "ru": "Акрил + мет.дно"
+                }
+            },
+            {
+                "slug": "ceramic",
+                "value": {
+                    "ru": "Керамика"
+                }
+            },
+            {
+                "slug": "ceramics",
+                "value": {
+                    "ru": "Керамика"
+                }
+            }
+        ],
+        "steel_thickness_sink": [
+            {
+                "slug": "th-8",
+                "value": {
+                    "ru": "0,8 мм"
+                }
+            },
+            {
+                "slug": "th-9",
+                "value": {
+                    "ru": "0,9 мм"
+                }
+            },
+            {
+                "slug": "th-10",
+                "value": {
+                    "ru": "1 мм"
+                }
+            },
+            {
+                "slug": "th-12",
+                "value": {
+                    "ru": "1,2 мм"
+                }
+            }
+        ],
+        "min_cab_width": [
+            {
+                "slug": "cb_w_450",
+                "value": {
+                    "ru": "450"
+                }
+            },
+            {
+                "slug": "cb_w_300",
+                "value": {
+                    "ru": "300"
+                }
+            },
+            {
+                "slug": "cb_w_400",
+                "value": {
+                    "ru": "400"
+                }
+            },
+            {
+                "slug": "cb_w_500",
+                "value": {
+                    "ru": "500"
+                }
+            },
+            {
+                "slug": "cb_w_600",
+                "value": {
+                    "ru": "600"
+                }
+            },
+            {
+                "slug": "cb_w_800",
+                "value": {
+                    "ru": "800"
+                }
+            },
+            {
+                "slug": "cb_w_550",
+                "value": {
+                    "ru": "550"
+                }
+            },
+            {
+                "slug": "cb_w_250",
+                "value": {
+                    "ru": "250"
+                }
+            },
+            {
+                "slug": "cb_w_700",
+                "value": {
+                    "ru": "700"
+                }
+            },
+            {
+                "slug": "cb_w_900",
+                "value": {
+                    "ru": "900"
+                }
+            },
+            {
+                "slug": "cb_w_1200",
+                "value": {
+                    "ru": "1200"
+                }
+            }
+        ],
+        "features_faucet": [
+            {
+                "slug": "single_lever",
+                "value": {
+                    "ru": "Однорычажный"
+                }
+            },
+            {
+                "slug": "double_lever",
+                "value": {
+                    "ru": "Двухрычажный"
+                }
+            },
+            {
+                "slug": "exhaust_hose",
+                "value": {
+                    "ru": "С вытяжным шлангом"
+                }
+            },
+            {
+                "slug": "2-in-1",
+                "value": {
+                    "ru": "2-в-1 (с фильтром)"
+                }
+            },
+            {
+                "slug": "3-in-1",
+                "value": {
+                    "ru": "3-в-1 (фильтр+лейка)"
+                }
+            },
+            {
+                "slug": "window",
+                "value": {
+                    "ru": "Под окно"
+                }
+            },
+            {
+                "slug": "shower_button",
+                "value": {
+                    "ru": "Кнопка струя/душ"
+                }
+            }
+        ],
+        "type_faucet": [
+            {
+                "slug": "faucet",
+                "value": {
+                    "ru": "Смеситель"
+                }
+            },
+            {
+                "slug": "dispenser",
+                "value": {
+                    "ru": "Дозатор"
+                }
+            }
+        ],
+        "direction_division_stone": [
+            {
+                "slug": "devision_y",
+                "value": {
+                    "ru": "вдоль Y"
+                }
+            },
+            {
+                "slug": "devision_x",
+                "value": {
+                    "ru": "вдоль X"
+                }
+            }
+        ],
+        "is_pattern_repeat_stone": [
+            {
+                "slug": "yes_repeat",
+                "value": {
+                    "ru": "Дa"
+                }
+            },
+            {
+                "slug": "no_repeat",
+                "value": {
+                    "ru": "Нет"
+                }
+            }
+        ],
+        "use_in_calc": [
+            {
+                "slug": "yes",
+                "value": {
+                    "ru": "Да"
+                }
+            },
+            {
+                "slug": "no",
+                "value": {
+                    "ru": "Нет"
+                }
+            }
+        ],
+        "is_separate_cutting_stone": [
+            {
+                "slug": "yes_separate",
+                "value": {
+                    "ru": "Да"
+                }
+            },
+            {
+                "slug": "no_separate",
+                "value": {
+                    "ru": "Нет"
+                }
+            }
+        ],
+        "color_ref": [
+            {
+                "slug": "#e0cfb0",
+                "value": {
+                    "ru": "Бежевый SA"
+                },
+                "payload": {
+                    "image": "/upload/uf/311/a5yf0lv9z8jst3pklz8ltl6l1xjk96iy.jpg"
+                }
+            },
+            {
+                "slug": "#cfc9bd",
+                "value": {
+                    "ru": "Белый WH"
+                },
+                "payload": {
+                    "image": "/upload/uf/1c4/gkecn6abh241kdi7tsaz1y56v7wp6o6i.jpg"
+                }
+            },
+            {
+                "slug": "#c0baa4",
+                "value": {
+                    "ru": "Ваниль BE"
+                },
+                "payload": {
+                    "image": "/upload/uf/18d/l2drd78w3jmkxganka71l3nm4ct3yjn5.jpg"
+                }
+            },
+            {
+                "slug": "#8c8072",
+                "value": {
+                    "ru": "Карамель CA"
+                },
+                "payload": {
+                    "image": "/upload/uf/98c/szbhkg4rvgjrctrkxsx85pm12yv4m8ia.jpg"
+                }
+            },
+            {
+                "slug": "#cfcbb5",
+                "value": {
+                    "ru": "Пастила PA"
+                },
+                "payload": {
+                    "image": "/upload/uf/626/0iryb8ttjd4bvlc4eil0z1ulplu2kv2x.jpg"
+                }
+            },
+            {
+                "slug": "#656561",
+                "value": {
+                    "ru": "Платина PL"
+                },
+                "payload": {
+                    "image": "/upload/uf/57c/6xvx6t3tpcil7goofiqwdr4uvp1nvpvt.jpg"
+                }
+            },
+            {
+                "slug": "#302d28",
+                "value": {
+                    "ru": "Темный Шоколад DC"
+                },
+                "payload": {
+                    "image": "/upload/uf/1a7/vfw1r77ctl58imbckvvthd9xaad4fmap.jpg"
+                }
+            },
+            {
+                "slug": "#2a2e2d",
+                "value": {
+                    "ru": "Черный BL"
+                },
+                "payload": {
+                    "image": "/upload/uf/49c/2k5jyaisrg0v991w2gac2umem2os20qe.jpg"
+                }
+            },
+            {
+                "slug": "#f3ead6",
+                "value": {
+                    "ru": "Шампань CH"
+                },
+                "payload": {
+                    "image": "/upload/uf/e08/nos3t93eq4wfwopvvmpjp07byaqawysu.jpg"
+                }
+            },
+            {
+                "slug": "#dbd4cc",
+                "value": {
+                    "ru": "Эверест EV"
+                },
+                "payload": {
+                    "image": "/upload/uf/86c/snqb3cm4kd3oudj6ijwgk13gowkgfooe.jpg"
+                }
+            },
+            {
+                "slug": "#7c7876",
+                "value": {
+                    "ru": "Leningrad Grey GR"
+                },
+                "payload": {
+                    "image": "/upload/uf/b2a/s9ru5u0d44ij3c15btdspp7lxq7x99zo.jpg"
+                }
+            },
+            {
+                "slug": "white",
+                "value": {
+                    "ru": "Белый"
+                },
+                "payload": {
+                    "image": "/upload/uf/ec2/9quoonubrvtcwzpqvajjggrdatxp9emm.jpg"
+                }
+            },
+            {
+                "slug": "beige",
+                "value": {
+                    "ru": "Бежевый"
+                },
+                "payload": {
+                    "image": "/upload/uf/6ab/58nyqho4kryzrja0nslfgiogy3aaml2d.jpg"
+                }
+            },
+            {
+                "slug": "gray",
+                "value": {
+                    "ru": "Серый"
+                },
+                "payload": {
+                    "image": "/upload/uf/d75/32kmpkuujlz1r50zawoz86h21fv3l7ip.jpg"
+                }
+            },
+            {
+                "slug": "blue",
+                "value": {
+                    "ru": "Синий"
+                },
+                "payload": {
+                    "image": "/upload/uf/cb6/64g5svzd68r1675cehvz8s60am106oq8.webp"
+                }
+            },
+            {
+                "slug": "green",
+                "value": {
+                    "ru": "Зеленый"
+                },
+                "payload": {
+                    "image": "/upload/uf/fd7/5fty4b391gq9getgepiusw5w94ecoxrz.webp"
+                }
+            },
+            {
+                "slug": "red",
+                "value": {
+                    "ru": "Красный"
+                },
+                "payload": {
+                    "image": "/upload/uf/08c/pn6um3hteq2kahuulnr97z2setjqcnoe.webp"
+                }
+            },
+            {
+                "slug": "brown",
+                "value": {
+                    "ru": "Коричневый"
+                },
+                "payload": {
+                    "image": "/upload/uf/31a/ybczo0qur29nmf3u1jp1qgy979kgjdcc.webp"
+                }
+            },
+            {
+                "slug": "orange",
+                "value": {
+                    "ru": "Оранжевый"
+                },
+                "payload": {
+                    "image": "/upload/uf/d06/2yb7dl6vsnge97u25eoh2u0opcsg6zx7.webp"
+                }
+            },
+            {
+                "slug": "yellow",
+                "value": {
+                    "ru": "Желтый"
+                },
+                "payload": {
+                    "image": "/upload/uf/32d/2nubvspcndwfci1wuu7rc8otif5a032x.webp"
+                }
+            },
+            {
+                "slug": "s_white_a1",
+                "value": {
+                    "ru": "Белый A101"
+                },
+                "payload": {
+                    "image": "/upload/uf/5b4/e55kwfek70e9oqe57k5jwiownz7uwg0j.webp"
+                }
+            },
+            {
+                "slug": "stainless_steel",
+                "value": {
+                    "ru": "Нержавеющая сталь BN"
+                },
+                "payload": {
+                    "image": "/upload/uf/c47/hnjn7lj5lyrzpkpbx1sq2jeiegs14qc6.webp"
+                }
+            },
+            {
+                "slug": "s-black",
+                "value": {
+                    "ru": "Black-PVD"
+                },
+                "payload": {
+                    "image": "/upload/uf/b4f/a62fapp7tlnbfu6cgidzky2hg078hoyj.webp"
+                }
+            },
+            {
+                "slug": "s-gold",
+                "value": {
+                    "ru": "Gold-PVD"
+                },
+                "payload": {
+                    "image": "/upload/uf/f86/4u084t538y7zyi68wy0a989t3ed6kgln.webp"
+                }
+            },
+            {
+                "slug": "s-cuprum",
+                "value": {
+                    "ru": "Cuprum-PVD"
+                },
+                "payload": {
+                    "image": "/upload/uf/575/oiq2f7u0s1s19vkz5w0iwkqhe1dadrm1.webp"
+                }
+            },
+            {
+                "slug": "s-stone_color",
+                "value": {
+                    "ru": "Акрил без прожилок"
+                },
+                "payload": {
+                    "image": "/upload/uf/fbe/9h706g27wcjr1g7vz858ina5u2zhyze0.webp"
+                }
+            },
+            {
+                "slug": "s-graphite",
+                "value": {
+                    "ru": "Графит GB"
+                },
+                "payload": {
+                    "image": "/upload/uf/858/q1qxtlx30qxsh2xu5a34u56dr8464px8.webp"
+                }
+            },
+            {
+                "slug": "s-blied_steel",
+                "value": {
+                    "ru": "Вороненая сталь GM"
+                },
+                "payload": {
+                    "image": "/upload/uf/5a0/7n0nj6z10b91bb2msb08o2p3ux766jvt.webp"
+                }
+            },
+            {
+                "slug": "light_gold",
+                "value": {
+                    "ru": "Светлое золото LG"
+                },
+                "payload": {
+                    "image": "/upload/uf/0c6/x687x4609km553agqe395miyeb5m8txw.webp"
+                }
+            },
+            {
+                "slug": "brass",
+                "value": {
+                    "ru": "Латунь AB"
+                },
+                "payload": {
+                    "image": "/upload/uf/ece/royhmzferb38aev57jupgvdqawqhxure.webp"
+                }
+            },
+            {
+                "slug": "s-expresso",
+                "value": {
+                    "ru": "Espresso ES"
+                },
+                "payload": {
+                    "image": "/upload/uf/73b/2mkk8mc3zouxljsqst9q00i7mgxb1nv1.webp"
+                }
+            },
+            {
+                "slug": "s-deep_ocean",
+                "value": {
+                    "ru": "Deep Ocean DO"
+                },
+                "payload": {
+                    "image": "/upload/uf/08e/ivardbvhi31urpvp9pl6f3tcvwvc63vu.webp"
+                }
+            },
+            {
+                "slug": "s-canyon",
+                "value": {
+                    "ru": "Canyon CN"
+                },
+                "payload": {
+                    "image": "/upload/uf/944/8sv7y1oxuln3fowuux6uip11f2inet92.webp"
+                }
+            },
+            {
+                "slug": "s-azur_blue",
+                "value": {
+                    "ru": "Azur Blue AZ"
+                },
+                "payload": {
+                    "image": "/upload/uf/215/fzido9vzya61vu1ac2gouz2qltzc5uhd.webp"
+                }
+            },
+            {
+                "slug": "s-wind_green",
+                "value": {
+                    "ru": "Wind Green WG"
+                },
+                "payload": {
+                    "image": "/upload/uf/d0a/5oe7c2is786d9szmhsb0vd689jxy2jq3.webp"
+                }
+            },
+            {
+                "slug": "black",
+                "value": {
+                    "ru": "Черный"
+                },
+                "payload": {
+                    "image": "/upload/uf/80d/b404p43j4054hxbg94upz0o2q22w9kxs.jpg"
+                }
+            },
+            {
+                "slug": "acrylic_with_streaks",
+                "value": {
+                    "ru": "Акрил с прожилками"
+                },
+                "payload": {
+                    "image": "/upload/uf/3f7/6ys1exrnk4k5f5tec7tfo3t02esmfpz8.webp"
+                }
+            },
+            {
+                "slug": "bl-marble",
+                "value": {
+                    "ru": "BL-Marble"
+                },
+                "payload": {
+                    "image": "/upload/uf/8dd/33fd3cgyzbl2tf0xcsjmm81verni9lt3.webp"
+                }
+            },
+            {
+                "slug": "wh-marble",
+                "value": {
+                    "ru": "WH-Marble"
+                },
+                "payload": {
+                    "image": "/upload/uf/b59/61abk5hflrnm6ckzkv8suio13a2kkc09.webp"
+                }
+            },
+            {
+                "slug": "bg",
+                "value": {
+                    "ru": "Бежево-серый BG"
+                },
+                "payload": {
+                    "image": "/upload/uf/0b7/vf4mel4u2834ca3z5ckfbymmksd3qtch.webp"
+                }
+            },
+            {
+                "slug": "gu",
+                "value": {
+                    "ru": "Гуакамоле GU"
+                },
+                "payload": {
+                    "image": "/upload/uf/df0/st0n2al6n68mqsvbouni2igcm6tsozp2.webp"
+                }
+            },
+            {
+                "slug": "po",
+                "value": {
+                    "ru": "Портвейн PO"
+                },
+                "payload": {
+                    "image": "/upload/uf/365/pb9ofmypzp3qg7jwwoqkpn86qbz1fysp.webp"
+                }
+            },
+            {
+                "slug": "ro",
+                "value": {
+                    "ru": "Розовый RO"
+                },
+                "payload": {
+                    "image": "/upload/uf/82f/n25gersptkbpqu3n48r2yo1i3xj604fr.webp"
+                }
+            },
+            {
+                "slug": "ta",
+                "value": {
+                    "ru": "Серо-коричневый TA"
+                },
+                "payload": {
+                    "image": "/upload/uf/c7a/dhnts8krvxbk6404ftnp2mbmaihwas2g.webp"
+                }
+            },
+            {
+                "slug": "nb",
+                "value": {
+                    "ru": "Темно-синий NB"
+                },
+                "payload": {
+                    "image": "/upload/uf/6c6/xj3qbsxhgstktl5i7hygnvs9wvytku4h.webp"
+                }
+            },
+            {
+                "slug": "li",
+                "value": {
+                    "ru": "Lipstick LI"
+                },
+                "payload": {
+                    "image": "/upload/uf/b8d/pwlws113bx2dlfwo0y5g0bzdv9dw2we0.webp"
+                }
+            },
+            {
+                "slug": "oc",
+                "value": {
+                    "ru": "Ocean OC"
+                },
+                "payload": {
+                    "image": "/upload/uf/4e8/nyfbfmeslgkakphcdnbv8o2e9lkd6t6v.webp"
+                }
+            },
+            {
+                "slug": "mi",
+                "value": {
+                    "ru": "Mint MI"
+                },
+                "payload": {
+                    "image": "/upload/uf/aa3/lqigg771j1o28b1x6r8mqis0asjc2nlw.webp"
+                }
+            },
+            {
+                "slug": "nu",
+                "value": {
+                    "ru": "Орех NU"
+                },
+                "payload": {
+                    "image": "/upload/uf/224/kjmhtl62wl09w203dypsew06lnldhwge.webp"
+                }
+            },
+            {
+                "slug": "indigo_blue",
+                "value": {
+                    "ru": "Indigo Blue IB"
+                },
+                "payload": {
+                    "image": "/upload/uf/c4a/ma2dvmkyoguq3z1bqknn0bzb3c6z2l0h.jpg"
+                }
+            },
+            {
+                "slug": "rg_lg",
+                "value": {
+                    "ru": "RoyalGreen / Золото RG-LG"
+                },
+                "payload": {
+                    "image": "/upload/uf/e9a/oicyakmxe483ko9knw5ev6dryrhljq3z.jpg"
+                }
+            },
+            {
+                "slug": "sl",
+                "value": {
+                    "ru": "Sicilian Lemon SL"
+                },
+                "payload": {
+                    "image": "/upload/uf/893/9q1jasxf7ipwc99fa6rw5vu7sf65stc1.jpg"
+                }
+            },
+            {
+                "slug": "toscana",
+                "value": {
+                    "ru": "Toscana TO"
+                },
+                "payload": {
+                    "image": "/upload/uf/eb1/s1cmyrvr6dndnpnunz5ljx6pb75nru1k.jpg"
+                }
+            },
+            {
+                "slug": "chrome",
+                "value": {
+                    "ru": "Хром C"
+                },
+                "payload": {
+                    "image": "/upload/uf/03f/oo0nphq4hjpjagqjshdwnmd9p79ap5kz.jpg"
+                }
+            },
+            {
+                "slug": "rg",
+                "value": {
+                    "ru": "Royal Green RG"
+                },
+                "payload": {
+                    "image": "/upload/uf/fe7/no9cqdax2ptef6n23qd5roi5x103mh1f.webp"
+                }
+            },
+            {
+                "slug": "bn_wh",
+                "value": {
+                    "ru": "Нерж.сталь / Белый BN-WH"
+                },
+                "payload": {
+                    "image": "/upload/uf/a7e/yqx0ch8neunhplilbrxm5utgxbl9pozk.webp"
+                }
+            },
+            {
+                "slug": "bn_bl",
+                "value": {
+                    "ru": "Нерж.сталь / Черный BN-BL"
+                },
+                "payload": {
+                    "image": "/upload/uf/e8d/g4r50ow0ejbce1xtldim7otxbdow2v37.webp"
+                }
+            },
+            {
+                "slug": "si",
+                "value": {
+                    "ru": "Античное серебро SI"
+                },
+                "payload": {
+                    "image": "/upload/uf/18d/9oq57q4iw5q7nnkmund05yni5iqahitu.webp"
+                }
+            },
+            {
+                "slug": "orb",
+                "value": {
+                    "ru": "Античная бронза ORB"
+                },
+                "payload": {
+                    "image": "/upload/uf/b15/aqf2osn1ogk58551ts284u5qlyzg6zsd.webp"
+                }
+            },
+            {
+                "slug": "g",
+                "value": {
+                    "ru": "Золото G"
+                },
+                "payload": {
+                    "image": "/upload/uf/3c3/ifq22p6jv8n9zixl6prodjbsgg4tkfcm.webp"
+                }
+            },
+            {
+                "slug": "ma",
+                "value": {
+                    "ru": "Марципан MA"
+                },
+                "payload": {
+                    "image": "/upload/uf/c41/mqa1zqd36m5dz2bjir14ffhz8uirmxjl.webp"
+                }
+            },
+            {
+                "slug": "s_white_a1_a",
+                "value": {
+                    "ru": "Белый A101"
+                },
+                "payload": {
+                    "image": "/upload/uf/2f6/p86x0ysyc65x0b2fm4kijsrbboitiyqi.webp"
+                }
+            },
+            {
+                "slug": "s_white_a1_b",
+                "value": {
+                    "ru": "Белый A101"
+                },
+                "payload": {
+                    "image": "/upload/uf/c8f/8q4gssfbmziitjf720rk4st5jyd91c8k.webp"
+                }
+            },
+            {
+                "slug": "s_white_a1_c",
+                "value": {
+                    "ru": "Белый A101"
+                },
+                "payload": {
+                    "image": "/upload/uf/a22/uqx8emhj418y3nihksiirxgyin68jxw6.webp"
+                }
+            }
+        ],
+        "collection_stone_ref": [
+            {
+                "slug": "akrilika_collection",
+                "value": {
+                    "ru": "Akrilika"
+                },
+                "payload": null
+            },
+            {
+                "slug": "apietra_collection",
+                "value": {
+                    "ru": "Apietra"
+                },
+                "payload": null
+            },
+            {
+                "slug": "alfa_quartz_collection",
+                "value": {
+                    "ru": "Alfa Quartz"
+                },
+                "payload": null
+            },
+            {
+                "slug": "avant_quartz_collection",
+                "value": {
+                    "ru": "Avant Quartz"
+                },
+                "payload": null
+            },
+            {
+                "slug": "smartquartz_collection",
+                "value": {
+                    "ru": "SmartQuartz"
+                },
+                "payload": null
+            },
+            {
+                "slug": "symphony_collection",
+                "value": {
+                    "ru": "Symphony"
+                },
+                "payload": null
+            },
+            {
+                "slug": "vicostone_collection",
+                "value": {
+                    "ru": "Vicostone"
+                },
+                "payload": null
+            },
+            {
+                "slug": "alephstone_collection",
+                "value": {
+                    "ru": "Aleph Stone"
+                },
+                "payload": null
+            },
+            {
+                "slug": "quantra_quartz_collection",
+                "value": {
+                    "ru": "Quantra Quartz"
+                },
+                "payload": null
+            }
+        ]
+    },
+    "complex_dictionaries": {
+        "cutting_groups": {
+            "name": {
+                "ru": "Группы раскроя"
+            },
+            "records": [
+                {
+                    "id": 1,
+                    "name": {
+                        "ru": "Группа раскроя #1"
+                    },
+                    "payload": {
+                        "rotate": true,
+                        "cut": true
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": {
+                        "ru": "Группа раскроя #2"
+                    },
+                    "payload": {
+                        "rotate": false,
+                        "cut": true
+                    }
+                },
+                {
+                    "id": 3,
+                    "name": {
+                        "ru": "Группа раскроя #3"
+                    },
+                    "payload": {
+                        "rotate": false,
+                        "cut": false
+                    }
+                }
+            ]
+        },
+        "price_categories": {
+            "name": {
+                "ru": "Финансовые категории"
+            },
+            "records": [
+                {
+                    "slug": "m0",
+                    "name": {
+                        "ru": "M0"
+                    },
+                    "payload": {
+                        "cost_price": 130,
+                        "work_price": 103,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "m1",
+                    "name": {
+                        "ru": "M1"
+                    },
+                    "payload": {
+                        "cost_price": 139,
+                        "work_price": 103,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "m2",
+                    "name": {
+                        "ru": "M2"
+                    },
+                    "payload": {
+                        "cost_price": 147,
+                        "work_price": 103,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "m3",
+                    "name": {
+                        "ru": "M3"
+                    },
+                    "payload": {
+                        "cost_price": 159,
+                        "work_price": 103,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "m4",
+                    "name": {
+                        "ru": "M4"
+                    },
+                    "payload": {
+                        "cost_price": 209,
+                        "work_price": 103,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "a0",
+                    "name": {
+                        "ru": "A0"
+                    },
+                    "payload": {
+                        "cost_price": 105,
+                        "work_price": 110,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "a1",
+                    "name": {
+                        "ru": "A1"
+                    },
+                    "payload": {
+                        "cost_price": 125,
+                        "work_price": 110,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "a2",
+                    "name": {
+                        "ru": "A2"
+                    },
+                    "payload": {
+                        "cost_price": 135,
+                        "work_price": 110,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "a3",
+                    "name": {
+                        "ru": "A3"
+                    },
+                    "payload": {
+                        "cost_price": 145,
+                        "work_price": 110,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "h",
+                    "name": {
+                        "ru": "H"
+                    },
+                    "payload": {
+                        "cost_price": 225,
+                        "work_price": 110,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "hi",
+                    "name": {
+                        "ru": "HI"
+                    },
+                    "payload": {
+                        "cost_price": 225,
+                        "work_price": 110,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "nm0",
+                    "name": {
+                        "ru": "NM0"
+                    },
+                    "payload": {
+                        "cost_price": 132,
+                        "work_price": 132,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "nm1",
+                    "name": {
+                        "ru": "NM1"
+                    },
+                    "payload": {
+                        "cost_price": 141,
+                        "work_price": 132,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "nm2",
+                    "name": {
+                        "ru": "NM2"
+                    },
+                    "payload": {
+                        "cost_price": 195,
+                        "work_price": 158,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "nm3",
+                    "name": {
+                        "ru": "NM3"
+                    },
+                    "payload": {
+                        "cost_price": 208,
+                        "work_price": 158,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "g0",
+                    "name": {
+                        "ru": "G0"
+                    },
+                    "payload": {
+                        "cost_price": 144,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "g1",
+                    "name": {
+                        "ru": "G1"
+                    },
+                    "payload": {
+                        "cost_price": 177,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "g2",
+                    "name": {
+                        "ru": "G2"
+                    },
+                    "payload": {
+                        "cost_price": 194,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "g3",
+                    "name": {
+                        "ru": "G3"
+                    },
+                    "payload": {
+                        "cost_price": 202,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "g4",
+                    "name": {
+                        "ru": "G4"
+                    },
+                    "payload": {
+                        "cost_price": 247,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "g5",
+                    "name": {
+                        "ru": "G5"
+                    },
+                    "payload": {
+                        "cost_price": 269,
+                        "work_price": 158,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "g6",
+                    "name": {
+                        "ru": "G6"
+                    },
+                    "payload": {
+                        "cost_price": 238,
+                        "work_price": 110,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "g7",
+                    "name": {
+                        "ru": "G7"
+                    },
+                    "payload": {
+                        "cost_price": 269,
+                        "work_price": 158,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "hm0",
+                    "name": {
+                        "ru": "HM0"
+                    },
+                    "payload": {
+                        "cost_price": 144,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "hm1",
+                    "name": {
+                        "ru": "HM1"
+                    },
+                    "payload": {
+                        "cost_price": 177,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "hm2",
+                    "name": {
+                        "ru": "HM2"
+                    },
+                    "payload": {
+                        "cost_price": 185,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "hm3",
+                    "name": {
+                        "ru": "HM3"
+                    },
+                    "payload": {
+                        "cost_price": 219,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "hm4",
+                    "name": {
+                        "ru": "HM4"
+                    },
+                    "payload": {
+                        "cost_price": 247,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "hm5",
+                    "name": {
+                        "ru": "HM5"
+                    },
+                    "payload": {
+                        "cost_price": 269,
+                        "work_price": 158,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "hm6",
+                    "name": {
+                        "ru": "HM6"
+                    },
+                    "payload": {
+                        "cost_price": 269,
+                        "work_price": 158,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "st0",
+                    "name": {
+                        "ru": "ST0"
+                    },
+                    "payload": {
+                        "cost_price": 144,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "st1",
+                    "name": {
+                        "ru": "ST1"
+                    },
+                    "payload": {
+                        "cost_price": 177,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "st2",
+                    "name": {
+                        "ru": "ST2"
+                    },
+                    "payload": {
+                        "cost_price": 185,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "st3",
+                    "name": {
+                        "ru": "ST3"
+                    },
+                    "payload": {
+                        "cost_price": 219,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "st4",
+                    "name": {
+                        "ru": "ST4"
+                    },
+                    "payload": {
+                        "cost_price": 247,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "st5",
+                    "name": {
+                        "ru": "ST5"
+                    },
+                    "payload": {
+                        "cost_price": 269,
+                        "work_price": 158,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "st6",
+                    "name": {
+                        "ru": "ST6"
+                    },
+                    "payload": {
+                        "cost_price": 269,
+                        "work_price": 158,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "hx0",
+                    "name": {
+                        "ru": "HX0"
+                    },
+                    "payload": {
+                        "cost_price": 149,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "hx1",
+                    "name": {
+                        "ru": "HX1"
+                    },
+                    "payload": {
+                        "cost_price": 179,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "hx2",
+                    "name": {
+                        "ru": "HX2"
+                    },
+                    "payload": {
+                        "cost_price": 215,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "hx3",
+                    "name": {
+                        "ru": "HX3"
+                    },
+                    "payload": {
+                        "cost_price": 245,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "hx4",
+                    "name": {
+                        "ru": "HX4"
+                    },
+                    "payload": {
+                        "cost_price": 261,
+                        "work_price": 130,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "hx5",
+                    "name": {
+                        "ru": "HX5"
+                    },
+                    "payload": {
+                        "cost_price": 281,
+                        "work_price": 158,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "c0",
+                    "name": {
+                        "ru": "C0"
+                    },
+                    "payload": {
+                        "cost_price": 180,
+                        "work_price": 158,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "c1",
+                    "name": {
+                        "ru": "C1"
+                    },
+                    "payload": {
+                        "cost_price": 186,
+                        "work_price": 158,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "c2",
+                    "name": {
+                        "ru": "C2"
+                    },
+                    "payload": {
+                        "cost_price": 226,
+                        "work_price": 158,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "c3",
+                    "name": {
+                        "ru": "C3"
+                    },
+                    "payload": {
+                        "cost_price": 245,
+                        "work_price": 158,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "c4",
+                    "name": {
+                        "ru": "C4"
+                    },
+                    "payload": {
+                        "cost_price": 269,
+                        "work_price": 158,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "m5",
+                    "name": {
+                        "ru": "M5"
+                    },
+                    "payload": {
+                        "cost_price": 219,
+                        "work_price": 103,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_120",
+                    "name": {
+                        "ru": "Q_120"
+                    },
+                    "payload": {
+                        "cost_price": 120,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "ar",
+                    "name": {
+                        "ru": "AR"
+                    },
+                    "payload": {
+                        "cost_price": 155,
+                        "work_price": 110,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_130",
+                    "name": {
+                        "ru": "Q_130"
+                    },
+                    "payload": {
+                        "cost_price": 130,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_140",
+                    "name": {
+                        "ru": "Q_140"
+                    },
+                    "payload": {
+                        "cost_price": 140,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_150",
+                    "name": {
+                        "ru": "Q_150"
+                    },
+                    "payload": {
+                        "cost_price": 150,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_160",
+                    "name": {
+                        "ru": "Q_160"
+                    },
+                    "payload": {
+                        "cost_price": 160,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_170",
+                    "name": {
+                        "ru": "Q_170"
+                    },
+                    "payload": {
+                        "cost_price": 170,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_180",
+                    "name": {
+                        "ru": "Q_180"
+                    },
+                    "payload": {
+                        "cost_price": 180,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_190",
+                    "name": {
+                        "ru": "Q_190"
+                    },
+                    "payload": {
+                        "cost_price": 190,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_200",
+                    "name": {
+                        "ru": "Q_200"
+                    },
+                    "payload": {
+                        "cost_price": 200,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_210",
+                    "name": {
+                        "ru": "Q_210"
+                    },
+                    "payload": {
+                        "cost_price": 210,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_220",
+                    "name": {
+                        "ru": "Q_220"
+                    },
+                    "payload": {
+                        "cost_price": 220,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_230",
+                    "name": {
+                        "ru": "Q_230"
+                    },
+                    "payload": {
+                        "cost_price": 230,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_240",
+                    "name": {
+                        "ru": "Q_240"
+                    },
+                    "payload": {
+                        "cost_price": 240,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_250",
+                    "name": {
+                        "ru": "Q_250"
+                    },
+                    "payload": {
+                        "cost_price": 250,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_260",
+                    "name": {
+                        "ru": "Q_260"
+                    },
+                    "payload": {
+                        "cost_price": 260,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_270",
+                    "name": {
+                        "ru": "Q_270"
+                    },
+                    "payload": {
+                        "cost_price": 270,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_280",
+                    "name": {
+                        "ru": "Q_280"
+                    },
+                    "payload": {
+                        "cost_price": 280,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_290",
+                    "name": {
+                        "ru": "Q_290"
+                    },
+                    "payload": {
+                        "cost_price": 290,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_300",
+                    "name": {
+                        "ru": "Q_300"
+                    },
+                    "payload": {
+                        "cost_price": 300,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_310",
+                    "name": {
+                        "ru": "Q_310"
+                    },
+                    "payload": {
+                        "cost_price": 310,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_320",
+                    "name": {
+                        "ru": "Q_320"
+                    },
+                    "payload": {
+                        "cost_price": 320,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_330",
+                    "name": {
+                        "ru": "Q_330"
+                    },
+                    "payload": {
+                        "cost_price": 330,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_340",
+                    "name": {
+                        "ru": "Q_340"
+                    },
+                    "payload": {
+                        "cost_price": 340,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_350",
+                    "name": {
+                        "ru": "Q_350"
+                    },
+                    "payload": {
+                        "cost_price": 350,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_360",
+                    "name": {
+                        "ru": "Q_360"
+                    },
+                    "payload": {
+                        "cost_price": 360,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_370",
+                    "name": {
+                        "ru": "Q_370"
+                    },
+                    "payload": {
+                        "cost_price": 370,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_380",
+                    "name": {
+                        "ru": "Q_380"
+                    },
+                    "payload": {
+                        "cost_price": 380,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_390",
+                    "name": {
+                        "ru": "Q_390"
+                    },
+                    "payload": {
+                        "cost_price": 390,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_400",
+                    "name": {
+                        "ru": "Q_400"
+                    },
+                    "payload": {
+                        "cost_price": 400,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_410",
+                    "name": {
+                        "ru": "Q_410"
+                    },
+                    "payload": {
+                        "cost_price": 410,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_420",
+                    "name": {
+                        "ru": "Q_420"
+                    },
+                    "payload": {
+                        "cost_price": 420,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_430",
+                    "name": {
+                        "ru": "Q_430"
+                    },
+                    "payload": {
+                        "cost_price": 430,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_440",
+                    "name": {
+                        "ru": "Q_440"
+                    },
+                    "payload": {
+                        "cost_price": 440,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_450",
+                    "name": {
+                        "ru": "Q_450"
+                    },
+                    "payload": {
+                        "cost_price": 450,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "q_460",
+                    "name": {
+                        "ru": "Q_460"
+                    },
+                    "payload": {
+                        "cost_price": 460,
+                        "work_price": 185,
+                        "currency": "USD"
+                    }
+                }
+            ]
+        }
+    },
+    "items": [
+        {
+            "id": 404,
+            "parent_id": null,
+            "category_id": 18,
+            "type": "simple",
+            "name": {
+                "ru": "A002 Tambora"
+            },
+            "slug": "a002-tambora",
+            "product_type_code": "item",
+            "price_category_slug": "a3",
+            "cutting_group_id": 1,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/331/sctnhl7gind7x3ikrdplsin6wi481bpa.webp",
+            "eav": {
+                "marketing_tags": "hit",
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "white",
+                "type_stone": "akril",
+                "collection_stone_ref": "akrilika_collection",
+                "texture": "monochrome_texture",
+                "inclusions_akril": "large_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "yes_bend",
+                "length": 3680,
+                "width": 760,
+                "height": 12,
+                "min_sale_part_stone": "min_sale_part_stone_25",
+                "direction_division_stone": "devision_x",
+                "is_pattern_repeat_stone": "yes_repeat",
+                "min_product_size_stone": 12,
+                "is_separate_cutting_stone": "yes_separate",
+                "price_category": "a3"
+            },
+            "variants": []
+        },
+        {
+            "id": 405,
+            "parent_id": null,
+            "category_id": 18,
+            "type": "simple",
+            "name": {
+                "ru": "A003 Casera"
+            },
+            "slug": "a003-casera",
+            "product_type_code": "item",
+            "price_category_slug": "a3",
+            "cutting_group_id": 1,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/6a9/d1asupz2qk1q9t2pob2k39x5o6qp8q0c.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "brown",
+                "type_stone": "akril",
+                "collection_stone_ref": "akrilika_collection",
+                "texture": "monochrome_texture",
+                "inclusions_akril": "large_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "yes_bend",
+                "length": 3680,
+                "width": 760,
+                "height": 12,
+                "min_sale_part_stone": "min_sale_part_stone_25",
+                "direction_division_stone": "devision_x",
+                "is_pattern_repeat_stone": "yes_repeat",
+                "min_product_size_stone": 12,
+                "is_separate_cutting_stone": "yes_separate",
+                "price_category": "a3"
+            },
+            "variants": []
+        },
+        {
+            "id": 406,
+            "parent_id": null,
+            "category_id": 18,
+            "type": "simple",
+            "name": {
+                "ru": "A005 Nocturne"
+            },
+            "slug": "a005-nocturne",
+            "product_type_code": "item",
+            "price_category_slug": "a1",
+            "cutting_group_id": 1,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/6b2/nxv16k91dd8m6a4uqpm70ljoxprlx3zu.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "black",
+                "type_stone": "akril",
+                "collection_stone_ref": "akrilika_collection",
+                "texture": "solid_texture",
+                "inclusions_akril": "without_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "yes_bend",
+                "length": 3680,
+                "width": 760,
+                "height": 12,
+                "min_sale_part_stone": "min_sale_part_stone_25",
+                "direction_division_stone": "devision_x",
+                "is_pattern_repeat_stone": "yes_repeat",
+                "min_product_size_stone": 12,
+                "is_separate_cutting_stone": "yes_separate",
+                "price_category": "a1"
+            },
+            "variants": []
+        },
+        {
+            "id": 320,
+            "parent_id": null,
+            "category_id": 19,
+            "type": "simple",
+            "name": {
+                "ru": "M201 Midnight"
+            },
+            "slug": "m201-midnight",
+            "product_type_code": "item",
+            "price_category_slug": "m1",
+            "cutting_group_id": 1,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/779/63g8f3zw8g06mt3xe7d2fl9hca94bsxg.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "color_ref": "gray",
+                "type_stone": "akril",
+                "collection_stone_ref": "apietra_collection",
+                "texture": "monochrome_texture",
+                "inclusions_akril": "small_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "length": 3680,
+                "width": 760,
+                "height": 12,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_x",
+                "is_pattern_repeat_stone": "yes_repeat",
+                "min_product_size_stone": 12,
+                "is_separate_cutting_stone": "yes_separate",
+                "price_category": "m1"
+            },
+            "variants": []
+        },
+        {
+            "id": 324,
+            "parent_id": null,
+            "category_id": 19,
+            "type": "simple",
+            "name": {
+                "ru": "M411 Slancio White"
+            },
+            "slug": "m411-slancio-white",
+            "product_type_code": "item",
+            "price_category_slug": "m2",
+            "cutting_group_id": 1,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/2a5/cv7vhgj8bivy0fjq8hjogixxjfp21mn3.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "color_ref": "white",
+                "type_stone": "akril",
+                "collection_stone_ref": "apietra_collection",
+                "texture": "monochrome_texture",
+                "inclusions_akril": "without_inclusions",
+                "effect_akril": "sequins_effects",
+                "bend_akril": "no_bend",
+                "length": 3680,
+                "width": 760,
+                "height": 12,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_x",
+                "is_pattern_repeat_stone": "yes_repeat",
+                "min_product_size_stone": 12,
+                "is_separate_cutting_stone": "yes_separate",
+                "price_category": "m2"
+            },
+            "variants": []
+        },
+        {
+            "id": 328,
+            "parent_id": null,
+            "category_id": 19,
+            "type": "simple",
+            "name": {
+                "ru": "M415 Metallic Black"
+            },
+            "slug": "m415-metallic-black",
+            "product_type_code": "item",
+            "price_category_slug": "m3",
+            "cutting_group_id": 1,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/ae3/4izke9yrd59koinwbycmch3ukc3h9s0d.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "color_ref": "black",
+                "type_stone": "akril",
+                "collection_stone_ref": "apietra_collection",
+                "texture": "monochrome_texture",
+                "inclusions_akril": "without_inclusions",
+                "effect_akril": "sequins_effects",
+                "bend_akril": "no_bend",
+                "length": 3680,
+                "width": 760,
+                "height": 12,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_x",
+                "is_pattern_repeat_stone": "yes_repeat",
+                "min_product_size_stone": 12,
+                "is_separate_cutting_stone": "yes_separate",
+                "price_category": "m3"
+            },
+            "variants": []
+        },
+        {
+            "id": 493,
+            "parent_id": null,
+            "category_id": 23,
+            "type": "simple",
+            "name": {
+                "ru": "AQ-009 Calacatta Del Fiore"
+            },
+            "slug": "aq-009-calacatta-del-fiore",
+            "product_type_code": "item",
+            "price_category_slug": "q_120",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/d9d/hggrkxta7vpxsyfpxp45h05r9fq9zi0r.jpg",
+            "eav": {
+                "marketing_tags": "sale",
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "white",
+                "type_stone": "quartz",
+                "collection_stone_ref": "alfa_quartz_collection",
+                "texture": "marble_texture",
+                "inclusions_akril": "without_inclusions",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3200,
+                "width": 1600,
+                "height": 20,
+                "min_sale_part_stone": 209,
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_120"
+            },
+            "variants": []
+        },
+        {
+            "id": 494,
+            "parent_id": null,
+            "category_id": 23,
+            "type": "simple",
+            "name": {
+                "ru": "AQ-010 Statuario San Marco"
+            },
+            "slug": "aq-010-statuario-san-marco",
+            "product_type_code": "item",
+            "price_category_slug": "q_120",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/e33/rys7x7hc05cdwn9jhlh9z6710lb2cgwt.jpg",
+            "eav": {
+                "marketing_tags": "sale",
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "white",
+                "type_stone": "quartz",
+                "collection_stone_ref": "alfa_quartz_collection",
+                "texture": "marble_texture",
+                "inclusions_akril": "without_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3200,
+                "width": 1600,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_120"
+            },
+            "variants": []
+        },
+        {
+            "id": 495,
+            "parent_id": null,
+            "category_id": 23,
+            "type": "simple",
+            "name": {
+                "ru": "AQ-011 Calacatta Classico"
+            },
+            "slug": "aq-011-calacatta-classico",
+            "product_type_code": "item",
+            "price_category_slug": "q_120",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/190/1hpo6tc9c9mfdzivvr12n8j72lyu0527.jpg",
+            "eav": {
+                "marketing_tags": "sale",
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "white",
+                "type_stone": "quartz",
+                "collection_stone_ref": "alfa_quartz_collection",
+                "texture": "marble_texture",
+                "inclusions_akril": "without_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3200,
+                "width": 1600,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_120"
+            },
+            "variants": []
+        },
+        {
+            "id": 715,
+            "parent_id": null,
+            "category_id": 25,
+            "type": "sku",
+            "name": {
+                "ru": "Tadzava 44-U/I Ultra"
+            },
+            "slug": "tadzava-44-u-i-ultra",
+            "product_type_code": "kitchen_sink",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 30188,
+            "currency": "RUB",
+            "preview_picture": "/upload/iblock/ca8/h2ki5q2op747t9dcjio1bse5nwergagx.png",
+            "eav": {
+                "product_type": "kitchen_sink_type",
+                "use_in_calc": "yes",
+                "brand": "omoikiri_brand",
+                "set_sink": "under_set",
+                "material": "stainless_steel",
+                "min_cab_width": "cb_w_450",
+                "steel_thickness_sink": "th-10",
+                "size_inner_sink": "400 х 400 х 200 мм"
+            },
+            "variants": [
+                {
+                    "id": 976,
+                    "parent_id": 715,
+                    "category_id": 25,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Tadzava 44-U/I Ultra-IN"
+                    },
+                    "slug": "tadzava_44_u_i_ultra_in",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 30188,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/c7d/e6ubx0wk4w5k8lqqeghc32y9ef1nl4wj.png",
+                    "eav": {
+                        "color_ref": "stainless_steel"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 977,
+                    "parent_id": 715,
+                    "category_id": 25,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Tadzava 44-U/I Ultra-GM"
+                    },
+                    "slug": "tadzava_44_u_i_ultra_gm",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 40688,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/be2/r50zyv0iqslh3gpo8vd704ona9tws1wv.png",
+                    "eav": {
+                        "color_ref": "s-blied_steel"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 978,
+                    "parent_id": 715,
+                    "category_id": 25,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Tadzava 44-U/I Ultra-LG"
+                    },
+                    "slug": "tadzava_44_u_i_ultra_lg",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 40288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/92c/v0ked601b465wa21m32yj04rfjd8jhsh.png",
+                    "eav": {
+                        "color_ref": "light_gold"
+                    },
+                    "variants": []
+                }
+            ]
+        },
+        {
+            "id": 716,
+            "parent_id": null,
+            "category_id": 25,
+            "type": "sku",
+            "name": {
+                "ru": "Kata 20-U"
+            },
+            "slug": "kata-20-u",
+            "product_type_code": "kitchen_sink",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 13288,
+            "currency": "RUB",
+            "preview_picture": "/upload/iblock/65e/bu1absmxgbgp026fq28toy6ipcyktrps.webp",
+            "eav": {
+                "product_type": "kitchen_sink_type",
+                "use_in_calc": "yes",
+                "brand": "omoikiri_brand",
+                "set_sink": "under_set",
+                "material": "composite",
+                "min_cab_width": "cb_w_300",
+                "size_inner_sink": "160 х 370 х 200 мм"
+            },
+            "variants": [
+                {
+                    "id": 717,
+                    "parent_id": 716,
+                    "category_id": 25,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Kata 20-U-BE"
+                    },
+                    "slug": "kata_20_u_be",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 13288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/d3e/mhbd6ek93mmva0h109ih1s0429vhszc8.webp",
+                    "eav": {
+                        "color_ref": "#c0baa4"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1002,
+                    "parent_id": 716,
+                    "category_id": 25,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Kata 20-U-PA"
+                    },
+                    "slug": "kata_20_u_pa",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 13288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/565/ynanceczxv08z1bkvwxmrv96m2952fl4.webp",
+                    "eav": {
+                        "color_ref": "#cfcbb5"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1003,
+                    "parent_id": 716,
+                    "category_id": 25,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Kata 20-U-BL"
+                    },
+                    "slug": "kata_20_u_bl",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 13288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/723/d984wwk738nfsw5p0xbjl4uowfe7a8s8.webp",
+                    "eav": {
+                        "color_ref": "#2a2e2d"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1006,
+                    "parent_id": 716,
+                    "category_id": 25,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Kata 20-U-GR"
+                    },
+                    "slug": "kata_20_u_gr",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 13288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/e3d/372duhpjhszgaa6w3h1k3ue3ggdbdt2o.webp",
+                    "eav": {
+                        "color_ref": "#7c7876"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1007,
+                    "parent_id": 716,
+                    "category_id": 25,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Kata 20-U-SA"
+                    },
+                    "slug": "kata_20_u_sa",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 13288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/a3e/1u4r7s793i6870i5nkqhjksgkriaqwp2.webp",
+                    "eav": {
+                        "color_ref": "#e0cfb0"
+                    },
+                    "variants": []
+                }
+            ]
+        },
+        {
+            "id": 724,
+            "parent_id": null,
+            "category_id": 25,
+            "type": "sku",
+            "name": {
+                "ru": "Kata 34-U"
+            },
+            "slug": "kata-34-u",
+            "product_type_code": "kitchen_sink",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 14988,
+            "currency": "RUB",
+            "preview_picture": "/upload/iblock/abe/7sp6r0thg6p3g0ekg151xnrmf4om17jz.webp",
+            "eav": {
+                "product_type": "kitchen_sink_type",
+                "use_in_calc": "yes",
+                "brand": "omoikiri_brand",
+                "set_sink": "under_set",
+                "material": "composite",
+                "min_cab_width": "cb_w_400",
+                "size_inner_sink": "300 х 370 х 200 мм"
+            },
+            "variants": [
+                {
+                    "id": 725,
+                    "parent_id": 724,
+                    "category_id": 25,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Kata 34-U-BL"
+                    },
+                    "slug": "kata_34_u_bl",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 14988,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/c63/dk0awa30ny42qtk7ozj616a92lnwrro3.webp",
+                    "eav": {
+                        "color_ref": "#2a2e2d"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 984,
+                    "parent_id": 724,
+                    "category_id": 25,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Kata 34-U-PA"
+                    },
+                    "slug": "kata_34_u_pa",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 14988,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/57e/yingcpbc8d2v092v98cntd9kp6gngm3r.webp",
+                    "eav": {
+                        "color_ref": "#cfcbb5"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 986,
+                    "parent_id": 724,
+                    "category_id": 25,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Kata 34-U-BE"
+                    },
+                    "slug": "kata_34_u_be",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 14988,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/242/rorskl4sy8zh22ynvi5h0qlkwp8dk67d.webp",
+                    "eav": {
+                        "color_ref": "#c0baa4"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 987,
+                    "parent_id": 724,
+                    "category_id": 25,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Kata 34-U-SA"
+                    },
+                    "slug": "kata_34_u_sa",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 14988,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/ec4/mavj10fwfh9xsll8cetokf64nwdkkmnh.webp",
+                    "eav": {
+                        "color_ref": "#e0cfb0"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 988,
+                    "parent_id": 724,
+                    "category_id": 25,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Kata 34-U-GR"
+                    },
+                    "slug": "kata_34_u_gr",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 14988,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/0a5/gwfa8qoygg6qs7du8kdrptruj473a7k8.webp",
+                    "eav": {
+                        "color_ref": "#7c7876"
+                    },
+                    "variants": []
+                }
+            ]
+        },
+        {
+            "id": 922,
+            "parent_id": null,
+            "category_id": 26,
+            "type": "sku",
+            "name": {
+                "ru": "RO500"
+            },
+            "slug": "ro500",
+            "product_type_code": "bathroom_sink",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 200,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/6a2/arr1itqqzdnqlay9ic9m5nnc5ejp7eac.webp",
+            "eav": {
+                "marketing_tags": "hit",
+                "product_type": "sink_type",
+                "use_in_calc": "yes",
+                "brand": "akrilika_brand",
+                "set_sink": "under_set",
+                "material": "acrylic",
+                "min_cab_width": "cb_w_500",
+                "size_inner_sink": "445 х 325 х 130 мм"
+            },
+            "variants": [
+                {
+                    "id": 1084,
+                    "parent_id": 922,
+                    "category_id": 26,
+                    "type": "variant",
+                    "name": {
+                        "ru": "RO500(A)"
+                    },
+                    "slug": "ro500_a",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 200,
+                    "currency": "USD",
+                    "preview_picture": "/upload/iblock/6c5/f7ao8lbdxn10fluwbsa6utaiiinqij0l.webp",
+                    "eav": {
+                        "color_ref": "s-stone_color"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1085,
+                    "parent_id": 922,
+                    "category_id": 26,
+                    "type": "variant",
+                    "name": {
+                        "ru": "RO500(DA)"
+                    },
+                    "slug": "ro500_da",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 250,
+                    "currency": "USD",
+                    "preview_picture": "/upload/iblock/6c5/f7ao8lbdxn10fluwbsa6utaiiinqij0l.webp",
+                    "eav": {
+                        "color_ref": "acrylic_with_streaks"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1086,
+                    "parent_id": 922,
+                    "category_id": 26,
+                    "type": "variant",
+                    "name": {
+                        "ru": "RO500(A101)"
+                    },
+                    "slug": "ro500_a101",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 200,
+                    "currency": "USD",
+                    "preview_picture": "/upload/iblock/6c5/f7ao8lbdxn10fluwbsa6utaiiinqij0l.webp",
+                    "eav": {
+                        "color_ref": "s_white_a1"
+                    },
+                    "variants": []
+                }
+            ]
+        },
+        {
+            "id": 923,
+            "parent_id": null,
+            "category_id": 26,
+            "type": "sku",
+            "name": {
+                "ru": "RO600"
+            },
+            "slug": "ro600",
+            "product_type_code": "bathroom_sink",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 200,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/e63/bjn7zxei11t0e5aq80y26fg1afv8qpz9.webp",
+            "eav": {
+                "marketing_tags": "hit",
+                "product_type": "sink_type",
+                "use_in_calc": "yes",
+                "brand": "akrilika_brand",
+                "set_sink": "under_set",
+                "material": "acrylic",
+                "min_cab_width": "cb_w_600",
+                "size_inner_sink": "530 х 320 х 115 мм"
+            },
+            "variants": [
+                {
+                    "id": 1087,
+                    "parent_id": 923,
+                    "category_id": 26,
+                    "type": "variant",
+                    "name": {
+                        "ru": "RO600(A101)"
+                    },
+                    "slug": "ro600_a101",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 200,
+                    "currency": "USD",
+                    "preview_picture": "/upload/iblock/5e8/vz75c0arn1ti1zh7eetyl1h4y6ryhon6.webp",
+                    "eav": {
+                        "color_ref": "s_white_a1"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1088,
+                    "parent_id": 923,
+                    "category_id": 26,
+                    "type": "variant",
+                    "name": {
+                        "ru": "RO600(A)"
+                    },
+                    "slug": "ro600_a",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 200,
+                    "currency": "USD",
+                    "preview_picture": "/upload/iblock/5e8/vz75c0arn1ti1zh7eetyl1h4y6ryhon6.webp",
+                    "eav": {
+                        "color_ref": "s-stone_color"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1089,
+                    "parent_id": 923,
+                    "category_id": 26,
+                    "type": "variant",
+                    "name": {
+                        "ru": "RO600(DA)"
+                    },
+                    "slug": "ro600_da",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 250,
+                    "currency": "USD",
+                    "preview_picture": "/upload/iblock/5e8/vz75c0arn1ti1zh7eetyl1h4y6ryhon6.webp",
+                    "eav": {
+                        "color_ref": "acrylic_with_streaks"
+                    },
+                    "variants": []
+                }
+            ]
+        },
+        {
+            "id": 924,
+            "parent_id": null,
+            "category_id": 26,
+            "type": "sku",
+            "name": {
+                "ru": "RO600L"
+            },
+            "slug": "ro600l",
+            "product_type_code": "bathroom_sink",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 330,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/af7/7pauu0ht4xfdztbl1ixqj8ps1qqmakbo.webp",
+            "eav": {
+                "product_type": "sink_type",
+                "use_in_calc": "yes",
+                "brand": "akrilika_brand",
+                "set_sink": "under_set",
+                "material": "acrylic",
+                "min_cab_width": "cb_w_600",
+                "size_inner_sink": "550 х 380 х 150 мм"
+            },
+            "variants": [
+                {
+                    "id": 1090,
+                    "parent_id": 924,
+                    "category_id": 26,
+                    "type": "variant",
+                    "name": {
+                        "ru": "RO600L(A101)"
+                    },
+                    "slug": "ro600l_a101",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 330,
+                    "currency": "USD",
+                    "preview_picture": "/upload/iblock/28c/8mrwu9v55zh14attwa0k71xd33vl2p27.webp",
+                    "eav": {
+                        "color_ref": "s_white_a1"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1091,
+                    "parent_id": 924,
+                    "category_id": 26,
+                    "type": "variant",
+                    "name": {
+                        "ru": "RO600L(A)"
+                    },
+                    "slug": "ro600l_a",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 330,
+                    "currency": "USD",
+                    "preview_picture": "/upload/iblock/28c/8mrwu9v55zh14attwa0k71xd33vl2p27.webp",
+                    "eav": {
+                        "color_ref": "s-stone_color"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1092,
+                    "parent_id": 924,
+                    "category_id": 26,
+                    "type": "variant",
+                    "name": {
+                        "ru": "RO600L(DA)"
+                    },
+                    "slug": "ro600l_da",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 390,
+                    "currency": "USD",
+                    "preview_picture": "/upload/iblock/28c/8mrwu9v55zh14attwa0k71xd33vl2p27.webp",
+                    "eav": {
+                        "color_ref": "acrylic_with_streaks"
+                    },
+                    "variants": []
+                }
+            ]
+        },
+        {
+            "id": 1083,
+            "parent_id": null,
+            "category_id": 38,
+            "type": "sku",
+            "name": {
+                "ru": "Nagano"
+            },
+            "slug": "nagano",
+            "product_type_code": "faucet",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 29488,
+            "currency": "RUB",
+            "preview_picture": "/upload/iblock/dc5/abb1e48efhbai1i0l0la6gb6abtj6gbd.webp",
+            "eav": {
+                "marketing_tags": "hit",
+                "product_type": "faucet_type",
+                "use_in_calc": "yes",
+                "type_faucet": "faucet",
+                "brand": "omoikiri_brand",
+                "features_faucet": "2-in-1"
+            },
+            "variants": [
+                {
+                    "id": 1153,
+                    "parent_id": 1083,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-GB"
+                    },
+                    "slug": "nagano_gb",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 30588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/b43/s21e5vtv0h8sad9h461tqd670twlu868.webp",
+                    "eav": {
+                        "color_ref": "s-graphite"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1154,
+                    "parent_id": 1083,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-GM"
+                    },
+                    "slug": "nagano_gm",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 30588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/8ec/qu8qczfu74dr23bbk0gbzuq2h3vsx03w.webp",
+                    "eav": {
+                        "color_ref": "s-blied_steel"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1155,
+                    "parent_id": 1083,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-BN"
+                    },
+                    "slug": "nagano_bn",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 30588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/2e5/jqbxsiq1wbwvgpmtvnv0v0z05w32t3mo.webp",
+                    "eav": {
+                        "color_ref": "stainless_steel"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1156,
+                    "parent_id": 1083,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-C"
+                    },
+                    "slug": "nagano_c",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 29488,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/f55/32jigp0zlv3ej7gkamnpktxq32cc0ahj.webp",
+                    "eav": {
+                        "color_ref": "chrome"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1157,
+                    "parent_id": 1083,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-LG"
+                    },
+                    "slug": "nagano_lg",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 30588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/f41/m4k8nh6sn5kf5t6y8b7e6g4w842ougrr.webp",
+                    "eav": {
+                        "color_ref": "light_gold"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1158,
+                    "parent_id": 1083,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-RG-LG"
+                    },
+                    "slug": "nagano_rg_lg",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 51188,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/ae9/urx5sg4dbno13g6f79v4sxnc0ap8fsl4.webp",
+                    "eav": {
+                        "color_ref": "rg_lg"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1159,
+                    "parent_id": 1083,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-AZ"
+                    },
+                    "slug": "nagano_az",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 51188,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/5f2/jrtd63ce1h6y4e2ba35wn1lpfffs0hia.webp",
+                    "eav": {
+                        "color_ref": "s-azur_blue"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1160,
+                    "parent_id": 1083,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-IB"
+                    },
+                    "slug": "nagano_ib",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 51188,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/e92/h3bv2unr1l48xe8hek8vo6kzg97fdvdy.webp",
+                    "eav": {
+                        "color_ref": "indigo_blue"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1162,
+                    "parent_id": 1083,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-SL"
+                    },
+                    "slug": "nagano_sl",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 51188,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/e9d/cowjaiyuee1o86bi9r29382494vbw8fk.webp",
+                    "eav": {
+                        "color_ref": "sl"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1163,
+                    "parent_id": 1083,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-TO"
+                    },
+                    "slug": "nagano_to",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 51188,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/b97/cp9f8gq4ax5a9gjck779r39bnjaw546p.webp",
+                    "eav": {
+                        "color_ref": "toscana"
+                    },
+                    "variants": []
+                }
+            ]
+        },
+        {
+            "id": 1164,
+            "parent_id": null,
+            "category_id": 38,
+            "type": "sku",
+            "name": {
+                "ru": "Nagano-P"
+            },
+            "slug": "nagano-p",
+            "product_type_code": "faucet",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 30588,
+            "currency": "RUB",
+            "preview_picture": "/upload/iblock/19c/k5pi00nlgp57zb3l0xw1m1fnzzm0ivs4.webp",
+            "eav": {
+                "marketing_tags": "hit",
+                "product_type": "faucet_type",
+                "use_in_calc": "yes",
+                "type_faucet": "faucet",
+                "brand": "omoikiri_brand",
+                "features_faucet": "2-in-1"
+            },
+            "variants": [
+                {
+                    "id": 1165,
+                    "parent_id": 1164,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-P-GR"
+                    },
+                    "slug": "nagano_p_gr",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 30588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/98d/7wvby38kzhoitpfixuug5a7yy7mfcql8.webp",
+                    "eav": {
+                        "color_ref": "#7c7876"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1166,
+                    "parent_id": 1164,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-P-SA"
+                    },
+                    "slug": "nagano_p_sa",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 30588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/f5e/i81fzmli12bieu4suq7zps062us7vgoy.webp",
+                    "eav": {
+                        "color_ref": "#e0cfb0"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1167,
+                    "parent_id": 1164,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-P-BE"
+                    },
+                    "slug": "nagano_p_be",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 30588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/7a3/0uiw79wcsdr6en8matefd3fjbolfyord.webp",
+                    "eav": {
+                        "color_ref": "#c0baa4"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1168,
+                    "parent_id": 1164,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-P-CA"
+                    },
+                    "slug": "nagano_p_ca",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 30588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/c9b/e0hgu8cs6dkt2dh2dm9dskcy4b5hauiy.webp",
+                    "eav": {
+                        "color_ref": "#8c8072"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1169,
+                    "parent_id": 1164,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-P-PA"
+                    },
+                    "slug": "nagano_p_pa",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 30588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/d08/q64e5oc7nqh0edgrvtle29wxj4qjzkzk.webp",
+                    "eav": {
+                        "color_ref": "#cfcbb5"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1170,
+                    "parent_id": 1164,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-P-BL"
+                    },
+                    "slug": "nagano_p_bl",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 30588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/a43/nilq3equc6lr9l5x1n2ppxclk5jeenof.webp",
+                    "eav": {
+                        "color_ref": "#2a2e2d"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1171,
+                    "parent_id": 1164,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-P-ES"
+                    },
+                    "slug": "nagano_p_es",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 30588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/73c/1x82ulw49tk84k0bj2qsvodmfsyh7r31.webp",
+                    "eav": {
+                        "color_ref": "s-expresso"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1172,
+                    "parent_id": 1164,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-P-WH"
+                    },
+                    "slug": "nagano_p_wh",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 30588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/4de/dxrkdogb0y7m2kzm4509zagcqvd2tidt.webp",
+                    "eav": {
+                        "color_ref": "#cfc9bd"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1173,
+                    "parent_id": 1164,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Nagano-P-PL"
+                    },
+                    "slug": "nagano_p_pl",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 30588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/574/te5f1qehi7h8qq22m9lsu246ijs92a6h.webp",
+                    "eav": {
+                        "color_ref": "#656561"
+                    },
+                    "variants": []
+                }
+            ]
+        },
+        {
+            "id": 1175,
+            "parent_id": null,
+            "category_id": 38,
+            "type": "sku",
+            "name": {
+                "ru": "Akita"
+            },
+            "slug": "akita",
+            "product_type_code": "faucet",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 39788,
+            "currency": "RUB",
+            "preview_picture": "/upload/iblock/a7a/bx3782dn1e2n6gsbm0tsxqj50j50wuix.webp",
+            "eav": {
+                "marketing_tags": "hit",
+                "product_type": "faucet_type",
+                "use_in_calc": "yes",
+                "type_faucet": "faucet",
+                "brand": "omoikiri_brand",
+                "features_faucet": "2-in-1"
+            },
+            "variants": [
+                {
+                    "id": 1176,
+                    "parent_id": 1175,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Akita-BN"
+                    },
+                    "slug": "akita_bn",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 39788,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/f1b/y48qcuowkv1s7qlq8p4p1fq191yf9ymj.webp",
+                    "eav": {
+                        "color_ref": "stainless_steel"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1177,
+                    "parent_id": 1175,
+                    "category_id": 38,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Akita-GB"
+                    },
+                    "slug": "akita_gb",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 40788,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/41f/ve7xc34bc37m8va1hwqc54o0ftozaxnj.webp",
+                    "eav": {
+                        "color_ref": "s-graphite"
+                    },
+                    "variants": []
+                }
+            ]
+        },
+        {
+            "id": 1265,
+            "parent_id": null,
+            "category_id": 39,
+            "type": "sku",
+            "name": {
+                "ru": "Дозатор OM-01"
+            },
+            "slug": "om-01",
+            "product_type_code": "dispenser",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 2288,
+            "currency": "RUB",
+            "preview_picture": "/upload/iblock/520/09goxo2q0j3ma3jfcvksis448fbkskcv.png",
+            "eav": {
+                "product_type": "faucet_type",
+                "use_in_calc": "yes",
+                "type_faucet": "dispenser",
+                "brand": "omoikiri_brand"
+            },
+            "variants": [
+                {
+                    "id": 1266,
+                    "parent_id": 1265,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-01-AB"
+                    },
+                    "slug": "dozator_om_01_ab",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 8088,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/9ea/1943xbgaz02re2oil0ggj8lk38ujosxg.webp",
+                    "eav": {
+                        "color_ref": "brass"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1267,
+                    "parent_id": 1265,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-01-GR"
+                    },
+                    "slug": "dozator_om_01_gr",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 2288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/da1/bga41vai7su97j765clb41y2bgm1mqri.webp",
+                    "eav": {
+                        "color_ref": "#7c7876"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1268,
+                    "parent_id": 1265,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-01-SA"
+                    },
+                    "slug": "dozator_om_01_sa",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 2288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/747/8buvm7apcocy5c1vnabehkc3quie8uty.webp",
+                    "eav": {
+                        "color_ref": "#e0cfb0"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1269,
+                    "parent_id": 1265,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-01-BE"
+                    },
+                    "slug": "dozator_om_01_be",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 2288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/e49/nzdgqoel9cx64pmsayhhqcpcew9qbocy.webp",
+                    "eav": {
+                        "color_ref": "#c0baa4"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1270,
+                    "parent_id": 1265,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-01-CA"
+                    },
+                    "slug": "dozator_om_01_ca",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 2288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/542/kvkygpirgs96nxhsknay6x1z8eqczwsw.webp",
+                    "eav": {
+                        "color_ref": "#8c8072"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1271,
+                    "parent_id": 1265,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-01-PA"
+                    },
+                    "slug": "dozator_om_01_pa",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 2288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/df4/70v7xuulz0ks8q4x26dm0eun511gn4xz.webp",
+                    "eav": {
+                        "color_ref": "#cfcbb5"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1273,
+                    "parent_id": 1265,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-01-SI"
+                    },
+                    "slug": "dozator_om_01_si",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 8088,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/25e/oknzsvmbnmynv1efr1ltffe5nrui36kh.webp",
+                    "eav": {
+                        "color_ref": "si"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1274,
+                    "parent_id": 1265,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-01-G"
+                    },
+                    "slug": "dozator_om_01_g",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 8088,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/a75/e8qqmt010cren6fk5qquzvs92ufkywpt.webp",
+                    "eav": {
+                        "color_ref": "g"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1275,
+                    "parent_id": 1265,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-01-PL"
+                    },
+                    "slug": "dozator_om_01_pl",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 2288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/2c7/omctwwuo6sxljadybgzvtaf55plaj05j.webp",
+                    "eav": {
+                        "color_ref": "#656561"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1276,
+                    "parent_id": 1265,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-01-DC"
+                    },
+                    "slug": "dozator_om_01_dc",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 2288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/426/las70hwpdfh8xm0uifxx8o7nkr2vfkoo.webp",
+                    "eav": {
+                        "color_ref": "#302d28"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1277,
+                    "parent_id": 1265,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-01-CH"
+                    },
+                    "slug": "dozator_om_01_ch",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 2288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/d0c/8fj4s8wy4z64q6rhgu1jces9aq0a0m0d.webp",
+                    "eav": {
+                        "color_ref": "#f3ead6"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1278,
+                    "parent_id": 1265,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-01-MA"
+                    },
+                    "slug": "dozator_om_01_ma",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 2288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/231/8315gdu003kob6tfcrq8zhzz60oo2omw.webp",
+                    "eav": {
+                        "color_ref": "ma"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1279,
+                    "parent_id": 1265,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-01-EV"
+                    },
+                    "slug": "dozator_om_01_ev",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 2288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/ac3/08y38faqyizfxskpd4kf8p8dwa47ut1f.webp",
+                    "eav": {
+                        "color_ref": "#dbd4cc"
+                    },
+                    "variants": []
+                }
+            ]
+        },
+        {
+            "id": 1280,
+            "parent_id": null,
+            "category_id": 39,
+            "type": "sku",
+            "name": {
+                "ru": "Дозатор OM-02"
+            },
+            "slug": "dozator-om-02",
+            "product_type_code": "dispenser",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 5588,
+            "currency": "RUB",
+            "preview_picture": "/upload/iblock/2ab/h6dfwbgk3u4lixo7rc8jnmeq55203xwg.webp",
+            "eav": {
+                "marketing_tags": "hit",
+                "product_type": "faucet_type",
+                "use_in_calc": "yes",
+                "type_faucet": "dispenser",
+                "brand": "omoikiri_brand"
+            },
+            "variants": [
+                {
+                    "id": 1281,
+                    "parent_id": 1280,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-GM"
+                    },
+                    "slug": "dozator_om_02_gm",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 5588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/187/rm3hrdvj21alq947zr4fc6wosnavp05r.webp",
+                    "eav": {
+                        "color_ref": "s-blied_steel"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1283,
+                    "parent_id": 1280,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-LG"
+                    },
+                    "slug": "dozator_om_02_lg",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 5588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/219/jgiyym6qmgajtchyt6ho9w2gy262lzzn.webp",
+                    "eav": {
+                        "color_ref": "light_gold"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1284,
+                    "parent_id": 1280,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-AZ"
+                    },
+                    "slug": "dozator_om_02_az",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 15288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/88a/7t8n1jf0n6wd4d4neh0w4udh2w0ii3l0.webp",
+                    "eav": {
+                        "color_ref": "s-azur_blue"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1285,
+                    "parent_id": 1280,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-IB"
+                    },
+                    "slug": "dozator_om_02_ib",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 15288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/73c/ff70jp50tuccrs9c2eky5s29pvo4kk19.webp",
+                    "eav": {
+                        "color_ref": "indigo_blue"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1286,
+                    "parent_id": 1280,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-RG"
+                    },
+                    "slug": "dozator_om_02_rg",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 15288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/229/r1rhm3q3om2kar483jgbys78r3z5ggs9.webp",
+                    "eav": {
+                        "color_ref": "rg"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1287,
+                    "parent_id": 1280,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-SL"
+                    },
+                    "slug": "dozator_om_02_sl",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 15288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/a52/e0qyfj9qsvdn9lpgytf0ahucgl3ncqjs.webp",
+                    "eav": {
+                        "color_ref": "sl"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1288,
+                    "parent_id": 1280,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-TO"
+                    },
+                    "slug": "dozator_om_02_to",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 15288,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/a65/tpubtv5zxtwrc0td0wlq7hmtz9v7dzb6.webp",
+                    "eav": {
+                        "color_ref": "toscana"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1289,
+                    "parent_id": 1280,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-AB"
+                    },
+                    "slug": "dozator_om_02_ab",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 5588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/e0c/5e3mf7zuwwc6cz6hiqxy493q2p3zld7c.webp",
+                    "eav": {
+                        "color_ref": "brass"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1290,
+                    "parent_id": 1280,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-GB"
+                    },
+                    "slug": "dozator_om_02_gb",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 5588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/076/65120q7w0l4fs7gzwm1f4hl0ckl3n2b0.webp",
+                    "eav": {
+                        "color_ref": "s-graphite"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1291,
+                    "parent_id": 1280,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-BN"
+                    },
+                    "slug": "dozator_om_02_bn",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 5588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/6a3/fgquukr37c4nbs6ayx6jmoh5efs0rtl1.webp",
+                    "eav": {
+                        "color_ref": "stainless_steel"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1294,
+                    "parent_id": 1280,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-C"
+                    },
+                    "slug": "dozator_om_02_c",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 5588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/f52/ki5i10nxdcffwotsql1e0vxi0cwlm67m.webp",
+                    "eav": {
+                        "color_ref": "chrome"
+                    },
+                    "variants": []
+                }
+            ]
+        },
+        {
+            "id": 1295,
+            "parent_id": null,
+            "category_id": 39,
+            "type": "sku",
+            "name": {
+                "ru": "Дозатор OM-02P"
+            },
+            "slug": "dozator-om-02-p",
+            "product_type_code": "dispenser",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 5588,
+            "currency": "RUB",
+            "preview_picture": "/upload/iblock/7c5/zwt9tdq18liqkomeu1a97bvjjkl6uxuy.webp",
+            "eav": {
+                "marketing_tags": "hit",
+                "product_type": "faucet_type",
+                "use_in_calc": "yes",
+                "type_faucet": "dispenser",
+                "brand": "omoikiri_brand"
+            },
+            "variants": [
+                {
+                    "id": 1296,
+                    "parent_id": 1295,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-P-GR"
+                    },
+                    "slug": "dozator_om_02_p_gr",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 5588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/388/7l85fisy9gg8a8f0ft0q6lf3eih8nqmk.webp",
+                    "eav": {
+                        "color_ref": "#7c7876"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1297,
+                    "parent_id": 1295,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-P-SA"
+                    },
+                    "slug": "dozator_om_02_p_sa",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 5588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/649/29sjgjaw8xr7kgnd4dk5rvmu4x9nrsq0.webp",
+                    "eav": {
+                        "color_ref": "#e0cfb0"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1298,
+                    "parent_id": 1295,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-P-BE"
+                    },
+                    "slug": "dozator_om_02_p_be",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 5588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/37a/sgs554sdtjicd04qt0cq8xta6p3yiffk.webp",
+                    "eav": {
+                        "color_ref": "#c0baa4"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1299,
+                    "parent_id": 1295,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-P-PA"
+                    },
+                    "slug": "dozator_om_02_p_pa",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 5588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/b88/qbx10xypd9a5fm7tdr343u244pdjybf2.webp",
+                    "eav": {
+                        "color_ref": "#cfcbb5"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1300,
+                    "parent_id": 1295,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-P-BL"
+                    },
+                    "slug": "dozator_om_02_p_bl",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 5588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/dcc/tgl9mqqdnq63pcjz19aeihbvyup0xdgm.webp",
+                    "eav": {
+                        "color_ref": "#2a2e2d"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1301,
+                    "parent_id": 1295,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-P-WH"
+                    },
+                    "slug": "dozator_om_02_p_wh",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 5588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/7b9/yeuldxnptkzjbogivkkt8zinpud0xnsx.webp",
+                    "eav": {
+                        "color_ref": "#cfc9bd"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1302,
+                    "parent_id": 1295,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-P-PL"
+                    },
+                    "slug": "dozator_om_02_p_pl",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 5588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/ec3/o373lcn741eyep9sf8hboiokx9tgwwim.webp",
+                    "eav": {
+                        "color_ref": "#656561"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1303,
+                    "parent_id": 1295,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-P-CH"
+                    },
+                    "slug": "dozator_om_02_p_ch",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 5588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/311/fm18odnb9wp8gyayeaks15uk7sxve7z4.webp",
+                    "eav": {
+                        "color_ref": "#f3ead6"
+                    },
+                    "variants": []
+                },
+                {
+                    "id": 1356,
+                    "parent_id": 1295,
+                    "category_id": 39,
+                    "type": "variant",
+                    "name": {
+                        "ru": "Дозатор OM-02-P-ES"
+                    },
+                    "slug": "dozator_om_02_p_es",
+                    "product_type_code": "item",
+                    "price_category_slug": null,
+                    "cutting_group_id": null,
+                    "price": 5588,
+                    "currency": "RUB",
+                    "preview_picture": "/upload/iblock/6b2/9k1c7o5w6mvhskdhqargylajd8t1h94c.webp",
+                    "eav": {
+                        "color_ref": "s-expresso"
+                    },
+                    "variants": []
+                }
+            ]
+        },
+        {
+            "id": 1404,
+            "parent_id": null,
+            "category_id": 44,
+            "type": "simple",
+            "name": {
+                "ru": "White Marble"
+            },
+            "slug": "white-marble",
+            "product_type_code": "item",
+            "price_category_slug": "q_150",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/675/79xdfib3e3c3z9bjmof6vey85rw4j54l.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "white",
+                "type_stone": "quartz",
+                "collection_stone_ref": "smartquartz_collection",
+                "texture": "marble_texture",
+                "inclusions_akril": "without_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3200,
+                "width": 1600,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_150"
+            },
+            "variants": []
+        },
+        {
+            "id": 1405,
+            "parent_id": null,
+            "category_id": 44,
+            "type": "simple",
+            "name": {
+                "ru": "White Sand"
+            },
+            "slug": "white-sand",
+            "product_type_code": "item",
+            "price_category_slug": "q_150",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/5ec/5nyl04ovvukisd8ueqtvc39x2nldvjd0.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "white",
+                "type_stone": "quartz",
+                "collection_stone_ref": "smartquartz_collection",
+                "texture": "monochrome_texture",
+                "inclusions_akril": "large_inclusions",
+                "effect_akril": "sequins_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3000,
+                "width": 1400,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_150"
+            },
+            "variants": []
+        },
+        {
+            "id": 1406,
+            "parent_id": null,
+            "category_id": 44,
+            "type": "simple",
+            "name": {
+                "ru": "Silver Night"
+            },
+            "slug": "silver-night",
+            "product_type_code": "item",
+            "price_category_slug": "q_150",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/d96/g8aq6vf5nm95b2ua4euybab4994s3lzk.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "black",
+                "type_stone": "quartz",
+                "collection_stone_ref": "smartquartz_collection",
+                "texture": "monochrome_texture",
+                "inclusions_akril": "large_inclusions",
+                "effect_akril": "sequins_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3200,
+                "width": 1600,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_150"
+            },
+            "variants": []
+        },
+        {
+            "id": 1442,
+            "parent_id": null,
+            "category_id": 45,
+            "type": "simple",
+            "name": {
+                "ru": "BS124 Satinet"
+            },
+            "slug": "bs124-satinet",
+            "product_type_code": "item",
+            "price_category_slug": "q_150",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/c0a/pfgulvxurhg0b2jo7pwgbugig4chiiv1.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "gray",
+                "type_stone": "quartz",
+                "collection_stone_ref": "vicostone_collection",
+                "texture": "monochrome_texture",
+                "inclusions_akril": "small_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3300,
+                "width": 1650,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_150"
+            },
+            "variants": []
+        },
+        {
+            "id": 1443,
+            "parent_id": null,
+            "category_id": 45,
+            "type": "simple",
+            "name": {
+                "ru": "BS124 Satinet (Antique)"
+            },
+            "slug": "bs124-satinet-antique",
+            "product_type_code": "item",
+            "price_category_slug": "q_150",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/230/5c4rjwv0jqskz93syiyv4b2hrtjtsgjy.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "gray",
+                "type_stone": "quartz",
+                "collection_stone_ref": "vicostone_collection",
+                "texture": "monochrome_texture",
+                "inclusions_akril": "small_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "matte_ polishing",
+                "length": 3000,
+                "width": 1400,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_150"
+            },
+            "variants": []
+        },
+        {
+            "id": 1444,
+            "parent_id": null,
+            "category_id": 45,
+            "type": "simple",
+            "name": {
+                "ru": "BQ2101 Pure Black (Antique)"
+            },
+            "slug": "bq2101-pure-black-antique",
+            "product_type_code": "item",
+            "price_category_slug": "q_180",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/812/pvb53shfsxqhbia3k6q3p7f7x8b37xfa.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "black",
+                "type_stone": "quartz",
+                "collection_stone_ref": "vicostone_collection",
+                "texture": "solid_texture",
+                "inclusions_akril": "without_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "matte_ polishing",
+                "length": 3000,
+                "width": 1400,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_180"
+            },
+            "variants": []
+        },
+        {
+            "id": 1432,
+            "parent_id": null,
+            "category_id": 46,
+            "type": "simple",
+            "name": {
+                "ru": "Carmen"
+            },
+            "slug": "carmen",
+            "product_type_code": "item",
+            "price_category_slug": "q_310",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/f35/fqd2jkcswr0c5p028n1ei9vvw18lhlux.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "white",
+                "type_stone": "quartz",
+                "collection_stone_ref": "symphony_collection",
+                "texture": "marble_texture",
+                "inclusions_akril": "without_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3200,
+                "width": 1600,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_310"
+            },
+            "variants": []
+        },
+        {
+            "id": 1433,
+            "parent_id": null,
+            "category_id": 46,
+            "type": "simple",
+            "name": {
+                "ru": "Julietta"
+            },
+            "slug": "julietta",
+            "product_type_code": "item",
+            "price_category_slug": "q_310",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/2fe/2izuwaqxe7o4d09rza5fh0r60280krxh.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "beige",
+                "type_stone": "quartz",
+                "collection_stone_ref": "symphony_collection",
+                "texture": "marble_texture",
+                "inclusions_akril": "without_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3200,
+                "width": 1600,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_310"
+            },
+            "variants": []
+        },
+        {
+            "id": 1434,
+            "parent_id": null,
+            "category_id": 46,
+            "type": "simple",
+            "name": {
+                "ru": "Palace"
+            },
+            "slug": "palace",
+            "product_type_code": "item",
+            "price_category_slug": "q_330",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/f4b/nq0nhoc11vdzts87he2e64wfwm2tpjzm.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "white",
+                "type_stone": "quartz",
+                "collection_stone_ref": "symphony_collection",
+                "texture": "marble_texture",
+                "inclusions_akril": "without_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3200,
+                "width": 1600,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_330"
+            },
+            "variants": []
+        },
+        {
+            "id": 1494,
+            "parent_id": null,
+            "category_id": 47,
+            "type": "simple",
+            "name": {
+                "ru": "1111 Аваллон"
+            },
+            "slug": "1111-avallon",
+            "product_type_code": "item",
+            "price_category_slug": "q_150",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/b39/ov9ek6ya7hcmpocxfonav6gm1ynfi3fd.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "white",
+                "type_stone": "quartz",
+                "collection_stone_ref": "avant_quartz_collection",
+                "texture": "solid_texture",
+                "inclusions_akril": "without_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3200,
+                "width": 1600,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_150"
+            },
+            "variants": []
+        },
+        {
+            "id": 1495,
+            "parent_id": null,
+            "category_id": 47,
+            "type": "simple",
+            "name": {
+                "ru": "1111 Аваллон (М)"
+            },
+            "slug": "1111-avallon-m",
+            "product_type_code": "item",
+            "price_category_slug": "q_150",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/b39/ov9ek6ya7hcmpocxfonav6gm1ynfi3fd.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "white",
+                "type_stone": "quartz",
+                "collection_stone_ref": "avant_quartz_collection",
+                "texture": "solid_texture",
+                "inclusions_akril": "without_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "matte_ polishing",
+                "length": 3000,
+                "width": 1400,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_150"
+            },
+            "variants": []
+        },
+        {
+            "id": 1496,
+            "parent_id": null,
+            "category_id": 47,
+            "type": "simple",
+            "name": {
+                "ru": "7000 Калакатта Эно"
+            },
+            "slug": "7000-kalakatta-eno",
+            "product_type_code": "item",
+            "price_category_slug": "q_210",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/e4f/17htp7022r6v7swav4uaa6g55n5hdv5n.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "white",
+                "type_stone": "quartz",
+                "collection_stone_ref": "avant_quartz_collection",
+                "texture": "marble_texture",
+                "inclusions_akril": "without_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3200,
+                "width": 1600,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_210"
+            },
+            "variants": []
+        },
+        {
+            "id": 1557,
+            "parent_id": null,
+            "category_id": 48,
+            "type": "simple",
+            "name": {
+                "ru": "A30 Ultra White"
+            },
+            "slug": "a30-ultra-white",
+            "product_type_code": "item",
+            "price_category_slug": "q_150",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/a14/ffk7v5ot6lzp8rkxa58m30dx01ejplq9.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "white",
+                "type_stone": "quartz",
+                "collection_stone_ref": "alephstone_collection",
+                "texture": "solid_texture",
+                "inclusions_akril": "without_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3200,
+                "width": 1600,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_150"
+            },
+            "variants": []
+        },
+        {
+            "id": 1558,
+            "parent_id": null,
+            "category_id": 48,
+            "type": "simple",
+            "name": {
+                "ru": "A33 Carrara Ideal"
+            },
+            "slug": "a33-carrara-ideal",
+            "product_type_code": "item",
+            "price_category_slug": "q_150",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/b1e/thcyulqdw5nyqbyihqsye63wps74qxws.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "white",
+                "type_stone": "quartz",
+                "collection_stone_ref": "alephstone_collection",
+                "texture": "marble_texture",
+                "inclusions_akril": "without_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3200,
+                "width": 1600,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_150"
+            },
+            "variants": []
+        },
+        {
+            "id": 1559,
+            "parent_id": null,
+            "category_id": 48,
+            "type": "simple",
+            "name": {
+                "ru": "A35 Bianco Marble"
+            },
+            "slug": "a35-bianco-marble",
+            "product_type_code": "item",
+            "price_category_slug": "q_150",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/cc7/mtmsuqtma0llnyqgx93uxv25ljn97z4d.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "white",
+                "type_stone": "quartz",
+                "collection_stone_ref": "alephstone_collection",
+                "texture": "marble_texture",
+                "inclusions_akril": "without_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3200,
+                "width": 1600,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_150"
+            },
+            "variants": []
+        },
+        {
+            "id": 1595,
+            "parent_id": null,
+            "category_id": 49,
+            "type": "simple",
+            "name": {
+                "ru": "4561 Capuccino Froth"
+            },
+            "slug": "capuccino-froth",
+            "product_type_code": "item",
+            "price_category_slug": "q_190",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/c71/09gn5xjmd1lwucbrvw9bvb7wjpazlnig.webp",
+            "eav": {
+                "marketing_tags": "new",
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "beige",
+                "type_stone": "quartz",
+                "collection_stone_ref": "quantra_quartz_collection",
+                "texture": "concrete_texture",
+                "inclusions_akril": "medium_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3050,
+                "width": 1400,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_190"
+            },
+            "variants": []
+        },
+        {
+            "id": 1596,
+            "parent_id": null,
+            "category_id": 49,
+            "type": "simple",
+            "name": {
+                "ru": "3863 Liquid Mercury"
+            },
+            "slug": "liquid-mercury",
+            "product_type_code": "item",
+            "price_category_slug": "q_200",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/554/iezzt9gya9qcrvgrfs58io7544r6zm6o.webp",
+            "eav": {
+                "marketing_tags": "new",
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "gray",
+                "type_stone": "quartz",
+                "collection_stone_ref": "quantra_quartz_collection",
+                "texture": "marble_texture",
+                "inclusions_akril": "small_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3050,
+                "width": 1400,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_200"
+            },
+            "variants": []
+        },
+        {
+            "id": 1597,
+            "parent_id": null,
+            "category_id": 49,
+            "type": "simple",
+            "name": {
+                "ru": "2898 Aquamarine"
+            },
+            "slug": "aquamarine",
+            "product_type_code": "item",
+            "price_category_slug": "q_170",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/b58/ftcbw14ml6w1gi8jgusf2no12a1u094g.webp",
+            "eav": {
+                "marketing_tags": "new",
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "green",
+                "type_stone": "quartz",
+                "collection_stone_ref": "quantra_quartz_collection",
+                "texture": "marble_texture",
+                "inclusions_akril": "without_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3300,
+                "width": 1650,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_170"
+            },
+            "variants": []
+        },
+        {
+            "id": 479,
+            "parent_id": null,
+            "category_id": 21,
+            "type": "simple",
+            "name": {
+                "ru": "R = 3/6/9 мм сверху R = 1 мм снизу"
+            },
+            "slug": "rounded-on-1-side",
+            "product_type_code": "edge",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/b64/58kobbmyjdhlh5i82cg61469ei1zeco1.webp",
+            "eav": [],
+            "variants": []
+        },
+        {
+            "id": 480,
+            "parent_id": null,
+            "category_id": 21,
+            "type": "simple",
+            "name": {
+                "ru": "R = 3/6/9 мм сверху R = 3/6/9 снизу"
+            },
+            "slug": "rounded-on-2-sides",
+            "product_type_code": "edge",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/fc3/lai1jnbd4eaq3hh2usudfpa0lcoa4ia2.webp",
+            "eav": [],
+            "variants": []
+        },
+        {
+            "id": 481,
+            "parent_id": null,
+            "category_id": 21,
+            "type": "simple",
+            "name": {
+                "ru": "Фаска под 45° сверху R = 1 мм снизу"
+            },
+            "slug": "under-45-degrees",
+            "product_type_code": "edge",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/3d9/kw728s7zc67ic07igiwkayx2vkvluy2r.webp",
+            "eav": [],
+            "variants": []
+        },
+        {
+            "id": 489,
+            "parent_id": null,
+            "category_id": 22,
+            "type": "simple",
+            "name": {
+                "ru": "Без бортика"
+            },
+            "slug": "without-a-skirting",
+            "product_type_code": "skirting",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/949/d7zz8763iajg36nuvd8g0tj0p67yx342.webp",
+            "eav": [],
+            "variants": []
+        },
+        {
+            "id": 490,
+            "parent_id": null,
+            "category_id": 22,
+            "type": "simple",
+            "name": {
+                "ru": "Прямой бортик"
+            },
+            "slug": "straight-skirting",
+            "product_type_code": "skirting",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/e4b/gd4bm0pxkmmgyeeqq2lj1qxko3kyvkma.webp",
+            "eav": [],
+            "variants": []
+        },
+        {
+            "id": 491,
+            "parent_id": null,
+            "category_id": 22,
+            "type": "simple",
+            "name": {
+                "ru": "Плавный бортик"
+            },
+            "slug": "smooth-skirting",
+            "product_type_code": "skirting",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/270/94o50f6crxg7h0z1gjz30cidxhkqfgqn.webp",
+            "eav": [],
+            "variants": []
+        }
+    ]
+}

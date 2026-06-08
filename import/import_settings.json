@@ -1,0 +1,390 @@
+{
+  "languages": [
+    "ru",
+    "en"
+  ],
+  "channels": {
+    "widget": {
+      "is_public_default": true
+    },
+    "catalog": {
+      "is_public_default": true
+    }
+  },
+  "setting_schemas": {
+    "attribute": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_filterable",
+        "type": "boolean",
+        "label": {
+          "ru": "Использовать как фильтр",
+          "en": "Use as filter"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_collapsed",
+        "type": "boolean",
+        "label": {
+          "ru": "Свернуть по умолчанию",
+          "en": "Collapsed by default"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
+      },
+      {
+        "key": "filter_type",
+        "type": "select",
+        "label": {
+          "ru": "Вид фильтра",
+          "en": "Filter UI type"
+        },
+        "width": 2,
+        "is_system": true,
+        "default": "checkbox",
+        "options": {
+          "checkbox": {
+            "ru": "Список чекбоксов",
+            "en": "Checkboxes"
+          },
+          "radio": {
+            "ru": "Одиночный выбор",
+            "en": "Radio buttons"
+          },
+          "color": {
+            "ru": "Цветовые кружки",
+            "en": "Color swatches"
+          },
+          "range": {
+            "ru": "Диапазон (слайдер)",
+            "en": "Range slider"
+          }
+        }
+      }
+    ],
+    "complex_dictionary": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      }
+    ],
+    "family": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "show_in_menu",
+        "type": "boolean",
+        "label": {
+          "ru": "Показывать в меню",
+          "en": "Show in menu"
+        },
+        "width": 2,
+        "is_system": true,
+        "default": true
+      }
+    ],
+    "category": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
+      },
+      {
+        "key": "show_in_menu",
+        "type": "boolean",
+        "label": {
+          "ru": "Показывать в меню",
+          "en": "Show in menu"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      }
+    ],
+    "product_type": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      }
+    ],
+    "product": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
+      }
+    ],
+    "product_variant": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
+      }
+    ],
+    "attribute_option": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      }
+    ],
+    "price_type": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
+      }
+    ],
+    "currency": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
+      }
+    ],
+    "warehouse": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
+      }
+    ],
+    "stock": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
+      }
+    ],
+    "pipeline": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
+      }
+    ]
+  }
+}

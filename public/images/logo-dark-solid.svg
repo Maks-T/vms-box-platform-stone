@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="200" viewBox="0 0 500 200">
+  <defs>
+    <style>
+      .bg { fill: transparent; }
+      .text-vms { fill: #FFFFFF; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 100px; font-weight: 900; letter-spacing: -2px; }
+      .text-nc { fill: #00C8F8; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 100px; font-weight: 900; letter-spacing: -2px; }
+      .badge-bg { fill: #00C8F8; }
+      .badge-text { fill: #FFFFFF; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 28px; font-weight: 800; text-anchor: middle; letter-spacing: 1px; }
+    </style>
+  </defs>
+  <rect width="100%" height="100%" class="bg" />
+
+  <text x="50" y="110">
+    <tspan class="text-vms">VMS-</tspan><tspan class="text-nc">NC</tspan>
+  </text>
+
+  <rect x="80" y="125" width="220" height="40" rx="20" class="badge-bg"/>
+  <text x="190" y="154" class="badge-text">ON-PREMISE</text>
+</svg>

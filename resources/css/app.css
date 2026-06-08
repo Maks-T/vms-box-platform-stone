@@ -1,0 +1,317 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Строгий приоритет слоев для избежания конфликтов */
+@layer properties, theme, base, calc, components, utilities;
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source '../**/*.jsx';
+
+/** ИНТЕГРАЦИЯ С TAILWIND V4 */
+@theme {
+  --font-sans: "DM Sans", sans-serif;
+
+  /* Базовые цвета shadcn */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Кастомные цвета Vistegra */
+  --color-heading: var(--heading);
+  --color-nav: var(--nav);
+  --color-meta: var(--meta);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-dark: var(--dark);
+  --color-primary-light: #3D98FF;
+
+  /* Радиусы скруглений */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 10px);
+  --radius-2xl: calc(var(--radius) + 20px);
+
+  /* Тени Vistegra */
+  --shadow-subtle: 0 0 1px 0 rgba(0, 0, 0, 0.15);
+  --shadow-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+  --shadow-card: inset 0 0 14px 0 rgba(144, 198, 221, 0.2);
+  --shadow-icon: inset 0 0 5px 0 rgba(89, 171, 206, 0.25);
+  --shadow-deep: inset 0 1px 8px 0 rgba(175, 203, 234, 0.5);
+  --shadow-cta: 0 5px 12px 0 rgba(0, 103, 216, 0.55);
+
+  /* тени для стекла */
+  --shadow-glass-inset: inset 0 0 14px 0 rgba(144, 198, 221, 0.20);
+  --shadow-glass-panel: 0 0 6px 0 rgba(0, 0, 0, 0.25), inset 0 0 14px 0 rgba(144, 198, 221, 0.20);
+  --blur-glass: 2.5px;
+}
+
+/** ПЕРЕМЕННЫЕ SHADCN */
+:root {
+  --radius: 0.625rem;
+  --background: #FFFFFF;
+  --foreground: #222222;
+  --card: #FFFFFF;
+  --card-foreground: #222222;
+  --popover: #FFFFFF;
+  --popover-foreground: #222222;
+  --primary: #005ECA;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F5F5F5;
+  --secondary-foreground: #222222;
+  --muted: #EFF1F4;
+  --muted-foreground: #728499;
+  --accent: #E4F1FF;
+  --accent-foreground: #003F87;
+  --destructive: #DD2C2C;
+  --destructive-foreground: #FFFFFF;
+  --border: #E8EBEF;
+  --input: #DAE3EE;
+  --ring: #005ECA;
+  --heading: #16191B;
+  --nav: #ABBCCF;
+  --meta: #6B86A5;
+  --success: #229E35;
+  --warning: #FDBC30;
+  --dark: #16191B;
+}
+
+
+/** БАЗОВЫЕ СТИЛИ (BASE) */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-white font-sans antialiased selection:bg-primary selection:text-white;
+    touch-action: manipulation;
+  }
+
+  a[href="#?"] {
+    pointer-events: none !important;
+    user-select: none !important;
+  }
+
+  /**     СТИЛИ АВТОЗАПОЛНЕНИЯ (AUTOFILL) */
+  /* Базовый сброс для всех типов автозаполнения */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus {
+    font-family: var(--font-sans), sans-serif !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+    caret-color: white;
+  }
+
+  /* Вариант DARK (Модалки) */
+  .autofill-dark:-webkit-autofill {
+    -webkit-text-fill-color: #FFFFFF !important;
+    box-shadow: 0 0 0 1000px #1A1D21 inset !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .autofill-dark:-webkit-autofill:focus {
+    border-color: var(--color-primary) !important;
+  }
+
+  /*  Вариант BLUE (Синие баннеры) */
+  .autofill-blue:-webkit-autofill {
+    -webkit-text-fill-color: #FFFFFF !important;
+    box-shadow: 0 0 0 1000px #005ECA inset !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .autofill-blue:-webkit-autofill:focus {
+    border-color: #FFFFFF !important;
+  }
+
+  /* Вариант WHITE (Светлые секции) */
+  .autofill-white:-webkit-autofill {
+    -webkit-text-fill-color: var(--color-heading) !important;
+    box-shadow: 0 0 0 1000px #F8F9FA inset !important;
+    border-color: var(--color-border) !important;
+    caret-color: var(--color-heading);
+  }
+
+  .autofill-white:-webkit-autofill:focus {
+    border-color: var(--color-primary) !important;
+  }
+
+
+  /* Хак для iOS Zoom */
+  @media screen and (max-width: 768px) {
+    input, textarea, select {
+      font-size: 16px !important;
+    }
+  }
+}
+
+/** УТИЛИТЫ */
+@layer utilities {
+  .container-page {
+    @apply w-full max-w-[1920px] mx-auto px-2 md:px-6;
+  }
+
+  .container-content {
+    @apply w-full max-w-[1280px] mx-auto px-4 md:px-8 lg:px-10;
+  }
+
+  /* Safe Areas */
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .pl-safe {
+    padding-left: env(safe-area-inset-left);
+  }
+
+  .pr-safe {
+    padding-right: env(safe-area-inset-right);
+  }
+
+  .h-safe-screen {
+    height: calc(100vh - (env(safe-area-inset-top) + env(safe-area-inset-bottom)));
+  }
+
+  /* Скрытие скроллбара */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Маска для скролл-контейнеров */
+  .mask-fade-right {
+    --mask-stop: calc(100% - 40px);
+    --mask-grad: linear-gradient(to right, black var(--mask-stop), transparent 100%);
+    -webkit-mask-image: var(--mask-grad);
+    mask-image: var(--mask-grad);
+  }
+}
+
+@utility text-shadow-sm {
+  text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+/** КАСТОМНЫЙ СКРОЛЛБАР */
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/** АНИМАЦИИ И ЭФФЕКТЫ */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotateY(-15deg) rotateX(5deg);
+  }
+  50% {
+    transform: translateY(-15px) rotateY(-12deg) rotateX(2deg);
+  }
+}
+
+.animate-float-3d {
+  animation: float 6s ease-in-out infinite;
+}
+
+[data-slot="dialog-content"],
+[data-slot="drawer-content"] {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/** СТИЛИ УВЕДОМЛЕНИЙ (SONNER TOASTS) */
+[data-sonner-toast] {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(16px) saturate(150%);
+  border-radius: 14px !important;
+  font-family: var(--font-sans), sans-serif !important;
+  padding: 14px 18px !important;
+  color: #16191B !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Успешное уведомление */
+[data-sonner-toast][data-type="success"] {
+  background-color: rgba(240, 253, 244, 0.9) !important;
+  border: 1px solid rgba(34, 158, 53, 0.2) !important;
+}
+
+[data-sonner-toast][data-type="success"] [data-icon] {
+  color: #229E35 !important;
+}
+
+/* Ошибка */
+[data-sonner-toast][data-type="error"] {
+  background-color: rgba(254, 242, 242, 0.9) !important;
+  border: 1px solid rgba(221, 44, 44, 0.2) !important;
+}
+
+[data-sonner-toast][data-type="error"] [data-icon] {
+  color: #DD2C2C !important;
+}
+
+/* Заголовок сообщения */
+[data-sonner-toast] [data-title] {
+  font-weight: 600 !important;
+  color: #16191B !important;
+}
+
+/* Описание сообщения */
+[data-sonner-toast] [data-description] {
+  color: rgba(22, 25, 27, 0.7) !important;
+  font-size: 13px !important;
+}
+
+/* Кнопка закрытия (если есть) */
+[data-sonner-toast] [data-close-button] {
+  background: rgba(0, 0, 0, 0.05) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #16191B !important;
+}

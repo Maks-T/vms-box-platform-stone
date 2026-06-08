@@ -1,0 +1,75 @@
+name: ${COMPOSE_PROJECT_NAME:-vms-box-stone}
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: ${COMPOSE_PROJECT_NAME:-vms-box-stone}-app
+    restart: unless-stopped
+    volumes:
+      - .:/var/www/html
+      - ./docker/php/shell/.bashrc:/home/laravel/.bashrc
+      - ./docker/php/shell/.aliases:/home/laravel/.aliases
+    env_file: .env
+    networks:
+      - app_net
+
+  nginx:
+    image: nginx:alpine
+    container_name: ${COMPOSE_PROJECT_NAME:-vms-box-stone}-nginx
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-80}:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - app_net
+
+  db:
+    image: postgres:18-alpine
+    container_name: ${COMPOSE_PROJECT_NAME:-vms-box-stone}-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/postgresql
+    networks:
+      - app_net
+
+  adminer:
+    image: adminer
+    container_name: ${COMPOSE_PROJECT_NAME:-vms-box-stone}-adminer
+    restart: unless-stopped
+    ports:
+      - "${ADMINER_PORT:-8080}:8080"
+    networks:
+      - app_net
+
+  # Кэш и Очереди
+  redis:
+    image: redis:7-alpine
+    container_name: ${COMPOSE_PROJECT_NAME:-vms-box-stone}-redis
+    restart: unless-stopped
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - app_net
+
+networks:
+  app_net:
+    driver: bridge
+
+volumes:
+  db_data:     # Диск для PostgreSQL
+  redis_data:  # Диск для Redis

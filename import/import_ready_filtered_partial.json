@@ -1,0 +1,1360 @@
+{
+    "product_families": [
+        {
+            "code": "stone",
+            "name": {
+                "ru": "Искусственный камень",
+                "en": "Artificial stone"
+            }
+        },
+        {
+            "code": "sink",
+            "name": {
+                "ru": "Кухонные мойки",
+                "en": "Kitchen sinks"
+            }
+        },
+        {
+            "code": "faucet",
+            "name": {
+                "ru": "Смесители и дозаторы",
+                "en": "Mixers and dispensers"
+            }
+        },
+        {
+            "code": "bowl",
+            "name": {
+                "ru": "Раковины для ванной",
+                "en": "Bathroom sinks"
+            }
+        },
+        {
+            "code": "accessory",
+            "name": {
+                "ru": "Комплектующие и бортики",
+                "en": "Accessories and sides"
+            }
+        }
+    ],
+    "product_types": [
+        {
+            "code": "acrylic_stone",
+            "family_code": "stone",
+            "name": {
+                "ru": "Акриловый камень",
+                "en": "Acrylic stone"
+            },
+            "payload": {
+                "step": 0.5,
+                "maxStack": 1,
+                "axisX": true,
+                "minPart": 12
+            }
+        },
+        {
+            "code": "quartz_stone",
+            "family_code": "stone",
+            "name": {
+                "ru": "Кварцевый агломерат",
+                "en": "Quartz agglomerate"
+            },
+            "payload": {
+                "step": 1,
+                "maxStack": 1,
+                "axisX": false,
+                "minPart": 20
+            }
+        },
+        {
+            "code": "kitchen_sink",
+            "family_code": "sink",
+            "name": {
+                "ru": "Кухонная мойка",
+                "en": "Kitchen sink"
+            },
+            "payload": null
+        },
+        {
+            "code": "faucet",
+            "family_code": "faucet",
+            "name": {
+                "ru": "Смеситель",
+                "en": "Mixer"
+            },
+            "payload": null
+        },
+        {
+            "code": "dispenser",
+            "family_code": "faucet",
+            "name": {
+                "ru": "Дозатор",
+                "en": "Dispenser"
+            },
+            "payload": null
+        },
+        {
+            "code": "bathroom_sink",
+            "family_code": "bowl",
+            "name": {
+                "ru": "Раковина для ванной",
+                "en": "Bathroom sink"
+            },
+            "payload": null
+        },
+        {
+            "code": "edge",
+            "family_code": "accessory",
+            "name": {
+                "ru": "Кромка (п.м.)",
+                "en": "Edge (rm)"
+            },
+            "payload": null
+        },
+        {
+            "code": "skirting",
+            "family_code": "accessory",
+            "name": {
+                "ru": "Бортик (п.м.)",
+                "en": "Side (p.m.)"
+            },
+            "payload": null
+        }
+    ],
+    "categories": [
+        {
+            "id": 16,
+            "parent_id": null,
+            "name": {
+                "ru": "Искусственный камень",
+                "en": "Artificial stone"
+            },
+            "slug": "artificial-stone"
+        },
+        {
+            "id": 21,
+            "parent_id": null,
+            "name": {
+                "ru": "Передние кромки",
+                "en": "Leading edges"
+            },
+            "slug": ""
+        },
+        {
+            "id": 22,
+            "parent_id": null,
+            "name": {
+                "ru": "Бортики",
+                "en": "Sides"
+            },
+            "slug": ""
+        },
+        {
+            "id": 24,
+            "parent_id": null,
+            "name": {
+                "ru": "Мойки и раковины",
+                "en": "Sinks and sinks"
+            },
+            "slug": "kitchen-sinks-and-sinks"
+        },
+        {
+            "id": 37,
+            "parent_id": null,
+            "name": {
+                "ru": "Смесители и дозаторы",
+                "en": "Mixers and dispensers"
+            },
+            "slug": "smesiteli-i-dozatory"
+        }
+
+    ],
+    "attributes": [
+        {
+            "code": "product_type",
+            "type": "dictionary",
+            "is_filterable": false,
+            "name": {
+                "ru": "Тип товара",
+                "en": "Product type"
+            }
+        },
+        {
+            "code": "effect_akril",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Эффект",
+                "en": "Effect"
+            }
+        },
+        {
+            "code": "bend_akril",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Термоформинг",
+                "en": "Thermoforming"
+            }
+        },
+        {
+            "code": "texture",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Текстура",
+                "en": "Texture"
+            }
+        },
+        {
+            "code": "inclusions_akril",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Вкрапления",
+                "en": "Interspersed"
+            }
+        },
+        {
+            "code": "marketing_tags",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Теги",
+                "en": "Tags"
+            }
+        },
+        {
+            "code": "polishing_quartz",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Поверхность",
+                "en": "Surface"
+            }
+        },
+        {
+            "code": "brand",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Производитель",
+                "en": "Manufacturer"
+            }
+        },
+        {
+            "code": "set_sink",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Тип монтажа",
+                "en": "Installation type"
+            }
+        },
+        {
+            "code": "type_stone",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Вид камня",
+                "en": "Type of stone"
+            }
+        },
+        {
+            "code": "material",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Материал",
+                "en": "Material"
+            }
+        },
+        {
+            "code": "steel_thickness_sink",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Толщина стали",
+                "en": "Steel thickness"
+            }
+        },
+        {
+            "code": "min_cab_width",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Мин. ширина шкафа, мм",
+                "en": "Min. cabinet width, mm"
+            }
+        },
+        {
+            "code": "features_faucet",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Особенности",
+                "en": "Peculiarities"
+            }
+        },
+        {
+            "code": "type_faucet",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Тип продукта",
+                "en": "Product type"
+            }
+        },
+        {
+            "code": "direction_division_stone",
+            "type": "dictionary",
+            "is_filterable": false,
+            "name": {
+                "ru": "Направление деления заготовки камня",
+                "en": "Dividing direction of the stone blank"
+            }
+        },
+        {
+            "code": "is_pattern_repeat_stone",
+            "type": "dictionary",
+            "is_filterable": false,
+            "name": {
+                "ru": "Деление в изделия/Повторяемый рисунок камня",
+                "en": "Division into products/Repeatable stone pattern"
+            }
+        },
+        {
+            "code": "use_in_calc",
+            "type": "dictionary",
+            "is_filterable": false,
+            "name": {
+                "ru": "Использовать в калькуляторе",
+                "en": "Use in calculator"
+            }
+        },
+        {
+            "code": "is_separate_cutting_stone",
+            "type": "dictionary",
+            "is_filterable": false,
+            "name": {
+                "ru": "Раздельный раскрой изделий",
+                "en": "Separate cutting of products"
+            }
+        },
+        {
+            "code": "color_ref",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Цвет",
+                "en": "Color"
+            }
+        },
+        {
+            "code": "collection_stone_ref",
+            "type": "dictionary",
+            "is_filterable": true,
+            "name": {
+                "ru": "Коллекция",
+                "en": "Collection"
+            }
+        }
+    ],
+    "dictionaries": {
+        "product_type": [
+            {
+                "slug": "stone_type",
+                "value": {
+                    "ru": "Камень",
+                    "en": "Stone"
+                }
+            },
+            {
+                "slug": "sink_type",
+                "value": {
+                    "ru": "Раковина для ванной",
+                    "en": "Bathroom sink"
+                }
+            },
+            {
+                "slug": "kitchen_sink_type",
+                "value": {
+                    "ru": "Кухонная мойка",
+                    "en": "Kitchen sink"
+                }
+            },
+            {
+                "slug": "faucet_type",
+                "value": {
+                    "ru": "Смеситель",
+                    "en": "Mixer"
+                }
+            },
+            {
+                "slug": "dispenser_type",
+                "value": {
+                    "ru": "Дозатор",
+                    "en": "Dispenser"
+                }
+            },
+            {
+                "slug": "solutions_type",
+                "value": {
+                    "ru": "Готовое решение",
+                    "en": "Ready solution"
+                }
+            }
+        ],
+        "effect_akril": [
+            {
+                "slug": "no_effects",
+                "value": {
+                    "ru": "Без эффектов",
+                    "en": "No effects"
+                }
+            },
+            {
+                "slug": "sequins_effects",
+                "value": {
+                    "ru": "С блестками",
+                    "en": "With glitter"
+                }
+            },
+            {
+                "slug": "light-permeable_effects",
+                "value": {
+                    "ru": "Светопроницаемые ",
+                    "en": "Translucent"
+                }
+            }
+        ],
+        "bend_akril": [
+            {
+                "slug": "no_bend",
+                "value": {
+                    "ru": "Нет, не гнется",
+                    "en": "No, it doesn't bend"
+                }
+            },
+            {
+                "slug": "yes_bend",
+                "value": {
+                    "ru": "Да, гнется",
+                    "en": "Yes, it bends"
+                }
+            }
+        ],
+        "texture": [
+            {
+                "slug": "solid_texture",
+                "value": {
+                    "ru": "Однотонные",
+                    "en": "Plain"
+                }
+            },
+            {
+                "slug": "monochrome_texture",
+                "value": {
+                    "ru": "Однородные вкрапления",
+                    "en": "Homogeneous inclusions"
+                }
+            },
+            {
+                "slug": "marble_texture",
+                "value": {
+                    "ru": "Под мрамор",
+                    "en": "Marbled"
+                }
+            },
+            {
+                "slug": "wood_texture",
+                "value": {
+                    "ru": "Под дерево",
+                    "en": "Under the tree"
+                }
+            },
+            {
+                "slug": "concrete_texture",
+                "value": {
+                    "ru": "Под бетон",
+                    "en": "Under concrete"
+                }
+            },
+            {
+                "slug": "loft_style_texture",
+                "value": {
+                    "ru": "В стиле лофт",
+                    "en": "Loft style"
+                }
+            },
+            {
+                "slug": "travertine_texture",
+                "value": {
+                    "ru": "Под травертин",
+                    "en": "Under travertine"
+                }
+            },
+            {
+                "slug": "onyx_texture",
+                "value": {
+                    "ru": "Под оникс",
+                    "en": "Under onyx"
+                }
+            }
+        ],
+        "inclusions_akril": [
+            {
+                "slug": "without_inclusions",
+                "value": {
+                    "ru": "Без вкраплений",
+                    "en": "No inclusions"
+                }
+            },
+            {
+                "slug": "small_inclusions",
+                "value": {
+                    "ru": "Мелкие вкрапления",
+                    "en": "Small inclusions"
+                }
+            },
+            {
+                "slug": "medium_inclusions",
+                "value": {
+                    "ru": "Средние вкрапления",
+                    "en": "Medium inclusions"
+                }
+            },
+            {
+                "slug": "large_inclusions",
+                "value": {
+                    "ru": "Крупные вкрапления",
+                    "en": "Large inclusions"
+                }
+            }
+        ],
+        "marketing_tags": [
+            {
+                "slug": "new",
+                "value": {
+                    "ru": "new",
+                    "en": "new"
+                }
+            },
+            {
+                "slug": "hit",
+                "value": {
+                    "ru": "хит",
+                    "en": "hit"
+                }
+            },
+            {
+                "slug": "sale",
+                "value": {
+                    "ru": "sale",
+                    "en": "sale"
+                }
+            }
+        ],
+        "polishing_quartz": [
+            {
+                "slug": "glossy_ polishing",
+                "value": {
+                    "ru": "Полированная",
+                    "en": "Polished"
+                }
+            },
+            {
+                "slug": "matte_ polishing",
+                "value": {
+                    "ru": "Матовая",
+                    "en": "Matte"
+                }
+            }
+        ],
+        "brand": [
+            {
+                "slug": "omoikiri_brand",
+                "value": {
+                    "ru": "Omoikiri",
+                    "en": "Omoikiri"
+                }
+            },
+            {
+                "slug": "akrilika_brand",
+                "value": {
+                    "ru": "Akrilika",
+                    "en": "Akrilika"
+                }
+            }
+        ],
+        "set_sink": [
+            {
+                "slug": "under_set",
+                "value": {
+                    "ru": "Подстольный",
+                    "en": "Podstolny"
+                }
+            },
+            {
+                "slug": "above_set",
+                "value": {
+                    "ru": "Надстольный",
+                    "en": "Over-the-table"
+                }
+            }
+        ],
+        "type_stone": [
+            {
+                "slug": "akril",
+                "value": {
+                    "ru": "Акриловый камень",
+                    "en": "Acrylic stone"
+                }
+            },
+            {
+                "slug": "quartz",
+                "value": {
+                    "ru": "Кварцевый агломерат",
+                    "en": "Quartz agglomerate"
+                }
+            }
+        ],
+        "material": [
+            {
+                "slug": "stainless_steel",
+                "value": {
+                    "ru": "Нержавеющая сталь",
+                    "en": "Stainless steel"
+                }
+            },
+            {
+                "slug": "composite",
+                "value": {
+                    "ru": "Искусственный гранит",
+                    "en": "Artificial granite"
+                }
+            },
+            {
+                "slug": "acrylic",
+                "value": {
+                    "ru": "Акрил",
+                    "en": "Acrylic"
+                }
+            },
+            {
+                "slug": "metal_bottom",
+                "value": {
+                    "ru": "Акрил + мет.дно",
+                    "en": "Acrylic + metal bottom"
+                }
+            },
+            {
+                "slug": "ceramic",
+                "value": {
+                    "ru": "Керамика",
+                    "en": "Ceramics"
+                }
+            },
+            {
+                "slug": "ceramics",
+                "value": {
+                    "ru": "Керамика",
+                    "en": "Ceramics"
+                }
+            }
+        ],
+        "steel_thickness_sink": [
+            {
+                "slug": "th-8",
+                "value": {
+                    "ru": "0,8 мм",
+                    "en": "0.8 mm"
+                }
+            },
+            {
+                "slug": "th-9",
+                "value": {
+                    "ru": "0,9 мм",
+                    "en": "0.9 mm"
+                }
+            },
+            {
+                "slug": "th-10",
+                "value": {
+                    "ru": "1 мм",
+                    "en": "1 mm"
+                }
+            },
+            {
+                "slug": "th-12",
+                "value": {
+                    "ru": "1,2 мм",
+                    "en": "1.2 mm"
+                }
+            }
+        ],
+        "min_cab_width": [
+            {
+                "slug": "cb_w_450",
+                "value": {
+                    "ru": "450",
+                    "en": "450"
+                }
+            },
+            {
+                "slug": "cb_w_300",
+                "value": {
+                    "ru": "300",
+                    "en": "300"
+                }
+            },
+            {
+                "slug": "cb_w_400",
+                "value": {
+                    "ru": "400",
+                    "en": "400"
+                }
+            },
+            {
+                "slug": "cb_w_500",
+                "value": {
+                    "ru": "500",
+                    "en": "500"
+                }
+            },
+            {
+                "slug": "cb_w_600",
+                "value": {
+                    "ru": "600",
+                    "en": "600"
+                }
+            },
+            {
+                "slug": "cb_w_800",
+                "value": {
+                    "ru": "800",
+                    "en": "800"
+                }
+            },
+            {
+                "slug": "cb_w_550",
+                "value": {
+                    "ru": "550",
+                    "en": "550"
+                }
+            },
+            {
+                "slug": "cb_w_250",
+                "value": {
+                    "ru": "250",
+                    "en": "250"
+                }
+            },
+            {
+                "slug": "cb_w_700",
+                "value": {
+                    "ru": "700",
+                    "en": "700"
+                }
+            },
+            {
+                "slug": "cb_w_900",
+                "value": {
+                    "ru": "900",
+                    "en": "900"
+                }
+            },
+            {
+                "slug": "cb_w_1200",
+                "value": {
+                    "ru": "1200",
+                    "en": "1200"
+                }
+            }
+        ],
+        "features_faucet": [
+            {
+                "slug": "single_lever",
+                "value": {
+                    "ru": "Однорычажный",
+                    "en": "Single lever"
+                }
+            },
+            {
+                "slug": "double_lever",
+                "value": {
+                    "ru": "Двухрычажный",
+                    "en": "Double wishbone"
+                }
+            },
+            {
+                "slug": "exhaust_hose",
+                "value": {
+                    "ru": "С вытяжным шлангом",
+                    "en": "With exhaust hose"
+                }
+            },
+            {
+                "slug": "2-in-1",
+                "value": {
+                    "ru": "2-в-1 (с фильтром)",
+                    "en": "2-in-1 (with filter)"
+                }
+            },
+            {
+                "slug": "3-in-1",
+                "value": {
+                    "ru": "3-в-1 (фильтр+лейка)",
+                    "en": "3-in-1 (filter+watering can)"
+                }
+            },
+            {
+                "slug": "window",
+                "value": {
+                    "ru": "Под окно",
+                    "en": "Under the window"
+                }
+            },
+            {
+                "slug": "shower_button",
+                "value": {
+                    "ru": "Кнопка струя/душ",
+                    "en": "Jet/shower button"
+                }
+            }
+        ],
+        "type_faucet": [
+            {
+                "slug": "faucet",
+                "value": {
+                    "ru": "Смеситель",
+                    "en": "Mixer"
+                }
+            },
+            {
+                "slug": "dispenser",
+                "value": {
+                    "ru": "Дозатор",
+                    "en": "Dispenser"
+                }
+            }
+        ],
+        "direction_division_stone": [
+            {
+                "slug": "devision_y",
+                "value": {
+                    "ru": "вдоль Y",
+                    "en": "along Y"
+                }
+            },
+            {
+                "slug": "devision_x",
+                "value": {
+                    "ru": "вдоль X",
+                    "en": "along X"
+                }
+            }
+        ],
+        "is_pattern_repeat_stone": [
+            {
+                "slug": "yes_repeat",
+                "value": {
+                    "ru": "Дa",
+                    "en": "Yes"
+                }
+            },
+            {
+                "slug": "no_repeat",
+                "value": {
+                    "ru": "Нет",
+                    "en": "No"
+                }
+            }
+        ],
+        "use_in_calc": [
+            {
+                "slug": "yes",
+                "value": {
+                    "ru": "Да",
+                    "en": "Yes"
+                }
+            },
+            {
+                "slug": "no",
+                "value": {
+                    "ru": "Нет",
+                    "en": "No"
+                }
+            }
+        ],
+        "is_separate_cutting_stone": [
+            {
+                "slug": "yes_separate",
+                "value": {
+                    "ru": "Да",
+                    "en": "Yes"
+                }
+            },
+            {
+                "slug": "no_separate",
+                "value": {
+                    "ru": "Нет",
+                    "en": "No"
+                }
+            }
+        ],
+        "color_ref": [
+            {
+                "slug": "beige-sa",
+                "value": {
+                    "ru": "Бежевый SA",
+                    "en": "Beige SA"
+                },
+                "payload": {
+                    "image": "/upload/uf/311/a5yf0lv9z8jst3pklz8ltl6l1xjk96iy.jpg",
+                    "hex": "#e0cfb0"
+                }
+            },
+            {
+                "slug": "white-wh",
+                "value": {
+                    "ru": "Белый WH",
+                    "en": "White WH"
+                },
+                "payload": {
+                    "image": "/upload/uf/1c4/gkecn6abh241kdi7tsaz1y56v7wp6o6i.jpg",
+                    "hex": "#cfc9bd"
+                }
+            },
+            {
+                "slug": "vanilla-be",
+                "value": {
+                    "ru": "Ваниль BE",
+                    "en": "Vanilla BE"
+                },
+                "payload": {
+                    "image": "/upload/uf/18d/l2drd78w3jmkxganka71l3nm4ct3yjn5.jpg",
+                    "hex": "#c0baa4"
+                }
+            },
+            {
+                "slug": "caramel-ca",
+                "value": {
+                    "ru": "Карамель CA",
+                    "en": "Caramel CA"
+                },
+                "payload": {
+                    "image": "/upload/uf/98c/szbhkg4rvgjrctrkxsx85pm12yv4m8ia.jpg",
+                    "hex": "#8c8072"
+                }
+            },
+            {
+                "slug": "pastila-pa",
+                "value": {
+                    "ru": "Пастила PA",
+                    "en": "Pastila PA"
+                },
+                "payload": {
+                    "image": "/upload/uf/626/0iryb8ttjd4bvlc4eil0z1ulplu2kv2x.jpg",
+                    "hex": "#cfcbb5"
+                }
+            },
+            {
+                "slug": "platinum-pl",
+                "value": {
+                    "ru": "Платина PL",
+                    "en": "Platinum PL"
+                },
+                "payload": {
+                    "image": "/upload/uf/57c/6xvx6t3tpcil7goofiqwdr4uvp1nvpvt.jpg",
+                    "hex": "#656561"
+                }
+            },
+
+        ]
+        "collection_stone_ref": [
+            {
+                "slug": "akrilika_collection",
+                "value": {
+                    "ru": "Akrilika",
+                    "en": "Akrilika"
+                },
+                "payload": null
+            },
+            {
+                "slug": "apietra_collection",
+                "value": {
+                    "ru": "Apietra",
+                    "en": "Apietra"
+                },
+                "payload": null
+            },
+            {
+                "slug": "alfa_quartz_collection",
+                "value": {
+                    "ru": "Alfa Quartz",
+                    "en": "Alfa Quartz"
+                },
+                "payload": null
+            },
+            {
+                "slug": "avant_quartz_collection",
+                "value": {
+                    "ru": "Avant Quartz",
+                    "en": "Avant Quartz"
+                },
+                "payload": null
+            },
+            {
+                "slug": "smartquartz_collection",
+                "value": {
+                    "ru": "SmartQuartz",
+                    "en": "SmartQuartz"
+                },
+                "payload": null
+            },
+            {
+                "slug": "symphony_collection",
+                "value": {
+                    "ru": "Symphony",
+                    "en": "Symphony"
+                },
+                "payload": null
+            },
+            {
+                "slug": "vicostone_collection",
+                "value": {
+                    "ru": "Vicostone",
+                    "en": "Vicostone"
+                },
+                "payload": null
+            },
+            {
+                "slug": "alephstone_collection",
+                "value": {
+                    "ru": "Aleph Stone",
+                    "en": "Aleph Stone"
+                },
+                "payload": null
+            },
+            {
+                "slug": "quantra_quartz_collection",
+                "value": {
+                    "ru": "Quantra Quartz",
+                    "en": "Quantra Quartz"
+                },
+                "payload": null
+            }
+        ]
+    },
+    "complex_dictionaries": {
+        "cutting_groups": {
+            "name": {
+                "ru": "Группы раскроя",
+                "en": "Cutting groups"
+            },
+            "records": [
+                {
+                    "id": 1,
+                    "name": {
+                        "ru": "Группа раскроя #1",
+                        "en": "Cutting group #1"
+                    },
+                    "payload": {
+                        "rotate": true,
+                        "cut": true
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": {
+                        "ru": "Группа раскроя #2",
+                        "en": "Cutting group #2"
+                    },
+                    "payload": {
+                        "rotate": false,
+                        "cut": true
+                    }
+                },
+                {
+                    "id": 3,
+                    "name": {
+                        "ru": "Группа раскроя #3",
+                        "en": "Cutting group #3"
+                    },
+                    "payload": {
+                        "rotate": false,
+                        "cut": false
+                    }
+                }
+            ]
+        },
+        "price_categories": {
+            "name": {
+                "ru": "Финансовые категории",
+                "en": "Financial categories"
+            },
+            "records": [
+                {
+                    "slug": "m0",
+                    "name": {
+                        "ru": "M0",
+                        "en": "M0"
+                    },
+                    "payload": {
+                        "cost_price": 130,
+                        "work_price": 103,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "m1",
+                    "name": {
+                        "ru": "M1",
+                        "en": "M1"
+                    },
+                    "payload": {
+                        "cost_price": 139,
+                        "work_price": 103,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "m2",
+                    "name": {
+                        "ru": "M2",
+                        "en": "M2"
+                    },
+                    "payload": {
+                        "cost_price": 147,
+                        "work_price": 103,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "m3",
+                    "name": {
+                        "ru": "M3",
+                        "en": "Mz"
+                    },
+                    "payload": {
+                        "cost_price": 159,
+                        "work_price": 103,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "slug": "m4",
+                    "name": {
+                        "ru": "M4",
+                        "en": "Mch"
+                    },
+                    "payload": {
+                        "cost_price": 209,
+                        "work_price": 103,
+                        "currency": "USD"
+                    }
+                }
+
+            ]
+        }
+    },
+    "items": [
+        {
+            "id": 404,
+            "parent_id": null,
+            "category_id": 18,
+            "type": "simple",
+            "name": {
+                "ru": "A002 Tambora",
+                "en": "A002 Tambora"
+            },
+            "slug": "a002-tambora",
+            "product_type_code": "item",
+            "price_category_slug": "a3",
+            "cutting_group_id": 1,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/331/sctnhl7gind7x3ikrdplsin6wi481bpa.webp",
+            "eav": {
+                "marketing_tags": "hit",
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "white",
+                "type_stone": "akril",
+                "collection_stone_ref": "akrilika_collection",
+                "texture": "monochrome_texture",
+                "inclusions_akril": "large_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "yes_bend",
+                "length": 3680,
+                "width": 760,
+                "height": 12,
+                "min_sale_part_stone": "min_sale_part_stone_25",
+                "direction_division_stone": "devision_x",
+                "is_pattern_repeat_stone": "yes_repeat",
+                "min_product_size_stone": 12,
+                "is_separate_cutting_stone": "yes_separate",
+                "price_category": "a3"
+            },
+            "variants": []
+        },
+
+        {
+            "id": 375,
+            "parent_id": null,
+            "category_id": 19,
+            "type": "simple",
+            "name": {
+                "ru": "M604 Camomile",
+                "en": "M604 Camomile"
+            },
+            "slug": "m604-camomile",
+            "product_type_code": "item",
+            "price_category_slug": "m1",
+            "cutting_group_id": 1,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/34f/g82ebxvp706fr2hmdy8h6f2ekinkxaxu.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "color_ref": "white",
+                "type_stone": "akril",
+                "collection_stone_ref": "apietra_collection",
+                "texture": "monochrome_texture",
+                "inclusions_akril": "large_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "length": 3680,
+                "width": 760,
+                "height": 12,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_x",
+                "is_pattern_repeat_stone": "yes_repeat",
+                "min_product_size_stone": 12,
+                "is_separate_cutting_stone": "yes_separate",
+                "price_category": "m1"
+            },
+            "variants": []
+        },
+
+        {
+            "id": 1462,
+            "parent_id": null,
+            "category_id": 45,
+            "type": "simple",
+            "name": {
+                "ru": "BQ8628 Statuario",
+                "en": "BQ8628 Statuario"
+            },
+            "slug": "bq8628-statuario",
+            "product_type_code": "item",
+            "price_category_slug": "q_230",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/8f4/ix7x7cnqn3xjqzagut1ub7cuvt81z00k.jpg",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "white",
+                "type_stone": "quartz",
+                "collection_stone_ref": "vicostone_collection",
+                "texture": "marble_texture",
+                "inclusions_akril": "without_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3000,
+                "width": 1400,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_230"
+            },
+            "variants": []
+        },
+
+        {
+            "id": 1528,
+            "parent_id": null,
+            "category_id": 47,
+            "type": "simple",
+            "name": {
+                "ru": "9050 Грис Фонсе",
+                "en": "9050 Gris Fonse"
+            },
+            "slug": "9050-gris-fonse",
+            "product_type_code": "item",
+            "price_category_slug": "q_190",
+            "cutting_group_id": 3,
+            "price": 0,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/cb4/zde9kyaeewtg5fi24luojlut61fcx7f3.webp",
+            "eav": {
+                "product_type": "stone_type",
+                "use_in_calc": "yes",
+                "color_ref": "grey",
+                "type_stone": "quartz",
+                "collection_stone_ref": "avant_quartz_collection",
+                "texture": "marble_texture",
+                "inclusions_akril": "small_inclusions",
+                "effect_akril": "no_effects",
+                "bend_akril": "no_bend",
+                "polishing_quartz": "glossy_ polishing",
+                "length": 3000,
+                "width": 1400,
+                "height": 20,
+                "min_sale_part_stone": "min_sale_part_stone_50",
+                "direction_division_stone": "devision_y",
+                "is_pattern_repeat_stone": "no_repeat",
+                "min_product_size_stone": 20,
+                "is_separate_cutting_stone": "no_separate",
+                "price_category": "q_190"
+            },
+            "variants": []
+        },
+
+        {
+            "id": 490,
+            "parent_id": null,
+            "category_id": 22,
+            "type": "simple",
+            "name": {
+                "ru": "Прямой бортик",
+                "en": "Straight edge"
+            },
+            "slug": "straight-skirting",
+            "product_type_code": "skirting",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 700,
+            "currency": "USD",
+            "preview_picture": "/upload/iblock/e4b/gd4bm0pxkmmgyeeqq2lj1qxko3kyvkma.webp",
+            "eav": [],
+            "variants": []
+        },
+
+        {
+            "id": 492,
+            "parent_id": null,
+            "category_id": 22,
+            "type": "simple",
+            "name": {
+                "ru": "Галтельный бортик",
+                "en": "Filled edge"
+            },
+            "slug": "galtelny-skirting",
+            "product_type_code": "skirting",
+            "price_category_slug": null,
+            "cutting_group_id": null,
+            "price": 700,
+            "currency": "RUB",
+            "preview_picture": "/upload/iblock/8f1/9hb21guwrex3h6hs06yq8x2qna5cuzpf.webp",
+            "eav": [],
+            "variants": []
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Nicole\Box\Core\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Nicole\Box\Core\Traits\HasExternalCode;
+use Nicole\Box\Core\Traits\HasNicoleMedia;
+use Nicole\Box\Core\Traits\HasSettings;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\Translatable\HasTranslations;
+
+class AttributeOption extends Model implements HasMedia
+{
+  use HasExternalCode;
+  use HasNicoleMedia;
+  use HasSettings;
+  use HasTranslations;
+
+  protected $fillable = [
+    'attribute_id',
+    'slug',
+    'external_code',
+    'value',
+    'meta',
+    'sort_order',
+  ];
+
+  public array $translatable = ['value'];
+
+  protected function casts(): array
+  {
+    return [
+      'meta' => 'array',
+      'sort_order' => 'integer',
+    ];
+  }
+
+  public function attribute(): BelongsTo
+  {
+    return $this->belongsTo(Attribute::class);
+  }
+
+  public function registerMediaCollections(): void
+  {
+    $this->addMediaCollection('main')->singleFile();
+  }
+}

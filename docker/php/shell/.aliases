@@ -1,0 +1,7 @@
+pa() {
+    if [ -f "./artisan" ]; then
+        php artisan "$@"
+    else
+        php /var/www/html/artisan "$@"
+    fi
+}

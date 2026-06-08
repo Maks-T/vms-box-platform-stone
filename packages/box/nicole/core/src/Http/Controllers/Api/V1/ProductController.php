@@ -49,6 +49,7 @@ class ProductController extends Controller
       ->filterByEav($attributes)
       ->with([
         'unit',
+        'type',
         'attributeValues.attribute.complexDictionary',
         'attributeValues.option',
         'attributeValues.complexRecord',

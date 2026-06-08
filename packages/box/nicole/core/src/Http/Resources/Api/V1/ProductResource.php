@@ -25,6 +25,13 @@ class ProductResource extends JsonResource
 
     return array_merge($this->getSharedEntityFields($this->resource), [
       /**
+       * Код типа товара.
+       * @var string|null
+       * @example "acrylic_stone"
+       */
+      'product_type' => $this->type?->code,
+
+      /**
        * Информация о единице измерения
        * @var array{slug: string, name: string, symbol: string}|null
        */

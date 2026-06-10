@@ -4,33 +4,59 @@
          bootstrap="vendor/autoload.php"
          colors="true"
 >
-    <testsuites>
-        <testsuite name="Unit">
-            <directory>tests/Unit</directory>
-        </testsuite>
-        <testsuite name="Feature">
-            <directory>tests/Feature</directory>
-        </testsuite>
-    </testsuites>
-    <source>
-        <include>
-            <directory>app</directory>
-        </include>
-    </source>
-    <php>
-        <env name="APP_ENV" value="testing"/>
-        <env name="APP_MAINTENANCE_DRIVER" value="file"/>
-        <env name="BCRYPT_ROUNDS" value="4"/>
-        <env name="BROADCAST_CONNECTION" value="null"/>
-        <env name="CACHE_STORE" value="array"/>
-        <env name="DB_CONNECTION" value="sqlite"/>
-        <env name="DB_DATABASE" value=":memory:"/>
-        <env name="DB_URL" value=""/>
-        <env name="MAIL_MAILER" value="array"/>
-        <env name="QUEUE_CONNECTION" value="sync"/>
-        <env name="SESSION_DRIVER" value="array"/>
-        <env name="PULSE_ENABLED" value="false"/>
-        <env name="TELESCOPE_ENABLED" value="false"/>
-        <env name="NIGHTWATCH_ENABLED" value="false"/>
-    </php>
+  <testsuites>
+    <testsuite name="Unit">
+      <directory>tests/Unit</directory>
+    </testsuite>
+    <testsuite name="Feature">
+      <directory>tests/Feature</directory>
+    </testsuite>
+
+    <!-- Тест-сьюты для изолированных пакетов монорепозитория -->
+    <testsuite name="NicoleCore">
+      <directory>packages/box/nicole/core/tests</directory>
+    </testsuite>
+    <testsuite name="ValerieStone">
+      <directory>packages/box/valerie/industry-stone/tests</directory>
+    </testsuite>
+  </testsuites>
+
+  <source>
+    <include>
+      <directory>app</directory>
+    </include>
+  </source>
+
+  <php>
+    <!-- Базовые настройки окружения Laravel -->
+    <env name="APP_ENV" value="testing"/>
+    <env name="APP_KEY" value="base64:17+jjutZVNB1G4XuEjkPcc50QquHN0B97bkDVKvliqk="/>
+    <env name="APP_DEBUG" value="true"/>
+    <env name="APP_MAINTENANCE_DRIVER" value="file"/>
+    <env name="BCRYPT_ROUNDS" value="4"/>
+    <env name="BROADCAST_CONNECTION" value="null"/>
+
+    <!-- Подключение к тестовой базе PostgreSQL в Docker -->
+    <env name="DB_CONNECTION" value="pgsql"/>
+    <env name="DB_HOST" value="db"/>
+    <env name="DB_PORT" value="5432"/>
+    <env name="DB_DATABASE" value="vms_stone_db_test"/>
+    <env name="DB_USERNAME" value="vms_user"/>
+    <env name="DB_PASSWORD" value="vms_secret_pass"/>
+
+    <!-- Быстрые изолированные драйверы для тестов -->
+    <env name="CACHE_STORE" value="array"/>
+    <env name="SESSION_DRIVER" value="array"/>
+    <env name="QUEUE_CONNECTION" value="sync"/>
+    <env name="FILESYSTEM_DISK" value="local"/>
+    <env name="MAIL_MAILER" value="array"/>
+
+    <!-- Отключение поискового движка Meilisearch -->
+    <env name="SCOUT_DRIVER" value="none"/>
+
+    <!-- Отключение систем логирования и мониторинга для скорости -->
+    <env name="PULSE_ENABLED" value="false"/>
+    <env name="TELESCOPE_ENABLED" value="false"/>
+    <env name="NIGHTWATCH_ENABLED" value="false"/>
+  </php>
 </phpunit>

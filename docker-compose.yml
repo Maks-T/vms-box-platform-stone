@@ -36,6 +36,8 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - db_data:/var/lib/postgresql
+      # Тестовая бд:
+      - ./docker/db/10-create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql
     networks:
       - app_net
 

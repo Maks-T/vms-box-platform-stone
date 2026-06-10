@@ -13,6 +13,8 @@ use Nicole\Box\Core\Traits\HasNicoleMedia;
 use Nicole\Box\Core\Traits\HasSettings;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute as EloquentAttribute;
 
 class Product extends Model implements HasMedia
 {
@@ -20,6 +22,7 @@ class Product extends Model implements HasMedia
   use HasNicoleMedia;
   use HasSettings;
   use HasTranslations;
+  use HasFactory;
 
   protected $fillable = [
     'catalog_type',
@@ -91,8 +94,6 @@ class Product extends Model implements HasMedia
     $minPrice = null;
 
     foreach ($this->variants()->where('is_active', true)->get() as $variant) {
-
-      
       $price = $pricingManager->getVariantPrice($variant);
 
       if ($price > 0 && ($minPrice === null || $price < $minPrice)) {
@@ -100,9 +101,16 @@ class Product extends Model implements HasMedia
       }
     }
 
-    $this->updateQuietly([
-      'min_price' => (float) ($minPrice ?? 0.0),
+    $finalPrice = (float) ($minPrice ?? 0.0);
+
+    // Обновляем значение напрямую в базе данных, минуя проверки Eloquent
+    $this->newQuery()->where($this->getKeyName(), $this->getKey())->update([
+      'min_price' => $finalPrice,
     ]);
+
+    // Синхронизируем состояние текущего объекта в памяти
+    $this->setAttribute('min_price', $finalPrice);
+    $this->syncOriginalAttribute('min_price');
   }
 
   /**
@@ -116,7 +124,7 @@ class Product extends Model implements HasMedia
       $valuesArray = explode(',', (string) $value);
       $numericValues = array_filter($valuesArray, 'is_numeric');
 
-      
+
       $applyEavCondition = function ($sub) use ($attrCode, $valuesArray, $numericValues) {
         $sub->whereHas('attribute', fn ($a) => $a->where('code', $attrCode))
           ->where(function ($vQ) use ($valuesArray, $numericValues) {
@@ -130,7 +138,7 @@ class Product extends Model implements HasMedia
           });
       };
 
-      
+
       $query->where(function ($q) use ($applyEavCondition) {
         // Ищем в атрибутах самого товара
         $q->whereHas('attributeValues', $applyEavCondition)
@@ -149,11 +157,16 @@ class Product extends Model implements HasMedia
    * Виртуальное свойство: Минимальная цена товара
    * Использование: $product->retail_price
    */
-  protected function retailPrice(): Attribute
+  protected function retailPrice(): EloquentAttribute
   {
-    return Attribute::make(
+    return EloquentAttribute::make(
       get: fn () => app(\Nicole\Box\Core\Services\PricingManager::class)->getRetailPrice($this),
     );
+  }
+
+  protected static function newFactory(): \Nicole\Box\Core\Database\Factories\ProductFactory
+  {
+    return \Nicole\Box\Core\Database\Factories\ProductFactory::new();
   }
 
 }

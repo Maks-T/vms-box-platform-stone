@@ -9,12 +9,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Nicole\Box\Core\Traits\HasExternalCode;
 use Nicole\Box\Core\Traits\HasSettings;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ComplexDictionary extends Model
 {
   use HasExternalCode;
   use HasSettings;
   use HasTranslations;
+  use HasFactory;
 
   public const string FIELD_TYPE_PRICE = 'price';
   public const string MARKUP_SUFFIX = '_markup';
@@ -24,8 +26,8 @@ class ComplexDictionary extends Model
     'external_code',
     'code',
     'name',
-    'meta_schema', 
-    'sort_order',  
+    'meta_schema',
+    'sort_order',
     'is_active',
   ];
 
@@ -34,7 +36,7 @@ class ComplexDictionary extends Model
   protected function casts(): array
   {
     return [
-      'meta_schema' => 'array', 
+      'meta_schema' => 'array',
       'is_active' => 'boolean',
     ];
   }
@@ -47,7 +49,7 @@ class ComplexDictionary extends Model
     )->orderBy('sort_order');
   }
 
-  
+
   protected static function booted(): void
   {
     static::updated(function (ComplexDictionary $dictionary) {
@@ -79,6 +81,11 @@ class ComplexDictionary extends Model
         }
       }
     });
+  }
+
+  protected static function newFactory(): \Nicole\Box\Core\Database\Factories\ComplexDictionaryFactory
+  {
+    return \Nicole\Box\Core\Database\Factories\ComplexDictionaryFactory::new();
   }
 
 }

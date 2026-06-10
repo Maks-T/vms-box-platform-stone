@@ -7,9 +7,12 @@ namespace Nicole\Box\Core\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProductAttributeValue extends Model
 {
+  use HasFactory;
+
   public $timestamps = false;
 
   protected $fillable = [
@@ -69,5 +72,10 @@ class ProductAttributeValue extends Model
             ->whereIn('attributable_id', $variantIds);
         });
       });
+  }
+
+  protected static function newFactory(): \Nicole\Box\Core\Database\Factories\ProductAttributeValueFactory
+  {
+    return \Nicole\Box\Core\Database\Factories\ProductAttributeValueFactory::new();
   }
 }

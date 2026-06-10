@@ -11,12 +11,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Nicole\Box\Core\Traits\HasExternalCode;
 use Nicole\Box\Core\Traits\HasSettings;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Attribute extends Model
 {
   use HasExternalCode;
   use HasSettings;
   use HasTranslations;
+  use HasFactory;
 
   public const string TYPE_STRING = 'string';
   public const string TYPE_NUMERIC = 'numeric';
@@ -68,4 +70,10 @@ class Attribute extends Model
       'attribute_product_type',
     )->withPivot(['is_required', 'is_variant_only', 'sort_order']);
   }
+
+  protected static function newFactory(): \Nicole\Box\Core\Database\Factories\AttributeFactory
+  {
+    return \Nicole\Box\Core\Database\Factories\AttributeFactory::new();
+  }
+
 }

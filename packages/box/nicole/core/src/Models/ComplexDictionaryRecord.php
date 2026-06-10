@@ -8,18 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Nicole\Box\Core\Traits\HasExternalCode;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ComplexDictionaryRecord extends Model
 {
   use HasExternalCode;
   use HasTranslations;
+  use HasFactory;
 
   protected $fillable = [
     'dictionary_id',
     'external_code',
     'slug',
     'name',
-    'meta', 
+    'meta',
     'sort_order',
     'is_active',
   ];
@@ -29,7 +31,7 @@ class ComplexDictionaryRecord extends Model
   protected function casts(): array
   {
     return [
-      'meta' => 'array', 
+      'meta' => 'array',
       'sort_order' => 'integer',
       'is_active' => 'boolean',
     ];
@@ -44,7 +46,7 @@ class ComplexDictionaryRecord extends Model
   {
     $refreshLinkedProducts = function (ComplexDictionaryRecord $record) {
 
-      
+
       $isFinancial = collect($record->dictionary->meta_schema ?? [])
         ->contains('type', ComplexDictionary::FIELD_TYPE_PRICE);
 
@@ -79,6 +81,11 @@ class ComplexDictionaryRecord extends Model
 
     static::saved($refreshLinkedProducts);
     static::deleted($refreshLinkedProducts);
+  }
+
+  protected static function newFactory(): \Nicole\Box\Core\Database\Factories\ComplexDictionaryRecordFactory
+  {
+    return \Nicole\Box\Core\Database\Factories\ComplexDictionaryRecordFactory::new();
   }
 
 }

@@ -10,21 +10,23 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Nicole\Box\Core\Traits\HasExternalCode;
 use Nicole\Box\Core\Traits\HasSettings;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProductType extends Model
 {
   use HasExternalCode;
   use HasSettings;
   use HasTranslations;
+  use HasFactory;
 
   protected $fillable = [
     'code',
     'external_code',
-    'slug', 
+    'slug',
     'family_id',
     'name',
     'icon',
-    'meta', 
+    'meta',
 
     'pricing_mode',
     'pricing_attribute_id',
@@ -38,7 +40,7 @@ class ProductType extends Model
   {
     return [
       'is_active' => 'boolean',
-      'meta' => 'array', 
+      'meta' => 'array',
     ];
   }
 
@@ -59,5 +61,10 @@ class ProductType extends Model
     return $this->belongsToMany(Attribute::class, 'attribute_product_type')
       ->withPivot(['is_required', 'is_variant_only', 'sort_order'])
       ->orderBy('attribute_product_type.sort_order');
+  }
+
+  protected static function newFactory()
+  {
+    return \Nicole\Box\Core\Database\Factories\ProductTypeFactory::new();
   }
 }

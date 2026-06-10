@@ -11,9 +11,12 @@ use Nicole\Box\Core\Traits\HasNicoleMedia;
 use Nicole\Box\Core\Traits\HasSettings;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class AttributeOption extends Model implements HasMedia
 {
+  use HasFactory;
+
   use HasExternalCode;
   use HasNicoleMedia;
   use HasSettings;
@@ -46,5 +49,10 @@ class AttributeOption extends Model implements HasMedia
   public function registerMediaCollections(): void
   {
     $this->addMediaCollection('main')->singleFile();
+  }
+
+  protected static function newFactory(): \Nicole\Box\Core\Database\Factories\AttributeOptionFactory
+  {
+    return \Nicole\Box\Core\Database\Factories\AttributeOptionFactory::new();
   }
 }

@@ -13,6 +13,8 @@ use Nicole\Box\Core\Traits\HasNicoleMedia;
 use Nicole\Box\Core\Traits\HasSettings;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute as EloquentAttribute;
 
 class ProductVariant extends Model implements HasMedia
 {
@@ -20,6 +22,7 @@ class ProductVariant extends Model implements HasMedia
   use HasNicoleMedia;
   use HasSettings;
   use HasTranslations;
+  use HasFactory;
 
   protected $fillable = [
     'external_code',
@@ -66,7 +69,7 @@ class ProductVariant extends Model implements HasMedia
 
   public function getPrice(?string $typeSlug = null): float
   {
-    
+
     $typeSlug = $typeSlug ?? app(\Nicole\Box\Core\Services\PricingManager::class)->defaultPriceType->slug;
 
     return (float)$this->prices()
@@ -134,11 +137,16 @@ class ProductVariant extends Model implements HasMedia
    * Виртуальное свойство: Итоговая розничная цена (Справочник ИЛИ Ручная)
    * Использование: $variant->retail_price
    */
-  protected function retailPrice(): Attribute
+  protected function retailPrice(): EloquentAttribute
   {
-    return Attribute::make(
+    return EloquentAttribute::make(
       get: fn () => app(\Nicole\Box\Core\Services\PricingManager::class)->getVariantPrice($this),
     );
+  }
+
+  protected static function newFactory(): \Nicole\Box\Core\Database\Factories\ProductVariantFactory
+  {
+    return \Nicole\Box\Core\Database\Factories\ProductVariantFactory::new();
   }
 
 }

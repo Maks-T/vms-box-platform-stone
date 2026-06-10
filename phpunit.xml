@@ -24,6 +24,8 @@
   <source>
     <include>
       <directory>app</directory>
+      <directory>packages/box/nicole/core/src</directory>
+      <directory>packages/box/valerie/industry-stone/src</directory>
     </include>
   </source>
 

@@ -10,6 +10,7 @@ use Nicole\Box\Core\Traits\HasExternalCode;
 use Nicole\Box\Core\Traits\HasGlobalDefault;
 use Nicole\Box\Core\Traits\HasSettings;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PriceType extends Model
 {
@@ -17,6 +18,7 @@ class PriceType extends Model
   use HasSettings;
   use HasTranslations;
   use HasGlobalDefault;
+  use HasFactory;
 
   protected $fillable = [
     'external_code',
@@ -38,6 +40,11 @@ class PriceType extends Model
   protected static function booted(): void
   {
     // трейт HasGlobalDefault все делает сам
+  }
+
+  protected static function newFactory()
+  {
+    return \Nicole\Box\Core\Database\Factories\PriceTypeFactory::new();
   }
 
 }

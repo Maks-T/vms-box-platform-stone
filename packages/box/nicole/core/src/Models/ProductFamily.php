@@ -9,20 +9,22 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Nicole\Box\Core\Traits\HasExternalCode;
 use Nicole\Box\Core\Traits\HasSettings;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProductFamily extends Model
 {
   use HasExternalCode;
   use HasSettings;
   use HasTranslations;
+  use HasFactory;
 
   protected $fillable = [
     'external_code',
     'code',
-    'slug', 
+    'slug',
     'name',
     'icon',
-    'meta_schema', 
+    'meta_schema',
     'sort_order',
     'is_active',
   ];
@@ -33,7 +35,7 @@ class ProductFamily extends Model
   {
     return [
       'is_active' => 'boolean',
-      'meta_schema' => 'array', 
+      'meta_schema' => 'array',
     ];
   }
 
@@ -41,4 +43,10 @@ class ProductFamily extends Model
   {
     return $this->hasMany(ProductType::class, 'family_id');
   }
+
+  protected static function newFactory()
+  {
+    return \Nicole\Box\Core\Database\Factories\ProductFamilyFactory::new();
+  }
+
 }

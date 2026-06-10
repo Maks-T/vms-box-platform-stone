@@ -11,6 +11,7 @@ use Nicole\Box\Core\Traits\HasExternalCode;
 use Nicole\Box\Core\Traits\HasGlobalDefault;
 use Nicole\Box\Core\Traits\HasSettings;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Currency extends Model
 {
@@ -18,6 +19,7 @@ class Currency extends Model
   use HasSettings;
   use HasTranslations;
   use HasGlobalDefault;
+  use HasFactory;
 
   protected $fillable = [
     'external_code',
@@ -52,6 +54,11 @@ class Currency extends Model
         $currency->updateQuietly(['rate' => 1.0]);
       }
     });
+  }
+
+  protected static function newFactory()
+  {
+    return \Nicole\Box\Core\Database\Factories\CurrencyFactory::new();
   }
 
 }

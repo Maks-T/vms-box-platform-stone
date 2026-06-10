@@ -228,46 +228,52 @@ def transform() -> None:
 
     print("-> Обработка товаров и вариаций...")
     for item in src.get('items', []):
-           raw_eav = item.get('eav') or {}
-           if item.get('price_category_slug'): raw_eav['price_group'] = item['price_category_slug']
-           if item.get('cutting_group_id'): raw_eav['cutting_groups'] = str(item['cutting_group_id'])
+        raw_eav = item.get('eav') or {}
+        if item.get('price_category_slug'): raw_eav['price_group'] = item['price_category_slug']
+        if item.get('cutting_group_id'): raw_eav['cutting_groups'] = str(item['cutting_group_id'])
 
-           product_raw_eav = {k: v for k, v in raw_eav.items() if get_new_code(k) not in VARIANT_ONLY_ATTRS}
-           variant_raw_eav = {k: v for k, v in raw_eav.items() if get_new_code(k) in VARIANT_ONLY_ATTRS}
+        product_raw_eav = {k: v for k, v in raw_eav.items() if get_new_code(k) not in VARIANT_ONLY_ATTRS}
+        variant_raw_eav = {k: v for k, v in raw_eav.items() if get_new_code(k) in VARIANT_ONLY_ATTRS}
 
-           variants = []
-           src_variants = item.get('variants', [])
+        variants = []
+        src_variants = item.get('variants', [])
 
-           if not src_variants:
-               variants.append({
-                   "external_code": f"sku_{item['id']}_def", "sku": f"{item.get('slug', 'item')}-def",
-                   "price": float(item.get('price', 0)), "cost_price": float(item.get('price', 0)) * 0.8,
-                   "stock": 10.0, "is_default": True, "preview_picture": item.get('preview_picture'), "detail_picture": item.get('detail_picture'),
-                   "eav": process_eav(variant_raw_eav, attr_types)
-               })
-           else:
-               for index, v in enumerate(src_variants):
-                   v_eav = {**variant_raw_eav, **(v.get('eav') or {})}
-                   is_default = bool(v.get('is_default')) if 'is_default' in v else (index == 0)
+        if not src_variants:
+            variants.append({
+                "external_code": f"sku_{item['id']}_def", "sku": f"{item.get('slug', 'item')}-def",
+                "price": float(item.get('price', 0)), "cost_price": float(item.get('price', 0)) * 0.8,
+                "stock": 10.0, "is_default": True, "preview_picture": item.get('preview_picture'), "detail_picture": item.get('detail_picture'),
+                "eav": process_eav(variant_raw_eav, attr_types)
+            })
+        else:
+            for index, v in enumerate(src_variants):
+                v_eav = {**variant_raw_eav, **(v.get('eav') or {})}
+                is_default = bool(v.get('is_default')) if 'is_default' in v else (index == 0)
 
-                   variants.append({
-                       "external_code": f"sku_{v['id']}", "sku": v.get('slug'),
-                       "price": float(v.get('price', 0)), "cost_price": float(v.get('price', 0)) * 0.8,
-                       "stock": 10.0, "is_default": is_default,
-                       "preview_picture": v.get('preview_picture'), "detail_picture": v.get('detail_picture'),
-                       "eav": process_eav(v_eav, attr_types)
-                   })
+                variants.append({
+                    "external_code": f"sku_{v['id']}", "sku": v.get('slug'),
+                    "price": float(v.get('price', 0)), "cost_price": float(v.get('price', 0)) * 0.8,
+                    "stock": 10.0, "is_default": is_default,
+                    "preview_picture": v.get('preview_picture'), "detail_picture": v.get('detail_picture'),
+                    "eav": process_eav(v_eav, attr_types)
+                })
 
-           pt_code = item.get('product_type_code', 'acrylic_stone')
-           if pt_code == "item": pt_code = "acrylic_stone"
-           unit_code = "m" if pt_code in ['edge', 'skirting'] else "pcs"
+        pt_code = item.get('product_type_code', 'acrylic_stone')
+        if pt_code == "item":
+            type_stone = item.get('eav', {}).get('type_stone')
+            if type_stone == 'quartz':
+                pt_code = 'quartz_stone'
+            else:
+                pt_code = 'acrylic_stone'
 
-           dst['products'].append({
-               "external_code": f"prod_{item['id']}", "product_type_external_code": f"type_{pt_code}", "category_external_code": f"cat_{item['category_id']}",
-               "catalog_type": "product", "unit_code": unit_code, "slug": item['slug'], "name": item['name'],
-               "preview_picture": item.get('preview_picture'), "detail_picture": item.get('detail_picture'),
-               "eav": process_eav(product_raw_eav, attr_types), "variants": variants
-           })
+        unit_code = "m" if pt_code in ['edge', 'skirting'] else "pcs"
+
+        dst['products'].append({
+            "external_code": f"prod_{item['id']}", "product_type_external_code": f"type_{pt_code}", "category_external_code": f"cat_{item['category_id']}",
+            "catalog_type": "product", "unit_code": unit_code, "slug": item['slug'], "name": item['name'],
+            "preview_picture": item.get('preview_picture'), "detail_picture": item.get('detail_picture'),
+            "eav": process_eav(product_raw_eav, attr_types), "variants": variants
+        })
 
     output_filename = 'import_data.json'
     print(f"-> Сохранение в {output_filename}...")

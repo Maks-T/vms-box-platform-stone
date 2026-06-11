@@ -5,7 +5,8 @@
   "license": "proprietary",
   "autoload": {
     "psr-4": {
-      "Valerie\\Box\\IndustryStone\\": "src/"
+      "Valerie\\Box\\IndustryStone\\": "src/",
+      "Valerie\\Box\\IndustryStone\\Tests\\": "tests/"
     }
   },
   "extra": {
@@ -19,4 +20,5 @@
     "php": "^8.5",
     "nicole/box-core": "@dev"
   }
+
 }

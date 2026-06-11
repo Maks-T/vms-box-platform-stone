@@ -10,6 +10,7 @@ services:
       - .:/var/www/html
       - ./docker/php/shell/.bashrc:/home/laravel/.bashrc
       - ./docker/php/shell/.aliases:/home/laravel/.aliases
+      - ./docker/php/custom.ini:/usr/local/etc/php/conf.d/custom.ini
     env_file: .env
     networks:
       - app_net

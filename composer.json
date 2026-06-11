@@ -65,6 +65,15 @@
       "@php artisan config:clear --ansi",
       "@php artisan test"
     ],
+    "test-app": [
+      "XDEBUG_MODE=coverage php artisan test --coverage-html=public/coverage"
+    ],
+    "test-nicole": [
+      "XDEBUG_MODE=coverage php artisan test --testsuite=NicoleCore --coverage-html=public/coverage"
+    ],
+    "test-valerie": [
+      "XDEBUG_MODE=coverage php artisan test --testsuite=ValerieStone --coverage-html=public/coverage"
+    ],
     "post-autoload-dump": [
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
       "@php artisan package:discover --ansi",

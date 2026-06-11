@@ -4545,7 +4545,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/box/nicole/core",
-                "reference": "8b39c8e5620bf5abf7719280cfb186e3807869f7"
+                "reference": "578ed4a740694510c8f66e3a6626fbb61e5ed7b5"
             },
             "require": {
                 "laravel/framework": "^13.0",

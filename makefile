@@ -100,7 +100,9 @@ test-nicole:
 test-valerie:
 	$(COMPOSE) exec app env XDEBUG_MODE=coverage $(ARTISAN) test --testsuite=ValerieStone --coverage-html=public/coverage
 
-# Help
+package-update:
+	$(COMPOSE) exec app composer update nicole/box-core valerie/box-industry-stone
+
 # Help
 help:
 	@echo "Available commands for VMS platform:"

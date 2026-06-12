@@ -118,12 +118,25 @@ def transform() -> None:
                 {"key": "step", "type": "number", "label": {"ru": "Шаг размера", "en": "Size step"}, "width": 1},
                 {"key": "minPart", "type": "number", "label": {"ru": "Минимальная часть", "en": "Min part"}, "width": 1},
                 {"key": "maxStack", "type": "number", "label": {"ru": "Макс. стопка", "en": "Max stack"}, "width": 1},
-                {"key": "axisX", "type": "boolean", "label": {"ru": "По оси X", "en": "Along X axis"}, "width": 1}
+                {"key": "axisX", "type": "boolean", "label": {"ru": "По оси X", "en": "Along X axis"}, "width": 1},
+
+                {"key": "is_separate", "type": "boolean", "label": {"ru": "Кроить раздельно", "en": "Cut separately"}, "width": 2},
+                {"key": "corner_add_length", "type": "number", "label": {"ru": "Добавка на внутр. угол (Длина мм)", "en": "Inner corner add (Length mm)"}, "width": 1},
+                {"key": "corner_add_width", "type": "number", "label": {"ru": "Добавка на внутр. угол (Ширина мм)", "en": "Inner corner add (Width mm)"}, "width": 1}
             ]
         dst['families'].append(family_data)
 
     for t in src.get('product_types', []):
         payload = t.get('payload') or {}
+
+        if t['code'] == 'quartz_stone':
+            payload['is_separate'] = True
+            payload['corner_add_length'] = 750
+            payload['corner_add_width'] = 700
+        elif t['code'] == 'acrylic_stone':
+            payload['is_separate'] = False
+            payload['corner_add_length'] = 920
+            payload['corner_add_width'] = 760
 
         pricing_mode, pricing_attr_code, pricing_field = 'manual', None, None
         if t['code'] in ['acrylic_stone', 'quartz_stone']:
@@ -163,7 +176,7 @@ def transform() -> None:
             for rotate, cut in itertools.product([True, False], repeat=2):
                 records.append({
                     "external_code": f"rec_{new_code}_{counter}", "slug": str(counter),
-                    "name": {"ru": f"Раскрой: {'Раздельный' if cut else 'Совместный'} | Рисунок: {'Повторять' if rotate else 'Не повторять'}"},
+                    "name": {"ru": f"Раскрой: {'Раздельный' if cut else 'Совместный'} | Шов: {'Разрешен' if rotate else 'Запрещен'}"},
                     "meta": {"rotate": rotate, "cut": cut}
                 })
                 counter += 1
@@ -225,6 +238,9 @@ def transform() -> None:
     attr_types['width'] = 'numeric'
     dst['attributes'].append({"external_code": "attr_height", "code": "height", "type": "numeric", "name": {"ru": "Толщина", "en": "Thickness"}, "is_multiple": False, "options": []})
     attr_types['height'] = 'numeric'
+
+    dst['attributes'].append({"external_code": "attr_size_inner_sink", "code": "size_inner_sink", "type": "string", "name": {"ru": "Размер (внутренний)", "en": "Inner Size"}, "is_multiple": False, "options": []})
+    attr_types['size_inner_sink'] = 'string'
 
     print("-> Обработка товаров и вариаций...")
     for item in src.get('items', []):

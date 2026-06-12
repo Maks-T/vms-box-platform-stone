@@ -43,6 +43,33 @@
             "en": "Along X axis"
           },
           "width": 1
+        },
+        {
+          "key": "is_separate",
+          "type": "boolean",
+          "label": {
+            "ru": "Кроить раздельно",
+            "en": "Cut separately"
+          },
+          "width": 2
+        },
+        {
+          "key": "corner_add_length",
+          "type": "number",
+          "label": {
+            "ru": "Добавка на внутр. угол (Длина мм)",
+            "en": "Inner corner add (Length mm)"
+          },
+          "width": 1
+        },
+        {
+          "key": "corner_add_width",
+          "type": "number",
+          "label": {
+            "ru": "Добавка на внутр. угол (Ширина мм)",
+            "en": "Inner corner add (Width mm)"
+          },
+          "width": 1
         }
       ]
     },
@@ -92,7 +119,10 @@
         "step": 0.5,
         "maxStack": 1,
         "axisX": true,
-        "minPart": 12
+        "minPart": 12,
+        "is_separate": false,
+        "corner_add_length": 920,
+        "corner_add_width": 760
       },
       "attached_attributes": [
         {
@@ -156,7 +186,10 @@
         "step": 1,
         "maxStack": 1,
         "axisX": false,
-        "minPart": 20
+        "minPart": 20,
+        "is_separate": true,
+        "corner_add_length": 750,
+        "corner_add_width": 700
       },
       "attached_attributes": [
         {
@@ -606,7 +639,7 @@
           "external_code": "rec_cutting_groups_1",
           "slug": "1",
           "name": {
-            "ru": "Раскрой: Раздельный | Рисунок: Повторять"
+            "ru": "Раскрой: Раздельный | Шов: Разрешен"
           },
           "meta": {
             "rotate": true,
@@ -617,7 +650,7 @@
           "external_code": "rec_cutting_groups_2",
           "slug": "2",
           "name": {
-            "ru": "Раскрой: Совместный | Рисунок: Повторять"
+            "ru": "Раскрой: Совместный | Шов: Разрешен"
           },
           "meta": {
             "rotate": true,
@@ -628,7 +661,7 @@
           "external_code": "rec_cutting_groups_3",
           "slug": "3",
           "name": {
-            "ru": "Раскрой: Раздельный | Рисунок: Не повторять"
+            "ru": "Раскрой: Раздельный | Шов: Запрещен"
           },
           "meta": {
             "rotate": false,
@@ -639,7 +672,7 @@
           "external_code": "rec_cutting_groups_4",
           "slug": "4",
           "name": {
-            "ru": "Раскрой: Совместный | Рисунок: Не повторять"
+            "ru": "Раскрой: Совместный | Шов: Запрещен"
           },
           "meta": {
             "rotate": false,
@@ -3541,6 +3574,17 @@
       "name": {
         "ru": "Толщина",
         "en": "Thickness"
+      },
+      "is_multiple": false,
+      "options": []
+    },
+    {
+      "external_code": "attr_size_inner_sink",
+      "code": "size_inner_sink",
+      "type": "string",
+      "name": {
+        "ru": "Размер (внутренний)",
+        "en": "Inner Size"
       },
       "is_multiple": false,
       "options": []

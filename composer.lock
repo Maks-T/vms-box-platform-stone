@@ -4541,11 +4541,11 @@
         },
         {
             "name": "nicole/box-core",
-            "version": "dev-dev",
+            "version": "dev-tests",
             "dist": {
                 "type": "path",
                 "url": "packages/box/nicole/core",
-                "reference": "f3a184d463fc5faeede5a94761bdae15002eae4c"
+                "reference": "578ed4a740694510c8f66e3a6626fbb61e5ed7b5"
             },
             "require": {
                 "laravel/framework": "^13.0",
@@ -4561,7 +4561,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Nicole\\Box\\Core\\": "src/"
+                    "Nicole\\Box\\Core\\": "src/",
+                    "Nicole\\Box\\Core\\Tests\\": "tests/"
                 }
             },
             "license": [
@@ -9425,11 +9426,11 @@
         },
         {
             "name": "valerie/box-industry-stone",
-            "version": "dev-dev",
+            "version": "dev-tests",
             "dist": {
                 "type": "path",
                 "url": "packages/box/valerie/industry-stone",
-                "reference": "89e58614117f3d102a08c7c33cddf0d9f530f6f6"
+                "reference": "ab92eef7f7023b37bf58409bc0e11723a6089cdf"
             },
             "require": {
                 "nicole/box-core": "@dev",
@@ -9445,7 +9446,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Valerie\\Box\\IndustryStone\\": "src/"
+                    "Valerie\\Box\\IndustryStone\\": "src/",
+                    "Valerie\\Box\\IndustryStone\\Tests\\": "tests/"
                 }
             },
             "license": [

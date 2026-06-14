@@ -9,14 +9,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Nicole\Box\Core\Traits\HasExternalCode;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class BindingRule extends Model
 {
   use HasExternalCode;
   use HasTranslations;
+  use HasFactory;
 
   protected $fillable = [
-    'external_code', 
+    'external_code',
     'pipeline_id',
     'name',
     'parent_type',
@@ -52,4 +54,10 @@ class BindingRule extends Model
   {
     return $this->morphTo(__FUNCTION__, 'child_type', 'child_id');
   }
+
+  protected static function newFactory(): \Nicole\Box\Core\Database\Factories\BindingRuleFactory
+  {
+    return \Nicole\Box\Core\Database\Factories\BindingRuleFactory::new();
+  }
+
 }

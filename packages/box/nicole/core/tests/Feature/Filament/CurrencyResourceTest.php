@@ -6,8 +6,7 @@ namespace Nicole\Box\Core\Tests\Feature\Filament;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
-use App\Models\User;
-use Nicole\Box\Core\Models\Role;
+use Nicole\Box\Core\Tests\Traits\InteractsWithFilamentAdmin;
 use Nicole\Box\Core\Models\Currency;
 use Nicole\Box\Core\Filament\Resources\Currencies\Pages\ListCurrencies;
 use Nicole\Box\Core\Filament\Resources\Currencies\Pages\CreateCurrency;
@@ -16,36 +15,28 @@ use Livewire\Livewire;
 
 class CurrencyResourceTest extends TestCase
 {
-  use LazilyRefreshDatabase; // Изолирует базу данных для теста
-
-  protected User $adminUser;
+  use LazilyRefreshDatabase;
+  use InteractsWithFilamentAdmin;
 
   protected function setUp(): void
   {
     parent::setUp();
 
-    // Сбрасываем кэш ролей Spatie
-    app(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
-
-    // Создаем администратора панели
-    $adminRole = Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
-    $this->adminUser = User::factory()->create();
-    $this->adminUser->assignRole($adminRole);
+    $this->setUpFilamentAdmin();
   }
 
   /**
-   * Сценарий: Проверка отображения списка валют в таблице Filament.
+   * Сценарий: Проверка отображения списка валют в таблице.
    */
   public function test_can_render_list_currencies_page(): void
   {
     $this->actingAs($this->adminUser);
 
-    // Создаем тестовую валюту
     $currency = Currency::factory()->create(['code' => 'USD']);
 
     Livewire::test(ListCurrencies::class)
       ->assertSuccessful()
-      ->assertCanSeeTableRecords([$currency]); // Проверяем, что видим ее в таблице
+      ->assertCanSeeTableRecords([$currency]);
   }
 
   /**
@@ -55,25 +46,26 @@ class CurrencyResourceTest extends TestCase
   {
     $this->actingAs($this->adminUser);
 
-    // Заполняем форму, используя точечную нотацию для переводимых полей
+    // Сначала создаем базовую валюту, чтобы EUR создался как дополнительная
+    Currency::factory()->create(['code' => 'RUB', 'rate' => 1.0, 'is_default' => true]);
+
+    // Записываем данные напрямую в свойства Livewire-компонента
     Livewire::test(CreateCurrency::class)
-      ->fillForm([
-        'name.ru' => 'Евро',
-        'name.en' => 'Euro',
-        'code' => 'EUR',
-        'symbol.ru' => '€',
-        'symbol.en' => '€',
-        'rate' => 105.0,
-        'is_active' => true,
-      ])
-      ->call('create') // Имитируем нажатие кнопки "Создать"
+      ->set('data.name.ru', 'Евро')
+      ->set('data.name.en', 'Euro')
+      ->set('data.code', 'EUR')
+      ->set('data.symbol', '€')
+      ->set('data.rate', 105.0)
+      ->set('data.is_active', true)
+      ->call('create')
       ->assertHasNoFormErrors();
 
-    // Проверяем, что запись физически появилась в БД
+    // Проверяем, что запись физически появилась в БД с правильным курсом
     $this->assertDatabaseHas('currencies', [
       'code' => 'EUR',
       'rate' => 105.0,
     ]);
+
   }
 
   /**
@@ -84,12 +76,10 @@ class CurrencyResourceTest extends TestCase
     $this->actingAs($this->adminUser);
 
     Livewire::test(CreateCurrency::class)
-      ->fillForm([
-        'name.ru' => 'Без кода',
-        'code' => '', // Оставляем пустым
-      ])
+      ->set('data.name.ru', 'Без кода')
+      ->set('data.code', '')
       ->call('create')
-      ->assertHasFormErrors(['code' => 'required']); // Ожидаем ошибку валидации
+      ->assertHasFormErrors(['code' => 'required']);
   }
 
   /**
@@ -99,7 +89,6 @@ class CurrencyResourceTest extends TestCase
   {
     $this->actingAs($this->adminUser);
 
-    // Создаем дефолтную валюту (чтобы не нарушать уникальность)
     Currency::factory()->create(['code' => 'RUB', 'is_default' => true]);
 
     $currency = Currency::factory()->create([
@@ -108,17 +97,13 @@ class CurrencyResourceTest extends TestCase
       'is_default' => false,
     ]);
 
-    // Инициализируем страницу редактирования для конкретной записи
     Livewire::test(EditCurrency::class, [
       'record' => $currency->getKey(),
     ])
-      ->fillForm([
-        'rate' => 98.5, // Меняем курс
-      ])
+      ->set('data.rate', 98.5)
       ->call('save')
       ->assertHasNoFormErrors();
 
-    // Проверяем изменение значения в памяти модели
     $this->assertEquals(98.5, $currency->refresh()->rate);
   }
 

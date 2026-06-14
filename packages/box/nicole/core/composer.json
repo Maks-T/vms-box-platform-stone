@@ -5,7 +5,8 @@
   "license": "proprietary",
   "autoload": {
     "psr-4": {
-      "Nicole\\Box\\Core\\": "src/"
+      "Nicole\\Box\\Core\\": "src/",
+      "Nicole\\Box\\Core\\Tests\\": "tests/"
     }
   },
   "extra": {

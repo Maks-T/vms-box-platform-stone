@@ -6,8 +6,7 @@ namespace Nicole\Box\Core\Tests\Feature\Filament;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
-use App\Models\User;
-use Nicole\Box\Core\Models\Role;
+use Nicole\Box\Core\Tests\Traits\InteractsWithFilamentAdmin;
 use Nicole\Box\Core\Models\Unit;
 use Nicole\Box\Core\Filament\Resources\Units\Pages\ListUnits;
 use Nicole\Box\Core\Filament\Resources\Units\Pages\CreateUnit;
@@ -16,21 +15,14 @@ use Livewire\Livewire;
 
 class UnitResourceTest extends TestCase
 {
-  use LazilyRefreshDatabase; // Очищаем базу данных перед тестом
-
-  protected User $adminUser;
+  use LazilyRefreshDatabase;
+  use InteractsWithFilamentAdmin;
 
   protected function setUp(): void
   {
     parent::setUp();
 
-    // Сбрасываем кэш ролей Spatie
-    app(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
-
-    // Создаем администратора панели
-    $adminRole = Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
-    $this->adminUser = User::factory()->create();
-    $this->adminUser->assignRole($adminRole);
+    $this->setUpFilamentAdmin();
   }
 
   /**
@@ -40,12 +32,11 @@ class UnitResourceTest extends TestCase
   {
     $this->actingAs($this->adminUser);
 
-    // Создаем тестовую единицу измерения
     $unit = Unit::factory()->create(['slug' => 'm2']);
 
     Livewire::test(ListUnits::class)
       ->assertSuccessful()
-      ->assertCanSeeTableRecords([$unit]); // Проверяем отображение в таблице
+      ->assertCanSeeTableRecords([$unit]);
   }
 
   /**
@@ -55,23 +46,17 @@ class UnitResourceTest extends TestCase
   {
     $this->actingAs($this->adminUser);
 
+    // Записываем данные напрямую в свойства Livewire-компонента
     Livewire::test(CreateUnit::class)
-      ->fillForm([
-        'name' => [
-          'ru' => 'Литр',
-          'en' => 'Liter',
-        ],
-        'slug' => 'liter',
-        'symbol' => [
-          'ru' => 'л',
-          'en' => 'l',
-        ],
-        'code' => '112',
-      ])
-      ->call('create') // Имитируем сохранение формы
+      ->set('data.name.ru', 'Литр')
+      ->set('data.name.en', 'Liter')
+      ->set('data.slug', 'liter')
+      ->set('data.symbol.ru', 'л')
+      ->set('data.symbol.en', 'l')
+      ->set('data.code', '112')
+      ->call('create')
       ->assertHasNoFormErrors();
 
-    // Проверяем наличие записи в базе данных
     $this->assertDatabaseHas('units', [
       'slug' => 'liter',
       'code' => '112',
@@ -86,15 +71,13 @@ class UnitResourceTest extends TestCase
     $this->actingAs($this->adminUser);
 
     Livewire::test(CreateUnit::class)
-      ->fillForm([
-        'name' => [], // Пустое переводимое поле
-        'slug' => 'test-unit',
-        'symbol' => [], // Пустое переводимое поле
-      ])
+      ->set('data.name.ru', '')
+      ->set('data.slug', 'test-unit')
+      ->set('data.symbol.ru', '')
       ->call('create')
       ->assertHasFormErrors([
-        'name' => 'required',
-        'symbol' => 'required',
+        'name.ru' => 'required',
+        'symbol.ru' => 'required',
       ]);
   }
 
@@ -110,17 +93,14 @@ class UnitResourceTest extends TestCase
       'code' => '113',
     ]);
 
-    // Инициализируем страницу редактирования для записи
     Livewire::test(EditUnit::class, [
       'record' => $unit->getKey(),
     ])
-      ->fillForm([
-        'code' => '114', // Обновляем код стандарта
-      ])
+      ->set('data.code', '114')
       ->call('save')
       ->assertHasNoFormErrors();
 
-    // Проверяем, что значение обновилось
     $this->assertEquals('114', $unit->refresh()->code);
   }
+
 }

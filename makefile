@@ -88,18 +88,36 @@ git-diff:
 	chmod +x generate_diffs.sh
 	./generate_diffs.sh $(DATE) "$(EXCLUDE)"
 
+# Запуск всех тестов платформы с генерацией отчета покрытия
+test:
+	$(COMPOSE) exec app env XDEBUG_MODE=coverage $(ARTISAN) test --coverage-html=public/coverage
+
+# Запуск тестов ядра NicoleCore с генерацией отчета покрытия
+test-nicole:
+	$(COMPOSE) exec app env XDEBUG_MODE=coverage $(ARTISAN) test --testsuite=NicoleCore --coverage-html=public/coverage
+
+# Запуск тестов плагина камня ValerieStone с генерацией отчета покрытия
+test-valerie:
+	$(COMPOSE) exec app env XDEBUG_MODE=coverage $(ARTISAN) test --testsuite=ValerieStone --coverage-html=public/coverage
+
+package-update:
+	$(COMPOSE) exec app composer update nicole/box-core valerie/box-industry-stone
+
 # Help
 help:
 	@echo "Available commands for VMS platform:"
-	@echo "  make up      - Start Docker containers"
-	@echo "  make down    - Stop containers"
-	@echo "  make bash    - Enter the app container"
-	@echo "  make migrate - Run migrations"
-	@echo "  make mfs     - Rebuild DB (fresh + seed)"
-	@echo "  make ci      - Run composer install"
-	@echo "  make ni      - Run npm install"
-	@echo "  make dev     - Start Vite (React 19)"
-	@echo "  make build   - Build frontend for production"
-	@echo "  make pacc    - Clear Laravel cache"
-	@echo "  make chown   - Fix file permissions"
-	@echo "  make cc      - Remove temporary *_combine.txt files"
+	@echo "  make up           - Start Docker containers"
+	@echo "  make down         - Stop containers"
+	@echo "  make bash         - Enter the app container"
+	@echo "  make test         - Run all tests with coverage report"
+	@echo "  make test-nicole  - Run NicoleCore tests with coverage"
+	@echo "  make test-valerie - Run ValerieStone tests with coverage"
+	@echo "  make migrate      - Run migrations"
+	@echo "  make mfs          - Rebuild DB (fresh + seed)"
+	@echo "  make ci           - Run composer install"
+	@echo "  make ni           - Run npm install"
+	@echo "  make dev          - Start Vite (React 19)"
+	@echo "  make build        - Build frontend for production"
+	@echo "  make pacc         - Clear Laravel cache"
+	@echo "  make chown        - Fix file permissions"
+	@echo "  make cc           - Remove temporary files"

@@ -21,10 +21,7 @@ class CurrencyFactory extends Factory
         'ru' => 'Валюта ' . $code,
         'en' => 'Currency ' . $code,
       ],
-      'symbol' => [
-        'ru' => '$',
-        'en' => '$',
-      ],
+      'symbol' => '$',
       'rate' => $this->faker->randomFloat(4, 1, 100),
       'is_default' => false,
       'is_active' => true,

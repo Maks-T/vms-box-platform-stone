@@ -11,12 +11,11 @@ class ValerieStoneServiceProvider extends ServiceProvider
 {
   public function register(): void
   {
-    // Регистрация специфичных сервисов индустрии камня
+    $this->loadJsonTranslationsFrom(__DIR__ . '/../lang');
   }
 
   public function boot(): void
   {
-    $this->loadJsonTranslationsFrom(__DIR__ . '/../lang');
     $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     $this->loadViewsFrom(__DIR__ . '/../resources/views', 'valerie-stone');
 

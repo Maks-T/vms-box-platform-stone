@@ -132,6 +132,12 @@ class ProductsTable
                 fn ($q) => $q->where('min_price', '<=', $data['price_to']),
               );
           }),
-      ]);
+      ])
+      // сохранять примененные фильтры в сессии
+      ->persistFiltersInSession()
+      // сохранять строку глобального поиска таблицы
+      ->persistSearchInSession()
+      // сохранять выбранную сортировку колонок
+      ->persistSortInSession();
   }
 }

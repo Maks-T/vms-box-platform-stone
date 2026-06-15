@@ -22,17 +22,16 @@ class TableHelper
       ->state(function (Model $record) {
         $urls = [];
 
-        // 1. Берем картинку самой сущности
-        if (method_exists($record, 'getPreviewUrl') && $url = $record->getPreviewUrl()) {
-          
-          $urls[] = str_starts_with($url, 'http') ? $url : url($url);
-        }
 
-        // 2. Добавляем картинки вариаций
+        /*if (method_exists($record, 'getPreviewUrl') && $url = $record->getPreviewUrl()) {
+          $urls[] = str_starts_with($url, 'http') ? $url : url($url);
+        }*/
+
+        // Добавляем картинки вариаций
         if ($record->relationLoaded('variants') && $record->variants) {
           foreach ($record->variants as $variant) {
             if (method_exists($variant, 'getPreviewUrl') && $vUrl = $variant->getPreviewUrl()) {
-              
+
               $urls[] = str_starts_with($vUrl, 'http') ? $vUrl : url($vUrl);
             }
           }

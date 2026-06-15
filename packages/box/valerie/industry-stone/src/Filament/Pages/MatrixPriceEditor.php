@@ -106,7 +106,6 @@ class MatrixPriceEditor extends Page implements HasForms, HasTable
         ->type('number')
         ->toggleable()
         ->disabled(function (Product $record) use ($slug) {
-          // ИСПРАВЛЕНО: Проверяем, есть ли среди всех значений атрибутов нужный слаг
           return ! $record->variants->contains(function ($v) use ($slug) {
             return $v->attributeValues->contains(fn ($av) => $av->option?->slug === $slug);
           });
@@ -136,7 +135,6 @@ class MatrixPriceEditor extends Page implements HasForms, HasTable
             return;
           }
 
-          // ИСПРАВЛЕНО
           $variant = $record->variants->first(function ($v) use ($slug) {
             return $v->attributeValues->contains(fn ($av) => $av->option?->slug === $slug);
           });

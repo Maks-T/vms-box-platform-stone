@@ -25703,7 +25703,7 @@
         "ru": "R = 3/6/9 мм сверху R = 1 мм снизу",
         "en": "R = 3/6/9 mm top R = 1 mm bottom"
       },
-      "preview_picture": "/upload/iblock/b64/58kobbmyjdhlh5i82cg61469ei1zeco1.webp",
+      "preview_picture": "/edges/edge_1.webp",
       "detail_picture": null,
       "eav": {},
       "variants": [
@@ -25714,7 +25714,7 @@
           "cost_price": 0.0,
           "stock": 10.0,
           "is_default": true,
-          "preview_picture": "/upload/iblock/b64/58kobbmyjdhlh5i82cg61469ei1zeco1.webp",
+          "preview_picture": "/edges/edge_1.webp",
           "detail_picture": null,
           "eav": {}
         }
@@ -25731,7 +25731,7 @@
         "ru": "R = 3/6/9 мм сверху R = 3/6/9 снизу",
         "en": "R = 3/6/9 mm top R = 3/6/9 bottom"
       },
-      "preview_picture": "/upload/iblock/fc3/lai1jnbd4eaq3hh2usudfpa0lcoa4ia2.webp",
+      "preview_picture": "/edges/edge_2.webp",
       "detail_picture": null,
       "eav": {},
       "variants": [
@@ -25742,7 +25742,7 @@
           "cost_price": 0.0,
           "stock": 10.0,
           "is_default": true,
-          "preview_picture": "/upload/iblock/fc3/lai1jnbd4eaq3hh2usudfpa0lcoa4ia2.webp",
+          "preview_picture": "/edges/edge_2.webp",
           "detail_picture": null,
           "eav": {}
         }
@@ -25759,7 +25759,7 @@
         "ru": "Фаска под 45° сверху R = 1 мм снизу",
         "en": "45° chamfer at top R = 1 mm at bottom"
       },
-      "preview_picture": "/upload/iblock/3d9/kw728s7zc67ic07igiwkayx2vkvluy2r.webp",
+      "preview_picture": "/edges/edge_3.webp",
       "detail_picture": null,
       "eav": {},
       "variants": [
@@ -25770,7 +25770,7 @@
           "cost_price": 0.0,
           "stock": 10.0,
           "is_default": true,
-          "preview_picture": "/upload/iblock/3d9/kw728s7zc67ic07igiwkayx2vkvluy2r.webp",
+          "preview_picture": "/edges/edge_3.webp",
           "detail_picture": null,
           "eav": {}
         }
@@ -25787,7 +25787,7 @@
         "ru": "R = 1 мм сверху R = 1 мм снизу",
         "en": "R = 1 mm top R = 1 mm bottom"
       },
-      "preview_picture": "/upload/iblock/a74/iapl9i4i3bfl4mkzru0wfhb7n4qvmit0.webp",
+      "preview_picture": "/edges/edge_4.webp",
       "detail_picture": null,
       "eav": {},
       "variants": [
@@ -25798,7 +25798,7 @@
           "cost_price": 0.0,
           "stock": 10.0,
           "is_default": true,
-          "preview_picture": "/upload/iblock/a74/iapl9i4i3bfl4mkzru0wfhb7n4qvmit0.webp",
+          "preview_picture": "/edges/edge_4.webp",
           "detail_picture": null,
           "eav": {}
         }
@@ -25815,7 +25815,7 @@
         "ru": "Фасонная 1",
         "en": "Shaped 1"
       },
-      "preview_picture": "/upload/iblock/224/yttl2c79nytzmxo5j90oc1m1b0kxq3md.webp",
+      "preview_picture": "/edges/edge_5.webp",
       "detail_picture": null,
       "eav": {},
       "variants": [
@@ -25826,7 +25826,7 @@
           "cost_price": 320.0,
           "stock": 10.0,
           "is_default": true,
-          "preview_picture": "/upload/iblock/224/yttl2c79nytzmxo5j90oc1m1b0kxq3md.webp",
+          "preview_picture": "/edges/edge_5.webp",
           "detail_picture": null,
           "eav": {}
         }
@@ -25843,7 +25843,7 @@
         "ru": "Фасонная 2",
         "en": "Shaped 2"
       },
-      "preview_picture": "/upload/iblock/0f7/hx4y0r9xl914z1ox5e9ucrufwrolloa4.webp",
+      "preview_picture": "/edges/edge_6.webp",
       "detail_picture": null,
       "eav": {},
       "variants": [
@@ -25854,7 +25854,7 @@
           "cost_price": 320.0,
           "stock": 10.0,
           "is_default": true,
-          "preview_picture": "/upload/iblock/0f7/hx4y0r9xl914z1ox5e9ucrufwrolloa4.webp",
+          "preview_picture": "/edges/edge_6.webp",
           "detail_picture": null,
           "eav": {}
         }
@@ -25871,7 +25871,7 @@
         "ru": "Фасонная 3",
         "en": "Shaped 3"
       },
-      "preview_picture": "/upload/iblock/e56/km9z8m3dwz8dr6v6j6gxo9j6cimqkeq8.webp",
+      "preview_picture": "/edges/edge_7.webp",
       "detail_picture": null,
       "eav": {},
       "variants": [
@@ -25882,7 +25882,7 @@
           "cost_price": 320.0,
           "stock": 10.0,
           "is_default": true,
-          "preview_picture": "/upload/iblock/e56/km9z8m3dwz8dr6v6j6gxo9j6cimqkeq8.webp",
+          "preview_picture": "/edges/edge_7.webp",
           "detail_picture": null,
           "eav": {}
         }
@@ -25899,7 +25899,7 @@
         "ru": "Фасонная 4",
         "en": "Shaped 4"
       },
-      "preview_picture": "/upload/iblock/a28/o3bxperyeufxmkzo0y3jhaf2xer8e584.webp",
+      "preview_picture": "/edges/edge_8.webp",
       "detail_picture": null,
       "eav": {},
       "variants": [
@@ -25910,7 +25910,7 @@
           "cost_price": 320.0,
           "stock": 10.0,
           "is_default": true,
-          "preview_picture": "/upload/iblock/a28/o3bxperyeufxmkzo0y3jhaf2xer8e584.webp",
+          "preview_picture": "/edges/edge_8.webp",
           "detail_picture": null,
           "eav": {}
         }
@@ -25927,7 +25927,7 @@
         "ru": "Без бортика",
         "en": "Without side"
       },
-      "preview_picture": "/upload/iblock/949/d7zz8763iajg36nuvd8g0tj0p67yx342.webp",
+      "preview_picture": "/sides/side_1.webp",
       "detail_picture": null,
       "eav": {},
       "variants": [
@@ -25938,7 +25938,7 @@
           "cost_price": 0.0,
           "stock": 10.0,
           "is_default": true,
-          "preview_picture": "/upload/iblock/949/d7zz8763iajg36nuvd8g0tj0p67yx342.webp",
+          "preview_picture": "/sides/side_1.webp",
           "detail_picture": null,
           "eav": {}
         }
@@ -25955,7 +25955,7 @@
         "ru": "Прямой бортик",
         "en": "Straight edge"
       },
-      "preview_picture": "/upload/iblock/e4b/gd4bm0pxkmmgyeeqq2lj1qxko3kyvkma.webp",
+      "preview_picture": "/sides/side_2.webp",
       "detail_picture": null,
       "eav": {},
       "variants": [
@@ -25966,7 +25966,7 @@
           "cost_price": 560.0,
           "stock": 10.0,
           "is_default": true,
-          "preview_picture": "/upload/iblock/e4b/gd4bm0pxkmmgyeeqq2lj1qxko3kyvkma.webp",
+          "preview_picture": "/sides/side_2.webp",
           "detail_picture": null,
           "eav": {}
         }
@@ -25983,7 +25983,7 @@
         "ru": "Плавный бортик",
         "en": "Smooth side"
       },
-      "preview_picture": "/upload/iblock/270/94o50f6crxg7h0z1gjz30cidxhkqfgqn.webp",
+      "preview_picture": "/sides/side_3.webp",
       "detail_picture": null,
       "eav": {},
       "variants": [
@@ -25994,7 +25994,7 @@
           "cost_price": 1480.0,
           "stock": 10.0,
           "is_default": true,
-          "preview_picture": "/upload/iblock/270/94o50f6crxg7h0z1gjz30cidxhkqfgqn.webp",
+          "preview_picture": "/sides/side_3.webp",
           "detail_picture": null,
           "eav": {}
         }
@@ -26011,7 +26011,7 @@
         "ru": "Галтельный бортик",
         "en": "Filled edge"
       },
-      "preview_picture": "/upload/iblock/8f1/9hb21guwrex3h6hs06yq8x2qna5cuzpf.webp",
+      "preview_picture": "/sides/side_4.webp",
       "detail_picture": null,
       "eav": {},
       "variants": [
@@ -26022,343 +26022,7 @@
           "cost_price": 560.0,
           "stock": 10.0,
           "is_default": true,
-          "preview_picture": "/upload/iblock/8f1/9hb21guwrex3h6hs06yq8x2qna5cuzpf.webp",
-          "detail_picture": null,
-          "eav": {}
-        }
-      ]
-    },
-    {
-      "external_code": "prod_479",
-      "product_type_external_code": "type_edge",
-      "category_external_code": "cat_21",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "rounded-on-1-side",
-      "name": {
-        "ru": "R = 3/6/9 мм сверху R = 1 мм снизу",
-        "en": "R = 3/6/9 mm top R = 1 mm bottom"
-      },
-      "preview_picture": "/upload/iblock/b64/58kobbmyjdhlh5i82cg61469ei1zeco1.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_479_def",
-          "sku": "rounded-on-1-side-def",
-          "price": 0.0,
-          "cost_price": 0.0,
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/upload/iblock/b64/58kobbmyjdhlh5i82cg61469ei1zeco1.webp",
-          "detail_picture": null,
-          "eav": {}
-        }
-      ]
-    },
-    {
-      "external_code": "prod_480",
-      "product_type_external_code": "type_edge",
-      "category_external_code": "cat_21",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "rounded-on-2-sides",
-      "name": {
-        "ru": "R = 3/6/9 мм сверху R = 3/6/9 снизу",
-        "en": "R = 3/6/9 mm top R = 3/6/9 bottom"
-      },
-      "preview_picture": "/upload/iblock/fc3/lai1jnbd4eaq3hh2usudfpa0lcoa4ia2.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_480_def",
-          "sku": "rounded-on-2-sides-def",
-          "price": 0.0,
-          "cost_price": 0.0,
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/upload/iblock/fc3/lai1jnbd4eaq3hh2usudfpa0lcoa4ia2.webp",
-          "detail_picture": null,
-          "eav": {}
-        }
-      ]
-    },
-    {
-      "external_code": "prod_481",
-      "product_type_external_code": "type_edge",
-      "category_external_code": "cat_21",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "under-45-degrees",
-      "name": {
-        "ru": "Фаска под 45° сверху R = 1 мм снизу",
-        "en": "45° chamfer at top R = 1 mm at bottom"
-      },
-      "preview_picture": "/upload/iblock/3d9/kw728s7zc67ic07igiwkayx2vkvluy2r.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_481_def",
-          "sku": "under-45-degrees-def",
-          "price": 0.0,
-          "cost_price": 0.0,
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/upload/iblock/3d9/kw728s7zc67ic07igiwkayx2vkvluy2r.webp",
-          "detail_picture": null,
-          "eav": {}
-        }
-      ]
-    },
-    {
-      "external_code": "prod_482",
-      "product_type_external_code": "type_edge",
-      "category_external_code": "cat_21",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "rectangular",
-      "name": {
-        "ru": "R = 1 мм сверху R = 1 мм снизу",
-        "en": "R = 1 mm top R = 1 mm bottom"
-      },
-      "preview_picture": "/upload/iblock/a74/iapl9i4i3bfl4mkzru0wfhb7n4qvmit0.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_482_def",
-          "sku": "rectangular-def",
-          "price": 0.0,
-          "cost_price": 0.0,
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/upload/iblock/a74/iapl9i4i3bfl4mkzru0wfhb7n4qvmit0.webp",
-          "detail_picture": null,
-          "eav": {}
-        }
-      ]
-    },
-    {
-      "external_code": "prod_483",
-      "product_type_external_code": "type_edge",
-      "category_external_code": "cat_21",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "shaped1",
-      "name": {
-        "ru": "Фасонная 1",
-        "en": "Shaped 1"
-      },
-      "preview_picture": "/upload/iblock/224/yttl2c79nytzmxo5j90oc1m1b0kxq3md.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_483_def",
-          "sku": "shaped1-def",
-          "price": 400.0,
-          "cost_price": 320.0,
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/upload/iblock/224/yttl2c79nytzmxo5j90oc1m1b0kxq3md.webp",
-          "detail_picture": null,
-          "eav": {}
-        }
-      ]
-    },
-    {
-      "external_code": "prod_484",
-      "product_type_external_code": "type_edge",
-      "category_external_code": "cat_21",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "shaped2",
-      "name": {
-        "ru": "Фасонная 2",
-        "en": "Shaped 2"
-      },
-      "preview_picture": "/upload/iblock/0f7/hx4y0r9xl914z1ox5e9ucrufwrolloa4.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_484_def",
-          "sku": "shaped2-def",
-          "price": 400.0,
-          "cost_price": 320.0,
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/upload/iblock/0f7/hx4y0r9xl914z1ox5e9ucrufwrolloa4.webp",
-          "detail_picture": null,
-          "eav": {}
-        }
-      ]
-    },
-    {
-      "external_code": "prod_485",
-      "product_type_external_code": "type_edge",
-      "category_external_code": "cat_21",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "shaped3",
-      "name": {
-        "ru": "Фасонная 3",
-        "en": "Shaped 3"
-      },
-      "preview_picture": "/upload/iblock/e56/km9z8m3dwz8dr6v6j6gxo9j6cimqkeq8.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_485_def",
-          "sku": "shaped3-def",
-          "price": 400.0,
-          "cost_price": 320.0,
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/upload/iblock/e56/km9z8m3dwz8dr6v6j6gxo9j6cimqkeq8.webp",
-          "detail_picture": null,
-          "eav": {}
-        }
-      ]
-    },
-    {
-      "external_code": "prod_486",
-      "product_type_external_code": "type_edge",
-      "category_external_code": "cat_21",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "shaped4",
-      "name": {
-        "ru": "Фасонная 4",
-        "en": "Shaped 4"
-      },
-      "preview_picture": "/upload/iblock/a28/o3bxperyeufxmkzo0y3jhaf2xer8e584.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_486_def",
-          "sku": "shaped4-def",
-          "price": 400.0,
-          "cost_price": 320.0,
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/upload/iblock/a28/o3bxperyeufxmkzo0y3jhaf2xer8e584.webp",
-          "detail_picture": null,
-          "eav": {}
-        }
-      ]
-    },
-    {
-      "external_code": "prod_489",
-      "product_type_external_code": "type_skirting",
-      "category_external_code": "cat_22",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "without-a-skirting",
-      "name": {
-        "ru": "Без бортика",
-        "en": "Without side"
-      },
-      "preview_picture": "/upload/iblock/949/d7zz8763iajg36nuvd8g0tj0p67yx342.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_489_def",
-          "sku": "without-a-skirting-def",
-          "price": 0.0,
-          "cost_price": 0.0,
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/upload/iblock/949/d7zz8763iajg36nuvd8g0tj0p67yx342.webp",
-          "detail_picture": null,
-          "eav": {}
-        }
-      ]
-    },
-    {
-      "external_code": "prod_490",
-      "product_type_external_code": "type_skirting",
-      "category_external_code": "cat_22",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "straight-skirting",
-      "name": {
-        "ru": "Прямой бортик",
-        "en": "Straight edge"
-      },
-      "preview_picture": "/upload/iblock/e4b/gd4bm0pxkmmgyeeqq2lj1qxko3kyvkma.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_490_def",
-          "sku": "straight-skirting-def",
-          "price": 700.0,
-          "cost_price": 560.0,
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/upload/iblock/e4b/gd4bm0pxkmmgyeeqq2lj1qxko3kyvkma.webp",
-          "detail_picture": null,
-          "eav": {}
-        }
-      ]
-    },
-    {
-      "external_code": "prod_491",
-      "product_type_external_code": "type_skirting",
-      "category_external_code": "cat_22",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "smooth-skirting",
-      "name": {
-        "ru": "Плавный бортик",
-        "en": "Smooth side"
-      },
-      "preview_picture": "/upload/iblock/270/94o50f6crxg7h0z1gjz30cidxhkqfgqn.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_491_def",
-          "sku": "smooth-skirting-def",
-          "price": 1850.0,
-          "cost_price": 1480.0,
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/upload/iblock/270/94o50f6crxg7h0z1gjz30cidxhkqfgqn.webp",
-          "detail_picture": null,
-          "eav": {}
-        }
-      ]
-    },
-    {
-      "external_code": "prod_492",
-      "product_type_external_code": "type_skirting",
-      "category_external_code": "cat_22",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "galtelny-skirting",
-      "name": {
-        "ru": "Галтельный бортик",
-        "en": "Filled edge"
-      },
-      "preview_picture": "/upload/iblock/8f1/9hb21guwrex3h6hs06yq8x2qna5cuzpf.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_492_def",
-          "sku": "galtelny-skirting-def",
-          "price": 700.0,
-          "cost_price": 560.0,
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/upload/iblock/8f1/9hb21guwrex3h6hs06yq8x2qna5cuzpf.webp",
+          "preview_picture": "/sides/side_4.webp",
           "detail_picture": null,
           "eav": {}
         }

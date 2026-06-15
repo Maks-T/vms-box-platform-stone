@@ -27066,7 +27066,7 @@
       "cutting_group_id": null,
       "price": 0,
       "currency": "USD",
-      "preview_picture": "/upload/iblock/b64/58kobbmyjdhlh5i82cg61469ei1zeco1.webp",
+      "preview_picture": "/edges/edge_1.webp",
       "eav": [],
       "variants": []
     },
@@ -27085,7 +27085,7 @@
       "cutting_group_id": null,
       "price": 0,
       "currency": "USD",
-      "preview_picture": "/upload/iblock/fc3/lai1jnbd4eaq3hh2usudfpa0lcoa4ia2.webp",
+      "preview_picture": "/edges/edge_2.webp",
       "eav": [],
       "variants": []
     },
@@ -27104,7 +27104,7 @@
       "cutting_group_id": null,
       "price": 0,
       "currency": "USD",
-      "preview_picture": "/upload/iblock/3d9/kw728s7zc67ic07igiwkayx2vkvluy2r.webp",
+      "preview_picture": "/edges/edge_3.webp",
       "eav": [],
       "variants": []
     },
@@ -27123,7 +27123,7 @@
       "cutting_group_id": null,
       "price": 0,
       "currency": "USD",
-      "preview_picture": "/upload/iblock/a74/iapl9i4i3bfl4mkzru0wfhb7n4qvmit0.webp",
+      "preview_picture": "/edges/edge_4.webp",
       "eav": [],
       "variants": []
     },
@@ -27142,7 +27142,7 @@
       "cutting_group_id": null,
       "price": 400,
       "currency": "USD",
-      "preview_picture": "/upload/iblock/224/yttl2c79nytzmxo5j90oc1m1b0kxq3md.webp",
+      "preview_picture": "/edges/edge_5.webp",
       "eav": [],
       "variants": []
     },
@@ -27161,7 +27161,7 @@
       "cutting_group_id": null,
       "price": 400,
       "currency": "USD",
-      "preview_picture": "/upload/iblock/0f7/hx4y0r9xl914z1ox5e9ucrufwrolloa4.webp",
+      "preview_picture": "/edges/edge_6.webp",
       "eav": [],
       "variants": []
     },
@@ -27180,7 +27180,7 @@
       "cutting_group_id": null,
       "price": 400,
       "currency": "USD",
-      "preview_picture": "/upload/iblock/e56/km9z8m3dwz8dr6v6j6gxo9j6cimqkeq8.webp",
+      "preview_picture": "/edges/edge_7.webp",
       "eav": [],
       "variants": []
     },
@@ -27199,7 +27199,7 @@
       "cutting_group_id": null,
       "price": 400,
       "currency": "USD",
-      "preview_picture": "/upload/iblock/a28/o3bxperyeufxmkzo0y3jhaf2xer8e584.webp",
+      "preview_picture": "/edges/edge_8.webp",
       "eav": [],
       "variants": []
     },
@@ -27218,7 +27218,7 @@
       "cutting_group_id": null,
       "price": 0,
       "currency": "USD",
-      "preview_picture": "/upload/iblock/949/d7zz8763iajg36nuvd8g0tj0p67yx342.webp",
+      "preview_picture": "/sides/side_1.webp",
       "eav": [],
       "variants": []
     },
@@ -27237,7 +27237,7 @@
       "cutting_group_id": null,
       "price": 700,
       "currency": "USD",
-      "preview_picture": "/upload/iblock/e4b/gd4bm0pxkmmgyeeqq2lj1qxko3kyvkma.webp",
+      "preview_picture": "/sides/side_2.webp",
       "eav": [],
       "variants": []
     },
@@ -27256,7 +27256,7 @@
       "cutting_group_id": null,
       "price": 1850,
       "currency": "USD",
-      "preview_picture": "/upload/iblock/270/94o50f6crxg7h0z1gjz30cidxhkqfgqn.webp",
+      "preview_picture": "/sides/side_3.webp",
       "eav": [],
       "variants": []
     },
@@ -27275,237 +27275,10 @@
       "cutting_group_id": null,
       "price": 700,
       "currency": "USD",
-      "preview_picture": "/upload/iblock/8f1/9hb21guwrex3h6hs06yq8x2qna5cuzpf.webp",
-      "eav": [],
-      "variants": []
-    },
-    {
-      "id": 479,
-      "parent_id": null,
-      "category_id": 21,
-      "type": "simple",
-      "name": {
-        "ru": "R = 3/6/9 мм сверху R = 1 мм снизу",
-        "en": "R = 3/6/9 mm top R = 1 mm bottom"
-      },
-      "slug": "rounded-on-1-side",
-      "product_type_code": "edge",
-      "price_category_slug": null,
-      "cutting_group_id": null,
-      "price": 0,
-      "currency": "RUB",
-      "preview_picture": "/upload/iblock/b64/58kobbmyjdhlh5i82cg61469ei1zeco1.webp",
-      "eav": [],
-      "variants": []
-    },
-    {
-      "id": 480,
-      "parent_id": null,
-      "category_id": 21,
-      "type": "simple",
-      "name": {
-        "ru": "R = 3/6/9 мм сверху R = 3/6/9 снизу",
-        "en": "R = 3/6/9 mm top R = 3/6/9 bottom"
-      },
-      "slug": "rounded-on-2-sides",
-      "product_type_code": "edge",
-      "price_category_slug": null,
-      "cutting_group_id": null,
-      "price": 0,
-      "currency": "RUB",
-      "preview_picture": "/upload/iblock/fc3/lai1jnbd4eaq3hh2usudfpa0lcoa4ia2.webp",
-      "eav": [],
-      "variants": []
-    },
-    {
-      "id": 481,
-      "parent_id": null,
-      "category_id": 21,
-      "type": "simple",
-      "name": {
-        "ru": "Фаска под 45° сверху R = 1 мм снизу",
-        "en": "45° chamfer at top R = 1 mm at bottom"
-      },
-      "slug": "under-45-degrees",
-      "product_type_code": "edge",
-      "price_category_slug": null,
-      "cutting_group_id": null,
-      "price": 0,
-      "currency": "RUB",
-      "preview_picture": "/upload/iblock/3d9/kw728s7zc67ic07igiwkayx2vkvluy2r.webp",
-      "eav": [],
-      "variants": []
-    },
-    {
-      "id": 482,
-      "parent_id": null,
-      "category_id": 21,
-      "type": "simple",
-      "name": {
-        "ru": "R = 1 мм сверху R = 1 мм снизу",
-        "en": "R = 1 mm top R = 1 mm bottom"
-      },
-      "slug": "rectangular",
-      "product_type_code": "edge",
-      "price_category_slug": null,
-      "cutting_group_id": null,
-      "price": 0,
-      "currency": "RUB",
-      "preview_picture": "/upload/iblock/a74/iapl9i4i3bfl4mkzru0wfhb7n4qvmit0.webp",
-      "eav": [],
-      "variants": []
-    },
-    {
-      "id": 483,
-      "parent_id": null,
-      "category_id": 21,
-      "type": "simple",
-      "name": {
-        "ru": "Фасонная 1",
-        "en": "Shaped 1"
-      },
-      "slug": "shaped1",
-      "product_type_code": "edge",
-      "price_category_slug": null,
-      "cutting_group_id": null,
-      "price": 400,
-      "currency": "RUB",
-      "preview_picture": "/upload/iblock/224/yttl2c79nytzmxo5j90oc1m1b0kxq3md.webp",
-      "eav": [],
-      "variants": []
-    },
-    {
-      "id": 484,
-      "parent_id": null,
-      "category_id": 21,
-      "type": "simple",
-      "name": {
-        "ru": "Фасонная 2",
-        "en": "Shaped 2"
-      },
-      "slug": "shaped2",
-      "product_type_code": "edge",
-      "price_category_slug": null,
-      "cutting_group_id": null,
-      "price": 400,
-      "currency": "RUB",
-      "preview_picture": "/upload/iblock/0f7/hx4y0r9xl914z1ox5e9ucrufwrolloa4.webp",
-      "eav": [],
-      "variants": []
-    },
-    {
-      "id": 485,
-      "parent_id": null,
-      "category_id": 21,
-      "type": "simple",
-      "name": {
-        "ru": "Фасонная 3",
-        "en": "Shaped 3"
-      },
-      "slug": "shaped3",
-      "product_type_code": "edge",
-      "price_category_slug": null,
-      "cutting_group_id": null,
-      "price": 400,
-      "currency": "RUB",
-      "preview_picture": "/upload/iblock/e56/km9z8m3dwz8dr6v6j6gxo9j6cimqkeq8.webp",
-      "eav": [],
-      "variants": []
-    },
-    {
-      "id": 486,
-      "parent_id": null,
-      "category_id": 21,
-      "type": "simple",
-      "name": {
-        "ru": "Фасонная 4",
-        "en": "Shaped 4"
-      },
-      "slug": "shaped4",
-      "product_type_code": "edge",
-      "price_category_slug": null,
-      "cutting_group_id": null,
-      "price": 400,
-      "currency": "RUB",
-      "preview_picture": "/upload/iblock/a28/o3bxperyeufxmkzo0y3jhaf2xer8e584.webp",
-      "eav": [],
-      "variants": []
-    },
-    {
-      "id": 489,
-      "parent_id": null,
-      "category_id": 22,
-      "type": "simple",
-      "name": {
-        "ru": "Без бортика",
-        "en": "Without side"
-      },
-      "slug": "without-a-skirting",
-      "product_type_code": "skirting",
-      "price_category_slug": null,
-      "cutting_group_id": null,
-      "price": 0,
-      "currency": "RUB",
-      "preview_picture": "/upload/iblock/949/d7zz8763iajg36nuvd8g0tj0p67yx342.webp",
-      "eav": [],
-      "variants": []
-    },
-    {
-      "id": 490,
-      "parent_id": null,
-      "category_id": 22,
-      "type": "simple",
-      "name": {
-        "ru": "Прямой бортик",
-        "en": "Straight edge"
-      },
-      "slug": "straight-skirting",
-      "product_type_code": "skirting",
-      "price_category_slug": null,
-      "cutting_group_id": null,
-      "price": 700,
-      "currency": "RUB",
-      "preview_picture": "/upload/iblock/e4b/gd4bm0pxkmmgyeeqq2lj1qxko3kyvkma.webp",
-      "eav": [],
-      "variants": []
-    },
-    {
-      "id": 491,
-      "parent_id": null,
-      "category_id": 22,
-      "type": "simple",
-      "name": {
-        "ru": "Плавный бортик",
-        "en": "Smooth side"
-      },
-      "slug": "smooth-skirting",
-      "product_type_code": "skirting",
-      "price_category_slug": null,
-      "cutting_group_id": null,
-      "price": 1850,
-      "currency": "RUB",
-      "preview_picture": "/upload/iblock/270/94o50f6crxg7h0z1gjz30cidxhkqfgqn.webp",
-      "eav": [],
-      "variants": []
-    },
-    {
-      "id": 492,
-      "parent_id": null,
-      "category_id": 22,
-      "type": "simple",
-      "name": {
-        "ru": "Галтельный бортик",
-        "en": "Filled edge"
-      },
-      "slug": "galtelny-skirting",
-      "product_type_code": "skirting",
-      "price_category_slug": null,
-      "cutting_group_id": null,
-      "price": 700,
-      "currency": "RUB",
-      "preview_picture": "/upload/iblock/8f1/9hb21guwrex3h6hs06yq8x2qna5cuzpf.webp",
+      "preview_picture": "/sides/side_4.webp",
       "eav": [],
       "variants": []
     }
+
   ]
 }

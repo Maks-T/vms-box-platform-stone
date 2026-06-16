@@ -15,7 +15,7 @@ class PricingManagerTest extends TestCase
 {
   use LazilyRefreshDatabase;
 
-  // Автоматически мигрирует тестовую БД `vms_stone_db_test` и изолирует тесты [1].
+  
 
   protected PricingManager $pricingManager;
 
@@ -31,7 +31,7 @@ class PricingManagerTest extends TestCase
    */
   public function test_it_converts_foreign_currency_to_base_currency(): void
   {
-    // Создаем базовую валюту (Рубли) [2]
+    // Создаем базовую валюту (Рубли)
     Currency::factory()->create([
       'code' => 'RUB',
       'rate' => 1.0,
@@ -45,7 +45,7 @@ class PricingManagerTest extends TestCase
       'is_default' => false,
     ]);
 
-    // Конвертируем 10 USD в RUB (10 * 95.5 = 955.0) [2]
+    // Конвертируем 10 USD в RUB (10 * 95.5 = 955.0)
     $result = $this->pricingManager->convert(10.0, 'USD', 'RUB');
 
     $this->assertEquals(955.0, $result);
@@ -68,7 +68,7 @@ class PricingManagerTest extends TestCase
       'is_default' => false,
     ]);
 
-    // Конвертируем 955 RUB в USD (955 / 95.5 = 10.0) [2]
+    // Конвертируем 955 RUB в USD (955 / 95.5 = 10.0)
     $result = $this->pricingManager->convert(955.0, 'RUB', 'USD');
 
     $this->assertEquals(10.0, $result);

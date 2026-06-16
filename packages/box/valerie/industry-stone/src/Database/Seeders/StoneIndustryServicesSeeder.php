@@ -519,7 +519,7 @@ class StoneIndustryServicesSeeder extends Seeder
             [
               'attribute_id' => $this->targetContextAttrs[$context],
               'attributable_id' => $product->id,
-              'attributable_type' => $product->getMorphClass(), // ИСПРАВЛЕНО!
+              'attributable_type' => $product->getMorphClass(), 
             ],
             [
               'value_boolean' => $isApplicable,
@@ -573,7 +573,7 @@ class StoneIndustryServicesSeeder extends Seeder
           [
             'attribute_id' => $this->targetAttrId,
             'attributable_id' => $variant->id,
-            'attributable_type' => $variant->getMorphClass(), // ИСПРАВЛЕНО!
+            'attributable_type' => $variant->getMorphClass(), 
           ],
           [
             'value_option_id' => $materialCode === 'acrylic_stone'

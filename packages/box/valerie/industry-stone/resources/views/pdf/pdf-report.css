@@ -1,0 +1,857 @@
+/* ==========================================================================
+   1. ПОДКЛЮЧЕНИЕ ШРИФТОВ (АБСОЛЮТНЫЕ ПУТИ И СИСТЕМНЫЕ ФОЛБЕКИ)
+   ========================================================================== */
+@font-face {
+  font-family: 'Jost';
+  src: url("../../fonts/Jost/Jost-Regular.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url("../../fonts/Jost/Jost-Medium.ttf") format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url("../../fonts/CormorantGaramond/CormorantGaramond-Regular.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url("../../fonts/CormorantGaramond/CormorantGaramond-Medium.ttf") format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* ==========================================================================
+   2. ГЛОБАЛЬНЫЕ СТИЛИ СТРАНИЦЫ И СЕТКА ДЛЯ ЭКРАНА
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Jost', 'DejaVu Sans', sans-serif;
+  color: #1A1916;
+  margin: 0;
+  padding: 0;
+  background-color: #FDFCFA;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* Контейнер страницы формата А4 (эмуляция на экране) */
+.page {
+  width: 210mm;
+  min-height: 296.8mm; /* Разрешаем странице расти, если контента много! */
+  page-break-after: always;
+  background-color: #FDFCFA;
+  overflow: visible;
+  margin: 0 auto;
+  position: relative; /* Возвращаем для идеального отображения на экране! */
+}
+
+.page:last-child {
+  page-break-after: avoid;
+}
+
+/* Тонкие золотистые градиентные полосы по краям (стиль Ligron) */
+.top-gradient-line {
+  width: 100%;
+  height: 1px;
+  background: #B8945A;
+}
+
+/* ==========================================================================
+   3. ВЕРХНИЙ И НИЖНИЙ КОЛОНТИТУЛЫ (ШАПКА И ПОДВАЛ ДЛЯ ЭКРАНА)
+   ========================================================================== */
+.page-header {
+  position: absolute;
+  top: 15mm; /* Отодвинули от верхнего края */
+  left: 53px;
+  right: 53px;
+  height: 55px;
+  border-bottom: 1px solid #DDD9D0;
+  display: table;
+  width: calc(100% - 106px);
+}
+
+.header-cell-left {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  color: #B8945A;
+  font-size: 9px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.header-cell-right {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+  color: #9A9690;
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.page-footer {
+  position: absolute;
+  bottom: 10mm; /* Отодвинули от нижнего края */
+  left: 53px;
+  right: 53px;
+  height: 50px;
+  border-top: 1px solid #DDD9D0;
+  display: table;
+  width: calc(100% - 106px);
+}
+
+.footer-cell-left {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  color: #9A9690;
+  font-size: 10px;
+}
+
+.footer-cell-center {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color: #9A9690;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-cell-right {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+  color: #9A9690;
+  font-size: 10px;
+}
+
+/* Контентная зона внутренних страниц (с запасом под шапку и подвал) */
+.page-content {
+  padding: 105px 53px 80px 53px;
+  width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   4. СТИЛИ ДЛЯ ТИТУЛЬНОГО ЛИСТА (ОБЛОЖКИ)
+   ========================================================================== */
+.page-cover {
+  background-color: #141412 !important;
+  color: #ffffff !important;
+  height: 296.8mm !important; /* Обложка ВСЕГДА должна быть ровно 1 страницу */
+  page-break-inside: avoid !important;
+  position: relative;
+}
+
+.cover-photo-container {
+  width: 100%;
+  height: 624px;
+  position: relative;
+  background-color: #242420;
+  overflow: hidden;
+  border-bottom: 1px solid #1A1916;
+}
+
+.cover-photo-bg {
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cover-photo-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 226px;
+  background: linear-gradient(to bottom, rgba(20, 20, 18, 0) 0%, #141412 100%);
+}
+
+.cover-content {
+  padding: 38px 53px 45px 53px;
+  position: relative;
+}
+
+.cover-top-line {
+  position: absolute;
+  top: 0;
+  left: 53px;
+  width: calc(100% - 106px);
+  height: 1px;
+  background: linear-gradient(to right, #B8945A 0%, rgba(184, 148, 90, 0) 100%);
+}
+
+.cover-brand-header {
+  color: #B8945A;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 22px;
+}
+
+.cover-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 46px;
+  margin: 0 0 10px 0;
+  color: #ffffff;
+}
+
+.cover-title span.italic-gold {
+  color: #D4B483;
+  font-style: italic;
+}
+
+.cover-gold-divider {
+  width: 150px;
+  height: 1px;
+  background: #B8945A;
+  opacity: 0.6;
+  margin-bottom: 22px;
+}
+
+.cover-meta-table {
+  display: table;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.cover-meta-cell {
+  display: table-cell;
+  width: 50%;
+  vertical-align: top;
+}
+
+.cover-meta-label {
+  font-size: 9.50px;
+  color: #D4B483;
+  text-transform: uppercase;
+  letter-spacing: 0.95px;
+  margin-bottom: 6px;
+}
+
+.cover-meta-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 19.60px;
+}
+
+.cover-meta-subvalue {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.90);
+  line-height: 19.60px;
+}
+
+.cover-price-badge {
+  display: inline-block;
+  background: rgba(208, 157, 74, 0.06);
+  border: 1px solid rgba(208, 157, 74, 0.4);
+  border-radius: 2px;
+  padding: 15px 23px;
+}
+
+.cover-price-label {
+  font-size: 10px;
+  color: #D4B483;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+  line-height: 16px;
+}
+
+.cover-price-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #D09D4A;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 41.60px;
+}
+
+.cover-page-indicator {
+  position: absolute;
+  right: 53px;
+  bottom: 45px;
+  color: rgba(255, 255, 255, 0.49);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   5. СТИЛИ ДЛЯ СТРАНИЦЫ СОСТАВА ЗАКАЗА (PAGE 2)
+   ========================================================================== */
+.section-card {
+  width: 100%;
+  margin-bottom: 25px;
+  border-radius: 2px;
+  border: 1px solid #DDD9D0;
+  overflow: hidden;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.section-card-header {
+  background-color: #1A1916;
+  color: #fff;
+  padding: 10px 15px;
+  display: table;
+  width: 100%;
+}
+
+.section-header-title {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 16px;
+}
+
+.section-header-price {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #B8945A;
+  line-height: 28.80px;
+}
+
+.section-card-body {
+  display: table;
+  width: 100%;
+}
+
+.section-body-left {
+  display: table-cell;
+  width: 50%;
+  vertical-align: top;
+  background-color: #F5F2EB;
+  border-right: 1px solid #DDD9D0;
+  text-align: center;
+  padding: 15px;
+}
+
+.section-body-left img {
+  max-width: 100%;
+  max-height: 180px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.section-body-right {
+  display: table-cell;
+  width: 50%;
+  vertical-align: top;
+}
+
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.specs-table tr {
+  border-bottom: 1px solid #DDD9D0;
+}
+
+.specs-table tr:last-child {
+  border-bottom: none;
+}
+
+.specs-table tr:nth-child(even) {
+  background-color: #F5F2EB;
+}
+
+.specs-table td {
+  padding: 8px 12px;
+  font-size: 11px;
+  line-height: 14px;
+}
+
+.specs-table td.spec-label {
+  width: 45%;
+  color: #5A5750;
+  font-weight: 400;
+}
+
+.specs-table td.spec-value {
+  width: 55%;
+  color: #1A1916;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   6. СТИЛИ ДЛЯ СВOДНОЙ СМЕТЫ (PAGE 3)
+   ========================================================================== */
+.estimate-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  page-break-inside: auto;
+}
+
+.estimate-table tr {
+  page-break-inside: avoid;
+  page-break-after: auto;
+}
+
+.estimate-section-header {
+  background-color: #1A1916;
+  color: #ffffff;
+  border-bottom: 1px solid #DDD9D0;
+}
+
+.estimate-section-header td {
+  padding: 9px 10px !important;
+  font-size: 10.5px !important;
+  font-weight: 500 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.63px;
+}
+
+.estimate-section-price {
+  font-family: 'Jost', sans-serif;
+  font-size: 10.5px;
+  color: #D4B483;
+  font-weight: 500;
+  text-align: right !important;
+}
+
+.estimate-table-th {
+  background-color: #F5F2EB;
+  border-bottom: 1px solid #DDD9D0;
+  color: #5A5750;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.estimate-table-th th {
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.estimate-row {
+  border-bottom: 1px solid #DDD9D0;
+}
+
+.estimate-row:last-child {
+  border-bottom: none;
+}
+
+.estimate-row:nth-child(odd) {
+  background-color: #FDFCFA;
+}
+
+.estimate-row:nth-child(even) {
+  background-color: #F5F2EB;
+}
+
+.estimate-row td {
+  padding: 7px 10px;
+  font-size: 11.5px;
+  line-height: 15px;
+}
+
+.estimate-cell-name {
+  color: #1A1916;
+  font-weight: 400;
+  text-align: left;
+}
+
+.estimate-cell-qty {
+  color: #5A5750;
+  font-weight: 400;
+  text-align: center;
+  width: 80px;
+}
+
+.estimate-cell-price {
+  color: #5A5750;
+  font-weight: 400;
+  text-align: right;
+  width: 110px;
+  font-family: 'Jost', sans-serif;
+}
+
+.estimate-cell-total {
+  color: #1A1916;
+  font-weight: 500;
+  text-align: right;
+  width: 110px;
+  font-family: 'Jost', sans-serif;
+}
+
+.grand-total-card {
+  background-color: #1A1916;
+  border: 1px solid #B8945A;
+  border-radius: 2px;
+  padding: 20px 30px;
+  margin-top: 30px;
+  display: table;
+  width: 100%;
+  page-break-inside: avoid;
+}
+
+.grand-total-left {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.grand-total-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1.14px;
+  margin-bottom: 10px;
+}
+
+.grand-total-desc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+  line-height: 15px;
+}
+
+.grand-total-right {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #B8945A;
+}
+
+/* ==========================================================================
+   7. СТИЛИ ДЛЯ СТРАНИЦЫ КОНТАКТОВ И СЛЕДУЮЩИХ ШАГОВ
+   ========================================================================== */
+.page-dark {
+  background-color: #141412 !important;
+  color: #ffffff !important;
+  height: 296.8mm !important; /* Страница контактов ВСЕГДА должна быть ровно 1 страницу */
+  page-break-inside: avoid !important;
+  position: relative; /* Добавили обратно position: relative для страницы контактов */
+}
+
+.page-dark .page-header {
+  border-bottom: 1px solid #2B2B2A !important; /* Граница из Figma */
+  position: absolute; /* Делаем колонтитулы абсолютными только на фиксированных страницах */
+}
+
+.page-dark .header-cell-right {
+  color: #9A9690 !important;
+}
+
+.page-dark .page-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  position: absolute; /* Делаем колонтитулы абсолютными только на фиксированных страницах */
+}
+
+.page-dark .footer-cell-left,
+.page-dark .footer-cell-center,
+.page-dark .footer-cell-right {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Тонкий разделитель под заголовком */
+.dark-divider {
+  width: 226.77px;
+  height: 1px;
+  background-color: rgba(184, 148, 90, 0.3); /* Цвет из Figma */
+  margin: 15px 0;
+}
+
+/* Карточки шагов заказа */
+.steps-container {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.step-card {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.04);
+  border-radius: 2px;
+  border-left: 2px #B8945A solid;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  display: table;
+}
+
+.step-num {
+  display: table-cell;
+  width: 45.34px;
+  vertical-align: middle;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  color: #B8945A;
+  font-weight: 500;
+}
+
+.step-content {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 15px;
+}
+
+.step-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 4px;
+  line-height: 19.20px;
+}
+
+.step-desc {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 15.40px;
+}
+
+/* Карточка персонального менеджера */
+.manager-card {
+  width: 100%;
+  background-color: #1A1916;
+  border-radius: 2px;
+  padding: 20px;
+  display: table;
+  page-break-inside: avoid;
+}
+
+.manager-photo-container {
+  display: table-cell;
+  width: 105.81px;
+  vertical-align: top;
+}
+
+.manager-photo {
+  width: 105.81px;
+  height: 128.50px;
+  background-color: #2A2A28;
+  border-radius: 2px;
+  text-align: center;
+}
+
+.manager-info {
+  display: table-cell;
+  vertical-align: top;
+  padding-left: 25px;
+}
+
+.manager-post {
+  font-size: 9px;
+  color: #D4B483;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  margin-bottom: 10px;
+  line-height: 14.40px;
+}
+
+.manager-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 12px;
+  font-weight: 400;
+  line-height: 26.40px;
+}
+
+.manager-contacts-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.manager-contacts-list li {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 10px;
+  line-height: 19.20px;
+  padding-left: 15px;
+  position: relative;
+}
+
+.manager-contacts-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7.6px;
+  width: 4px;
+  height: 4px;
+  background-color: #B8945A;
+  border-radius: 50%;
+}
+
+.closing-meta {
+  width: 100%;
+  margin-top: 25px;
+  display: table;
+}
+
+.closing-cell-left {
+  display: table-cell;
+  vertical-align: bottom;
+}
+
+.closing-cell-right {
+  display: table-cell;
+  vertical-align: bottom;
+  text-align: right;
+}
+
+.closing-label-left {
+  color: rgba(255, 255, 255, 0.30);
+  font-size: 10px;
+  margin-bottom: 4px;
+  line-height: 16px;
+}
+
+.closing-value-left {
+  color: rgba(255, 255, 255, 0.60);
+  font-size: 11.50px;
+  line-height: 18.40px;
+}
+
+.closing-label-right {
+  color: rgba(255, 255, 255, 0.50);
+  font-size: 10px;
+  margin-bottom: 4px;
+  line-height: 16px;
+}
+
+.closing-value-right {
+  font-family: 'Century', 'Cormorant Garamond', serif;
+  font-size: 26px;
+  color: #B8945A;
+  line-height: 41.60px;
+}
+
+/* ==========================================================================
+   8. СТИЛИ ДЛЯ ПРИНТЕРА И КЛИЕНТСКОЙ ПЕЧАТИ
+   ========================================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 20mm 15mm 20mm 15mm !important;
+  }
+
+  /* Для титульного листа (обложки) и контактов отменяем поля, чтобы они ложились на весь лист без рамок */
+  @page cover-page {
+    size: A4 portrait;
+    margin: 0 !important;
+  }
+
+  body {
+    background-color: #FDFCFA !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Контентные (средние) страницы при печати */
+  .page {
+    width: 100% !important; /* На ширину печатной области */
+    height: auto !important; /* Растягиваемся под размер таблиц */
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important; /* Отступы теперь контролируются полями @page! */
+    border: none !important;
+    box-shadow: none !important;
+    page-break-after: always !important;
+    page-break-inside: auto !important; /* Разрешаем мягкий разрыв таблиц */
+    break-inside: auto !important;
+    position: static !important;
+  }
+
+  .page .page-header {
+    position: fixed;
+    top: -14mm; /* Уходит вверх в зону 20мм полей */
+    left: 0;
+    right: 0;
+    width: 100% !important;
+  }
+
+  .page .page-footer {
+    position: fixed;
+    bottom: -12mm; /* Уходит вниз в зону 20мм полей */
+    left: 0;
+    right: 0;
+    width: 100% !important;
+  }
+
+  /* Обложка (Page 1) на печати */
+  .page-cover {
+    page: cover-page;
+    background-color: #141412 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    width: 210mm !important;
+    height: 296.8mm !important; /* Строго фиксированная высота в 1 лист */
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    position: relative !important;
+  }
+
+  /* Контакты (Page 4) на печати */
+  .page-dark {
+    page: cover-page; /* Применяем нулевые поля */
+    background-color: #141412 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    width: 210mm !important;
+    height: 296.8mm !important; /* Последняя страница ВСЕГДА фиксированной высоты на печать */
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    position: relative !important; /* Возвращаем позиционирование для контактов */
+  }
+}
+
+/* ==========================================================================
+   9. ДИНАМИЧЕСКИЙ РАСЧЕТ И ВЫВОД СТРАНИЦ КП (DEFAULTS & PRINT)
+   ========================================================================== */
+
+/* Инициализируем системный счетчик страниц на уровне всего документа */
+body {
+  counter-reset: page;
+}
+
+/* При переходе на каждый новый лист А4 увеличиваем счетчик на 1 */
+.page {
+  counter-increment: page;
+}
+
+/* Генерируем красивую строку номера страницы "Текущая / Всего" */
+.page-num-display::after {
+  content: counter(page) " / " counter(pages); /* 100% динамический расчет! */
+}

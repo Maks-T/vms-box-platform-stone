@@ -25,7 +25,7 @@ class ProtectDefaultRecord
           return false;
         }
 
-        // Тумблер отключается, если нет других записей, готовых принять на себя роль дефолтной
+        
         return !$modelClass::where($record->getKeyName(), '!=', $record->getKey())
           ->where('is_default', true)
           ->exists();

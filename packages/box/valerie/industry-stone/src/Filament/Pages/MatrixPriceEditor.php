@@ -111,7 +111,7 @@ class MatrixPriceEditor extends Page implements HasForms, HasTable
           });
         })
         ->state(function (Product $record) use ($slug, $retailPriceId) {
-          // ИСПРАВЛЕНО
+          
           $variant = $record->variants->first(function ($v) use ($slug) {
             return $v->attributeValues->contains(fn ($av) => $av->option?->slug === $slug);
           });

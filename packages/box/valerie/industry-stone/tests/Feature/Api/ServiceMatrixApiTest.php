@@ -18,7 +18,7 @@ use Nicole\Box\Core\Models\ProductAttributeValue;
 
 class ServiceMatrixApiTest extends TestCase
 {
-  use LazilyRefreshDatabase; // Быстрая миграция БД в изолированной транзакции [1]
+  use LazilyRefreshDatabase; 
 
   protected PriceType $retailPriceType;
   protected Attribute $targetMaterialAttribute;
@@ -29,34 +29,34 @@ class ServiceMatrixApiTest extends TestCase
   {
     parent::setUp();
 
-    // Создаем канал для прохождения Middleware
+    
     Channel::create([
       'code' => 'widget',
       'name' => ['ru' => 'Виджет', 'en' => 'Widget'],
       'is_active' => true,
     ]);
 
-    // Создаем базовую валюту системы
+    
     $rub = Currency::factory()->create([
       'code' => 'RUB',
       'rate' => 1.0,
       'is_default' => true,
     ]);
 
-    // Создаем тип цен по умолчанию
+    
     $this->retailPriceType = PriceType::factory()->create([
       'slug' => 'retail',
       'is_default' => true,
       'currency_id' => $rub->id,
     ]);
 
-    // Создаем EAV-атрибут "target_material" (целевой материал)
+    
     $this->targetMaterialAttribute = Attribute::factory()->create([
       'code' => 'target_material',
       'type' => Attribute::TYPE_DICTIONARY,
     ]);
 
-    // Создаем справочные значения материалов (Акрил и Кварц)
+    
     $this->optAcrylic = AttributeOption::factory()->create([
       'attribute_id' => $this->targetMaterialAttribute->id,
       'slug' => 'acrylic_stone',

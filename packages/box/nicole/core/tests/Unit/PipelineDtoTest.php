@@ -15,7 +15,7 @@ use Nicole\Box\Core\DTO\Pipeline\BindingRuleExportDto;
 
 class PipelineDtoTest extends TestCase
 {
-  use LazilyRefreshDatabase; // Быстрая миграция БД в изолированной транзакции
+  use LazilyRefreshDatabase; 
 
   /**
    * Сценарий: Проверка инициализации входных DTO-классов конвейера.

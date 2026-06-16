@@ -11,7 +11,7 @@ use Nicole\Box\Core\Models\PriceType;
 
 class ProtectDefaultRecordTest extends TestCase
 {
-  use LazilyRefreshDatabase; // Изолирует базу данных для теста
+  use LazilyRefreshDatabase; 
 
   /**
    * Сценарий 1: Попытка удаления дефолтной (базовой) валюты должна приводить к ошибке

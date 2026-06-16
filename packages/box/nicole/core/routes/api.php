@@ -3,8 +3,17 @@
 use Illuminate\Support\Facades\Route;
 use Nicole\Box\Core\Http\Controllers\Api\V1\BootstrapController;
 use Nicole\Box\Core\Http\Controllers\Api\V1\FilterController;
+use Nicole\Box\Core\Http\Controllers\Api\V1\OrderController;
+use Nicole\Box\Core\Http\Controllers\Api\V1\PdfExportController;
 use Nicole\Box\Core\Http\Controllers\Api\V1\ProductController;
 
 Route::get('/bootstrap', [BootstrapController::class, 'index']);
 Route::get('/{family}/filters', [FilterController::class, 'index']);
 Route::get('/{family}/products', [ProductController::class, 'index']);
+
+// Сохранение заказа
+Route::post('/order/save', [OrderController::class, 'save']);
+
+// Работа с PDF/HTML
+Route::get('/orders/{code}/pdf', [PdfExportController::class, 'streamPdf']);
+Route::get('/orders/{code}/html', [PdfExportController::class, 'viewHtml']);

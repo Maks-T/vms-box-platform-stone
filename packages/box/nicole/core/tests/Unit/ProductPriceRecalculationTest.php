@@ -14,7 +14,7 @@ use Nicole\Box\Core\Models\ProductVariantPrice;
 
 class ProductPriceRecalculationTest extends TestCase
 {
-  use LazilyRefreshDatabase; // Автоматически очищает базу данных между тестами
+  use LazilyRefreshDatabase; 
 
   protected PriceType $retailPriceType;
 

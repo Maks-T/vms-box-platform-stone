@@ -73,7 +73,7 @@ class ComplexDictionaryResourceTest extends TestCase
       'is_active' => true,
     ]);
 
-    // Проверяем, что схема полей корректно записалась в JSONB-колонку [2]
+    // Проверяем, что схема полей корректно записалась в JSONB-колонку
     $dictionary = ComplexDictionary::where('code', 'slab_thickness')->first();
     $this->assertNotEmpty($dictionary->meta_schema);
     $this->assertEquals('thickness_value', $dictionary->meta_schema[0]['key']);
@@ -123,7 +123,7 @@ class ComplexDictionaryResourceTest extends TestCase
   {
     $this->actingAs($this->adminUser);
 
-    // Создаем умный справочник со схемой полей, чтобы активировать поля мета-данных [2]
+    // Создаем умный справочник со схемой полей, чтобы активировать поля мета-данных
     $dictionary = ComplexDictionary::factory()->create([
       'meta_schema' => [
         [

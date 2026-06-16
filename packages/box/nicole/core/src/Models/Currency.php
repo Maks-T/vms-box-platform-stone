@@ -49,7 +49,7 @@ class Currency extends Model
       Cache::forget(CacheKey::CURRENCIES_LIST->value);
       Cache::forget(CacheKey::BASE_CURRENCY->value);
 
-      // Оставляем здесь только специфичную логику нормализации курса валюты
+      
       if ($currency->is_default && (float)$currency->rate !== 1.0) {
         $currency->updateQuietly(['rate' => 1.0]);
       }

@@ -27,6 +27,7 @@ class NicoleCoreServiceProvider extends ServiceProvider
 
     $this->mergeConfigFrom(__DIR__ . '/../config/nicole.php', 'nicole');
     $this->mergeConfigFrom(__DIR__ . '/../config/media-library.php', 'media-library');
+    $this->mergeConfigFrom(__DIR__ . '/../config/dompdf.php', 'dompdf');
 
     $this->app->singleton(PricingManager::class, fn() => new PricingManager);
     $this->app->singleton(CoreConfig::class, fn() => new CoreConfig());
@@ -72,7 +73,14 @@ class NicoleCoreServiceProvider extends ServiceProvider
       'unit' => \Nicole\Box\Core\Models\Unit::class,
       'attribute_option' => \Nicole\Box\Core\Models\AttributeOption::class,
       'stock' => \Nicole\Box\Core\Models\Stock::class,
+      'order' => \Nicole\Box\Core\Models\Order::class,
+      'order_section' => \Nicole\Box\Core\Models\OrderSection::class,
+      'order_status' => \Nicole\Box\Core\Models\OrderStatus::class,
+      'customer' => \Nicole\Box\Core\Models\Customer::class,
     ]);
+
+    //Шаблоны пакета
+    $this->loadViewsFrom(__DIR__ . '/../resources/views', 'nicole-core');
 
     if ($this->app->runningInConsole()) {
       $this->commands([

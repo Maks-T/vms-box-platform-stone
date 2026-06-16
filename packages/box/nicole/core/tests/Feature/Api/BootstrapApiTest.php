@@ -16,7 +16,7 @@ use Nicole\Box\Core\Models\ComplexDictionaryRecord;
 
 class BootstrapApiTest extends TestCase
 {
-  use LazilyRefreshDatabase; // Быстрая и изолированная миграция тестовой БД
+  use LazilyRefreshDatabase; 
 
   protected function setUp(): void
   {
@@ -160,7 +160,7 @@ class BootstrapApiTest extends TestCase
                 'slug',
                 'name',
                 'meta' => [
-                  'purchase_cost_total', // Должно автоматически посчитаться в RUB [2]
+                  'purchase_cost_total', // Должно автоматически посчитаться в RUB
                 ],
               ],
             ],

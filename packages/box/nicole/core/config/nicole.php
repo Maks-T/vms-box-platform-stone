@@ -69,4 +69,29 @@ return [
     \Nicole\Box\Core\Importers\ProductImporter::class,
     \Nicole\Box\Core\Importers\ServiceImporter::class,
   ],
+
+  /*
+  |--------------------------------------------------------------------------
+  | Динамический выбор активного PDF-шаблона сметы [nicole.php]
+  |--------------------------------------------------------------------------
+  | По умолчанию ядро использует простейший базовый шаблон.
+  | Для камня мы переопределим его в .env на 'valerie-stone::pdf.calculator-report'
+  */
+  'pdf_template' => env('VMS_PDF_TEMPLATE', 'nicole-core::pdf.calculator-report'),
+
+  /*
+  |--------------------------------------------------------------------------
+  | Реквизиты бренда и компании по умолчанию [nicole.php]
+  |--------------------------------------------------------------------------
+  */
+  'company' => [
+    'name' => env('VMS_COMPANY_NAME', 'Vistegra'),
+    'website' => env('VMS_COMPANY_WEBSITE', 'vistegra.ru'),
+    'phone' => env('VMS_COMPANY_PHONE', '8-800-505-87-40'),
+    'email' => env('VMS_COMPANY_EMAIL', 'contact@vistegra.ru'),
+    'address' => env('VMS_COMPANY_ADDRESS', 'г. Москва, ул. Флотская, д. 5, к. 2'),
+    'cover_image' => env('VMS_COMPANY_COVER_IMAGE', '/pdf/cover.jpg'),
+  ],
+
+
 ];

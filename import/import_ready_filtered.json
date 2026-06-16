@@ -27057,8 +27057,8 @@
       "category_id": 21,
       "type": "simple",
       "name": {
-        "ru": "R = 3/6/9 мм сверху R = 1 мм снизу",
-        "en": "R = 3/6/9 mm top R = 1 mm bottom"
+        "ru": "Кромка №1",
+        "en": "Edge #1"
       },
       "slug": "rounded-on-1-side",
       "product_type_code": "edge",
@@ -27076,8 +27076,8 @@
       "category_id": 21,
       "type": "simple",
       "name": {
-        "ru": "R = 3/6/9 мм сверху R = 3/6/9 снизу",
-        "en": "R = 3/6/9 mm top R = 3/6/9 bottom"
+        "ru": "Кромка №2",
+        "en": "Edge #2"
       },
       "slug": "rounded-on-2-sides",
       "product_type_code": "edge",
@@ -27095,8 +27095,8 @@
       "category_id": 21,
       "type": "simple",
       "name": {
-        "ru": "Фаска под 45° сверху R = 1 мм снизу",
-        "en": "45° chamfer at top R = 1 mm at bottom"
+        "ru": "Кромка №3",
+        "en": "Edge #3"
       },
       "slug": "under-45-degrees",
       "product_type_code": "edge",
@@ -27114,8 +27114,8 @@
       "category_id": 21,
       "type": "simple",
       "name": {
-        "ru": "R = 1 мм сверху R = 1 мм снизу",
-        "en": "R = 1 mm top R = 1 mm bottom"
+        "ru": "Кромка №4",
+        "en": "Edge #4"
       },
       "slug": "rectangular",
       "product_type_code": "edge",
@@ -27133,8 +27133,8 @@
       "category_id": 21,
       "type": "simple",
       "name": {
-        "ru": "Фасонная 1",
-        "en": "Shaped 1"
+        "ru": "Кромка №5",
+        "en": "Edge #5"
       },
       "slug": "shaped1",
       "product_type_code": "edge",
@@ -27152,8 +27152,8 @@
       "category_id": 21,
       "type": "simple",
       "name": {
-        "ru": "Фасонная 2",
-        "en": "Shaped 2"
+        "ru": "Кромка №6",
+        "en": "Edge #6"
       },
       "slug": "shaped2",
       "product_type_code": "edge",
@@ -27171,8 +27171,8 @@
       "category_id": 21,
       "type": "simple",
       "name": {
-        "ru": "Фасонная 3",
-        "en": "Shaped 3"
+        "ru": "Кромка №7",
+        "en": "Edge #7"
       },
       "slug": "shaped3",
       "product_type_code": "edge",
@@ -27190,8 +27190,8 @@
       "category_id": 21,
       "type": "simple",
       "name": {
-        "ru": "Фасонная 4",
-        "en": "Shaped 4"
+        "ru": "Кромка №8",
+        "en": "Edge #8"
       },
       "slug": "shaped4",
       "product_type_code": "edge",
@@ -27210,7 +27210,7 @@
       "type": "simple",
       "name": {
         "ru": "Без бортика",
-        "en": "Without side"
+        "en": "Without skirting"
       },
       "slug": "without-a-skirting",
       "product_type_code": "skirting",
@@ -27228,8 +27228,8 @@
       "category_id": 22,
       "type": "simple",
       "name": {
-        "ru": "Прямой бортик",
-        "en": "Straight edge"
+        "ru": "Бортик №1",
+        "en": "Skirting #1"
       },
       "slug": "straight-skirting",
       "product_type_code": "skirting",
@@ -27247,8 +27247,8 @@
       "category_id": 22,
       "type": "simple",
       "name": {
-        "ru": "Плавный бортик",
-        "en": "Smooth side"
+        "ru": "Бортик №2",
+        "en": "Skirting #2"
       },
       "slug": "smooth-skirting",
       "product_type_code": "skirting",
@@ -27266,8 +27266,8 @@
       "category_id": 22,
       "type": "simple",
       "name": {
-        "ru": "Галтельный бортик",
-        "en": "Filled edge"
+        "ru": "Бортик №3",
+        "en": "Skirting #3"
       },
       "slug": "galtelny-skirting",
       "product_type_code": "skirting",

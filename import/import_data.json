@@ -25700,8 +25700,8 @@
       "unit_code": "m",
       "slug": "rounded-on-1-side",
       "name": {
-        "ru": "R = 3/6/9 мм сверху R = 1 мм снизу",
-        "en": "R = 3/6/9 mm top R = 1 mm bottom"
+        "ru": "Кромка №1",
+        "en": "Edge #1"
       },
       "preview_picture": "/edges/edge_1.webp",
       "detail_picture": null,
@@ -25728,8 +25728,8 @@
       "unit_code": "m",
       "slug": "rounded-on-2-sides",
       "name": {
-        "ru": "R = 3/6/9 мм сверху R = 3/6/9 снизу",
-        "en": "R = 3/6/9 mm top R = 3/6/9 bottom"
+        "ru": "Кромка №2",
+        "en": "Edge #2"
       },
       "preview_picture": "/edges/edge_2.webp",
       "detail_picture": null,
@@ -25756,8 +25756,8 @@
       "unit_code": "m",
       "slug": "under-45-degrees",
       "name": {
-        "ru": "Фаска под 45° сверху R = 1 мм снизу",
-        "en": "45° chamfer at top R = 1 mm at bottom"
+        "ru": "Кромка №3",
+        "en": "Edge #3"
       },
       "preview_picture": "/edges/edge_3.webp",
       "detail_picture": null,
@@ -25784,8 +25784,8 @@
       "unit_code": "m",
       "slug": "rectangular",
       "name": {
-        "ru": "R = 1 мм сверху R = 1 мм снизу",
-        "en": "R = 1 mm top R = 1 mm bottom"
+        "ru": "Кромка №4",
+        "en": "Edge #4"
       },
       "preview_picture": "/edges/edge_4.webp",
       "detail_picture": null,
@@ -25812,8 +25812,8 @@
       "unit_code": "m",
       "slug": "shaped1",
       "name": {
-        "ru": "Фасонная 1",
-        "en": "Shaped 1"
+        "ru": "Кромка №5",
+        "en": "Edge #5"
       },
       "preview_picture": "/edges/edge_5.webp",
       "detail_picture": null,
@@ -25840,8 +25840,8 @@
       "unit_code": "m",
       "slug": "shaped2",
       "name": {
-        "ru": "Фасонная 2",
-        "en": "Shaped 2"
+        "ru": "Кромка №6",
+        "en": "Edge #6"
       },
       "preview_picture": "/edges/edge_6.webp",
       "detail_picture": null,
@@ -25868,8 +25868,8 @@
       "unit_code": "m",
       "slug": "shaped3",
       "name": {
-        "ru": "Фасонная 3",
-        "en": "Shaped 3"
+        "ru": "Кромка №7",
+        "en": "Edge #7"
       },
       "preview_picture": "/edges/edge_7.webp",
       "detail_picture": null,
@@ -25896,8 +25896,8 @@
       "unit_code": "m",
       "slug": "shaped4",
       "name": {
-        "ru": "Фасонная 4",
-        "en": "Shaped 4"
+        "ru": "Кромка №8",
+        "en": "Edge #8"
       },
       "preview_picture": "/edges/edge_8.webp",
       "detail_picture": null,
@@ -25925,7 +25925,7 @@
       "slug": "without-a-skirting",
       "name": {
         "ru": "Без бортика",
-        "en": "Without side"
+        "en": "Without skirting"
       },
       "preview_picture": "/sides/side_1.webp",
       "detail_picture": null,
@@ -25952,8 +25952,8 @@
       "unit_code": "m",
       "slug": "straight-skirting",
       "name": {
-        "ru": "Прямой бортик",
-        "en": "Straight edge"
+        "ru": "Бортик №1",
+        "en": "Skirting #1"
       },
       "preview_picture": "/sides/side_2.webp",
       "detail_picture": null,
@@ -25980,8 +25980,8 @@
       "unit_code": "m",
       "slug": "smooth-skirting",
       "name": {
-        "ru": "Плавный бортик",
-        "en": "Smooth side"
+        "ru": "Бортик №2",
+        "en": "Skirting #2"
       },
       "preview_picture": "/sides/side_3.webp",
       "detail_picture": null,
@@ -26008,8 +26008,8 @@
       "unit_code": "m",
       "slug": "galtelny-skirting",
       "name": {
-        "ru": "Галтельный бортик",
-        "en": "Filled edge"
+        "ru": "Бортик №3",
+        "en": "Skirting #3"
       },
       "preview_picture": "/sides/side_4.webp",
       "detail_picture": null,

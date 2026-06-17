@@ -31,15 +31,48 @@
 
         $folder = collect($section->specs)->firstWhere('key', 'product_type')['code'] ?? 'worktop';
 
-        $shapeCode = collect($section->specs)->firstWhere('key', 'shape')['code'] ?? 'line';
+        $base64Images = []; // Массив, в который мы соберем картинки для вывода слева
 
-        $fileName = str_replace('-', '_', $shapeCode) . '.png';
+        if ($folder === 'windowsill') {
 
-        $imagePath = public_path("pdf/layouts/{$folder}/{$fileName}");
-        $base64Image = '';
+            $windowsillSpecs = collect($section->specs)->filter(fn($spec) => str_starts_with($spec['key'], 'podokonnik_'));
 
-        if (file_exists($imagePath)) {
-            $base64Image = 'data:image/png;base64,' . base64_encode(file_get_contents($imagePath));
+            $imgHeight = $windowsillSpecs->count() === 1 ? '180px' : '100px';
+
+            foreach ($windowsillSpecs as $spec) {
+                $valLower = mb_strtolower($spec['value']);
+
+                if (str_contains($valLower, 'углов')) {
+                    $shapeFile = 'corner.png';
+                } elseif (str_contains($valLower, 'эркер')) {
+                    $shapeFile = 'bay.png';
+                } else {
+                    $shapeFile = 'line.png';
+                }
+
+                $imagePath = public_path("pdf/layouts/windowsill/{$shapeFile}");
+                if (file_exists($imagePath)) {
+                    $base64Images[] = [
+                        'label' => $spec['label'], // "Подоконник №1"
+                        'base64' => 'data:image/png;base64,' . base64_encode(file_get_contents($imagePath)),
+                        'height' => $imgHeight
+                    ];
+                }
+            }
+        } else {
+            // Для столешниц (кухня/ванная) берем один большой рендер
+            $shapeCode = collect($section->specs)->firstWhere('key', 'shape')['code'] ?? 'line';
+            $fileName = str_replace('-', '_', $shapeCode) . '.png';
+            $imagePath = public_path("pdf/layouts/{$folder}/{$fileName}");
+
+            if (file_exists($imagePath)) {
+                $base64Image = 'data:image/png;base64,' . base64_encode(file_get_contents($imagePath));
+                $base64Images[] = [
+                    'base64' => $base64Image,
+                    'label' => null,
+                    'height' => '250px'
+                ];
+            }
         }
       @endphp
 
@@ -54,16 +87,23 @@
         </div>
 
         <div class="section-card-body">
-          <div class="section-body-left">
-            @if (!empty($base64Image))
-              <!-- Выводим премиальный 3D-рендер формы изделия из соответствующей папки -->
-              <img src="{{ $base64Image }}" alt="{{ $section->title }}">
+          <div class="section-body-left" style="vertical-align: middle;">
+            @if (!empty($base64Images))
+              <!-- Выводим рендеры с динамической высотой -->
+              @foreach ($base64Images as $img)
+                <div style="margin-bottom: 12px; text-align: center; page-break-inside: avoid;">
+                  <img src="{{ $img['base64'] }}" alt="{{ $section->title }}" style="max-height: {{ $img['height'] }}; width: auto; display: block; margin: 0 auto;">
+                  @if ($img['label'])
+                    <span style="font-size: 7.5px; color: #5A5750; display: block; margin-top: 1px; text-transform: uppercase; letter-spacing: 0.5px;">{{ $img['label'] }}</span>
+                  @endif
+                </div>
+              @endforeach
             @elseif ($section->hasMedia('drawing'))
-              <!-- Резервный вариант: выводим оригинальный чертеж калькулятора, если рендер не найден -->
-              <img src="{{ $section->getFirstMediaPath('drawing') }}" alt="{{ $section->title }}">
+              <!-- Резервный вариант: чертеж из калькулятора -->
+              <img src="{{ $section->getFirstMediaPath('drawing') }}" alt="{{ $section->title }}" style="max-height: 180px; width: auto; display: block; margin: 0 auto;">
             @else
               <!-- Дефолтная заглушка -->
-              <img src="https://placehold.co/400x300" alt="Изображение отсутствует">
+              <img src="https://placehold.co/400x300" alt="Изображение отсутствует" style="max-height: 180px; width: auto; display: block; margin: 0 auto;">
             @endif
           </div>
 

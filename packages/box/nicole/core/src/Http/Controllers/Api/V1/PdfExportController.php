@@ -32,6 +32,7 @@ class PdfExportController extends Controller
 
   /**
    * Отдача чистой HTML-версии сметы
+   */
   public function viewHtml(string $code)
   {
     $payload = $this->getTemplateData($code);
@@ -42,6 +43,7 @@ class PdfExportController extends Controller
 
   /**
    * Вспомогательный метод: собирает всю общую часть (заказ + QR-код)
+   */
   protected function getTemplateData(string $code): array
   {
     // 1. Извлекаем заказ со всеми связями

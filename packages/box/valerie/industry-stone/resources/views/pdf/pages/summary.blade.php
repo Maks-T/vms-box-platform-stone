@@ -1,3 +1,7 @@
+@php
+  /** @var \Nicole\Box\Core\Models\Order $order */
+@endphp
+
 <div class="page">
   <div class="top-gradient-line"></div>
 
@@ -23,6 +27,22 @@
     </h2>
 
     @foreach ($order->sections as $index => $section)
+      @php
+
+        $folder = collect($section->specs)->firstWhere('key', 'product_type')['code'] ?? 'worktop';
+
+        $shapeCode = collect($section->specs)->firstWhere('key', 'shape')['code'] ?? 'line';
+
+        $fileName = str_replace('-', '_', $shapeCode) . '.png';
+
+        $imagePath = public_path("pdf/layouts/{$folder}/{$fileName}");
+        $base64Image = '';
+
+        if (file_exists($imagePath)) {
+            $base64Image = 'data:image/png;base64,' . base64_encode(file_get_contents($imagePath));
+        }
+      @endphp
+
       <div class="section-card">
         <div class="section-card-header">
           <div class="section-header-title">
@@ -35,20 +55,28 @@
 
         <div class="section-card-body">
           <div class="section-body-left">
-            @if ($section->hasMedia('drawing'))
+            @if (!empty($base64Image))
+              <!-- Выводим премиальный 3D-рендер формы изделия из соответствующей папки -->
+              <img src="{{ $base64Image }}" alt="{{ $section->title }}">
+            @elseif ($section->hasMedia('drawing'))
+              <!-- Резервный вариант: выводим оригинальный чертеж калькулятора, если рендер не найден -->
               <img src="{{ $section->getFirstMediaPath('drawing') }}" alt="{{ $section->title }}">
             @else
-              <img src="https://placehold.co/400x300" alt="Нет чертежа">
+              <!-- Дефолтная заглушка -->
+              <img src="https://placehold.co/400x300" alt="Изображение отсутствует">
             @endif
           </div>
 
           <div class="section-body-right">
             <table class="specs-table">
               @foreach ($section->specs ?? [] as $spec)
-                <tr>
-                  <td class="spec-label">{{ $spec['label'] }}</td>
-                  <td class="spec-value">{{ $spec['value'] }}</td>
-                </tr>
+                <!-- Пропускаем техническое поле shape_code [1] -->
+                @if ($spec['key'] !== 'shape_code' && !empty($spec['label']) && !empty($spec['value']))
+                  <tr>
+                    <td class="spec-label">{{ $spec['label'] }}</td>
+                    <td class="spec-value">{{ $spec['value'] }}</td>
+                  </tr>
+                @endif
               @endforeach
             </table>
           </div>

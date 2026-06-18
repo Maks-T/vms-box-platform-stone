@@ -95,7 +95,7 @@ class AdminPanelProvider extends PanelProvider
         TranslatableFieldsPlugin::make()
           ->supportedLocales(['ru', 'en']),
 
-        FilamentShieldPlugin::make(),
+        FilamentShieldPlugin::make()->navigationGroup('Контроль доступа'),
       ]);
   }
 }

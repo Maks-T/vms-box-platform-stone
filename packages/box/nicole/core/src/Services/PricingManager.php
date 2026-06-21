@@ -15,8 +15,6 @@ use Nicole\Box\Core\Models\ProductVariant;
 
 class PricingManager
 {
-  
-
   public Currency $baseCurrency {
     get => $this->baseCurrency ??= Currency::where('is_default', true)->first()
       ?? throw new \RuntimeException(__('Critical error: Base currency (is_default = true) is not set in the system. Please check currency settings.'));
@@ -41,15 +39,12 @@ class PricingManager
     }
   }
 
-  
-
   public function convert(float $amount, string $fromCode, string $toCode): float
   {
     if ($amount <= 0 || $fromCode === $toCode) {
       return $amount;
     }
 
-    
     $currencies = $this->currenciesList->keyBy('code');
     $fromRate = $currencies->get($fromCode)?->rate ?? 1.0;
     $toRate = $currencies->get($toCode)?->rate ?? 1.0;
@@ -58,52 +53,38 @@ class PricingManager
     return $baseAmount / $toRate;
   }
 
-  private function calculateDictionaryPrice(?ProductAttributeValue $val, string $field): ?float
+  public function getVariantPrice(ProductVariant $variant, ?string $priceTypeSlug = null): float
   {
-    if (!$val || !$val->complexRecord) {
-      return null;
-    }
+    $priceTypeSlug = $priceTypeSlug ?? $this->defaultPriceType->slug;
 
-    $meta = $val->complexRecord->meta ?? [];
-    $cost = (float) ($meta[$field] ?? 0);
+    // Получаем объект типа цен с загруженной валютой
+    $priceType = PriceType::with('currency')->where('slug', $priceTypeSlug)->first() ?? $this->defaultPriceType;
 
-    if ($cost <= 0) {
-      return null;
-    }
+    // 1. Ищем наценку для данного типа цены в таблице product_variant_prices
+    $priceRecord = $variant->prices()
+      ->whereHas('type', fn($q) => $q->where('slug', $priceTypeSlug))
+      ->first();
 
-    $markup = (float) ($meta[$field . ComplexDictionary::MARKUP_SUFFIX] ?? 0);
-    $schema = $val->complexRecord->dictionary->meta_schema ?? [];
+    if ($priceRecord) {
+      $costPrice = (float) $variant->cost_price;
+      $costCurrency = $variant->currency;
+      $markup = (float) $priceRecord->markup_percent;
 
-    
-    $baseCurrencyCode = $this->baseCurrency->code;
-    $currencyCode = $baseCurrencyCode;
+      if ($costPrice > 0) {
+        // Считаем цену с маржой в валюте закупки
+        $priceInCostCurrency = $costPrice * (1 + $markup / 100);
 
-    foreach ($schema as $sField) {
-      if (($sField['key'] ?? '') === $field) {
-        $currencyCode = $sField['currency'] ?? $baseCurrencyCode;
-        break;
+        // Определяем валюту целевого типа цен (например, RUB)
+        $targetCurrency = $priceRecord->type->currency->code ?? $this->baseCurrency->code;
+
+        // Конвертируем и округляем до копеек
+        return round($this->convert($priceInCostCurrency, $costCurrency, $targetCurrency), 2);
       }
     }
 
-    $convertedCost = $this->convert($cost, $currencyCode, $baseCurrencyCode);
-    return round($convertedCost * (1 + $markup / 100), 2);
-  }
-
-  public function getVariantPrice(ProductVariant $variant, ?string $priceTypeSlug = null): float
-  {
-    
-    $priceTypeSlug = $priceTypeSlug ?? $this->defaultPriceType->slug;
-
-    $manualPrice = $variant->getPrice($priceTypeSlug);
-    if ($manualPrice > 0) {
-      return $manualPrice;
-    }
-
-    
-    if ($priceTypeSlug === $this->defaultPriceType->slug) {
-      $product = $variant->product;
-      if (!$product || !$product->type) return 0.0;
-
+    // 2. Если индивидуальной наценки нет, проверяем режим "complex_dictionary" (умный справочник)
+    $product = $variant->product;
+    if ($product && $product->type) {
       $type = $product->type;
       if ($type->pricing_mode === 'complex_dictionary' && $type->pricing_attribute_id) {
         $attrId = $type->pricing_attribute_id;
@@ -111,7 +92,8 @@ class PricingManager
         $val = $variant->attributeValues->firstWhere('attribute_id', $attrId)
           ?? $product->attributeValues->firstWhere('attribute_id', $attrId);
 
-        $calculatedPrice = $this->calculateDictionaryPrice($val, (string) $type->pricing_field);
+        // Передаем объект PriceType третьим аргументом для точного расчета
+        $calculatedPrice = $this->calculateDictionaryPrice($val, (string) $type->pricing_field, $priceType);
 
         if ($calculatedPrice !== null) {
           return $calculatedPrice;
@@ -125,7 +107,6 @@ class PricingManager
   public function getVariantPricesMap(ProductVariant $variant): array
   {
     $prices = [];
-    
     foreach ($this->channelPriceTypes as $type) {
       $prices[$type->slug] = $this->getVariantPrice($variant, $type->slug);
     }
@@ -136,5 +117,97 @@ class PricingManager
   public function getRetailPrice(Product $product): float
   {
     return (float) $product->min_price;
+  }
+
+  private function calculateDictionaryPrice(?ProductAttributeValue $val, string $field, PriceType $priceType): ?float
+  {
+    if (!$val || !$val->complexRecord) {
+      return null;
+    }
+
+    $meta = $val->complexRecord->meta ?? [];
+    $cost = (float) ($meta[$field] ?? 0);
+
+    if ($cost <= 0) {
+      return null;
+    }
+
+    // Считываем наценку конкретно для запрашиваемого типа цены
+    $markupKey = $field . '_markup_' . $priceType->slug;
+    $markup = (float) ($meta[$markupKey] ?? ($meta[$field . ComplexDictionary::MARKUP_SUFFIX] ?? 0));
+
+    $schema = $val->complexRecord->dictionary->meta_schema ?? [];
+
+    $baseCurrencyCode = $this->baseCurrency->code;
+    $currencyCode = $baseCurrencyCode;
+
+    foreach ($schema as $sField) {
+      if (($sField['key'] ?? '') === $field) {
+        $currencyCode = $sField['currency'] ?? $baseCurrencyCode;
+        break;
+      }
+    }
+
+    // Конвертируем исходную себестоимость из валюты закупки напрямую в валюту продажи
+    $targetCurrencyCode = $priceType->currency->code ?? $baseCurrencyCode;
+    $convertedCost = $this->convert($cost, $currencyCode, $targetCurrencyCode);
+
+    return round($convertedCost * (1 + $markup / 100), 2);
+  }
+
+  /**
+   * Получить расчетную базовую себестоимость варианта (с учетом справочников).
+   */
+  public function getVariantCostPrice(ProductVariant $variant): float
+  {
+    if ($variant->is_manual_pricing) {
+      return (float) $variant->cost_price;
+    }
+
+    $product = $variant->product;
+    if ($product && $product->type && $product->type->pricing_mode === 'complex_dictionary') {
+      $attrId = $product->type->pricing_attribute_id;
+      $field = $product->type->pricing_field;
+
+      $val = $variant->attributeValues->firstWhere('attribute_id', $attrId)
+        ?? $product->attributeValues->firstWhere('attribute_id', $attrId);
+
+      if ($val && $val->complexRecord) {
+        $meta = $val->complexRecord->meta ?? [];
+        return (float) ($meta[$field] ?? 0.0);
+      }
+    }
+
+    return (float) $variant->cost_price;
+  }
+
+  /**
+   * Получить валюту базовой себестоимости варианта (с учетом справочников).
+   */
+  public function getVariantCostCurrency(ProductVariant $variant): string
+  {
+    if ($variant->is_manual_pricing) {
+      return $variant->currency;
+    }
+
+    $product = $variant->product;
+    if ($product && $product->type && $product->type->pricing_mode === 'complex_dictionary') {
+      $attrId = $product->type->pricing_attribute_id;
+      $field = $product->type->pricing_field;
+
+      $val = $variant->attributeValues->firstWhere('attribute_id', $attrId)
+        ?? $product->attributeValues->firstWhere('attribute_id', $attrId);
+
+      if ($val && $val->complexRecord) {
+        $schema = $val->complexRecord->dictionary->meta_schema ?? [];
+        foreach ($schema as $sField) {
+          if (($sField['key'] ?? '') === $field && isset($sField['currency'])) {
+            return $sField['currency'];
+          }
+        }
+      }
+    }
+
+    return $variant->currency;
   }
 }

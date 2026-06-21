@@ -28,7 +28,7 @@ class ServiceMatrixResource extends JsonResource
       if ($materialSlug) {
         $priceRecord = $variant->prices->firstWhere('price_type_id', $defaultPriceId);
         if ($priceRecord) {
-          $prices[$materialSlug] = (float) $priceRecord->price;
+          $prices[$materialSlug] = (float) $pricingManager->getVariantPrice($variant);
         }
       }
     }

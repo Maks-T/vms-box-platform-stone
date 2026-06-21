@@ -190,7 +190,7 @@ class CatalogImportTest extends TestCase
     // Проверяем создание цены модификации
     $this->assertDatabaseHas('product_variant_prices', [
       'product_variant_id' => $variant->id,
-      'price' => 5000.0,
+      'markup_percent' => 66.6666666667,
     ]);
 
     // Проверяем создание остатков на складе

@@ -34,6 +34,7 @@ class ProductVariant extends Model implements HasMedia
     'is_default',
     'is_active',
     'sort_order',
+    'is_manual_pricing',
   ];
 
   protected function casts(): array
@@ -44,6 +45,7 @@ class ProductVariant extends Model implements HasMedia
       'is_default' => 'boolean',
       'is_active' => 'boolean',
       'sort_order' => 'integer',
+      'is_manual_pricing' => 'boolean',
     ];
   }
 
@@ -69,12 +71,7 @@ class ProductVariant extends Model implements HasMedia
 
   public function getPrice(?string $typeSlug = null): float
   {
-
-    $typeSlug = $typeSlug ?? app(\Nicole\Box\Core\Services\PricingManager::class)->defaultPriceType->slug;
-
-    return (float)$this->prices()
-      ->whereHas('type', fn($q) => $q->where('slug', $typeSlug))
-      ->value('price') ?? 0.0;
+    return app(\Nicole\Box\Core\Services\PricingManager::class)->getVariantPrice($this, $typeSlug);
   }
 
   public function registerMediaCollections(): void

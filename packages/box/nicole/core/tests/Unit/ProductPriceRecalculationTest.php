@@ -14,9 +14,12 @@ use Nicole\Box\Core\Models\ProductVariantPrice;
 
 class ProductPriceRecalculationTest extends TestCase
 {
-  use LazilyRefreshDatabase; // Автоматически очищает базу данных между тестами
+  use LazilyRefreshDatabase;
 
-  protected PriceType $retailPriceType;
+  // Автоматически очищает базу данных между тестами
+
+  /** @var \Nicole\Box\Core\Models\PriceType */
+  protected PriceType|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model $retailPriceType;
 
   protected function setUp(): void
   {
@@ -42,25 +45,22 @@ class ProductPriceRecalculationTest extends TestCase
    */
   public function test_product_min_price_updates_when_variant_price_is_created(): void
   {
-    // Создаем товар без вариантов
     $product = Product::factory()->create(['min_price' => 0.0]);
-
     $this->assertEquals(0.0, $product->min_price);
 
-    // Создаем модификацию товара
     $variant = ProductVariant::factory()->create([
       'product_id' => $product->id,
       'is_active' => true,
+      'cost_price' => 4000.0, // Задаем себестоимость 4000
     ]);
 
-    // Создаем цену для модификации (5000 рублей)
+    // Наценка 25% от 4000 дает цену 5000.00
     ProductVariantPrice::factory()->create([
       'product_variant_id' => $variant->id,
       'price_type_id' => $this->retailPriceType->id,
-      'price' => 5000.0,
+      'markup_percent' => 25.0,
     ]);
 
-    // Проверяем, что товар автоматически пересчитал свою минимальную цену
     $product->refresh();
     $this->assertEquals(5000.0, $product->min_price);
   }
@@ -72,36 +72,35 @@ class ProductPriceRecalculationTest extends TestCase
   {
     $product = Product::factory()->create(['min_price' => 0.0]);
 
-    // Создаем дорогой вариант (12 000 рублей)
+    // Дорогой вариант (закупка 10000 + наценка 20% = 12000.00)
     $variant1 = ProductVariant::factory()->create([
       'product_id' => $product->id,
       'is_active' => true,
+      'cost_price' => 10000.0,
     ]);
     ProductVariantPrice::factory()->create([
       'product_variant_id' => $variant1->id,
       'price_type_id' => $this->retailPriceType->id,
-      'price' => 12000.0,
+      'markup_percent' => 20.0,
     ]);
 
-    // Создаем дешевый вариант (8500 рублей)
+    // Дешевый вариант (закупка 10000 + наценка -15% = 8500.00)
     $variant2 = ProductVariant::factory()->create([
       'product_id' => $product->id,
       'is_active' => true,
+      'cost_price' => 10000.0,
     ]);
     ProductVariantPrice::factory()->create([
       'product_variant_id' => $variant2->id,
       'price_type_id' => $this->retailPriceType->id,
-      'price' => 8500.0,
+      'markup_percent' => -15.0,
     ]);
 
-    // Товар должен выбрать минимальную цену из двух - 8500
     $product->refresh();
     $this->assertEquals(8500.0, $product->min_price);
 
-    // Отключаем дешевый вариант (делаем его неактивным)
     $variant2->update(['is_active' => false]);
 
-    // Товар должен автоматически переключить минимальную цену на оставшийся активный вариант - 12000
     $product->refresh();
     $this->assertEquals(12000.0, $product->min_price);
   }

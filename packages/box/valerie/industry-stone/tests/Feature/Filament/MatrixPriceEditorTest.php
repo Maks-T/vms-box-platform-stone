@@ -19,17 +19,29 @@ use Nicole\Box\Core\Models\AttributeOption;
 use Nicole\Box\Core\Models\ProductAttributeValue;
 use Valerie\Box\IndustryStone\Filament\Pages\MatrixPriceEditor;
 use Livewire\Livewire;
+use Nicole\Box\Core\Services\PricingManager;
 
 class MatrixPriceEditorTest extends TestCase
 {
   use LazilyRefreshDatabase; // Быстрая и изолированная миграция тестовой БД
 
-  protected User $adminUser;
-  protected PriceType $retailPriceType;
-  protected Attribute $targetMaterialAttribute;
-  protected AttributeOption $optAcrylic;
-  protected Product $service;
-  protected ProductVariant $variantAcrylic;
+  /** @var \App\Models\User */
+  protected $adminUser;
+
+  /** @var \Nicole\Box\Core\Models\PriceType */
+  protected $retailPriceType;
+
+  /** @var \Nicole\Box\Core\Models\Attribute */
+  protected $targetMaterialAttribute;
+
+  /** @var \Nicole\Box\Core\Models\AttributeOption */
+  protected $optAcrylic;
+
+  /** @var \Nicole\Box\Core\Models\Product */
+  protected $service;
+
+  /** @var \Nicole\Box\Core\Models\ProductVariant */
+  protected $variantAcrylic;
 
   protected function setUp(): void
   {
@@ -81,12 +93,13 @@ class MatrixPriceEditorTest extends TestCase
       'product_id' => $this->service->id,
       'sku' => 'cutout_top_acrylic',
       'is_active' => true,
+      'cost_price' => 1650.0, // Услуга
     ]);
 
     ProductVariantPrice::factory()->create([
       'product_variant_id' => $this->variantAcrylic->id,
       'price_type_id' => $this->retailPriceType->id,
-      'price' => 1650.0,
+      'markup_percent' => 0.0, // 0% маржа
     ]);
 
     ProductAttributeValue::factory()->create([
@@ -126,7 +139,7 @@ class MatrixPriceEditorTest extends TestCase
   {
     $this->actingAs($this->adminUser);
 
-    // Просто вызываем метод обновления значения [2]
+    // Вызываем метод обновления значения в ячейке таблицы (ставим 1750 вместо 1650)
     Livewire::test(MatrixPriceEditor::class)
       ->call(
         'updateTableColumnState',
@@ -135,13 +148,10 @@ class MatrixPriceEditorTest extends TestCase
         '1750'
       );
 
-    // Проверяем, что цена в базе данных действительно изменилась на 1750 рублей! [2]
-    $priceInDb = ProductVariantPrice::where([
-      'product_variant_id' => $this->variantAcrylic->id,
-      'price_type_id' => $this->retailPriceType->id,
-    ])->value('price');
+    // Проверяем, что на лету рассчитанная цена продажи через PricingManager равна ровно 1750.00
+    $calculatedPrice = app(PricingManager::class)->getVariantPrice($this->variantAcrylic, 'retail');
 
-    $this->assertEquals(1750.0, (float) $priceInDb);
+    $this->assertEquals(1750.0, $calculatedPrice);
   }
 
 }

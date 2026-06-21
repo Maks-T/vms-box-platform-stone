@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Nicole\Box\Core\Tests\Feature\Filament;
 
 use Nicole\Box\Core\Models\Channel;
+use Nicole\Box\Core\Models\Currency;
+use Nicole\Box\Core\Models\PriceType;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Nicole\Box\Core\Tests\Traits\InteractsWithFilamentAdmin;
@@ -26,9 +28,18 @@ class ProductResourceTest extends TestCase
   {
     parent::setUp();
 
-    $this->setUpFilamentAdmin(); // Инициализируем администратора
+    // Инициализируем администратора
+    $this->setUpFilamentAdmin();
 
-    // Создаем обязательный активный канал продаж, чтобы вкладка каналов сгенерировала поля
+    // Создаем базовые валюту и тип цен
+    $rub = Currency::factory()->create(['code' => 'RUB', 'rate' => 1.0, 'is_default' => true]);
+    PriceType::factory()->create([
+      'slug' => 'retail',
+      'is_default' => true,
+      'currency_id' => $rub->id,
+    ]);
+
+    // Создаем каналы
     Channel::create([
       'code' => 'widget',
       'name' => ['ru' => 'Виджет калькулятора', 'en' => 'Calculator Widget'],

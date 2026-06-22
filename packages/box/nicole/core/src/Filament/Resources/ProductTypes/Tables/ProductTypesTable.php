@@ -6,9 +6,9 @@ namespace Nicole\Box\Core\Filament\Resources\ProductTypes\Tables;
 
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Nicole\Box\Core\Filament\Helpers\FilterHelper;
+use Nicole\Box\Core\Filament\Helpers\TableHelper;
 use Nicole\Box\Core\Models\ProductFamily;
-use Nicole\Box\Core\Support\Filament\FilterHelper;
-use Nicole\Box\Core\Support\Filament\TableHelper;
 
 class ProductTypesTable
 {
@@ -18,9 +18,9 @@ class ProductTypesTable
       ->columns([
         TextColumn::make('name')->label(__('Name'))->sortable()->searchable(),
 
-        TableHelper::codeColumn('code'), 
+        TableHelper::codeColumn('code'),
 
-        
+
         TextColumn::make('slug')
           ->label(__('Slug'))
           ->fontFamily('mono')

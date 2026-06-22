@@ -6,9 +6,9 @@ namespace Nicole\Box\Core\Filament\Resources\ComplexDictionaries\Tables;
 
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Nicole\Box\Core\Filament\Helpers\FilterHelper;
+use Nicole\Box\Core\Filament\Helpers\TableHelper;
 use Nicole\Box\Core\Models\ComplexDictionary;
-use Nicole\Box\Core\Support\Filament\FilterHelper;
-use Nicole\Box\Core\Support\Filament\TableHelper;
 
 class ComplexDictionariesTable
 {
@@ -23,19 +23,19 @@ class ComplexDictionariesTable
         TextColumn::make('schema_fields_count')
           ->label(__('Fields'))
           ->state(
-            fn (ComplexDictionary $record): int => is_array($record->meta_schema) 
+            fn (ComplexDictionary $record): int => is_array($record->meta_schema)
               ? count($record->meta_schema)
               : 0,
           )
           ->badge()
           ->color('info'),
 
-        TableHelper::statusColumn(), 
+        TableHelper::statusColumn(),
       ])
       ->filters([
-        FilterHelper::activeFilter(), 
+        FilterHelper::activeFilter(),
       ])
-      ->reorderable('sort_order') 
+      ->reorderable('sort_order')
       ->defaultSort('sort_order', 'asc');
   }
 }

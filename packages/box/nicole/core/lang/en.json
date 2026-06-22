@@ -231,5 +231,7 @@
   "Working Hours": "Working Hours",
   "Catalog Settings": "Catalog Settings",
   "in purchase currency": "in purchase currency",
-  "in selling currency": "in selling currency"
+  "in selling currency": "in selling currency",
+  "Reference cost from dictionary:": "Reference cost from dictionary:",
+  "Reference price (:currency):": "Reference price (:currency):"
 }

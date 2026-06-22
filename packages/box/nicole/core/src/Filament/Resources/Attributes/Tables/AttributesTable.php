@@ -6,9 +6,9 @@ namespace Nicole\Box\Core\Filament\Resources\Attributes\Tables;
 
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Nicole\Box\Core\Filament\Helpers\FilterHelper;
+use Nicole\Box\Core\Filament\Helpers\TableHelper;
 use Nicole\Box\Core\Models\Attribute;
-use Nicole\Box\Core\Support\Filament\FilterHelper;
-use Nicole\Box\Core\Support\Filament\TableHelper;
 
 class AttributesTable
 {

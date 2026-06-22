@@ -231,5 +231,7 @@
   "Working Hours": "Часы работы",
   "Catalog Settings": "Настройки каталога",
   "in purchase currency": "в валюте закупки",
-  "in selling currency": "в валюте продажи"
+  "in selling currency": "в валюте продажи",
+  "Reference cost from dictionary:": "Цена из справочника:",
+  "Reference price (:currency):": "Справочная цена (:currency):"
 }

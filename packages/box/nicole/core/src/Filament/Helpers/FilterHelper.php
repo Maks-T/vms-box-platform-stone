@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Nicole\Box\Core\Support\Filament;
+namespace Nicole\Box\Core\Filament\Helpers;
 
 use Filament\Forms\Components\Select;
 use Filament\Tables\Filters\Filter;
@@ -19,7 +19,7 @@ class FilterHelper
             ->native(false);
     }
 
-    
+
     public static function selectFilter(
         string $name,
         string $label,

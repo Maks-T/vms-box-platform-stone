@@ -6,14 +6,13 @@ namespace Nicole\Box\Core\Filament\Resources\PriceTypes\Schemas;
 
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Schema;
 use Nicole\Box\Core\Filament\Forms\Tabs\SalesChannelsTab;
 use Nicole\Box\Core\Filament\Helpers\FormHelper;
+use Nicole\Box\Core\Filament\Helpers\ProtectDefaultRecord;
 use Nicole\Box\Core\Models\PriceType;
-use Nicole\Box\Core\Support\Filament\ProtectDefaultRecord;
 
 class PriceTypeForm
 {

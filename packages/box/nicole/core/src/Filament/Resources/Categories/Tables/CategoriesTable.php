@@ -6,9 +6,9 @@ namespace Nicole\Box\Core\Filament\Resources\Categories\Tables;
 
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Nicole\Box\Core\Filament\Helpers\FilterHelper;
+use Nicole\Box\Core\Filament\Helpers\TableHelper;
 use Nicole\Box\Core\Models\Category;
-use Nicole\Box\Core\Support\Filament\FilterHelper;
-use Nicole\Box\Core\Support\Filament\TableHelper;
 
 class CategoriesTable
 {
@@ -27,7 +27,7 @@ class CategoriesTable
           ->searchable(['name', 'slug', 'external_code'])
           ->sortable(),
 
-        
+
         TextColumn::make('parent.name')
           ->label(__('Parent Category'))
           ->badge()
@@ -38,7 +38,7 @@ class CategoriesTable
 
         TableHelper::codeColumn('slug'), // Shared
 
-        
+
         TextColumn::make('external_code')
           ->label(__('External Code'))
           ->fontFamily('mono')

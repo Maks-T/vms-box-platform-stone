@@ -10,8 +10,8 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Schema;
 use Nicole\Box\Core\Filament\Forms\Tabs\SalesChannelsTab;
+use Nicole\Box\Core\Filament\Helpers\ProtectDefaultRecord;
 use Nicole\Box\Core\Models\Currency;
-use Nicole\Box\Core\Support\Filament\ProtectDefaultRecord;
 
 class CurrencyForm
 {
@@ -36,7 +36,7 @@ class CurrencyForm
                     ->maxLength(3)
                     ->placeholder('USD'),
 
-                  
+
                   TextInput::make('external_code')
                     ->label(__('External Code'))
                     ->nullable()

@@ -13,9 +13,9 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Nicole\Box\Core\Filament\Helpers\FilterHelper;
+use Nicole\Box\Core\Filament\Helpers\TableHelper;
 use Nicole\Box\Core\Models\ProductFamily;
-use Nicole\Box\Core\Support\Filament\FilterHelper;
-use Nicole\Box\Core\Support\Filament\TableHelper;
 
 class ProductsTable
 {

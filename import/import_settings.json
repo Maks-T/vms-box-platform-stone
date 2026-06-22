@@ -9,6 +9,9 @@
     },
     "catalog": {
       "is_public_default": true
+    },
+    "b2b_portal": {
+      "is_public_default": true
     }
   },
   "setting_schemas": {
@@ -87,7 +90,124 @@
         }
       }
     ],
-
+    "complex_dictionary": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      }
+    ],
+    "family": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "show_in_menu",
+        "type": "boolean",
+        "label": {
+          "ru": "Показывать в меню",
+          "en": "Show in menu"
+        },
+        "width": 2,
+        "is_system": true,
+        "default": true
+      }
+    ],
+    "category": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
+      },
+      {
+        "key": "show_in_menu",
+        "type": "boolean",
+        "label": {
+          "ru": "Показывать в меню",
+          "en": "Show in menu"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      }
+    ],
+    "product_type": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      }
+    ],
     "product": [
       {
         "key": "is_public",

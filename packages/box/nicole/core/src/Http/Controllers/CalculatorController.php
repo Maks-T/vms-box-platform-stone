@@ -21,13 +21,13 @@ class CalculatorController
   public function show(Request $request, ?string $type = null): Response
   {
 
-    $widgetSlug = 'calculator-app';
+    $widgetSlug = 'cpq-stone';
 
     $assets = WidgetAssetHelper::getAssets($widgetSlug);
 
     $initialData = [
       'apiUrl' => config('app.url') . '/api/v1',
-      'assetsUrl' => config('app.url') . '/' . $widgetSlug . '/',
+      'assetsUrl' => config('app.url') . '/storage/' . $widgetSlug . '/',
       'state' => null,
     ];
 

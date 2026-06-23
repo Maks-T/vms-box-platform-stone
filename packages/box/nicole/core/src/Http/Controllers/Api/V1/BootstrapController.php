@@ -75,7 +75,6 @@ class BootstrapController extends Controller
     $families = ProductFamily::query()
       ->where('is_active', true)
       ->publicInChannel($channel)
-      ->where("settings->channels->{$channel}->" . SK::SHOW_IN_MENU, true)
       ->with(['types' => function ($q) use ($channel) {
         $q->where('is_active', true)->publicInChannel($channel)->orderBy('sort_order');
       }])

@@ -6,6 +6,7 @@ namespace Nicole\Box\Core\Filament\Resources\Products\RelationManagers;
 
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
+use Filament\Actions\EditAction;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Support\Enums\Width;
@@ -32,19 +33,26 @@ class VariantsRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return ProductVariantsTable::configure($table)
-            ->recordActions([
-                Action::make('go_to_variant')
-                    ->label(__('Full Edit'))
-                    ->icon('heroicon-o-arrow-top-right-on-square')
-                    ->url(
-                        fn (Model $record): string => ProductVariantResource::getUrl(
-                            'edit',
-                            ['record' => $record],
-                        ),
-                    ),
-            ])
-            ->headerActions([
-            CreateAction::make()->modalWidth(Width::SevenExtraLarge),
-        ]);
+          // Настраиваем действия для каждой строки таблицы
+          ->recordActions([
+            EditAction::make()
+              ->slideOver()->modalWidth(Width::SevenExtraLarge),
+
+            Action::make('go_to_variant')
+              ->label(__('Full Edit'))
+              ->icon('heroicon-o-arrow-top-right-on-square')
+              ->url(
+                fn (Model $record): string => ProductVariantResource::getUrl(
+                  'edit',
+                  ['record' => $record],
+                ),
+              )
+              ->openUrlInNewTab(),
+          ])
+          ->headerActions([
+            CreateAction::make()
+            ->slideOver()->modalWidth(Width::SevenExtraLarge),
+          ]);
+
     }
 }

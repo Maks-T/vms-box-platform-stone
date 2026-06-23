@@ -16,10 +16,9 @@ class ProductVariantPriceFactory extends Factory
   public function definition(): array
   {
     return [
-      'product_variant_id' => ProductVariant::factory(), // Привязываем к SKU
-      'price_type_id' => PriceType::factory(), // Привязываем к типу цен
-      'markup_percent' => 15.0,
-      'price' => $this->faker->randomFloat(2, 5000, 15000),
+      'product_variant_id' => ProductVariant::factory(),
+      'price_type_id' => PriceType::factory(),
+      'markup_percent' => $this->faker->randomFloat(4, 5, 50),
     ];
   }
 

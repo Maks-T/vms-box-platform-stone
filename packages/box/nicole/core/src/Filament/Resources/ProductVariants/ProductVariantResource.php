@@ -15,6 +15,7 @@ use Nicole\Box\Core\Filament\Resources\ProductVariants\Pages\ListProductVariants
 use Nicole\Box\Core\Filament\Resources\ProductVariants\Schemas\ProductVariantForm;
 use Nicole\Box\Core\Filament\Resources\ProductVariants\Tables\ProductVariantsTable;
 use Nicole\Box\Core\Models\ProductVariant;
+use Filament\Support\Enums\Width;
 
 class ProductVariantResource extends Resource
 {
@@ -27,6 +28,8 @@ class ProductVariantResource extends Resource
     protected static ?string $slug = 'product-variants';
 
     protected static ?int $navigationSort = 2;
+
+    protected static Width $modalWidth = Width::Screen;
 
     public static function getNavigationGroup(): ?string
     {

@@ -20,10 +20,17 @@ class ServiceMatrixApiTest extends TestCase
 {
   use LazilyRefreshDatabase; 
 
-  protected PriceType $retailPriceType;
-  protected Attribute $targetMaterialAttribute;
-  protected AttributeOption $optAcrylic;
-  protected AttributeOption $optQuartz;
+  /** @var \Nicole\Box\Core\Models\PriceType */
+  protected $retailPriceType;
+
+  /** @var \Nicole\Box\Core\Models\Attribute */
+  protected $targetMaterialAttribute;
+
+  /** @var \Nicole\Box\Core\Models\AttributeOption */
+  protected $optAcrylic;
+
+  /** @var \Nicole\Box\Core\Models\AttributeOption */
+  protected $optQuartz;
 
   protected function setUp(): void
   {
@@ -86,17 +93,18 @@ class ServiceMatrixApiTest extends TestCase
       'product_id' => $service->id,
       'sku' => 'cutout_top_acrylic',
       'is_active' => true,
+      'cost_price' => 1650.0, // Для услуг закупка = розница
     ]);
     ProductVariantPrice::factory()->create([
       'product_variant_id' => $variantAcrylic->id,
       'price_type_id' => $this->retailPriceType->id,
-      'price' => 1650.0,
+      'markup_percent' => 0.0, // маржа 0%
     ]);
     ProductAttributeValue::factory()->create([
       'attribute_id' => $this->targetMaterialAttribute->id,
       'attributable_id' => $variantAcrylic->id,
       'attributable_type' => $variantAcrylic->getMorphClass(),
-      'value_option_id' => $this->optAcrylic->id, // Указываем Акрил
+      'value_option_id' => $this->optAcrylic->id,
     ]);
 
     // Создаем вариант услуги для Кварца с ценой 2500
@@ -104,17 +112,18 @@ class ServiceMatrixApiTest extends TestCase
       'product_id' => $service->id,
       'sku' => 'cutout_top_quartz',
       'is_active' => true,
+      'cost_price' => 2500.0, // Для услуг закупка = розница
     ]);
     ProductVariantPrice::factory()->create([
       'product_variant_id' => $variantQuartz->id,
       'price_type_id' => $this->retailPriceType->id,
-      'price' => 2500.0,
+      'markup_percent' => 0.0, // маржа 0%
     ]);
     ProductAttributeValue::factory()->create([
       'attribute_id' => $this->targetMaterialAttribute->id,
       'attributable_id' => $variantQuartz->id,
       'attributable_type' => $variantQuartz->getMorphClass(),
-      'value_option_id' => $this->optQuartz->id, // Указываем Кварц
+      'value_option_id' => $this->optQuartz->id,
     ]);
 
     // Выполняем GET-запрос к API матрицы цен индустрии камня

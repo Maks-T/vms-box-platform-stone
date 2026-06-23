@@ -109,6 +109,12 @@ def transform() -> None:
     dst = {"families": [], "types": [], "categories": [], "complex_dictionaries": [], "attributes": [], "products": []}
     attr_types: Dict[str, str] = {}
 
+    # Заполнение типов атрибутов по умолчанию
+    for ac_list in TYPE_ATTRIBUTES.values():
+        for ac in ac_list:
+            if ac not in attr_types:
+                attr_types[ac] = 'string' # Дефолтный тип
+
     print("-> Обработка семейств и типов...")
     for f in src.get('product_families', []):
         family_data = {"external_code": f"fam_{f['code']}", "code": f['code'], "name": f['name']}
@@ -169,8 +175,9 @@ def transform() -> None:
                 old_cost = float(payload.get('cost_price', 0))
                 records.append({
                     "external_code": f"rec_{new_code}_{clean_slug(rec_slug)}", "slug": rec_slug, "name": r.get('name'),
-                    "meta": {"cost_price": round(old_cost * 0.7, 2), "cost_price_markup": 30.0}
+                    "meta": {"cost_price": round(old_cost * 0.7, 2), "cost_price_markup_retail": 30.0}
                 })
+
         elif new_code == 'cutting_groups':
             counter = 1
             for rotate, cut in itertools.product([True, False], repeat=2):
@@ -248,32 +255,7 @@ def transform() -> None:
         if item.get('price_category_slug'): raw_eav['price_group'] = item['price_category_slug']
         if item.get('cutting_group_id'): raw_eav['cutting_groups'] = str(item['cutting_group_id'])
 
-        product_raw_eav = {k: v for k, v in raw_eav.items() if get_new_code(k) not in VARIANT_ONLY_ATTRS}
-        variant_raw_eav = {k: v for k, v in raw_eav.items() if get_new_code(k) in VARIANT_ONLY_ATTRS}
-
-        variants = []
-        src_variants = item.get('variants', [])
-
-        if not src_variants:
-            variants.append({
-                "external_code": f"sku_{item['id']}_def", "sku": f"{item.get('slug', 'item')}-def",
-                "price": float(item.get('price', 0)), "cost_price": float(item.get('price', 0)) * 0.8,
-                "stock": 10.0, "is_default": True, "preview_picture": item.get('preview_picture'), "detail_picture": item.get('detail_picture'),
-                "eav": process_eav(variant_raw_eav, attr_types)
-            })
-        else:
-            for index, v in enumerate(src_variants):
-                v_eav = {**variant_raw_eav, **(v.get('eav') or {})}
-                is_default = bool(v.get('is_default')) if 'is_default' in v else (index == 0)
-
-                variants.append({
-                    "external_code": f"sku_{v['id']}", "sku": v.get('slug'),
-                    "price": float(v.get('price', 0)), "cost_price": float(v.get('price', 0)) * 0.8,
-                    "stock": 10.0, "is_default": is_default,
-                    "preview_picture": v.get('preview_picture'), "detail_picture": v.get('detail_picture'),
-                    "eav": process_eav(v_eav, attr_types)
-                })
-
+        # Определяем тип товара ПЕРЕД обработкой вариаций
         pt_code = item.get('product_type_code', 'acrylic_stone')
         if pt_code == "item":
             type_stone = item.get('eav', {}).get('type_stone')
@@ -281,6 +263,52 @@ def transform() -> None:
                 pt_code = 'quartz_stone'
             else:
                 pt_code = 'acrylic_stone'
+
+        # Проверяем, является ли данный товар камнем, завязанным на ценовую группу справочника
+        has_price_group = 'price_group' in raw_eav or bool(item.get('price_category_slug'))
+        is_stone_with_group = pt_code in ['acrylic_stone', 'quartz_stone'] and has_price_group
+
+        product_raw_eav = {k: v for k, v in raw_eav.items() if get_new_code(k) not in VARIANT_ONLY_ATTRS}
+        variant_raw_eav = {k: v for k, v in raw_eav.items() if get_new_code(k) in VARIANT_ONLY_ATTRS}
+
+        variants = []
+        src_variants = item.get('variants', [])
+
+        if not src_variants:
+            v_data = {
+                "external_code": f"sku_{item['id']}_def", "sku": f"{item.get('slug', 'item')}-def",
+                "stock": 10.0, "is_default": True, "preview_picture": item.get('preview_picture'), "detail_picture": item.get('detail_picture'),
+                "eav": process_eav(variant_raw_eav, attr_types),
+                "is_manual_pricing": not is_stone_with_group # False для камней со справочником
+            }
+            if is_stone_with_group:
+                v_data["cost_price"] = 0.0
+                # Поле "price" исключается
+            else:
+                v_data["price"] = float(item.get('price', 0))
+                v_data["cost_price"] = float(item.get('price', 0)) * 0.8
+
+            variants.append(v_data)
+        else:
+            for index, v in enumerate(src_variants):
+                v_eav = {**variant_raw_eav, **(v.get('eav') or {})}
+                is_default = bool(v.get('is_default')) if 'is_default' in v else (index == 0)
+
+                v_data = {
+                    "external_code": f"sku_{v['id']}", "sku": v.get('slug'),
+                    "stock": 10.0, "is_default": is_default,
+                    "preview_picture": v.get('preview_picture'), "detail_picture": v.get('detail_picture'),
+                    "eav": process_eav(v_eav, attr_types),
+                    "is_manual_pricing": not is_stone_with_group # False для камней со справочником
+                }
+                if is_stone_with_group:
+                    v_data["cost_price"] = 0.0
+                    # Поле "price" исключается
+                else:
+                    v_data["price"] = float(v.get('price', 0))
+                    v_data["cost_price"] = float(v.get('price', 0)) * 0.8
+
+                variants.append(v_data)
 
         unit_code = "m" if pt_code in ['edge', 'skirting'] else "pcs"
 

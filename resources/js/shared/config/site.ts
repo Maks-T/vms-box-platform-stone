@@ -40,8 +40,11 @@ export const siteConfig = {
   ] as SocialItem[],
 
   headerNav: [
+    { label: 'Калькулятор', href: route('calculator.show'), disabled: false },
+
     { label: 'Конфигурация', href: route('bootstrap'), disabled: false },
     { label: 'Каталог', href: route('catalog'), disabled: false },
+
     { label: 'Услуги (Матрица)', href: route('services'), disabled: false },
     { label: 'О компании', href: '#', disabled: true },
   ] as NavItem[],

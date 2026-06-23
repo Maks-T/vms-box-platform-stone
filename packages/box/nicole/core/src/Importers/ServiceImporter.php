@@ -54,7 +54,7 @@ class ServiceImporter implements ImportModuleInterface
       ['external_code' => 'fam_service'],
       [
         'code' => 'service',
-        'slug' => 'service', 
+        'slug' => 'service',
         'name' => ['ru' => 'Услуги', 'en' => 'Services'],
         'is_active' => true
       ]
@@ -65,7 +65,7 @@ class ServiceImporter implements ImportModuleInterface
       [
         'family_id' => $family->id,
         'code' => 'processing_service',
-        'slug' => 'processing-service', 
+        'slug' => 'processing-service',
         'name' => ['ru' => 'Услуги обработки', 'en' => 'Processing Services'],
         'is_active' => true
       ]
@@ -75,7 +75,7 @@ class ServiceImporter implements ImportModuleInterface
     $syncData = [];
     $sort = 10;
 
-    
+
     foreach ($data['attributes'] ?? [] as $code => $attrDef) {
       $attr = Attribute::updateOrCreate(
         ['external_code' => "attr_{$code}"],
@@ -83,7 +83,7 @@ class ServiceImporter implements ImportModuleInterface
           'code' => $code,
           'type' => $attrDef['type'],
           'name' => $attrDef['name'],
-          
+
           'is_multiple' => $attrDef['is_multiple'] ?? false,
           'is_active' => true
         ]
@@ -92,7 +92,7 @@ class ServiceImporter implements ImportModuleInterface
       $syncData[$attr->id] = ['is_variant_only' => false, 'sort_order' => $sort++];
     }
 
-    
+
     $targetAttr = Attribute::updateOrCreate(
       ['external_code' => 'attr_target_material'],
       ['code' => 'target_material', 'type' => Attribute::TYPE_DICTIONARY, 'name' => ['ru' => 'Для материала', 'en' => 'For material'], 'is_active' => true, 'is_multiple' => false]
@@ -102,7 +102,7 @@ class ServiceImporter implements ImportModuleInterface
 
     $serviceType->attributes()->syncWithoutDetaching($syncData);
 
-    
+
     foreach ($data['services'] ?? [] as $srv) {
       if (!empty($srv['unit'])) {
         Unit::firstOrCreate(['slug' => $srv['unit']], ['name' => ['ru' => $srv['unit'], 'en' => $srv['unit']], 'symbol' => ['ru' => $srv['unit'], 'en' => $srv['unit']]]);
@@ -149,7 +149,7 @@ class ServiceImporter implements ImportModuleInterface
         ]
       );
 
-      
+
       ProductAttributeValue::where('attributable_id', $product->id)->where('attributable_type', $product->getMorphClass())->delete();
 
       foreach ($item['eav'] ?? [] as $attrCode => $values) {
@@ -181,23 +181,24 @@ class ServiceImporter implements ImportModuleInterface
         }
       }
 
-      
+
       foreach ($item['prices'] ?? [] as $materialCode => $price) {
         $variant = ProductVariant::updateOrCreate(
           ['external_code' => "sku_srv_{$item['slug']}_{$materialCode}"],
           [
             'product_id' => $product->id,
             'sku' => "{$item['slug']}_{$materialCode}",
-            'cost_price' => $price > 0 ? $price * 0.8 : 0,
+            'cost_price' => (float) $price,
             'currency' => 'RUB',
             'is_default' => false,
             'is_active' => true,
+            'is_manual_pricing' => true, // Услуги всегда имеют фиксированную ручную цену
           ]
         );
 
         ProductVariantPrice::updateOrCreate(
           ['product_variant_id' => $variant->id, 'price_type_id' => $this->retailPriceId],
-          ['markup_percent' => 20, 'price' => (float) $price]
+          ['markup_percent' => 0.0000000000]
         );
 
         $optMaterial = AttributeOption::firstOrCreate(

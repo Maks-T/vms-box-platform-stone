@@ -10,18 +10,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('product_variant_prices', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('product_variant_id')->constrained('product_variants')->cascadeOnDelete();
-            $table->foreignId('price_type_id')->constrained('price_types')->cascadeOnDelete();
+      Schema::create('product_variant_prices', function (Blueprint $table) {
+        $table->id();
+        $table->foreignId('product_variant_id')->constrained('product_variants')->cascadeOnDelete();
+        $table->foreignId('price_type_id')->constrained('price_types')->cascadeOnDelete();
 
-            $table->decimal('markup_percent', 5, 2)->nullable();
-            $table->decimal('price', 15, 2)->default(0.00);
+        $table->decimal('markup_percent', 15, 10)->default(0.0000000000);
 
-            $table->timestamps();
+        $table->timestamps();
 
-            $table->unique(['product_variant_id', 'price_type_id'], 'idx_variant_price_type_unique');
-        });
+        $table->unique(['product_variant_id', 'price_type_id'], 'idx_variant_price_type_unique');
+      });
     }
 
     public function down(): void

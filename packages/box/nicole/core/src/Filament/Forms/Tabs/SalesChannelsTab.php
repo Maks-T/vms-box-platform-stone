@@ -31,7 +31,7 @@ class SalesChannelsTab
     $channels = Channel::where('is_active', true)->get();
     $schemaRecord = SettingSchema::where('entity_type', $entityType)->first();
 
-    
+
     $fieldsConfig = $schemaRecord?->meta_schema ?? [];
 
     $tabs = [];
@@ -60,11 +60,22 @@ class SalesChannelsTab
         }
       }
 
+      // Привязываем дефолтные значения из схемы настроек (import_settings.json)
       $component = match ($f['type']) {
-        'boolean' => Toggle::make($key),
-        'number' => TextInput::make($key)->numeric(),
-        'select' => Select::make($key)->options($parsedOptions)->native(false),
-        default => TextInput::make($key),
+        'boolean' => Toggle::make($key)
+          ->default((bool) ($f['default'] ?? false)),
+
+        'number' => TextInput::make($key)
+          ->numeric()
+          ->default($f['default'] ?? null),
+
+        'select' => Select::make($key)
+          ->options($parsedOptions)
+          ->native(false)
+          ->default($f['default'] ?? null),
+
+        default => TextInput::make($key)
+          ->default($f['default'] ?? null),
       };
 
       $label = is_array($f['label']) ? ($f['label'][$locale] ?? $f['key']) : $f['label'];

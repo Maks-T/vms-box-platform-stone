@@ -55,7 +55,8 @@ class ProductVariantsTable
 
         TextColumn::make('cost_price')
           ->label(__('Cost Price'))
-          ->money(fn(ProductVariant $record) => $record->currency)
+          ->state(fn (ProductVariant $record) => app(PricingManager::class)->getVariantCostPrice($record))
+          ->money(fn (ProductVariant $record) => app(PricingManager::class)->getVariantCostCurrency($record))
           ->sortable(),
 
         TextColumn::make('retail_price')

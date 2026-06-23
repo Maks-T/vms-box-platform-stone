@@ -85,22 +85,20 @@ class ProductVariantResourceTest extends TestCase
   {
     $this->actingAs($this->adminUser);
 
-    // Запускаем тест формы создания модификации
     Livewire::test(CreateProductVariant::class)
       ->set('data.product_id', $this->product->id)
       ->set('data.sku', 'custom_granite_sku')
       ->set('data.cost_price', 3000.0)
       ->set('data.currency', 'RUB')
       ->set('data.is_active', true)
-      // Заполняем репитер цен (prices)
+      // Заполняем репитер цен
       ->set('data.prices', [
         'price_row_1' => [
           'price_type_id' => $this->retailPriceType->id,
-          'markup_percent' => 15.0,
-          'price' => 3450.0,
+          'markup_percent' => 15.0, // Наценка 15% (итоговая цена будет 3450.00)
         ]
       ])
-      // Заполняем репитер складских остатков (stocks)
+      // Заполняем репитер остатков
       ->set('data.stocks', [
         'stock_row_1' => [
           'warehouse_id' => $this->warehouse->id,
@@ -110,18 +108,16 @@ class ProductVariantResourceTest extends TestCase
       ->call('create')
       ->assertHasNoFormErrors();
 
-    // Проверяем физическое появление модификации в БД
     $variant = ProductVariant::where('sku', 'custom_granite_sku')->first();
     $this->assertNotNull($variant);
 
-    // Проверяем, что цена успешно записалась в БД через репитер
+    // Проверяем, что наценка успешно записалась в БД
     $this->assertDatabaseHas('product_variant_prices', [
       'product_variant_id' => $variant->id,
       'price_type_id' => $this->retailPriceType->id,
-      'price' => 3450.0,
+      'markup_percent' => 15.0000000000,
     ]);
 
-    // Проверяем, что остаток на складе успешно записался в БД через репитер
     $this->assertDatabaseHas('stocks', [
       'product_variant_id' => $variant->id,
       'warehouse_id' => $this->warehouse->id,

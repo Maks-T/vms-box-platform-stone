@@ -107,6 +107,7 @@ class NicoleCoreServiceProvider extends ServiceProvider
     });
 
     $this->registerApiRoutes();
+    $this->registerWebRoutes();
   }
 
   protected function registerApiRoutes(): void
@@ -115,6 +116,14 @@ class NicoleCoreServiceProvider extends ServiceProvider
       Route::prefix('api/v1')
         ->middleware(['api', \Nicole\Box\Core\Http\Middleware\EnforceChannelContext::class])
         ->group(__DIR__ . '/../routes/api.php');
+    }
+  }
+
+  protected function registerWebRoutes(): void
+  {
+    if (!$this->app->routesAreCached()) {
+      Route::middleware(['web'])
+        ->group(__DIR__ . '/../routes/web.php');
     }
   }
 

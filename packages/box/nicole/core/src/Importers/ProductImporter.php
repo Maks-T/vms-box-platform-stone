@@ -56,7 +56,6 @@ class ProductImporter implements ImportModuleInterface
       $typeId = $this->mapTypes[$item['product_type_external_code'] ?? ''] ?? null;
       $categoryId = $this->mapCategories[$item['category_external_code'] ?? ''] ?? null;
 
-      
       $unitCode = $item['unit_code'] ?? 'pcs';
       if (!isset($this->mapUnits[$unitCode])) {
         $unitName = match($unitCode) {
@@ -74,7 +73,6 @@ class ProductImporter implements ImportModuleInterface
         $this->mapUnits[$unitCode] = $newUnit->id;
       }
       $unitId = $this->mapUnits[$unitCode];
-      
 
       $product = Product::updateOrCreate(
         ['external_code' => $item['external_code']],
@@ -93,6 +91,9 @@ class ProductImporter implements ImportModuleInterface
       $this->saveEav($product, $item['eav'] ?? []);
 
       foreach ($item['variants'] ?? [] as $vData) {
+        // Считываем явный признак ручного ценообразования из JSON
+        $isManualPricing = $vData['is_manual_pricing'] ?? isset($vData['price']);
+
         $variant = ProductVariant::updateOrCreate(
           ['external_code' => $vData['external_code']],
           [
@@ -101,13 +102,24 @@ class ProductImporter implements ImportModuleInterface
             'cost_price' => $vData['cost_price'] ?? 0,
             'is_default' => $vData['is_default'] ?? false,
             'is_active' => true,
+            'is_manual_pricing' => (bool) $isManualPricing, // Сохраняем в БД
           ]
         );
 
         if (isset($vData['price'])) {
+          $price = (float) $vData['price'];
+          $costPrice = (float) ($vData['cost_price'] ?? 0);
+
+          if ($costPrice > 0) {
+            $markup = (($price / $costPrice) - 1) * 100;
+          } else {
+            $variant->updateQuietly(['cost_price' => $price, 'is_manual_pricing' => true]);
+            $markup = 0.0;
+          }
+
           \Nicole\Box\Core\Models\ProductVariantPrice::updateOrCreate(
             ['product_variant_id' => $variant->id, 'price_type_id' => $retailPriceId],
-            ['price' => (float) $vData['price'], 'markup_percent' => 20]
+            ['markup_percent' => (float) $markup] // Записываем только маржу высокой точности
           );
         }
 
@@ -131,12 +143,8 @@ class ProductImporter implements ImportModuleInterface
     $command->line('');
   }
 
-  /**
-   * Преобразует EAV (где ключи и значения это строки external_code) во внутренние ID базы и сохраняет.
-   */
   private function saveEav($model, array $eavData): void
   {
-    
     ProductAttributeValue::where('attributable_id', $model->id)
       ->where('attributable_type', $model->getMorphClass())
       ->delete();
@@ -148,7 +156,6 @@ class ProductImporter implements ImportModuleInterface
         continue;
       }
 
-      
       $values = is_array($valueOrValues) ? $valueOrValues : [$valueOrValues];
 
       foreach ($values as $value) {
@@ -167,7 +174,6 @@ class ProductImporter implements ImportModuleInterface
           'value_complex_id' => null,
         ];
 
-        // Маппинг значений согласно типу атрибута
         if ($attribute->type === Attribute::TYPE_DICTIONARY) {
           $recordData['value_option_id'] = $this->mapOptions[$value] ?? null;
         } elseif ($attribute->type === Attribute::TYPE_COMPLEX) {
@@ -180,7 +186,6 @@ class ProductImporter implements ImportModuleInterface
           $recordData['value_string'] = (string) $value;
         }
 
-        // Создаем запись только если хоть какое-то значение заполнено
         if (array_filter(array_slice($recordData, 3)) !== []) {
           ProductAttributeValue::create($recordData);
         }
@@ -188,14 +193,10 @@ class ProductImporter implements ImportModuleInterface
     }
   }
 
-  /**
-   * Интеллектуальная привязка изображений
-   */
   private function attachMedia($model, ?string $previewPath, ?string $detailPath, Command $command): void
   {
     $baseDir = base_path('import/export_images/');
 
-    // 1. Прикрепляем превью
     if ($previewPath) {
       $fullPath = $baseDir . ltrim($previewPath, '/');
       if (File::exists($fullPath)) {
@@ -214,7 +215,6 @@ class ProductImporter implements ImportModuleInterface
       }
     }
 
-    // 2. Прикрепляем основное фото (main)
     if ($detailPath) {
       $fullPath = $baseDir . ltrim($detailPath, '/');
       if (File::exists($fullPath)) {
@@ -225,8 +225,6 @@ class ProductImporter implements ImportModuleInterface
           $model->clearMediaCollection('main');
           $media = $model->addMedia($fullPath)->preservingOriginal();
 
-          
-          
           if ($previewPath) {
             $media->withCustomProperties(['skip_conversions' => true]);
           }
@@ -239,18 +237,13 @@ class ProductImporter implements ImportModuleInterface
     }
   }
 
-  
   private function warmUpCache(): void
   {
     $this->mapTypes = ProductType::pluck('id', 'external_code')->toArray();
     $this->mapCategories = Category::pluck('id', 'external_code')->toArray();
     $this->mapOptions = AttributeOption::pluck('id', 'external_code')->toArray();
     $this->mapComplexRecords = ComplexDictionaryRecord::pluck('id', 'external_code')->toArray();
-
-    
     $this->mapUnits = Unit::pluck('id', 'slug')->toArray();
-
-    
     $this->mapAttributes = Attribute::all()->keyBy('code')->all();
   }
 }

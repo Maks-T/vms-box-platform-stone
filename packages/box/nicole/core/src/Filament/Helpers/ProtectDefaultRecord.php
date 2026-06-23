@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Nicole\Box\Core\Support\Filament;
+namespace Nicole\Box\Core\Filament\Helpers;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
-use Filament\Notifications\Notification;
 use Filament\Forms\Components\Toggle;
+use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 

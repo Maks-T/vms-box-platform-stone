@@ -5,16 +5,11 @@ declare(strict_types=1);
 namespace Nicole\Box\Core\Filament\Resources\PriceTypes\Tables;
 
 use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteAction;
-use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Notifications\Notification;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Collection;
-use Nicole\Box\Core\Models\PriceType;
-use Nicole\Box\Core\Support\Filament\ProtectDefaultRecord;
+use Nicole\Box\Core\Filament\Helpers\ProtectDefaultRecord;
 
 class PriceTypesTable
 {
@@ -36,7 +31,7 @@ class PriceTypesTable
           ->color('info')
           ->fontFamily('mono'),
 
-        
+
         TextColumn::make('external_code')
           ->label(__('External Code'))
           ->fontFamily('mono')
@@ -54,7 +49,7 @@ class PriceTypesTable
       ->filters([
         //
       ])
-      
+
       ->reorderable('sort_order')
       ->defaultSort('sort_order', 'asc')
       ->recordActions([

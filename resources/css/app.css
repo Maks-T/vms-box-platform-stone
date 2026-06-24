@@ -10,6 +10,13 @@
 @source '../**/*.js';
 @source '../**/*.jsx';
 
+@layer calc {
+  .dummy-calc-anchor {
+    display: none;
+  }
+}
+
+
 /** ИНТЕГРАЦИЯ С TAILWIND V4 */
 @theme {
   --font-sans: "DM Sans", sans-serif;

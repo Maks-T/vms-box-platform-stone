@@ -25,26 +25,25 @@ class WidgetAssetHelper
     $manifest = json_decode(File::get($manifestPath), true);
 
     return [
-      'js' => self::findAsset($manifest, 'js', $widgetSlug),
-      'css' => self::findAsset($manifest, 'css', $widgetSlug),
+      'js' => self::findAsset($manifest, 'js'),
+      'css' => self::findAsset($manifest, 'css'),
     ];
   }
 
   /**
    * Склеивание локальных путей Laravel с относительными путями манифеста.
    */
-  private static function findAsset(array $manifest, string $extension, string $widgetSlug): ?string
+  private static function findAsset(array $manifest, string $extension): ?string
   {
     foreach ($manifest as $key => $path) {
       if (
         str_ends_with($key, ".{$extension}") &&
         (str_starts_with($key, 'main') || str_starts_with($key, 'index'))
       ) {
-        // Просто отрезаем возможные слэши слева и пришиваем путь к папке в Laravel:
-        // Результат: "/calculator-app/js/main..."
-        return '/' . $widgetSlug . '/' . ltrim($path, '/');
+        return $path;
       }
     }
+
     return null;
   }
 

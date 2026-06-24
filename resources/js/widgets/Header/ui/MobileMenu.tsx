@@ -12,6 +12,8 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) {
+  if (!isOpen) return null;
+
   return (
     <div className={cn(
       "fixed inset-0 z-[100] bg-[#16191B] flex flex-col transition-transform duration-500 ease-in-out lg:hidden",

@@ -19,5 +19,6 @@
 </head>
 <body class="font-sans antialiased bg-bg-light text-tx-primary overflow-x-hidden">
 @inertia
+<div class="dummy-calc-anchor">dummy-calc-anchor</div>
 </body>
 </html>

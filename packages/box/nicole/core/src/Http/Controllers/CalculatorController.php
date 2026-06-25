@@ -27,6 +27,7 @@ class CalculatorController
     $initialData = [
       'apiUrl' => config('app.url') . '/api/v1',
       'assetsUrl' => config('app.url') . '/storage/' . $widgetSlug . '/',
+      'baseUrl' => config('app.url'),
       'state' => null,
     ];
 

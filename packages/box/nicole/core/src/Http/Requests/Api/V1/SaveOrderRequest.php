@@ -38,10 +38,11 @@ class SaveOrderRequest extends FormRequest
       'results.*.draw' => ['nullable', 'array'],
       'results.*.draw.*' => ['string'],
 
-
       'results.*.description' => ['nullable', 'array'],
       'results.*.description.*.name' => ['required_with:results.*.description', 'string', 'max:255'],
-      'results.*.description.*.description' => ['required_with:results.*.description', 'string'],
+
+      'results.*.description.*.description' => ['nullable', 'string'],
+      'results.*.description.*.tooltip' => ['nullable', 'string'],
 
       'results.*.estimate' => ['required', 'array', 'min:1'],
 

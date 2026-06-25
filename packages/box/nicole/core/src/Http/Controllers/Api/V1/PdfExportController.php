@@ -19,15 +19,17 @@ class PdfExportController extends Controller
     $payload = $this->getTemplateData($code);
     $template = config('nicole.pdf_template', 'nicole-core::pdf.calculator-report');
 
-    $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView($template, $payload)
-      ->setPaper('a4', 'portrait')
-      ->setOptions([
-        'isHtml5ParserEnabled' => true,
-        'isRemoteEnabled' => true,
-        'defaultFont' => 'dejavu sans',
-      ]);
+    $html = view($template, $payload)->render();
 
-    return $pdf->stream("КП_Заказ_{$payload['order']->code}.pdf");
+    $pdfContent = \Spatie\Browsershot\Browsershot::html($html)
+      ->noSandbox() // ОБЯЗАТЕЛЬНО для работы без прав суперпользователя внутри Docker!
+      ->setChromePath('/usr/bin/chromium-browser') // Указываем путь к нашему Chromium в Alpine [1.1.1]
+      ->format('A4')
+      ->pdf();
+
+    return response($pdfContent)
+      ->header('Content-Type', 'application/pdf')
+      ->header('Content-Disposition', "inline; filename=\"КП_Заказ_{$payload['order']->code}.pdf\"");
   }
 
   /**

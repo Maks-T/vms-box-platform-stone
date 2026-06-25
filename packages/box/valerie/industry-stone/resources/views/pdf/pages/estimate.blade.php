@@ -1,3 +1,7 @@
+@php
+  use Valerie\Box\IndustryStone\Support\PdfEstimateRenderer;
+@endphp
+
 <div class="page">
   <div class="top-gradient-line"></div>
   @include('valerie-stone::pdf.partials.header', ['subtitle' => 'Детальный расчёт'])
@@ -27,25 +31,18 @@
           <td colspan="3" style="text-align: left;">
             0{{ $index + 1 }} — {{ $section->title }}
             @php
-              $stoneName = collect($section->specs ?? [])->firstWhere('key', 'stone_name')['value'] ?? null;
+              $stoneName = collect($section->description)->firstWhere('name', 'Наименование камня')['description'] ?? null;
             @endphp
             @if($stoneName)
               · {{ $stoneName }}
             @endif
           </td>
           <td class="estimate-section-price" style="padding-right: 15px;">
-            {{ number_format($section->total_price, 0, '.', ' ') }} {{ $currencySymbol }}
+            {{ number_format($section->price_grand_total, 0, '.', ' ') }} {{ $currencySymbol }}
           </td>
         </tr>
 
-        @foreach ($section->items as $item)
-          <tr class="estimate-row">
-            <td class="estimate-cell-name">{{ $item->name }}</td>
-            <td class="estimate-cell-qty">{{ (float)$item->quantity }} {{ $item->unit }}</td>
-            <td class="estimate-cell-price">{{ number_format($item->price, 0, '.', ' ') }} {{ $currencySymbol }}</td>
-            <td class="estimate-cell-total">{{ number_format($item->total, 0, '.', ' ') }} {{ $currencySymbol }}</td>
-          </tr>
-        @endforeach
+        {!! PdfEstimateRenderer::renderRows($section->estimate ?? [], 0, $currencySymbol) !!}
       @endforeach
       </tbody>
     </table>

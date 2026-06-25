@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Nicole\Box\Core\Traits\HasExternalCode;
+use Illuminate\Support\Str;
 
 class Order extends Model
 {
   use HasExternalCode;
 
   protected $fillable = [
+    'code',
     'external_code',
     'customer_id',
     'grand_total',
@@ -22,7 +24,7 @@ class Order extends Model
     'status_id',
     'customer_comment',
     'manager_comment',
-    'calculator_state',
+    'calc_state', // Переименовано в calc_state (маппинг 1-к-1)
     'manager_id',
   ];
 
@@ -30,7 +32,7 @@ class Order extends Model
   {
     return [
       'grand_total' => 'float',
-      'calculator_state' => 'array',
+      'calc_state' => 'array', // Переименовано в calc_state (маппинг 1-к-1)
     ];
   }
 
@@ -53,11 +55,11 @@ class Order extends Model
   }
 
   /**
-   * Связь со всеми детальными строками сметы этого заказа
+   * ОБНОВЛЕНО: Связь со всеми связанными товарами этого заказа (order_products вместо order_items)
    */
-  public function items(): HasMany
+  public function products(): HasMany
   {
-    return $this->hasMany(OrderItem::class, 'order_id');
+    return $this->hasMany(OrderProduct::class, 'order_id');
   }
 
   public function manager(): BelongsTo
@@ -70,12 +72,16 @@ class Order extends Model
   {
     static::creating(function (Order $order) {
       if (empty($order->code)) {
-        $datePrefix = date('ymd');
-        $todayOrdersCount = self::whereDate('created_at', today())->count();
-        $sequence = str_pad((string)($todayOrdersCount + 1), 4, '0', STR_PAD_LEFT);
+        $prefix = env('VMS_ORDER_PREFIX', 'O');
+        $year = date('y');
+        $sequence = self::count() + 1;
 
-        
-        $order->code = "V-{$datePrefix}-{$sequence}";
+        do {
+          $suffix = strtoupper(Str::random(4));
+          $code = "{$prefix}-{$year}{$sequence}-{$suffix}";
+        } while (self::where('code', $code)->exists());
+
+        $order->code = $code;
       }
     });
   }

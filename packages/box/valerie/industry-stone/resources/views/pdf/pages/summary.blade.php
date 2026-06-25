@@ -1,5 +1,6 @@
 @php
   /** @var \Nicole\Box\Core\Models\Order $order */
+  use Valerie\Box\IndustryStone\Support\PdfEstimateRenderer;
 @endphp
 
 <div class="page">
@@ -28,52 +29,7 @@
 
     @foreach ($order->sections as $index => $section)
       @php
-
-        $folder = collect($section->specs)->firstWhere('key', 'product_type')['code'] ?? 'worktop';
-
-        $base64Images = []; // Массив, в который мы соберем картинки для вывода слева
-
-        if ($folder === 'windowsill') {
-
-            $windowsillSpecs = collect($section->specs)->filter(fn($spec) => str_starts_with($spec['key'], 'podokonnik_'));
-
-            $imgHeight = $windowsillSpecs->count() === 1 ? '180px' : '100px';
-
-            foreach ($windowsillSpecs as $spec) {
-                $valLower = mb_strtolower($spec['value']);
-
-                if (str_contains($valLower, 'углов')) {
-                    $shapeFile = 'corner.png';
-                } elseif (str_contains($valLower, 'эркер')) {
-                    $shapeFile = 'bay.png';
-                } else {
-                    $shapeFile = 'line.png';
-                }
-
-                $imagePath = public_path("pdf/layouts/windowsill/{$shapeFile}");
-                if (file_exists($imagePath)) {
-                    $base64Images[] = [
-                        'label' => $spec['label'], // "Подоконник №1"
-                        'base64' => 'data:image/png;base64,' . base64_encode(file_get_contents($imagePath)),
-                        'height' => $imgHeight
-                    ];
-                }
-            }
-        } else {
-            // Для столешниц (кухня/ванная) берем один большой рендер
-            $shapeCode = collect($section->specs)->firstWhere('key', 'shape')['code'] ?? 'line';
-            $fileName = str_replace('-', '_', $shapeCode) . '.png';
-            $imagePath = public_path("pdf/layouts/{$folder}/{$fileName}");
-
-            if (file_exists($imagePath)) {
-                $base64Image = 'data:image/png;base64,' . base64_encode(file_get_contents($imagePath));
-                $base64Images[] = [
-                    'base64' => $base64Image,
-                    'label' => null,
-                    'height' => '250px'
-                ];
-            }
-        }
+        $base64Images = PdfEstimateRenderer::resolveSectionImages($section);
       @endphp
 
       <div class="section-card">
@@ -82,7 +38,7 @@
             0{{ $index + 1 }} · {{ $section->title }}
           </div>
           <div class="section-header-price">
-            {{ number_format($section->total_price, 0, '.', ' ') }} {{ $currencySymbol }}
+            {{ number_format($section->price_grand_total, 0, '.', ' ') }} {{ $currencySymbol }}
           </div>
         </div>
 
@@ -109,12 +65,11 @@
 
           <div class="section-body-right">
             <table class="specs-table">
-              @foreach ($section->specs ?? [] as $spec)
-                <!-- Пропускаем техническое поле shape_code [1] -->
-                @if ($spec['key'] !== 'shape_code' && !empty($spec['label']) && !empty($spec['value']))
+              @foreach ($section->description ?? [] as $spec)
+                @if (!empty($spec['name']) && !empty($spec['description']))
                   <tr>
-                    <td class="spec-label">{{ $spec['label'] }}</td>
-                    <td class="spec-value">{{ $spec['value'] }}</td>
+                    <td class="spec-label">{{ $spec['name'] }}</td>
+                    <td class="spec-value">{{ $spec['description'] }}</td>
                   </tr>
                 @endif
               @endforeach

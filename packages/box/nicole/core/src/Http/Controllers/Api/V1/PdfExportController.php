@@ -46,25 +46,26 @@ class PdfExportController extends Controller
    */
   protected function getTemplateData(string $code): array
   {
-    // 1. Извлекаем заказ со всеми связями
-    $order = Order::with(['customer', 'status', 'sections.items', 'manager'])
+
+    $order = Order::with(['customer', 'status', 'sections', 'manager'])
       ->where('code', $code)
       ->firstOrFail();
 
-    // 2. Генерируем QR-код
     $targetUrl = config('app.url') . "/calculator?orderId=" . $order->id;
+
     $qrOptions = new QROptions([
-      'outputType' => \chillerlan\QRCode\Output\QROutputInterface::GDIMAGE_PNG,
+      'outputInterface' => \chillerlan\QRCode\Output\QRGdImagePNG::class,
       'eccLevel' => \chillerlan\QRCode\Common\EccLevel::H,
       'scale' => 5,
     ]);
-    $qrCodeBase64 = (new QRCode($qrOptions))->render($targetUrl);
 
-    // 3. Возвращаем единый массив данных
+    $qrCodeBase64 = new QRCode($qrOptions)->render($targetUrl);
+
     return [
       'order' => $order,
       'title' => "КП № " . $order->code,
       'qrCode' => $qrCodeBase64,
     ];
   }
+
 }

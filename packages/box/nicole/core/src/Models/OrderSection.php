@@ -17,16 +17,33 @@ class OrderSection extends Model implements HasMedia
   protected $fillable = [
     'order_id',
     'item_id',
+    'type',
     'title',
-    'total_price',
-    'specs',
+
+    'price_total',
+    'price_grand_total',
+    'price_vat',
+    'price_vat_percent',
+    'price_discount',
+    'price_discount_percent',
+
+    'description',
+    'estimate',
+    'meta',
   ];
 
   protected function casts(): array
   {
     return [
-      'total_price' => 'float',
-      'specs' => 'array',
+      'price_total' => 'float',
+      'price_grand_total' => 'float',
+      'price_vat' => 'float',
+      'price_vat_percent' => 'float',
+      'price_discount' => 'float',
+      'price_discount_percent' => 'float',
+      'description' => 'array',
+      'estimate' => 'array',
+      'meta' => 'array',
     ];
   }
 
@@ -36,11 +53,11 @@ class OrderSection extends Model implements HasMedia
   }
 
   /**
-   * Связь со всеми позициями сметы, относящимися именно к этой секции
+   * ОБНОВЛЕНО: Связь со всеми физическими товарами из каталога, относящимися к этому изделию
    */
-  public function items(): HasMany
+  public function products(): HasMany
   {
-    return $this->hasMany(OrderItem::class, 'order_section_id');
+    return $this->hasMany(OrderProduct::class, 'order_section_id');
   }
 
   /**
@@ -48,6 +65,7 @@ class OrderSection extends Model implements HasMedia
    */
   public function registerMediaCollections(): void
   {
-    $this->addMediaCollection('drawing')->singleFile();
+    // Ослабляем ограничение singleFile, так как у одного изделия может быть массив чертежей
+    $this->addMediaCollection('drawing');
   }
 }

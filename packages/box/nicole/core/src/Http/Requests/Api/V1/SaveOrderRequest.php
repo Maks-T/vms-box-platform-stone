@@ -16,42 +16,46 @@ class SaveOrderRequest extends FormRequest
   public function rules(): array
   {
     return [
-      'customer.name' => ['nullable', 'string', 'max:255'],
+
+      'calc_state' => ['required'],
+
+      'currency' => ['required', 'string', 'max:3'],
+      'grand_total' => ['required', 'numeric', 'min:0'],
+      'locale' => ['nullable', 'string', 'max:5'],
+
+      'customer.name' => ['required', 'string', 'max:255'],
       'customer.phone' => ['required', 'string', 'max:50'],
       'customer.email' => ['nullable', 'email', 'max:255'],
       'customer.city' => ['nullable', 'string', 'max:255'],
       'customer.address' => ['nullable', 'string'],
 
       'manager_id' => ['nullable', 'integer', 'exists:users,id'],
-      'grand_total' => ['required', 'numeric', 'min:0'],
-      'currency' => ['required', 'string', 'max:3'],
+      'customer_comment' => ['nullable', 'string'],
+      'manager_comment' => ['nullable', 'string'],
 
-      'calculator_state.type' => ['required', 'string', 'max:50'],
-      'calculator_state.raw_json' => ['required', 'string'],
+      'results' => ['required', 'array', 'min:1'],
+      'results.*.title' => ['required', 'string', 'max:255'],
+      'results.*.draw' => ['nullable', 'array'],
+      'results.*.draw.*' => ['string'],
 
-      // Секции
-      'items' => ['required', 'array', 'min:1'],
-      'items.*.id' => ['required', 'string', 'max:50'],
-      'items.*.title' => ['required', 'string', 'max:255'],
-      'items.*.total_price' => ['required', 'numeric', 'min:0'],
-      'items.*.draw' => ['nullable', 'string'], // base64 холста
-      'items.*.specs' => ['nullable', 'array'],
-      'items.*.specs.*.key' => ['required_with:items.*.specs', 'string', 'max:50'],
-      'items.*.specs.*.label' => ['required_with:items.*.specs', 'string', 'max:255'],
-      'items.*.specs.*.value' => ['nullable', 'string'],
 
-      // Позиции сметы внутри секций
-      'items.*.estimate_groups' => ['required', 'array', 'min:1'],
-      'items.*.estimate_groups.*.id' => ['required', 'string', 'max:50'],
-      'items.*.estimate_groups.*.title' => ['required', 'string', 'max:255'],
-      'items.*.estimate_groups.*.total' => ['required', 'numeric'],
-      'items.*.estimate_groups.*.items' => ['required', 'array'],
-      'items.*.estimate_groups.*.items.*.product_variant_id' => ['nullable', 'integer', 'exists:product_variants,id'],
-      'items.*.estimate_groups.*.items.*.name' => ['required', 'string', 'max:255'],
-      'items.*.estimate_groups.*.items.*.quantity' => ['required', 'numeric'],
-      'items.*.estimate_groups.*.items.*.unit' => ['nullable', 'string', 'max:20'],
-      'items.*.estimate_groups.*.items.*.price' => ['required', 'numeric'],
-      'items.*.estimate_groups.*.items.*.total' => ['required', 'numeric'],
+      'results.*.description' => ['nullable', 'array'],
+      'results.*.description.*.name' => ['required_with:results.*.description', 'string', 'max:255'],
+      'results.*.description.*.description' => ['required_with:results.*.description', 'string'],
+
+      'results.*.estimate' => ['required', 'array', 'min:1'],
+
+      'results.*.price.currency' => ['required', 'string', 'max:3'],
+      'results.*.price.total' => ['required', 'numeric', 'min:0'],
+      'results.*.price.grand_total' => ['required', 'numeric', 'min:0'],
+      'results.*.price.VAT' => ['required', 'numeric', 'min:0'],
+      'results.*.price.VAT_percent' => ['required', 'numeric', 'min:0'],
+      'results.*.price.discount' => ['required', 'numeric', 'min:0'],
+      'results.*.price.discount_percent' => ['required', 'numeric', 'min:0'],
+
+      'results.*.meta.properties' => ['nullable', 'array'],
+      'results.*.meta.properties.form' => ['required', 'string', 'max:50'],
+      'results.*.meta.items' => ['required', 'array'],
     ];
   }
 }

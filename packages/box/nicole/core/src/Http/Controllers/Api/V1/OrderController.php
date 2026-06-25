@@ -8,11 +8,12 @@ use Illuminate\Routing\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use Nicole\Box\Core\Http\Requests\Api\V1\SaveOrderRequest;
 use Nicole\Box\Core\Models\Customer;
 use Nicole\Box\Core\Models\Order;
 use Nicole\Box\Core\Models\OrderSection;
-use Nicole\Box\Core\Models\OrderItem;
+use Nicole\Box\Core\Models\OrderProduct;
 use Nicole\Box\Core\Models\OrderStatus;
 
 class OrderController extends Controller
@@ -42,18 +43,29 @@ class OrderController extends Controller
           'last_name' => $lastName,
           'middle_name' => $middleName,
           'phone' => $phone,
+          'phone_normalized' => $phoneNormalized,
           'email' => $customerData['email'] ?? null,
           'address' => $customerData['address'] ?? null,
           'last_ip' => $request->ip(),
         ]);
       }
 
-      // 2. Получаем системный статус по умолчанию
+      $prefix = env('VMS_ORDER_PREFIX', 'O');
+      $year = date('y'); // "26"
+      $sequence = Order::count() + 1;
+
+      do {
+        $suffix = strtoupper(Str::random(4));
+        $orderCode = "{$prefix}-{$year}{$sequence}-{$suffix}";
+      } while (Order::where('code', $orderCode)->exists());
+
       $statusId = OrderStatus::where('is_default', true)->value('id')
         ?? OrderStatus::where('is_active', true)->value('id');
 
-      // 3. Создаем основной Заказ
+      $calcState = $request->input('calc_state');
+
       $order = Order::create([
+        'code' => $orderCode,
         'customer_id' => $customer->id,
         'grand_total' => $request->input('grand_total'),
         'currency' => $request->input('currency', 'RUB'),
@@ -61,64 +73,87 @@ class OrderController extends Controller
         'status_id' => $statusId,
         'customer_comment' => $request->input('customer_comment'),
         'manager_comment' => $request->input('manager_comment'),
-        'calculator_state' => $request->input('calculator_state'),
+        'calc_state' => is_array($calcState) ? $calcState : json_decode((string)$calcState, true),
         'manager_id' => $request->input('manager_id'),
       ]);
 
-      // 4. Перебираем секции (изделия) в JSON-запросе
-      foreach ($request->input('items', []) as $itemData) {
-        $itemId = $itemData['id'];
-        $itemTitle = $itemData['title'];
+      foreach ($request->input('results', []) as $index => $resultData) {
+        $price = $resultData['price'];
+        $meta = $resultData['meta'] ?? [];
 
-        // Создаем секцию заказа
+        $sectionTitle = $resultData['title'] ?? ('Изделие №' . ($index + 1));
+
         $section = OrderSection::create([
           'order_id' => $order->id,
-          'item_id' => $itemId,
-          'title' => $itemTitle,
-          'total_price' => $itemData['total_price'],
-          'specs' => $itemData['specs'] ?? null,
+          'item_id' => $resultData['id'] ?? ('result_' . $index),
+
+          'type' => $resultData['type'] ?? ($meta['properties']['product'] ?? null),
+
+          'title' => $sectionTitle,
+          'price_total' => $price['total'],
+          'price_grand_total' => $price['grand_total'],
+          'price_vat' => $price['VAT'] ?? 0,
+          'price_vat_percent' => $price['VAT_percent'] ?? 0,
+          'price_discount' => $price['discount'] ?? 0,
+          'price_discount_percent' => $price['discount_percent'] ?? 0,
+
+
+          'description' => $resultData['description'] ?? null,
+          'estimate' => $resultData['estimate'] ?? null,
+          'meta' => $meta,
         ]);
 
-        // 5. Загружаем и прикрепляем чертеж base64 напрямую к OrderSection
-        if (!empty($itemData['draw']) && str_starts_with($itemData['draw'], 'data:image')) {
-          try {
-            $section->addMediaFromBase64($itemData['draw'])
-              ->usingFileName("drawing_section_{$section->id}.png")
-              ->usingName($itemTitle)
-              ->toMediaCollection('drawing');
-          } catch (\Throwable $e) {
-            Log::error("Failed to save drawing for order section {$section->id}: " . $e->getMessage());
+        if (!empty($resultData['draw']) && is_array($resultData['draw'])) {
+          foreach ($resultData['draw'] as $drawIndex => $base64Image) {
+            if (str_starts_with($base64Image, 'data:image')) {
+              try {
+                $section->addMediaFromBase64($base64Image)
+                  ->usingFileName("drawing_section_{$section->id}_{$drawIndex}.png")
+                  ->usingName($section->title . " - Чертеж " . ($drawIndex + 1))
+                  ->toMediaCollection('drawing');
+              } catch (\Throwable $e) {
+                Log::error("Failed to save drawing {$drawIndex} for order section {$section->id}: " . $e->getMessage());
+              }
+            }
           }
         }
 
-        // 6. Перебираем сметные группы внутри секции и пишем позиции
-        foreach ($itemData['estimate_groups'] as $groupData) {
-          $groupId = $groupData['id'];
-          $groupTitle = $groupData['title'];
+        $items = $meta['items'] ?? [];
+        if (is_array($items)) {
+          foreach ($items as $groupKey => $subItems) {
+            if (is_array($subItems)) {
+              foreach ($subItems as $subItem) {
 
-          foreach ($groupData['items'] as $subItem) {
-            OrderItem::create([
-              'order_id' => $order->id,
-              'order_section_id' => $section->id, // Связываем с созданной секцией
-              'product_variant_id' => $subItem['product_variant_id'] ?? null,
-              'name' => $subItem['name'],
-              'quantity' => $subItem['quantity'],
-              'unit' => $subItem['unit'] ?? 'шт.',
-              'price' => $subItem['price'],
-              'total' => $subItem['total'],
-              'group_id' => $groupId,
-              'group_title' => $groupTitle,
-            ]);
+                if (!empty($subItem['variant_id'])) {
+                  $variantId = (int) $subItem['variant_id'];
+
+                  OrderProduct::create([
+                    'order_id' => $order->id,
+                    'order_section_id' => $section->id,
+                    'product_variant_id' => $variantId,
+                    'quantity' => $subItem['quantity'] ?? 1.000,
+                  ]);
+                }
+              }
+            }
           }
         }
       }
 
+      $pdfUrl = url("/api/v1/orders/{$orderCode}/pdf");
+      $htmlUrl = url("/api/v1/orders/{$orderCode}/html");
+
       return response()->json([
         'status' => 'success',
-        'message' => 'Заказ и сметные секции успешно сохранены.',
+        'message' => 'Заказ, спецификации и сметные товары успешно сохранены.',
         'data' => [
           'order_id' => $order->id,
+          'code' => $orderCode,
           'external_code' => $order->external_code,
+          'pdf_url' => $pdfUrl,
+          'html_url' => $htmlUrl,
+          'created_at' => $order->created_at->toIso8601String(),
+          'created_at_formatted' => $order->created_at->format('d.m.Y H:i'),
         ]
       ], 201);
     });

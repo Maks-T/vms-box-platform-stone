@@ -91,7 +91,7 @@ class NicoleCoreServiceProvider extends ServiceProvider
     }
 
     LanguageSwitch::configureUsing(function (LanguageSwitch $switch) {
-      $switch->locales(['en', 'ru'])->visible(outsidePanels: true);
+      $switch->locales(['ru'])->visible(outsidePanels: true);
     });
 
     SpatieMediaLibraryFileUpload::configureUsing(function (SpatieMediaLibraryFileUpload $component) {

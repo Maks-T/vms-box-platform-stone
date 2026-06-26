@@ -21,7 +21,7 @@ class CalculatorController
   public function show(Request $request, ?string $type = null): Response
   {
 
-    $widgetSlug = 'calculator-app';
+    $widgetSlug = 'cpq-stone';
 
     $assets = WidgetAssetHelper::getAssets($widgetSlug);
 

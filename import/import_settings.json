@@ -1,16 +1,12 @@
 {
   "languages": [
-    "ru",
-    "en"
+    "ru"
   ],
   "channels": {
     "widget": {
       "is_public_default": true
     },
     "catalog": {
-      "is_public_default": true
-    },
-    "b2b_portal": {
       "is_public_default": true
     }
   },

@@ -4,107 +4,48 @@
       "external_code": "fam_stone",
       "code": "stone",
       "name": {
-        "ru": "Искусственный камень"
-      },
-      "meta_schema": [
-        {
-          "key": "step",
-          "type": "number",
-          "label": {
-            "ru": "Шаг размера",
-            "en": "Size step"
-          },
-          "width": 1
-        },
-        {
-          "key": "minPart",
-          "type": "number",
-          "label": {
-            "ru": "Минимальная часть",
-            "en": "Min part"
-          },
-          "width": 1
-        },
-        {
-          "key": "maxStack",
-          "type": "number",
-          "label": {
-            "ru": "Макс. стопка",
-            "en": "Max stack"
-          },
-          "width": 1
-        },
-        {
-          "key": "axisX",
-          "type": "boolean",
-          "label": {
-            "ru": "По оси X",
-            "en": "Along X axis"
-          },
-          "width": 1
-        },
-        {
-          "key": "is_separate",
-          "type": "boolean",
-          "label": {
-            "ru": "Кроить раздельно",
-            "en": "Cut separately"
-          },
-          "width": 2
-        },
-        {
-          "key": "corner_add_length",
-          "type": "number",
-          "label": {
-            "ru": "Добавка на внутр. угол (Длина мм)",
-            "en": "Inner corner add (Length mm)"
-          },
-          "width": 1
-        },
-        {
-          "key": "corner_add_width",
-          "type": "number",
-          "label": {
-            "ru": "Добавка на внутр. угол (Ширина мм)",
-            "en": "Inner corner add (Width mm)"
-          },
-          "width": 1
-        }
-      ]
+        "ru": "Искусственный камень",
+        "en": "Artificial stone"
+      }
     },
     {
       "external_code": "fam_sink",
       "code": "sink",
       "name": {
-        "ru": "Кухонные мойки"
+        "ru": "Кухонные мойки",
+        "en": "Kitchen sinks"
       }
     },
     {
       "external_code": "fam_faucet",
       "code": "faucet",
       "name": {
-        "ru": "Смесители и дозаторы"
+        "ru": "Смесители и дозаторы",
+        "en": "Mixers and dispensers"
       }
     },
     {
       "external_code": "fam_bowl",
       "code": "bowl",
       "name": {
-        "ru": "Раковины для ванной"
+        "ru": "Раковины для ванной",
+        "en": "Bathroom sinks"
       }
     },
     {
       "external_code": "fam_accessory",
       "code": "accessory",
       "name": {
-        "ru": "Комплектующие и бортики"
+        "ru": "Комплектующие и бортики",
+        "en": "Accessories and sides"
       }
     },
     {
       "external_code": "fam_natural_stone",
       "code": "natural-stone",
       "name": {
-        "ru": "Натуральный камень"
+        "ru": "Натуральный камень",
+        "en": ""
       }
     }
   ],
@@ -114,7 +55,8 @@
       "family_external_code": "fam_stone",
       "code": "acrylic_stone",
       "name": {
-        "ru": "Акриловый камень"
+        "ru": "Акриловый камень",
+        "en": "Acrylic stone"
       },
       "meta": {
         "step": 0.5,
@@ -188,7 +130,8 @@
       "family_external_code": "fam_stone",
       "code": "quartz_stone",
       "name": {
-        "ru": "Кварцевый агломерат"
+        "ru": "Кварцевый агломерат",
+        "en": "Quartz agglomerate"
       },
       "meta": {
         "step": 1,
@@ -254,7 +197,8 @@
       "family_external_code": "fam_stone",
       "code": "marble_stone",
       "name": {
-        "ru": "Мрамор"
+        "ru": "Мрамор",
+        "en": "Marble"
       },
       "meta": {},
       "attached_attributes": [
@@ -312,7 +256,8 @@
       "family_external_code": "fam_stone",
       "code": "terrazzo_stone",
       "name": {
-        "ru": "Терраццо"
+        "ru": "Терраццо",
+        "en": "Terrazzo"
       },
       "meta": {},
       "attached_attributes": [
@@ -370,7 +315,8 @@
       "family_external_code": "fam_stone",
       "code": "volcanic_stone",
       "name": {
-        "ru": "Вулканический камень"
+        "ru": "Вулканический камень",
+        "en": "Volcanic stone"
       },
       "meta": {},
       "attached_attributes": [
@@ -428,7 +374,8 @@
       "family_external_code": "fam_sink",
       "code": "kitchen_sink",
       "name": {
-        "ru": "Кухонная мойка"
+        "ru": "Кухонная мойка",
+        "en": "Kitchen sink"
       },
       "meta": {},
       "attached_attributes": [
@@ -474,7 +421,8 @@
       "family_external_code": "fam_faucet",
       "code": "faucet",
       "name": {
-        "ru": "Смеситель"
+        "ru": "Смеситель",
+        "en": "Mixer"
       },
       "meta": {},
       "attached_attributes": [
@@ -508,7 +456,8 @@
       "family_external_code": "fam_faucet",
       "code": "dispenser",
       "name": {
-        "ru": "Дозатор"
+        "ru": "Дозатор",
+        "en": "Dispenser"
       },
       "meta": {},
       "attached_attributes": [
@@ -538,7 +487,8 @@
       "family_external_code": "fam_bowl",
       "code": "bathroom_sink",
       "name": {
-        "ru": "Раковина для ванной"
+        "ru": "Раковина для ванной",
+        "en": "Bathroom sink"
       },
       "meta": {},
       "attached_attributes": [
@@ -576,7 +526,8 @@
       "family_external_code": "fam_accessory",
       "code": "edge",
       "name": {
-        "ru": "Кромка (п.м.)"
+        "ru": "Кромка (п.м.)",
+        "en": "Edge (rm)"
       },
       "meta": {},
       "attached_attributes": [
@@ -602,7 +553,8 @@
       "family_external_code": "fam_accessory",
       "code": "skirting",
       "name": {
-        "ru": "Бортик (п.м.)"
+        "ru": "Бортик (п.м.)",
+        "en": "Side (p.m.)"
       },
       "meta": {},
       "attached_attributes": [
@@ -630,7 +582,8 @@
       "parent_external_code": null,
       "slug": "artificial-stone",
       "name": {
-        "ru": "Искусственный камень"
+        "ru": "Искусственный камень",
+        "en": "Artificial stone"
       }
     },
     {
@@ -638,7 +591,8 @@
       "parent_external_code": null,
       "slug": "sinks",
       "name": {
-        "ru": "Мойки и раковины"
+        "ru": "Мойки и раковины",
+        "en": "Sinks and sinks"
       }
     },
     {
@@ -646,7 +600,8 @@
       "parent_external_code": null,
       "slug": "faucets-and-dispensers",
       "name": {
-        "ru": "Смесители и дозаторы"
+        "ru": "Смесители и дозаторы",
+        "en": "Mixers and dispensers"
       }
     },
     {
@@ -654,7 +609,8 @@
       "parent_external_code": null,
       "slug": "edges-and-sides",
       "name": {
-        "ru": "Кромки и бортики"
+        "ru": "Кромки и бортики",
+        "en": "Edges and sides"
       }
     },
     {
@@ -662,7 +618,8 @@
       "parent_external_code": "artificial-stone",
       "slug": "acrylic",
       "name": {
-        "ru": "Акриловый камень"
+        "ru": "Акриловый камень",
+        "en": "Acrylic stone"
       }
     },
     {
@@ -670,7 +627,8 @@
       "parent_external_code": "artificial-stone",
       "slug": "quartz",
       "name": {
-        "ru": "Кварцевый агломерат"
+        "ru": "Кварцевый агломерат",
+        "en": "Quartz agglomerate"
       }
     },
     {
@@ -678,7 +636,8 @@
       "parent_external_code": "artificial-stone",
       "slug": "marble",
       "name": {
-        "ru": "Мрамор"
+        "ru": "Мрамор",
+        "en": "Marble"
       }
     },
     {
@@ -686,7 +645,8 @@
       "parent_external_code": "artificial-stone",
       "slug": "terrazzo-type",
       "name": {
-        "ru": "Терраццо"
+        "ru": "Терраццо",
+        "en": "Terrazzo"
       }
     },
     {
@@ -694,7 +654,8 @@
       "parent_external_code": "artificial-stone",
       "slug": "volcanic",
       "name": {
-        "ru": "Вулканический камень"
+        "ru": "Вулканический камень",
+        "en": "Volcanic stone"
       }
     },
     {
@@ -702,7 +663,8 @@
       "parent_external_code": "acrylic",
       "slug": "Adventure",
       "name": {
-        "ru": "Adventure"
+        "ru": "Adventure",
+        "en": "Adventure"
       }
     },
     {
@@ -710,7 +672,8 @@
       "parent_external_code": "acrylic",
       "slug": "Crevice",
       "name": {
-        "ru": "Crevice"
+        "ru": "Crevice",
+        "en": "Crevice"
       }
     },
     {
@@ -718,7 +681,8 @@
       "parent_external_code": "acrylic",
       "slug": "Marble Ocean",
       "name": {
-        "ru": "Marble Ocean"
+        "ru": "Marble Ocean",
+        "en": "Marble Ocean"
       }
     },
     {
@@ -726,7 +690,8 @@
       "parent_external_code": "acrylic",
       "slug": "Delicious Edition",
       "name": {
-        "ru": "Delicious Edition"
+        "ru": "Delicious Edition",
+        "en": "Delicious Edition"
       }
     },
     {
@@ -734,7 +699,8 @@
       "parent_external_code": "acrylic",
       "slug": "Explorer",
       "name": {
-        "ru": "Explorer"
+        "ru": "Explorer",
+        "en": "Explorer"
       }
     },
     {
@@ -742,7 +708,8 @@
       "parent_external_code": "acrylic",
       "slug": "Grand Mosaic",
       "name": {
-        "ru": "Grand Mosaic"
+        "ru": "Grand Mosaic",
+        "en": "Grand Mosaic"
       }
     },
     {
@@ -750,7 +717,8 @@
       "parent_external_code": "acrylic",
       "slug": "Jewel",
       "name": {
-        "ru": "Jewel"
+        "ru": "Jewel",
+        "en": "Jewel"
       }
     },
     {
@@ -758,7 +726,8 @@
       "parent_external_code": "acrylic",
       "slug": "Pure Color",
       "name": {
-        "ru": "Pure Color"
+        "ru": "Pure Color",
+        "en": "Pure Color"
       }
     },
     {
@@ -766,7 +735,8 @@
       "parent_external_code": "acrylic",
       "slug": "Sand and Sky",
       "name": {
-        "ru": "Sand and Sky"
+        "ru": "Sand and Sky",
+        "en": "Sand and Sky"
       }
     },
     {
@@ -774,7 +744,8 @@
       "parent_external_code": "quartz",
       "slug": "send-pearl",
       "name": {
-        "ru": "Send&Pearl"
+        "ru": "Send&Pearl",
+        "en": "Send&Pearl"
       }
     },
     {
@@ -782,7 +753,8 @@
       "parent_external_code": "quartz",
       "slug": "granite",
       "name": {
-        "ru": "Granite"
+        "ru": "Granite",
+        "en": "Granite"
       }
     },
     {
@@ -790,7 +762,8 @@
       "parent_external_code": "quartz",
       "slug": "lucia",
       "name": {
-        "ru": "Lucia"
+        "ru": "Lucia",
+        "en": "Lucia"
       }
     },
     {
@@ -798,7 +771,8 @@
       "parent_external_code": "marble",
       "slug": "marmo",
       "name": {
-        "ru": "Marmo"
+        "ru": "Marmo",
+        "en": "Marmo"
       }
     },
     {
@@ -806,7 +780,8 @@
       "parent_external_code": "marble",
       "slug": "calacatta",
       "name": {
-        "ru": "Calacatta"
+        "ru": "Calacatta",
+        "en": "Calacatta"
       }
     },
     {
@@ -814,7 +789,8 @@
       "parent_external_code": "terrazzo-type",
       "slug": "terrazzo-brand",
       "name": {
-        "ru": "Terrazzo"
+        "ru": "Terrazzo",
+        "en": "Terrazzo"
       }
     },
     {
@@ -822,7 +798,8 @@
       "parent_external_code": "volcanic",
       "slug": "volcanics",
       "name": {
-        "ru": "Volcanics"
+        "ru": "Volcanics",
+        "en": "Volcanics"
       }
     },
     {
@@ -830,7 +807,8 @@
       "parent_external_code": "sinks",
       "slug": "kitchen-sinks",
       "name": {
-        "ru": "Мойки для кухни"
+        "ru": "Мойки для кухни",
+        "en": "Kitchen sinks"
       }
     },
     {
@@ -838,7 +816,8 @@
       "parent_external_code": "sinks",
       "slug": "bathroom-sinks",
       "name": {
-        "ru": "Раковины для ванной"
+        "ru": "Раковины для ванной",
+        "en": "Bathroom sinks"
       }
     },
     {
@@ -846,7 +825,8 @@
       "parent_external_code": "faucets-and-dispensers",
       "slug": "faucets",
       "name": {
-        "ru": "Смесители"
+        "ru": "Смесители",
+        "en": "Faucets"
       }
     },
     {
@@ -854,7 +834,8 @@
       "parent_external_code": "faucets-and-dispensers",
       "slug": "dispensers",
       "name": {
-        "ru": "Дозаторы"
+        "ru": "Дозаторы",
+        "en": "Dispensers"
       }
     },
     {
@@ -862,7 +843,8 @@
       "parent_external_code": "edges-and-sides",
       "slug": "sides",
       "name": {
-        "ru": "Бортики"
+        "ru": "Бортики",
+        "en": "Sides"
       }
     },
     {
@@ -870,7 +852,8 @@
       "parent_external_code": "edges-and-sides",
       "slug": "leading-edges",
       "name": {
-        "ru": "Передние кромки"
+        "ru": "Передние кромки",
+        "en": "Leading edges"
       }
     }
   ],
@@ -879,21 +862,24 @@
       "external_code": "dict_cutting_groups",
       "code": "cutting_groups",
       "name": {
-        "ru": "Группы раскроя"
+        "ru": "Группы раскроя",
+        "en": "Cutting groups"
       },
       "meta_schema": [
         {
           "key": "rotate",
           "type": "boolean",
           "label": {
-            "ru": "Повтор рисунка"
+            "ru": "Повтор рисунка",
+            "en": "Pattern Repeat"
           }
         },
         {
           "key": "cut",
           "type": "boolean",
           "label": {
-            "ru": "Раздельный раскрой"
+            "ru": "Раздельный раскрой",
+            "en": "Separate Cutting"
           }
         }
       ],
@@ -948,14 +934,16 @@
       "external_code": "dict_price_group",
       "code": "price_group",
       "name": {
-        "ru": "Финансовые категории"
+        "ru": "Финансовые категории",
+        "en": "Financial categories"
       },
       "meta_schema": [
         {
           "key": "cost_price",
           "type": "price",
           "label": {
-            "ru": "Закупка (Материал) $"
+            "ru": "Закупка (Материал) $",
+            "en": "Cost (Material) $"
           },
           "currency": "USD"
         }
@@ -965,7 +953,8 @@
           "external_code": "rec_price_group_v0",
           "slug": "v0",
           "name": {
-            "ru": "V0"
+            "ru": "V0",
+            "en": "V0"
           },
           "meta": {
             "cost_price": 320,
@@ -976,7 +965,8 @@
           "external_code": "rec_price_group_s0",
           "slug": "s0",
           "name": {
-            "ru": "S0"
+            "ru": "S0",
+            "en": "S0"
           },
           "meta": {
             "cost_price": 295,
@@ -987,7 +977,8 @@
           "external_code": "rec_price_group_b0",
           "slug": "b0",
           "name": {
-            "ru": "B0"
+            "ru": "B0",
+            "en": "B0"
           },
           "meta": {
             "cost_price": 385,
@@ -998,7 +989,8 @@
           "external_code": "rec_price_group_g0",
           "slug": "g0",
           "name": {
-            "ru": "G0"
+            "ru": "G0",
+            "en": "G0"
           },
           "meta": {
             "cost_price": 400,
@@ -1009,7 +1001,8 @@
           "external_code": "rec_price_group_l0",
           "slug": "l0",
           "name": {
-            "ru": "L0"
+            "ru": "L0",
+            "en": "L0"
           },
           "meta": {
             "cost_price": 400,
@@ -1020,7 +1013,8 @@
           "external_code": "rec_price_group_m2",
           "slug": "m2",
           "name": {
-            "ru": "M2"
+            "ru": "M2",
+            "en": "M2"
           },
           "meta": {
             "cost_price": 580,
@@ -1031,7 +1025,8 @@
           "external_code": "rec_price_group_m3",
           "slug": "m3",
           "name": {
-            "ru": "M3"
+            "ru": "M3",
+            "en": "M3"
           },
           "meta": {
             "cost_price": 600,
@@ -1042,7 +1037,8 @@
           "external_code": "rec_price_group_c2",
           "slug": "c2",
           "name": {
-            "ru": "C2"
+            "ru": "C2",
+            "en": "C2"
           },
           "meta": {
             "cost_price": 600,
@@ -1053,7 +1049,8 @@
           "external_code": "rec_price_group_t2",
           "slug": "t2",
           "name": {
-            "ru": "T2"
+            "ru": "T2",
+            "en": "T2"
           },
           "meta": {
             "cost_price": 600,
@@ -1064,7 +1061,8 @@
           "external_code": "rec_price_group_v1",
           "slug": "v1",
           "name": {
-            "ru": "V1"
+            "ru": "V1",
+            "en": "V1"
           },
           "meta": {
             "cost_price": 600,
@@ -1075,7 +1073,8 @@
           "external_code": "rec_price_group_a1",
           "slug": "a1",
           "name": {
-            "ru": "A1"
+            "ru": "A1",
+            "en": "A1"
           },
           "meta": {
             "cost_price": 205,
@@ -1086,7 +1085,8 @@
           "external_code": "rec_price_group_a2",
           "slug": "a2",
           "name": {
-            "ru": "A2"
+            "ru": "A2",
+            "en": "A2"
           },
           "meta": {
             "cost_price": 250,
@@ -1097,7 +1097,8 @@
           "external_code": "rec_price_group_a0",
           "slug": "a0",
           "name": {
-            "ru": "A0"
+            "ru": "A0",
+            "en": "A0"
           },
           "meta": {
             "cost_price": 280,
@@ -1108,7 +1109,8 @@
           "external_code": "rec_price_group_m0",
           "slug": "m0",
           "name": {
-            "ru": "M0"
+            "ru": "M0",
+            "en": "M0"
           },
           "meta": {
             "cost_price": 365,
@@ -1119,7 +1121,8 @@
           "external_code": "rec_price_group_p0",
           "slug": "p0",
           "name": {
-            "ru": "P0"
+            "ru": "P0",
+            "en": "P0"
           },
           "meta": {
             "cost_price": 510,
@@ -1130,7 +1133,8 @@
           "external_code": "rec_price_group_e1",
           "slug": "e1",
           "name": {
-            "ru": "E1"
+            "ru": "E1",
+            "en": "E1"
           },
           "meta": {
             "cost_price": 550,
@@ -1141,7 +1145,8 @@
           "external_code": "rec_price_group_m1",
           "slug": "m1",
           "name": {
-            "ru": "M1"
+            "ru": "M1",
+            "en": "M1"
           },
           "meta": {
             "cost_price": 550,
@@ -1152,7 +1157,8 @@
           "external_code": "rec_price_group_c1",
           "slug": "c1",
           "name": {
-            "ru": "C1"
+            "ru": "C1",
+            "en": "C1"
           },
           "meta": {
             "cost_price": 550,
@@ -1168,7 +1174,8 @@
       "code": "supplier_article",
       "type": "string",
       "name": {
-        "ru": "Артикул поставщика"
+        "ru": "Артикул поставщика",
+        "en": "Supplier article"
       },
       "is_multiple": false,
       "options": []
@@ -1178,7 +1185,8 @@
       "code": "effect_akril",
       "type": "dictionary",
       "name": {
-        "ru": "Эффект"
+        "ru": "Эффект",
+        "en": "Effect"
       },
       "is_multiple": false,
       "options": [
@@ -1186,7 +1194,8 @@
           "external_code": "opt_effect_akril_no_effects",
           "slug": "no_effects",
           "value": {
-            "ru": "Без эффектов"
+            "ru": "Без эффектов",
+            "en": "No effects"
           },
           "meta": {
             "hex": null,
@@ -1197,7 +1206,8 @@
           "external_code": "opt_effect_akril_sequins_effects",
           "slug": "sequins_effects",
           "value": {
-            "ru": "С блестками"
+            "ru": "С блестками",
+            "en": "With glitter"
           },
           "meta": {
             "hex": null,
@@ -1208,7 +1218,8 @@
           "external_code": "opt_effect_akril_light-permeable_effects",
           "slug": "light-permeable_effects",
           "value": {
-            "ru": "Светопроницаемые"
+            "ru": "Светопроницаемые",
+            "en": "Translucent"
           },
           "meta": {
             "hex": null,
@@ -1222,7 +1233,8 @@
       "code": "is_bend",
       "type": "boolean",
       "name": {
-        "ru": "Термоформинг"
+        "ru": "Термоформинг",
+        "en": "Thermoforming"
       },
       "is_multiple": false,
       "options": [
@@ -1245,7 +1257,8 @@
       "code": "texture",
       "type": "dictionary",
       "name": {
-        "ru": "Текстура"
+        "ru": "Текстура",
+        "en": "Texture"
       },
       "is_multiple": false,
       "options": [
@@ -1253,7 +1266,8 @@
           "external_code": "opt_texture_solid_texture",
           "slug": "solid_texture",
           "value": {
-            "ru": "Однотонные"
+            "ru": "Однотонные",
+            "en": "Plain"
           },
           "meta": {
             "hex": null,
@@ -1264,7 +1278,8 @@
           "external_code": "opt_texture_monochrome_texture",
           "slug": "monochrome_texture",
           "value": {
-            "ru": "Однородные вкрапления"
+            "ru": "Однородные вкрапления",
+            "en": "Homogeneous inclusions"
           },
           "meta": {
             "hex": null,
@@ -1275,7 +1290,8 @@
           "external_code": "opt_texture_marble_texture",
           "slug": "marble_texture",
           "value": {
-            "ru": "Под мрамор"
+            "ru": "Под мрамор",
+            "en": "Marbled"
           },
           "meta": {
             "hex": null,
@@ -1286,7 +1302,8 @@
           "external_code": "opt_texture_wood_texture",
           "slug": "wood_texture",
           "value": {
-            "ru": "Под дерево"
+            "ru": "Под дерево",
+            "en": "Under the tree"
           },
           "meta": {
             "hex": null,
@@ -1297,7 +1314,8 @@
           "external_code": "opt_texture_concrete_texture",
           "slug": "concrete_texture",
           "value": {
-            "ru": "Под бетон"
+            "ru": "Под бетон",
+            "en": "Under concrete"
           },
           "meta": {
             "hex": null,
@@ -1308,7 +1326,8 @@
           "external_code": "opt_texture_loft_style_texture",
           "slug": "loft_style_texture",
           "value": {
-            "ru": "В стиле лофт"
+            "ru": "В стиле лофт",
+            "en": "Loft style"
           },
           "meta": {
             "hex": null,
@@ -1319,7 +1338,8 @@
           "external_code": "opt_texture_travertine_texture",
           "slug": "travertine_texture",
           "value": {
-            "ru": "Под травертин"
+            "ru": "Под травертин",
+            "en": "Under travertine"
           },
           "meta": {
             "hex": null,
@@ -1330,7 +1350,8 @@
           "external_code": "opt_texture_onyx_texture",
           "slug": "onyx_texture",
           "value": {
-            "ru": "Под оникс"
+            "ru": "Под оникс",
+            "en": "Under onyx"
           },
           "meta": {
             "hex": null,
@@ -1344,7 +1365,8 @@
       "code": "inclusions_akril",
       "type": "dictionary",
       "name": {
-        "ru": "Вкрапления"
+        "ru": "Вкрапления",
+        "en": "Interspersed"
       },
       "is_multiple": false,
       "options": [
@@ -1352,7 +1374,8 @@
           "external_code": "opt_inclusions_akril_without_inclusions",
           "slug": "without_inclusions",
           "value": {
-            "ru": "Без вкраплений"
+            "ru": "Без вкраплений",
+            "en": "No inclusions"
           },
           "meta": {
             "hex": null,
@@ -1363,7 +1386,8 @@
           "external_code": "opt_inclusions_akril_small_inclusions",
           "slug": "small_inclusions",
           "value": {
-            "ru": "Мелкие вкрапления"
+            "ru": "Мелкие вкрапления",
+            "en": "Small inclusions"
           },
           "meta": {
             "hex": null,
@@ -1374,7 +1398,8 @@
           "external_code": "opt_inclusions_akril_medium_inclusions",
           "slug": "medium_inclusions",
           "value": {
-            "ru": "Средние вкрапления"
+            "ru": "Средние вкрапления",
+            "en": "Medium inclusions"
           },
           "meta": {
             "hex": null,
@@ -1385,7 +1410,8 @@
           "external_code": "opt_inclusions_akril_large_inclusions",
           "slug": "large_inclusions",
           "value": {
-            "ru": "Крупные вкрапления"
+            "ru": "Крупные вкрапления",
+            "en": "Large inclusions"
           },
           "meta": {
             "hex": null,
@@ -1399,7 +1425,8 @@
       "code": "marketing_tags",
       "type": "dictionary",
       "name": {
-        "ru": "Теги"
+        "ru": "Теги",
+        "en": "Tags"
       },
       "is_multiple": true,
       "options": [
@@ -1407,7 +1434,8 @@
           "external_code": "opt_marketing_tags_new",
           "slug": "new",
           "value": {
-            "ru": "new"
+            "ru": "new",
+            "en": "new"
           },
           "meta": {
             "hex": null,
@@ -1418,7 +1446,8 @@
           "external_code": "opt_marketing_tags_hit",
           "slug": "hit",
           "value": {
-            "ru": "хит"
+            "ru": "хит",
+            "en": "hit"
           },
           "meta": {
             "hex": null,
@@ -1429,7 +1458,8 @@
           "external_code": "opt_marketing_tags_sale",
           "slug": "sale",
           "value": {
-            "ru": "sale"
+            "ru": "sale",
+            "en": "sale"
           },
           "meta": {
             "hex": null,
@@ -1443,7 +1473,8 @@
       "code": "polishing_quartz",
       "type": "dictionary",
       "name": {
-        "ru": "Поверхность"
+        "ru": "Поверхность",
+        "en": "Surface"
       },
       "is_multiple": false,
       "options": [
@@ -1451,7 +1482,8 @@
           "external_code": "opt_polishing_quartz_glossy_ polishing",
           "slug": "glossy_ polishing",
           "value": {
-            "ru": "Полированная"
+            "ru": "Полированная",
+            "en": "Polished"
           },
           "meta": {
             "hex": null,
@@ -1462,7 +1494,8 @@
           "external_code": "opt_polishing_quartz_matte_ polishing",
           "slug": "matte_ polishing",
           "value": {
-            "ru": "Матовая"
+            "ru": "Матовая",
+            "en": "Matte"
           },
           "meta": {
             "hex": null,
@@ -1476,7 +1509,8 @@
       "code": "brand",
       "type": "dictionary",
       "name": {
-        "ru": "Производитель"
+        "ru": "Производитель",
+        "en": "Manufacturer"
       },
       "is_multiple": false,
       "options": [
@@ -1484,7 +1518,8 @@
           "external_code": "opt_brand_omoikiri_brand",
           "slug": "omoikiri_brand",
           "value": {
-            "ru": "Omoikiri"
+            "ru": "Omoikiri",
+            "en": "Omoikiri"
           },
           "meta": {
             "hex": null,
@@ -1495,7 +1530,8 @@
           "external_code": "opt_brand_akrilika_brand",
           "slug": "akrilika_brand",
           "value": {
-            "ru": "Akrilika"
+            "ru": "Akrilika",
+            "en": "Akrilika"
           },
           "meta": {
             "hex": null,
@@ -1506,7 +1542,8 @@
           "external_code": "opt_brand_grandex_brand",
           "slug": "grandex_brand",
           "value": {
-            "ru": "Grandex"
+            "ru": "Grandex",
+            "en": "Grandex"
           },
           "meta": {
             "hex": null,
@@ -1520,7 +1557,8 @@
       "code": "set_sink",
       "type": "dictionary",
       "name": {
-        "ru": "Тип монтажа"
+        "ru": "Тип монтажа",
+        "en": "Installation type"
       },
       "is_multiple": false,
       "options": [
@@ -1528,7 +1566,8 @@
           "external_code": "opt_set_sink_under_set",
           "slug": "under_set",
           "value": {
-            "ru": "Подстольный"
+            "ru": "Подстольный",
+            "en": "Podstolny"
           },
           "meta": {
             "hex": null,
@@ -1539,7 +1578,8 @@
           "external_code": "opt_set_sink_above_set",
           "slug": "above_set",
           "value": {
-            "ru": "Надстольный"
+            "ru": "Надстольный",
+            "en": "Over-the-table"
           },
           "meta": {
             "hex": null,
@@ -1553,7 +1593,8 @@
       "code": "material",
       "type": "dictionary",
       "name": {
-        "ru": "Материал"
+        "ru": "Материал",
+        "en": "Material"
       },
       "is_multiple": false,
       "options": [
@@ -1561,7 +1602,8 @@
           "external_code": "opt_material_stainless_steel",
           "slug": "stainless_steel",
           "value": {
-            "ru": "Нержавеющая сталь"
+            "ru": "Нержавеющая сталь",
+            "en": "Stainless steel"
           },
           "meta": {
             "hex": null,
@@ -1572,7 +1614,8 @@
           "external_code": "opt_material_composite",
           "slug": "composite",
           "value": {
-            "ru": "Искусственный гранит"
+            "ru": "Искусственный гранит",
+            "en": "Artificial granite"
           },
           "meta": {
             "hex": null,
@@ -1583,7 +1626,8 @@
           "external_code": "opt_material_acrylic",
           "slug": "acrylic",
           "value": {
-            "ru": "Акрил"
+            "ru": "Акрил",
+            "en": "Acrylic"
           },
           "meta": {
             "hex": null,
@@ -1594,7 +1638,8 @@
           "external_code": "opt_material_metal_bottom",
           "slug": "metal_bottom",
           "value": {
-            "ru": "Акрил + мет.дно"
+            "ru": "Акрил + мет.дно",
+            "en": "Acrylic + metal bottom"
           },
           "meta": {
             "hex": null,
@@ -1605,7 +1650,8 @@
           "external_code": "opt_material_ceramic",
           "slug": "ceramic",
           "value": {
-            "ru": "Керамика"
+            "ru": "Керамика",
+            "en": "Ceramics"
           },
           "meta": {
             "hex": null,
@@ -1619,7 +1665,8 @@
       "code": "steel_thickness_sink",
       "type": "dictionary",
       "name": {
-        "ru": "Толщина стали"
+        "ru": "Толщина стали",
+        "en": "Steel thickness"
       },
       "is_multiple": false,
       "options": [
@@ -1627,7 +1674,8 @@
           "external_code": "opt_steel_thickness_sink_th-8",
           "slug": "th-8",
           "value": {
-            "ru": "0,8 мм"
+            "ru": "0,8 мм",
+            "en": "0.8 mm"
           },
           "meta": {
             "hex": null,
@@ -1638,7 +1686,8 @@
           "external_code": "opt_steel_thickness_sink_th-9",
           "slug": "th-9",
           "value": {
-            "ru": "0,9 мм"
+            "ru": "0,9 мм",
+            "en": "0.9 mm"
           },
           "meta": {
             "hex": null,
@@ -1649,7 +1698,8 @@
           "external_code": "opt_steel_thickness_sink_th-10",
           "slug": "th-10",
           "value": {
-            "ru": "1 мм"
+            "ru": "1 мм",
+            "en": "1 mm"
           },
           "meta": {
             "hex": null,
@@ -1660,7 +1710,8 @@
           "external_code": "opt_steel_thickness_sink_th-12",
           "slug": "th-12",
           "value": {
-            "ru": "1,2 мм"
+            "ru": "1,2 мм",
+            "en": "1.2 mm"
           },
           "meta": {
             "hex": null,
@@ -1674,7 +1725,8 @@
       "code": "min_cab_width",
       "type": "dictionary",
       "name": {
-        "ru": "Мин. ширина шкафа, мм"
+        "ru": "Мин. ширина шкафа, мм",
+        "en": "Min. cabinet width, mm"
       },
       "is_multiple": false,
       "options": [
@@ -1817,7 +1869,8 @@
       "code": "features_faucet",
       "type": "dictionary",
       "name": {
-        "ru": "Особенности"
+        "ru": "Особенности",
+        "en": "Peculiarities"
       },
       "is_multiple": false,
       "options": [
@@ -1825,7 +1878,8 @@
           "external_code": "opt_features_faucet_single_lever",
           "slug": "single_lever",
           "value": {
-            "ru": "Однорычажный"
+            "ru": "Однорычажный",
+            "en": "Single lever"
           },
           "meta": {
             "hex": null,
@@ -1836,7 +1890,8 @@
           "external_code": "opt_features_faucet_double_lever",
           "slug": "double_lever",
           "value": {
-            "ru": "Двухрычажный"
+            "ru": "Двухрычажный",
+            "en": "Double wishbone"
           },
           "meta": {
             "hex": null,
@@ -1847,7 +1902,8 @@
           "external_code": "opt_features_faucet_exhaust_hose",
           "slug": "exhaust_hose",
           "value": {
-            "ru": "С вытяжным шлангом"
+            "ru": "С вытяжным шлангом",
+            "en": "With exhaust hose"
           },
           "meta": {
             "hex": null,
@@ -1858,7 +1914,8 @@
           "external_code": "opt_features_faucet_2-in-1",
           "slug": "2-in-1",
           "value": {
-            "ru": "2-в-1 (с фильтром)"
+            "ru": "2-в-1 (с фильтром)",
+            "en": "2-in-1 (with filter)"
           },
           "meta": {
             "hex": null,
@@ -1869,7 +1926,8 @@
           "external_code": "opt_features_faucet_3-in-1",
           "slug": "3-in-1",
           "value": {
-            "ru": "3-в-1 (фильтр+лейка)"
+            "ru": "3-в-1 (фильтр+лейка)",
+            "en": "3-in-1 (filter+watering can)"
           },
           "meta": {
             "hex": null,
@@ -1880,7 +1938,8 @@
           "external_code": "opt_features_faucet_window",
           "slug": "window",
           "value": {
-            "ru": "Под окно"
+            "ru": "Под окно",
+            "en": "Under the window"
           },
           "meta": {
             "hex": null,
@@ -1891,7 +1950,8 @@
           "external_code": "opt_features_faucet_shower_button",
           "slug": "shower_button",
           "value": {
-            "ru": "Кнопка струя/душ"
+            "ru": "Кнопка струя/душ",
+            "en": "Jet/shower button"
           },
           "meta": {
             "hex": null,
@@ -1905,7 +1965,8 @@
       "code": "type_faucet",
       "type": "dictionary",
       "name": {
-        "ru": "Тип продукта"
+        "ru": "Тип продукта",
+        "en": "Product type"
       },
       "is_multiple": false,
       "options": [
@@ -1913,7 +1974,8 @@
           "external_code": "opt_type_faucet_faucet",
           "slug": "faucet",
           "value": {
-            "ru": "Смеситель"
+            "ru": "Смеситель",
+            "en": "Mixer"
           },
           "meta": {
             "hex": null,
@@ -1924,7 +1986,8 @@
           "external_code": "opt_type_faucet_dispenser",
           "slug": "dispenser",
           "value": {
-            "ru": "Дозатор"
+            "ru": "Дозатор",
+            "en": "Dispenser"
           },
           "meta": {
             "hex": null,
@@ -1938,7 +2001,8 @@
       "code": "color",
       "type": "dictionary",
       "name": {
-        "ru": "Цвет"
+        "ru": "Цвет",
+        "en": "Color"
       },
       "is_multiple": false,
       "options": [
@@ -1946,7 +2010,8 @@
           "external_code": "opt_color_white",
           "slug": "white",
           "value": {
-            "ru": "Белый"
+            "ru": "Белый",
+            "en": "White"
           },
           "meta": {
             "hex": "#FFFFFF",
@@ -1957,7 +2022,8 @@
           "external_code": "opt_color_black",
           "slug": "black",
           "value": {
-            "ru": "Чёрный"
+            "ru": "Чёрный",
+            "en": "Black"
           },
           "meta": {
             "hex": "#000000",
@@ -1968,7 +2034,8 @@
           "external_code": "opt_color_gray",
           "slug": "gray",
           "value": {
-            "ru": "Серый"
+            "ru": "Серый",
+            "en": "Gray"
           },
           "meta": {
             "hex": "#A9A9A9",
@@ -1979,7 +2046,8 @@
           "external_code": "opt_color_beige",
           "slug": "beige",
           "value": {
-            "ru": "Бежевый"
+            "ru": "Бежевый",
+            "en": "Beige"
           },
           "meta": {
             "hex": "#F5DEB3",
@@ -1990,7 +2058,8 @@
           "external_code": "opt_color_brown",
           "slug": "brown",
           "value": {
-            "ru": "Коричневый"
+            "ru": "Коричневый",
+            "en": "Brown"
           },
           "meta": {
             "hex": "#8B4513",
@@ -2001,7 +2070,8 @@
           "external_code": "opt_color_red",
           "slug": "red",
           "value": {
-            "ru": "Красный"
+            "ru": "Красный",
+            "en": "Red"
           },
           "meta": {
             "hex": "#FF0000",
@@ -2012,7 +2082,8 @@
           "external_code": "opt_color_orange",
           "slug": "orange",
           "value": {
-            "ru": "Оранжевый"
+            "ru": "Оранжевый",
+            "en": "Orange"
           },
           "meta": {
             "hex": "#FFA500",
@@ -2023,7 +2094,8 @@
           "external_code": "opt_color_yellow",
           "slug": "yellow",
           "value": {
-            "ru": "Жёлтый"
+            "ru": "Жёлтый",
+            "en": "Yellow"
           },
           "meta": {
             "hex": "#FFFF00",
@@ -2034,7 +2106,8 @@
           "external_code": "opt_color_green",
           "slug": "green",
           "value": {
-            "ru": "Зелёный"
+            "ru": "Зелёный",
+            "en": "Green"
           },
           "meta": {
             "hex": "#008000",
@@ -2045,7 +2118,8 @@
           "external_code": "opt_color_blue",
           "slug": "blue",
           "value": {
-            "ru": "Синий"
+            "ru": "Синий",
+            "en": "Blue"
           },
           "meta": {
             "hex": "#0000FF",
@@ -2056,7 +2130,8 @@
           "external_code": "opt_color_pink",
           "slug": "pink",
           "value": {
-            "ru": "Розовый"
+            "ru": "Розовый",
+            "en": "Pink"
           },
           "meta": {
             "hex": "#FFC0CB",
@@ -2067,7 +2142,8 @@
           "external_code": "opt_color_translucent",
           "slug": "translucent",
           "value": {
-            "ru": "Прозрачный"
+            "ru": "Прозрачный",
+            "en": "Translucent"
           },
           "meta": {
             "hex": "#E0E0E0",
@@ -2081,7 +2157,8 @@
       "code": "collection",
       "type": "dictionary",
       "name": {
-        "ru": "Коллекция"
+        "ru": "Коллекция",
+        "en": "Collection"
       },
       "is_multiple": false,
       "options": [
@@ -2089,7 +2166,8 @@
           "external_code": "opt_collection_solid_collection",
           "slug": "solid_collection",
           "value": {
-            "ru": "Solid"
+            "ru": "Solid",
+            "en": "Solid"
           },
           "meta": {
             "hex": null,
@@ -2100,7 +2178,8 @@
           "external_code": "opt_collection_intense_collection",
           "slug": "intense_collection",
           "value": {
-            "ru": "Intense"
+            "ru": "Intense",
+            "en": "Intense"
           },
           "meta": {
             "hex": null,
@@ -2111,7 +2190,8 @@
           "external_code": "opt_collection_pure_collection",
           "slug": "pure_collection",
           "value": {
-            "ru": "Pure"
+            "ru": "Pure",
+            "en": "Pure"
           },
           "meta": {
             "hex": null,
@@ -2122,7 +2202,8 @@
           "external_code": "opt_collection_sand_collection",
           "slug": "sand_collection",
           "value": {
-            "ru": "Sand"
+            "ru": "Sand",
+            "en": "Sand"
           },
           "meta": {
             "hex": null,
@@ -2133,7 +2214,8 @@
           "external_code": "opt_collection_design_collection",
           "slug": "design_collection",
           "value": {
-            "ru": "Design"
+            "ru": "Design",
+            "en": "Design"
           },
           "meta": {
             "hex": null,
@@ -2144,7 +2226,8 @@
           "external_code": "opt_collection_architectural_collection",
           "slug": "architectural_collection",
           "value": {
-            "ru": "Architectural"
+            "ru": "Architectural",
+            "en": "Architectural"
           },
           "meta": {
             "hex": null,
@@ -2155,7 +2238,8 @@
           "external_code": "opt_collection_jewel_collection",
           "slug": "jewel_collection",
           "value": {
-            "ru": "Jewel"
+            "ru": "Jewel",
+            "en": "Jewel"
           },
           "meta": {
             "hex": null,
@@ -2166,7 +2250,8 @@
           "external_code": "opt_collection_e-series_collection",
           "slug": "e-series_collection",
           "value": {
-            "ru": "E Series"
+            "ru": "E Series",
+            "en": "E Series"
           },
           "meta": {
             "hex": null,
@@ -2177,7 +2262,8 @@
           "external_code": "opt_collection_m-series_collection",
           "slug": "m-series_collection",
           "value": {
-            "ru": "M Series"
+            "ru": "M Series",
+            "en": "M Series"
           },
           "meta": {
             "hex": null,
@@ -2188,7 +2274,8 @@
           "external_code": "opt_collection_c-series_collection",
           "slug": "c-series_collection",
           "value": {
-            "ru": "C Series"
+            "ru": "C Series",
+            "en": "C Series"
           },
           "meta": {
             "hex": null,
@@ -2199,7 +2286,8 @@
           "external_code": "opt_collection_send-pearl_collection",
           "slug": "send-pearl_collection",
           "value": {
-            "ru": "Send&Pearl"
+            "ru": "Send&Pearl",
+            "en": "Send&Pearl"
           },
           "meta": {
             "hex": null,
@@ -2210,7 +2298,8 @@
           "external_code": "opt_collection_granite_collection",
           "slug": "granite_collection",
           "value": {
-            "ru": "Granite"
+            "ru": "Granite",
+            "en": "Granite"
           },
           "meta": {
             "hex": null,
@@ -2221,7 +2310,8 @@
           "external_code": "opt_collection_lucia_collection",
           "slug": "lucia_collection",
           "value": {
-            "ru": "Lucia"
+            "ru": "Lucia",
+            "en": "Lucia"
           },
           "meta": {
             "hex": null,
@@ -2232,7 +2322,8 @@
           "external_code": "opt_collection_marmo_collection",
           "slug": "marmo_collection",
           "value": {
-            "ru": "Marmo"
+            "ru": "Marmo",
+            "en": "Marmo"
           },
           "meta": {
             "hex": null,
@@ -2243,7 +2334,8 @@
           "external_code": "opt_collection_calacatta_collection",
           "slug": "calacatta_collection",
           "value": {
-            "ru": "Calacatta"
+            "ru": "Calacatta",
+            "en": "Calacatta"
           },
           "meta": {
             "hex": null,
@@ -2254,7 +2346,8 @@
           "external_code": "opt_collection_terrazzo_collection",
           "slug": "terrazzo_collection",
           "value": {
-            "ru": "Terrazzo"
+            "ru": "Terrazzo",
+            "en": "Terrazzo"
           },
           "meta": {
             "hex": null,
@@ -2265,7 +2358,8 @@
           "external_code": "opt_collection_volcanics_collection",
           "slug": "volcanics_collection",
           "value": {
-            "ru": "Volcanics"
+            "ru": "Volcanics",
+            "en": "Volcanics"
           },
           "meta": {
             "hex": null,
@@ -2279,7 +2373,8 @@
       "code": "length",
       "type": "numeric",
       "name": {
-        "ru": "Длина"
+        "ru": "Длина",
+        "en": "Length"
       },
       "is_multiple": false,
       "options": [
@@ -2302,7 +2397,8 @@
       "code": "width",
       "type": "numeric",
       "name": {
-        "ru": "Ширина"
+        "ru": "Ширина",
+        "en": "Width"
       },
       "is_multiple": false,
       "options": [
@@ -2325,7 +2421,8 @@
       "code": "height",
       "type": "numeric",
       "name": {
-        "ru": "Толщина"
+        "ru": "Толщина",
+        "en": "Thickness"
       },
       "is_multiple": false,
       "options": []
@@ -2335,7 +2432,8 @@
       "code": "size_inner_sink",
       "type": "string",
       "name": {
-        "ru": "Размер (внутренний)"
+        "ru": "Размер (внутренний)",
+        "en": "Inner Size"
       },
       "is_multiple": false,
       "options": []
@@ -2345,7 +2443,8 @@
       "code": "price_group",
       "type": "complex_reference",
       "name": {
-        "ru": "Ценовая категория"
+        "ru": "Ценовая категория",
+        "en": "Price Group"
       },
       "is_multiple": false,
       "options": [
@@ -2353,7 +2452,8 @@
           "external_code": "opt_price_group_s0_508",
           "slug": "s0",
           "value": {
-            "ru": "S0"
+            "ru": "S0",
+            "en": "s0"
           },
           "meta": {
             "hex": null,
@@ -2367,7 +2467,8 @@
       "code": "cutting_groups",
       "type": "complex_reference",
       "name": {
-        "ru": "Группа раскроя"
+        "ru": "Группа раскроя",
+        "en": "Cutting Group"
       },
       "is_multiple": false,
       "options": []
@@ -2382,12 +2483,12 @@
       "unit_code": "pcs",
       "slug": "pure-vanilla",
       "name": {
-        "ru": "Pure Vanilla"
+        "ru": "Pure Vanilla",
+        "en": "pure-vanilla"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -2403,7 +2504,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "P-101"
           },
           "is_manual_pricing": false,
@@ -2419,12 +2519,12 @@
       "unit_code": "pcs",
       "slug": "pure-beige",
       "name": {
-        "ru": "Pure Beige"
+        "ru": "Pure Beige",
+        "en": "pure-beige"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -2437,10 +2537,9 @@
           "sku": "pure-beige",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/P-102.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-102-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "P-102"
           },
           "is_manual_pricing": false,
@@ -2456,12 +2555,12 @@
       "unit_code": "pcs",
       "slug": "pure-translucent-new",
       "name": {
-        "ru": "Pure Translucent new"
+        "ru": "Pure Translucent new",
+        "en": "pure-translucent-new"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -2474,10 +2573,9 @@
           "sku": "pure-translucent-new",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/P-103.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-103-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "P-103"
           },
           "is_manual_pricing": false,
@@ -2493,12 +2591,12 @@
       "unit_code": "pcs",
       "slug": "pure-white,-6-mm.",
       "name": {
-        "ru": "Pure White, 6 мм."
+        "ru": "Pure White, 6 мм.",
+        "en": "pure-white,-6-mm."
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 2500,
@@ -2511,10 +2609,9 @@
           "sku": "pure-white,-6-mm.",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/P-104.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-104-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "P-104"
           },
           "is_manual_pricing": false,
@@ -2530,12 +2627,12 @@
       "unit_code": "pcs",
       "slug": "pure-white,-10-mm.",
       "name": {
-        "ru": "Pure White, 10 мм."
+        "ru": "Pure White, 10 мм.",
+        "en": "pure-white,-10-mm."
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -2548,10 +2645,9 @@
           "sku": "pure-white,-10-mm.",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/P-104.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-104-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "P-104"
           },
           "is_manual_pricing": false,
@@ -2567,12 +2663,12 @@
       "unit_code": "pcs",
       "slug": "pure-white,-12-mm.",
       "name": {
-        "ru": "Pure White, 12 мм."
+        "ru": "Pure White, 12 мм.",
+        "en": "pure-white,-12-mm."
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -2585,10 +2681,9 @@
           "sku": "pure-white,-12-mm.",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/P-104.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-104-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "P-104"
           },
           "is_manual_pricing": false,
@@ -2604,12 +2699,12 @@
       "unit_code": "pcs",
       "slug": "pure-black",
       "name": {
-        "ru": "Pure Black"
+        "ru": "Pure Black",
+        "en": "pure-black"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -2622,10 +2717,9 @@
           "sku": "pure-black",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/P-105.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-105-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "P-105"
           },
           "is_manual_pricing": false,
@@ -2641,12 +2735,12 @@
       "unit_code": "pcs",
       "slug": "pure-red-new",
       "name": {
-        "ru": "Pure Red new"
+        "ru": "Pure Red new",
+        "en": "pure-red-new"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -2659,10 +2753,9 @@
           "sku": "pure-red-new",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/P-107.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-107-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "P-107"
           },
           "is_manual_pricing": false,
@@ -2678,12 +2771,12 @@
       "unit_code": "pcs",
       "slug": "pure-grey",
       "name": {
-        "ru": "Pure Grey"
+        "ru": "Pure Grey",
+        "en": "pure-grey"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -2696,10 +2789,9 @@
           "sku": "pure-grey",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/P-108.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-108-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "P-108"
           },
           "is_manual_pricing": false,
@@ -2715,12 +2807,12 @@
       "unit_code": "pcs",
       "slug": "light-grey",
       "name": {
-        "ru": "Light Grey"
+        "ru": "Light Grey",
+        "en": "light-grey"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -2733,10 +2825,9 @@
           "sku": "light-grey",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/P-109.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-109-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "P-109"
           },
           "is_manual_pricing": false,
@@ -2752,12 +2843,12 @@
       "unit_code": "pcs",
       "slug": "iron",
       "name": {
-        "ru": "Iron"
+        "ru": "Iron",
+        "en": "iron"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -2770,10 +2861,9 @@
           "sku": "iron",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/P-110.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-110-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "P-110"
           },
           "is_manual_pricing": false,
@@ -2789,12 +2879,12 @@
       "unit_code": "pcs",
       "slug": "natural-white",
       "name": {
-        "ru": "Natural White"
+        "ru": "Natural White",
+        "en": "natural-white"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -2807,10 +2897,9 @@
           "sku": "natural-white",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/P-118.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-118-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "P-118"
           },
           "is_manual_pricing": false,
@@ -2826,12 +2915,12 @@
       "unit_code": "pcs",
       "slug": "whale-white",
       "name": {
-        "ru": "Whale White"
+        "ru": "Whale White",
+        "en": "whale-white"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -2844,10 +2933,9 @@
           "sku": "whale-white",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/P-119.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-119-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "P-119"
           },
           "is_manual_pricing": false,
@@ -2863,12 +2951,12 @@
       "unit_code": "pcs",
       "slug": "deep-sea-new",
       "name": {
-        "ru": "Deep Sea new"
+        "ru": "Deep Sea new",
+        "en": "deep-sea-new"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -2881,10 +2969,9 @@
           "sku": "deep-sea-new",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/P-197.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-197-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "P-197"
           },
           "is_manual_pricing": false,
@@ -2900,12 +2987,12 @@
       "unit_code": "pcs",
       "slug": "mango-new",
       "name": {
-        "ru": "Mango new"
+        "ru": "Mango new",
+        "en": "mango-new"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -2921,7 +3008,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "P-198"
           },
           "is_manual_pricing": false,
@@ -2937,12 +3023,12 @@
       "unit_code": "pcs",
       "slug": "pure-orange-new",
       "name": {
-        "ru": "Pure Orange new"
+        "ru": "Pure Orange new",
+        "en": "pure-orange-new"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -2955,10 +3041,9 @@
           "sku": "pure-orange-new",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/P-199.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-199-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "P-199"
           },
           "is_manual_pricing": false,
@@ -2974,12 +3059,12 @@
       "unit_code": "pcs",
       "slug": "green-lime-new",
       "name": {
-        "ru": "Green Lime new"
+        "ru": "Green Lime new",
+        "en": "green-lime-new"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -2992,10 +3077,9 @@
           "sku": "green-lime-new",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/P-427.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-427-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "P-427"
           },
           "is_manual_pricing": false,
@@ -3011,12 +3095,12 @@
       "unit_code": "pcs",
       "slug": "dirty-sand",
       "name": {
-        "ru": "Dirty Sand"
+        "ru": "Dirty Sand",
+        "en": "dirty-sand"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3029,10 +3113,9 @@
           "sku": "dirty-sand",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/S-201-1.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-201-sl2560x528px-1.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-201"
           },
           "is_manual_pricing": false,
@@ -3048,12 +3131,12 @@
       "unit_code": "pcs",
       "slug": "peaceful-night",
       "name": {
-        "ru": "Peaceful Night"
+        "ru": "Peaceful Night",
+        "en": "peaceful-night"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3066,10 +3149,9 @@
           "sku": "peaceful-night",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/S-202.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-202-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-202"
           },
           "is_manual_pricing": false,
@@ -3085,12 +3167,12 @@
       "unit_code": "pcs",
       "slug": "sparkling-sand",
       "name": {
-        "ru": "Sparkling Sand"
+        "ru": "Sparkling Sand",
+        "en": "sparkling-sand"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3103,10 +3185,9 @@
           "sku": "sparkling-sand",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/S-203.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-203-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-203"
           },
           "is_manual_pricing": false,
@@ -3122,12 +3203,12 @@
       "unit_code": "pcs",
       "slug": "creamy-sand",
       "name": {
-        "ru": "Creamy Sand"
+        "ru": "Creamy Sand",
+        "en": "creamy-sand"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3140,10 +3221,9 @@
           "sku": "creamy-sand",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/S-204.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-204-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-204"
           },
           "is_manual_pricing": false,
@@ -3159,12 +3239,12 @@
       "unit_code": "pcs",
       "slug": "fair-sky",
       "name": {
-        "ru": "Fair Sky"
+        "ru": "Fair Sky",
+        "en": "fair-sky"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3177,10 +3257,9 @@
           "sku": "fair-sky",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/S-205.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-205-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-205"
           },
           "is_manual_pricing": false,
@@ -3196,12 +3275,12 @@
       "unit_code": "pcs",
       "slug": "wet-sand",
       "name": {
-        "ru": "Wet Sand"
+        "ru": "Wet Sand",
+        "en": "wet-sand"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3214,10 +3293,9 @@
           "sku": "wet-sand",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/S-206.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-206-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-206"
           },
           "is_manual_pricing": false,
@@ -3233,12 +3311,12 @@
       "unit_code": "pcs",
       "slug": "clear-sky",
       "name": {
-        "ru": "Clear Sky"
+        "ru": "Clear Sky",
+        "en": "clear-sky"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3251,10 +3329,9 @@
           "sku": "clear-sky",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/S-207.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-207-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-207"
           },
           "is_manual_pricing": false,
@@ -3270,12 +3347,12 @@
       "unit_code": "pcs",
       "slug": "natural-sand",
       "name": {
-        "ru": "Natural Sand"
+        "ru": "Natural Sand",
+        "en": "natural-sand"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3288,10 +3365,9 @@
           "sku": "natural-sand",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/S-208.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-208-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-208"
           },
           "is_manual_pricing": false,
@@ -3307,12 +3383,12 @@
       "unit_code": "pcs",
       "slug": "light-sand",
       "name": {
-        "ru": "Light Sand"
+        "ru": "Light Sand",
+        "en": "light-sand"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3325,10 +3401,9 @@
           "sku": "light-sand",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/S-209.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-209-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-209"
           },
           "is_manual_pricing": false,
@@ -3344,12 +3419,12 @@
       "unit_code": "pcs",
       "slug": "hot-sand",
       "name": {
-        "ru": "Hot Sand"
+        "ru": "Hot Sand",
+        "en": "hot-sand"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3365,7 +3440,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-210"
           },
           "is_manual_pricing": false,
@@ -3381,12 +3455,12 @@
       "unit_code": "pcs",
       "slug": "romantic-night",
       "name": {
-        "ru": "Romantic Night"
+        "ru": "Romantic Night",
+        "en": "romantic-night"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3399,10 +3473,9 @@
           "sku": "romantic-night",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/S-211.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-211-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-211"
           },
           "is_manual_pricing": false,
@@ -3418,12 +3491,12 @@
       "unit_code": "pcs",
       "slug": "thunder-sky",
       "name": {
-        "ru": "Thunder Sky"
+        "ru": "Thunder Sky",
+        "en": "thunder-sky"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3436,10 +3509,9 @@
           "sku": "thunder-sky",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/S-212.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-212-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-212"
           },
           "is_manual_pricing": false,
@@ -3455,12 +3527,12 @@
       "unit_code": "pcs",
       "slug": "sanded-brown",
       "name": {
-        "ru": "Sanded Brown"
+        "ru": "Sanded Brown",
+        "en": "sanded-brown"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3473,10 +3545,9 @@
           "sku": "sanded-brown",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/S-214.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-214-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-214"
           },
           "is_manual_pricing": false,
@@ -3492,12 +3563,12 @@
       "unit_code": "pcs",
       "slug": "sanded-alps",
       "name": {
-        "ru": "Sanded Alps"
+        "ru": "Sanded Alps",
+        "en": "sanded-alps"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3510,10 +3581,9 @@
           "sku": "sanded-alps",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/S-215.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-215-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-215"
           },
           "is_manual_pricing": false,
@@ -3529,12 +3599,12 @@
       "unit_code": "pcs",
       "slug": "midnight-sky",
       "name": {
-        "ru": "Midnight Sky"
+        "ru": "Midnight Sky",
+        "en": "midnight-sky"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3547,10 +3617,9 @@
           "sku": "midnight-sky",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/S-217.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-217-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-217"
           },
           "is_manual_pricing": false,
@@ -3566,12 +3635,12 @@
       "unit_code": "pcs",
       "slug": "crispy-beige",
       "name": {
-        "ru": "Crispy Beige"
+        "ru": "Crispy Beige",
+        "en": "crispy-beige"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3584,10 +3653,9 @@
           "sku": "crispy-beige",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/S-218.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-218-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-218"
           },
           "is_manual_pricing": false,
@@ -3603,12 +3671,12 @@
       "unit_code": "pcs",
       "slug": "crystal-snowflake",
       "name": {
-        "ru": "Crystal snowflake"
+        "ru": "Crystal snowflake",
+        "en": "crystal-snowflake"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3621,10 +3689,9 @@
           "sku": "crystal-snowflake",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/S-220.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-220-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-220"
           },
           "is_manual_pricing": false,
@@ -3640,12 +3707,12 @@
       "unit_code": "pcs",
       "slug": "silver-pearl",
       "name": {
-        "ru": "Silver Pearl"
+        "ru": "Silver Pearl",
+        "en": "silver-pearl"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3661,7 +3728,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-223"
           },
           "is_manual_pricing": false,
@@ -3677,12 +3743,12 @@
       "unit_code": "pcs",
       "slug": "tempest-grey",
       "name": {
-        "ru": "Tempest Grey"
+        "ru": "Tempest Grey",
+        "en": "tempest-grey"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3695,10 +3761,9 @@
           "sku": "tempest-grey",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/S-229.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-229-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "S-229"
           },
           "is_manual_pricing": false,
@@ -3714,12 +3779,12 @@
       "unit_code": "pcs",
       "slug": "poppy-seed",
       "name": {
-        "ru": "Poppy Seed"
+        "ru": "Poppy Seed",
+        "en": "poppy-seed"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3732,10 +3797,9 @@
           "sku": "poppy-seed",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/D-301.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-301-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "D-301"
           },
           "is_manual_pricing": false,
@@ -3751,12 +3815,12 @@
       "unit_code": "pcs",
       "slug": "morning-coffee",
       "name": {
-        "ru": "Morning Coffee"
+        "ru": "Morning Coffee",
+        "en": "morning-coffee"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3769,10 +3833,9 @@
           "sku": "morning-coffee",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/D-302.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-302-SL2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "D-302"
           },
           "is_manual_pricing": false,
@@ -3788,12 +3851,12 @@
       "unit_code": "pcs",
       "slug": "raisined-chocolate",
       "name": {
-        "ru": "Raisined Chocolate"
+        "ru": "Raisined Chocolate",
+        "en": "raisined-chocolate"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3806,10 +3869,9 @@
           "sku": "raisined-chocolate",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/D-303.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-303-SL2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "D-303"
           },
           "is_manual_pricing": false,
@@ -3825,12 +3887,12 @@
       "unit_code": "pcs",
       "slug": "ice-cream",
       "name": {
-        "ru": "Ice-Cream"
+        "ru": "Ice-Cream",
+        "en": "ice-cream"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3843,10 +3905,9 @@
           "sku": "ice-cream",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/D-304.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-304-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "D-304"
           },
           "is_manual_pricing": false,
@@ -3862,12 +3923,12 @@
       "unit_code": "pcs",
       "slug": "melted-butter",
       "name": {
-        "ru": "Melted Butter"
+        "ru": "Melted Butter",
+        "en": "melted-butter"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3883,7 +3944,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "D-305"
           },
           "is_manual_pricing": false,
@@ -3899,12 +3959,12 @@
       "unit_code": "pcs",
       "slug": "aspen-pie",
       "name": {
-        "ru": "Aspen Pie"
+        "ru": "Aspen Pie",
+        "en": "aspen-pie"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3920,7 +3980,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "D-307"
           },
           "is_manual_pricing": false,
@@ -3936,12 +3995,12 @@
       "unit_code": "pcs",
       "slug": "cubic-mint",
       "name": {
-        "ru": "Cubic Mint"
+        "ru": "Cubic Mint",
+        "en": "cubic-mint"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3957,7 +4016,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "D-308"
           },
           "is_manual_pricing": false,
@@ -3973,12 +4031,12 @@
       "unit_code": "pcs",
       "slug": "mushroom-soup",
       "name": {
-        "ru": "Mushroom Soup"
+        "ru": "Mushroom Soup",
+        "en": "mushroom-soup"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -3991,10 +4049,9 @@
           "sku": "mushroom-soup",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/D-309.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-309-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "D-309"
           },
           "is_manual_pricing": false,
@@ -4010,12 +4067,12 @@
       "unit_code": "pcs",
       "slug": "herbal-ash",
       "name": {
-        "ru": "Herbal Ash"
+        "ru": "Herbal Ash",
+        "en": "herbal-ash"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4028,10 +4085,9 @@
           "sku": "herbal-ash",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/D-310.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-310-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "D-310"
           },
           "is_manual_pricing": false,
@@ -4047,12 +4103,12 @@
       "unit_code": "pcs",
       "slug": "pietra-absorb",
       "name": {
-        "ru": "Pietra Absorb"
+        "ru": "Pietra Absorb",
+        "en": "pietra-absorb"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4065,10 +4121,9 @@
           "sku": "pietra-absorb",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/D-312.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-312-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "D-312"
           },
           "is_manual_pricing": false,
@@ -4084,12 +4139,12 @@
       "unit_code": "pcs",
       "slug": "milky-way",
       "name": {
-        "ru": "Milky Way"
+        "ru": "Milky Way",
+        "en": "milky-way"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4102,10 +4157,9 @@
           "sku": "milky-way",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/D-313.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-313-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "D-313"
           },
           "is_manual_pricing": false,
@@ -4121,12 +4175,12 @@
       "unit_code": "pcs",
       "slug": "arctic-ice",
       "name": {
-        "ru": "Arctic Ice"
+        "ru": "Arctic Ice",
+        "en": "arctic-ice"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4139,10 +4193,9 @@
           "sku": "arctic-ice",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/D-314.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-314-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "D-314"
           },
           "is_manual_pricing": false,
@@ -4158,12 +4211,12 @@
       "unit_code": "pcs",
       "slug": "spacemen-food",
       "name": {
-        "ru": "Spacemen Food"
+        "ru": "Spacemen Food",
+        "en": "spacemen-food"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4176,10 +4229,9 @@
           "sku": "spacemen-food",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/D-315.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-315-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "D-315"
           },
           "is_manual_pricing": false,
@@ -4195,12 +4247,12 @@
       "unit_code": "pcs",
       "slug": "velvet-bean",
       "name": {
-        "ru": "Velvet Bean"
+        "ru": "Velvet Bean",
+        "en": "velvet-bean"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4216,7 +4268,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "D-318"
           },
           "is_manual_pricing": false,
@@ -4232,12 +4283,12 @@
       "unit_code": "pcs",
       "slug": "soil",
       "name": {
-        "ru": "Soil"
+        "ru": "Soil",
+        "en": "soil"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4253,7 +4304,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "D-320"
           },
           "is_manual_pricing": false,
@@ -4269,12 +4319,12 @@
       "unit_code": "pcs",
       "slug": "cloudy-mount",
       "name": {
-        "ru": "Cloudy Mount"
+        "ru": "Cloudy Mount",
+        "en": "cloudy-mount"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4287,10 +4337,9 @@
           "sku": "cloudy-mount",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/A-401.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-401-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-401"
           },
           "is_manual_pricing": false,
@@ -4306,12 +4355,12 @@
       "unit_code": "pcs",
       "slug": "asphalt-material",
       "name": {
-        "ru": "Asphalt Material"
+        "ru": "Asphalt Material",
+        "en": "asphalt-material"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4324,10 +4373,9 @@
           "sku": "asphalt-material",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/A-403.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-403-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-403"
           },
           "is_manual_pricing": false,
@@ -4343,12 +4391,12 @@
       "unit_code": "pcs",
       "slug": "peach-fruit",
       "name": {
-        "ru": "Peach Fruit"
+        "ru": "Peach Fruit",
+        "en": "peach-fruit"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4364,7 +4412,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-405"
           },
           "is_manual_pricing": false,
@@ -4380,12 +4427,12 @@
       "unit_code": "pcs",
       "slug": "space-galaxy",
       "name": {
-        "ru": "Space Galaxy"
+        "ru": "Space Galaxy",
+        "en": "space-galaxy"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4398,10 +4445,9 @@
           "sku": "space-galaxy",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/A-406.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-406-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-406"
           },
           "is_manual_pricing": false,
@@ -4417,12 +4463,12 @@
       "unit_code": "pcs",
       "slug": "south-coast",
       "name": {
-        "ru": "South Coast"
+        "ru": "South Coast",
+        "en": "south-coast"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4438,7 +4484,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-409"
           },
           "is_manual_pricing": false,
@@ -4454,12 +4499,12 @@
       "unit_code": "pcs",
       "slug": "cotton-wool",
       "name": {
-        "ru": "Cotton Wool"
+        "ru": "Cotton Wool",
+        "en": "cotton-wool"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4472,10 +4517,9 @@
           "sku": "cotton-wool",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/A-410.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-410-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-410"
           },
           "is_manual_pricing": false,
@@ -4491,12 +4535,12 @@
       "unit_code": "pcs",
       "slug": "precious-stone",
       "name": {
-        "ru": "Precious Stone"
+        "ru": "Precious Stone",
+        "en": "precious-stone"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4512,7 +4556,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-411"
           },
           "is_manual_pricing": false,
@@ -4528,12 +4571,12 @@
       "unit_code": "pcs",
       "slug": "citron-blossom",
       "name": {
-        "ru": "Citron Blossom"
+        "ru": "Citron Blossom",
+        "en": "citron-blossom"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4549,7 +4592,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-412"
           },
           "is_manual_pricing": false,
@@ -4565,12 +4607,12 @@
       "unit_code": "pcs",
       "slug": "historical-spot",
       "name": {
-        "ru": "Historical Spot"
+        "ru": "Historical Spot",
+        "en": "historical-spot"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4583,10 +4625,9 @@
           "sku": "historical-spot",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/A-414.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-414-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-414"
           },
           "is_manual_pricing": false,
@@ -4602,12 +4643,12 @@
       "unit_code": "pcs",
       "slug": "endless-desert",
       "name": {
-        "ru": "Endless Desert"
+        "ru": "Endless Desert",
+        "en": "endless-desert"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4623,7 +4664,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-415"
           },
           "is_manual_pricing": false,
@@ -4639,12 +4679,12 @@
       "unit_code": "pcs",
       "slug": "visible-horizon",
       "name": {
-        "ru": "Visible Horizon"
+        "ru": "Visible Horizon",
+        "en": "visible-horizon"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4657,10 +4697,9 @@
           "sku": "visible-horizon",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/A-416.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-416-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-416"
           },
           "is_manual_pricing": false,
@@ -4676,12 +4715,12 @@
       "unit_code": "pcs",
       "slug": "global-cruise",
       "name": {
-        "ru": "Global Cruise"
+        "ru": "Global Cruise",
+        "en": "global-cruise"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4694,10 +4733,9 @@
           "sku": "global-cruise",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/A-417.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-417-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-417"
           },
           "is_manual_pricing": false,
@@ -4713,12 +4751,12 @@
       "unit_code": "pcs",
       "slug": "oak-wood",
       "name": {
-        "ru": "Oak Wood"
+        "ru": "Oak Wood",
+        "en": "oak-wood"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4731,10 +4769,9 @@
           "sku": "oak-wood",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/A-418.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-418-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-418"
           },
           "is_manual_pricing": false,
@@ -4750,12 +4787,12 @@
       "unit_code": "pcs",
       "slug": "cromium-atom",
       "name": {
-        "ru": "Cromium Atom"
+        "ru": "Cromium Atom",
+        "en": "cromium-atom"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4768,10 +4805,9 @@
           "sku": "cromium-atom",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/A-419.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-419-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-419"
           },
           "is_manual_pricing": false,
@@ -4787,12 +4823,12 @@
       "unit_code": "pcs",
       "slug": "coal-mine",
       "name": {
-        "ru": "Coal Mine"
+        "ru": "Coal Mine",
+        "en": "coal-mine"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4805,10 +4841,9 @@
           "sku": "coal-mine",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/A-421.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-421-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-421"
           },
           "is_manual_pricing": false,
@@ -4824,12 +4859,12 @@
       "unit_code": "pcs",
       "slug": "snow-pile",
       "name": {
-        "ru": "Snow Pile"
+        "ru": "Snow Pile",
+        "en": "snow-pile"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4842,10 +4877,9 @@
           "sku": "snow-pile",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/A-421.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-421-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-422"
           },
           "is_manual_pricing": false,
@@ -4861,12 +4895,12 @@
       "unit_code": "pcs",
       "slug": "industrial-draft",
       "name": {
-        "ru": "Industrial Draft"
+        "ru": "Industrial Draft",
+        "en": "industrial-draft"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4879,10 +4913,9 @@
           "sku": "industrial-draft",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/A-423.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-423-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-423"
           },
           "is_manual_pricing": false,
@@ -4898,12 +4931,12 @@
       "unit_code": "pcs",
       "slug": "loft-design",
       "name": {
-        "ru": "Loft Design"
+        "ru": "Loft Design",
+        "en": "loft-design"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4916,10 +4949,9 @@
           "sku": "loft-design",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/A-424.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-424-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-424"
           },
           "is_manual_pricing": false,
@@ -4935,12 +4967,12 @@
       "unit_code": "pcs",
       "slug": "urban-project",
       "name": {
-        "ru": "Urban Project"
+        "ru": "Urban Project",
+        "en": "urban-project"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4953,10 +4985,9 @@
           "sku": "urban-project",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/A-425.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-425-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-425"
           },
           "is_manual_pricing": false,
@@ -4972,12 +5003,12 @@
       "unit_code": "pcs",
       "slug": "onyx-gravel",
       "name": {
-        "ru": "Onyx gravel"
+        "ru": "Onyx gravel",
+        "en": "onyx-gravel"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -4993,7 +5024,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-426"
           },
           "is_manual_pricing": false,
@@ -5009,12 +5039,12 @@
       "unit_code": "pcs",
       "slug": "primo",
       "name": {
-        "ru": "Primo"
+        "ru": "Primo",
+        "en": "primo"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5030,7 +5060,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-427"
           },
           "is_manual_pricing": false,
@@ -5046,12 +5075,12 @@
       "unit_code": "pcs",
       "slug": "concrete-quartz",
       "name": {
-        "ru": "Concrete Quartz"
+        "ru": "Concrete Quartz",
+        "en": "concrete-quartz"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5067,7 +5096,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-429"
           },
           "is_manual_pricing": false,
@@ -5083,12 +5111,12 @@
       "unit_code": "pcs",
       "slug": "milkshake-new",
       "name": {
-        "ru": "Milkshake new"
+        "ru": "Milkshake new",
+        "en": "milkshake-new"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5104,7 +5132,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "A-495"
           },
           "is_manual_pricing": false,
@@ -5120,12 +5147,12 @@
       "unit_code": "pcs",
       "slug": "cut-diamond",
       "name": {
-        "ru": "Cut Diamond"
+        "ru": "Cut Diamond",
+        "en": "cut-diamond"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5138,10 +5165,9 @@
           "sku": "cut-diamond",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/J-504.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/J-504-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "J-504"
           },
           "is_manual_pricing": false,
@@ -5157,12 +5183,12 @@
       "unit_code": "pcs",
       "slug": "pearl-necklace",
       "name": {
-        "ru": "Pearl Necklace"
+        "ru": "Pearl Necklace",
+        "en": "pearl-necklace"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5175,10 +5201,9 @@
           "sku": "pearl-necklace",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/J-505.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/J-505-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "J-505"
           },
           "is_manual_pricing": false,
@@ -5194,12 +5219,12 @@
       "unit_code": "pcs",
       "slug": "american-obsidian",
       "name": {
-        "ru": "American Obsidian"
+        "ru": "American Obsidian",
+        "en": "american-obsidian"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5212,10 +5237,9 @@
           "sku": "american-obsidian",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/J-509.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/J-509-SL2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "J-509"
           },
           "is_manual_pricing": false,
@@ -5231,12 +5255,12 @@
       "unit_code": "pcs",
       "slug": "terazzo-bianco",
       "name": {
-        "ru": "Terazzo Bianco"
+        "ru": "Terazzo Bianco",
+        "en": "terazzo-bianco"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5249,10 +5273,9 @@
           "sku": "terazzo-bianco",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/J-510.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/J-510-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "J-510"
           },
           "is_manual_pricing": false,
@@ -5268,12 +5291,12 @@
       "unit_code": "pcs",
       "slug": "snowy-moscow",
       "name": {
-        "ru": "Snowy Moscow"
+        "ru": "Snowy Moscow",
+        "en": "snowy-moscow"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5289,7 +5312,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "E-603"
           },
           "is_manual_pricing": false,
@@ -5305,12 +5327,12 @@
       "unit_code": "pcs",
       "slug": "indian-mantra",
       "name": {
-        "ru": "Indian Mantra"
+        "ru": "Indian Mantra",
+        "en": "indian-mantra"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5323,10 +5345,9 @@
           "sku": "indian-mantra",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/E-605.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/E-605-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "E-605"
           },
           "is_manual_pricing": false,
@@ -5342,12 +5363,12 @@
       "unit_code": "pcs",
       "slug": "business-tokio",
       "name": {
-        "ru": "Business Tokio"
+        "ru": "Business Tokio",
+        "en": "business-tokio"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5360,10 +5381,9 @@
           "sku": "business-tokio",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/E-609.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/E-609-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "E-609"
           },
           "is_manual_pricing": false,
@@ -5379,12 +5399,12 @@
       "unit_code": "pcs",
       "slug": "english-tea",
       "name": {
-        "ru": "English Tea"
+        "ru": "English Tea",
+        "en": "english-tea"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5397,10 +5417,9 @@
           "sku": "english-tea",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/E-609.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/E-609-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "E-613"
           },
           "is_manual_pricing": false,
@@ -5416,12 +5435,12 @@
       "unit_code": "pcs",
       "slug": "saturn-ring",
       "name": {
-        "ru": "Saturn Ring"
+        "ru": "Saturn Ring",
+        "en": "saturn-ring"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5437,7 +5456,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "E-618"
           },
           "is_manual_pricing": false,
@@ -5453,12 +5471,12 @@
       "unit_code": "pcs",
       "slug": "notte-bianca-new",
       "name": {
-        "ru": "Notte Bianca new"
+        "ru": "Notte Bianca new",
+        "en": "notte-bianca-new"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5474,7 +5492,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-605"
           },
           "is_manual_pricing": false,
@@ -5490,12 +5507,12 @@
       "unit_code": "pcs",
       "slug": "grigio-bianca-new",
       "name": {
-        "ru": "Grigio Bianca new"
+        "ru": "Grigio Bianca new",
+        "en": "grigio-bianca-new"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5511,7 +5528,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-606"
           },
           "is_manual_pricing": false,
@@ -5527,12 +5543,12 @@
       "unit_code": "pcs",
       "slug": "neve-bianca-new",
       "name": {
-        "ru": "Neve Bianca new"
+        "ru": "Neve Bianca new",
+        "en": "neve-bianca-new"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5548,7 +5564,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-607"
           },
           "is_manual_pricing": false,
@@ -5564,12 +5579,12 @@
       "unit_code": "pcs",
       "slug": "amiata-bianca-new",
       "name": {
-        "ru": "Amiata Bianca new"
+        "ru": "Amiata Bianca new",
+        "en": "amiata-bianca-new"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5585,7 +5600,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-610"
           },
           "is_manual_pricing": false,
@@ -5601,12 +5615,12 @@
       "unit_code": "pcs",
       "slug": "hazel-flow",
       "name": {
-        "ru": "Hazel Flow"
+        "ru": "Hazel Flow",
+        "en": "hazel-flow"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5619,10 +5633,9 @@
           "sku": "hazel-flow",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/M-701-A.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-701-A-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-701"
           },
           "is_manual_pricing": false,
@@ -5638,12 +5651,12 @@
       "unit_code": "pcs",
       "slug": "water-weed",
       "name": {
-        "ru": "Water Weed"
+        "ru": "Water Weed",
+        "en": "water-weed"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5656,10 +5669,9 @@
           "sku": "water-weed",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/M-703-A.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-703-A-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-703"
           },
           "is_manual_pricing": false,
@@ -5675,12 +5687,12 @@
       "unit_code": "pcs",
       "slug": "lake-coast",
       "name": {
-        "ru": "Lake Coast"
+        "ru": "Lake Coast",
+        "en": "lake-coast"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5693,10 +5705,9 @@
           "sku": "lake-coast",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/M-705-A.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-705-A-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-705"
           },
           "is_manual_pricing": false,
@@ -5712,12 +5723,12 @@
       "unit_code": "pcs",
       "slug": "stormy-sea",
       "name": {
-        "ru": "Stormy Sea"
+        "ru": "Stormy Sea",
+        "en": "stormy-sea"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5730,10 +5741,9 @@
           "sku": "stormy-sea",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/M-706-A.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-706-A-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-706"
           },
           "is_manual_pricing": false,
@@ -5749,12 +5759,12 @@
       "unit_code": "pcs",
       "slug": "noble-pearl",
       "name": {
-        "ru": "Noble Pearl"
+        "ru": "Noble Pearl",
+        "en": "noble-pearl"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5767,10 +5777,9 @@
           "sku": "noble-pearl",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/M-707-A.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-707-A-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-707"
           },
           "is_manual_pricing": false,
@@ -5786,12 +5795,12 @@
       "unit_code": "pcs",
       "slug": "deep-water",
       "name": {
-        "ru": "Deep Water"
+        "ru": "Deep Water",
+        "en": "deep-water"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5804,10 +5813,9 @@
           "sku": "deep-water",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/M-708-A.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-708-A-SL2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-708"
           },
           "is_manual_pricing": false,
@@ -5823,12 +5831,12 @@
       "unit_code": "pcs",
       "slug": "float-rock",
       "name": {
-        "ru": "Float Rock"
+        "ru": "Float Rock",
+        "en": "float-rock"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5841,10 +5849,9 @@
           "sku": "float-rock",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/M-710-A.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-710-A-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-710"
           },
           "is_manual_pricing": false,
@@ -5860,12 +5867,12 @@
       "unit_code": "pcs",
       "slug": "sparkling-wave",
       "name": {
-        "ru": "Sparkling Wave"
+        "ru": "Sparkling Wave",
+        "en": "sparkling-wave"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5878,10 +5885,9 @@
           "sku": "sparkling-wave",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/M-711-A.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-711-A-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-711"
           },
           "is_manual_pricing": false,
@@ -5897,12 +5903,12 @@
       "unit_code": "pcs",
       "slug": "stylish-moon",
       "name": {
-        "ru": "Stylish Moon"
+        "ru": "Stylish Moon",
+        "en": "stylish-moon"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5915,10 +5921,9 @@
           "sku": "stylish-moon",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/M-712-A.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-712-A-SL2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-712"
           },
           "is_manual_pricing": false,
@@ -5934,12 +5939,12 @@
       "unit_code": "pcs",
       "slug": "whitesand-beach",
       "name": {
-        "ru": "Whitesand Beach"
+        "ru": "Whitesand Beach",
+        "en": "whitesand-beach"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5952,10 +5957,9 @@
           "sku": "whitesand-beach",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/M-713-A.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-713-A-SL2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-713"
           },
           "is_manual_pricing": false,
@@ -5971,12 +5975,12 @@
       "unit_code": "pcs",
       "slug": "shrimp-crust",
       "name": {
-        "ru": "Shrimp Crust"
+        "ru": "Shrimp Crust",
+        "en": "shrimp-crust"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -5989,10 +5993,9 @@
           "sku": "shrimp-crust",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/M-717-A.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-717-A-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-717"
           },
           "is_manual_pricing": false,
@@ -6008,12 +6011,12 @@
       "unit_code": "pcs",
       "slug": "neptun-trident",
       "name": {
-        "ru": "Neptun Trident"
+        "ru": "Neptun Trident",
+        "en": "neptun-trident"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -6026,10 +6029,9 @@
           "sku": "neptun-trident",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/M-718-A.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-718-A-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-718"
           },
           "is_manual_pricing": false,
@@ -6045,12 +6047,12 @@
       "unit_code": "pcs",
       "slug": "carrara-lunar",
       "name": {
-        "ru": "Carrara Lunar"
+        "ru": "Carrara Lunar",
+        "en": "carrara-lunar"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -6063,10 +6065,9 @@
           "sku": "carrara-lunar",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/M-720.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-720-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-720"
           },
           "is_manual_pricing": false,
@@ -6082,12 +6083,12 @@
       "unit_code": "pcs",
       "slug": "cloud-concrete-new",
       "name": {
-        "ru": "Cloud Concrete new"
+        "ru": "Cloud Concrete new",
+        "en": "cloud-concrete-new"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -6103,7 +6104,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-724"
           },
           "is_manual_pricing": false,
@@ -6119,12 +6119,12 @@
       "unit_code": "pcs",
       "slug": "ether-mist-new",
       "name": {
-        "ru": "Ether Mist new"
+        "ru": "Ether Mist new",
+        "en": "ether-mist-new"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -6140,7 +6140,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-726"
           },
           "is_manual_pricing": false,
@@ -6156,12 +6155,12 @@
       "unit_code": "pcs",
       "slug": "obsidian-soil-new",
       "name": {
-        "ru": "Obsidian Soil new"
+        "ru": "Obsidian Soil new",
+        "en": "obsidian-soil-new"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -6177,7 +6176,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-728"
           },
           "is_manual_pricing": false,
@@ -6193,12 +6191,12 @@
       "unit_code": "pcs",
       "slug": "venice",
       "name": {
-        "ru": "Venice"
+        "ru": "Venice",
+        "en": "venice"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -6211,10 +6209,9 @@
           "sku": "venice",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/M-727.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-727-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-727"
           },
           "is_manual_pricing": false,
@@ -6230,12 +6227,12 @@
       "unit_code": "pcs",
       "slug": "moon-coast",
       "name": {
-        "ru": "Moon Coast"
+        "ru": "Moon Coast",
+        "en": "moon-coast"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -6251,7 +6248,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-731"
           },
           "is_manual_pricing": false,
@@ -6267,12 +6263,12 @@
       "unit_code": "pcs",
       "slug": "marble-mirage",
       "name": {
-        "ru": "Marble Mirage"
+        "ru": "Marble Mirage",
+        "en": "marble-mirage"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -6288,7 +6284,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-732"
           },
           "is_manual_pricing": false,
@@ -6304,12 +6299,12 @@
       "unit_code": "pcs",
       "slug": "stellar-depth",
       "name": {
-        "ru": "Stellar Depth"
+        "ru": "Stellar Depth",
+        "en": "stellar-depth"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -6325,7 +6320,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-733"
           },
           "is_manual_pricing": false,
@@ -6341,12 +6335,12 @@
       "unit_code": "pcs",
       "slug": "black-pearl-new",
       "name": {
-        "ru": "Black Pearl new"
+        "ru": "Black Pearl new",
+        "en": "black-pearl-new"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -6362,7 +6356,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "M-798"
           },
           "is_manual_pricing": false,
@@ -6378,12 +6371,12 @@
       "unit_code": "pcs",
       "slug": "arezzo",
       "name": {
-        "ru": "Arezzo"
+        "ru": "Arezzo",
+        "en": "arezzo"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -6396,10 +6389,9 @@
           "sku": "arezzo",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/C-801-1.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/C-801-sl2560x528px-1.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "C-801"
           },
           "is_manual_pricing": false,
@@ -6415,12 +6407,12 @@
       "unit_code": "pcs",
       "slug": "piacenza",
       "name": {
-        "ru": "Piacenza"
+        "ru": "Piacenza",
+        "en": "piacenza"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -6433,10 +6425,9 @@
           "sku": "piacenza",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/C-802.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/C-802-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "C-802"
           },
           "is_manual_pricing": false,
@@ -6452,12 +6443,12 @@
       "unit_code": "pcs",
       "slug": "salerno",
       "name": {
-        "ru": "Salerno"
+        "ru": "Salerno",
+        "en": "salerno"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "is_bend": true,
         "brand": "opt_brand_grandex_brand",
         "length": 3680,
@@ -6470,10 +6461,9 @@
           "sku": "salerno",
           "stock": 10,
           "is_default": false,
-          "preview_picture": "products/C-803.webp",
+          "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/C-803-sl2560x528px.jpg",
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "C-803"
           },
           "is_manual_pricing": false,
@@ -6489,12 +6479,12 @@
       "unit_code": "pcs",
       "slug": "cordelia",
       "name": {
-        "ru": "Cordelia"
+        "ru": "Cordelia",
+        "en": "cordelia"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "length": 3200,
         "width": 1600,
         "height": 20
@@ -6508,7 +6498,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "2001"
           },
           "is_manual_pricing": false,
@@ -6522,7 +6511,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "2005"
           },
           "is_manual_pricing": false,
@@ -6536,7 +6524,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "2015"
           },
           "is_manual_pricing": false,
@@ -6550,7 +6537,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "2101"
           },
           "is_manual_pricing": false,
@@ -6564,7 +6550,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "2102"
           },
           "is_manual_pricing": false,
@@ -6578,7 +6563,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "2103"
           },
           "is_manual_pricing": false,
@@ -6592,7 +6576,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "2104"
           },
           "is_manual_pricing": false,
@@ -6606,7 +6589,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "2105"
           },
           "is_manual_pricing": false,
@@ -6620,7 +6602,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "2209"
           },
           "is_manual_pricing": false,
@@ -6634,7 +6615,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "2210"
           },
           "is_manual_pricing": false,
@@ -6648,7 +6628,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "2405"
           },
           "is_manual_pricing": false,
@@ -6662,7 +6641,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "3001"
           },
           "is_manual_pricing": false,
@@ -6676,7 +6654,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "3001"
           },
           "is_manual_pricing": false,
@@ -6690,7 +6667,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "3302"
           },
           "is_manual_pricing": false,
@@ -6704,7 +6680,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "3303"
           },
           "is_manual_pricing": false,
@@ -6718,7 +6693,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "4001"
           },
           "is_manual_pricing": false,
@@ -6732,7 +6706,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "4004"
           },
           "is_manual_pricing": false,
@@ -6746,7 +6719,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "4403"
           },
           "is_manual_pricing": false,
@@ -6760,7 +6732,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "4405"
           },
           "is_manual_pricing": false,
@@ -6774,7 +6745,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "5601"
           },
           "is_manual_pricing": false,
@@ -6788,7 +6758,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "5701"
           },
           "is_manual_pricing": false,
@@ -6802,7 +6771,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "5702"
           },
           "is_manual_pricing": false,
@@ -6816,7 +6784,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "6101"
           },
           "is_manual_pricing": false,
@@ -6830,7 +6797,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "6102"
           },
           "is_manual_pricing": false,
@@ -6844,7 +6810,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "7156"
           },
           "is_manual_pricing": false,
@@ -6858,7 +6823,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "7268"
           },
           "is_manual_pricing": false,
@@ -6872,7 +6836,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "7546"
           },
           "is_manual_pricing": false,
@@ -6886,7 +6849,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "7835"
           },
           "is_manual_pricing": false,
@@ -6900,7 +6862,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "8013"
           },
           "is_manual_pricing": false,
@@ -6916,12 +6877,12 @@
       "unit_code": "pcs",
       "slug": "jade-white",
       "name": {
-        "ru": "Jade White"
+        "ru": "Jade White",
+        "en": "jade-white"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "length": 3200,
         "width": 1600,
         "height": 20
@@ -6935,7 +6896,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q117"
           },
           "is_manual_pricing": false,
@@ -6949,7 +6909,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q131"
           },
           "is_manual_pricing": false,
@@ -6963,7 +6922,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q716"
           },
           "is_manual_pricing": false,
@@ -6977,7 +6935,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q718"
           },
           "is_manual_pricing": false,
@@ -6991,7 +6948,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q719"
           },
           "is_manual_pricing": false,
@@ -7005,7 +6961,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q717"
           },
           "is_manual_pricing": false,
@@ -7019,7 +6974,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q735"
           },
           "is_manual_pricing": false,
@@ -7033,7 +6987,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q740"
           },
           "is_manual_pricing": false,
@@ -7047,7 +7000,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q744"
           },
           "is_manual_pricing": false,
@@ -7061,7 +7013,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q765"
           },
           "is_manual_pricing": false,
@@ -7075,7 +7026,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q785"
           },
           "is_manual_pricing": false,
@@ -7089,7 +7039,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q703"
           },
           "is_manual_pricing": false,
@@ -7103,7 +7052,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q707"
           },
           "is_manual_pricing": false,
@@ -7117,7 +7065,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q757"
           },
           "is_manual_pricing": false,
@@ -7131,7 +7078,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q840"
           },
           "is_manual_pricing": false,
@@ -7145,7 +7091,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q850"
           },
           "is_manual_pricing": false,
@@ -7159,7 +7104,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q798"
           },
           "is_manual_pricing": false,
@@ -7173,7 +7117,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q810"
           },
           "is_manual_pricing": false,
@@ -7187,7 +7130,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q811"
           },
           "is_manual_pricing": false,
@@ -7201,7 +7143,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q859"
           },
           "is_manual_pricing": false,
@@ -7215,7 +7156,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q880"
           },
           "is_manual_pricing": false,
@@ -7229,7 +7169,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q913"
           },
           "is_manual_pricing": false,
@@ -7243,7 +7182,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q795"
           },
           "is_manual_pricing": false,
@@ -7257,7 +7195,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q796"
           },
           "is_manual_pricing": false,
@@ -7271,7 +7208,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q797"
           },
           "is_manual_pricing": false,
@@ -7285,7 +7221,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q801"
           },
           "is_manual_pricing": false,
@@ -7299,7 +7234,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q901"
           },
           "is_manual_pricing": false,
@@ -7313,7 +7247,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q902"
           },
           "is_manual_pricing": false,
@@ -7327,7 +7260,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q921"
           },
           "is_manual_pricing": false,
@@ -7341,7 +7273,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q922"
           },
           "is_manual_pricing": false,
@@ -7355,7 +7286,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q923"
           },
           "is_manual_pricing": false,
@@ -7369,7 +7299,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q930"
           },
           "is_manual_pricing": false,
@@ -7383,7 +7312,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "Q931"
           },
           "is_manual_pricing": false,
@@ -7399,12 +7327,12 @@
       "unit_code": "pcs",
       "slug": "belaya-tajga",
       "name": {
-        "ru": "Белая Тайга"
+        "ru": "Белая Тайга",
+        "en": "belaya-tajga"
       },
       "preview_picture": null,
       "detail_picture": null,
       "eav": {
-        "cutting_groups": "rec_cutting_groups_2",
         "length": 3050,
         "width": 1440,
         "height": 20
@@ -7418,7 +7346,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R104"
           },
           "is_manual_pricing": false,
@@ -7432,7 +7359,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R104"
           },
           "is_manual_pricing": false,
@@ -7446,7 +7372,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R112"
           },
           "is_manual_pricing": false,
@@ -7460,7 +7385,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R122"
           },
           "is_manual_pricing": false,
@@ -7474,7 +7398,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R403"
           },
           "is_manual_pricing": false,
@@ -7488,7 +7411,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R444"
           },
           "is_manual_pricing": false,
@@ -7502,7 +7424,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R500"
           },
           "is_manual_pricing": false,
@@ -7516,7 +7437,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R503"
           },
           "is_manual_pricing": false,
@@ -7530,7 +7450,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R510"
           },
           "is_manual_pricing": false,
@@ -7544,7 +7463,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R510"
           },
           "is_manual_pricing": false,
@@ -7558,7 +7476,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R511"
           },
           "is_manual_pricing": false,
@@ -7572,7 +7489,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R511"
           },
           "is_manual_pricing": false,
@@ -7586,7 +7502,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R515"
           },
           "is_manual_pricing": false,
@@ -7600,7 +7515,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R515"
           },
           "is_manual_pricing": false,
@@ -7614,7 +7528,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R520"
           },
           "is_manual_pricing": false,
@@ -7628,7 +7541,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R522"
           },
           "is_manual_pricing": false,
@@ -7642,7 +7554,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R531"
           },
           "is_manual_pricing": false,
@@ -7656,7 +7567,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R538"
           },
           "is_manual_pricing": false,
@@ -7670,7 +7580,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R541"
           },
           "is_manual_pricing": false,
@@ -7684,7 +7593,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R541"
           },
           "is_manual_pricing": false,
@@ -7698,7 +7606,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R543"
           },
           "is_manual_pricing": false,
@@ -7712,7 +7619,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R543"
           },
           "is_manual_pricing": false,
@@ -7726,7 +7632,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R555"
           },
           "is_manual_pricing": false,
@@ -7740,7 +7645,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R558"
           },
           "is_manual_pricing": false,
@@ -7754,7 +7658,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R575"
           },
           "is_manual_pricing": false,
@@ -7768,7 +7671,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R590"
           },
           "is_manual_pricing": false,
@@ -7782,7 +7684,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R677"
           },
           "is_manual_pricing": false,
@@ -7796,7 +7697,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R711"
           },
           "is_manual_pricing": false,
@@ -7810,7 +7710,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R716"
           },
           "is_manual_pricing": false,
@@ -7824,7 +7723,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R723"
           },
           "is_manual_pricing": false,
@@ -7838,7 +7736,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R727"
           },
           "is_manual_pricing": false,
@@ -7852,7 +7749,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R760"
           },
           "is_manual_pricing": false,
@@ -7866,7 +7762,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R777"
           },
           "is_manual_pricing": false,
@@ -7880,7 +7775,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "R797"
           },
           "is_manual_pricing": false,
@@ -7894,7 +7788,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "RM104"
           },
           "is_manual_pricing": false,
@@ -7908,7 +7801,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "RM403"
           },
           "is_manual_pricing": false,
@@ -7922,7 +7814,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "RM444"
           },
           "is_manual_pricing": false,
@@ -7936,7 +7827,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "RM510"
           },
           "is_manual_pricing": false,
@@ -7950,7 +7840,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "RM511"
           },
           "is_manual_pricing": false,
@@ -7964,7 +7853,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "RM520"
           },
           "is_manual_pricing": false,
@@ -7978,7 +7866,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "RM543"
           },
           "is_manual_pricing": false,
@@ -7992,7 +7879,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "RM560"
           },
           "is_manual_pricing": false,
@@ -8006,7 +7892,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "RM711"
           },
           "is_manual_pricing": false,
@@ -8020,7 +7905,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "RM727"
           },
           "is_manual_pricing": false,
@@ -8034,7 +7918,6 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "RM760"
           },
           "is_manual_pricing": false,
@@ -8048,359 +7931,10 @@
           "preview_picture": null,
           "detail_picture": null,
           "eav": {
-            "cutting_groups": "rec_cutting_groups_2",
             "supplier_article": "RM797"
           },
           "is_manual_pricing": false,
           "cost_price": 960
-        }
-      ]
-    },
-    {
-      "external_code": "prod_479",
-      "product_type_external_code": "type_edge",
-      "category_external_code": "cat_21",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "rounded-on-1-side",
-      "name": {
-        "ru": "Кромка №1",
-        "en": "Edge #1"
-      },
-      "preview_picture": "/edges/edge_1.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_479_def",
-          "sku": "rounded-on-1-side-def",
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/edges/edge_1.webp",
-          "detail_picture": null,
-          "eav": {},
-          "is_manual_pricing": true,
-          "price": 0.0,
-          "cost_price": 0.0
-        }
-      ]
-    },
-    {
-      "external_code": "prod_480",
-      "product_type_external_code": "type_edge",
-      "category_external_code": "cat_21",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "rounded-on-2-sides",
-      "name": {
-        "ru": "Кромка №2",
-        "en": "Edge #2"
-      },
-      "preview_picture": "/edges/edge_2.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_480_def",
-          "sku": "rounded-on-2-sides-def",
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/edges/edge_2.webp",
-          "detail_picture": null,
-          "eav": {},
-          "is_manual_pricing": true,
-          "price": 0.0,
-          "cost_price": 0.0
-        }
-      ]
-    },
-    {
-      "external_code": "prod_481",
-      "product_type_external_code": "type_edge",
-      "category_external_code": "cat_21",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "under-45-degrees",
-      "name": {
-        "ru": "Кромка №3",
-        "en": "Edge #3"
-      },
-      "preview_picture": "/edges/edge_3.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_481_def",
-          "sku": "under-45-degrees-def",
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/edges/edge_3.webp",
-          "detail_picture": null,
-          "eav": {},
-          "is_manual_pricing": true,
-          "price": 0.0,
-          "cost_price": 0.0
-        }
-      ]
-    },
-    {
-      "external_code": "prod_482",
-      "product_type_external_code": "type_edge",
-      "category_external_code": "cat_21",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "rectangular",
-      "name": {
-        "ru": "Кромка №4",
-        "en": "Edge #4"
-      },
-      "preview_picture": "/edges/edge_4.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_482_def",
-          "sku": "rectangular-def",
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/edges/edge_4.webp",
-          "detail_picture": null,
-          "eav": {},
-          "is_manual_pricing": true,
-          "price": 0.0,
-          "cost_price": 0.0
-        }
-      ]
-    },
-    {
-      "external_code": "prod_483",
-      "product_type_external_code": "type_edge",
-      "category_external_code": "cat_21",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "shaped1",
-      "name": {
-        "ru": "Кромка №5",
-        "en": "Edge #5"
-      },
-      "preview_picture": "/edges/edge_5.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_483_def",
-          "sku": "shaped1-def",
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/edges/edge_5.webp",
-          "detail_picture": null,
-          "eav": {},
-          "is_manual_pricing": true,
-          "price": 400.0,
-          "cost_price": 320.0
-        }
-      ]
-    },
-    {
-      "external_code": "prod_484",
-      "product_type_external_code": "type_edge",
-      "category_external_code": "cat_21",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "shaped2",
-      "name": {
-        "ru": "Кромка №6",
-        "en": "Edge #6"
-      },
-      "preview_picture": "/edges/edge_6.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_484_def",
-          "sku": "shaped2-def",
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/edges/edge_6.webp",
-          "detail_picture": null,
-          "eav": {},
-          "is_manual_pricing": true,
-          "price": 400.0,
-          "cost_price": 320.0
-        }
-      ]
-    },
-    {
-      "external_code": "prod_485",
-      "product_type_external_code": "type_edge",
-      "category_external_code": "cat_21",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "shaped3",
-      "name": {
-        "ru": "Кромка №7",
-        "en": "Edge #7"
-      },
-      "preview_picture": "/edges/edge_7.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_485_def",
-          "sku": "shaped3-def",
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/edges/edge_7.webp",
-          "detail_picture": null,
-          "eav": {},
-          "is_manual_pricing": true,
-          "price": 400.0,
-          "cost_price": 320.0
-        }
-      ]
-    },
-    {
-      "external_code": "prod_486",
-      "product_type_external_code": "type_edge",
-      "category_external_code": "cat_21",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "shaped4",
-      "name": {
-        "ru": "Кромка №8",
-        "en": "Edge #8"
-      },
-      "preview_picture": "/edges/edge_8.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_486_def",
-          "sku": "shaped4-def",
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/edges/edge_8.webp",
-          "detail_picture": null,
-          "eav": {},
-          "is_manual_pricing": true,
-          "price": 400.0,
-          "cost_price": 320.0
-        }
-      ]
-    },
-    {
-      "external_code": "prod_489",
-      "product_type_external_code": "type_skirting",
-      "category_external_code": "cat_22",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "without-a-skirting",
-      "name": {
-        "ru": "Без бортика",
-        "en": "Without skirting"
-      },
-      "preview_picture": "/sides/side_1.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_489_def",
-          "sku": "without-a-skirting-def",
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/sides/side_1.webp",
-          "detail_picture": null,
-          "eav": {},
-          "is_manual_pricing": true,
-          "price": 0.0,
-          "cost_price": 0.0
-        }
-      ]
-    },
-    {
-      "external_code": "prod_490",
-      "product_type_external_code": "type_skirting",
-      "category_external_code": "cat_22",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "straight-skirting",
-      "name": {
-        "ru": "Бортик №1",
-        "en": "Skirting #1"
-      },
-      "preview_picture": "/sides/side_2.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_490_def",
-          "sku": "straight-skirting-def",
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/sides/side_2.webp",
-          "detail_picture": null,
-          "eav": {},
-          "is_manual_pricing": true,
-          "price": 700.0,
-          "cost_price": 560.0
-        }
-      ]
-    },
-    {
-      "external_code": "prod_491",
-      "product_type_external_code": "type_skirting",
-      "category_external_code": "cat_22",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "smooth-skirting",
-      "name": {
-        "ru": "Бортик №2",
-        "en": "Skirting #2"
-      },
-      "preview_picture": "/sides/side_3.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_491_def",
-          "sku": "smooth-skirting-def",
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/sides/side_3.webp",
-          "detail_picture": null,
-          "eav": {},
-          "is_manual_pricing": true,
-          "price": 1850.0,
-          "cost_price": 1480.0
-        }
-      ]
-    },
-    {
-      "external_code": "prod_492",
-      "product_type_external_code": "type_skirting",
-      "category_external_code": "cat_22",
-      "catalog_type": "product",
-      "unit_code": "m",
-      "slug": "galtelny-skirting",
-      "name": {
-        "ru": "Бортик №3",
-        "en": "Skirting #3"
-      },
-      "preview_picture": "/sides/side_4.webp",
-      "detail_picture": null,
-      "eav": {},
-      "variants": [
-        {
-          "external_code": "sku_492_def",
-          "sku": "galtelny-skirting-def",
-          "stock": 10.0,
-          "is_default": true,
-          "preview_picture": "/sides/side_4.webp",
-          "detail_picture": null,
-          "eav": {},
-          "is_manual_pricing": true,
-          "price": 700.0,
-          "cost_price": 560.0
         }
       ]
     }

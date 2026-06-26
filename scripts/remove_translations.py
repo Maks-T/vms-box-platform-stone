@@ -2,7 +2,7 @@ import json
 
 # Опция: список языков, которые нужно ОСТАВИТЬ.
 # Все остальные ключи в объектах перевода будут удалены.
-LANGUAGES_TO_KEEP = ['ru', 'en']
+LANGUAGES_TO_KEEP = ['ru']
 
 def filter_languages(node):
     """Рекурсивно обходит структуру JSON и удаляет лишние переводы."""
@@ -27,13 +27,13 @@ def filter_languages(node):
 
 def main():
     # Пути к вашим файлам
-    input_file = r'\\wsl.localhost\Ubuntu-24.04\home\maks-t\vms-box-platform-stone\import\import_ready_multilingual.json'
-    output_file = r'\\wsl.localhost\Ubuntu-24.04\home\maks-t\vms-box-platform-stone\import\import_ready_filtered.json'
+    input_file = r'\\wsl.localhost\Ubuntu-24.04\home\maks-t\vms-box-platform-stone\import\import_mebel_raw.json'
+    output_file = r'\\wsl.localhost\Ubuntu-24.04\home\maks-t\vms-box-platform-stone\import\import_mebel_raw_ru.json'
 
     print("Загрузка файла...")
     try:
         with open(input_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+            data = json.load(f, strict=False)
     except FileNotFoundError:
         print(f"Ошибка: Файл '{input_file}' не найден.")
         return

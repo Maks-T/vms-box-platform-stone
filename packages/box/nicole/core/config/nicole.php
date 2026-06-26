@@ -87,9 +87,9 @@ return [
   'company' => [
     'name' => env('VMS_COMPANY_NAME', 'Vistegra'),
     'website' => env('VMS_COMPANY_WEBSITE', 'vistegra.ru'),
-    'phone' => env('VMS_COMPANY_PHONE', '8-800-505-87-40'),
-    'email' => env('VMS_COMPANY_EMAIL', 'contact@vistegra.ru'),
-    'address' => env('VMS_COMPANY_ADDRESS', 'г. Москва, ул. Флотская, д. 5, к. 2'),
+    'phone' => env('VMS_COMPANY_PHONE', '+375 (29) 189-83-22'),
+    'email' => env('VMS_COMPANY_EMAIL', 'info@vistegra.by'),
+    'address' => env('VMS_COMPANY_ADDRESS', 'Могилёв, Космонавтов 19, оф. 316'),
     'cover_image' => env('VMS_COMPANY_COVER_IMAGE', '/pdf/cover.jpg'),
   ],
 

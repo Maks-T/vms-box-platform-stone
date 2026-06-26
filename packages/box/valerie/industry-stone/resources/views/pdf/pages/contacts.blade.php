@@ -10,17 +10,17 @@
   @include('valerie-stone::pdf.partials.header', ['subtitle' => 'Готовы оформить заказ?'])
 
   <div class="page-content">
-    <div style="align-self: stretch; height: 24.93px; position: relative">
-      <div style="width: 699.88px; padding-bottom: 0.59px; left: 0px; top: -1px; position: absolute; opacity: 0.70; display: table;">
-        <div style="display: table-cell; color: #B8945A; font-size: 8.50px; font-family: Jost; font-weight: 500; text-transform: uppercase; line-height: 13.60px; letter-spacing: 1.36px;">
-          12 · Следующий шаг
+    <div class="contacts-header-container">
+      <div class="contacts-header-table">
+        <div class="contacts-header-cell">
+          · Следующий шаг
         </div>
       </div>
     </div>
 
-    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 300; line-height: 44px; margin: 0 0 15px 0; color: #ffffff;">
+    <h2 class="contacts-title">
       Готовы<br>
-      <span style="color: #D4B483; font-style: italic;">оформить заказ?</span>
+      <span class="gold-italic">оформить заказ?</span>
     </h2>
 
     <div class="dark-divider"></div>
@@ -51,21 +51,47 @@
       </div>
     </div>
 
-    <div class="manager-card" style="padding: 20px 30px;">
-      <div class="manager-info" style="padding-left: 0;">
-        <div class="manager-post">Ваш персональный менеджер</div>
-        <div class="manager-name">
-          {{ $order->manager?->name ?? 'Елена Петрова' }}
-        </div>
+    @if ($order->manager)
+      <div class="manager-card">
+        <div class="manager-info">
+          <div class="manager-post">Ваш персональный менеджер</div>
+          <div class="manager-name">
+            {{ $order->manager->name }}
+          </div>
 
-        <ul class="manager-contacts-list">
-          <li><span>Телефон:</span> {{ $order->manager?->phone ?? config('nicole.company.phone') }}</li>
-          <li><span>Email:</span> {{ $order->manager?->email ?? config('nicole.company.email') }}</li>
-          <li><span>Поддержка:</span> Telegram · WhatsApp · Viber</li>
-          <li><span>График:</span> Пн–Пт 10:00–20:00</li>
-        </ul>
+          <ul class="manager-contacts-list">
+            @if ($order->manager->phone || config('nicole.company.phone'))
+              <li><span>Телефон:</span> {{ $order->manager->phone ?? config('nicole.company.phone') }}</li>
+            @endif
+            @if ($order->manager->email || config('nicole.company.email'))
+              <li><span>Email:</span> {{ $order->manager->email ?? config('nicole.company.email') }}</li>
+            @endif
+            <li><span>Поддержка:</span> Telegram · WhatsApp · Viber</li>
+            <li><span>График:</span> Пн–Пт 10:00–20:00</li>
+          </ul>
+        </div>
       </div>
-    </div>
+    @elseif (config('nicole.company.phone') || config('nicole.company.email'))
+      <div class="manager-card">
+        <div class="manager-info">
+          <div class="manager-post">Контакты компании</div>
+          <div class="manager-name">
+            {{ config('nicole.company.name') }}
+          </div>
+
+          <ul class="manager-contacts-list">
+            @if (config('nicole.company.phone'))
+              <li><span>Телефон:</span> {{ config('nicole.company.phone') }}</li>
+            @endif
+            @if (config('nicole.company.email'))
+              <li><span>Email:</span> {{ config('nicole.company.email') }}</li>
+            @endif
+            <li><span>Поддержка:</span> Telegram · WhatsApp</li>
+            <li><span>График:</span> Пн–Пт 10:00–20:00</li>
+          </ul>
+        </div>
+      </div>
+    @endif
 
     <div class="closing-meta">
       <div class="closing-cell-left">
@@ -75,7 +101,7 @@
 
       <div class="closing-cell-right">
         <div class="closing-label-right">Общая сумма заказа</div>
-        <div class="closing-value-right" style="font-family: 'DejaVu Sans';">
+        <div class="closing-value-right">
           {{ number_format($order->grand_total, 0, '.', ' ') }} {{ $currencySymbol }}
         </div>
       </div>

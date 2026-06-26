@@ -1,10 +1,11 @@
 @php
-  $currencySymbol = match($order->currency) {
-      'RUB' => 'руб.',
-      'USD' => '$',
-      'BYN' => 'Br',
-      default => $order->currency
-  };
+  /** @var \Nicole\Box\Core\Models\Order $order */
+    $currencySymbol = match($order->currency) {
+        'RUB' => 'руб.',
+        'USD' => '$',
+        'BYN' => 'Br',
+        default => $order->currency
+    };
 @endphp
   <!DOCTYPE html>
 <html lang="{{ $order->locale ?? 'ru' }}">
@@ -13,34 +14,59 @@
   <title>{{ $title ?? 'Коммерческое предложение' }}</title>
 
   <style>
-    /* ==========================================================================
-       ПОДКЛЮЧЕНИЕ ШРИФТОВ ЧЕРЕЗ АБСОЛЮТНЫЕ ПУТИ (РЕШАЕТ ПРОБЛЕМУ С ???)
-       ========================================================================== */
+    /* JOST: Regular */
     @font-face {
       font-family: 'Jost';
-      src: url("{{ public_path('fonts/Jost/Jost-Regular.ttf') }}") format('truetype');
+      src: url("data:font/truetype;charset=utf-8;base64,{{ base64_encode(file_get_contents(base_path('packages/box/valerie/industry-stone/resources/fonts/Jost/Jost-Regular.ttf'))) }}") format('truetype');
       font-weight: normal;
       font-style: normal;
     }
 
+    /* JOST: Medium */
     @font-face {
       font-family: 'Jost';
-      src: url("{{ public_path('fonts/Jost/Jost-Medium.ttf') }}") format('truetype');
+      src: url("data:font/truetype;charset=utf-8;base64,{{ base64_encode(file_get_contents(base_path('packages/box/valerie/industry-stone/resources/fonts/Jost/Jost-Medium.ttf'))) }}") format('truetype');
       font-weight: 500;
       font-style: normal;
     }
 
+    /* CORMORANT GARAMOND: Regular */
     @font-face {
       font-family: 'Cormorant Garamond';
-      src: url("{{ public_path('fonts/CormorantGaramond/CormorantGaramond-Regular.ttf') }}") format('truetype');
+      src: url("data:font/truetype;charset=utf-8;base64,{{ base64_encode(file_get_contents(base_path('packages/box/valerie/industry-stone/resources/fonts/CormorantGaramond/CormorantGaramond-Regular.ttf'))) }}") format('truetype');
       font-weight: normal;
       font-style: normal;
     }
 
+    /* CORMORANT GARAMOND: Medium */
     @font-face {
       font-family: 'Cormorant Garamond';
-      src: url("{{ public_path('fonts/CormorantGaramond/CormorantGaramond-Medium.ttf') }}") format('truetype');
+      src: url("data:font/truetype;charset=utf-8;base64,{{ base64_encode(file_get_contents(base_path('packages/box/valerie/industry-stone/resources/fonts/CormorantGaramond/CormorantGaramond-Medium.ttf'))) }}") format('truetype');
       font-weight: 500;
+      font-style: normal;
+    }
+
+    /* CORMORANT GARAMOND: Light */
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      src: url("data:font/truetype;charset=utf-8;base64,{{ base64_encode(file_get_contents(base_path('packages/box/valerie/industry-stone/resources/fonts/CormorantGaramond/CormorantGaramond-Light.ttf'))) }}") format('truetype');
+      font-weight: 300;
+      font-style: normal;
+    }
+
+    /* CORMORANT GARAMOND: Light Italic */
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      src: url("data:font/truetype;charset=utf-8;base64,{{ base64_encode(file_get_contents(base_path('packages/box/valerie/industry-stone/resources/fonts/CormorantGaramond/CormorantGaramond-LightItalic.ttf'))) }}") format('truetype');
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    /* CENTURY */
+    @font-face {
+      font-family: 'Century';
+      src: url("data:font/truetype;charset=utf-8;base64,{{ base64_encode(file_get_contents(base_path('packages/box/valerie/industry-stone/resources/fonts/Century/Century.ttf'))) }}") format('truetype');
+      font-weight: normal;
       font-style: normal;
     }
 

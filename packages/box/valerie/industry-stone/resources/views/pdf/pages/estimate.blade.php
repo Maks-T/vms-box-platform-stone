@@ -1,5 +1,6 @@
 @php
-  use Valerie\Box\IndustryStone\Support\PdfEstimateRenderer;
+  /** @var \Nicole\Box\Core\Models\Order $order */
+    use Valerie\Box\IndustryStone\Support\PdfEstimateRenderer;
 @endphp
 
 <div class="page">
@@ -7,28 +8,28 @@
   @include('valerie-stone::pdf.partials.header', ['subtitle' => 'Детальный расчёт'])
 
   <div class="page-content">
-    <div style="align-self: stretch; height: 13.59px; margin-bottom: 10px; position: relative">
-      <div style="width: 16px; height: 1px; left: 0px; top: 6.30px; position: absolute; opacity: 0.60; background: #B8945A"></div>
-      <div style="left: 22px; top: -1px; position: absolute; color: #B8945A; font-size: 8.50px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.19px;">Смета проекта</div>
+    <div class="section-summary-header">
+      <div class="section-summary-header-line"></div>
+      <div class="section-summary-header-title">Смета проекта</div>
     </div>
 
-    <h2 class="ligron-serif-title" style="font-size: 26px; line-height: 28px; margin: 0 0 20px 0;">
+    <h2 class="ligron-serif-title-estimate">
       Детальный расчёт<br>по всем изделиям
     </h2>
 
     <table class="estimate-table">
       <thead>
       <tr class="estimate-table-th">
-        <th style="text-align: left; padding-left: 15px;">Услуга / Работа</th>
-        <th style="text-align: center; width: 100px;">Кол-во</th>
-        <th style="text-align: right; width: 130px;">Цена</th>
-        <th style="text-align: right; width: 130px; padding-right: 15px;">Итого</th>
+        <th class="estimate-th-left">Услуга / Работа</th>
+        <th class="estimate-th-center">Кол-во</th>
+        <th class="estimate-th-right">Цена</th>
+        <th class="estimate-th-right-padding">Итого</th>
       </tr>
       </thead>
       <tbody>
       @foreach ($order->sections as $index => $section)
         <tr class="estimate-section-header">
-          <td colspan="3" style="text-align: left;">
+          <td colspan="3" class="estimate-section-title-cell">
             0{{ $index + 1 }} — {{ $section->title }}
             @php
               $stoneName = collect($section->description)->firstWhere('name', 'Наименование камня')['description'] ?? null;
@@ -37,7 +38,7 @@
               · {{ $stoneName }}
             @endif
           </td>
-          <td class="estimate-section-price" style="padding-right: 15px;">
+          <td class="estimate-section-price">
             {{ number_format($section->price_grand_total, 0, '.', ' ') }} {{ $currencySymbol }}
           </td>
         </tr>
@@ -56,13 +57,16 @@
       };
     @endphp
 
+      <!-- Финальный блок общей суммы с дизайном LIGRON -->
     <div class="grand-total-card">
       <div class="grand-total-left">
-        <div class="grand-total-label">Общая сумма · {{ $sectionsWord }}</div>
+        <div class="grand-total-label">Общая сумма · {{ mb_strtolower($sectionsWord) }}</div>
         <div class="grand-total-desc">Все работы, материалы, монтаж и доставка включены в стоимость</div>
       </div>
       <div class="grand-total-right">
-        {{ number_format($order->grand_total, 0, '.', ' ') }} {{ $currencySymbol }}
+        <div class="grand-total-price">
+          {{ number_format($order->grand_total, 0, '.', ' ') }} {{ $currencySymbol }}
+        </div>
       </div>
     </div>
   </div>

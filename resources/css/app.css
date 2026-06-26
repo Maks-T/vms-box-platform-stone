@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
 /* Строгий приоритет слоев для избежания конфликтов */
 @layer properties, theme, base, calc, components, utilities;
 
@@ -7,8 +10,7 @@
 @source '../**/*.js';
 @source '../**/*.jsx';
 
-@import "tailwindcss";
-@import "tw-animate-css";
+
 
 @layer calc {
   .dummy-calc-anchor {

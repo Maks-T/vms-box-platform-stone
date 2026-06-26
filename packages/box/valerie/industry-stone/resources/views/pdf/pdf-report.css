@@ -1,5 +1,12 @@
-* {
-  box-sizing: border-box;
+/* ==========================================================================
+   1. ИНИЦИАЛИЗАЦИЯ ШРИФТОВ И СЧЕТЧИКА СТРАНИЦ
+   ========================================================================== */
+
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  height: 100%;
 }
 
 body {
@@ -8,8 +15,13 @@ body {
   margin: 0;
   padding: 0;
   background-color: #FDFCFA;
+  counter-reset: page;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .page {
@@ -20,27 +32,40 @@ body {
   overflow: hidden;
   margin: 0 auto;
   position: relative;
+  counter-increment: page;
 }
 
 .page:last-child {
   page-break-after: avoid;
 }
 
+.page-num-display::after {
+  content: counter(page);
+}
+
 .top-gradient-line {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 1px;
-  background: #B8945A;
+  background: linear-gradient(90deg, #B8945A 0%, rgba(184, 148, 90, 0) 70%);
+  z-index: 10;
 }
+
+
+/* ==========================================================================
+   2. КОЛОНТИТУЛЫ И ОТСТУПЫ (ФИКС СДВИГА СПРАВА)
+   ========================================================================== */
 
 .page-header {
   position: absolute;
-  top: 15mm;
-  left: 53px;
-  right: 53px;
-  height: 55px;
+  top: 10mm;
+  left: 8mm;
+  height: 40px;
   border-bottom: 1px solid #DDD9D0;
   display: table;
-  width: calc(100% - 106px);
+  width: calc(100% - 16mm);
 }
 
 .header-cell-left {
@@ -66,45 +91,51 @@ body {
 .page-footer {
   position: absolute;
   bottom: 10mm;
-  left: 53px;
-  right: 53px;
-  height: 50px;
+  left: 8mm;
+  height: 35px;
   border-top: 1px solid #DDD9D0;
   display: table;
-  width: calc(100% - 106px);
+  width: calc(100% - 16mm);
+}
+
+.footer-cell-left,
+.footer-cell-center,
+.footer-cell-right {
+  display: table-cell;
+  vertical-align: middle;
+  color: #9A9690;
+  font-size: 10px;
+  padding-top: 8px;
 }
 
 .footer-cell-left {
-  display: table-cell;
-  vertical-align: middle;
   text-align: left;
-  color: #9A9690;
-  font-size: 10px;
 }
 
 .footer-cell-center {
-  display: table-cell;
-  vertical-align: middle;
   text-align: center;
-  color: #9A9690;
-  font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .footer-cell-right {
-  display: table-cell;
-  vertical-align: middle;
   text-align: right;
-  color: #9A9690;
-  font-size: 10px;
 }
 
 .page-content {
-  padding: 105px 53px 80px 53px;
-  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 8mm;
+  width: calc(100% - 16mm);
+  padding-top: 100px;
+  padding-bottom: 65px;
   height: auto;
 }
+
+
+/* ==========================================================================
+   3. СТРАНИЦА ОБЛОЖКИ (COVER)
+   ========================================================================== */
 
 .page-cover {
   background-color: #141412 !important;
@@ -112,6 +143,14 @@ body {
   height: 297mm !important;
   page-break-inside: avoid !important;
   position: relative;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.cover-brand-top-line {
+  align-self: stretch;
+  height: 1px;
+  background: linear-gradient(90deg, #B8945A 0%, rgba(184, 148, 90, 0) 70%);
 }
 
 .cover-photo-container {
@@ -123,12 +162,14 @@ body {
   border-bottom: 1px solid #1A1916;
 }
 
-.cover-photo-bg {
+.cover-photo-img {
   width: 100%;
   height: 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .cover-photo-gradient {
@@ -138,11 +179,13 @@ body {
   right: 0;
   height: 226px;
   background: linear-gradient(to bottom, rgba(20, 20, 18, 0) 0%, #141412 100%);
+  z-index: 2;
 }
 
 .cover-content {
   padding: 38px 53px 45px 53px;
   position: relative;
+  z-index: 3;
 }
 
 .cover-top-line {
@@ -170,11 +213,13 @@ body {
   line-height: 46px;
   margin: 0 0 10px 0;
   color: #ffffff;
+  word-wrap: break-word;
 }
 
 .cover-title span.italic-gold {
   color: #D4B483;
   font-style: italic;
+  font-weight: 300;
 }
 
 .cover-gold-divider {
@@ -197,26 +242,34 @@ body {
   vertical-align: top;
 }
 
+.cover-meta-cell-right {
+  text-align: right;
+}
+
 .cover-meta-label {
-  font-size: 9.50px;
+  font-size: 10px;
   color: #D4B483;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.95px;
+  line-height: 15px;
+  letter-spacing: 1px;
   margin-bottom: 6px;
+  word-wrap: break-word;
 }
 
 .cover-meta-value {
   font-size: 14px;
   font-weight: 500;
   color: #ffffff;
-  line-height: 19.60px;
+  line-height: 20px;
 }
 
 .cover-meta-subvalue {
   font-size: 14px;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.90);
-  line-height: 19.60px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 20px;
 }
 
 .cover-price-badge {
@@ -239,13 +292,14 @@ body {
 }
 
 .cover-price-value {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Century', 'DejaVu Sans', serif;
   font-size: 28px;
   font-weight: 400;
   color: #D09D4A;
   display: inline-block;
   vertical-align: middle;
-  line-height: 41.60px;
+  line-height: 42px;
+  white-space: nowrap;
 }
 
 .cover-page-indicator {
@@ -254,8 +308,75 @@ body {
   bottom: 45px;
   color: rgba(255, 255, 255, 0.49);
   font-size: 9px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 14px;
+  letter-spacing: 1px;
+  word-wrap: break-word;
+}
+
+.cover-footer-row {
+  display: table;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.cover-footer-left {
+  display: table-cell;
+  vertical-align: bottom;
+  text-align: left;
+}
+
+.cover-footer-right {
+  display: table-cell;
+  vertical-align: bottom;
+  text-align: right;
+  padding-bottom: 12px;
+}
+
+
+/* ==========================================================================
+   3. ИЗДЕЛИЯ И ХАРАКТЕРИСТИКИ
+   ========================================================================== */
+
+.section-summary-header {
+  height: 14px;
+  margin-bottom: 10px;
+  vertical-align: middle;
+}
+
+.section-summary-header-line {
+  display: inline-block;
+  vertical-align: middle;
+  width: 16px;
+  height: 1px;
+  background-color: #B8945A;
+  opacity: 0.6;
+  margin-right: 6px;
+}
+
+.section-summary-header-title {
+  display: inline-block;
+  vertical-align: middle;
+  color: #B8945A;
+  font-size: 9px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
+  line-height: 14px;
+}
+
+.ligron-serif-title,
+.ligron-serif-title-estimate {
+  color: #1A1916;
+  font-size: 26px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  line-height: 29px;
+  word-wrap: break-word;
+  margin: 0 0 25px 0;
 }
 
 .section-card {
@@ -270,8 +391,7 @@ body {
 
 .section-card-header {
   background-color: #1A1916;
-  color: #fff;
-  padding: 10px 15px;
+  color: #ffffff;
   display: table;
   width: 100%;
 }
@@ -280,22 +400,27 @@ body {
   display: table-cell;
   vertical-align: middle;
   text-align: left;
+  font-family: 'Jost', 'DejaVu Sans', sans-serif;
   font-size: 10px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
   line-height: 16px;
+  color: #ffffff;
+  padding: 10px 0 10px 15px;
 }
 
 .section-header-price {
   display: table-cell;
   vertical-align: middle;
   text-align: right;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Century', 'DejaVu Sans', serif;
   font-size: 16px;
   font-weight: 400;
   color: #B8945A;
-  line-height: 28.80px;
+  line-height: 29px;
+  white-space: nowrap;
+  padding: 10px 15px 10px 0;
 }
 
 .section-card-body {
@@ -306,7 +431,7 @@ body {
 .section-body-left {
   display: table-cell;
   width: 50%;
-  vertical-align: top;
+  vertical-align: middle;
   background-color: #F5F2EB;
   border-right: 1px solid #DDD9D0;
   text-align: center;
@@ -317,6 +442,28 @@ body {
   max-width: 100%;
   max-height: 180px;
   height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.section-render-item {
+  margin-bottom: 12px;
+  text-align: center;
+  page-break-inside: avoid;
+}
+
+.section-render-label {
+  font-size: 8px;
+  color: #5A5750;
+  display: block;
+  margin-top: 1px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-fallback-img {
+  max-height: 180px;
+  width: auto;
   display: block;
   margin: 0 auto;
 }
@@ -353,14 +500,27 @@ body {
 .specs-table td.spec-label {
   width: 45%;
   color: #5A5750;
+  font-size: 12px;
+  font-family: 'Jost', sans-serif;
   font-weight: 400;
+  word-wrap: break-word;
+  line-height: 16px;
 }
 
 .specs-table td.spec-value {
   width: 55%;
   color: #1A1916;
+  font-size: 12px;
+  font-family: 'Jost', sans-serif;
   font-weight: 500;
+  word-wrap: break-word;
+  line-height: 16px;
 }
+
+
+/* ==========================================================================
+   4. ДЕТАЛЬНАЯ СМЕТА
+   ========================================================================== */
 
 .estimate-table {
   width: 100%;
@@ -374,6 +534,27 @@ body {
   page-break-after: auto;
 }
 
+.estimate-th-left {
+  text-align: left;
+  padding-left: 15px;
+}
+
+.estimate-th-center {
+  text-align: center;
+  width: 100px;
+}
+
+.estimate-th-right {
+  text-align: right;
+  width: 130px;
+}
+
+.estimate-th-right-padding {
+  text-align: right;
+  width: 130px;
+  padding-right: 15px;
+}
+
 .estimate-section-header {
   background-color: #1A1916;
   color: #ffffff;
@@ -382,33 +563,29 @@ body {
 
 .estimate-section-header td {
   padding: 9px 10px !important;
-  font-size: 10.5px !important;
+  font-size: 11px !important;
   font-weight: 500 !important;
   text-transform: uppercase;
-  letter-spacing: 0.63px;
+  letter-spacing: 1px;
+}
+
+.estimate-section-title-cell {
+  text-align: left;
 }
 
 .estimate-section-price {
-  font-family: 'DejaVu Sans', sans-serif;
-  font-size: 10.5px;
+  font-family: 'Century', 'DejaVu Sans', serif;
+  font-size: 11px;
   color: #D4B483;
   font-weight: 500;
   text-align: right !important;
+  padding-right: 15px;
+  white-space: nowrap;
 }
 
+/* Скрытие дублирующей шапки сметы для чистоты дизайна */
 .estimate-table-th {
-  background-color: #F5F2EB;
-  border-bottom: 1px solid #DDD9D0;
-  color: #5A5750;
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
-}
-
-.estimate-table-th th {
-  padding: 8px 10px;
-  text-align: left;
+  display: none !important;
 }
 
 .estimate-row {
@@ -429,19 +606,19 @@ body {
 
 .estimate-row td {
   padding: 7px 10px;
-  font-size: 11.5px;
+  font-size: 12px;
   line-height: 15px;
 }
 
 .estimate-cell-name {
-  font-family: 'DejaVu Sans', sans-serif;
+  font-family: 'Jost', sans-serif;
   color: #1A1916;
   font-weight: 400;
   text-align: left;
 }
 
 .estimate-cell-qty {
-  font-family: 'DejaVu Sans', sans-serif;
+  font-family: 'Jost', sans-serif;
   color: #5A5750;
   font-weight: 400;
   text-align: center;
@@ -452,59 +629,94 @@ body {
   color: #5A5750;
   font-weight: 400;
   text-align: right;
-  width: 110px;
-  font-family: 'DejaVu Sans', sans-serif;
+  width: 130px;
+  font-family: 'Century', 'DejaVu Sans', serif;
+  white-space: nowrap;
 }
 
 .estimate-cell-total {
   color: #1A1916;
   font-weight: 500;
   text-align: right;
-  width: 110px;
-  font-family: 'DejaVu Sans', sans-serif;
+  width: 130px;
+  font-family: 'Century', 'DejaVu Sans', serif;
+  white-space: nowrap;
 }
+
+.estimate-table td:last-child {
+  padding-right: 15px !important;
+}
+
+.estimate-table th:last-child {
+  padding-right: 15px !important;
+}
+
+
+/* ==========================================================================
+   5. ИТОГОВЫЙ БЛОК СМЕТЫ
+   ========================================================================== */
 
 .grand-total-card {
   background-color: #1A1916;
-  border: 1px solid #B8945A;
   border-radius: 2px;
-  padding: 20px 30px;
-  margin-top: 30px;
-  display: table;
   width: 100%;
-  page-break-inside: avoid;
+  display: table;
+  margin-top: 30px;
 }
 
 .grand-total-left {
   display: table-cell;
   vertical-align: middle;
   text-align: left;
-}
-
-.grand-total-label {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.4);
-  text-transform: uppercase;
-  letter-spacing: 1.14px;
-  margin-bottom: 10px;
-}
-
-.grand-total-desc {
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.6);
-  font-weight: 400;
-  line-height: 15px;
+  padding: 20px 0 20px 20px;
 }
 
 .grand-total-right {
   display: table-cell;
   vertical-align: middle;
   text-align: right;
-  font-family: 'DejaVu Sans', serif;
-  font-size: 26px;
-  font-weight: bold;
-  color: #B8945A;
+  width: 200px;
+  padding: 20px 20px 20px 0;
 }
+
+/* ОБЩАЯ СУММА · ТРИ ИЗДЕЛИЯ */
+.grand-total-label {
+  color: rgba(255, 255, 255, 0.40);
+  font-size: 12px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 15px;
+  letter-spacing: 1.14px;
+  word-wrap: break-word;
+  margin-bottom: 6px;
+}
+
+/* Все работы, материалы, монтаж и доставка включены в стоимость */
+.grand-total-desc {
+  color: rgba(255, 255, 255, 0.60);
+  font-size: 15px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  line-height: 16px;
+  word-wrap: break-word;
+}
+
+/* Итоговая сумма */
+.grand-total-price {
+  color: #B8945A;
+  font-size: 32px;
+  font-family: 'Century', 'DejaVu Sans', serif;
+  font-weight: 400;
+  word-wrap: break-word;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+
+/* ==========================================================================
+   6. КОНТАКТЫ И ШАГИ РАБОТЫ (ТЕМНАЯ СТРАНИЦА)
+   ========================================================================== */
 
 .page-dark {
   background-color: #141412 !important;
@@ -512,30 +724,73 @@ body {
   height: 297mm !important;
   page-break-inside: avoid !important;
   position: relative;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
 }
 
+/* Колонтитулы темной страницы */
 .page-dark .page-header {
   border-bottom: 1px solid #2B2B2A !important;
   position: absolute;
+  left: 8mm;
+  width: calc(100% - 16mm);
+}
+
+.page-dark .page-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  position: absolute;
+  left: 8mm;
+  width: calc(100% - 16mm);
 }
 
 .page-dark .header-cell-right {
   color: #9A9690 !important;
 }
 
-.page-dark .page-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-  position: absolute;
+.contacts-header-container {
+  align-self: stretch;
+  height: 25px;
+  position: relative;
 }
 
-.page-dark .footer-cell-left,
-.page-dark .footer-cell-center,
-.page-dark .footer-cell-right {
-  color: rgba(255, 255, 255, 0.5) !important;
+.contacts-header-table {
+  width: 100%;
+  padding-bottom: 1px;
+  left: 0;
+  top: -1px;
+  position: absolute;
+  opacity: 0.7;
+  display: table;
+}
+
+.contacts-header-cell {
+  display: table-cell;
+  color: #B8945A;
+  font-size: 9px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 14px;
+  letter-spacing: 1px;
+}
+
+.contacts-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 44px;
+  margin: 0 0 15px 0;
+  color: #ffffff;
+}
+
+.gold-italic {
+  color: #D4B483;
+  font-style: italic;
+  font-weight: 300;
 }
 
 .dark-divider {
-  width: 226.77px;
+  width: 227px;
   height: 1px;
   background-color: rgba(184, 148, 90, 0.3);
   margin: 15px 0;
@@ -547,20 +802,21 @@ body {
   margin-bottom: 20px;
 }
 
+/* ФЛЕКС-МОДЕЛЬ ДЛЯ КАРТОЧЕК ШАГОВ (Решает баг display: table) */
 .step-card {
+  display: flex;
+  align-items: center;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.04);
   border-radius: 2px;
   border-left: 2px #B8945A solid;
   padding: 10px 15px;
   margin-bottom: 10px;
-  display: table;
 }
 
 .step-num {
-  display: table-cell;
-  width: 45.34px;
-  vertical-align: middle;
+  flex-shrink: 0;
+  width: 45px;
   text-align: center;
   font-family: 'Cormorant Garamond', serif;
   font-size: 24px;
@@ -569,8 +825,7 @@ body {
 }
 
 .step-content {
-  display: table-cell;
-  vertical-align: middle;
+  flex-grow: 1;
   padding-left: 15px;
 }
 
@@ -579,51 +834,50 @@ body {
   font-weight: 500;
   color: #ffffff;
   margin-bottom: 4px;
-  line-height: 19.20px;
+  line-height: 19px;
 }
 
 .step-desc {
   font-size: 11px;
   color: rgba(255, 255, 255, 0.5);
-  line-height: 15.40px;
+  line-height: 15px;
 }
 
+/* БЛОК МЕНЕДЖЕРА БЕЗ display: table (Решает баг border-box) */
 .manager-card {
   width: 100%;
   background-color: #1A1916;
   border-radius: 2px;
-  padding: 20px;
-  display: table;
+  padding: 20px 30px;
   page-break-inside: avoid;
 }
 
 .manager-photo-container {
   display: table-cell;
-  width: 105.81px;
+  width: 106px;
   vertical-align: top;
 }
 
 .manager-photo {
-  width: 105.81px;
-  height: 128.50px;
+  width: 106px;
+  height: 129px;
   background-color: #2A2A28;
   border-radius: 2px;
   text-align: center;
 }
 
 .manager-info {
-  display: table-cell;
-  vertical-align: top;
-  padding-left: 25px;
+  width: 100%;
+  padding-left: 0;
 }
 
 .manager-post {
   font-size: 9px;
   color: #D4B483;
   text-transform: uppercase;
-  letter-spacing: 0.9px;
+  letter-spacing: 1px;
   margin-bottom: 10px;
-  line-height: 14.40px;
+  line-height: 14px;
 }
 
 .manager-name {
@@ -632,7 +886,7 @@ body {
   color: #ffffff;
   margin-bottom: 12px;
   font-weight: 400;
-  line-height: 26.40px;
+  line-height: 26px;
 }
 
 .manager-contacts-list {
@@ -645,7 +899,7 @@ body {
   font-size: 12px;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 10px;
-  line-height: 19.20px;
+  line-height: 19px;
   padding-left: 15px;
   position: relative;
 }
@@ -654,61 +908,75 @@ body {
   content: "";
   position: absolute;
   left: 0;
-  top: 7.6px;
+  top: 8px;
   width: 4px;
   height: 4px;
   background-color: #B8945A;
   border-radius: 50%;
 }
 
+/* ФЛЕКС-МОДЕЛЬ ДЛЯ СТРОКИ ЗАКРЫТИЯ (Решает баг display: table) */
 .closing-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   width: 100%;
   margin-top: 25px;
-  display: table;
 }
 
 .closing-cell-left {
-  display: table-cell;
-  vertical-align: bottom;
+  text-align: left;
 }
 
 .closing-cell-right {
-  display: table-cell;
-  vertical-align: bottom;
   text-align: right;
 }
 
 .closing-label-left {
-  color: rgba(255, 255, 255, 0.30);
+  color: rgba(255, 255, 255, 0.3);
   font-size: 10px;
   margin-bottom: 4px;
   line-height: 16px;
 }
 
 .closing-value-left {
-  color: rgba(255, 255, 255, 0.60);
-  font-size: 11.50px;
-  line-height: 18.40px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  line-height: 18px;
 }
 
 .closing-label-right {
-  color: rgba(255, 255, 255, 0.50);
+  color: rgba(255, 255, 255, 0.5);
   font-size: 10px;
   margin-bottom: 4px;
   line-height: 16px;
 }
 
+/* Итоговая сумма на темном листе шрифтом Century */
 .closing-value-right {
-  font-family: 'DejaVu Sans', 'Century', 'Cormorant Garamond', serif;
+  font-family: 'Century', 'DejaVu Sans', serif;
   font-size: 26px;
   color: #B8945A;
-  line-height: 41.60px;
+  line-height: 42px;
+  white-space: nowrap;
 }
+
+
+/* ==========================================================================
+   8. ПЕЧАТЬ И ПЕРЕНОСЫ СТРАНИЦ
+   ========================================================================== */
 
 @media print {
   @page {
     size: A4 portrait;
     margin: 0 !important;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 210mm !important;
+    height: 297mm !important;
   }
 
   body {
@@ -726,17 +994,6 @@ body {
     box-shadow: none !important;
     page-break-after: always !important;
     position: relative !important;
+    overflow: hidden !important;
   }
-}
-
-body {
-  counter-reset: page;
-}
-
-.page {
-  counter-increment: page;
-}
-
-.page-num-display::after {
-  content: counter(page) " / " counter(pages);
 }

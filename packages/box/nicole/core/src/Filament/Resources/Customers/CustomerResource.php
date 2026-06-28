@@ -29,7 +29,7 @@ class CustomerResource extends Resource
 
   public static function getNavigationGroup(): ?string
   {
-    return __('Catalog'); 
+    return __('Sales');
   }
 
   public static function getModelLabel(): string

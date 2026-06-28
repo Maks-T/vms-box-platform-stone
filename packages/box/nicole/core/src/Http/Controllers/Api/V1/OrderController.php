@@ -16,40 +16,55 @@ use Nicole\Box\Core\Models\OrderSection;
 use Nicole\Box\Core\Models\OrderProduct;
 use Nicole\Box\Core\Models\OrderStatus;
 
+/**
+ * @group Core: Заказы
+ */
 class OrderController extends Controller
 {
   /**
-   * Сохранение заказа из калькулятора (POST /order/save)
+   * Сохранить новый расчет / заказ.
+   *
+   * Принимает полную спецификацию расчета из калькулятора.
+
+   * Возвращает уникальный системный код заказа, дату его создания и готовые публичные ссылки для просмотра (HTML) и печати (PDF) сметного отчета.
+   *
+   * @param SaveOrderRequest $request Контролирует структуру входящих данных (SaveData)
+   * @return JsonResponse Возвращает ID заказа, его код, дату создания и ссылки на PDF/HTML
    */
   public function save(SaveOrderRequest $request): JsonResponse
   {
     return DB::transaction(function () use ($request) {
 
-      // 1. Поиск или создание покупателя
+      // Поиск или создание покупателя (только если передан номер телефона)
+      $customer = null;
       $customerData = $request->input('customer');
-      $phone = (string)$customerData['phone'];
-      $phoneNormalized = preg_replace('/[^0-9]/', '', $phone);
 
-      $customer = Customer::where('phone_normalized', $phoneNormalized)->first();
+      if (!empty($customerData['phone'])) {
+        $phone = (string)$customerData['phone'];
+        $phoneNormalized = preg_replace('/[^0-9]/', '', $phone);
 
-      if (!$customer) {
-        $nameParts = explode(' ', trim($customerData['name'] ?? ''));
-        $lastName = $nameParts[0] ?? null;
-        $firstName = $nameParts[1] ?? ($customerData['name'] ?? 'Клиент');
-        $middleName = $nameParts[2] ?? null;
+        $customer = Customer::where('phone_normalized', $phoneNormalized)->first();
 
-        $customer = Customer::create([
-          'first_name' => $firstName,
-          'last_name' => $lastName,
-          'middle_name' => $middleName,
-          'phone' => $phone,
-          'phone_normalized' => $phoneNormalized,
-          'email' => $customerData['email'] ?? null,
-          'address' => $customerData['address'] ?? null,
-          'last_ip' => $request->ip(),
-        ]);
+        if (!$customer) {
+          $nameParts = explode(' ', trim($customerData['name'] ?? ''));
+          $lastName = $nameParts[0] ?? null;
+          $firstName = $nameParts[1] ?? ($customerData['name'] ?? 'Клиент');
+          $middleName = $nameParts[2] ?? null;
+
+          $customer = Customer::create([
+            'first_name' => $firstName,
+            'last_name' => $lastName,
+            'middle_name' => $middleName,
+            'phone' => $phone,
+            'phone_normalized' => $phoneNormalized,
+            'email' => $customerData['email'] ?? null,
+            'address' => $customerData['address'] ?? null,
+            'last_ip' => $request->ip(),
+          ]);
+        }
       }
 
+      // Генерация уникального кода КП
       $prefix = env('VMS_ORDER_PREFIX', 'O');
       $year = date('y'); // "26"
       $sequence = Order::count() + 1;
@@ -59,14 +74,16 @@ class OrderController extends Controller
         $orderCode = "{$prefix}-{$year}{$sequence}-{$suffix}";
       } while (Order::where('code', $orderCode)->exists());
 
+      // Получаем статус по умолчанию
       $statusId = OrderStatus::where('is_default', true)->value('id')
         ?? OrderStatus::where('is_active', true)->value('id');
 
+      // Создаем основной Заказ
       $calcState = $request->input('calc_state');
 
       $order = Order::create([
         'code' => $orderCode,
-        'customer_id' => $customer->id,
+        'customer_id' => $customer?->id,
         'grand_total' => $request->input('grand_total'),
         'currency' => $request->input('currency', 'RUB'),
         'locale' => app()->getLocale(),
@@ -77,6 +94,7 @@ class OrderController extends Controller
         'manager_id' => $request->input('manager_id'),
       ]);
 
+      // Перебираем изделия (results) в запросе калькулятора
       foreach ($request->input('results', []) as $index => $resultData) {
         $price = $resultData['price'];
         $meta = $resultData['meta'] ?? [];
@@ -86,9 +104,7 @@ class OrderController extends Controller
         $section = OrderSection::create([
           'order_id' => $order->id,
           'item_id' => $resultData['id'] ?? ('result_' . $index),
-
           'type' => $resultData['type'] ?? ($meta['properties']['product'] ?? null),
-
           'title' => $sectionTitle,
           'price_total' => $price['total'],
           'price_grand_total' => $price['grand_total'],
@@ -96,13 +112,12 @@ class OrderController extends Controller
           'price_vat_percent' => $price['VAT_percent'] ?? 0,
           'price_discount' => $price['discount'] ?? 0,
           'price_discount_percent' => $price['discount_percent'] ?? 0,
-
-
           'description' => $resultData['description'] ?? null,
           'estimate' => $resultData['estimate'] ?? null,
           'meta' => $meta,
         ]);
 
+        // Загружаем и прикрепляем чертежи к секции
         if (!empty($resultData['draw']) && is_array($resultData['draw'])) {
           foreach ($resultData['draw'] as $drawIndex => $base64Image) {
             if (str_starts_with($base64Image, 'data:image')) {
@@ -118,12 +133,12 @@ class OrderController extends Controller
           }
         }
 
+        // Сохраняем физические товары
         $items = $meta['items'] ?? [];
         if (is_array($items)) {
           foreach ($items as $groupKey => $subItems) {
             if (is_array($subItems)) {
               foreach ($subItems as $subItem) {
-
                 if (!empty($subItem['variant_id'])) {
                   $variantId = (int) $subItem['variant_id'];
 
@@ -158,4 +173,5 @@ class OrderController extends Controller
       ], 201);
     });
   }
+
 }

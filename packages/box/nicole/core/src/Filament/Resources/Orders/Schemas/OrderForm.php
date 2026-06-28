@@ -20,17 +20,15 @@ class OrderForm
     return $schema->components([
       Grid::make(3)->schema([
 
-        
         Grid::make(1)
           ->columnSpan(2)
           ->schema([
             Section::make(__('Pricing & Economy'))
               ->schema([
                 TextInput::make('grand_total')
-                  ->label(__('Base Cost'))
+                  ->label(__('Total'))
                   ->numeric()
                   ->required()
-
                   ->prefix(fn ($record) => $record?->currency ?? '₽'),
 
                 Select::make('status_id')
@@ -57,7 +55,6 @@ class OrderForm
               ]),
           ]),
 
-        
         Grid::make(1)
           ->columnSpan(1)
           ->schema([
@@ -66,11 +63,9 @@ class OrderForm
                 Select::make('customer_id')
                   ->label(__('Customer'))
                   ->relationship('customer', 'phone')
-                  
                   ->getOptionLabelFromRecordUsing(fn (Customer $record) => "{$record->full_name} ({$record->phone})")
                   ->searchable()
-                  ->preload()
-                  ->required(),
+                  ->preload(),
 
                 Select::make('manager_id')
                   ->label(__('Staff'))
@@ -83,22 +78,6 @@ class OrderForm
                   ->placeholder(__('ERP / 1C Code')),
               ]),
 
-            Section::make(__('Technical Specifications'))
-              ->description(__('Calculator engine raw state.'))
-              ->collapsed() 
-              ->schema([
-                TextInput::make('locale')
-                  ->label(__('Locale'))
-                  ->disabled()
-                  ->dehydrated(false),
-
-                KeyValue::make('calculator_state')
-                  ->label(__('State Data'))
-                  ->keyLabel(__('Key'))
-                  ->valueLabel(__('Value'))
-                  ->disabled()
-                  ->dehydrated(false),
-              ]),
           ]),
       ]),
     ]);

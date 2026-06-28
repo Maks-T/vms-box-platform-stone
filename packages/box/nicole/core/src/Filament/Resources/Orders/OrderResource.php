@@ -14,6 +14,7 @@ use Nicole\Box\Core\Filament\Resources\Orders\Schemas\OrderForm;
 use Nicole\Box\Core\Filament\Resources\Orders\Tables\OrdersTable;
 use Nicole\Box\Core\Models\Order;
 use Nicole\Box\Core\Filament\Resources\Orders\RelationManagers\SectionsRelationManager;
+use Nicole\Box\Core\Filament\Resources\Orders\RelationManagers\ProductsRelationManager;
 
 class OrderResource extends Resource
 {
@@ -30,7 +31,7 @@ class OrderResource extends Resource
 
   public static function getNavigationGroup(): ?string
   {
-    return __('Catalog'); // Заказы относятся к разделу Каталога
+    return __('Sales');
   }
 
   public static function getModelLabel(): string

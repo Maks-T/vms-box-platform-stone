@@ -23,8 +23,9 @@ class SaveOrderRequest extends FormRequest
       'grand_total' => ['required', 'numeric', 'min:0'],
       'locale' => ['nullable', 'string', 'max:5'],
 
-      'customer.name' => ['required', 'string', 'max:255'],
-      'customer.phone' => ['required', 'string', 'max:50'],
+      'customer' => ['nullable', 'array'],
+      'customer.name' => ['nullable', 'string', 'max:255'],
+      'customer.phone' => ['nullable', 'string', 'max:50'],
       'customer.email' => ['nullable', 'email', 'max:255'],
       'customer.city' => ['nullable', 'string', 'max:255'],
       'customer.address' => ['nullable', 'string'],

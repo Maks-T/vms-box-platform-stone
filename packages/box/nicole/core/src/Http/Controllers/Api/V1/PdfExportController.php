@@ -14,7 +14,7 @@ class PdfExportController extends Controller
   /**
    * Генерация и отдача PDF-потока в браузер (GET /orders/{code}/pdf)
    */
-  public function streamPdf(string $code)
+  public function streamPdf(string $code): \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
   {
     $payload = $this->getTemplateData($code);
     $template = config('nicole.pdf_template', 'nicole-core::pdf.calculator-report');
@@ -35,7 +35,7 @@ class PdfExportController extends Controller
   /**
    * Отдача чистой HTML-версии сметы
    */
-  public function viewHtml(string $code)
+  public function viewHtml(string $code): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
   {
     $payload = $this->getTemplateData($code);
     $template = config('nicole.pdf_template', 'nicole-core::pdf.calculator-report');

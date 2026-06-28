@@ -54,7 +54,7 @@ trait HasSharedResourceFields
        * @var string|null
        * @example "/storage/catalog/product/12/main/detail.png"
        */
-      'detail_picture' => method_exists($model, 'getFirstMediaUrl') ? ($model->getFirstMediaUrl('main') ?: null) : null,
+      'detail_picture' => method_exists($model, 'getDetailUrl') ? $model->getDetailUrl() : null,
 
       /**
        * Динамические характеристики (EAV).
@@ -71,4 +71,5 @@ trait HasSharedResourceFields
       'settings' => $this->getPublicSettings($model),
     ];
   }
+
 }

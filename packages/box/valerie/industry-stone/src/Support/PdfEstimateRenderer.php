@@ -38,7 +38,7 @@ class PdfEstimateRenderer
         }
       }
     } else {
-      // Для столешниц (кухня/ванная) берем код формы из мета-свойств Дениса
+      // Для столешниц (кухня/ванная) берем код формы из мета-свойств
       $shapeCode = $section->meta['properties']['form'] ?? 'line';
       $fileName = str_replace('-', '_', $shapeCode) . '.png';
       $imagePath = public_path("pdf/layouts/{$folder}/{$fileName}");
@@ -85,7 +85,7 @@ class PdfEstimateRenderer
       if ($cellCount === 2) {
         $totalVal = $cells[1] ?? '';
         $html .= "<td class='estimate-cell-name' colspan='3'>{$name}</td>";
-        $html .= "<td class='estimate-cell-total' style='padding-right: 15px;'>{$totalVal}</td>";
+        $html .= "<td class='estimate-cell-total'>{$totalVal}</td>";
       } else {
         $qtyVal = $cells[1] ?? '';
         $unit = $cells[2] ?? '';

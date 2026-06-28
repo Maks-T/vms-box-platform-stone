@@ -12,7 +12,6 @@ use Nicole\Box\Core\Traits\HasGlobalDefault;
 use Nicole\Box\Core\Traits\HasSettings;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Nicole\Box\Core\Jobs\RecalculateCatalogPricesJob;
 
 class Currency extends Model
 {
@@ -50,19 +49,14 @@ class Currency extends Model
       Cache::forget(CacheKey::CURRENCIES_LIST->value);
       Cache::forget(CacheKey::BASE_CURRENCY->value);
 
-      // Курс для дефолтной валюты всегда равен 1
+      
       if ($currency->is_default && (float)$currency->rate !== 1.0) {
         $currency->updateQuietly(['rate' => 1.0]);
-      }
-
-      // Если изменился курс валюты, отправляем задачу на пересчет в очередь
-      if ($currency->wasChanged('rate')) {
-        RecalculateCatalogPricesJob::dispatch($currency->code);
       }
     });
   }
 
-  protected static function newFactory(): \Nicole\Box\Core\Database\Factories\CurrencyFactory
+  protected static function newFactory()
   {
     return \Nicole\Box\Core\Database\Factories\CurrencyFactory::new();
   }

@@ -100,9 +100,10 @@ class ProductImporter implements ImportModuleInterface
             'product_id' => $product->id,
             'sku' => $vData['sku'],
             'cost_price' => $vData['cost_price'] ?? 0,
+            'currency' => $vData['currency'] ?? 'RUB',
             'is_default' => $vData['is_default'] ?? false,
             'is_active' => true,
-            'is_manual_pricing' => (bool) $isManualPricing, // Сохраняем в БД
+            'is_manual_pricing' => (bool) $isManualPricing,
           ]
         );
 

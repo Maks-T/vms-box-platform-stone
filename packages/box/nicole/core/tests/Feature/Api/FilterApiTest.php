@@ -21,7 +21,7 @@ class FilterApiTest extends TestCase
 {
   use LazilyRefreshDatabase;
 
-  // Быстрая миграция БД в изолированной транзакции
+  
 
   protected Attribute $colorAttribute;
   protected AttributeOption $optWhite;

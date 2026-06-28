@@ -29,7 +29,7 @@ console = Console(theme=custom_theme)
 undo_stack = []
 
 # ==========================================
-# 1. СИСТЕМНЫЕ ФУНКЦИИ
+# 1. СИСТЕМНЫЕ ФУНКЦИИ И ТРАНСФОРМАЦИИ
 # ==========================================
 
 def get_file_hash(filepath):
@@ -46,13 +46,71 @@ def load_json(path):
 def save_json(path, data):
     json.dump(data, open(path, 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
 
+def strip_numbers(text):
+    """Удаляет цифры в начале строки (например, '1.', '1)', '1. '), сохраняя отступы."""
+    match = re.match(r"^(\s*)\d+[\s\.\)-]+(.*)$", text)
+    if match:
+        spaces, remaining = match.groups()
+        return spaces + remaining
+    return text
+
+def capitalize_text(text):
+    """Делает первую букву текста заглавной, остальные строчными."""
+    first_letter_idx = -1
+    for idx, char in enumerate(text):
+        if char.isalpha():
+            first_letter_idx = idx
+            break
+    if first_letter_idx != -1:
+        return (text[:first_letter_idx] +
+                text[first_letter_idx].upper() +
+                text[first_letter_idx+1:].lower())
+    return text.lower()
+
+def modify_comment_text(comment_str, transform_func):
+    """
+    Применяет трансформацию к тексту внутри комментария,
+    не затрагивая синтаксические маркеры (//, /*, *, */).
+    """
+    if comment_str.startswith("//"):
+        content = comment_str[2:]
+        return "//" + transform_func(content)
+    elif comment_str.startswith("#"):
+        content = comment_str[1:]
+        return "#" + transform_func(content)
+    elif comment_str.startswith("/*"):
+        is_docblock = comment_str.startswith("/**")
+        prefix = "/**" if is_docblock else "/*"
+        suffix = "*/"
+
+        inner = comment_str[len(prefix):-len(suffix)]
+        lines = inner.splitlines(keepends=True)
+        new_lines = []
+
+        for line in lines:
+            # Находим декоративные элементы (пробелы и звездочки в начале строки)
+            match = re.match(r"^(\s*\*?\s*)(.*)$", line, re.DOTALL)
+            if match:
+                decorations, text_content = match.groups()
+                # Извлекаем символы переноса строки в конце текста
+                line_end_match = re.search(r"(\r?\n)$", text_content)
+                if line_end_match:
+                    le = line_end_match.group(1)
+                    actual_text = text_content[:-len(le)]
+                    new_lines.append(decorations + transform_func(actual_text) + le)
+                else:
+                    new_lines.append(decorations + transform_func(text_content))
+            else:
+                new_lines.append(transform_func(line))
+        return prefix + "".join(new_lines) + suffix
+    return transform_func(comment_str)
+
 # ==========================================
 # 2. ИНТЕРФЕЙС
 # ==========================================
 
 def display_header_and_code(content, start_idx, filepath, i, total, current_comment):
     console.clear()
-    # 1. Панель кода
     ext = os.path.splitext(filepath)[1]
     lang = {".php": "php", ".js": "javascript", ".ts": "typescript"}.get(ext, "php")
     lines = content.splitlines(keepends=True)
@@ -75,7 +133,6 @@ def display_header_and_code(content, start_idx, filepath, i, total, current_comm
     console.print(f"\n [bold yellow]>>>[/bold yellow] [bold white]{current_comment.strip()}[/bold white]\n")
 
 def print_sticky_footer(has_history):
-    """Рисует подсказки в самом низу терминала."""
     term_width, term_height = shutil.get_terminal_size()
     footer_text = Text("", style="footer")
 
@@ -91,7 +148,6 @@ def print_sticky_footer(has_history):
     if current_len < term_width:
         footer_text.append(" " * (term_width - current_len), style="footer")
 
-    # Прижимаем к низу (примерно)
     console.print(footer_text, end="", highlight=False)
 
 # ==========================================
@@ -134,15 +190,14 @@ def process_file(filepath, cache, all_files, start_at_index=0):
             questionary.Choice("6. Выход (Quit)", value="quit", shortcut_key="6"),
         ])
 
-        # ВЫЗОВ ИНТЕРАКТИВНОГО МЕНЮ (Поддерживает мышь и стрелки)
         action = questionary.select(
-            "Выберите действие (можно кликнуть мышкой):",
+            "Выберите действие:",
             choices=choices,
             style=questionary.Style([
-                ('highlighted', 'fg:#00ffff bold'), # Цвет подсветки выбранного пункта
-                ('pointer', 'fg:#00ffff bold'),     # Цвет стрелочки
+                ('highlighted', 'fg:#00ffff bold'),
+                ('pointer', 'fg:#00ffff bold'),
             ]),
-            use_shortcuts=True # Позволяет нажимать 1,2,3 без стрелок, но требует Enter
+            use_shortcuts=True
         ).ask()
 
         if action == "undo":
@@ -169,10 +224,54 @@ def process_file(filepath, cache, all_files, start_at_index=0):
         replacement = match.group(0)
         if action == "delete":
             replacement = ""
+
         elif action == "edit":
-            console.print("\n")
-            replacement = questionary.text("Новый текст комментария:", default=match.group(0)).ask()
-            if replacement is None: # Если нажали Esc в поле ввода
+            current_text = match.group(0)
+            editing = True
+
+            while editing:
+                console.print("\n")
+                console.print(Panel(current_text, title="Текущий вид комментария", border_style="yellow"))
+
+                edit_action = questionary.select(
+                    "Выберите операцию или примените макрос:",
+                    choices=[
+                        questionary.Choice("1. ✍️ Ввести вручную", value="manual", shortcut_key="1"),
+                        questionary.Choice("2. 🔢 Убрать цифры в начале", value="strip_numbers", shortcut_key="2"),
+                        questionary.Choice("3. abc Сделать строчными (lowercase)", value="lowercase", shortcut_key="3"),
+                        questionary.Choice("4. Abc Только первая заглавная", value="capitalize", shortcut_key="4"),
+                        questionary.Choice("5. ABC Сделать прописными (uppercase)", value="uppercase", shortcut_key="5"),
+                        questionary.Choice("6. 💾 Применить и сохранить (Save)", value="save", shortcut_key="6"),
+                        questionary.Choice("7. ❌ Отменить изменения (Cancel)", value="cancel", shortcut_key="7")
+                    ],
+                    style=questionary.Style([
+                        ('highlighted', 'fg:#00ffff bold'),
+                        ('pointer', 'fg:#00ffff bold'),
+                    ]),
+                    use_shortcuts=True
+                ).ask()
+
+                if not edit_action or edit_action == "cancel":
+                    replacement = None
+                    editing = False
+                elif edit_action == "manual":
+                    manual_text = questionary.text("Новый текст комментария:", default=current_text).ask()
+                    if manual_text is not None:
+                        current_text = manual_text
+                elif edit_action == "strip_numbers":
+                    current_text = modify_comment_text(current_text, strip_numbers)
+                elif edit_action == "lowercase":
+                    current_text = modify_comment_text(current_text, lambda x: x.lower())
+                elif edit_action == "capitalize":
+                    current_text = modify_comment_text(current_text, capitalize_text)
+                elif edit_action == "uppercase":
+                    current_text = modify_comment_text(current_text, lambda x: x.upper())
+                elif edit_action == "save":
+                    replacement = current_text
+                    editing = False
+
+            if replacement is None:
+                # Откат истории, так как действие редактирования было отменено
                 undo_stack.pop()
                 continue
 
@@ -205,7 +304,6 @@ def main():
     f_idx = 0
     while f_idx < len(all_files):
         fpath = all_files[f_idx]
-        # Проверка кэша
         if cache.get(os.path.abspath(fpath)) == get_file_hash(fpath) and (not undo_stack or undo_stack[-1]['file_idx'] < f_idx):
             f_idx += 1
             continue
@@ -217,7 +315,6 @@ def main():
             with open(prev_data['filepath'], 'w', encoding='utf-8') as f:
                 f.write(prev_data['content'])
             f_idx = prev_data['file_idx']
-            # Запускаем обработку файла с нужного индекса комментария
             process_file(fpath, cache, all_files, start_at_index=prev_data['comment_idx'])
             continue
 

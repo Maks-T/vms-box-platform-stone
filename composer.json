@@ -10,6 +10,7 @@
   "license": "MIT",
   "require": {
     "php": "^8.5",
+    "barryvdh/laravel-dompdf": "^3.1",
     "bezhansalleh/filament-language-switch": "^4.3",
     "bezhansalleh/filament-shield": "^4.2",
     "codewithdennis/filament-select-tree": "^4.1",
@@ -22,7 +23,9 @@
     "laravel/framework": "^13.0",
     "laravel/tinker": "^3.0",
     "nicole/box-core": "@dev",
+    "njxqlus/filament-relation-manager-component": "^2.2",
     "outerweb/filament-translatable-fields": "^4.1",
+    "spatie/browsershot": "^5.4",
     "spatie/laravel-medialibrary": "^11.0",
     "spatie/laravel-translatable": "^6.14",
     "tightenco/ziggy": "^2.6",

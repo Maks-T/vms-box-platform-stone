@@ -19,7 +19,7 @@ use Nicole\Box\Core\Models\ProductType;
 
 class ProductApiTest extends TestCase
 {
-  use LazilyRefreshDatabase; // Быстро мигрирует и очищает БД [1]
+  use LazilyRefreshDatabase; 
 
   protected Attribute $colorAttribute;
   protected AttributeOption $optWhite;

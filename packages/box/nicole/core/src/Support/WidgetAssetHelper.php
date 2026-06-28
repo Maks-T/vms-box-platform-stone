@@ -16,7 +16,6 @@ class WidgetAssetHelper
    */
   public static function getAssets(string $widgetSlug): array
   {
-    // Динамически вычисляем путь к manifest.json в зависимости от слага виджета
     $manifestPath = public_path($widgetSlug . '/manifest.json');
 
     if (!File::exists($manifestPath)) {
@@ -32,7 +31,7 @@ class WidgetAssetHelper
   }
 
   /**
-   * Поиск точки входа (main / index) по расширению файла.
+   * Склеивание локальных путей Laravel с относительными путями манифеста.
    */
   private static function findAsset(array $manifest, string $extension): ?string
   {
@@ -44,6 +43,7 @@ class WidgetAssetHelper
         return $path;
       }
     }
+
     return null;
   }
 

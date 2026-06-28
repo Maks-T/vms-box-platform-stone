@@ -21,7 +21,6 @@ use Nicole\Box\Core\Models\AttributeOption;
 use Nicole\Box\Core\Models\PriceType;
 use Nicole\Box\Core\Models\Product;
 use Nicole\Box\Core\Models\ProductVariantPrice;
-use Nicole\Box\Core\Services\PricingManager;
 
 class MatrixPriceEditor extends Page implements HasForms, HasTable
 {
@@ -112,24 +111,27 @@ class MatrixPriceEditor extends Page implements HasForms, HasTable
           });
         })
         ->state(function (Product $record) use ($slug, $retailPriceId) {
-
+          
           $variant = $record->variants->first(function ($v) use ($slug) {
             return $v->attributeValues->contains(fn ($av) => $av->option?->slug === $slug);
           });
 
-          if (!$variant || !$retailPriceId) {
+          if (! $variant) {
             return null;
           }
 
-          $price = app(PricingManager::class)->getVariantPrice($variant, 'retail');
+          $price = $variant->prices->firstWhere(
+            'price_type_id',
+            $retailPriceId,
+          );
 
-          return $price > 0 ? $price : null;
+          return $price ? $price->price : null;
         })
         ->updateStateUsing(function (Product $record, $state) use (
           $slug,
           $retailPriceId,
         ) {
-          if (!$retailPriceId || $state === null) {
+          if (! $retailPriceId || $state === null) {
             return;
           }
 
@@ -137,34 +139,17 @@ class MatrixPriceEditor extends Page implements HasForms, HasTable
             return $v->attributeValues->contains(fn ($av) => $av->option?->slug === $slug);
           });
 
-          if (!$variant) {
+          if (! $variant) {
             return;
           }
 
-          $costPrice = (float) $variant->cost_price;
-          $newPrice = (float) $state;
-
-          // Динамически вычисляем наценку на основе себестоимости услуги
-          if ($costPrice <= 0) {
-            // Если себестоимости нет, приравниваем ее к введенной цене, а маржу ставим в 0%
-            $variant->update(['cost_price' => $newPrice]);
-            $markup = 0.0;
-          } else {
-            // Если себестоимость есть, вычисляем точную наценку относительно нее
-            $markup = (($newPrice / $costPrice) - 1) * 100;
-          }
-
-          // Сохраняем только процент наценки высокой точности в БД
           ProductVariantPrice::updateOrCreate(
             [
               'product_variant_id' => $variant->id,
               'price_type_id' => $retailPriceId,
             ],
-            ['markup_percent' => round($markup, 10)]
+            ['price' => (float) $state],
           );
-
-          // Обновляем минимальную цену товара для индекса каталога
-          $record->refreshMinPrice();
         });
     }
 

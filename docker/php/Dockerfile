@@ -4,8 +4,11 @@ FROM php:8.5-fpm-alpine
 ARG user=laravel
 ARG uid=1000
 
-# 1. Установка системных зависимостей (runtime)
+# Переменные окружения для работы Puppeteer в Alpine Linux
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
+# 1. Установка системных зависимостей (runtime)
 RUN apk add --no-cache \
     bash \
     git \
@@ -27,10 +30,14 @@ RUN apk add --no-cache \
     npm \
     linux-headers \
     libtool \
-    ghostscript-dev
+    ghostscript-dev \
+    # Добавляем Chromium, NSS, Harfbuzz и шрифты с поддержкой кириллицы (для PDF)
+    chromium \
+    nss \
+    harfbuzz \
+    ttf-dejavu
 
 # 2. Конфигурация и установка PHP расширений
-
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install \
     pdo_pgsql \

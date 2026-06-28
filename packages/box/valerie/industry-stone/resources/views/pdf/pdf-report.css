@@ -1,0 +1,999 @@
+/* ==========================================================================
+   1. ИНИЦИАЛИЗАЦИЯ ШРИФТОВ И СЧЕТЧИКА СТРАНИЦ
+   ========================================================================== */
+
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Jost', 'DejaVu Sans', sans-serif;
+  color: #1A1916;
+  margin: 0;
+  padding: 0;
+  background-color: #FDFCFA;
+  counter-reset: page;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.page {
+  width: 210mm;
+  height: 297mm;
+  page-break-after: always;
+  background-color: #FDFCFA;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+  counter-increment: page;
+}
+
+.page:last-child {
+  page-break-after: avoid;
+}
+
+.page-num-display::after {
+  content: counter(page);
+}
+
+.top-gradient-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, #B8945A 0%, rgba(184, 148, 90, 0) 70%);
+  z-index: 10;
+}
+
+
+/* ==========================================================================
+   2. КОЛОНТИТУЛЫ И ОТСТУПЫ (ФИКС СДВИГА СПРАВА)
+   ========================================================================== */
+
+.page-header {
+  position: absolute;
+  top: 10mm;
+  left: 8mm;
+  height: 40px;
+  border-bottom: 1px solid #DDD9D0;
+  display: table;
+  width: calc(100% - 16mm);
+}
+
+.header-cell-left {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  color: #B8945A;
+  font-size: 9px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.header-cell-right {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+  color: #9A9690;
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.page-footer {
+  position: absolute;
+  bottom: 10mm;
+  left: 8mm;
+  height: 35px;
+  border-top: 1px solid #DDD9D0;
+  display: table;
+  width: calc(100% - 16mm);
+}
+
+.footer-cell-left,
+.footer-cell-center,
+.footer-cell-right {
+  display: table-cell;
+  vertical-align: middle;
+  color: #9A9690;
+  font-size: 10px;
+  padding-top: 8px;
+}
+
+.footer-cell-left {
+  text-align: left;
+}
+
+.footer-cell-center {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-cell-right {
+  text-align: right;
+}
+
+.page-content {
+  position: absolute;
+  top: 0;
+  left: 8mm;
+  width: calc(100% - 16mm);
+  padding-top: 100px;
+  padding-bottom: 65px;
+  height: auto;
+}
+
+
+/* ==========================================================================
+   3. СТРАНИЦА ОБЛОЖКИ (COVER)
+   ========================================================================== */
+
+.page-cover {
+  background-color: #141412 !important;
+  color: #ffffff !important;
+  height: 297mm !important;
+  page-break-inside: avoid !important;
+  position: relative;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.cover-brand-top-line {
+  align-self: stretch;
+  height: 1px;
+  background: linear-gradient(90deg, #B8945A 0%, rgba(184, 148, 90, 0) 70%);
+}
+
+.cover-photo-container {
+  width: 100%;
+  height: 624px;
+  position: relative;
+  background-color: #242420;
+  overflow: hidden;
+  border-bottom: 1px solid #1A1916;
+}
+
+.cover-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.cover-photo-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 226px;
+  background: linear-gradient(to bottom, rgba(20, 20, 18, 0) 0%, #141412 100%);
+  z-index: 2;
+}
+
+.cover-content {
+  padding: 38px 53px 45px 53px;
+  position: relative;
+  z-index: 3;
+}
+
+.cover-top-line {
+  position: absolute;
+  top: 0;
+  left: 53px;
+  width: calc(100% - 106px);
+  height: 1px;
+  background: linear-gradient(to right, #B8945A 0%, rgba(184, 148, 90, 0) 100%);
+}
+
+.cover-brand-header {
+  color: #B8945A;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 22px;
+}
+
+.cover-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 46px;
+  margin: 0 0 10px 0;
+  color: #ffffff;
+  word-wrap: break-word;
+}
+
+.cover-title span.italic-gold {
+  color: #D4B483;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.cover-gold-divider {
+  width: 150px;
+  height: 1px;
+  background: #B8945A;
+  opacity: 0.6;
+  margin-bottom: 22px;
+}
+
+.cover-meta-table {
+  display: table;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.cover-meta-cell {
+  display: table-cell;
+  width: 50%;
+  vertical-align: top;
+}
+
+.cover-meta-cell-right {
+  text-align: right;
+}
+
+.cover-meta-label {
+  font-size: 10px;
+  color: #D4B483;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 15px;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  word-wrap: break-word;
+}
+
+.cover-meta-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 20px;
+}
+
+.cover-meta-subvalue {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 20px;
+}
+
+.cover-price-badge {
+  display: inline-block;
+  background: rgba(208, 157, 74, 0.06);
+  border: 1px solid rgba(208, 157, 74, 0.4);
+  border-radius: 2px;
+  padding: 15px 23px;
+}
+
+.cover-price-label {
+  font-size: 10px;
+  color: #D4B483;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+  line-height: 16px;
+}
+
+.cover-price-value {
+  font-family: 'Century', 'DejaVu Sans', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #D09D4A;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 42px;
+  white-space: nowrap;
+}
+
+.cover-page-indicator {
+  position: absolute;
+  right: 53px;
+  bottom: 45px;
+  color: rgba(255, 255, 255, 0.49);
+  font-size: 9px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 14px;
+  letter-spacing: 1px;
+  word-wrap: break-word;
+}
+
+.cover-footer-row {
+  display: table;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.cover-footer-left {
+  display: table-cell;
+  vertical-align: bottom;
+  text-align: left;
+}
+
+.cover-footer-right {
+  display: table-cell;
+  vertical-align: bottom;
+  text-align: right;
+  padding-bottom: 12px;
+}
+
+
+/* ==========================================================================
+   3. ИЗДЕЛИЯ И ХАРАКТЕРИСТИКИ
+   ========================================================================== */
+
+.section-summary-header {
+  height: 14px;
+  margin-bottom: 10px;
+  vertical-align: middle;
+}
+
+.section-summary-header-line {
+  display: inline-block;
+  vertical-align: middle;
+  width: 16px;
+  height: 1px;
+  background-color: #B8945A;
+  opacity: 0.6;
+  margin-right: 6px;
+}
+
+.section-summary-header-title {
+  display: inline-block;
+  vertical-align: middle;
+  color: #B8945A;
+  font-size: 9px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 14px;
+}
+
+.ligron-serif-title,
+.ligron-serif-title-estimate {
+  color: #1A1916;
+  font-size: 26px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  line-height: 29px;
+  word-wrap: break-word;
+  margin: 0 0 25px 0;
+}
+
+.section-card {
+  width: 100%;
+  margin-bottom: 25px;
+  border-radius: 2px;
+  border: 1px solid #DDD9D0;
+  overflow: hidden;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.section-card-header {
+  background-color: #1A1916;
+  color: #ffffff;
+  display: table;
+  width: 100%;
+}
+
+.section-header-title {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  font-family: 'Jost', 'DejaVu Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 16px;
+  color: #ffffff;
+  padding: 10px 0 10px 15px;
+}
+
+.section-header-price {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+  font-family: 'Century', 'DejaVu Sans', serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #B8945A;
+  line-height: 29px;
+  white-space: nowrap;
+  padding: 10px 15px 10px 0;
+}
+
+.section-card-body {
+  display: table;
+  width: 100%;
+}
+
+.section-body-left {
+  display: table-cell;
+  width: 50%;
+  vertical-align: middle;
+  background-color: #F5F2EB;
+  border-right: 1px solid #DDD9D0;
+  text-align: center;
+  padding: 15px;
+}
+
+.section-body-left img {
+  max-width: 100%;
+  max-height: 180px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.section-render-item {
+  margin-bottom: 12px;
+  text-align: center;
+  page-break-inside: avoid;
+}
+
+.section-render-label {
+  font-size: 8px;
+  color: #5A5750;
+  display: block;
+  margin-top: 1px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-fallback-img {
+  max-height: 180px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.section-body-right {
+  display: table-cell;
+  width: 50%;
+  vertical-align: top;
+}
+
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.specs-table tr {
+  border-bottom: 1px solid #DDD9D0;
+}
+
+.specs-table tr:last-child {
+  border-bottom: none;
+}
+
+.specs-table tr:nth-child(even) {
+  background-color: #F5F2EB;
+}
+
+.specs-table td {
+  padding: 8px 12px;
+  font-size: 11px;
+  line-height: 14px;
+}
+
+.specs-table td.spec-label {
+  width: 45%;
+  color: #5A5750;
+  font-size: 12px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+  line-height: 16px;
+}
+
+.specs-table td.spec-value {
+  width: 55%;
+  color: #1A1916;
+  font-size: 12px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  word-wrap: break-word;
+  line-height: 16px;
+}
+
+
+/* ==========================================================================
+   4. ДЕТАЛЬНАЯ СМЕТА
+   ========================================================================== */
+
+.estimate-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  page-break-inside: auto;
+}
+
+.estimate-table tr {
+  page-break-inside: avoid;
+  page-break-after: auto;
+}
+
+.estimate-th-left {
+  text-align: left;
+  padding-left: 15px;
+}
+
+.estimate-th-center {
+  text-align: center;
+  width: 100px;
+}
+
+.estimate-th-right {
+  text-align: right;
+  width: 130px;
+}
+
+.estimate-th-right-padding {
+  text-align: right;
+  width: 130px;
+  padding-right: 15px;
+}
+
+.estimate-section-header {
+  background-color: #1A1916;
+  color: #ffffff;
+  border-bottom: 1px solid #DDD9D0;
+}
+
+.estimate-section-header td {
+  padding: 9px 10px !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.estimate-section-title-cell {
+  text-align: left;
+}
+
+.estimate-section-price {
+  font-family: 'Century', 'DejaVu Sans', serif;
+  font-size: 11px;
+  color: #D4B483;
+  font-weight: 500;
+  text-align: right !important;
+  padding-right: 15px;
+  white-space: nowrap;
+}
+
+/* Скрытие дублирующей шапки сметы для чистоты дизайна */
+.estimate-table-th {
+  display: none !important;
+}
+
+.estimate-row {
+  border-bottom: 1px solid #DDD9D0;
+}
+
+.estimate-row:last-child {
+  border-bottom: none;
+}
+
+.estimate-row:nth-child(odd) {
+  background-color: #FDFCFA;
+}
+
+.estimate-row:nth-child(even) {
+  background-color: #F5F2EB;
+}
+
+.estimate-row td {
+  padding: 7px 10px;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.estimate-cell-name {
+  font-family: 'Jost', sans-serif;
+  color: #1A1916;
+  font-weight: 400;
+  text-align: left;
+}
+
+.estimate-cell-qty {
+  font-family: 'Jost', sans-serif;
+  color: #5A5750;
+  font-weight: 400;
+  text-align: center;
+  width: 80px;
+}
+
+.estimate-cell-price {
+  color: #5A5750;
+  font-weight: 400;
+  text-align: right;
+  width: 130px;
+  font-family: 'Century', 'DejaVu Sans', serif;
+  white-space: nowrap;
+}
+
+.estimate-cell-total {
+  color: #1A1916;
+  font-weight: 500;
+  text-align: right;
+  width: 130px;
+  font-family: 'Century', 'DejaVu Sans', serif;
+  white-space: nowrap;
+}
+
+.estimate-table td:last-child {
+  padding-right: 15px !important;
+}
+
+.estimate-table th:last-child {
+  padding-right: 15px !important;
+}
+
+
+/* ==========================================================================
+   5. ИТОГОВЫЙ БЛОК СМЕТЫ
+   ========================================================================== */
+
+.grand-total-card {
+  background-color: #1A1916;
+  border-radius: 2px;
+  width: 100%;
+  display: table;
+  margin-top: 30px;
+}
+
+.grand-total-left {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  padding: 20px 0 20px 20px;
+}
+
+.grand-total-right {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+  width: 200px;
+  padding: 20px 20px 20px 0;
+}
+
+/* ОБЩАЯ СУММА · ТРИ ИЗДЕЛИЯ */
+.grand-total-label {
+  color: rgba(255, 255, 255, 0.40);
+  font-size: 12px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 15px;
+  letter-spacing: 1.14px;
+  word-wrap: break-word;
+  margin-bottom: 6px;
+}
+
+/* Все работы, материалы, монтаж и доставка включены в стоимость */
+.grand-total-desc {
+  color: rgba(255, 255, 255, 0.60);
+  font-size: 15px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  line-height: 16px;
+  word-wrap: break-word;
+}
+
+/* Итоговая сумма */
+.grand-total-price {
+  color: #B8945A;
+  font-size: 32px;
+  font-family: 'Century', 'DejaVu Sans', serif;
+  font-weight: 400;
+  word-wrap: break-word;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+
+/* ==========================================================================
+   6. КОНТАКТЫ И ШАГИ РАБОТЫ (ТЕМНАЯ СТРАНИЦА)
+   ========================================================================== */
+
+.page-dark {
+  background-color: #141412 !important;
+  color: #ffffff !important;
+  height: 297mm !important;
+  page-break-inside: avoid !important;
+  position: relative;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Колонтитулы темной страницы */
+.page-dark .page-header {
+  border-bottom: 1px solid #2B2B2A !important;
+  position: absolute;
+  left: 8mm;
+  width: calc(100% - 16mm);
+}
+
+.page-dark .page-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  position: absolute;
+  left: 8mm;
+  width: calc(100% - 16mm);
+}
+
+.page-dark .header-cell-right {
+  color: #9A9690 !important;
+}
+
+.contacts-header-container {
+  align-self: stretch;
+  height: 25px;
+  position: relative;
+}
+
+.contacts-header-table {
+  width: 100%;
+  padding-bottom: 1px;
+  left: 0;
+  top: -1px;
+  position: absolute;
+  opacity: 0.7;
+  display: table;
+}
+
+.contacts-header-cell {
+  display: table-cell;
+  color: #B8945A;
+  font-size: 9px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 14px;
+  letter-spacing: 1px;
+}
+
+.contacts-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 44px;
+  margin: 0 0 15px 0;
+  color: #ffffff;
+}
+
+.gold-italic {
+  color: #D4B483;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.dark-divider {
+  width: 227px;
+  height: 1px;
+  background-color: rgba(184, 148, 90, 0.3);
+  margin: 15px 0;
+}
+
+.steps-container {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* ФЛЕКС-МОДЕЛЬ ДЛЯ КАРТОЧЕК ШАГОВ (Решает баг display: table) */
+.step-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.04);
+  border-radius: 2px;
+  border-left: 2px #B8945A solid;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+}
+
+.step-num {
+  flex-shrink: 0;
+  width: 45px;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  color: #B8945A;
+  font-weight: 500;
+}
+
+.step-content {
+  flex-grow: 1;
+  padding-left: 15px;
+}
+
+.step-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 4px;
+  line-height: 19px;
+}
+
+.step-desc {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 15px;
+}
+
+/* БЛОК МЕНЕДЖЕРА БЕЗ display: table (Решает баг border-box) */
+.manager-card {
+  width: 100%;
+  background-color: #1A1916;
+  border-radius: 2px;
+  padding: 20px 30px;
+  page-break-inside: avoid;
+}
+
+.manager-photo-container {
+  display: table-cell;
+  width: 106px;
+  vertical-align: top;
+}
+
+.manager-photo {
+  width: 106px;
+  height: 129px;
+  background-color: #2A2A28;
+  border-radius: 2px;
+  text-align: center;
+}
+
+.manager-info {
+  width: 100%;
+  padding-left: 0;
+}
+
+.manager-post {
+  font-size: 9px;
+  color: #D4B483;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  line-height: 14px;
+}
+
+.manager-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 12px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.manager-contacts-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.manager-contacts-list li {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 10px;
+  line-height: 19px;
+  padding-left: 15px;
+  position: relative;
+}
+
+.manager-contacts-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  background-color: #B8945A;
+  border-radius: 50%;
+}
+
+/* ФЛЕКС-МОДЕЛЬ ДЛЯ СТРОКИ ЗАКРЫТИЯ (Решает баг display: table) */
+.closing-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  margin-top: 25px;
+}
+
+.closing-cell-left {
+  text-align: left;
+}
+
+.closing-cell-right {
+  text-align: right;
+}
+
+.closing-label-left {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 10px;
+  margin-bottom: 4px;
+  line-height: 16px;
+}
+
+.closing-value-left {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.closing-label-right {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+  margin-bottom: 4px;
+  line-height: 16px;
+}
+
+/* Итоговая сумма на темном листе шрифтом Century */
+.closing-value-right {
+  font-family: 'Century', 'DejaVu Sans', serif;
+  font-size: 26px;
+  color: #B8945A;
+  line-height: 42px;
+  white-space: nowrap;
+}
+
+
+/* ==========================================================================
+   8. ПЕЧАТЬ И ПЕРЕНОСЫ СТРАНИЦ
+   ========================================================================== */
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0 !important;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 210mm !important;
+    height: 297mm !important;
+  }
+
+  body {
+    background-color: #FDFCFA !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .page {
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    page-break-after: always !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+}

@@ -101,7 +101,7 @@ class AttributeResourceTest extends TestCase
       ->call('save')
       ->assertHasNoFormErrors();
 
-    // Проверяем, что значение в СУБД действительно изменилось
+    // Проверяем, что значение в БД действительно изменилось
     $this->assertFalse($attribute->refresh()->is_active);
   }
 

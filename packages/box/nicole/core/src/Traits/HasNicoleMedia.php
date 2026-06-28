@@ -27,6 +27,9 @@ trait HasNicoleMedia
       ->performOnCollections('main');
   }
 
+  /**
+   * Получить URL превью-изображения (с автоматическим фолбеком).
+   */
   public function getPreviewUrl(): ?string
   {
     $url = null;
@@ -40,10 +43,55 @@ trait HasNicoleMedia
       return $this->product->getPreviewUrl();
     }
 
+    if (empty($url) && method_exists($this, 'variants')) {
+      /** @var \Nicole\Box\Core\Models\ProductVariant|null $defaultVariant */
+      $defaultVariant = $this->variants()
+        ->where('is_active', true)
+        ->orderByDesc('is_default')
+        ->first();
+
+      if ($defaultVariant) {
+        return $defaultVariant->getPreviewUrl();
+      }
+    }
+
     if (empty($url)) {
       return null;
     }
 
     return rtrim(config('app.url'), '/') . parse_url($url, PHP_URL_PATH);
   }
+
+  /**
+   * Получить URL детального изображения (с автоматическим фолбеком).
+   */
+  public function getDetailUrl(): ?string
+  {
+    $url = null;
+
+    if ($this->hasMedia('main')) {
+      $url = $this->getFirstMediaUrl('main');
+    } elseif (method_exists($this, 'product') && $this->product) {
+      return $this->product->getDetailUrl();
+    }
+
+    if (empty($url) && method_exists($this, 'variants')) {
+      /** @var \Nicole\Box\Core\Models\ProductVariant|null $defaultVariant */
+      $defaultVariant = $this->variants()
+        ->where('is_active', true)
+        ->orderByDesc('is_default')
+        ->first();
+
+      if ($defaultVariant) {
+        return $defaultVariant->getDetailUrl();
+      }
+    }
+
+    if (empty($url)) {
+      return null;
+    }
+
+    return rtrim(config('app.url'), '/') . parse_url($url, PHP_URL_PATH);
+  }
+
 }

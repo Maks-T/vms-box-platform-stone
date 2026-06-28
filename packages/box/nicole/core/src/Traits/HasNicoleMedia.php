@@ -28,9 +28,11 @@ trait HasNicoleMedia
   }
 
   /**
-   * Получить URL превью-изображения (с автоматическим фолбеком).
+   * Получить URL превью-изображения
+   *
+   * @param bool $fallback Флаг разрешения рекурсивного поиска
    */
-  public function getPreviewUrl(): ?string
+  public function getPreviewUrl(bool $fallback = true): ?string
   {
     $url = null;
 
@@ -39,11 +41,11 @@ trait HasNicoleMedia
     } elseif ($this->hasMedia('main')) {
       $url = $this->getFirstMediaUrl('main', 'preview') ?:
         $this->getFirstMediaUrl('main');
-    } elseif (method_exists($this, 'product') && $this->product) {
-      return $this->product->getPreviewUrl();
+    } elseif ($fallback && method_exists($this, 'product') && $this->product) {
+      return $this->product->getPreviewUrl(false);
     }
 
-    if (empty($url) && method_exists($this, 'variants')) {
+    if ($fallback && empty($url) && method_exists($this, 'variants')) {
       /** @var \Nicole\Box\Core\Models\ProductVariant|null $defaultVariant */
       $defaultVariant = $this->variants()
         ->where('is_active', true)
@@ -51,7 +53,7 @@ trait HasNicoleMedia
         ->first();
 
       if ($defaultVariant) {
-        return $defaultVariant->getPreviewUrl();
+        return $defaultVariant->getPreviewUrl(false);
       }
     }
 
@@ -63,19 +65,21 @@ trait HasNicoleMedia
   }
 
   /**
-   * Получить URL детального изображения (с автоматическим фолбеком).
+   * Получить URL детального изображения.
+   *
+   * @param bool $fallback Флаг разрешения рекурсивного поиска
    */
-  public function getDetailUrl(): ?string
+  public function getDetailUrl(bool $fallback = true): ?string
   {
     $url = null;
 
     if ($this->hasMedia('main')) {
       $url = $this->getFirstMediaUrl('main');
-    } elseif (method_exists($this, 'product') && $this->product) {
-      return $this->product->getDetailUrl();
+    } elseif ($fallback && method_exists($this, 'product') && $this->product) {
+      return $this->product->getDetailUrl(false);
     }
 
-    if (empty($url) && method_exists($this, 'variants')) {
+    if ($fallback && empty($url) && method_exists($this, 'variants')) {
       /** @var \Nicole\Box\Core\Models\ProductVariant|null $defaultVariant */
       $defaultVariant = $this->variants()
         ->where('is_active', true)
@@ -83,7 +87,7 @@ trait HasNicoleMedia
         ->first();
 
       if ($defaultVariant) {
-        return $defaultVariant->getDetailUrl();
+        return $defaultVariant->getDetailUrl(false);
       }
     }
 

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Nicole\Box\Core\Http\Controllers\Api\V1;
 
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
@@ -12,6 +11,7 @@ use Illuminate\Support\Facades\Cache;
 use Nicole\Box\Core\Models\Attribute;
 use Nicole\Box\Core\Models\Product;
 use Nicole\Box\Core\Http\Resources\Api\V1\ProductResource;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @group Core: Каталог
@@ -26,7 +26,7 @@ class ProductController extends Controller
    *
    * @param string $family Символьный код семейства (например: stone, sink, faucet, accessory).
    */
-  public function index(Request $request, string $family): \Illuminate\Http\JsonResponse
+  public function index(Request $request, string $family): Response
   {
     $limit = (int)$request->input('limit', $request->input('per_page', 12));
     $familyCode = Str::singular($family);
@@ -47,16 +47,22 @@ class ProductController extends Controller
       return response()->json(ProductResource::collection($query->paginate($limit))->response()->getData(true));
     }
 
-    // Иначе используем стабильный кэш
-    $version = Cache::get('catalog_version', 1);
-    $cacheKey = "catalog_products_v{$version}_{$familyCode}_{$channel}_{$locale}_p{$page}_l{$limit}";
+    $filterState = [
+      'id' => $id,
+      'product_type' => $productTypeCode,
+      'catalog_type' => $catalogType,
+    ];
 
-    $responseData = Cache::remember($cacheKey, 86400, function () use ($limit, $familyCode, $id, $catalogType, $productTypeCode, $channel) {
+    $version = Cache::get('catalog_version', 1);
+    $cacheKey = "catalog_products_v{$version}_{$familyCode}_{$channel}_{$locale}_p{$page}_l{$limit}_" . md5(json_encode($filterState));
+
+    $jsonResponse = Cache::remember($cacheKey, 86400, function () use ($limit, $familyCode, $id, $catalogType, $productTypeCode, $channel) {
       $query = $this->buildBaseQuery($familyCode, $channel, $id, $catalogType, $productTypeCode, []);
-      return ProductResource::collection($query->paginate($limit))->response()->getData(true);
+      $data = ProductResource::collection($query->paginate($limit))->response()->getData(true);
+      return json_encode($data);
     });
 
-    return response()->json($responseData);
+    return response($jsonResponse)->header('Content-Type', 'application/json');
   }
 
   private function buildBaseQuery(string $familyCode, string $channel, $id, $catalogType, $productTypeCode, array $attributes)

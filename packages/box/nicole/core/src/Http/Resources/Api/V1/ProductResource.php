@@ -23,6 +23,13 @@ class ProductResource extends JsonResource
   {
     $pricingManager = app(PricingManager::class);
 
+    // Связываем родительскую модель товара с его вариациями в оперативной памяти PHP
+    if ($this->relationLoaded('variants')) {
+      $this->variants->each(function ($variant) {
+        $variant->setRelation('product', $this->resource);
+      });
+    }
+
     return array_merge($this->getSharedEntityFields($this->resource), [
       /**
        * Код типа товара.

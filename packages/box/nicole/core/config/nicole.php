@@ -65,6 +65,7 @@ return [
     \Nicole\Box\Core\Importers\DictionaryImporter::class,
     \Nicole\Box\Core\Importers\AttributeImporter::class,
     \Nicole\Box\Core\Importers\FamilyTypeImporter::class,
+    \Nicole\Box\Core\Importers\PriceGroupImporter::class,
     \Nicole\Box\Core\Importers\CategoryImporter::class,
     \Nicole\Box\Core\Importers\ProductImporter::class,
     \Nicole\Box\Core\Importers\ServiceImporter::class,

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Nicole\Box\Core\Importers;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Str; 
+use Illuminate\Support\Str;
 use Nicole\Box\Core\Importers\Contracts\ImportModuleInterface;
 use Nicole\Box\Core\Models\ProductFamily;
 use Nicole\Box\Core\Models\ProductType;
@@ -29,14 +29,13 @@ class FamilyTypeImporter implements ImportModuleInterface
 
     $bar = $command->getOutput()->createProgressBar(count($families) + count($types));
 
-    // 1. Импорт Семейств (Families)
+    // Импорт Семейств (Families)
     $familyIdMap = [];
     foreach ($families as $fData) {
       $family = ProductFamily::updateOrCreate(
         ['external_code' => $fData['external_code']],
         [
           'code' => $fData['code'],
-          
           'slug' => $fData['slug'] ?? Str::slug($fData['code'], '-'),
           'name' => $fData['name'],
           'meta_schema' => $fData['meta_schema'] ?? null,
@@ -48,32 +47,22 @@ class FamilyTypeImporter implements ImportModuleInterface
       $bar->advance();
     }
 
-    // 2. Импорт Типов товаров (Product Types)
+    // Импорт Типов товаров (Product Types)
     foreach ($types as $tData) {
       $familyId = $familyIdMap[$tData['family_external_code']] ?? null;
-
-      $pricingAttrId = null;
-      if (!empty($tData['pricing_attr_code'])) {
-        $pricingAttrId = Attribute::where('code', $tData['pricing_attr_code'])->value('id');
-      }
 
       $type = ProductType::updateOrCreate(
         ['external_code' => $tData['external_code']],
         [
           'family_id' => $familyId,
           'code' => $tData['code'],
-          
           'slug' => $tData['slug'] ?? Str::slug($tData['code'], '-'),
           'name' => $tData['name'],
           'meta' => $tData['meta'] ?? null,
           'is_active' => true,
-          'pricing_mode' => $tData['pricing_mode'] ?? 'manual',
-          'pricing_attribute_id' => $pricingAttrId,
-          'pricing_field' => $tData['pricing_field'] ?? null,
         ]
       );
 
-      
       if (!empty($tData['attached_attributes'])) {
         $syncData = [];
         $sort = 10;

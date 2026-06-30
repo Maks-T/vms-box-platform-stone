@@ -28,13 +28,7 @@ class PricesRepeater
       ->relationship('prices')
       ->required(fn (Get $get) => (bool) $get('is_manual_pricing'))
       ->minItems(fn (Get $get) => $get('is_manual_pricing') ? 1 : 0)
-      ->visible(function (Get $get, ?Model $record) {
-        $productId = $get('product_id') ?? $record?->product_id;
-        if (!$productId) return true;
-        $product = Product::with('type')->find($productId);
-        $isComplex = $product?->type?->pricing_mode === 'complex_dictionary';
-        return !$isComplex || $get('is_manual_pricing');
-      })
+      ->visible(fn (Get $get) => (bool) $get('is_manual_pricing'))
       ->schema([
         Select::make('price_type_id')
           ->label(__('Price Type'))

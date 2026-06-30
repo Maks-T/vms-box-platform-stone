@@ -44,9 +44,17 @@ class ProductFamily extends Model
     return $this->hasMany(ProductType::class, 'family_id');
   }
 
-  protected static function newFactory()
+  protected static function newFactory(): \Nicole\Box\Core\Database\Factories\ProductFamilyFactory
   {
     return \Nicole\Box\Core\Database\Factories\ProductFamilyFactory::new();
+  }
+
+  /**
+   * Связь со всеми ценовыми группами этого семейства
+   */
+  public function priceGroups(): HasMany
+  {
+    return $this->hasMany(PriceGroup::class, 'product_family_id')->orderBy('sort_order');
   }
 
 }

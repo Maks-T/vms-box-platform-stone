@@ -9,9 +9,6 @@
     },
     "catalog": {
       "is_public_default": true
-    },
-    "b2b_portal": {
-      "is_public_default": true
     }
   },
   "setting_schemas": {
@@ -88,6 +85,30 @@
             "en": "Range slider"
           }
         }
+      }
+    ],
+    "price_group": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
       }
     ],
     "complex_dictionary": [

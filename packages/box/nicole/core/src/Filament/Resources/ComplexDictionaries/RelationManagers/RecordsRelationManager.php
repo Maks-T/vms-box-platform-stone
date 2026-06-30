@@ -13,7 +13,6 @@ use Filament\Actions\EditAction;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Schemas\Components\Fieldset;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
@@ -26,8 +25,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Nicole\Box\Core\Filament\Forms\Tabs\SalesChannelsTab;
 use Nicole\Box\Core\Filament\Helpers\FormHelper;
-use Nicole\Box\Core\Models\ComplexDictionary;
-use Nicole\Box\Core\Models\PriceType;
 
 class RecordsRelationManager extends RelationManager
 {
@@ -64,39 +61,14 @@ class RecordsRelationManager extends RelationManager
   public function form(Schema $schema): Schema
   {
     $dynamicComponents = [];
-    $priceTypes = PriceType::all(); // Динамически получаем все типы цен в системе
 
     foreach ($this->getProcessedFields() as $field) {
-      if ($field['type'] === ComplexDictionary::FIELD_TYPE_PRICE) {
-        $priceTypeComponents = [
-          // Поле базовой себестоимости закупки
-          TextInput::make($field['payloadKey'])
-            ->label(__('Base Cost'))
-            ->numeric()
-            ->default(0)
-            ->columnSpanFull(),
-        ];
-
-        // Автоматически генерируем поля ввода наценки для каждого типа цен из БД
-        foreach ($priceTypes as $type) {
-          $priceTypeComponents[] = TextInput::make("meta.{$field['key']}_markup_{$type->slug}")
-            ->label(__('Markup for :type (%)', ['type' => (string) $type->name]))
-            ->numeric()
-            ->suffix('%')
-            ->default(0);
-        }
-
-        $dynamicComponents[] = Fieldset::make((string) $field['label'])
-          ->schema($priceTypeComponents)
-          ->columns(2);
-      } else {
-        $input = match ($field['type']) {
-          'boolean' => Toggle::make($field['payloadKey'])->inline(false),
-          'number' => TextInput::make($field['payloadKey'])->numeric(),
-          default => TextInput::make($field['payloadKey']),
-        };
-        $dynamicComponents[] = $input->label((string) $field['label']);
-      }
+      $input = match ($field['type']) {
+        'boolean' => Toggle::make($field['payloadKey'])->inline(false),
+        'number' => TextInput::make($field['payloadKey'])->numeric(),
+        default => TextInput::make($field['payloadKey']),
+      };
+      $dynamicComponents[] = $input->label((string) $field['label']);
     }
 
     return $schema->components([
@@ -143,46 +115,8 @@ class RecordsRelationManager extends RelationManager
       TextColumn::make('name')->label(__('Name'))->searchable()->sortable(),
     ];
 
-    $priceTypes = PriceType::all();
-
     foreach ($this->getProcessedFields() as $field) {
-      if ($field['type'] === ComplexDictionary::FIELD_TYPE_PRICE) {
-        // Базовая себестоимость (всегда видна)
-        $columns[] = TextColumn::make($field['payloadKey'])
-          ->label($field['label'])
-          ->numeric(2)
-          ->sortable();
-
-        // Динамически генерируем колонки наценки и итоговой цены для каждого типа цен в системе
-        foreach ($priceTypes as $type) {
-          $isRetail = $type->slug === 'retail';
-
-          // Колонка наценки (скрыта по умолчанию для всех кроме розницы)
-          $columns[] = TextColumn::make("meta.{$field['key']}_markup_{$type->slug}")
-            ->label(__('Markup :type', ['type' => (string) $type->name]))
-            ->suffix('%')
-            ->color('gray')
-            ->sortable()
-            ->toggleable(isToggledHiddenByDefault: !$isRetail);
-
-          // Колонка итоговой цены (скрыта по умолчанию для всех кроме розницы)
-          $columns[] = TextColumn::make("calculated_{$field['key']}_{$type->slug}")
-            ->label(__('Total :type', ['type' => (string) $type->name]))
-            ->state(function (Model $record) use ($field, $type) {
-              $meta = $record->meta ?? [];
-              $cost = (float) ($meta[$field['key']] ?? 0);
-              $markup = (float) ($meta["{$field['key']}_markup_{$type->slug}"] ?? 0);
-
-              if ($cost > 0) {
-                return number_format($cost * (1 + $markup / 100), 2, '.', ' ');
-              }
-              return '—';
-            })
-            ->color('success')
-            ->weight('bold')
-            ->toggleable(isToggledHiddenByDefault: !$isRetail);
-        }
-      } elseif ($field['type'] === 'boolean') {
+      if ($field['type'] === 'boolean') {
         $columns[] = IconColumn::make($field['payloadKey'])
           ->label($field['label'])
           ->boolean()

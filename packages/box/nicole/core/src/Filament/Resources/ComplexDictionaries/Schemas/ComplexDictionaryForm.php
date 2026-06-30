@@ -53,13 +53,13 @@ class ComplexDictionaryForm
 
           SalesChannelsTab::make('complex_dictionary'),
 
-          Tabs\Tab::make(__('Schema Builder')) 
-          ->icon('heroicon-o-rectangle-group') 
+          Tabs\Tab::make(__('Schema Builder'))
+          ->icon('heroicon-o-rectangle-group')
           ->schema([
             Section::make(__('Dictionary Fields Schema'))
                 ->description(__('Define the dynamic fields that this dictionary will store (e.g. min_size, price_material).'))
                 ->schema([
-                  
+
                   Repeater::make('meta_schema')
                     ->hiddenLabel()
                     ->schema([
@@ -75,9 +75,9 @@ class ComplexDictionaryForm
                           'text' => __('String'),
                           'number' => __('Numeric'),
                           'boolean' => __('Boolean (Checkbox)'),
-                          'price' => __('Price & Markup'),
                         ])
                         ->required()
+                        ->live()
                         ->native(false),
 
                       Select::make('currency')

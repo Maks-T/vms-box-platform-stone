@@ -37,6 +37,11 @@ return new class extends Migration {
       $table->string('external_code')->nullable()->index();
       $table->foreignId('product_id')->constrained()->cascadeOnDelete();
 
+      $table->foreignId('price_group_id')
+        ->nullable()
+        ->constrained('price_groups')
+        ->nullOnDelete();
+
       $table->string('sku')->unique();
 
       $table->decimal('cost_price', 15, 2)->default(0);
@@ -46,15 +51,17 @@ return new class extends Migration {
       $table->boolean('is_default')->default(false)->index();
 
       $table->boolean('is_active')->default(true)->index();
-
       $table->boolean('is_manual_pricing')->default(false)->index();
 
       $table->integer('sort_order')->default(0);
       $table->settings();
       $table->timestamps();
+
+      $table->index('product_id', 'idx_product_variants_product_id');
+      $table->index(['price_group_id']);
     });
 
-
+    // EAV-значения с композитным индексом
     Schema::create('product_attribute_values', function (Blueprint $table) {
       $table->id();
       $table->foreignId('attribute_id')->constrained()->cascadeOnDelete();
@@ -70,6 +77,12 @@ return new class extends Migration {
       $table->index(['attribute_id', 'value_option_id'], 'idx_eav_option');
       $table->index(['attribute_id', 'value_complex_id'], 'idx_eav_complex');
       $table->index(['attribute_id', 'value_entity_id'], 'idx_eav_entity');
+
+      // Композитный индекс для быстрого EAV-поиска
+      $table->index(
+        ['attributable_type', 'attributable_id', 'attribute_id'],
+        'idx_eav_lookup_compound'
+      );
     });
   }
 

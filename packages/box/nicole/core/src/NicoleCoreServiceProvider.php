@@ -85,6 +85,7 @@ class NicoleCoreServiceProvider extends ServiceProvider
     if ($this->app->runningInConsole()) {
       $this->commands([
         \Nicole\Box\Core\Console\Commands\ImportCatalogCommand::class,
+        \Nicole\Box\Core\Console\Commands\DbOptimizeCommand::class,
       ]);
 
       $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');

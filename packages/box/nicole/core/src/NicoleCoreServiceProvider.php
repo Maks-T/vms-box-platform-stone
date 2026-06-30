@@ -12,10 +12,16 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Nicole\Box\Core\CoreConfig;
 use Nicole\Box\Core\Models\Media;
+use Nicole\Box\Core\Models\Product;
+use Nicole\Box\Core\Models\ProductVariant;
+use Nicole\Box\Core\Models\ProductVariantPrice;
+use Nicole\Box\Core\Models\Currency;
+use Nicole\Box\Core\Models\ComplexDictionaryRecord;
+use Nicole\Box\Core\Observers\CatalogObserver;
 use Nicole\Box\Core\Services\PricingManager;
 use Nicole\Box\Core\Support\Media\NicolePathGenerator;
-use Illuminate\Support\Facades\Gate;
 use Dedoc\Scramble\Scramble;
 use Nicole\Box\Core\Support\Scramble\Extensions\GlobalApiExtension;
 
@@ -79,6 +85,13 @@ class NicoleCoreServiceProvider extends ServiceProvider
       'customer' => \Nicole\Box\Core\Models\Customer::class,
     ]);
 
+    // Регистрация обсерверов
+    Product::observe(CatalogObserver::class);
+    ProductVariant::observe(CatalogObserver::class);
+    ProductVariantPrice::observe(CatalogObserver::class);
+    Currency::observe(CatalogObserver::class);
+    ComplexDictionaryRecord::observe(CatalogObserver::class);
+
     //Шаблоны пакета
     $this->loadViewsFrom(__DIR__ . '/../resources/views', 'nicole-core');
 
@@ -129,4 +142,3 @@ class NicoleCoreServiceProvider extends ServiceProvider
   }
 
 }
-

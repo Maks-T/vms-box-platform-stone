@@ -16,6 +16,12 @@ use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute as EloquentAttribute;
 
+/**
+ * Класс модели базового товара.
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|static publicInChannel(string $channelCode)
+ * @method static \Illuminate\Database\Eloquent\Builder|static filterByEav(array $filters)
+ */
 class Product extends Model implements HasMedia
 {
   use HasExternalCode;

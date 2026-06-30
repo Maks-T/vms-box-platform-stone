@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Nicole\Box\Core\Services;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB; // Импортируем фасад DB для сверхбыстрой проверки связей
 use Nicole\Box\Core\Models\Attribute;
 use Nicole\Box\Core\Models\ComplexDictionary;
 use Nicole\Box\Core\Models\Currency;
@@ -12,9 +13,14 @@ use Nicole\Box\Core\Models\PriceType;
 use Nicole\Box\Core\Models\Product;
 use Nicole\Box\Core\Models\ProductAttributeValue;
 use Nicole\Box\Core\Models\ProductVariant;
+use Nicole\Box\Core\Models\ProductVariantPrice;
 
 class PricingManager
 {
+  // Локальный кэш в оперативной памяти PHP для исключения N+1 запросов [1.2.1]
+  private Collection $priceTypes;
+  private array $productTypeAttributes = [];
+
   public Currency $baseCurrency {
     get => $this->baseCurrency ??= Currency::where('is_default', true)->first()
       ?? throw new \RuntimeException(__('Critical error: Base currency (is_default = true) is not set in the system. Please check currency settings.'));
@@ -39,6 +45,33 @@ class PricingManager
     }
   }
 
+  /**
+   * Получить тип цены из локального кэша памяти без запросов к БД [1.2.1]
+   */
+  private function getPriceTypeBySlug(string $slug): PriceType
+  {
+    if (!isset($this->priceTypes)) {
+      $this->priceTypes = PriceType::with('currency')->get()->keyBy('slug');
+    }
+
+    return $this->priceTypes->get($slug) ?? $this->defaultPriceType;
+  }
+
+  /**
+   * Проверить привязку атрибута к типу товара через кэшированную в памяти PHP сводную карту [1.2.1]
+   */
+  private function isAttributeAttached(int $productTypeId, int $attributeId): bool
+  {
+    if (!isset($this->productTypeAttributes[$productTypeId])) {
+      $this->productTypeAttributes[$productTypeId] = DB::table('attribute_product_type')
+        ->where('product_type_id', $productTypeId)
+        ->pluck('attribute_id')
+        ->toArray();
+    }
+
+    return in_array($attributeId, $this->productTypeAttributes[$productTypeId], true);
+  }
+
   public function convert(float $amount, string $fromCode, string $toCode): float
   {
     if ($amount <= 0 || $fromCode === $toCode) {
@@ -57,16 +90,26 @@ class PricingManager
   {
     $priceTypeSlug = $priceTypeSlug ?? $this->defaultPriceType->slug;
 
-    $priceType = PriceType::with('currency')->where('slug', $priceTypeSlug)->first() ?? $this->defaultPriceType;
+    // ОПТИМИЗИРОВАНО: Забираем тип цены из кэша памяти (Минус 222 запроса к БД) [1.1.5]
+    $priceType = $this->getPriceTypeBySlug($priceTypeSlug);
 
     $product = $variant->product;
     $isComplex = $product && $product->type && $product->type->pricing_mode === 'complex_dictionary';
 
     // 1. Ручные наценки (только если включен ручной режим или товар не использует умный справочник)
     if (!$isComplex || $variant->is_manual_pricing) {
-      $priceRecord = $variant->prices()
-        ->whereHas('type', fn($q) => $q->where('slug', $priceTypeSlug))
-        ->first();
+
+      // ОПТИМИЗИРОВАНО: Если связь цен уже предзагружена, фильтруем её в памяти без SQL-запросов! [1.1.2, 1.2.2]
+      if ($variant->relationLoaded('prices')) {
+        $priceRecord = $variant->prices->first(function ($price) use ($priceTypeSlug) {
+          return $price->type && $price->type->slug === $priceTypeSlug;
+        });
+      } else {
+        // Фолбек, если связь не была предзагружена в контроллере
+        $priceRecord = $variant->prices()
+          ->whereHas('type', fn($q) => $q->where('slug', $priceTypeSlug))
+          ->first();
+      }
 
       if ($priceRecord) {
         $costPrice = (float) $variant->cost_price;
@@ -88,8 +131,8 @@ class PricingManager
       if ($type->pricing_attribute_id) {
         $attrId = $type->pricing_attribute_id;
 
-        // Проверяем привязку атрибута к типу товара во избежание фантомных расчетов после удаления из связи
-        $isAttached = $type->attributes()->where('attributes.id', $attrId)->exists();
+        // ОПТИМИЗИРОВАНО: Проверяем привязку через кэшированную в памяти PHP сводную карту (Минус 111 запросов к EXISTS!) [1.2.1]
+        $isAttached = $this->isAttributeAttached((int) $type->id, (int) $attrId);
 
         if ($isAttached) {
           $val = $variant->attributeValues->firstWhere('attribute_id', $attrId)
@@ -124,7 +167,8 @@ class PricingManager
 
   private function calculateDictionaryPrice(?ProductAttributeValue $val, string $field, PriceType $priceType): ?float
   {
-    if (!$val || !$val->complexRecord) {
+    // ИСПРАВЛЕНО: Добавлен жесткий чек empty($val->value_complex_id), блокирующий холостые запросы к БД! [2]
+    if (!$val || empty($val->value_complex_id) || !$val->complexRecord) {
       return null;
     }
 
@@ -175,7 +219,8 @@ class PricingManager
       $val = $variant->attributeValues->firstWhere('attribute_id', $attrId)
         ?? $product->attributeValues->firstWhere('attribute_id', $attrId);
 
-      if ($val && $val->complexRecord) {
+      // ИСПРАВЛЕНО: Добавлен жесткий чек empty($val->value_complex_id)
+      if ($val && !empty($val->value_complex_id) && $val->complexRecord) {
         $meta = $val->complexRecord->meta ?? [];
         return (float) ($meta[$field] ?? 0.0);
       }
@@ -201,7 +246,8 @@ class PricingManager
       $val = $variant->attributeValues->firstWhere('attribute_id', $attrId)
         ?? $product->attributeValues->firstWhere('attribute_id', $attrId);
 
-      if ($val && $val->complexRecord) {
+      // ИСПРАВЛЕНО: Добавлен жесткий чек empty($val->value_complex_id)
+      if ($val && !empty($val->value_complex_id) && $val->complexRecord) {
         $schema = $val->complexRecord->dictionary->meta_schema ?? [];
         foreach ($schema as $sField) {
           if (($sField['key'] ?? '') === $field && isset($sField['currency'])) {

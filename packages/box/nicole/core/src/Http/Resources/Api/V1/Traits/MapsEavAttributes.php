@@ -46,7 +46,7 @@ trait MapsEavAttributes
 
         $mappedValues = $group->map(function ($val) use ($attribute) {
 
-          // 1. Обычные опции (Цвета, Бренды)
+          // Детальный вывод обычных опций (Цвета, Бренды) с их медиа-файлами
           if ($val->option) {
             $meta = is_array($val->option->meta) ? $val->option->meta : [];
             return [
@@ -60,13 +60,11 @@ trait MapsEavAttributes
             ];
           }
 
-          // 2. Умные справочники (Цены, Раскрой)
+          // Детальный вывод умных справочников (Цены, Раскрой) с метаданными
           if ($val->complexRecord) {
-            
             $payload = $val->complexRecord->meta ?? [];
             $safeMeta = [];
 
-            
             $schema = $attribute->complexDictionary?->meta_schema ?? [];
 
             foreach ($schema as $field) {
@@ -87,7 +85,7 @@ trait MapsEavAttributes
             ];
           }
 
-          // 3. Простые значения (Числа, Строки, Булевы)
+          // Простые значения (Числа, Строки, Булевы)
           return match (true) {
             $val->value_boolean !== null => (bool)$val->value_boolean,
             $val->value_numeric !== null => (float)$val->value_numeric,
@@ -106,5 +104,4 @@ trait MapsEavAttributes
       })
       ->toArray();
   }
-
 }

@@ -28,32 +28,33 @@ trait HasNicoleMedia
   }
 
   /**
-   * Получить URL превью-изображения
+   * Получить URL превью-изображения.
    *
-   * @param bool $fallback Флаг разрешения рекурсивного поиска
+   * Ищет собственную картинку. Если её нет и это базовый товар,
+   * заимствует изображение у дефолтного активного варианта из памяти.
    */
-  public function getPreviewUrl(bool $fallback = true): ?string
+  public function getPreviewUrl(): ?string
   {
     $url = null;
 
+    // Сначала проверяем собственные медиафайлы текущей модели (будь то продукт или вариант)
     if ($this->hasMedia('preview')) {
       $url = $this->getFirstMediaUrl('preview');
     } elseif ($this->hasMedia('main')) {
       $url = $this->getFirstMediaUrl('main', 'preview') ?:
         $this->getFirstMediaUrl('main');
-    } elseif ($fallback && method_exists($this, 'product') && $this->product) {
-      return $this->product->getPreviewUrl(false);
     }
 
-    if ($fallback && empty($url) && method_exists($this, 'variants')) {
+    // Если картинки нет, и это Базовый товар - берем превью у дефолтного варианта из памяти
+    if (empty($url) && $this->relationLoaded('variants')) {
       /** @var \Nicole\Box\Core\Models\ProductVariant|null $defaultVariant */
-      $defaultVariant = $this->variants()
+      $defaultVariant = $this->variants
         ->where('is_active', true)
-        ->orderByDesc('is_default')
+        ->sortByDesc('is_default') // Фильтруем коллекцию в памяти PHP без запросов к БД
         ->first();
 
       if ($defaultVariant) {
-        return $defaultVariant->getPreviewUrl(false);
+        return $defaultVariant->getPreviewUrl(); // Вызываем получение у варианта напрямую
       }
     }
 
@@ -67,27 +68,28 @@ trait HasNicoleMedia
   /**
    * Получить URL детального изображения.
    *
-   * @param bool $fallback Флаг разрешения рекурсивного поиска
+   * Ищет собственную картинку. Если её нет и это базовый товар,
+   * заимствует изображение у дефолтного активного варианта из памяти.
    */
-  public function getDetailUrl(bool $fallback = true): ?string
+  public function getDetailUrl(): ?string
   {
     $url = null;
 
+    // Проверяем собственные медиафайлы текущей модели
     if ($this->hasMedia('main')) {
       $url = $this->getFirstMediaUrl('main');
-    } elseif ($fallback && method_exists($this, 'product') && $this->product) {
-      return $this->product->getDetailUrl(false);
     }
 
-    if ($fallback && empty($url) && method_exists($this, 'variants')) {
+    // Если картинки нет, и это Базовый товар - берем фото у дефолтного варианта из памяти
+    if (empty($url) && $this->relationLoaded('variants')) {
       /** @var \Nicole\Box\Core\Models\ProductVariant|null $defaultVariant */
-      $defaultVariant = $this->variants()
+      $defaultVariant = $this->variants
         ->where('is_active', true)
-        ->orderByDesc('is_default')
+        ->sortByDesc('is_default') // Фильтруем коллекцию в памяти PHP без запросов к БД
         ->first();
 
       if ($defaultVariant) {
-        return $defaultVariant->getDetailUrl(false);
+        return $defaultVariant->getDetailUrl(); // Вызываем получение у варианта напрямую
       }
     }
 

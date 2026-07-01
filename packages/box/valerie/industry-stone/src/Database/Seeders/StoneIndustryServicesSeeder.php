@@ -357,7 +357,7 @@ class StoneIndustryServicesSeeder extends Seeder
     );
 
     $serviceType = ProductType::firstOrCreate(
-      ['code' => 'processing_service'],
+      ['code' => 'service'],
       [
         'family_id' => $family->id,
         'name' => ['ru' => 'Услуги обработки', 'en' => 'Processing Services'],

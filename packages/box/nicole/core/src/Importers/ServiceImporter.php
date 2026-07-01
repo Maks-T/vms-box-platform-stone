@@ -61,11 +61,11 @@ class ServiceImporter implements ImportModuleInterface
     );
 
     $serviceType = ProductType::updateOrCreate(
-      ['external_code' => 'type_processing_service'],
+      ['external_code' => 'type_service'],
       [
         'family_id' => $family->id,
-        'code' => 'processing_service',
-        'slug' => 'processing-service',
+        'code' => 'service',
+        'slug' => 'service',
         'name' => ['ru' => 'Услуги обработки', 'en' => 'Processing Services'],
         'is_active' => true
       ]

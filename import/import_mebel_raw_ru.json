@@ -1,12 +1,69 @@
 {
-    "languages": [],
     "families": [
         {
             "external_code": "fam_stone",
             "code": "stone",
             "name": {
                 "ru": "Искусственный камень"
-            }
+            },
+            "meta_schema": [
+                {
+                    "key": "step",
+                    "type": "number",
+                    "label": {
+                        "ru": "Шаг размера"
+                    },
+                    "width": 1
+                },
+                {
+                    "key": "minPart",
+                    "type": "number",
+                    "label": {
+                        "ru": "Минимальная часть"
+                    },
+                    "width": 1
+                },
+                {
+                    "key": "maxStack",
+                    "type": "number",
+                    "label": {
+                        "ru": "Макс. стопка"
+                    },
+                    "width": 1
+                },
+                {
+                    "key": "axisX",
+                    "type": "boolean",
+                    "label": {
+                        "ru": "По оси X"
+                    },
+                    "width": 1
+                },
+                {
+                    "key": "is_separate",
+                    "type": "boolean",
+                    "label": {
+                        "ru": "Кроить раздельно"
+                    },
+                    "width": 2
+                },
+                {
+                    "key": "corner_add_length",
+                    "type": "number",
+                    "label": {
+                        "ru": "Добавка на внутр. угол (Длина мм)"
+                    },
+                    "width": 1
+                },
+                {
+                    "key": "corner_add_width",
+                    "type": "number",
+                    "label": {
+                        "ru": "Добавка на внутр. угол (Ширина мм)"
+                    },
+                    "width": 1
+                }
+            ]
         },
         {
             "external_code": "fam_sink",
@@ -616,12 +673,12 @@
         {
             "external_code": "pg_s0",
             "product_family_external_code": "fam_stone",
-            "slug": "S0",
+            "slug": "s0",
             "name": {
                 "ru": "S0"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 206.5,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -629,12 +686,12 @@
         {
             "external_code": "pg_a1",
             "product_family_external_code": "fam_stone",
-            "slug": "A1",
+            "slug": "a1",
             "name": {
                 "ru": "A1"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 143.5,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -642,12 +699,12 @@
         {
             "external_code": "pg_a2",
             "product_family_external_code": "fam_stone",
-            "slug": "A2",
+            "slug": "a2",
             "name": {
                 "ru": "A2"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 175,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -655,12 +712,12 @@
         {
             "external_code": "pg_a0",
             "product_family_external_code": "fam_stone",
-            "slug": "A0",
+            "slug": "a0",
             "name": {
                 "ru": "A0"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 196,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -668,12 +725,12 @@
         {
             "external_code": "pg_m0",
             "product_family_external_code": "fam_stone",
-            "slug": "M0",
+            "slug": "m0",
             "name": {
                 "ru": "M0"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 255.5,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -681,12 +738,12 @@
         {
             "external_code": "pg_b0",
             "product_family_external_code": "fam_stone",
-            "slug": "B0",
+            "slug": "b0",
             "name": {
                 "ru": "B0"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 269.5,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -694,12 +751,12 @@
         {
             "external_code": "pg_p0",
             "product_family_external_code": "fam_stone",
-            "slug": "P0",
+            "slug": "p0",
             "name": {
                 "ru": "P0"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 357,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -707,12 +764,12 @@
         {
             "external_code": "pg_e1",
             "product_family_external_code": "fam_stone",
-            "slug": "E1",
+            "slug": "e1",
             "name": {
                 "ru": "E1"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 385,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -720,12 +777,12 @@
         {
             "external_code": "pg_m1",
             "product_family_external_code": "fam_stone",
-            "slug": "M1",
+            "slug": "m1",
             "name": {
                 "ru": "M1"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 385,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -733,12 +790,12 @@
         {
             "external_code": "pg_c1",
             "product_family_external_code": "fam_stone",
-            "slug": "C1",
+            "slug": "c1",
             "name": {
                 "ru": "C1"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 385,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -746,12 +803,12 @@
         {
             "external_code": "pg_k7",
             "product_family_external_code": "fam_stone",
-            "slug": "K7",
+            "slug": "k7",
             "name": {
                 "ru": "K7"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 462,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -759,12 +816,12 @@
         {
             "external_code": "pg_k4",
             "product_family_external_code": "fam_stone",
-            "slug": "K4",
+            "slug": "k4",
             "name": {
                 "ru": "K4"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 420,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -772,12 +829,12 @@
         {
             "external_code": "pg_k5",
             "product_family_external_code": "fam_stone",
-            "slug": "K5",
+            "slug": "k5",
             "name": {
                 "ru": "K5"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 441,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -785,12 +842,12 @@
         {
             "external_code": "pg_k2",
             "product_family_external_code": "fam_stone",
-            "slug": "K2",
+            "slug": "k2",
             "name": {
                 "ru": "K2"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 371,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -798,12 +855,12 @@
         {
             "external_code": "pg_k10",
             "product_family_external_code": "fam_stone",
-            "slug": "K10",
+            "slug": "k10",
             "name": {
                 "ru": "K10"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 525,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -811,12 +868,12 @@
         {
             "external_code": "pg_k6",
             "product_family_external_code": "fam_stone",
-            "slug": "K6",
+            "slug": "k6",
             "name": {
                 "ru": "K6"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 455,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -824,12 +881,12 @@
         {
             "external_code": "pg_k8",
             "product_family_external_code": "fam_stone",
-            "slug": "K8",
+            "slug": "k8",
             "name": {
                 "ru": "K8"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 490,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -837,12 +894,12 @@
         {
             "external_code": "pg_k1",
             "product_family_external_code": "fam_stone",
-            "slug": "K1",
+            "slug": "k1",
             "name": {
                 "ru": "K1"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 336,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -850,12 +907,12 @@
         {
             "external_code": "pg_k3",
             "product_family_external_code": "fam_stone",
-            "slug": "K3",
+            "slug": "k3",
             "name": {
                 "ru": "K3"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 385,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -863,12 +920,12 @@
         {
             "external_code": "pg_k9",
             "product_family_external_code": "fam_stone",
-            "slug": "K9",
+            "slug": "k9",
             "name": {
                 "ru": "K9"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 511,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -876,12 +933,12 @@
         {
             "external_code": "pg_n1",
             "product_family_external_code": "fam_stone",
-            "slug": "N1",
+            "slug": "n1",
             "name": {
                 "ru": "N1"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 332.5,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -889,12 +946,12 @@
         {
             "external_code": "pg_n2",
             "product_family_external_code": "fam_stone",
-            "slug": "N2",
+            "slug": "n2",
             "name": {
                 "ru": "N2"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 462,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -902,12 +959,12 @@
         {
             "external_code": "pg_n3",
             "product_family_external_code": "fam_stone",
-            "slug": "N3",
+            "slug": "n3",
             "name": {
                 "ru": "N3"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 476,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -915,12 +972,12 @@
         {
             "external_code": "pg_n4",
             "product_family_external_code": "fam_stone",
-            "slug": "N4",
+            "slug": "n4",
             "name": {
                 "ru": "N4"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 546,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -928,12 +985,12 @@
         {
             "external_code": "pg_n7",
             "product_family_external_code": "fam_stone",
-            "slug": "N7",
+            "slug": "n7",
             "name": {
                 "ru": "N7"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 665,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -941,12 +998,12 @@
         {
             "external_code": "pg_n5",
             "product_family_external_code": "fam_stone",
-            "slug": "N5",
+            "slug": "n5",
             "name": {
                 "ru": "N5"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 581,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -954,12 +1011,12 @@
         {
             "external_code": "pg_n6",
             "product_family_external_code": "fam_stone",
-            "slug": "N6",
+            "slug": "n6",
             "name": {
                 "ru": "N6"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 630,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -967,12 +1024,12 @@
         {
             "external_code": "pg_r2",
             "product_family_external_code": "fam_stone",
-            "slug": "R2",
+            "slug": "r2",
             "name": {
                 "ru": "R2"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 364,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -980,12 +1037,12 @@
         {
             "external_code": "pg_r1",
             "product_family_external_code": "fam_stone",
-            "slug": "R1",
+            "slug": "r1",
             "name": {
                 "ru": "R1"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 336,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -993,12 +1050,12 @@
         {
             "external_code": "pg_r3",
             "product_family_external_code": "fam_stone",
-            "slug": "R3",
+            "slug": "r3",
             "name": {
                 "ru": "R3"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 399,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -1006,12 +1063,12 @@
         {
             "external_code": "pg_r4",
             "product_family_external_code": "fam_stone",
-            "slug": "R4",
+            "slug": "r4",
             "name": {
                 "ru": "R4"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 434,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -1019,12 +1076,12 @@
         {
             "external_code": "pg_r6",
             "product_family_external_code": "fam_stone",
-            "slug": "R6",
+            "slug": "r6",
             "name": {
                 "ru": "R6"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 469,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -1032,12 +1089,12 @@
         {
             "external_code": "pg_r11",
             "product_family_external_code": "fam_stone",
-            "slug": "R11",
+            "slug": "r11",
             "name": {
                 "ru": "R11"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 560,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -1045,12 +1102,12 @@
         {
             "external_code": "pg_r7",
             "product_family_external_code": "fam_stone",
-            "slug": "R7",
+            "slug": "r7",
             "name": {
                 "ru": "R7"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 476,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -1058,12 +1115,12 @@
         {
             "external_code": "pg_r10",
             "product_family_external_code": "fam_stone",
-            "slug": "R10",
+            "slug": "r10",
             "name": {
                 "ru": "R10"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 518,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -1071,12 +1128,12 @@
         {
             "external_code": "pg_r5",
             "product_family_external_code": "fam_stone",
-            "slug": "R5",
+            "slug": "r5",
             "name": {
                 "ru": "R5"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 448,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -1084,12 +1141,12 @@
         {
             "external_code": "pg_r12",
             "product_family_external_code": "fam_stone",
-            "slug": "R12",
+            "slug": "r12",
             "name": {
                 "ru": "R12"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 602,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -1097,12 +1154,12 @@
         {
             "external_code": "pg_r8",
             "product_family_external_code": "fam_stone",
-            "slug": "R8",
+            "slug": "r8",
             "name": {
                 "ru": "R8"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 497,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -1110,12 +1167,12 @@
         {
             "external_code": "pg_r9",
             "product_family_external_code": "fam_stone",
-            "slug": "R9",
+            "slug": "r9",
             "name": {
                 "ru": "R9"
             },
             "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 511,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }
@@ -1123,25 +1180,12 @@
         {
             "external_code": "pg_r13",
             "product_family_external_code": "fam_stone",
-            "slug": "R13",
+            "slug": "r13",
             "name": {
                 "ru": "R13"
             },
             "meta": {
-                "purchase_cost": 0,
-                "purchase_currency": "USD",
-                "markup_retail": 30
-            }
-        },
-        {
-            "external_code": "pg_usd",
-            "product_family_external_code": "fam_sink",
-            "slug": "USD",
-            "name": {
-                "ru": "USD"
-            },
-            "meta": {
-                "purchase_cost": 0,
+                "purchase_cost": 672,
                 "purchase_currency": "USD",
                 "markup_retail": 30
             }

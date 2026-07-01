@@ -97,11 +97,8 @@ export default function CalculatorShow({ assets, initialData, currentType }: Pro
   return (
     <MainLayout headerOverlaps={false}>
       <Head title="Онлайн-калькулятор изделий - VMS-NC" />
-
-      {/* Оборачиваем калькулятор в вашу фирменную сетку с волнистым фоном */}
-      <SectionLayout containerVariant="content" className="pt-8 md:pt-12 pb-24">
+      <SectionLayout containerVariant="page" className="pt-8 md:pt-12 pb-24">
         <div className="w-full relative z-10 bg-white rounded-2xl border border-border p-4 md:p-8 shadow-sm">
-
           <div className="relative w-full min-h-[650px]">
 
             {!isWidgetReady && (
@@ -115,7 +112,6 @@ export default function CalculatorShow({ assets, initialData, currentType }: Pro
 
             <div id="calcAppRoot" className="w-full min-h-[650px]" />
           </div>
-
         </div>
       </SectionLayout>
     </MainLayout>

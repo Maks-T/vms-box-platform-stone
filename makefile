@@ -78,7 +78,7 @@ tree:
 # Delete temporary combine context files
 cc:
 	@echo "Deleting temporary files..."
-	@find . \( -name "*_combine*" -o -name "tree.txt" \) -type f -delete
+	@find . \( -name "*_combine*" -o -name "tree.txt" -o -name "*Zone.Identifier" \) -type f -delete
 	@echo "Done!"
 
 DATE ?= 2026-05-03

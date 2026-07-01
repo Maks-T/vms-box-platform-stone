@@ -21,6 +21,7 @@ use Nicole\Box\Core\Models\AttributeOption;
 use Nicole\Box\Core\Models\PriceType;
 use Nicole\Box\Core\Models\Product;
 use Nicole\Box\Core\Models\ProductVariantPrice;
+use Nicole\Box\Core\Services\PricingManager;
 
 class MatrixPriceEditor extends Page implements HasForms, HasTable
 {
@@ -52,9 +53,7 @@ class MatrixPriceEditor extends Page implements HasForms, HasTable
 
   public function table(Table $table): Table
   {
-    $retailPriceId = PriceType::where('slug', 'retail')->value('id');
-
-    // Получаем материалы для динамических колонок (Акрил, Кварц)
+     // Получаем материалы для динамических колонок (Акрил, Кварц)
     $materials = AttributeOption::whereHas(
       'attribute',
       fn ($q) => $q->where('code', 'target_material'),
@@ -110,8 +109,8 @@ class MatrixPriceEditor extends Page implements HasForms, HasTable
             return $v->attributeValues->contains(fn ($av) => $av->option?->slug === $slug);
           });
         })
-        ->state(function (Product $record) use ($slug, $retailPriceId) {
-          
+
+        ->state(function (Product $record) use ($slug) {
           $variant = $record->variants->first(function ($v) use ($slug) {
             return $v->attributeValues->contains(fn ($av) => $av->option?->slug === $slug);
           });
@@ -120,18 +119,11 @@ class MatrixPriceEditor extends Page implements HasForms, HasTable
             return null;
           }
 
-          $price = $variant->prices->firstWhere(
-            'price_type_id',
-            $retailPriceId,
-          );
-
-          return $price ? $price->price : null;
+          return app(PricingManager::class)->getVariantPrice($variant, 'retail');
         })
-        ->updateStateUsing(function (Product $record, $state) use (
-          $slug,
-          $retailPriceId,
-        ) {
-          if (! $retailPriceId || $state === null) {
+
+        ->updateStateUsing(function (Product $record, $state) use ($slug) {
+          if ($state === null) {
             return;
           }
 
@@ -143,13 +135,10 @@ class MatrixPriceEditor extends Page implements HasForms, HasTable
             return;
           }
 
-          ProductVariantPrice::updateOrCreate(
-            [
-              'product_variant_id' => $variant->id,
-              'price_type_id' => $retailPriceId,
-            ],
-            ['price' => (float) $state],
-          );
+          $variant->update([
+            'cost_price' => (float) $state,
+            'is_manual_pricing' => true,
+          ]);
         });
     }
 

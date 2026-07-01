@@ -11,6 +11,7 @@ use Nicole\Box\Core\Models\Attribute;
 use Nicole\Box\Core\Models\AttributeOption;
 use Nicole\Box\Core\Models\Category;
 use Nicole\Box\Core\Models\ComplexDictionaryRecord;
+use Nicole\Box\Core\Models\PriceGroup;
 use Nicole\Box\Core\Models\Product;
 use Nicole\Box\Core\Models\ProductAttributeValue;
 use Nicole\Box\Core\Models\ProductType;
@@ -24,6 +25,7 @@ class ProductImporter implements ImportModuleInterface
   private array $mapAttributes = [];
   private array $mapOptions = [];
   private array $mapComplexRecords = [];
+  private array $mapPriceGroups = [];
   private array $mapUnits = [];
 
   public function getName(): string
@@ -91,13 +93,14 @@ class ProductImporter implements ImportModuleInterface
       $this->saveEav($product, $item['eav'] ?? []);
 
       foreach ($item['variants'] ?? [] as $vData) {
-        // Считываем явный признак ручного ценообразования из JSON
         $isManualPricing = $vData['is_manual_pricing'] ?? isset($vData['price']);
+        $priceGroupId = $this->mapPriceGroups[$vData['price_group_external_code'] ?? ''] ?? null;
 
         $variant = ProductVariant::updateOrCreate(
           ['external_code' => $vData['external_code']],
           [
             'product_id' => $product->id,
+            'price_group_id' => $priceGroupId,
             'sku' => $vData['sku'],
             'cost_price' => $vData['cost_price'] ?? 0,
             'currency' => $vData['currency'] ?? 'RUB',
@@ -120,7 +123,7 @@ class ProductImporter implements ImportModuleInterface
 
           \Nicole\Box\Core\Models\ProductVariantPrice::updateOrCreate(
             ['product_variant_id' => $variant->id, 'price_type_id' => $retailPriceId],
-            ['markup_percent' => (float) $markup] // Записываем только маржу высокой точности
+            ['markup_percent' => (float) $markup]
           );
         }
 
@@ -244,7 +247,9 @@ class ProductImporter implements ImportModuleInterface
     $this->mapCategories = Category::pluck('id', 'external_code')->toArray();
     $this->mapOptions = AttributeOption::pluck('id', 'external_code')->toArray();
     $this->mapComplexRecords = ComplexDictionaryRecord::pluck('id', 'external_code')->toArray();
+    $this->mapPriceGroups = PriceGroup::pluck('id', 'external_code')->toArray();
     $this->mapUnits = Unit::pluck('id', 'slug')->toArray();
     $this->mapAttributes = Attribute::all()->keyBy('code')->all();
   }
+
 }

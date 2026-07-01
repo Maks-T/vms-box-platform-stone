@@ -38,6 +38,10 @@ DEFAULT_SETTINGS = {
           "range": {"ru": "Диапазон (слайдер)", "en": "Range slider"}
       }}
     ],
+    "price_group": [
+      {"key": "is_public", "type": "boolean", "label": {"ru": "Опубликовано", "en": "Published"}, "width": 1, "is_system": True, "default": True},
+      {"key": "is_settings_public", "type": "boolean", "label": {"ru": "Настройки публичны", "en": "Settings are public"}, "width": 1, "is_system": True, "default": True}
+    ],
     "complex_dictionary": [
       {"key": "is_public", "type": "boolean", "label": {"ru": "Опубликовано", "en": "Published"}, "width": 1, "is_system": True, "default": True},
       {"key": "is_settings_public", "type": "boolean", "label": {"ru": "Настройки публичны", "en": "Settings are public"}, "width": 1, "is_system": True, "default": True}

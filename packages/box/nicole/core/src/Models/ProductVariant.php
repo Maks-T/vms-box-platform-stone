@@ -27,6 +27,7 @@ class ProductVariant extends Model implements HasMedia
   protected $fillable = [
     'external_code',
     'product_id',
+    'price_group_id',
     'sku',
     'cost_price',
     'currency',
@@ -36,6 +37,7 @@ class ProductVariant extends Model implements HasMedia
     'sort_order',
     'is_manual_pricing',
   ];
+
 
   protected function casts(): array
   {
@@ -52,6 +54,14 @@ class ProductVariant extends Model implements HasMedia
   public function product(): BelongsTo
   {
     return $this->belongsTo(Product::class);
+  }
+
+  /**
+   * Связь с ценовой группой варианта
+   */
+  public function priceGroup(): BelongsTo
+  {
+    return $this->belongsTo(PriceGroup::class, 'price_group_id');
   }
 
   public function attributeValues(): MorphMany
@@ -131,13 +141,13 @@ class ProductVariant extends Model implements HasMedia
   }
 
   /**
-   * Виртуальное свойство: Итоговая розничная цена (Справочник ИЛИ Ручная)
+   * Виртуальное свойство: Итоговая розничная цена (Справочник или Ручная)
    * Использование: $variant->retail_price
    */
   protected function retailPrice(): EloquentAttribute
   {
     return EloquentAttribute::make(
-      get: fn () => app(\Nicole\Box\Core\Services\PricingManager::class)->getVariantPrice($this),
+      get: fn() => app(\Nicole\Box\Core\Services\PricingManager::class)->getVariantPrice($this),
     );
   }
 

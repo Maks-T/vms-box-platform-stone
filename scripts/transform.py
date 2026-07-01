@@ -11,28 +11,23 @@ from typing import Any, Dict, Optional
 DROP_LIST = {
     'min_sale_part_stone', 'min_product_size_stone', 'direction_division_stone',
     'is_pattern_repeat_stone', 'is_separate_cutting_stone', 'product_type',
-    'type_stone', 'use_in_calc', 'price_category'
+    'type_stone', 'use_in_calc', 'price_category', 'price_categories', 'price_group'
 }
 
 RENAME_RULES = {
     'bend_akril': 'is_bend',
-    'price_categories': 'price_group',
     'color_ref': 'color',
     'collection_stone_ref': 'collection'
 }
 
 TYPE_OVERRIDES = {
     'is_bend': 'boolean',
-    'price_group': 'complex_reference',
     'cutting_groups': 'complex_reference'
 }
 
 VARIANT_ONLY_ATTRS = {'color'}
 
 DICT_SCHEMAS = {
-    'price_group': [
-        {"key": "cost_price", "type": "price", "label": {"ru": "Закупка (Материал) $", "en": "Cost (Material) $"}, "currency": "USD"}
-    ],
     'cutting_groups': [
         {"key": "rotate", "type": "boolean", "label": {"ru": "Повтор рисунка", "en": "Pattern Repeat"}},
         {"key": "cut", "type": "boolean", "label": {"ru": "Раздельный раскрой", "en": "Separate Cutting"}}
@@ -45,8 +40,8 @@ DICT_SCHEMAS = {
 }
 
 TYPE_ATTRIBUTES = {
-    'acrylic_stone': ['color', 'price_group', 'cutting_groups', 'texture', 'collection', 'inclusions_akril', 'effect_akril', 'is_bend', 'length', 'width', 'height'],
-    'quartz_stone': ['color', 'price_group', 'cutting_groups', 'texture', 'collection', 'polishing_quartz', 'length', 'width', 'height'],
+    'acrylic_stone': ['color', 'cutting_groups', 'texture', 'collection', 'inclusions_akril', 'effect_akril', 'is_bend', 'length', 'width', 'height'],
+    'quartz_stone': ['color', 'cutting_groups', 'texture', 'collection', 'polishing_quartz', 'length', 'width', 'height'],
     'kitchen_sink': ['color', 'brand', 'material', 'size_inner_sink', 'min_cab_width', 'steel_thickness_sink', 'set_sink'],
     'bathroom_sink': ['color', 'brand', 'material', 'size_inner_sink', 'set_sink'],
     'faucet': ['color', 'brand', 'features_faucet', 'type_faucet'],
@@ -85,17 +80,30 @@ def load_source_data(default_path: str = 'source.json') -> Optional[Dict]:
             print(f"❌ Ошибка: {e}")
             return None
 
-def process_eav(raw_eav: Dict[str, Any], attr_types: Dict[str, str]) -> Dict[str, Any]:
+def process_eav(raw_eav: Dict[str, Any], attr_types: Dict[str, str], known_options: Dict[str, list]) -> Dict[str, Any]:
     clean_eav = {}
     for k, v in raw_eav.items():
         if k in DROP_LIST or v is None or v == "": continue
         new_k = get_new_code(k)
         a_type = TYPE_OVERRIDES.get(new_k) or attr_types.get(new_k)
         if a_type == 'dictionary':
-            clean_eav[new_k] = f"opt_{new_k}_{clean_slug(v)}"
-        elif a_type == 'complex_reference': clean_eav[new_k] = f"rec_{new_k}_{clean_slug(v)}"
-        elif a_type == 'boolean': clean_eav[new_k] = str_to_bool(v)
-        else: clean_eav[new_k] = v
+            val_slug = clean_slug(v)
+            matched_slug = val_slug
+
+            # Если точного совпадения нет, ищем опцию с подходящим префиксом (например, "beige-sa" для "beige") [2]
+            if val_slug not in known_options.get(new_k, []):
+                for existing_slug in known_options.get(new_k, []):
+                    if existing_slug.startswith(val_slug + '-'):
+                        matched_slug = existing_slug
+                        break
+
+            clean_eav[new_k] = f"opt_{new_k}_{matched_slug}"
+        elif a_type == 'complex_reference':
+            clean_eav[new_k] = f"rec_{new_k}_{clean_slug(v)}"
+        elif a_type == 'boolean':
+            clean_eav[new_k] = str_to_bool(v)
+        else:
+            clean_eav[new_k] = v
     return clean_eav
 
 # ==========================================
@@ -106,14 +114,24 @@ def transform() -> None:
     src = load_source_data('source.json')
     if src is None: return
 
-    dst = {"families": [], "types": [], "categories": [], "complex_dictionaries": [], "attributes": [], "products": []}
+    # Добавлено: Глобальный реестр для сопоставления префиксов опций [2]
+    KNOWN_OPTIONS: Dict[str, list] = {}
+
+    dst = {
+        "families": [],
+        "types": [],
+        "categories": [],
+        "price_groups": [],
+        "complex_dictionaries": [],
+        "attributes": [],
+        "products": []
+    }
     attr_types: Dict[str, str] = {}
 
-    # Заполнение типов атрибутов по умолчанию
     for ac_list in TYPE_ATTRIBUTES.values():
         for ac in ac_list:
             if ac not in attr_types:
-                attr_types[ac] = 'string' # Дефолтный тип
+                attr_types[ac] = 'string'
 
     print("-> Обработка семейств и типов...")
     for f in src.get('product_families', []):
@@ -130,6 +148,7 @@ def transform() -> None:
                 {"key": "corner_add_length", "type": "number", "label": {"ru": "Добавка на внутр. угол (Длина мм)", "en": "Inner corner add (Length mm)"}, "width": 1},
                 {"key": "corner_add_width", "type": "number", "label": {"ru": "Добавка на внутр. угол (Ширина мм)", "en": "Inner corner add (Width mm)"}, "width": 1}
             ]
+        # ИСПРАВЛЕНО: Аппендим строго в 'families' [2]
         dst['families'].append(family_data)
 
     for t in src.get('product_types', []):
@@ -146,7 +165,7 @@ def transform() -> None:
 
         pricing_mode, pricing_attr_code, pricing_field = 'manual', None, None
         if t['code'] in ['acrylic_stone', 'quartz_stone']:
-            pricing_mode, pricing_attr_code, pricing_field = 'complex_dictionary', 'price_group', 'cost_price'
+            pricing_mode, pricing_attr_code, pricing_field = 'complex_dictionary', None, 'purchase_cost'
 
         attached_attrs = [{"code": ac, "is_variant_only": ac in VARIANT_ONLY_ATTRS} for ac in TYPE_ATTRIBUTES.get(t['code'], [])]
 
@@ -164,21 +183,32 @@ def transform() -> None:
         if c['id'] in [21, 22]: parent_ext = "cat_accessory_root"
         dst['categories'].append({"external_code": f"cat_{c['id']}", "parent_external_code": parent_ext, "slug": c.get('slug') or str(c['id']), "name": c['name']})
 
-    print("-> Обработка умных справочников...")
+    print("-> Обработка табличных ценовых групп...")
+    price_cat_dict = src.get('complex_dictionaries', {}).get('price_categories', {})
+    for r in price_cat_dict.get('records', []):
+        rec_slug = str(r.get('slug') or r.get('id'))
+        payload = r.get('payload') or {}
+        old_cost = float(payload.get('cost_price', 0))
+        dst['price_groups'].append({
+            "external_code": f"pg_{clean_slug(rec_slug)}",
+            "product_family_external_code": "fam_stone",
+            "slug": rec_slug,
+            "name": r.get('name'),
+            "meta": {
+                "purchase_cost": round(old_cost * 0.7, 2),
+                "purchase_currency": "USD",
+                "markup_retail": 30.0
+            }
+        })
+
+    print("-> Обработка остальных умных справочников...")
     for code, d in src.get('complex_dictionaries', {}).items():
         new_code = get_new_code(code)
-        records = []
-        if new_code == 'price_group':
-            for r in d.get('records', []):
-                rec_slug = str(r.get('slug') or r.get('id'))
-                payload = r.get('payload') or {}
-                old_cost = float(payload.get('cost_price', 0))
-                records.append({
-                    "external_code": f"rec_{new_code}_{clean_slug(rec_slug)}", "slug": rec_slug, "name": r.get('name'),
-                    "meta": {"cost_price": round(old_cost * 0.7, 2), "cost_price_markup_retail": 30.0}
-                })
+        if new_code == 'price_categories' or new_code == 'price_group':
+            continue
 
-        elif new_code == 'cutting_groups':
+        records = []
+        if new_code == 'cutting_groups':
             counter = 1
             for rotate, cut in itertools.product([True, False], repeat=2):
                 records.append({
@@ -216,6 +246,11 @@ def transform() -> None:
         if attr_type == 'dictionary':
             for opt in src.get('dictionaries', {}).get(old_code, []):
                 opt_slug = str(opt.get('slug', ''))
+
+                # Добавлено: Регистрируем слизень опции в реестре [2]
+                if new_code not in KNOWN_OPTIONS:
+                    KNOWN_OPTIONS[new_code] = []
+                KNOWN_OPTIONS[new_code].append(opt_slug)
                 payload = opt.get('payload') or {}
 
                 hex_color = payload.get('hex') or payload.get('icon_hex') or (opt_slug if opt_slug.startswith('#') else None)
@@ -235,8 +270,6 @@ def transform() -> None:
         is_mult = True if new_code == 'marketing_tags' else False
         dst['attributes'].append({"external_code": f"attr_{new_code}", "code": new_code, "type": attr_type, "name": a['name'], "is_multiple": is_mult, "options": options})
 
-    dst['attributes'].append({"external_code": "attr_price_group", "code": "price_group", "type": "complex_reference", "name": {"ru": "Ценовая категория", "en": "Price Group"}, "is_multiple": False, "options": []})
-    attr_types['price_group'] = 'complex_reference'
     dst['attributes'].append({"external_code": "attr_cutting_groups", "code": "cutting_groups", "type": "complex_reference", "name": {"ru": "Группа раскроя", "en": "Cutting Group"}, "is_multiple": False, "options": []})
     attr_types['cutting_groups'] = 'complex_reference'
     dst['attributes'].append({"external_code": "attr_length", "code": "length", "type": "numeric", "name": {"ru": "Длина", "en": "Length"}, "is_multiple": False, "options": []})
@@ -252,10 +285,18 @@ def transform() -> None:
     print("-> Обработка товаров и вариаций...")
     for item in src.get('items', []):
         raw_eav = item.get('eav') or {}
-        if item.get('price_category_slug'): raw_eav['price_group'] = item['price_category_slug']
+
+        price_group_slug = None
+        if item.get('price_category_slug'):
+            price_group_slug = item['price_category_slug']
+        elif 'price_group' in raw_eav:
+            price_group_slug = raw_eav['price_group']
+
+        if 'price_group' in raw_eav: del raw_eav['price_group']
+        if 'price_categories' in raw_eav: del raw_eav['price_categories']
+
         if item.get('cutting_group_id'): raw_eav['cutting_groups'] = str(item['cutting_group_id'])
 
-        # Определяем тип товара ПЕРЕД обработкой вариаций
         pt_code = item.get('product_type_code', 'acrylic_stone')
         if pt_code == "item":
             type_stone = item.get('eav', {}).get('type_stone')
@@ -264,9 +305,7 @@ def transform() -> None:
             else:
                 pt_code = 'acrylic_stone'
 
-        # Проверяем, является ли данный товар камнем, завязанным на ценовую группу справочника
-        has_price_group = 'price_group' in raw_eav or bool(item.get('price_category_slug'))
-        is_stone_with_group = pt_code in ['acrylic_stone', 'quartz_stone'] and has_price_group
+        is_stone_with_group = pt_code in ['acrylic_stone', 'quartz_stone'] and price_group_slug is not None
 
         product_raw_eav = {k: v for k, v in raw_eav.items() if get_new_code(k) not in VARIANT_ONLY_ATTRS}
         variant_raw_eav = {k: v for k, v in raw_eav.items() if get_new_code(k) in VARIANT_ONLY_ATTRS}
@@ -278,12 +317,12 @@ def transform() -> None:
             v_data = {
                 "external_code": f"sku_{item['id']}_def", "sku": f"{item.get('slug', 'item')}-def",
                 "stock": 10.0, "is_default": True, "preview_picture": item.get('preview_picture'), "detail_picture": item.get('detail_picture'),
-                "eav": process_eav(variant_raw_eav, attr_types),
-                "is_manual_pricing": not is_stone_with_group # False для камней со справочником
+                "eav": process_eav(variant_raw_eav, attr_types, KNOWN_OPTIONS),
+                "is_manual_pricing": not is_stone_with_group
             }
             if is_stone_with_group:
                 v_data["cost_price"] = 0.0
-                # Поле "price" исключается
+                v_data["price_group_external_code"] = f"pg_{clean_slug(price_group_slug)}"
             else:
                 v_data["price"] = float(item.get('price', 0))
                 v_data["cost_price"] = float(item.get('price', 0)) * 0.8
@@ -292,18 +331,23 @@ def transform() -> None:
         else:
             for index, v in enumerate(src_variants):
                 v_eav = {**variant_raw_eav, **(v.get('eav') or {})}
+
+                v_price_group_slug = v_eav.get('price_group') or price_group_slug
+                if 'price_group' in v_eav: del v_eav['price_group']
+                if 'price_categories' in v_eav: del v_eav['price_categories']
+
                 is_default = bool(v.get('is_default')) if 'is_default' in v else (index == 0)
 
                 v_data = {
                     "external_code": f"sku_{v['id']}", "sku": v.get('slug'),
                     "stock": 10.0, "is_default": is_default,
                     "preview_picture": v.get('preview_picture'), "detail_picture": v.get('detail_picture'),
-                    "eav": process_eav(v_eav, attr_types),
-                    "is_manual_pricing": not is_stone_with_group # False для камней со справочником
+                    "eav": process_eav(v_eav, attr_types, KNOWN_OPTIONS),
+                    "is_manual_pricing": not is_stone_with_group
                 }
                 if is_stone_with_group:
                     v_data["cost_price"] = 0.0
-                    # Поле "price" исключается
+                    v_data["price_group_external_code"] = f"pg_{clean_slug(v_price_group_slug)}"
                 else:
                     v_data["price"] = float(v.get('price', 0))
                     v_data["cost_price"] = float(v.get('price', 0)) * 0.8
@@ -316,7 +360,7 @@ def transform() -> None:
             "external_code": f"prod_{item['id']}", "product_type_external_code": f"type_{pt_code}", "category_external_code": f"cat_{item['category_id']}",
             "catalog_type": "product", "unit_code": unit_code, "slug": item['slug'], "name": item['name'],
             "preview_picture": item.get('preview_picture'), "detail_picture": item.get('detail_picture'),
-            "eav": process_eav(product_raw_eav, attr_types), "variants": variants
+            "eav": process_eav(product_raw_eav, attr_types, KNOWN_OPTIONS), "variants": variants
         })
 
     output_filename = 'import_data.json'

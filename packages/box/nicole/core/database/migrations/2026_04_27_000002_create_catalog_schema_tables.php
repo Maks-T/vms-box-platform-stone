@@ -17,7 +17,7 @@ return new class extends Migration {
       $table->jsonb('name');
       $table->boolean('is_active')->default(true);
 
-      $table->integer('sort_order')->default(0); 
+      $table->integer('sort_order')->default(0);
 
       $table->timestamps();
     });
@@ -26,9 +26,7 @@ return new class extends Migration {
     Schema::create('setting_schemas', function (Blueprint $table) {
       $table->id();
       $table->string('entity_type')->unique();
-
-      
-      $table->jsonb('meta_schema'); 
+      $table->jsonb('meta_schema');
 
       $table->timestamps();
     });
@@ -38,18 +36,39 @@ return new class extends Migration {
       $table->id();
       $table->string('external_code')->nullable()->index();
       $table->string('code')->unique();
-      $table->string('slug')->unique(); 
+      $table->string('slug')->unique();
 
       $table->jsonb('name');
       $table->string('icon')->nullable();
-
-      
-      $table->jsonb('meta_schema')->nullable(); 
+      $table->jsonb('meta_schema')->nullable();
 
       $table->integer('sort_order')->default(0);
       $table->boolean('is_active')->default(true);
       $table->settings();
       $table->timestamps();
+    });
+
+    // 3.1. Создание таблицы ценовых групп
+    Schema::create('price_groups', function (Blueprint $table) {
+      $table->id();
+      $table->string('external_code')->nullable()->index();
+
+      $table->foreignId('product_family_id')
+        ->nullable()
+        ->constrained('product_families')
+        ->nullOnDelete();
+
+      $table->string('slug')->unique();
+      $table->jsonb('name');
+      $table->jsonb('meta');
+
+      $table->boolean('is_active')->default(true)->index();
+      $table->integer('sort_order')->default(0);
+
+      $table->settings();
+      $table->timestamps();
+
+      $table->index(['product_family_id', 'is_active']);
     });
 
     // 4. Умные справочники
@@ -58,11 +77,9 @@ return new class extends Migration {
       $table->string('external_code')->nullable()->index();
       $table->string('code')->unique();
       $table->jsonb('name');
+      $table->jsonb('meta_schema')->nullable();
 
-      
-      $table->jsonb('meta_schema')->nullable(); 
-
-      $table->integer('sort_order')->default(0); 
+      $table->integer('sort_order')->default(0);
       $table->boolean('is_active')->default(true);
       $table->settings();
       $table->timestamps();
@@ -75,9 +92,7 @@ return new class extends Migration {
       $table->string('external_code')->nullable()->index();
       $table->string('slug')->nullable();
       $table->jsonb('name');
-
-      
-      $table->jsonb('meta'); 
+      $table->jsonb('meta');
 
       $table->integer('sort_order')->default(0);
       $table->boolean('is_active')->default(true);
@@ -108,7 +123,7 @@ return new class extends Migration {
       $table->foreignId('attribute_id')->constrained()->cascadeOnDelete();
       $table->string('slug')->index();
       $table->jsonb('value');
-      $table->jsonb('meta')->nullable(); 
+      $table->jsonb('meta')->nullable();
 
       $table->integer('sort_order')->default(0);
       $table->settings();
@@ -120,17 +135,11 @@ return new class extends Migration {
       $table->id();
       $table->string('external_code')->nullable()->index();
       $table->string('code')->unique();
-      $table->string('slug')->unique(); 
+      $table->string('slug')->unique();
       $table->foreignId('family_id')->constrained('product_families')->cascadeOnDelete();
       $table->jsonb('name');
       $table->string('icon')->nullable();
-
-      
-      $table->jsonb('meta')->nullable(); 
-
-      $table->string('pricing_mode')->default('manual');
-      $table->foreignId('pricing_attribute_id')->nullable()->constrained('attributes')->nullOnDelete();
-      $table->string('pricing_field')->nullable();
+      $table->jsonb('meta')->nullable();
 
       $table->integer('sort_order')->default(0);
       $table->boolean('is_active')->default(true);
@@ -158,6 +167,7 @@ return new class extends Migration {
     Schema::dropIfExists('attributes');
     Schema::dropIfExists('complex_dictionary_records');
     Schema::dropIfExists('complex_dictionaries');
+    Schema::dropIfExists('price_groups');
     Schema::dropIfExists('product_families');
     Schema::dropIfExists('setting_schemas');
     Schema::dropIfExists('channels');

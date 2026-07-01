@@ -32,7 +32,6 @@ class IdentityTab
                 ->preload()
                 ->live()
                 ->disabled(fn (string $context) => $context === 'edit')
-                // Скрываем выбор родительского товара, если вкладка открыта внутри связи (RelationManager)
                 ->hidden(
                   fn (Component $livewire) => $livewire instanceof RelationManager,
                 ),

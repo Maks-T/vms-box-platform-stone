@@ -63,6 +63,14 @@
             "ru": "Добавка на внутр. угол (Ширина мм)"
           },
           "width": 1
+        },
+        {
+          "key": "allow_rounding",
+          "type": "boolean",
+          "label": {
+            "ru": "Допускает скругления"
+          },
+          "width": 1
         }
       ]
     },
@@ -117,7 +125,8 @@
         "minPart": 12,
         "is_separate": false,
         "corner_add_length": 920,
-        "corner_add_width": 760
+        "corner_add_width": 760,
+        "allow_rounding": true
       },
       "attached_attributes": [
         {
@@ -187,7 +196,8 @@
         "minPart": 20,
         "is_separate": true,
         "corner_add_length": 750,
-        "corner_add_width": 700
+        "corner_add_width": 700,
+        "allow_rounding": true
       },
       "attached_attributes": [
         {

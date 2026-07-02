@@ -26,7 +26,6 @@
       {{ strtoupper(config('nicole.company.name', 'LIGRON')) }}
     </div>
 
-    <!-- Заголовок предложения -->
     <h1 class="cover-title">
       Коммерческое<br>
       <span class="italic-gold">предложение</span>
@@ -45,11 +44,13 @@
         </div>
       @endif
 
-      <div class="cover-meta-cell cover-meta-cell-right" @if (!$order->customer) style="width: 100%; text-align: left;" @endif>
+      <div class="cover-meta-cell cover-meta-cell-right"
+           @if (!$order->customer) style="width: 100%; text-align: left;" @endif>
         <div class="cover-meta-label">Документ</div>
         <div class="cover-meta-value">КП № {{ $order->code }}</div>
         <div class="cover-meta-subvalue">
-          Дата: {{ $order->created_at ? \Carbon\Carbon::parse($order->created_at)->translatedFormat('j F Y') : date('d.m.Y') }} г.
+          Дата: {{ $order->created_at ? \Carbon\Carbon::parse($order->created_at)->translatedFormat('j F Y') : date('d.m.Y') }}
+          г.
         </div>
       </div>
     </div>
@@ -64,8 +65,9 @@
         </div>
       </div>
       <div class="cover-footer-right">
+
         <div class="cover-page-indicator">
-          {{ $order->sections->count() }} {{ trans_choice('изделие|изделия|изделий', $order->sections->count(), [], 'ru') }} · 1 / {{ $totalPages ?? 16 }}
+          {{ $order->sections->count() }} {{ trans_choice('изделие|изделия|изделий', $order->sections->count(), [], 'ru') }}
         </div>
       </div>
     </div>

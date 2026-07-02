@@ -21,9 +21,11 @@ class PdfExportController extends Controller
 
     $html = view($template, $payload)->render();
 
+    putenv('HOME=/tmp');
+
     $pdfContent = \Spatie\Browsershot\Browsershot::html($html)
-      ->noSandbox() // ОБЯЗАТЕЛЬНО для работы без прав суперпользователя внутри Docker!
-      ->setChromePath('/usr/bin/chromium-browser') // Указываем путь к нашему Chromium в Alpine [1.1.1]
+      ->noSandbox()
+      ->setChromePath('/usr/bin/google-chrome')
       ->format('A4')
       ->pdf();
 

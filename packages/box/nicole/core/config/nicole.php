@@ -94,5 +94,8 @@ return [
     'cover_image' => env('VMS_COMPANY_COVER_IMAGE', '/pdf/cover.jpg'),
   ],
 
+  'policy_link' => env('VMS_POLICY_LINK', '#'),
+  'oferta_link' => env('VMS_OFERTA_LINK', '#'),
+
 
 ];

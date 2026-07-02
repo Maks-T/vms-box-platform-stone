@@ -14,10 +14,18 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Nicole\Box\Core\Models\ProductVariant;
+use Nicole\Box\Core\Filament\Forms\Components\VariantSelect;
+use Illuminate\Database\Eloquent\Model;
+
 
 class VariantsRelationManager extends RelationManager
 {
   protected static string $relationship = 'variants';
+
+  public static function getTitle(Model $ownerRecord, string $pageClass): string
+  {
+    return __('Catalog Products');
+  }
 
   public function form(Schema $schema): Schema
   {
@@ -63,17 +71,23 @@ class VariantsRelationManager extends RelationManager
       ])
       ->headerActions([
         AssociateAction::make()
-          ->preloadRecordSelect()
-          ->recordSelectSearchColumns(['sku', 'product.name']),
+          ->label(__('Attach'))
+          ->modalHeading(__('Attach Product Variant'))
+          ->modalSubmitActionLabel(__('Attach'))
+          ->recordSelect(fn () => VariantSelect::make('recordId')->hiddenLabel()->placeholder(__('Select variant'))),
       ])
-
       ->recordActions([
-        DissociateAction::make(),
+        DissociateAction::make()
+          ->label(__('Detach'))
+          ->modalHeading(__('Detach Product Variant'))
+          ->modalSubmitActionLabel(__('Detach'))
+          ->successNotificationTitle(__('Detached successfully')),
       ])
-
       ->toolbarActions([
         BulkActionGroup::make([
-          DissociateBulkAction::make(),
+          DissociateBulkAction::make()
+            ->label(__('Detach selected'))
+            ->successNotificationTitle(__('Detached successfully')),
         ]),
       ]);
   }

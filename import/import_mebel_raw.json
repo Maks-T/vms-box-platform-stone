@@ -252,7 +252,7 @@
     },
     {
       "external_code": "type_marble_stone",
-      "family_external_code": "fam_stone",
+      "family_external_code": "fam_natural-stone",
       "code": "marble_stone",
       "name": {
         "ru": "Мрамор",
@@ -307,7 +307,7 @@
     },
     {
       "external_code": "type_terrazzo_stone",
-      "family_external_code": "fam_stone",
+      "family_external_code": "fam_natural-stone",
       "code": "terrazzo_stone",
       "name": {
         "ru": "Терраццо",
@@ -358,7 +358,7 @@
     },
     {
       "external_code": "type_volcanic_stone",
-      "family_external_code": "fam_stone",
+      "family_external_code": "fam_natural-stone",
       "code": "volcanic_stone",
       "name": {
         "ru": "Вулканический камень",
@@ -716,6 +716,10 @@
         "ru": "V0",
         "en": "V0"
       },
+      "description": {
+        "ru": "GRADEX: Solid (O-263) и Intense (S922, S923)",
+        "en": "GRADEX: Solid (O-263) and Intense (S922, S923) lines"
+      },
       "meta": {
         "purchase_cost": 320,
         "purchase_currency": "USD",
@@ -729,6 +733,10 @@
       "name": {
         "ru": "S0",
         "en": "S0"
+      },
+      "description": {
+        "ru": "GRADEX: Solid (S028, S034) и Pure осн. (P-101..P-110, P-197..P-199, P-427)",
+        "en": "GRADEX: Solid (S028, S034) and Pure base (P-101..P-110, P-197..P-199, P-427) lines"
       },
       "meta": {
         "purchase_cost": 295,
@@ -744,6 +752,10 @@
         "ru": "B0",
         "en": "B0"
       },
+      "description": {
+        "ru": "GRADEX: Send&Pearl (G001..G557, P001, P004) и Architectural (A-401..A-495)",
+        "en": "GRADEX: Send&Pearl (G001..G557, P001, P004) and Architectural (A-401..A-495) lines"
+      },
       "meta": {
         "purchase_cost": 385,
         "purchase_currency": "USD",
@@ -757,6 +769,10 @@
       "name": {
         "ru": "G0",
         "en": "G0"
+      },
+      "description": {
+        "ru": "GRADEX: Granite (G007..G503, G077, G134..G235, G295)",
+        "en": "GRADEX: Granite (G007..G503, G077, G134..G235, G295) lines"
       },
       "meta": {
         "purchase_cost": 400,
@@ -772,6 +788,10 @@
         "ru": "L0",
         "en": "L0"
       },
+      "description": {
+        "ru": "GRADEX: Lucia (W001, W002, W003, W021, W022)",
+        "en": "GRADEX: Lucia (W001, W002, W003, W021, W022) lines"
+      },
       "meta": {
         "purchase_cost": 400,
         "purchase_currency": "USD",
@@ -785,6 +805,10 @@
       "name": {
         "ru": "M2",
         "en": "M2"
+      },
+      "description": {
+        "ru": "GRADEX: Marmo (580) (M601..M628, M701..M707)",
+        "en": "GRADEX: Marmo (580) line (M601..M628, M701..M707)"
       },
       "meta": {
         "purchase_cost": 580,
@@ -800,6 +824,10 @@
         "ru": "M3",
         "en": "M3"
       },
+      "description": {
+        "ru": "GRADEX: Marmo (600) (M633, M351, M503, M552, M553, M904)",
+        "en": "GRADEX: Marmo (600) line (M633, M351, M503, M552, M553, M904)"
+      },
       "meta": {
         "purchase_cost": 600,
         "purchase_currency": "USD",
@@ -813,6 +841,10 @@
       "name": {
         "ru": "C2",
         "en": "C2"
+      },
+      "description": {
+        "ru": "GRADEX: Calacatta (M812, M813, M815, M816, M831)",
+        "en": "GRADEX: Calacatta line (M812, M813, M815, M816, M831)"
       },
       "meta": {
         "purchase_cost": 600,
@@ -828,6 +860,10 @@
         "ru": "T2",
         "en": "T2"
       },
+      "description": {
+        "ru": "GRADEX: Terrazzo (Q102, Q103, Q104, Q106)",
+        "en": "GRADEX: Terrazzo line (Q102, Q103, Q104, Q106)"
+      },
       "meta": {
         "purchase_cost": 600,
         "purchase_currency": "USD",
@@ -841,6 +877,10 @@
       "name": {
         "ru": "V1",
         "en": "V1"
+      },
+      "description": {
+        "ru": "GRADEX: Volcanics (VA01, VE01, VW01)",
+        "en": "GRADEX: Volcanics line (VA01, VE01, VW01)"
       },
       "meta": {
         "purchase_cost": 600,
@@ -856,6 +896,10 @@
         "ru": "A1",
         "en": "A1"
       },
+      "description": {
+        "ru": "GRADEX: Pure (205) (P-104 толщиной 6 мм)",
+        "en": "GRADEX: Pure (205) line (P-104 in 6 mm thickness)"
+      },
       "meta": {
         "purchase_cost": 205,
         "purchase_currency": "USD",
@@ -869,6 +913,10 @@
       "name": {
         "ru": "A2",
         "en": "A2"
+      },
+      "description": {
+        "ru": "GRADEX: Pure (250) (P-104 10/12 мм, P-119)",
+        "en": "GRADEX: Pure (250) line (P-104 in 10/12 mm, P-119)"
       },
       "meta": {
         "purchase_cost": 250,
@@ -884,6 +932,10 @@
         "ru": "A0",
         "en": "A0"
       },
+      "description": {
+        "ru": "GRADEX: Pure (280) (P-118)",
+        "en": "GRADEX: Pure (280) line (P-118)"
+      },
       "meta": {
         "purchase_cost": 280,
         "purchase_currency": "USD",
@@ -897,6 +949,10 @@
       "name": {
         "ru": "M0",
         "en": "M0"
+      },
+      "description": {
+        "ru": "GRADEX: Sand (S-201..S-229) и Design (D-301..D-320)",
+        "en": "GRADEX: Sand (S-201..S-229) and Design (D-301..D-320) lines"
       },
       "meta": {
         "purchase_cost": 365,
@@ -912,6 +968,10 @@
         "ru": "P0",
         "en": "P0"
       },
+      "description": {
+        "ru": "GRADEX: Jewel (J-504, J-505, J-509, J-510)",
+        "en": "GRADEX: Jewel line (J-504, J-505, J-509, J-510)"
+      },
       "meta": {
         "purchase_cost": 510,
         "purchase_currency": "USD",
@@ -925,6 +985,10 @@
       "name": {
         "ru": "E1",
         "en": "E1"
+      },
+      "description": {
+        "ru": "GRADEX: E Series (E-603, E-605, E-609, E-613, E-618)",
+        "en": "GRADEX: E Series line (E-603, E-605, E-609, E-613, E-618)"
       },
       "meta": {
         "purchase_cost": 550,
@@ -940,6 +1004,10 @@
         "ru": "M1",
         "en": "M1"
       },
+      "description": {
+        "ru": "GRADEX: M Series (M-605..M-798)",
+        "en": "GRADEX: M Series line (M-605..M-798)"
+      },
       "meta": {
         "purchase_cost": 550,
         "purchase_currency": "USD",
@@ -953,6 +1021,10 @@
       "name": {
         "ru": "C1",
         "en": "C1"
+      },
+      "description": {
+        "ru": "GRADEX: C Series (C-801, C-802, C-803)",
+        "en": "GRADEX: C Series line (C-801, C-802, C-803)"
       },
       "meta": {
         "purchase_cost": 550,
@@ -968,6 +1040,10 @@
         "ru": "K1",
         "en": "K1"
       },
+      "description": {
+        "ru": "CALISCO: базовый декор 4001",
+        "en": "CALISCO: basic decor 4001"
+      },
       "meta": {
         "purchase_cost": 480,
         "purchase_currency": "USD",
@@ -981,6 +1057,10 @@
       "name": {
         "ru": "K2",
         "en": "K2"
+      },
+      "description": {
+        "ru": "CALISCO: декор 2105",
+        "en": "CALISCO: decor 2105"
       },
       "meta": {
         "purchase_cost": 530,
@@ -996,6 +1076,10 @@
         "ru": "K3",
         "en": "K3"
       },
+      "description": {
+        "ru": "CALISCO: декоры 5601, 5701, 5702",
+        "en": "CALISCO: decors 5601, 5701, 5702"
+      },
       "meta": {
         "purchase_cost": 550,
         "purchase_currency": "USD",
@@ -1009,6 +1093,10 @@
       "name": {
         "ru": "K4",
         "en": "K4"
+      },
+      "description": {
+        "ru": "CALISCO: декоры 2005, 2015, 2102..2104, 2209, 2210, 3001 (3050х1520), 4004, 4405",
+        "en": "CALISCO: decors 2005, 2015, 2102..2104, 2209, 2210, 3001 (3050х1520), 4004, 4405"
       },
       "meta": {
         "purchase_cost": 600,
@@ -1024,6 +1112,10 @@
         "ru": "K5",
         "en": "K5"
       },
+      "description": {
+        "ru": "CALISCO: декор 2101",
+        "en": "CALISCO: decor 2101"
+      },
       "meta": {
         "purchase_cost": 630,
         "purchase_currency": "USD",
@@ -1037,6 +1129,10 @@
       "name": {
         "ru": "K6",
         "en": "K6"
+      },
+      "description": {
+        "ru": "CALISCO: декор 3001 (формат 3200х1600)",
+        "en": "CALISCO: decor 3001 (size 3200x1600)"
       },
       "meta": {
         "purchase_cost": 650,
@@ -1052,6 +1148,10 @@
         "ru": "K7",
         "en": "K7"
       },
+      "description": {
+        "ru": "CALISCO: декор 2001",
+        "en": "CALISCO: decor 2001"
+      },
       "meta": {
         "purchase_cost": 660,
         "purchase_currency": "USD",
@@ -1065,6 +1165,10 @@
       "name": {
         "ru": "K8",
         "en": "K8"
+      },
+      "description": {
+        "ru": "CALISCO: декоры 3302, 3303, 4403, 6101, 6102, 7156",
+        "en": "CALISCO: decors 3302, 3303, 4403, 6101, 6102, 7156"
       },
       "meta": {
         "purchase_cost": 700,
@@ -1080,6 +1184,10 @@
         "ru": "K9",
         "en": "K9"
       },
+      "description": {
+        "ru": "CALISCO: декоры 7268, 7546",
+        "en": "CALISCO: decors 7268, 7546"
+      },
       "meta": {
         "purchase_cost": 730,
         "purchase_currency": "USD",
@@ -1093,6 +1201,10 @@
       "name": {
         "ru": "K10",
         "en": "K10"
+      },
+      "description": {
+        "ru": "CALISCO: декоры 2405, 7835, 8013",
+        "en": "CALISCO: decors 2405, 7835, 8013"
       },
       "meta": {
         "purchase_cost": 750,
@@ -1108,6 +1220,10 @@
         "ru": "N1",
         "en": "N1"
       },
+      "description": {
+        "ru": "NOBLLE: линейка Basic (Q117, Q131)",
+        "en": "NOBLLE: Basic line (Q117, Q131)"
+      },
       "meta": {
         "purchase_cost": 475,
         "purchase_currency": "USD",
@@ -1121,6 +1237,10 @@
       "name": {
         "ru": "N2",
         "en": "N2"
+      },
+      "description": {
+        "ru": "NOBLLE: линейка Marble (Q716, Q718, Q719)",
+        "en": "NOBLLE: Marble line (Q716, Q718, Q719)"
       },
       "meta": {
         "purchase_cost": 660,
@@ -1136,6 +1256,10 @@
         "ru": "N3",
         "en": "N3"
       },
+      "description": {
+        "ru": "NOBLLE: линейка Calacatta 680 (Q717, Q735, Q740, Q744, Q765, Q785)",
+        "en": "NOBLLE: Calacatta 680 line (Q717, Q735, Q740, Q744, Q765, Q785)"
+      },
       "meta": {
         "purchase_cost": 680,
         "purchase_currency": "USD",
@@ -1149,6 +1273,10 @@
       "name": {
         "ru": "N4",
         "en": "N4"
+      },
+      "description": {
+        "ru": "NOBLLE: линейка Calacatta 780 (Q703, Q707, Q757, Q840, Q850)",
+        "en": "NOBLLE: Calacatta 780 line (Q703, Q707, Q757, Q840, Q850)"
       },
       "meta": {
         "purchase_cost": 780,
@@ -1164,6 +1292,10 @@
         "ru": "N5",
         "en": "N5"
       },
+      "description": {
+        "ru": "NOBLLE: линейки Calacatta и Oxide 830 (Q810, Q811, Q859, Q880)",
+        "en": "NOBLLE: Calacatta and Oxide 830 lines (Q810, Q811, Q859, Q880)"
+      },
       "meta": {
         "purchase_cost": 830,
         "purchase_currency": "USD",
@@ -1177,6 +1309,10 @@
       "name": {
         "ru": "N6",
         "en": "N6"
+      },
+      "description": {
+        "ru": "NOBLLE: линейка Unique 900 (Q913)",
+        "en": "NOBLLE: Unique 900 line (Q913)"
       },
       "meta": {
         "purchase_cost": 900,
@@ -1192,6 +1328,10 @@
         "ru": "N7",
         "en": "N7"
       },
+      "description": {
+        "ru": "NOBLLE: линейки Unique/Oxide 950 (Q795..Q801, Q901..Q931, Q798)",
+        "en": "NOBLLE: Unique/Oxide 950 lines (Q795..Q801, Q901..Q931, Q798)"
+      },
       "meta": {
         "purchase_cost": 950,
         "purchase_currency": "USD",
@@ -1205,6 +1345,10 @@
       "name": {
         "ru": "R1",
         "en": "R1"
+      },
+      "description": {
+        "ru": "АВАРУС: Гранитная коллекция (R112, R122)",
+        "en": "AVARUS: Granite collection (R112, R122)"
       },
       "meta": {
         "purchase_cost": 480,
@@ -1220,6 +1364,10 @@
         "ru": "R2",
         "en": "R2"
       },
+      "description": {
+        "ru": "АВАРУС: Коллекция Моноколор (R104)",
+        "en": "AVARUS: Solid collection (R104)"
+      },
       "meta": {
         "purchase_cost": 520,
         "purchase_currency": "USD",
@@ -1233,6 +1381,10 @@
       "name": {
         "ru": "R3",
         "en": "R3"
+      },
+      "description": {
+        "ru": "АВАРУС: Мраморная 570 (R403, R503, R515 3050х1440, R522)",
+        "en": "AVARUS: Marmo 570 (R403, R503, R515 3050x1440, R522)"
       },
       "meta": {
         "purchase_cost": 570,
@@ -1248,6 +1400,10 @@
         "ru": "R4",
         "en": "R4"
       },
+      "description": {
+        "ru": "АВАРУС: Мраморная 620 (R444, R520, R531, R538, R541, R543, R575)",
+        "en": "AVARUS: Marmo 620 (R444, R520, R531, R538, R541, R543, R575)"
+      },
       "meta": {
         "purchase_cost": 620,
         "purchase_currency": "USD",
@@ -1261,6 +1417,10 @@
       "name": {
         "ru": "R5",
         "en": "R5"
+      },
+      "description": {
+        "ru": "АВАРУС: Мраморная 640 (R558)",
+        "en": "AVARUS: Marmo 640 (R558)"
       },
       "meta": {
         "purchase_cost": 640,
@@ -1276,6 +1436,10 @@
         "ru": "R6",
         "en": "R6"
       },
+      "description": {
+        "ru": "АВАРУС: Мраморная/Моноколор 670 (R500, R510, R511, R555, R590, RM104, RM403)",
+        "en": "AVARUS: Marmo/Solid 670 (R500, R510, R511, R555, R590, RM104, RM403)"
+      },
       "meta": {
         "purchase_cost": 670,
         "purchase_currency": "USD",
@@ -1289,6 +1453,10 @@
       "name": {
         "ru": "R7",
         "en": "R7"
+      },
+      "description": {
+        "ru": "АВАРУС: Мраморная 680 (R515 3200х1600, R677)",
+        "en": "AVARUS: Marmo 680 (R515 3200x1600, R677)"
       },
       "meta": {
         "purchase_cost": 680,
@@ -1304,6 +1472,10 @@
         "ru": "R8",
         "en": "R8"
       },
+      "description": {
+        "ru": "АВАРУС: Мраморная 710 (RM444)",
+        "en": "AVARUS: Marmo 710 (RM444)"
+      },
       "meta": {
         "purchase_cost": 710,
         "purchase_currency": "USD",
@@ -1317,6 +1489,10 @@
       "name": {
         "ru": "R9",
         "en": "R9"
+      },
+      "description": {
+        "ru": "АВАРУС: Мраморная 730 (RM510, RM511, RM520, RM543, RM560)",
+        "en": "AVARUS: Marmo 730 (RM510, RM511, RM520, RM543, RM560)"
       },
       "meta": {
         "purchase_cost": 730,
@@ -1332,6 +1508,10 @@
         "ru": "R10",
         "en": "R10"
       },
+      "description": {
+        "ru": "АВАРУС: Мраморная 740 (R541 3200х1600, R543 3200х1600)",
+        "en": "AVARUS: Marmo 740 (R541 3200x1600, R543 3200x1600)"
+      },
       "meta": {
         "purchase_cost": 740,
         "purchase_currency": "USD",
@@ -1345,6 +1525,10 @@
       "name": {
         "ru": "R11",
         "en": "R11"
+      },
+      "description": {
+        "ru": "АВАРУС: Мраморная 800 (R510 3200х1600, R511 3200х1600)",
+        "en": "AVARUS: Marmo 800 (R510 3200x1600, R511 3200x1600)"
       },
       "meta": {
         "purchase_cost": 800,
@@ -1360,6 +1544,10 @@
         "ru": "R12",
         "en": "R12"
       },
+      "description": {
+        "ru": "АВАРУС: Калакатта 860 (R711, R716, R723, R727, R760, R777, R797)",
+        "en": "AVARUS: Calacatta 860 (R711, R716, R723, R727, R760, R777, R797)"
+      },
       "meta": {
         "purchase_cost": 860,
         "purchase_currency": "USD",
@@ -1373,6 +1561,10 @@
       "name": {
         "ru": "R13",
         "en": "R13"
+      },
+      "description": {
+        "ru": "АВАРУС: Калакатта 960 (RM711, RM727, RM760, RM797)",
+        "en": "AVARUS: Calacatta 960 (RM711, RM727, RM760, RM797)"
       },
       "meta": {
         "purchase_cost": 960,

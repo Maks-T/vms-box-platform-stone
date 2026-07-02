@@ -2917,7 +2917,7 @@
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-102-sl2560x528px.jpg",
+                    "preview_picture": "products/P-102.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "P-102",
@@ -2960,7 +2960,7 @@
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-103-sl2560x528px.jpg",
+                    "preview_picture": "products/P-103.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "P-103",
@@ -3003,7 +3003,7 @@
                     "price_group_external_code": "pg_a1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-104-sl2560x528px.jpg",
+                    "preview_picture": "products/P-104.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "P-104",
@@ -3046,7 +3046,7 @@
                     "price_group_external_code": "pg_a2",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-104-sl2560x528px.jpg",
+                    "preview_picture": "products/P-104.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "P-104",
@@ -3089,7 +3089,7 @@
                     "price_group_external_code": "pg_a2",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-104-sl2560x528px.jpg",
+                    "preview_picture": "products/P-104.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "P-104",
@@ -3132,7 +3132,7 @@
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-105-sl2560x528px.jpg",
+                    "preview_picture": "products/P-105.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "P-105",
@@ -3175,7 +3175,7 @@
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-107-sl2560x528px.jpg",
+                    "preview_picture": "products/P-107.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "P-107",
@@ -3218,7 +3218,7 @@
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-108-sl2560x528px.jpg",
+                    "preview_picture": "products/P-108.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "P-108",
@@ -3261,7 +3261,7 @@
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-109-sl2560x528px.jpg",
+                    "preview_picture": "products/P-109.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "P-109",
@@ -3304,7 +3304,7 @@
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-110-sl2560x528px.jpg",
+                    "preview_picture": "products/P-110.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "P-110",
@@ -3347,7 +3347,7 @@
                     "price_group_external_code": "pg_a0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-118-sl2560x528px.jpg",
+                    "preview_picture": "products/P-118.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "P-118",
@@ -3390,7 +3390,7 @@
                     "price_group_external_code": "pg_a2",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-119-sl2560x528px.jpg",
+                    "preview_picture": "products/P-119.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "P-119",
@@ -3433,7 +3433,7 @@
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-197-sl2560x528px.jpg",
+                    "preview_picture": "products/P-197.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "P-197",
@@ -3519,7 +3519,7 @@
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-199-sl2560x528px.jpg",
+                    "preview_picture": "products/P-199.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "P-199",
@@ -3562,7 +3562,7 @@
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/P-427-sl2560x528px.jpg",
+                    "preview_picture": "products/P-427.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "P-427",
@@ -3605,7 +3605,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-201-sl2560x528px-1.jpg",
+                    "preview_picture": "products/S-201-1.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "S-201",
@@ -3648,7 +3648,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-202-sl2560x528px.jpg",
+                    "preview_picture": "products/S-202.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "S-202",
@@ -3691,7 +3691,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-203-sl2560x528px.jpg",
+                    "preview_picture": "products/S-203.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "S-203",
@@ -3734,7 +3734,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-204-sl2560x528px.jpg",
+                    "preview_picture": "products/S-204.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "S-204",
@@ -3777,7 +3777,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-205-sl2560x528px.jpg",
+                    "preview_picture": "products/S-205.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "S-205",
@@ -3820,7 +3820,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-206-sl2560x528px.jpg",
+                    "preview_picture": "products/S-206.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "S-206",
@@ -3863,7 +3863,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-207-sl2560x528px.jpg",
+                    "preview_picture": "products/S-207.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "S-207",
@@ -3906,7 +3906,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-208-sl2560x528px.jpg",
+                    "preview_picture": "products/S-208.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "S-208",
@@ -3949,7 +3949,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-209-sl2560x528px.jpg",
+                    "preview_picture": "products/S-209.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "S-209",
@@ -4035,7 +4035,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-211-sl2560x528px.jpg",
+                    "preview_picture": "products/S-211.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "S-211",
@@ -4078,7 +4078,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-212-sl2560x528px.jpg",
+                    "preview_picture": "products/S-212.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "S-212",
@@ -4121,7 +4121,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-214-sl2560x528px.jpg",
+                    "preview_picture": "products/S-214.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "S-214",
@@ -4164,7 +4164,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-215-sl2560x528px.jpg",
+                    "preview_picture": "products/S-215.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "S-215",
@@ -4207,7 +4207,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-217-sl2560x528px.jpg",
+                    "preview_picture": "products/S-217.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "S-217",
@@ -4250,7 +4250,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-218-sl2560x528px.jpg",
+                    "preview_picture": "products/S-218.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "S-218",
@@ -4293,7 +4293,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-220-sl2560x528px.jpg",
+                    "preview_picture": "products/S-220.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "S-220",
@@ -4379,7 +4379,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/S-229-sl2560x528px.jpg",
+                    "preview_picture": "products/S-229.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "S-229",
@@ -4422,7 +4422,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-301-sl2560x528px.jpg",
+                    "preview_picture": "products/D-301.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "D-301",
@@ -4465,7 +4465,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-302-SL2560x528px.jpg",
+                    "preview_picture": "products/D-302.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "D-302",
@@ -4508,7 +4508,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-303-SL2560x528px.jpg",
+                    "preview_picture": "products/D-303.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "D-303",
@@ -4551,7 +4551,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-304-sl2560x528px.jpg",
+                    "preview_picture": "products/D-304.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "D-304",
@@ -4723,7 +4723,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-309-sl2560x528px.jpg",
+                    "preview_picture": "products/D-309.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "D-309",
@@ -4766,7 +4766,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-310-sl2560x528px.jpg",
+                    "preview_picture": "products/D-310.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "D-310",
@@ -4809,7 +4809,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-312-sl2560x528px.jpg",
+                    "preview_picture": "products/D-312.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "D-312",
@@ -4852,7 +4852,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-313-sl2560x528px.jpg",
+                    "preview_picture": "products/D-313.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "D-313",
@@ -4895,7 +4895,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-314-sl2560x528px.jpg",
+                    "preview_picture": "products/D-314.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "D-314",
@@ -4938,7 +4938,7 @@
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/D-315-sl2560x528px.jpg",
+                    "preview_picture": "products/D-315.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "D-315",
@@ -5067,7 +5067,7 @@
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-401-sl2560x528px.jpg",
+                    "preview_picture": "products/A-401.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "A-401",
@@ -5110,7 +5110,7 @@
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-403-sl2560x528px.jpg",
+                    "preview_picture": "products/A-403.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "A-403",
@@ -5196,7 +5196,7 @@
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-406-sl2560x528px.jpg",
+                    "preview_picture": "products/A-406.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "A-406",
@@ -5282,7 +5282,7 @@
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-410-sl2560x528px.jpg",
+                    "preview_picture": "products/A-410.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "A-410",
@@ -5411,7 +5411,7 @@
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-414-sl2560x528px.jpg",
+                    "preview_picture": "products/A-414.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "A-414",
@@ -5497,7 +5497,7 @@
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-416-sl2560x528px.jpg",
+                    "preview_picture": "products/A-416.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "A-416",
@@ -5540,7 +5540,7 @@
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-417-sl2560x528px.jpg",
+                    "preview_picture": "products/A-417.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "A-417",
@@ -5583,7 +5583,7 @@
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-418-sl2560x528px.jpg",
+                    "preview_picture": "products/A-418.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "A-418",
@@ -5626,7 +5626,7 @@
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-419-sl2560x528px.jpg",
+                    "preview_picture": "products/A-419.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "A-419",
@@ -5669,7 +5669,7 @@
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-421-sl2560x528px.jpg",
+                    "preview_picture": "products/A-421.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "A-421",
@@ -5712,7 +5712,7 @@
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-421-sl2560x528px.jpg",
+                    "preview_picture": "products/A-421.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "A-422",
@@ -5755,7 +5755,7 @@
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-423-sl2560x528px.jpg",
+                    "preview_picture": "products/A-423.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "A-423",
@@ -5798,7 +5798,7 @@
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-424-sl2560x528px.jpg",
+                    "preview_picture": "products/A-424.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "A-424",
@@ -5841,7 +5841,7 @@
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/A-425-sl2560x528px.jpg",
+                    "preview_picture": "products/A-425.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "A-425",
@@ -6056,7 +6056,7 @@
                     "price_group_external_code": "pg_p0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/J-504-sl2560x528px.jpg",
+                    "preview_picture": "products/J-504.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "J-504",
@@ -6099,7 +6099,7 @@
                     "price_group_external_code": "pg_p0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/J-505-sl2560x528px.jpg",
+                    "preview_picture": "products/J-505.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "J-505",
@@ -6142,7 +6142,7 @@
                     "price_group_external_code": "pg_p0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/J-509-SL2560x528px.jpg",
+                    "preview_picture": "products/J-509.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "J-509",
@@ -6185,7 +6185,7 @@
                     "price_group_external_code": "pg_p0",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/J-510-sl2560x528px.jpg",
+                    "preview_picture": "products/J-510.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "J-510",
@@ -6271,7 +6271,7 @@
                     "price_group_external_code": "pg_e1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/E-605-sl2560x528px.jpg",
+                    "preview_picture": "products/E-605.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "E-605",
@@ -6314,7 +6314,7 @@
                     "price_group_external_code": "pg_e1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/E-609-sl2560x528px.jpg",
+                    "preview_picture": "products/E-609.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "E-609",
@@ -6357,7 +6357,7 @@
                     "price_group_external_code": "pg_e1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/E-609-sl2560x528px.jpg",
+                    "preview_picture": "products/E-609.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "E-613",
@@ -6615,7 +6615,7 @@
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-701-A-sl2560x528px.jpg",
+                    "preview_picture": "products/M-701-A.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "M-701",
@@ -6658,7 +6658,7 @@
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-703-A-sl2560x528px.jpg",
+                    "preview_picture": "products/M-703-A.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "M-703",
@@ -6701,7 +6701,7 @@
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-705-A-sl2560x528px.jpg",
+                    "preview_picture": "products/M-705-A.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "M-705",
@@ -6744,7 +6744,7 @@
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-706-A-sl2560x528px.jpg",
+                    "preview_picture": "products/M-706-A.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "M-706",
@@ -6787,7 +6787,7 @@
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-707-A-sl2560x528px.jpg",
+                    "preview_picture": "products/M-707-A.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "M-707",
@@ -6830,7 +6830,7 @@
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-708-A-SL2560x528px.jpg",
+                    "preview_picture": "products/M-708-A.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "M-708",
@@ -6873,7 +6873,7 @@
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-710-A-sl2560x528px.jpg",
+                    "preview_picture": "products/M-710-A.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "M-710",
@@ -6916,7 +6916,7 @@
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-711-A-sl2560x528px.jpg",
+                    "preview_picture": "products/M-711-A.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "M-711",
@@ -6959,7 +6959,7 @@
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-712-A-SL2560x528px.jpg",
+                    "preview_picture": "products/M-712-A.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "M-712",
@@ -7002,7 +7002,7 @@
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-713-A-SL2560x528px.jpg",
+                    "preview_picture": "products/M-713-A.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "M-713",
@@ -7045,7 +7045,7 @@
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-717-A-sl2560x528px.jpg",
+                    "preview_picture": "products/M-717-A.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "M-717",
@@ -7088,7 +7088,7 @@
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-718-A-sl2560x528px.jpg",
+                    "preview_picture": "products/M-718-A.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "M-718",
@@ -7131,7 +7131,7 @@
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-720-sl2560x528px.jpg",
+                    "preview_picture": "products/M-720.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "M-720",
@@ -7303,7 +7303,7 @@
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/M-727-sl2560x528px.jpg",
+                    "preview_picture": "products/M-727.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "M-727",
@@ -7518,7 +7518,7 @@
                     "price_group_external_code": "pg_c1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/C-801-sl2560x528px-1.jpg",
+                    "preview_picture": "products/C-801-1.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "C-801",
@@ -7561,7 +7561,7 @@
                     "price_group_external_code": "pg_c1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/C-802-sl2560x528px.jpg",
+                    "preview_picture": "products/C-802.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "C-802",
@@ -7604,7 +7604,7 @@
                     "price_group_external_code": "pg_c1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.grandex.eu/wp-content/uploads/2023/12/C-803-sl2560x528px.jpg",
+                    "preview_picture": "products/C-803.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "C-803",
@@ -7645,7 +7645,7 @@
                     "price_group_external_code": "pg_k7",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/20230219bde74fbd-44e3-4554-a2a8-91e1572c4bdb.jpg",
+                    "preview_picture": "products/20230219bde74fbd-44e3-4554-a2a8-91e1572c4bdb.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "2001",
@@ -7686,7 +7686,7 @@
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/2023021908377f86-6e4e-4f99-85cf-6c337b1e64e6.jpg",
+                    "preview_picture": "products/2023021908377f86-6e4e-4f99-85cf-6c337b1e64e6.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "2005",
@@ -7727,7 +7727,7 @@
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/20230219f72f0caf-460d-4df3-8cf9-bba04f5d2681.jpg",
+                    "preview_picture": "products/20230219f72f0caf-460d-4df3-8cf9-bba04f5d2681.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "2015",
@@ -7768,7 +7768,7 @@
                     "price_group_external_code": "pg_k5",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/202302191d16c15f-ade7-44a8-8dbf-e2a058ab801b.jpg",
+                    "preview_picture": "products/202302191d16c15f-ade7-44a8-8dbf-e2a058ab801b.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "2101",
@@ -7809,7 +7809,7 @@
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/202302194828af29-15d9-49bf-a75f-70982e360e55.jpg",
+                    "preview_picture": "products/202302194828af29-15d9-49bf-a75f-70982e360e55.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "2102",
@@ -7850,7 +7850,7 @@
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/202302192c94696b-6b4c-4341-bb4a-6ee1a90ec571.jpg",
+                    "preview_picture": "products/202302192c94696b-6b4c-4341-bb4a-6ee1a90ec571.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "2103",
@@ -7891,7 +7891,7 @@
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/202302199e7a1089-7c3a-440d-9979-5eba7f2b43c0.jpg",
+                    "preview_picture": "products/202302199e7a1089-7c3a-440d-9979-5eba7f2b43c0.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "2104",
@@ -7932,7 +7932,7 @@
                     "price_group_external_code": "pg_k2",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/20230219c4d3a5dd-9963-4354-9326-ffce246f9f8e.jpg",
+                    "preview_picture": "products/20230219c4d3a5dd-9963-4354-9326-ffce246f9f8e.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "2105",
@@ -7973,7 +7973,7 @@
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/202302194effd449-9ea6-4934-b9ee-c8c5d09e25f7.jpg",
+                    "preview_picture": "products/202302194effd449-9ea6-4934-b9ee-c8c5d09e25f7.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "2209",
@@ -8014,7 +8014,7 @@
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/20230219638b52a6-a429-428a-bc83-bd3ba174b7a0.jpg",
+                    "preview_picture": "products/20230219638b52a6-a429-428a-bc83-bd3ba174b7a0.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "2210",
@@ -8055,7 +8055,7 @@
                     "price_group_external_code": "pg_k10",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/20250210f39037eb-897a-4ba2-b9c4-89b578d08343.jpg",
+                    "preview_picture": "products/20250210f39037eb-897a-4ba2-b9c4-89b578d08343.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "2405",
@@ -8096,7 +8096,7 @@
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/20230219374786a6-9b58-4d1a-9b44-35fddd888653.jpg",
+                    "preview_picture": "products/20230219374786a6-9b58-4d1a-9b44-35fddd888653.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "3001",
@@ -8137,7 +8137,7 @@
                     "price_group_external_code": "pg_k6",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/202302192adc45f8-bde0-4b15-938b-6cc9d7a3f3f9.jpg",
+                    "preview_picture": "products/202302192adc45f8-bde0-4b15-938b-6cc9d7a3f3f9.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "3001",
@@ -8178,7 +8178,7 @@
                     "price_group_external_code": "pg_k8",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/202302192b9647a0-9a66-4eb9-9042-b4a9ba848509.jpg",
+                    "preview_picture": "products/202302192b9647a0-9a66-4eb9-9042-b4a9ba848509.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "3302",
@@ -8219,7 +8219,7 @@
                     "price_group_external_code": "pg_k8",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/20230215f1f16347-3b56-49c9-8449-91c6e5beb4c4.jpg",
+                    "preview_picture": "products/20230215f1f16347-3b56-49c9-8449-91c6e5beb4c4.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "3303",
@@ -8260,7 +8260,7 @@
                     "price_group_external_code": "pg_k1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/202302190b8d4013-d7ce-4a13-9bdc-aa4c97cc27bb.jpg",
+                    "preview_picture": "products/202302190b8d4013-d7ce-4a13-9bdc-aa4c97cc27bb.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "4001",
@@ -8301,7 +8301,7 @@
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/20230219ce6958ab-75b5-4b6c-9a0d-23eb5808950f.jpg",
+                    "preview_picture": "products/20230219ce6958ab-75b5-4b6c-9a0d-23eb5808950f.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "4004",
@@ -8342,7 +8342,7 @@
                     "price_group_external_code": "pg_k8",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/202302198bcc3b4a-6920-4648-8f4c-cfd29707674c.jpg",
+                    "preview_picture": "products/202302198bcc3b4a-6920-4648-8f4c-cfd29707674c.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "4403",
@@ -8383,7 +8383,7 @@
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/2023021958ab43ef-57a3-4877-a60d-a0fc88b76f26.jpg",
+                    "preview_picture": "products/2023021958ab43ef-57a3-4877-a60d-a0fc88b76f26.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "4405",
@@ -8424,7 +8424,7 @@
                     "price_group_external_code": "pg_k3",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/20230219128c00d2-596e-410c-b33b-37759c75e101.jpg",
+                    "preview_picture": "products/20230219128c00d2-596e-410c-b33b-37759c75e101.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "5601",
@@ -8465,7 +8465,7 @@
                     "price_group_external_code": "pg_k3",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/2023021933e1cf27-5d90-43a5-ba44-4b35b952a774.jpg",
+                    "preview_picture": "products/2023021933e1cf27-5d90-43a5-ba44-4b35b952a774.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "5701",
@@ -8506,7 +8506,7 @@
                     "price_group_external_code": "pg_k3",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/2023021968cb28cd-2a47-46a7-ba7f-a08954d8e48a.jpg",
+                    "preview_picture": "products/2023021968cb28cd-2a47-46a7-ba7f-a08954d8e48a.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "5702",
@@ -8588,7 +8588,7 @@
                     "price_group_external_code": "pg_k8",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/202302195b6696bb-13e1-4403-a9f0-197cf27dd314.jpg",
+                    "preview_picture": "products/202302195b6696bb-13e1-4403-a9f0-197cf27dd314.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "6102",
@@ -8670,7 +8670,7 @@
                     "price_group_external_code": "pg_k9",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/20230215db73548c-331b-4edf-bf75-92a8cc1b1fd5.jpg",
+                    "preview_picture": "products/20230215db73548c-331b-4edf-bf75-92a8cc1b1fd5.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "7268",
@@ -8711,7 +8711,7 @@
                     "price_group_external_code": "pg_k9",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/20230215cd619660-9478-4607-b0b8-7362370987bd.jpg",
+                    "preview_picture": "products/20230215cd619660-9478-4607-b0b8-7362370987bd.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "7546",
@@ -8752,7 +8752,7 @@
                     "price_group_external_code": "pg_k10",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/202302155d0a9151-96c3-4a66-a207-b8381b4f9db3.jpg",
+                    "preview_picture": "products/202302155d0a9151-96c3-4a66-a207-b8381b4f9db3.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "7835",
@@ -8793,7 +8793,7 @@
                     "price_group_external_code": "pg_k10",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://www.calisco.com.tr/images/product/big/2023021991f3e3e7-5964-451f-a735-72cd80f89e4e.jpg",
+                    "preview_picture": "products/2023021991f3e3e7-5964-451f-a735-72cd80f89e4e.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "8013",
@@ -8834,7 +8834,7 @@
                     "price_group_external_code": "pg_n1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q117/Q117-%D0%91%D0%B5%D0%BB%D1%8B%D0%B8%CC%86-%D0%BD%D0%B5%D1%84%D1%80%D0%B8%D1%82_ZOOM.jpg",
+                    "preview_picture": "products/Q117-%D0%91%D0%B5%D0%BB%D1%8B%D0%B8%CC%86-%D0%BD%D0%B5%D1%84%D1%80%D0%B8%D1%82_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q117",
@@ -8875,7 +8875,7 @@
                     "price_group_external_code": "pg_n1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q131/Q131-%D0%A7%D0%B5%D1%80%D0%BD%D1%8B%D0%B8%CC%86-%D0%BF%D0%B5%D1%81%D0%BE%D0%BA_ZOOM.jpg",
+                    "preview_picture": "products/Q131-%D0%A7%D0%B5%D1%80%D0%BD%D1%8B%D0%B8%CC%86-%D0%BF%D0%B5%D1%81%D0%BE%D0%BA_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q131",
@@ -8916,7 +8916,7 @@
                     "price_group_external_code": "pg_n2",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q716/Q716-%D0%A1%D0%BE%D0%BB%D0%BD%D0%B5%D1%87%D0%BD%D0%B0%D1%8F-%D0%9A%D0%B0%D1%80%D1%80%D0%B0%D1%80%D0%B0_ZOOM.jpg",
+                    "preview_picture": "products/Q716-%D0%A1%D0%BE%D0%BB%D0%BD%D0%B5%D1%87%D0%BD%D0%B0%D1%8F-%D0%9A%D0%B0%D1%80%D1%80%D0%B0%D1%80%D0%B0_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q716",
@@ -8957,7 +8957,7 @@
                     "price_group_external_code": "pg_n2",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q718/Q718-%D0%9B%D1%83%D0%BD%D0%BD%D0%B0%D1%8F-%D0%9A%D0%B0%D1%80%D1%80%D0%B0%D1%80%D0%B0_ZOOM.jpg",
+                    "preview_picture": "products/Q718-%D0%9B%D1%83%D0%BD%D0%BD%D0%B0%D1%8F-%D0%9A%D0%B0%D1%80%D1%80%D0%B0%D1%80%D0%B0_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q718",
@@ -8998,7 +8998,7 @@
                     "price_group_external_code": "pg_n2",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q719/Q719-%D0%A7%D0%B5%D1%80%D0%BD%D0%B0%D1%8F-%D0%9A%D0%B0%D1%80%D1%80%D0%B0%D1%80%D0%B0_ZOOM.jpg",
+                    "preview_picture": "products/Q719-%D0%A7%D0%B5%D1%80%D0%BD%D0%B0%D1%8F-%D0%9A%D0%B0%D1%80%D1%80%D0%B0%D1%80%D0%B0_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q719",
@@ -9039,7 +9039,7 @@
                     "price_group_external_code": "pg_n3",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q717/Q717-%D0%91%D0%B5%D0%BB%D0%B0%D1%8F-%D0%94%D0%B6%D0%BE%D0%B8%CC%86%D1%8F_ZOOM.jpg",
+                    "preview_picture": "products/Q717-%D0%91%D0%B5%D0%BB%D0%B0%D1%8F-%D0%94%D0%B6%D0%BE%D0%B8%CC%86%D1%8F_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q717",
@@ -9080,7 +9080,7 @@
                     "price_group_external_code": "pg_n3",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q735/Q735-%D0%91%D0%B5%D0%BB%D1%8B%D0%B8%CC%86-%D0%92%D0%B5%D0%BD%D0%B0%D1%82%D0%BE_ZOOM.jpg",
+                    "preview_picture": "products/Q735-%D0%91%D0%B5%D0%BB%D1%8B%D0%B8%CC%86-%D0%92%D0%B5%D0%BD%D0%B0%D1%82%D0%BE_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q735",
@@ -9121,7 +9121,7 @@
                     "price_group_external_code": "pg_n3",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q740/Q740-%D0%9A%D0%B0%D0%BB%D0%B0%D0%BA%D0%B0%D1%82%D1%82%D0%B0-%D0%92%D0%B5%D0%BD%D0%B0%D1%82%D0%BE_ZOOM.jpg",
+                    "preview_picture": "products/Q740-%D0%9A%D0%B0%D0%BB%D0%B0%D0%BA%D0%B0%D1%82%D1%82%D0%B0-%D0%92%D0%B5%D0%BD%D0%B0%D1%82%D0%BE_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q740",
@@ -9162,7 +9162,7 @@
                     "price_group_external_code": "pg_n3",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q744/Q744-%D0%9A%D0%B0%D0%BB%D0%B0%D0%BA%D0%B0%D1%82%D1%82%D0%B0-%D0%91%D0%B5%D0%BB%D0%B0%D1%8F_ZOOM.jpg",
+                    "preview_picture": "products/Q744-%D0%9A%D0%B0%D0%BB%D0%B0%D0%BA%D0%B0%D1%82%D1%82%D0%B0-%D0%91%D0%B5%D0%BB%D0%B0%D1%8F_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q744",
@@ -9203,7 +9203,7 @@
                     "price_group_external_code": "pg_n3",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q765/Q765-%D0%9C%D0%B0%D1%80%D0%BA%D0%B2%D0%B8%D0%BD%D0%B0-%D0%A7%D0%B5%D1%80%D0%BD%D0%B0%D1%8F_ZOOM.jpg",
+                    "preview_picture": "products/Q765-%D0%9C%D0%B0%D1%80%D0%BA%D0%B2%D0%B8%D0%BD%D0%B0-%D0%A7%D0%B5%D1%80%D0%BD%D0%B0%D1%8F_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q765",
@@ -9244,7 +9244,7 @@
                     "price_group_external_code": "pg_n3",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q785/Q785-%D0%9A%D0%B0%D0%BB%D0%B0%D0%BA%D0%B0%D1%82%D1%82%D0%B0-%D0%97%D0%BE%D0%BB%D0%BE%D1%82%D0%B0%D1%8F_ZOOM.jpg",
+                    "preview_picture": "products/Q785-%D0%9A%D0%B0%D0%BB%D0%B0%D0%BA%D0%B0%D1%82%D1%82%D0%B0-%D0%97%D0%BE%D0%BB%D0%BE%D1%82%D0%B0%D1%8F_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q785",
@@ -9285,7 +9285,7 @@
                     "price_group_external_code": "pg_n4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q703/Q703-%D0%9A%D0%B0%D0%BB%D0%B0%D0%BA%D0%B0%D1%82%D1%82%D0%B0-%D0%91%D0%BE%D1%80%D0%B4%D0%B6%D0%B8%D0%BD%D0%B8_ZOOM.jpg",
+                    "preview_picture": "products/Q703-%D0%9A%D0%B0%D0%BB%D0%B0%D0%BA%D0%B0%D1%82%D1%82%D0%B0-%D0%91%D0%BE%D1%80%D0%B4%D0%B6%D0%B8%D0%BD%D0%B8_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q703",
@@ -9326,7 +9326,7 @@
                     "price_group_external_code": "pg_n4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q707/Q707-%D0%A7%D0%B5%D1%80%D0%BD%D0%B0%D1%8F-%D0%A1%D0%B0%D1%85%D0%B0%D1%80%D0%B0_ZOOM.jpg",
+                    "preview_picture": "products/Q707-%D0%A7%D0%B5%D1%80%D0%BD%D0%B0%D1%8F-%D0%A1%D0%B0%D1%85%D0%B0%D1%80%D0%B0_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q707",
@@ -9367,7 +9367,7 @@
                     "price_group_external_code": "pg_n4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q757/Q757-%D0%9A%D0%B0%D0%BB%D0%B0%D0%BA%D0%B0%D1%82%D1%82%D0%B0-%D0%97%D0%BE%D0%BB%D0%BE%D1%82%D0%BE_ZOOM.jpg",
+                    "preview_picture": "products/Q757-%D0%9A%D0%B0%D0%BB%D0%B0%D0%BA%D0%B0%D1%82%D1%82%D0%B0-%D0%97%D0%BE%D0%BB%D0%BE%D1%82%D0%BE_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q757",
@@ -9408,7 +9408,7 @@
                     "price_group_external_code": "pg_n4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q840/Q840-%D0%91%D0%B5%D0%BB%D0%B0%D1%8F-%D0%A2%D0%B0%D0%B8%CC%86%D0%BD%D0%B0_ZOOM.jpg",
+                    "preview_picture": "products/Q840-%D0%91%D0%B5%D0%BB%D0%B0%D1%8F-%D0%A2%D0%B0%D0%B8%CC%86%D0%BD%D0%B0_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q840",
@@ -9449,7 +9449,7 @@
                     "price_group_external_code": "pg_n4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q850/Q850-%D0%93%D0%BE%D1%80%D0%BE%D0%B4%D1%81%D0%BA%D0%BE%D0%B8%CC%86-%D0%A1%D0%B5%D1%80%D1%8B%D0%B8%CC%86_ZOOM.jpg",
+                    "preview_picture": "products/Q850-%D0%93%D0%BE%D1%80%D0%BE%D0%B4%D1%81%D0%BA%D0%BE%D0%B8%CC%86-%D0%A1%D0%B5%D1%80%D1%8B%D0%B8%CC%86_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q850",
@@ -9490,7 +9490,7 @@
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q798/Q798-%D0%AD%D0%BB%D0%B5%D0%B3%D0%B0%D0%BD%D1%82%D0%BD%D0%B0%D1%8F-%D0%BA%D0%B0%D0%BB%D0%B0%D0%BA%D0%B0%D1%82%D1%82%D0%B0_ZOOM.jpg",
+                    "preview_picture": "products/Q798-%D0%AD%D0%BB%D0%B5%D0%B3%D0%B0%D0%BD%D1%82%D0%BD%D0%B0%D1%8F-%D0%BA%D0%B0%D0%BB%D0%B0%D0%BA%D0%B0%D1%82%D1%82%D0%B0_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q798",
@@ -9531,7 +9531,7 @@
                     "price_group_external_code": "pg_n5",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q810/Q810-%D0%A1%D0%B5%D1%80%D0%BE%D0%B5-%D1%81%D0%B2%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D0%B5_ZOOM.jpg",
+                    "preview_picture": "products/Q810-%D0%A1%D0%B5%D1%80%D0%BE%D0%B5-%D1%81%D0%B2%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D0%B5_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q810",
@@ -9572,7 +9572,7 @@
                     "price_group_external_code": "pg_n5",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q811/Q811-%D0%91%D0%B5%D0%BB%D1%8B%D0%B8%CC%86-%D0%B1%D0%B5%D1%82%D0%BE%D0%BD_ZOOM.jpg",
+                    "preview_picture": "products/Q811-%D0%91%D0%B5%D0%BB%D1%8B%D0%B8%CC%86-%D0%B1%D0%B5%D1%82%D0%BE%D0%BD_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q811",
@@ -9613,7 +9613,7 @@
                     "price_group_external_code": "pg_n5",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q859/Q859-%D0%91%D1%80%D0%BE%D0%BD%D0%B7%D0%BE%D0%B2%D1%8B%D0%B8%CC%86-%D0%B1%D0%B5%D1%82%D0%BE%D0%BD_ZOOM.jpg",
+                    "preview_picture": "products/Q859-%D0%91%D1%80%D0%BE%D0%BD%D0%B7%D0%BE%D0%B2%D1%8B%D0%B8%CC%86-%D0%B1%D0%B5%D1%82%D0%BE%D0%BD_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q859",
@@ -9654,7 +9654,7 @@
                     "price_group_external_code": "pg_n5",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q880/Q880-%D0%A1%D0%B5%D1%80%D1%8B%D0%B8%CC%86-%D0%B1%D0%B5%D1%82%D0%BE%D0%BD_ZOOM.jpg",
+                    "preview_picture": "products/Q880-%D0%A1%D0%B5%D1%80%D1%8B%D0%B8%CC%86-%D0%B1%D0%B5%D1%82%D0%BE%D0%BD_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q880",
@@ -9695,7 +9695,7 @@
                     "price_group_external_code": "pg_n6",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q913/Q913-%D0%91%D0%B5%D0%BB%D0%B0%D1%8F-%D0%BB%D1%83%D0%BD%D0%B0_ZOOM.jpg",
+                    "preview_picture": "products/Q913-%D0%91%D0%B5%D0%BB%D0%B0%D1%8F-%D0%BB%D1%83%D0%BD%D0%B0_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q913",
@@ -9736,7 +9736,7 @@
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q795/Q795-%D0%A2%D0%B5%D0%BC%D0%BD%D0%B0%D1%8F-%D0%B2%D0%BE%D0%BB%D1%88%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F-%D0%BA%D0%B0%D0%BB%D0%B0%D0%BA%D0%B0%D1%82%D1%82%D0%B0_ZOOM.jpg",
+                    "preview_picture": "products/Q795-%D0%A2%D0%B5%D0%BC%D0%BD%D0%B0%D1%8F-%D0%B2%D0%BE%D0%BB%D1%88%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F-%D0%BA%D0%B0%D0%BB%D0%B0%D0%BA%D0%B0%D1%82%D1%82%D0%B0_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q795",
@@ -9777,7 +9777,7 @@
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q796/Q796-%D0%91%D0%B5%D0%BB%D0%B0%D1%8F-%D0%B2%D0%BE%D0%BB%D1%88%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F-%D0%BA%D0%B0%D0%BB%D0%B0%D0%BA%D0%B0%D1%82%D1%82%D0%B0_ZOOM.jpg",
+                    "preview_picture": "products/Q796-%D0%91%D0%B5%D0%BB%D0%B0%D1%8F-%D0%B2%D0%BE%D0%BB%D1%88%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F-%D0%BA%D0%B0%D0%BB%D0%B0%D0%BA%D0%B0%D1%82%D1%82%D0%B0_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q796",
@@ -9818,7 +9818,7 @@
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q797/Q797-%D0%9A%D0%B0%D0%BB%D0%B0%D0%BA%D0%B0%D1%82%D1%82%D0%B0-%D0%B8%D1%81%D1%82%D0%B8%D0%BD%D0%BD%D1%8B%D0%B8%CC%86-%D1%81%D0%B2%D0%B5%D1%82_ZOOM.jpg",
+                    "preview_picture": "products/Q797-%D0%9A%D0%B0%D0%BB%D0%B0%D0%BA%D0%B0%D1%82%D1%82%D0%B0-%D0%B8%D1%81%D1%82%D0%B8%D0%BD%D0%BD%D1%8B%D0%B8%CC%86-%D1%81%D0%B2%D0%B5%D1%82_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q797",
@@ -9859,7 +9859,7 @@
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q801/Q801-%D0%9C%D0%B0%D1%80%D0%BA%D0%B2%D0%B8%D0%BD%D0%B0-%D0%91%D0%B5%D1%82%D0%BE%D0%BD_ZOOM.jpg",
+                    "preview_picture": "products/Q801-%D0%9C%D0%B0%D1%80%D0%BA%D0%B2%D0%B8%D0%BD%D0%B0-%D0%91%D0%B5%D1%82%D0%BE%D0%BD_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q801",
@@ -9900,7 +9900,7 @@
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q901/Q901-%D0%97%D0%BE%D0%BB%D0%BE%D1%82%D0%B0%D1%8F-%D0%BF%D0%B0%D1%82%D0%B0%D0%B3%D0%BE%D0%BD%D0%B8%D1%8F_ZOOM.jpg",
+                    "preview_picture": "products/Q901-%D0%97%D0%BE%D0%BB%D0%BE%D1%82%D0%B0%D1%8F-%D0%BF%D0%B0%D1%82%D0%B0%D0%B3%D0%BE%D0%BD%D0%B8%D1%8F_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q901",
@@ -9941,7 +9941,7 @@
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q902/Q902-%D0%9F%D0%BB%D0%B0%D1%82%D0%B8%D0%BD%D0%BE%D0%B2%D0%B0%D1%8F-%D0%9F%D0%B0%D1%82%D0%B0%D0%B3%D0%BE%D0%BD%D0%B8%D1%8F_ZOOM.jpg",
+                    "preview_picture": "products/Q902-%D0%9F%D0%BB%D0%B0%D1%82%D0%B8%D0%BD%D0%BE%D0%B2%D0%B0%D1%8F-%D0%9F%D0%B0%D1%82%D0%B0%D0%B3%D0%BE%D0%BD%D0%B8%D1%8F_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q902",
@@ -9982,7 +9982,7 @@
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q921/Q921-%D0%A7%D0%B5%D1%80%D0%BD%D0%B0%D1%8F-%D0%90%D1%80%D0%B0%D0%B1%D0%B5%D1%81%D0%BA%D0%B0%D1%82%D0%BE_ZOOM.jpg",
+                    "preview_picture": "products/Q921-%D0%A7%D0%B5%D1%80%D0%BD%D0%B0%D1%8F-%D0%90%D1%80%D0%B0%D0%B1%D0%B5%D1%81%D0%BA%D0%B0%D1%82%D0%BE_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q921",
@@ -10023,7 +10023,7 @@
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q922/Q922-%D0%91%D0%B5%D0%BB%D0%B0%D1%8F-%D0%90%D1%80%D0%B0%D0%B1%D0%B5%D1%81%D0%BA%D0%B0%D1%82%D0%BE_ZOOM.jpg",
+                    "preview_picture": "products/Q922-%D0%91%D0%B5%D0%BB%D0%B0%D1%8F-%D0%90%D1%80%D0%B0%D0%B1%D0%B5%D1%81%D0%BA%D0%B0%D1%82%D0%BE_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q922",
@@ -10064,7 +10064,7 @@
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q923/Q923-%D0%90%D1%80%D0%B0%D0%B1%D0%B5%D1%81%D0%BA%D0%B0%D1%82%D0%BE-%D0%9A%D0%BE%D1%80%D1%85%D0%B8%D1%8F_ZOOM.jpg",
+                    "preview_picture": "products/Q923-%D0%90%D1%80%D0%B0%D0%B1%D0%B5%D1%81%D0%BA%D0%B0%D1%82%D0%BE-%D0%9A%D0%BE%D1%80%D1%85%D0%B8%D1%8F_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q923",
@@ -10105,7 +10105,7 @@
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q930/Q930-%D0%9A%D0%BE%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%81%D0%BA%D0%B8%D0%B8%CC%86-%D0%B1%D0%B5%D0%B6%D0%B5%D0%B2%D1%8B%D0%B8%CC%86_ZOOM.jpg",
+                    "preview_picture": "products/Q930-%D0%9A%D0%BE%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%81%D0%BA%D0%B8%D0%B8%CC%86-%D0%B1%D0%B5%D0%B6%D0%B5%D0%B2%D1%8B%D0%B8%CC%86_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q930",
@@ -10146,7 +10146,7 @@
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://interstone.su/media/images/1280/stones/Noblle%20Quartz/Q931/Q931-%D0%9E%D1%80%D0%B5%D1%85%D0%BE%D0%B2%D1%8B%D0%B8%CC%86_ZOOM.jpg",
+                    "preview_picture": "products/Q931-%D0%9E%D1%80%D0%B5%D1%85%D0%BE%D0%B2%D1%8B%D0%B8%CC%86_ZOOM.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "Q931",
@@ -10187,7 +10187,7 @@
                     "price_group_external_code": "pg_r2",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6633-3133-4736-a466-363538646665/-/format/webp/28000717.jpg.webp",
+                    "preview_picture": "products/28000717.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R104",
@@ -10228,7 +10228,7 @@
                     "price_group_external_code": "pg_r1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3264-3436-4863-b161-636162646130/-/format/webp/62467220.jpg.webp",
+                    "preview_picture": "products/62467220.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R112",
@@ -10269,7 +10269,7 @@
                     "price_group_external_code": "pg_r1",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6439-6332-4566-b064-663833343331/-/format/webp/84039779.jpg.webp",
+                    "preview_picture": "products/84039779.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R122",
@@ -10310,7 +10310,7 @@
                     "price_group_external_code": "pg_r3",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3338-3838-4832-b338-613862313030/-/format/webp/48875074.jpg.webp",
+                    "preview_picture": "products/48875074.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R403",
@@ -10351,7 +10351,7 @@
                     "price_group_external_code": "pg_r4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6235-3632-4130-b731-336230383935/-/format/webp/69258596.jpg.webp",
+                    "preview_picture": "products/69258596.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R444",
@@ -10392,7 +10392,7 @@
                     "price_group_external_code": "pg_r6",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3631-3031-4839-b331-663161633131/-/format/webp/42425435.jpg.webp",
+                    "preview_picture": "products/42425435.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R500",
@@ -10433,7 +10433,7 @@
                     "price_group_external_code": "pg_r3",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3731-6263-4136-a231-343533346166/-/format/webp/57999764.jpg.webp",
+                    "preview_picture": "products/57999764.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R503",
@@ -10474,7 +10474,7 @@
                     "price_group_external_code": "pg_r6",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3661-6239-4135-b035-623166383735/-/format/webp/42219462.jpg.webp",
+                    "preview_picture": "products/42219462.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R510",
@@ -10515,7 +10515,7 @@
                     "price_group_external_code": "pg_r11",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3661-6239-4135-b035-623166383735/-/format/webp/42219462.jpg.webp",
+                    "preview_picture": "products/42219462.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R510",
@@ -10556,7 +10556,7 @@
                     "price_group_external_code": "pg_r6",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6461-3837-4533-b030-633631316439/-/format/webp/82105828.jpg.webp",
+                    "preview_picture": "products/82105828.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R511",
@@ -10597,7 +10597,7 @@
                     "price_group_external_code": "pg_r11",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6461-3837-4533-b030-633631316439/-/format/webp/82105828.jpg.webp",
+                    "preview_picture": "products/82105828.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R511",
@@ -10638,7 +10638,7 @@
                     "price_group_external_code": "pg_r3",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6539-3332-4436-a262-363237663861/-/format/webp/12970238.jpg.webp",
+                    "preview_picture": "products/12970238.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R515",
@@ -10679,7 +10679,7 @@
                     "price_group_external_code": "pg_r7",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6539-3332-4436-a262-363237663861/-/format/webp/12970238.jpg.webp",
+                    "preview_picture": "products/12970238.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R515",
@@ -10720,7 +10720,7 @@
                     "price_group_external_code": "pg_r4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3938-3066-4239-b334-333231626361/-/format/webp/99761868.jpg.webp",
+                    "preview_picture": "products/99761868.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R520",
@@ -10761,7 +10761,7 @@
                     "price_group_external_code": "pg_r3",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3332-6663-4132-b831-303831316633/-/format/webp/65154472.jpg.webp",
+                    "preview_picture": "products/65154472.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R522",
@@ -10802,7 +10802,7 @@
                     "price_group_external_code": "pg_r4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3663-3038-4032-b131-333831386131/-/format/webp/96344314.jpg.webp",
+                    "preview_picture": "products/96344314.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R531",
@@ -10843,7 +10843,7 @@
                     "price_group_external_code": "pg_r4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3362-3633-4237-b635-656462653532/-/format/webp/82218034.jpg.webp",
+                    "preview_picture": "products/82218034.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R538",
@@ -10884,7 +10884,7 @@
                     "price_group_external_code": "pg_r4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6162-6432-4938-a335-386264383365/-/format/webp/13858275.jpg.webp",
+                    "preview_picture": "products/13858275.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R541",
@@ -10925,7 +10925,7 @@
                     "price_group_external_code": "pg_r10",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6162-6432-4938-a335-386264383365/-/format/webp/13858275.jpg.webp",
+                    "preview_picture": "products/13858275.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R541",
@@ -10966,7 +10966,7 @@
                     "price_group_external_code": "pg_r4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6531-6539-4235-a532-373334306466/-/format/webp/16186531.jpg.webp",
+                    "preview_picture": "products/16186531.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R543",
@@ -11007,7 +11007,7 @@
                     "price_group_external_code": "pg_r10",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6531-6539-4235-a532-373334306466/-/format/webp/16186531.jpg.webp",
+                    "preview_picture": "products/16186531.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R543",
@@ -11048,7 +11048,7 @@
                     "price_group_external_code": "pg_r6",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6330-6433-4363-b531-373462326431/-/format/webp/88835606.jpg.webp",
+                    "preview_picture": "products/88835606.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R555",
@@ -11089,7 +11089,7 @@
                     "price_group_external_code": "pg_r5",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6163-6439-4661-a462-623330666164/-/format/webp/77637332.jpg.webp",
+                    "preview_picture": "products/77637332.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R558",
@@ -11130,7 +11130,7 @@
                     "price_group_external_code": "pg_r4",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3539-6130-4161-a666-353132386339/-/format/webp/61492744.jpg.webp",
+                    "preview_picture": "products/61492744.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R575",
@@ -11171,7 +11171,7 @@
                     "price_group_external_code": "pg_r6",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3931-3834-4836-a462-333963383762/-/format/webp/53130332.jpg.webp",
+                    "preview_picture": "products/53130332.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R590",
@@ -11212,7 +11212,7 @@
                     "price_group_external_code": "pg_r7",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3461-6533-4363-a365-376561343831/-/format/webp/72422529.jpg.webp",
+                    "preview_picture": "products/72422529.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R677",
@@ -11253,7 +11253,7 @@
                     "price_group_external_code": "pg_r12",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3462-3134-4564-b335-626361653961/-/format/webp/34503429.jpg.webp",
+                    "preview_picture": "products/34503429.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R711",
@@ -11294,7 +11294,7 @@
                     "price_group_external_code": "pg_r12",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6461-3635-4134-b532-346138383630/-/format/webp/34451260.jpg.webp",
+                    "preview_picture": "products/34451260.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R716",
@@ -11335,7 +11335,7 @@
                     "price_group_external_code": "pg_r12",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3731-3634-4561-b464-626361643836/-/format/webp/80790167.jpg.webp",
+                    "preview_picture": "products/80790167.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R723",
@@ -11376,7 +11376,7 @@
                     "price_group_external_code": "pg_r12",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3633-3863-4439-b431-383337306537/-/format/webp/83584639.jpg.webp",
+                    "preview_picture": "products/83584639.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R727",
@@ -11417,7 +11417,7 @@
                     "price_group_external_code": "pg_r12",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3962-3432-4636-b363-303231326231/-/format/webp/79023957.jpg.webp",
+                    "preview_picture": "products/79023957.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R760",
@@ -11458,7 +11458,7 @@
                     "price_group_external_code": "pg_r12",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3262-6138-4565-a337-626333663031/-/format/webp/66416546.jpg.webp",
+                    "preview_picture": "products/66416546.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R777",
@@ -11499,7 +11499,7 @@
                     "price_group_external_code": "pg_r12",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6431-3732-4131-b165-616433303133/-/format/webp/40617849.jpg.webp",
+                    "preview_picture": "products/40617849.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "R797",
@@ -11540,7 +11540,7 @@
                     "price_group_external_code": "pg_r6",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6633-3133-4736-a466-363538646665/-/format/webp/28000717.jpg.webp",
+                    "preview_picture": "products/28000717.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "RM104",
@@ -11581,7 +11581,7 @@
                     "price_group_external_code": "pg_r6",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3338-3838-4832-b338-613862313030/-/format/webp/48875074.jpg.webp",
+                    "preview_picture": "products/48875074.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "RM403",
@@ -11622,7 +11622,7 @@
                     "price_group_external_code": "pg_r8",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6235-3632-4130-b731-336230383935/-/format/webp/69258596.jpg.webp",
+                    "preview_picture": "products/69258596.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "RM444",
@@ -11663,7 +11663,7 @@
                     "price_group_external_code": "pg_r9",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3661-6239-4135-b035-623166383735/-/format/webp/42219462.jpg.webp",
+                    "preview_picture": "products/42219462.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "RM510",
@@ -11704,7 +11704,7 @@
                     "price_group_external_code": "pg_r9",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6461-3837-4533-b030-633631316439/-/format/webp/82105828.jpg.webp",
+                    "preview_picture": "products/82105828.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "RM511",
@@ -11745,7 +11745,7 @@
                     "price_group_external_code": "pg_r9",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3938-3066-4239-b334-333231626361/-/format/webp/99761868.jpg.webp",
+                    "preview_picture": "products/99761868.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "RM520",
@@ -11786,7 +11786,7 @@
                     "price_group_external_code": "pg_r9",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6531-6539-4235-a532-373334306466/-/format/webp/16186531.jpg.webp",
+                    "preview_picture": "products/16186531.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "RM543",
@@ -11827,7 +11827,7 @@
                     "price_group_external_code": "pg_r9",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3561-6665-4231-b533-393165623137/-/format/webp/78461517.jpg.webp",
+                    "preview_picture": "products/78461517.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "RM560",
@@ -11868,7 +11868,7 @@
                     "price_group_external_code": "pg_r13",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3462-3134-4564-b335-626361653961/-/format/webp/34503429.jpg.webp",
+                    "preview_picture": "products/34503429.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "RM711",
@@ -11909,7 +11909,7 @@
                     "price_group_external_code": "pg_r13",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3633-3863-4439-b431-383337306537/-/format/webp/83584639.jpg.webp",
+                    "preview_picture": "products/83584639.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "RM727",
@@ -11950,7 +11950,7 @@
                     "price_group_external_code": "pg_r13",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor3962-3432-4636-b363-303231326231/-/format/webp/79023957.jpg.webp",
+                    "preview_picture": "products/79023957.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "RM760",
@@ -11991,7 +11991,7 @@
                     "price_group_external_code": "pg_r13",
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://optim.tildacdn.com/stor6431-3732-4131-b165-616433303133/-/format/webp/40617849.jpg.webp",
+                    "preview_picture": "products/40617849.jpg.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "RM797",
@@ -12030,7 +12030,7 @@
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://mojki.by/image/cache/webp/catalog/Product/2022/09/11/taki_44-uif-in-500x500.webp",
+                    "preview_picture": "products/taki_44-uif-in-500x500.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "4973044",
@@ -12069,7 +12069,7 @@
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://mojki.by/image/cache/webp/catalog/Product/2022/09/18/bosen_54-u-ch-500x500.webp",
+                    "preview_picture": "products/bosen_54-u-ch-500x500.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "4993181",
@@ -12106,7 +12106,7 @@
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://mojki.by/image/cache/webp/catalog/Product/2025/12/23/1zgxj1d4qvjh4smkh46t0bwbsq99n0jd-500x500.webp",
+                    "preview_picture": "products/1zgxj1d4qvjh4smkh46t0bwbsq99n0jd-500x500.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "4994294",
@@ -12143,7 +12143,7 @@
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://img.santehnica.ru/files/images/resized/products/1/6/1674630-167463.1200x1200.jpg",
+                    "preview_picture": "products/1674630-167463.1200x1200.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "4994222",
@@ -12179,7 +12179,7 @@
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://mojki.by/image/cache/webp/catalog/Product/2022/09/19/om-02-bn-500x500.webp",
+                    "preview_picture": "products/om-02-bn-500x500.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "4995003",
@@ -12215,7 +12215,7 @@
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://mojki.by/image/cache/webp/catalog/Product/2022/09/19/om-01-g-500x500.webp",
+                    "preview_picture": "products/om-01-g-500x500.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "4995015",
@@ -12253,7 +12253,7 @@
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://mojki.by/image/cache/webp/catalog/Product/2024/09/22/img_lEATTs.jpeg.0x500_q85_autocrop-500x500.webp",
+                    "preview_picture": "products/img_lEATTs.jpeg.0x500_q85_autocrop-500x500.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "4972078",
@@ -12291,7 +12291,7 @@
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://mojki.by/image/cache/webp/catalog/Product/2024/09/21/img_mcpRiL.jpg.0x500_q85_autocrop-500x500.webp",
+                    "preview_picture": "products/img_mcpRiL.jpg.0x500_q85_autocrop-500x500.webp",
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "4972073",

@@ -12,6 +12,7 @@ use Nicole\Box\Core\Filament\Resources\PriceGroups\Pages\EditPriceGroup;
 use Nicole\Box\Core\Filament\Resources\PriceGroups\Pages\ListPriceGroups;
 use Nicole\Box\Core\Filament\Resources\PriceGroups\Schemas\PriceGroupForm;
 use Nicole\Box\Core\Filament\Resources\PriceGroups\Tables\PriceGroupsTable;
+use Nicole\Box\Core\Filament\Resources\PriceGroups\RelationManagers\VariantsRelationManager;
 use Nicole\Box\Core\Models\PriceGroup;
 use LaraZeus\SpatieTranslatable\Resources\Concerns\Translatable;
 
@@ -57,7 +58,7 @@ class PriceGroupResource extends Resource
   public static function getRelations(): array
   {
     return [
-      //
+      VariantsRelationManager::class,
     ];
   }
 

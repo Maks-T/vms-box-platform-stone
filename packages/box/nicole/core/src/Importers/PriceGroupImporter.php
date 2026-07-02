@@ -35,6 +35,7 @@ class PriceGroupImporter implements ImportModuleInterface
           'product_family_id' => $familyId,
           'slug' => $groupData['slug'],
           'name' => $groupData['name'],
+          'description' => $groupData['description'] ?? null,
           'meta' => $groupData['meta'] ?? [],
           'is_active' => true,
         ]

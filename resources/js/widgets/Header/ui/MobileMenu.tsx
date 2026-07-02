@@ -1,18 +1,35 @@
 import React from 'react';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { X, BookOpen } from 'lucide-react';
 import { cn } from '@/shared/lib/utils';
 import { Logo } from '@/shared/components/ui/Logo';
 import { NavItem } from '@/shared/config/site';
 
+interface ExtendedNavItem extends NavItem {
+  forceRefresh?: boolean;
+}
+
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
-  items: NavItem[];
+  items: ExtendedNavItem[];
 }
 
 export default function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) {
   if (!isOpen) return null;
+
+  const { url } = usePage();
+  const currentPathname = url.split('?')[0];
+
+  const getPathname = (urlStr: string) => {
+    if (!urlStr || urlStr.startsWith('#')) return '';
+    try {
+      const parsed = new URL(urlStr, window.location.origin);
+      return parsed.pathname;
+    } catch {
+      return urlStr.split('?')[0];
+    }
+  };
 
   return (
     <div className={cn(
@@ -30,17 +47,36 @@ export default function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) 
       </div>
 
       <nav className="flex flex-col px-6 py-4 flex-1">
-        {items.map((item) => (
-          item.disabled ? (
-            <span key={item.label} className="py-4 text-[18px] text-white/30 font-medium border-b border-white/5 cursor-not-allowed select-none">
-              {item.label}
-            </span>
-          ) : (
-            <Link key={item.label} href={item.href} className="py-4 text-[18px] text-white font-medium border-b border-white/5" onClick={onClose}>
+        {items.map((item) => {
+          if (item.disabled) {
+            return (
+              <span key={item.label} className="py-4 text-[18px] text-white/30 font-medium border-b border-white/5 cursor-not-allowed select-none">
+                {item.label}
+              </span>
+            );
+          }
+
+          const isActive = currentPathname === getPathname(item.href);
+
+          const classes = cn(
+            "py-4 text-[18px] border-b border-white/5 transition-colors",
+            isActive ? "text-primary font-bold" : "text-white font-medium"
+          );
+
+          if (item.forceRefresh) {
+            return (
+              <a key={item.label} href={item.href} className={classes}>
+                {item.label}
+              </a>
+            );
+          }
+
+          return (
+            <Link key={item.label} href={item.href} className={classes} onClick={onClose}>
               {item.label}
             </Link>
-          )
-        ))}
+          );
+        })}
 
         <a
           href="/docs/api"

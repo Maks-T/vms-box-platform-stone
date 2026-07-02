@@ -81,6 +81,15 @@ cc:
 	@find . \( -name "*_combine*" -o -name "tree.txt" -o -name "*Zone.Identifier" \) -type f -delete
 	@echo "Done!"
 
+uw: update-widget
+
+update-widget:
+	@echo "Updating CPQ Stone widget..."
+	rm -rf public/cpq-stone
+	git clone --branch deploy/build --single-branch git@github.com:kapitulin24/cpq-stone-calc.git public/cpq-stone
+	rm -rf public/cpq-stone/.git
+	@echo "Widget updated successfully!"
+
 DATE ?= 2026-05-03
 EXCLUDE ?=
 

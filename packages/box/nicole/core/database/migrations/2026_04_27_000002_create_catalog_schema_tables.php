@@ -60,6 +60,7 @@ return new class extends Migration {
 
       $table->string('slug')->unique();
       $table->jsonb('name');
+      $table->jsonb('description')->nullable();
       $table->jsonb('meta');
 
       $table->boolean('is_active')->default(true)->index();

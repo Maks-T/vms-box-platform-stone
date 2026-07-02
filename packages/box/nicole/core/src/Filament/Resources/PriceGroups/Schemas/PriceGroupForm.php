@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Nicole\Box\Core\Filament\Resources\PriceGroups\Schemas;
 
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
@@ -73,6 +74,11 @@ class PriceGroupForm
                     ->preload()
                     ->searchable()
                     ->columnSpanFull(),
+
+                  Textarea::make('description')
+                    ->label(__('Description'))
+                    ->columnSpanFull()
+                    ->translatable(),
 
                   Toggle::make('is_active')
                     ->label(__('Is Active'))

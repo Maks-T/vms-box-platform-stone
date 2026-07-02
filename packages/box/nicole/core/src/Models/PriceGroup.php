@@ -24,12 +24,13 @@ class PriceGroup extends Model
     'product_family_id',
     'slug',
     'name',
+    'description',
     'meta',
     'is_active',
     'sort_order',
   ];
 
-  public array $translatable = ['name'];
+  public array $translatable = ['name',  'description'];
 
   protected function casts(): array
   {

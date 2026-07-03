@@ -24,7 +24,7 @@ class OrdersTable
 
         TextColumn::make('customer.full_name')
           ->label(__('Customer'))
-          ->state(fn ($record) => $record->customer?->full_name ?? '—')
+          ->state(fn ($record) => $record->customer?->full_name ?? '-')
           ->searchable()
           ->sortable(['customers.last_name']),
 

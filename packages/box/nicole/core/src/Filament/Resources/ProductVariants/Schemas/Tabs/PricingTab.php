@@ -54,7 +54,7 @@ class PricingTab
             return $isComplex && !$get('is_manual_pricing');
           })
           ->state(function (Get $get, ?ProductVariant $record) {
-            if (!$record) return '—';
+            if (!$record) return '-';
 
             $pricingManager = app(PricingManager::class);
             $lines = [];

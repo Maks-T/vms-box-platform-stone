@@ -80,7 +80,7 @@ class ProductVariantsTable
               ? null
               : $record->stock,
           )
-          ->formatStateUsing(fn($state) => $state === null ? '—' : $state)
+          ->formatStateUsing(fn($state) => $state === null ? '-' : $state)
           ->color(
             fn(?float $state): string => match (true) {
               $state === null => 'gray',

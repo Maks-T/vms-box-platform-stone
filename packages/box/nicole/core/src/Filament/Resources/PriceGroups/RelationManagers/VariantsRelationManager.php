@@ -48,7 +48,7 @@ class VariantsRelationManager extends RelationManager
 
         TextColumn::make('product.name')
           ->label(__('Parent Product'))
-          ->state(fn (ProductVariant $record) => $record->product?->name ?? '—')
+          ->state(fn (ProductVariant $record) => $record->product?->name ?? '-')
           ->weight('bold')
           ->searchable(),
 

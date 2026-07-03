@@ -71,7 +71,7 @@ class PriceGroupsTable
           $markup = (float) ($meta["markup_{$type->slug}"] ?? 0);
 
           if ($cost <= 0) {
-            return '—';
+            return '-';
           }
 
           $targetCurrency = $type->currency->code ?? 'RUB';

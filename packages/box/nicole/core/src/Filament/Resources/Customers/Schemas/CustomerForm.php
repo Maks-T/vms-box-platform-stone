@@ -17,7 +17,7 @@ class CustomerForm
     return $schema->components([
       Grid::make(3)->schema([
 
-        
+
         Grid::make(1)
           ->columnSpan(2)
           ->schema([
@@ -52,7 +52,7 @@ class CustomerForm
               ->columns(2),
           ]),
 
-        
+
         Grid::make(1)
           ->columnSpan(1)
           ->schema([
@@ -65,9 +65,9 @@ class CustomerForm
 
                 TextInput::make('last_ip')
                   ->label(__('IP Address'))
-                  ->disabled() 
+                  ->disabled()
                   ->dehydrated(false)
-                  ->placeholder('—'),
+                  ->placeholder('-'),
               ]),
           ]),
       ]),

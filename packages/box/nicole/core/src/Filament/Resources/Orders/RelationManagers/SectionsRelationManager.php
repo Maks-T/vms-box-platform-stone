@@ -8,6 +8,7 @@ use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Forms\Components\TextInput;
 
+use Filament\Infolists\Components\KeyValueEntry;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Components\Grid;
@@ -75,11 +76,11 @@ class SectionsRelationManager extends RelationManager
           ->label(__('Technical Specifications'))
           ->state(function (OrderSection $record) {
             if (empty($record->description)) {
-              return '—';
+              return '-';
             }
 
             return collect($record->description)
-              ->map(fn ($spec) => "▪ {$spec['name']}: {$spec['description']}")
+              ->map(fn($spec) => "▪ {$spec['name']}: {$spec['description']}")
               ->join("<br />");
           })
           ->wrap()
@@ -100,7 +101,7 @@ class SectionsRelationManager extends RelationManager
           ->label(__('Details'))
           ->icon('heroicon-o-document-text')
           ->color('info')
-          ->modalHeading(fn (OrderSection $record) => $record->title)
+          ->modalHeading(fn(OrderSection $record) => $record->title)
           ->slideOver()
           ->modalWidth(Width::SevenExtraLarge)
           ->modalSubmitAction(false)
@@ -119,30 +120,58 @@ class SectionsRelationManager extends RelationManager
 
                 Tab::make(__('Estimate'))
                   ->icon('heroicon-o-currency-dollar')
-                  ->schema([
-                    TextEntry::make('estimate_tree_view')
-                      ->hiddenLabel()
-                      ->state(function (OrderSection $record) {
-                        $html = \Nicole\Box\Core\Support\AdminEstimateRenderer::renderTree($record->estimate ?? []);
-                        return new HtmlString($html);
-                      }),
-                  ]),
+                  ->schema(function (OrderSection $record) {
+                    $sections = [];
+
+                    foreach ($record->estimate ?? [] as $index => $item) {
+                      $cells = $item['value'] ?? [];
+
+                      // Пропускаем шапку таблицы
+                      if ($index === 0 && count($cells) > 0 && str_contains(strtolower($cells[0]), 'название')) {
+                        continue;
+                      }
+
+                      $name = $cells[0] ?? '-';
+                      $cellCount = count($cells);
+                      $totalVal = $cellCount === 2 ? ($cells[1] ?? '') : ($cells[4] ?? ($cells[1] ?? ''));
+
+                      $childrenData = [];
+                      foreach ($item['children'] ?? [] as $child) {
+                        $childCells = $child['value'] ?? [];
+                        if (count($childCells) >= 2) {
+                          $childrenData[$childCells[0]] = $childCells[1];
+                        }
+                      }
+
+                      $sections[] = Section::make("{$name} - {$totalVal}")
+                        ->collapsible()
+                        ->collapsed(false)
+                        ->schema([
+                          KeyValueEntry::make("estimate_section_{$index}")
+                            ->hiddenLabel()
+                            ->state($childrenData)
+                            ->keyLabel(__('Parameter'))
+                            ->valueLabel(__('Value'))
+                            ->columnSpanFull()
+                        ]);
+                    }
+
+                    return $sections;
+                  }),
 
                 Tab::make(__('Technical Specifications'))
                   ->icon('heroicon-o-list-bullet')
                   ->schema([
-                    Grid::make(3)
-                      ->schema(function (OrderSection $record) {
-                        $fields = [];
-                        foreach ($record->description ?? [] as $spec) {
-                          $cleanKey = str_replace(':', '', $spec['name']);
-                          $fields[] = TextInput::make("spec_" . str_replace(' ', '_', $cleanKey))
-                            ->label($spec['name'])
-                            ->default($spec['description'])
-                            ->disabled();
-                        }
-                        return $fields;
-                      }),
+                    KeyValueEntry::make('description')
+                      ->label(__('Technical Specifications'))
+                      ->state(function (OrderSection $record) {
+                        return collect($record->description ?? [])
+                          ->pluck('description', 'name')
+                          ->toArray();
+                      })
+                      ->keyLabel(__('Parameter'))
+                      ->valueLabel(__('Value'))
+                      ->columnSpanFull(),
                   ]),
 
                 Tab::make(__('Drawings'))
@@ -152,7 +181,7 @@ class SectionsRelationManager extends RelationManager
                       ->hiddenLabel()
                       ->state(function (OrderSection $record) {
                         $url = $record->getPreviewUrl();
-                        if (!$url) return '—';
+                        if (!$url) return '-';
                         return new HtmlString("
                             <div style='text-align: center; padding: 20px;'>
                                 <img src='{$url}' style='max-height: 400px; width: auto; object-fit: contain; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); margin: 0 auto; box-shadow: 0 4px 12px rgba(0,0,0,0.05);' />

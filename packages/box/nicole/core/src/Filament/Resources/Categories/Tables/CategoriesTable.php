@@ -20,7 +20,7 @@ class CategoriesTable
           ->label(__('Name'))
           ->formatStateUsing(
             fn ($record, $state) => str_repeat(
-                '— ',
+                '- ',
                 max(0, (int) $record->depth),
               ).$state,
           )

@@ -31,6 +31,7 @@ def clean_filename(filename: str) -> str:
 
 
 def crop_to_square_and_resize(source_path: str, dest_path: str, target_size: int = 528):
+    """Обрезка изображения до квадрата и изменение размера (для камня)"""
     try:
         with Image.open(source_path) as img:
             width, height = img.size
@@ -48,7 +49,27 @@ def crop_to_square_and_resize(source_path: str, dest_path: str, target_size: int
         print(f"Error processing image from {source_path} to {dest_path}: {e}")
 
 
-def download_and_process_image(url: str, cache: dict) -> str:
+def resize_image_preserve_aspect(source_path: str, dest_path: str, target_max_size: int = 528):
+    """Пропорциональное сжатие по максимальной стороне без обрезки (для моек, смесителей и др.)"""
+    try:
+        with Image.open(source_path) as img:
+            width, height = img.size
+
+            # Рассчитываем новые размеры с сохранением соотношения сторон
+            if width > height:
+                new_width = target_max_size
+                new_height = max(1, int(height * (target_max_size / width)))
+            else:
+                new_height = target_max_size
+                new_width = max(1, int(width * (target_max_size / height)))
+
+            img_resized = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+            img_resized.save(dest_path, "WEBP", quality=85)
+    except Exception as e:
+        print(f"Error resizing image from {source_path} to {dest_path}: {e}")
+
+
+def download_and_process_image(url: str, cache: dict, is_stone: bool = False) -> str:
     parsed_url = urllib.parse.urlparse(url)
     raw_filename = os.path.basename(parsed_url.path)
 
@@ -62,7 +83,7 @@ def download_and_process_image(url: str, cache: dict) -> str:
     if url in cache and os.path.exists(local_path):
         return cache[url]
 
-    print(f"Downloading: {url} -> {filename}")
+    print(f"Downloading: {url} -> {filename} (Is Stone: {is_stone})")
     temp_path = os.path.join(IMAGES_DIR, "temp_download.tmp")
     try:
         req = urllib.request.Request(
@@ -72,7 +93,11 @@ def download_and_process_image(url: str, cache: dict) -> str:
         with urllib.request.urlopen(req) as response, open(temp_path, 'wb') as out_file:
             out_file.write(response.read())
 
-        crop_to_square_and_resize(temp_path, local_path, target_size=528)
+        # Выбираем алгоритм обработки в зависимости от типа товара
+        if is_stone:
+            crop_to_square_and_resize(temp_path, local_path, target_size=528)
+        else:
+            resize_image_preserve_aspect(temp_path, local_path, target_max_size=528)
 
         if os.path.exists(temp_path):
             os.remove(temp_path)
@@ -87,15 +112,30 @@ def download_and_process_image(url: str, cache: dict) -> str:
         return url
 
 
-def recursive_json_search(node, cache: dict):
+def process_json_data(node, cache: dict, is_stone: bool = False):
+    """
+    Контекстный обход JSON.
+    Передает флаг is_stone вниз по дереву, если обнаруживает тип товара со словом 'stone'.
+    """
     if isinstance(node, dict):
+        current_is_stone = is_stone
+        # Если в словаре есть тип продукта, проверяем, камень ли это
+        if "product_type_external_code" in node:
+            type_code = str(node["product_type_external_code"]).lower()
+            current_is_stone = "stone" in type_code
+
+        new_dict = {}
         for k, v in node.items():
-            node[k] = recursive_json_search(v, cache)
-        return node
+            # Модификации (variants) автоматически унаследуют статус parent-товара
+            new_dict[k] = process_json_data(v, cache, is_stone=current_is_stone)
+        return new_dict
+
     elif isinstance(node, list):
-        return [recursive_json_search(item, cache) for item in node]
+        return [process_json_data(item, cache, is_stone=is_stone) for item in node]
+
     elif isinstance(node, str) and (node.startswith("http://") or node.startswith("https://")):
-        return download_and_process_image(node, cache)
+        return download_and_process_image(node, cache, is_stone=is_stone)
+
     return node
 
 
@@ -117,7 +157,8 @@ def main():
     with open(INPUT_JSON, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    processed_data = recursive_json_search(data, url_cache)
+    # Запускаем контекстную обработку данных с дефолтным флагом is_stone=False
+    processed_data = process_json_data(data, url_cache, is_stone=False)
 
     try:
         with open(CACHE_FILE, 'w', encoding='utf-8') as cf:

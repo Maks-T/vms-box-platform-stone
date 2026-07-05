@@ -63,6 +63,14 @@
                         "ru": "Добавка на внутр. угол (Ширина мм)"
                     },
                     "width": 1
+                },
+                {
+                    "key": "allow_rounding",
+                    "type": "boolean",
+                    "label": {
+                        "ru": "Допускает скругления"
+                    },
+                    "width": 1
                 }
             ]
         },
@@ -117,7 +125,8 @@
                 "minPart": 12,
                 "is_separate": false,
                 "corner_add_length": 920,
-                "corner_add_width": 760
+                "corner_add_width": 760,
+                "allow_rounding": true
             },
             "attached_attributes": [
                 {
@@ -187,7 +196,8 @@
                 "minPart": 20,
                 "is_separate": true,
                 "corner_add_length": 750,
-                "corner_add_width": 700
+                "corner_add_width": 700,
+                "allow_rounding": false
             },
             "attached_attributes": [
                 {
@@ -237,7 +247,7 @@
         },
         {
             "external_code": "type_marble_stone",
-            "family_external_code": "fam_natural-stone",
+            "family_external_code": "fam_natural_stone",
             "code": "marble_stone",
             "name": {
                 "ru": "Мрамор"
@@ -291,7 +301,7 @@
         },
         {
             "external_code": "type_terrazzo_stone",
-            "family_external_code": "fam_natural-stone",
+            "family_external_code": "fam_natural_stone",
             "code": "terrazzo_stone",
             "name": {
                 "ru": "Терраццо"
@@ -341,7 +351,7 @@
         },
         {
             "external_code": "type_volcanic_stone",
-            "family_external_code": "fam_natural-stone",
+            "family_external_code": "fam_natural_stone",
             "code": "volcanic_stone",
             "name": {
                 "ru": "Вулканический камень"
@@ -449,7 +459,15 @@
                     "is_variant_only": true
                 },
                 {
+                    "code": "polishing_quartz",
+                    "is_variant_only": false
+                },
+                {
                     "code": "brand",
+                    "is_variant_only": false
+                },
+                {
+                    "code": "material",
                     "is_variant_only": false
                 },
                 {
@@ -1906,6 +1924,17 @@
                         "hex": null,
                         "image": null
                     }
+                },
+                {
+                    "external_code": "opt_brand_blanco_",
+                    "slug": "blanco",
+                    "value": {
+                        "ru": "Blanco"
+                    },
+                    "meta": {
+                        "hex": null,
+                        "image": null
+                    }
                 }
             ]
         },
@@ -1919,10 +1948,10 @@
             "is_multiple": false,
             "options": [
                 {
-                    "external_code": "opt_set_sink_podstolьnyj_522",
-                    "slug": "podstolьnyj",
+                    "external_code": "opt_set_sink_inset_522",
+                    "slug": "inset",
                     "value": {
-                        "ru": "Подстольный"
+                        "ru": "Врезной (монтаж сверху)"
                     },
                     "meta": {
                         "hex": null,
@@ -1930,7 +1959,40 @@
                     }
                 },
                 {
-                    "external_code": "opt_set_sink_nadstolьnyj_150",
+                    "external_code": "opt_set_sink_surface_mounted_150",
+                    "slug": "surface_mounted",
+                    "value": {
+                        "ru": "Накладной"
+                    },
+                    "meta": {
+                        "hex": null,
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_set_sink_undermount_",
+                    "slug": "undermount",
+                    "value": {
+                        "ru": "Подстольный (монтаж снизу)"
+                    },
+                    "meta": {
+                        "hex": null,
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_set_sink_integrated_",
+                    "slug": "integrated",
+                    "value": {
+                        "ru": "Интегрированный"
+                    },
+                    "meta": {
+                        "hex": null,
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_set_sink_nadstolьnyj_635",
                     "slug": "nadstolьnyj",
                     "value": {
                         "ru": "Надстольный"
@@ -1963,10 +2025,32 @@
                     }
                 },
                 {
+                    "external_code": "opt_material_brass_",
+                    "slug": "brass",
+                    "value": {
+                        "ru": "Латунь"
+                    },
+                    "meta": {
+                        "hex": null,
+                        "image": null
+                    }
+                },
+                {
                     "external_code": "opt_material_iskusstvennyj-granit_864",
                     "slug": "iskusstvennyj-granit",
                     "value": {
                         "ru": "Искусственный гранит"
+                    },
+                    "meta": {
+                        "hex": null,
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_material_artificial_stone_",
+                    "slug": "artificial_stone",
+                    "value": {
+                        "ru": "Искусственный камень"
                     },
                     "meta": {
                         "hex": null,
@@ -1996,6 +2080,50 @@
             "is_multiple": false,
             "options": [
                 {
+                    "external_code": "opt_steel_thickness_sink_0,7-mm_",
+                    "slug": "0,7-mm",
+                    "value": {
+                        "ru": "0,7 мм"
+                    },
+                    "meta": {
+                        "hex": null,
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_steel_thickness_sink_0,8-mm_",
+                    "slug": "0,8-mm",
+                    "value": {
+                        "ru": "0,8 мм"
+                    },
+                    "meta": {
+                        "hex": null,
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_steel_thickness_sink_0,9-mm_",
+                    "slug": "0,9-mm",
+                    "value": {
+                        "ru": "0,9 мм"
+                    },
+                    "meta": {
+                        "hex": null,
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_steel_thickness_sink_1,1-mm_",
+                    "slug": "1,1-mm",
+                    "value": {
+                        "ru": "1,1 мм"
+                    },
+                    "meta": {
+                        "hex": null,
+                        "image": null
+                    }
+                },
+                {
                     "external_code": "opt_steel_thickness_sink_1,2-mm_677",
                     "slug": "1,2-mm",
                     "value": {
@@ -2018,6 +2146,18 @@
             "is_multiple": false,
             "options": [
                 {
+                    "external_code": "opt_min_cab_width_400_",
+                    "slug": 400,
+                    "value": {
+                        "ru": 400,
+                        "en": 400
+                    },
+                    "meta": {
+                        "hex": null,
+                        "image": null
+                    }
+                },
+                {
                     "external_code": "opt_min_cab_width_450_251",
                     "slug": 450,
                     "value": {
@@ -2030,11 +2170,83 @@
                     }
                 },
                 {
+                    "external_code": "opt_min_cab_width_500_",
+                    "slug": 500,
+                    "value": {
+                        "ru": 500,
+                        "en": 500
+                    },
+                    "meta": {
+                        "hex": null,
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_min_cab_width_550_",
+                    "slug": 550,
+                    "value": {
+                        "ru": 550,
+                        "en": 550
+                    },
+                    "meta": {
+                        "hex": null,
+                        "image": null
+                    }
+                },
+                {
                     "external_code": "opt_min_cab_width_600_825",
                     "slug": 600,
                     "value": {
                         "ru": 600,
                         "en": 600
+                    },
+                    "meta": {
+                        "hex": null,
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_min_cab_width_650_",
+                    "slug": 650,
+                    "value": {
+                        "ru": 650,
+                        "en": 650
+                    },
+                    "meta": {
+                        "hex": null,
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_min_cab_width_700_",
+                    "slug": 700,
+                    "value": {
+                        "ru": 700,
+                        "en": 700
+                    },
+                    "meta": {
+                        "hex": null,
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_min_cab_width_750_",
+                    "slug": 750,
+                    "value": {
+                        "ru": 750,
+                        "en": 750
+                    },
+                    "meta": {
+                        "hex": null,
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_min_cab_width_800_",
+                    "slug": 800,
+                    "value": {
+                        "ru": 800,
+                        "en": 800
                     },
                     "meta": {
                         "hex": null,
@@ -2125,7 +2337,7 @@
                         "ru": "Песочно-бежевый"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#EFD5B8",
                         "image": null
                     }
                 },
@@ -2136,7 +2348,7 @@
                         "ru": "Белый моноколор"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#F8F6F0",
                         "image": null
                     }
                 },
@@ -2147,7 +2359,7 @@
                         "ru": "Черный мелкозернистый"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#1C1C1C",
                         "image": null
                     }
                 },
@@ -2158,7 +2370,7 @@
                         "ru": "Красный"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#C8102E",
                         "image": null
                     }
                 },
@@ -2169,7 +2381,7 @@
                         "ru": "Серый моноколор"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#A8A9AD",
                         "image": null
                     }
                 },
@@ -2180,7 +2392,7 @@
                         "ru": "Светло-серый"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#D1D3D8",
                         "image": null
                     }
                 },
@@ -2191,7 +2403,7 @@
                         "ru": "Темно-серый"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#4A4A4A",
                         "image": null
                     }
                 },
@@ -2202,7 +2414,7 @@
                         "ru": "Теплый белый"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#F5EDE4",
                         "image": null
                     }
                 },
@@ -2213,7 +2425,7 @@
                         "ru": "Темно-синий"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#1E2A44",
                         "image": null
                     }
                 },
@@ -2224,7 +2436,7 @@
                         "ru": "Оранжевый"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#FF7F00",
                         "image": null
                     }
                 },
@@ -2235,7 +2447,7 @@
                         "ru": "Зеленый"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#4CAF50",
                         "image": null
                     }
                 },
@@ -2246,7 +2458,7 @@
                         "ru": "Серый мелкозернистый"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#7D7F82",
                         "image": null
                     }
                 },
@@ -2257,7 +2469,7 @@
                         "ru": "Бежевый мелкозернистый"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#D9C2A3",
                         "image": null
                     }
                 },
@@ -2268,7 +2480,7 @@
                         "ru": "Белый мелкозернистый"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#EDE9E0",
                         "image": null
                     }
                 },
@@ -2279,7 +2491,7 @@
                         "ru": "Бежево-серый"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#B8A78E",
                         "image": null
                     }
                 },
@@ -2290,7 +2502,7 @@
                         "ru": "Янтарно-бежевый"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#E8B77E",
                         "image": null
                     }
                 },
@@ -2301,7 +2513,7 @@
                         "ru": "Темно-коричневый мрамор"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#3F2A1E",
                         "image": null
                     }
                 },
@@ -2312,7 +2524,7 @@
                         "ru": "Коричневый мрамор"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#6B4E3D",
                         "image": null
                     }
                 },
@@ -2323,7 +2535,7 @@
                         "ru": "Белый глиттер"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#F0EDE6",
                         "image": null
                     }
                 },
@@ -2334,7 +2546,7 @@
                         "ru": "Серый глиттер"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#8C8E92",
                         "image": null
                     }
                 },
@@ -2345,7 +2557,7 @@
                         "ru": "Серый бетон"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#8A8D8F",
                         "image": null
                     }
                 },
@@ -2356,7 +2568,7 @@
                         "ru": "Черный глиттер"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#1A1A1A",
                         "image": null
                     }
                 },
@@ -2367,7 +2579,7 @@
                         "ru": "Бежевый кварцит"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#D4BFA8",
                         "image": null
                     }
                 },
@@ -2378,7 +2590,7 @@
                         "ru": "Белый мрамор"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#F5F3ED",
                         "image": null
                     }
                 },
@@ -2389,7 +2601,7 @@
                         "ru": "Серый мрамор"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#A9A9A7",
                         "image": null
                     }
                 },
@@ -2400,7 +2612,7 @@
                         "ru": "Бежевый мрамор"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#D9C8B0",
                         "image": null
                     }
                 },
@@ -2411,7 +2623,7 @@
                         "ru": "Светло-серый мрамор"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#E0E0E0",
                         "image": null
                     }
                 },
@@ -2422,7 +2634,7 @@
                         "ru": "Черный мрамор"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#212121",
                         "image": null
                     }
                 },
@@ -2433,7 +2645,7 @@
                         "ru": "Темно-серый мрамор"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#5E5E5E",
                         "image": null
                     }
                 },
@@ -2444,7 +2656,7 @@
                         "ru": "Темно-серый моноколор"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#404040",
                         "image": null
                     }
                 },
@@ -2455,7 +2667,7 @@
                         "ru": "Светло-серый бетон"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#BEBEBE",
                         "image": null
                     }
                 },
@@ -2466,7 +2678,7 @@
                         "ru": "Темно-серый бетон"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#555555",
                         "image": null
                     }
                 },
@@ -2477,7 +2689,7 @@
                         "ru": "Серый кварцит"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#8E8F91",
                         "image": null
                     }
                 },
@@ -2488,7 +2700,7 @@
                         "ru": "Темно-серый гранит"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#424242",
                         "image": null
                     }
                 },
@@ -2499,7 +2711,7 @@
                         "ru": "Золотисто-бежевый"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#E6C9A0",
                         "image": null
                     }
                 },
@@ -2510,7 +2722,7 @@
                         "ru": "Белый облачный"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#F2EFEA",
                         "image": null
                     }
                 },
@@ -2521,7 +2733,95 @@
                         "ru": "Бежево-серый бетон"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#B5A58F",
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_color_seryj_bezhevyj_",
+                    "slug": "seryj_bezhevyj",
+                    "value": {
+                        "ru": "Серый бежевый"
+                    },
+                    "meta": {
+                        "hex": "#B8A98F",
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_color_anthracite_",
+                    "slug": "anthracite",
+                    "value": {
+                        "ru": "Антрацит"
+                    },
+                    "meta": {
+                        "hex": "#282828",
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_color_coffee_",
+                    "slug": "coffee",
+                    "value": {
+                        "ru": "Кофе"
+                    },
+                    "meta": {
+                        "hex": "#4A2C1F",
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_color_dark_rock_",
+                    "slug": "dark_rock",
+                    "value": {
+                        "ru": "Темная скала"
+                    },
+                    "meta": {
+                        "hex": "#363636",
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_color_black_",
+                    "slug": "black",
+                    "value": {
+                        "ru": "Черный"
+                    },
+                    "meta": {
+                        "hex": "#0F0F0F",
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_color_grey_volcano_",
+                    "slug": "grey_volcano",
+                    "value": {
+                        "ru": "Вулкан серый"
+                    },
+                    "meta": {
+                        "hex": "#5A5A5A",
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_color_soft_white_",
+                    "slug": "soft_white",
+                    "value": {
+                        "ru": "Мягкий белый"
+                    },
+                    "meta": {
+                        "hex": "#F7F4ED",
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_color_alumetallik_",
+                    "slug": "alumetallik",
+                    "value": {
+                        "ru": "Алюметаллик"
+                    },
+                    "meta": {
+                        "hex": "#B5B8BC",
                         "image": null
                     }
                 },
@@ -2529,10 +2829,10 @@
                     "external_code": "opt_color_nerzhaveyushchaya-stalь-(bn)_704",
                     "slug": "nerzhaveyushchaya-stalь-(bn)",
                     "value": {
-                        "ru": "Нержавеющая сталь (BN)"
+                        "ru": "Нержавеющая сталь"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#C8C9CC",
                         "image": null
                     }
                 },
@@ -2540,10 +2840,10 @@
                     "external_code": "opt_color_bezhevyj-sa_621",
                     "slug": "bezhevyj-sa",
                     "value": {
-                        "ru": "Бежевый SA"
+                        "ru": "Бежевый"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#D9C6A5",
                         "image": null
                     }
                 },
@@ -2551,10 +2851,10 @@
                     "external_code": "opt_color_zoloto-(pvd)_70",
                     "slug": "zoloto-(pvd)",
                     "value": {
-                        "ru": "Золото (PVD)"
+                        "ru": "Золото"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#D4AF37",
                         "image": null
                     }
                 },
@@ -2565,7 +2865,7 @@
                         "ru": "Белый"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#FAF9F5",
                         "image": null
                     }
                 },
@@ -2576,7 +2876,95 @@
                         "ru": "Черный"
                     },
                     "meta": {
-                        "hex": null,
+                        "hex": "#1A1A1A",
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_color_chromium_",
+                    "slug": "chromium",
+                    "value": {
+                        "ru": "Хром"
+                    },
+                    "meta": {
+                        "hex": "#D0D0D0",
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_color_gold_satin_",
+                    "slug": "gold satin",
+                    "value": {
+                        "ru": "Сатин золото"
+                    },
+                    "meta": {
+                        "hex": "#C9A227",
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_color_steel_",
+                    "slug": "steel",
+                    "value": {
+                        "ru": "Сталь"
+                    },
+                    "meta": {
+                        "hex": "#B0B2B5",
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_color_dark_steel_satin_",
+                    "slug": "dark steel satin",
+                    "value": {
+                        "ru": "Сатин темная сталь"
+                    },
+                    "meta": {
+                        "hex": "#5E5F62",
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_color_platinum_satin_",
+                    "slug": "platinum satin",
+                    "value": {
+                        "ru": "Сатин платина"
+                    },
+                    "meta": {
+                        "hex": "#BEBFC2",
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_color_nerzhaveyushchaya-stalь-(bn)_71",
+                    "slug": "nerzhaveyushchaya-stalь-(bn)",
+                    "value": {
+                        "ru": "Нержавеющая сталь (BN)"
+                    },
+                    "meta": {
+                        "hex": "#C6C7CA",
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_color_bezhevyj-sa_962",
+                    "slug": "bezhevyj-sa",
+                    "value": {
+                        "ru": "Бежевый SA"
+                    },
+                    "meta": {
+                        "hex": "#D8C4A3",
+                        "image": null
+                    }
+                },
+                {
+                    "external_code": "opt_color_zoloto-(pvd)_647",
+                    "slug": "zoloto-(pvd)",
+                    "value": {
+                        "ru": "Золото (PVD)"
+                    },
+                    "meta": {
+                        "hex": "#D8B03C",
                         "image": null
                     }
                 }
@@ -2871,6 +3259,7 @@
                 {
                     "external_code": "sku_p-101-pure-vanilla-3680",
                     "sku": "p-101-pure-vanilla-3680",
+                    "name": null,
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
@@ -2914,6 +3303,7 @@
                 {
                     "external_code": "sku_p-102-pure-beige-3680",
                     "sku": "p-102-pure-beige-3680",
+                    "name": null,
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
@@ -2957,6 +3347,7 @@
                 {
                     "external_code": "sku_p-103-pure-translucent-new-3680",
                     "sku": "p-103-pure-translucent-new-3680",
+                    "name": null,
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
@@ -3000,6 +3391,7 @@
                 {
                     "external_code": "sku_p-104-pure-white,-6-mm.-2500",
                     "sku": "p-104-pure-white,-6-mm.-2500",
+                    "name": null,
                     "price_group_external_code": "pg_a1",
                     "stock": 10,
                     "is_default": true,
@@ -3043,6 +3435,7 @@
                 {
                     "external_code": "sku_p-104-pure-white,-10-mm.-3680",
                     "sku": "p-104-pure-white,-10-mm.-3680",
+                    "name": null,
                     "price_group_external_code": "pg_a2",
                     "stock": 10,
                     "is_default": true,
@@ -3086,6 +3479,7 @@
                 {
                     "external_code": "sku_p-104-pure-white,-12-mm.-3680",
                     "sku": "p-104-pure-white,-12-mm.-3680",
+                    "name": null,
                     "price_group_external_code": "pg_a2",
                     "stock": 10,
                     "is_default": true,
@@ -3129,6 +3523,7 @@
                 {
                     "external_code": "sku_p-105-pure-black-3680",
                     "sku": "p-105-pure-black-3680",
+                    "name": null,
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
@@ -3172,6 +3567,7 @@
                 {
                     "external_code": "sku_p-107-pure-red-new-3680",
                     "sku": "p-107-pure-red-new-3680",
+                    "name": null,
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
@@ -3215,6 +3611,7 @@
                 {
                     "external_code": "sku_p-108-pure-grey-3680",
                     "sku": "p-108-pure-grey-3680",
+                    "name": null,
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
@@ -3258,6 +3655,7 @@
                 {
                     "external_code": "sku_p-109-light-grey-3680",
                     "sku": "p-109-light-grey-3680",
+                    "name": null,
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
@@ -3301,6 +3699,7 @@
                 {
                     "external_code": "sku_p-110-iron-3680",
                     "sku": "p-110-iron-3680",
+                    "name": null,
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
@@ -3344,6 +3743,7 @@
                 {
                     "external_code": "sku_p-118-natural-white-3680",
                     "sku": "p-118-natural-white-3680",
+                    "name": null,
                     "price_group_external_code": "pg_a0",
                     "stock": 10,
                     "is_default": true,
@@ -3387,6 +3787,7 @@
                 {
                     "external_code": "sku_p-119-whale-white-3680",
                     "sku": "p-119-whale-white-3680",
+                    "name": null,
                     "price_group_external_code": "pg_a2",
                     "stock": 10,
                     "is_default": true,
@@ -3430,6 +3831,7 @@
                 {
                     "external_code": "sku_p-197-deep-sea-new-3680",
                     "sku": "p-197-deep-sea-new-3680",
+                    "name": null,
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
@@ -3473,6 +3875,7 @@
                 {
                     "external_code": "sku_p-198-mango-new-3680",
                     "sku": "p-198-mango-new-3680",
+                    "name": null,
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
@@ -3516,6 +3919,7 @@
                 {
                     "external_code": "sku_p-199-pure-orange-new-3680",
                     "sku": "p-199-pure-orange-new-3680",
+                    "name": null,
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
@@ -3559,6 +3963,7 @@
                 {
                     "external_code": "sku_p-427-green-lime-new-3680",
                     "sku": "p-427-green-lime-new-3680",
+                    "name": null,
                     "price_group_external_code": "pg_s0",
                     "stock": 10,
                     "is_default": true,
@@ -3602,6 +4007,7 @@
                 {
                     "external_code": "sku_s-201-dirty-sand-3680",
                     "sku": "s-201-dirty-sand-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -3645,6 +4051,7 @@
                 {
                     "external_code": "sku_s-202-peaceful-night-3680",
                     "sku": "s-202-peaceful-night-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -3688,6 +4095,7 @@
                 {
                     "external_code": "sku_s-203-sparkling-sand-3680",
                     "sku": "s-203-sparkling-sand-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -3731,6 +4139,7 @@
                 {
                     "external_code": "sku_s-204-creamy-sand-3680",
                     "sku": "s-204-creamy-sand-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -3774,6 +4183,7 @@
                 {
                     "external_code": "sku_s-205-fair-sky-3680",
                     "sku": "s-205-fair-sky-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -3817,6 +4227,7 @@
                 {
                     "external_code": "sku_s-206-wet-sand-3680",
                     "sku": "s-206-wet-sand-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -3860,6 +4271,7 @@
                 {
                     "external_code": "sku_s-207-clear-sky-3680",
                     "sku": "s-207-clear-sky-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -3903,6 +4315,7 @@
                 {
                     "external_code": "sku_s-208-natural-sand-3680",
                     "sku": "s-208-natural-sand-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -3946,6 +4359,7 @@
                 {
                     "external_code": "sku_s-209-light-sand-3680",
                     "sku": "s-209-light-sand-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -3989,6 +4403,7 @@
                 {
                     "external_code": "sku_s-210-hot-sand-3680",
                     "sku": "s-210-hot-sand-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4032,6 +4447,7 @@
                 {
                     "external_code": "sku_s-211-romantic-night-3680",
                     "sku": "s-211-romantic-night-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4075,6 +4491,7 @@
                 {
                     "external_code": "sku_s-212-thunder-sky-3680",
                     "sku": "s-212-thunder-sky-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4118,6 +4535,7 @@
                 {
                     "external_code": "sku_s-214-sanded-brown-3680",
                     "sku": "s-214-sanded-brown-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4161,6 +4579,7 @@
                 {
                     "external_code": "sku_s-215-sanded-alps-3680",
                     "sku": "s-215-sanded-alps-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4204,6 +4623,7 @@
                 {
                     "external_code": "sku_s-217-midnight-sky-3680",
                     "sku": "s-217-midnight-sky-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4247,6 +4667,7 @@
                 {
                     "external_code": "sku_s-218-crispy-beige-3680",
                     "sku": "s-218-crispy-beige-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4290,6 +4711,7 @@
                 {
                     "external_code": "sku_s-220-crystal-snowflake-3680",
                     "sku": "s-220-crystal-snowflake-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4333,6 +4755,7 @@
                 {
                     "external_code": "sku_s-223-silver-pearl-3680",
                     "sku": "s-223-silver-pearl-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4376,6 +4799,7 @@
                 {
                     "external_code": "sku_s-229-tempest-grey-3680",
                     "sku": "s-229-tempest-grey-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4419,6 +4843,7 @@
                 {
                     "external_code": "sku_d-301-poppy-seed-3680",
                     "sku": "d-301-poppy-seed-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4462,6 +4887,7 @@
                 {
                     "external_code": "sku_d-302-morning-coffee-3680",
                     "sku": "d-302-morning-coffee-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4505,6 +4931,7 @@
                 {
                     "external_code": "sku_d-303-raisined-chocolate-3680",
                     "sku": "d-303-raisined-chocolate-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4548,6 +4975,7 @@
                 {
                     "external_code": "sku_d-304-ice-cream-3680",
                     "sku": "d-304-ice-cream-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4591,6 +5019,7 @@
                 {
                     "external_code": "sku_d-305-melted-butter-3680",
                     "sku": "d-305-melted-butter-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4634,6 +5063,7 @@
                 {
                     "external_code": "sku_d-307-aspen-pie-3680",
                     "sku": "d-307-aspen-pie-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4677,6 +5107,7 @@
                 {
                     "external_code": "sku_d-308-cubic-mint-3680",
                     "sku": "d-308-cubic-mint-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4720,6 +5151,7 @@
                 {
                     "external_code": "sku_d-309-mushroom-soup-3680",
                     "sku": "d-309-mushroom-soup-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4763,6 +5195,7 @@
                 {
                     "external_code": "sku_d-310-herbal-ash-3680",
                     "sku": "d-310-herbal-ash-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4806,6 +5239,7 @@
                 {
                     "external_code": "sku_d-312-pietra-absorb-3680",
                     "sku": "d-312-pietra-absorb-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4849,6 +5283,7 @@
                 {
                     "external_code": "sku_d-313-milky-way-3680",
                     "sku": "d-313-milky-way-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4892,6 +5327,7 @@
                 {
                     "external_code": "sku_d-314-arctic-ice-3680",
                     "sku": "d-314-arctic-ice-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4935,6 +5371,7 @@
                 {
                     "external_code": "sku_d-315-spacemen-food-3680",
                     "sku": "d-315-spacemen-food-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -4978,6 +5415,7 @@
                 {
                     "external_code": "sku_d-318-velvet-bean-3680",
                     "sku": "d-318-velvet-bean-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -5021,6 +5459,7 @@
                 {
                     "external_code": "sku_d-320-soil-3680",
                     "sku": "d-320-soil-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m0",
                     "stock": 10,
                     "is_default": true,
@@ -5064,6 +5503,7 @@
                 {
                     "external_code": "sku_a-401-cloudy-mount-3680",
                     "sku": "a-401-cloudy-mount-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5107,6 +5547,7 @@
                 {
                     "external_code": "sku_a-403-asphalt-material-3680",
                     "sku": "a-403-asphalt-material-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5150,6 +5591,7 @@
                 {
                     "external_code": "sku_a-405-peach-fruit-3680",
                     "sku": "a-405-peach-fruit-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5193,6 +5635,7 @@
                 {
                     "external_code": "sku_a-406-space-galaxy-3680",
                     "sku": "a-406-space-galaxy-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5236,6 +5679,7 @@
                 {
                     "external_code": "sku_a-409-south-coast-3680",
                     "sku": "a-409-south-coast-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5279,6 +5723,7 @@
                 {
                     "external_code": "sku_a-410-cotton-wool-3680",
                     "sku": "a-410-cotton-wool-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5322,6 +5767,7 @@
                 {
                     "external_code": "sku_a-411-precious-stone-3680",
                     "sku": "a-411-precious-stone-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5365,6 +5811,7 @@
                 {
                     "external_code": "sku_a-412-citron-blossom-3680",
                     "sku": "a-412-citron-blossom-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5408,6 +5855,7 @@
                 {
                     "external_code": "sku_a-414-historical-spot-3680",
                     "sku": "a-414-historical-spot-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5451,6 +5899,7 @@
                 {
                     "external_code": "sku_a-415-endless-desert-3680",
                     "sku": "a-415-endless-desert-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5494,6 +5943,7 @@
                 {
                     "external_code": "sku_a-416-visible-horizon-3680",
                     "sku": "a-416-visible-horizon-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5537,6 +5987,7 @@
                 {
                     "external_code": "sku_a-417-global-cruise-3680",
                     "sku": "a-417-global-cruise-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5580,6 +6031,7 @@
                 {
                     "external_code": "sku_a-418-oak-wood-3680",
                     "sku": "a-418-oak-wood-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5623,6 +6075,7 @@
                 {
                     "external_code": "sku_a-419-cromium-atom-3680",
                     "sku": "a-419-cromium-atom-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5666,6 +6119,7 @@
                 {
                     "external_code": "sku_a-421-coal-mine-3680",
                     "sku": "a-421-coal-mine-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5709,6 +6163,7 @@
                 {
                     "external_code": "sku_a-422-snow-pile-3680",
                     "sku": "a-422-snow-pile-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5752,6 +6207,7 @@
                 {
                     "external_code": "sku_a-423-industrial-draft-3680",
                     "sku": "a-423-industrial-draft-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5795,6 +6251,7 @@
                 {
                     "external_code": "sku_a-424-loft-design-3680",
                     "sku": "a-424-loft-design-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5838,6 +6295,7 @@
                 {
                     "external_code": "sku_a-425-urban-project-3680",
                     "sku": "a-425-urban-project-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5881,6 +6339,7 @@
                 {
                     "external_code": "sku_a-426-onyx-gravel-3680",
                     "sku": "a-426-onyx-gravel-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5924,6 +6383,7 @@
                 {
                     "external_code": "sku_a-427-primo-3680",
                     "sku": "a-427-primo-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -5967,6 +6427,7 @@
                 {
                     "external_code": "sku_a-429-concrete-quartz-3680",
                     "sku": "a-429-concrete-quartz-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -6010,6 +6471,7 @@
                 {
                     "external_code": "sku_a-495-milkshake-new-3680",
                     "sku": "a-495-milkshake-new-3680",
+                    "name": null,
                     "price_group_external_code": "pg_b0",
                     "stock": 10,
                     "is_default": true,
@@ -6053,6 +6515,7 @@
                 {
                     "external_code": "sku_j-504-cut-diamond-3680",
                     "sku": "j-504-cut-diamond-3680",
+                    "name": null,
                     "price_group_external_code": "pg_p0",
                     "stock": 10,
                     "is_default": true,
@@ -6096,6 +6559,7 @@
                 {
                     "external_code": "sku_j-505-pearl-necklace-3680",
                     "sku": "j-505-pearl-necklace-3680",
+                    "name": null,
                     "price_group_external_code": "pg_p0",
                     "stock": 10,
                     "is_default": true,
@@ -6139,6 +6603,7 @@
                 {
                     "external_code": "sku_j-509-american-obsidian-3680",
                     "sku": "j-509-american-obsidian-3680",
+                    "name": null,
                     "price_group_external_code": "pg_p0",
                     "stock": 10,
                     "is_default": true,
@@ -6182,6 +6647,7 @@
                 {
                     "external_code": "sku_j-510-terazzo-bianco-3680",
                     "sku": "j-510-terazzo-bianco-3680",
+                    "name": null,
                     "price_group_external_code": "pg_p0",
                     "stock": 10,
                     "is_default": true,
@@ -6225,6 +6691,7 @@
                 {
                     "external_code": "sku_e-603-snowy-moscow-3680",
                     "sku": "e-603-snowy-moscow-3680",
+                    "name": null,
                     "price_group_external_code": "pg_e1",
                     "stock": 10,
                     "is_default": true,
@@ -6268,6 +6735,7 @@
                 {
                     "external_code": "sku_e-605-indian-mantra-3680",
                     "sku": "e-605-indian-mantra-3680",
+                    "name": null,
                     "price_group_external_code": "pg_e1",
                     "stock": 10,
                     "is_default": true,
@@ -6311,6 +6779,7 @@
                 {
                     "external_code": "sku_e-609-business-tokio-3680",
                     "sku": "e-609-business-tokio-3680",
+                    "name": null,
                     "price_group_external_code": "pg_e1",
                     "stock": 10,
                     "is_default": true,
@@ -6354,6 +6823,7 @@
                 {
                     "external_code": "sku_e-613-english-tea-3680",
                     "sku": "e-613-english-tea-3680",
+                    "name": null,
                     "price_group_external_code": "pg_e1",
                     "stock": 10,
                     "is_default": true,
@@ -6397,6 +6867,7 @@
                 {
                     "external_code": "sku_e-618-saturn-ring-3680",
                     "sku": "e-618-saturn-ring-3680",
+                    "name": null,
                     "price_group_external_code": "pg_e1",
                     "stock": 10,
                     "is_default": true,
@@ -6440,6 +6911,7 @@
                 {
                     "external_code": "sku_m-605-notte-bianca-new-3680",
                     "sku": "m-605-notte-bianca-new-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -6483,6 +6955,7 @@
                 {
                     "external_code": "sku_m-606-grigio-bianca-new-3680",
                     "sku": "m-606-grigio-bianca-new-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -6526,6 +6999,7 @@
                 {
                     "external_code": "sku_m-607-neve-bianca-new-3680",
                     "sku": "m-607-neve-bianca-new-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -6569,6 +7043,7 @@
                 {
                     "external_code": "sku_m-610-amiata-bianca-new-3680",
                     "sku": "m-610-amiata-bianca-new-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -6612,6 +7087,7 @@
                 {
                     "external_code": "sku_m-701-hazel-flow-3680",
                     "sku": "m-701-hazel-flow-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -6655,6 +7131,7 @@
                 {
                     "external_code": "sku_m-703-water-weed-3680",
                     "sku": "m-703-water-weed-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -6698,6 +7175,7 @@
                 {
                     "external_code": "sku_m-705-lake-coast-3680",
                     "sku": "m-705-lake-coast-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -6741,6 +7219,7 @@
                 {
                     "external_code": "sku_m-706-stormy-sea-3680",
                     "sku": "m-706-stormy-sea-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -6784,6 +7263,7 @@
                 {
                     "external_code": "sku_m-707-noble-pearl-3680",
                     "sku": "m-707-noble-pearl-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -6827,6 +7307,7 @@
                 {
                     "external_code": "sku_m-708-deep-water-3680",
                     "sku": "m-708-deep-water-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -6870,6 +7351,7 @@
                 {
                     "external_code": "sku_m-710-float-rock-3680",
                     "sku": "m-710-float-rock-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -6913,6 +7395,7 @@
                 {
                     "external_code": "sku_m-711-sparkling-wave-3680",
                     "sku": "m-711-sparkling-wave-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -6956,6 +7439,7 @@
                 {
                     "external_code": "sku_m-712-stylish-moon-3680",
                     "sku": "m-712-stylish-moon-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -6999,6 +7483,7 @@
                 {
                     "external_code": "sku_m-713-whitesand-beach-3680",
                     "sku": "m-713-whitesand-beach-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -7042,6 +7527,7 @@
                 {
                     "external_code": "sku_m-717-shrimp-crust-3680",
                     "sku": "m-717-shrimp-crust-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -7085,6 +7571,7 @@
                 {
                     "external_code": "sku_m-718-neptun-trident-3680",
                     "sku": "m-718-neptun-trident-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -7128,6 +7615,7 @@
                 {
                     "external_code": "sku_m-720-carrara-lunar-3680",
                     "sku": "m-720-carrara-lunar-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -7171,6 +7659,7 @@
                 {
                     "external_code": "sku_m-724-cloud-concrete-new-3680",
                     "sku": "m-724-cloud-concrete-new-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -7214,6 +7703,7 @@
                 {
                     "external_code": "sku_m-726-ether-mist-new-3680",
                     "sku": "m-726-ether-mist-new-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -7257,6 +7747,7 @@
                 {
                     "external_code": "sku_m-728-obsidian-soil-new-3680",
                     "sku": "m-728-obsidian-soil-new-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -7300,6 +7791,7 @@
                 {
                     "external_code": "sku_m-727-venice-3680",
                     "sku": "m-727-venice-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -7343,6 +7835,7 @@
                 {
                     "external_code": "sku_m-731-moon-coast-3680",
                     "sku": "m-731-moon-coast-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -7386,6 +7879,7 @@
                 {
                     "external_code": "sku_m-732-marble-mirage-3680",
                     "sku": "m-732-marble-mirage-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -7429,6 +7923,7 @@
                 {
                     "external_code": "sku_m-733-stellar-depth-3680",
                     "sku": "m-733-stellar-depth-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -7472,6 +7967,7 @@
                 {
                     "external_code": "sku_m-798-black-pearl-new-3680",
                     "sku": "m-798-black-pearl-new-3680",
+                    "name": null,
                     "price_group_external_code": "pg_m1",
                     "stock": 10,
                     "is_default": true,
@@ -7515,6 +8011,7 @@
                 {
                     "external_code": "sku_c-801-arezzo-3680",
                     "sku": "c-801-arezzo-3680",
+                    "name": null,
                     "price_group_external_code": "pg_c1",
                     "stock": 10,
                     "is_default": true,
@@ -7558,6 +8055,7 @@
                 {
                     "external_code": "sku_c-802-piacenza-3680",
                     "sku": "c-802-piacenza-3680",
+                    "name": null,
                     "price_group_external_code": "pg_c1",
                     "stock": 10,
                     "is_default": true,
@@ -7601,6 +8099,7 @@
                 {
                     "external_code": "sku_c-803-salerno-3680",
                     "sku": "c-803-salerno-3680",
+                    "name": null,
                     "price_group_external_code": "pg_c1",
                     "stock": 10,
                     "is_default": true,
@@ -7642,6 +8141,7 @@
                 {
                     "external_code": "sku_2001-cordelia-3200-1600-20",
                     "sku": "2001-cordelia-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_k7",
                     "stock": 10,
                     "is_default": true,
@@ -7683,6 +8183,7 @@
                 {
                     "external_code": "sku_2005-caramela-3050-1520-20",
                     "sku": "2005-caramela-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
@@ -7724,6 +8225,7 @@
                 {
                     "external_code": "sku_2015-nidia-3050-1520-20",
                     "sku": "2015-nidia-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
@@ -7765,6 +8267,7 @@
                 {
                     "external_code": "sku_2101-admira-3200-1600-20",
                     "sku": "2101-admira-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_k5",
                     "stock": 10,
                     "is_default": true,
@@ -7806,6 +8309,7 @@
                 {
                     "external_code": "sku_2102-visendra-3050-1520-20",
                     "sku": "2102-visendra-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
@@ -7847,6 +8351,7 @@
                 {
                     "external_code": "sku_2103-sima-3050-1520-20",
                     "sku": "2103-sima-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
@@ -7888,6 +8393,7 @@
                 {
                     "external_code": "sku_2104-tornado-3050-1520-20",
                     "sku": "2104-tornado-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
@@ -7929,6 +8435,7 @@
                 {
                     "external_code": "sku_2105-aria-3050-1520-20",
                     "sku": "2105-aria-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k2",
                     "stock": 10,
                     "is_default": true,
@@ -7970,6 +8477,7 @@
                 {
                     "external_code": "sku_2209-rugiada-3050-1520-20",
                     "sku": "2209-rugiada-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
@@ -8011,6 +8519,7 @@
                 {
                     "external_code": "sku_2210-sadira-3050-1520-20",
                     "sku": "2210-sadira-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
@@ -8052,6 +8561,7 @@
                 {
                     "external_code": "sku_2405-hemera-3200-1600-20",
                     "sku": "2405-hemera-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_k10",
                     "stock": 10,
                     "is_default": true,
@@ -8093,6 +8603,7 @@
                 {
                     "external_code": "sku_3001-aymina-3050-1520-20",
                     "sku": "3001-aymina-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
@@ -8134,6 +8645,7 @@
                 {
                     "external_code": "sku_3001-aymina-3200-1600-20",
                     "sku": "3001-aymina-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_k6",
                     "stock": 10,
                     "is_default": true,
@@ -8175,6 +8687,7 @@
                 {
                     "external_code": "sku_3302-felisia-3050-1520-20",
                     "sku": "3302-felisia-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k8",
                     "stock": 10,
                     "is_default": true,
@@ -8216,6 +8729,7 @@
                 {
                     "external_code": "sku_3303-santa-3050-1520-20",
                     "sku": "3303-santa-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k8",
                     "stock": 10,
                     "is_default": true,
@@ -8257,6 +8771,7 @@
                 {
                     "external_code": "sku_4001-daisy-3050-1520-20",
                     "sku": "4001-daisy-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k1",
                     "stock": 10,
                     "is_default": true,
@@ -8298,6 +8813,7 @@
                 {
                     "external_code": "sku_4004-elatris-3200-1600-20",
                     "sku": "4004-elatris-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
@@ -8339,6 +8855,7 @@
                 {
                     "external_code": "sku_4403-alaska-3050-1520-20",
                     "sku": "4403-alaska-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k8",
                     "stock": 10,
                     "is_default": true,
@@ -8380,6 +8897,7 @@
                 {
                     "external_code": "sku_4405-olivia-3050-1520-20",
                     "sku": "4405-olivia-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k4",
                     "stock": 10,
                     "is_default": true,
@@ -8421,6 +8939,7 @@
                 {
                     "external_code": "sku_5601-lusetia-white-3050-1520-20",
                     "sku": "5601-lusetia-white-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k3",
                     "stock": 10,
                     "is_default": true,
@@ -8462,6 +8981,7 @@
                 {
                     "external_code": "sku_5701-lusida-black-3050-1520-20",
                     "sku": "5701-lusida-black-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k3",
                     "stock": 10,
                     "is_default": true,
@@ -8503,6 +9023,7 @@
                 {
                     "external_code": "sku_5702-lusida-grey-3050-1520-20",
                     "sku": "5702-lusida-grey-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k3",
                     "stock": 10,
                     "is_default": true,
@@ -8544,6 +9065,7 @@
                 {
                     "external_code": "sku_6101-rossa-white-3200-1600-20",
                     "sku": "6101-rossa-white-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_k8",
                     "stock": 10,
                     "is_default": true,
@@ -8585,6 +9107,7 @@
                 {
                     "external_code": "sku_6102-sierra-white-3200-1600-20",
                     "sku": "6102-sierra-white-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_k8",
                     "stock": 10,
                     "is_default": true,
@@ -8626,6 +9149,7 @@
                 {
                     "external_code": "sku_7156-otello-3050-1520-20",
                     "sku": "7156-otello-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k8",
                     "stock": 10,
                     "is_default": true,
@@ -8667,6 +9191,7 @@
                 {
                     "external_code": "sku_7268-bolera-3200-1600-20",
                     "sku": "7268-bolera-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_k9",
                     "stock": 10,
                     "is_default": true,
@@ -8708,6 +9233,7 @@
                 {
                     "external_code": "sku_7546-mia-3200-1600-20",
                     "sku": "7546-mia-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_k9",
                     "stock": 10,
                     "is_default": true,
@@ -8749,6 +9275,7 @@
                 {
                     "external_code": "sku_7835-piana-3200-1600-20",
                     "sku": "7835-piana-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_k10",
                     "stock": 10,
                     "is_default": true,
@@ -8790,6 +9317,7 @@
                 {
                     "external_code": "sku_8013-statuario-oro-3050-1520-20",
                     "sku": "8013-statuario-oro-3050-1520-20",
+                    "name": null,
                     "price_group_external_code": "pg_k10",
                     "stock": 10,
                     "is_default": true,
@@ -8831,6 +9359,7 @@
                 {
                     "external_code": "sku_q117-jade-white-3200-1600-20",
                     "sku": "q117-jade-white-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n1",
                     "stock": 10,
                     "is_default": true,
@@ -8872,6 +9401,7 @@
                 {
                     "external_code": "sku_q131-black-sand-3200-1600-20",
                     "sku": "q131-black-sand-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n1",
                     "stock": 10,
                     "is_default": true,
@@ -8913,6 +9443,7 @@
                 {
                     "external_code": "sku_q716-carrara-sun-3200-1600-20",
                     "sku": "q716-carrara-sun-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n2",
                     "stock": 10,
                     "is_default": true,
@@ -8954,6 +9485,7 @@
                 {
                     "external_code": "sku_q718-carrara-moon-3200-1600-20",
                     "sku": "q718-carrara-moon-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n2",
                     "stock": 10,
                     "is_default": true,
@@ -8995,6 +9527,7 @@
                 {
                     "external_code": "sku_q719-carrara-black-3200-1600-20",
                     "sku": "q719-carrara-black-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n2",
                     "stock": 10,
                     "is_default": true,
@@ -9036,6 +9569,7 @@
                 {
                     "external_code": "sku_q717-bianco-giogia-3200-1600-20",
                     "sku": "q717-bianco-giogia-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n3",
                     "stock": 10,
                     "is_default": true,
@@ -9077,6 +9611,7 @@
                 {
                     "external_code": "sku_q735-bianco-venato-3200-1600-20",
                     "sku": "q735-bianco-venato-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n3",
                     "stock": 10,
                     "is_default": true,
@@ -9118,6 +9653,7 @@
                 {
                     "external_code": "sku_q740-calacatta-venato-3200-1600-20",
                     "sku": "q740-calacatta-venato-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n3",
                     "stock": 10,
                     "is_default": true,
@@ -9159,6 +9695,7 @@
                 {
                     "external_code": "sku_q744-calacatta-bianco-3200-1600-20",
                     "sku": "q744-calacatta-bianco-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n3",
                     "stock": 10,
                     "is_default": true,
@@ -9200,6 +9737,7 @@
                 {
                     "external_code": "sku_q765-nero-marquina-3200-1600-20",
                     "sku": "q765-nero-marquina-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n3",
                     "stock": 10,
                     "is_default": true,
@@ -9241,6 +9779,7 @@
                 {
                     "external_code": "sku_q785-calacatta-gold-3200-1600-20",
                     "sku": "q785-calacatta-gold-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n3",
                     "stock": 10,
                     "is_default": true,
@@ -9282,6 +9821,7 @@
                 {
                     "external_code": "sku_q703-calacatta-borghini-3200-1600-20",
                     "sku": "q703-calacatta-borghini-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n4",
                     "stock": 10,
                     "is_default": true,
@@ -9323,6 +9863,7 @@
                 {
                     "external_code": "sku_q707-sahara-noir-3200-1600-20",
                     "sku": "q707-sahara-noir-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n4",
                     "stock": 10,
                     "is_default": true,
@@ -9364,6 +9905,7 @@
                 {
                     "external_code": "sku_q757-calacatta-aurum-3200-1600-20",
                     "sku": "q757-calacatta-aurum-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n4",
                     "stock": 10,
                     "is_default": true,
@@ -9405,6 +9947,7 @@
                 {
                     "external_code": "sku_q840-white-misterio-3200-1600-20",
                     "sku": "q840-white-misterio-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n4",
                     "stock": 10,
                     "is_default": true,
@@ -9446,6 +9989,7 @@
                 {
                     "external_code": "sku_q850-urban-grigio-3200-1600-20",
                     "sku": "q850-urban-grigio-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n4",
                     "stock": 10,
                     "is_default": true,
@@ -9487,6 +10031,7 @@
                 {
                     "external_code": "sku_q798-calacatta-elegant-3200-1600-20",
                     "sku": "q798-calacatta-elegant-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
@@ -9528,6 +10073,7 @@
                 {
                     "external_code": "sku_q810-grey-glow-3200-1600-20",
                     "sku": "q810-grey-glow-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n5",
                     "stock": 10,
                     "is_default": true,
@@ -9569,6 +10115,7 @@
                 {
                     "external_code": "sku_q811-beton-white-3200-1600-20",
                     "sku": "q811-beton-white-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n5",
                     "stock": 10,
                     "is_default": true,
@@ -9610,6 +10157,7 @@
                 {
                     "external_code": "sku_q859-beton-brass-3200-1600-20",
                     "sku": "q859-beton-brass-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n5",
                     "stock": 10,
                     "is_default": true,
@@ -9651,6 +10199,7 @@
                 {
                     "external_code": "sku_q880-beton-grey-3200-1600-20",
                     "sku": "q880-beton-grey-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n5",
                     "stock": 10,
                     "is_default": true,
@@ -9692,6 +10241,7 @@
                 {
                     "external_code": "sku_q913-moon-white-3200-1600-20",
                     "sku": "q913-moon-white-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n6",
                     "stock": 10,
                     "is_default": true,
@@ -9733,6 +10283,7 @@
                 {
                     "external_code": "sku_q795-calacatta-magic-dark-3200-1600-20",
                     "sku": "q795-calacatta-magic-dark-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
@@ -9774,6 +10325,7 @@
                 {
                     "external_code": "sku_q796-calacatta-magic-white-3200-1600-20",
                     "sku": "q796-calacatta-magic-white-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
@@ -9815,6 +10367,7 @@
                 {
                     "external_code": "sku_q797-calacatta-true-light-3200-1600-20",
                     "sku": "q797-calacatta-true-light-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
@@ -9856,6 +10409,7 @@
                 {
                     "external_code": "sku_q801-beton-marquina-3200-1600-20",
                     "sku": "q801-beton-marquina-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
@@ -9897,6 +10451,7 @@
                 {
                     "external_code": "sku_q901-patagonia-gold-3200-1600-20",
                     "sku": "q901-patagonia-gold-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
@@ -9938,6 +10493,7 @@
                 {
                     "external_code": "sku_q902-patagonia-platinum-3200-1600-20",
                     "sku": "q902-patagonia-platinum-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
@@ -9979,6 +10535,7 @@
                 {
                     "external_code": "sku_q921-arabescato-black-3200-1600-20",
                     "sku": "q921-arabescato-black-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
@@ -10020,6 +10577,7 @@
                 {
                     "external_code": "sku_q922-arabescato-white-3200-1600-20",
                     "sku": "q922-arabescato-white-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
@@ -10061,6 +10619,7 @@
                 {
                     "external_code": "sku_q923-arabescato-corchia-3200-1600-20",
                     "sku": "q923-arabescato-corchia-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
@@ -10102,6 +10661,7 @@
                 {
                     "external_code": "sku_q930-royal-beige-3200-1600-20",
                     "sku": "q930-royal-beige-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
@@ -10143,6 +10703,7 @@
                 {
                     "external_code": "sku_q931-hazel-3200-1600-20",
                     "sku": "q931-hazel-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_n7",
                     "stock": 10,
                     "is_default": true,
@@ -10184,6 +10745,7 @@
                 {
                     "external_code": "sku_r104-belaya-tajga-3050-1440-20",
                     "sku": "r104-belaya-tajga-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r2",
                     "stock": 10,
                     "is_default": true,
@@ -10225,6 +10787,7 @@
                 {
                     "external_code": "sku_r112-solь-kaspiya-3050-1440-20",
                     "sku": "r112-solь-kaspiya-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r1",
                     "stock": 10,
                     "is_default": true,
@@ -10266,6 +10829,7 @@
                 {
                     "external_code": "sku_r122-almazy-yakutii-3050-1440-20",
                     "sku": "r122-almazy-yakutii-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r1",
                     "stock": 10,
                     "is_default": true,
@@ -10307,6 +10871,7 @@
                 {
                     "external_code": "sku_r403-skaly-karelii-3050-1440-20",
                     "sku": "r403-skaly-karelii-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r3",
                     "stock": 10,
                     "is_default": true,
@@ -10348,6 +10913,7 @@
                 {
                     "external_code": "sku_r444-aj-petri-3050-1440-20",
                     "sku": "r444-aj-petri-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r4",
                     "stock": 10,
                     "is_default": true,
@@ -10389,6 +10955,7 @@
                 {
                     "external_code": "sku_r500-zhemchug-primorьya-3050-1440-20",
                     "sku": "r500-zhemchug-primorьya-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r6",
                     "stock": 10,
                     "is_default": true,
@@ -10430,6 +10997,7 @@
                 {
                     "external_code": "sku_r503-uralьskie-gory-3050-1440-20",
                     "sku": "r503-uralьskie-gory-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r3",
                     "stock": 10,
                     "is_default": true,
@@ -10471,6 +11039,7 @@
                 {
                     "external_code": "sku_r510-chernoe-more-3050-1440-20",
                     "sku": "r510-chernoe-more-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r6",
                     "stock": 10,
                     "is_default": true,
@@ -10512,6 +11081,7 @@
                 {
                     "external_code": "sku_r510-chernoe-more-3200-1600-20",
                     "sku": "r510-chernoe-more-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_r11",
                     "stock": 10,
                     "is_default": true,
@@ -10553,6 +11123,7 @@
                 {
                     "external_code": "sku_r511-lyod-bajkala-3050-1440-20",
                     "sku": "r511-lyod-bajkala-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r6",
                     "stock": 10,
                     "is_default": true,
@@ -10594,6 +11165,7 @@
                 {
                     "external_code": "sku_r511-lyod-bajkala-3200-1600-20",
                     "sku": "r511-lyod-bajkala-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_r11",
                     "stock": 10,
                     "is_default": true,
@@ -10635,6 +11207,7 @@
                 {
                     "external_code": "sku_r515-vulkany-kamchatki-3050-1440-20",
                     "sku": "r515-vulkany-kamchatki-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r3",
                     "stock": 10,
                     "is_default": true,
@@ -10676,6 +11249,7 @@
                 {
                     "external_code": "sku_r515-vulkany-kamchatki-3200-1600-20",
                     "sku": "r515-vulkany-kamchatki-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_r7",
                     "stock": 10,
                     "is_default": true,
@@ -10717,6 +11291,7 @@
                 {
                     "external_code": "sku_r520-astrakhanskie-peski-3050-1440-20",
                     "sku": "r520-astrakhanskie-peski-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r4",
                     "stock": 10,
                     "is_default": true,
@@ -10758,6 +11333,7 @@
                 {
                     "external_code": "sku_r522-zolotoe-kolьtso-3050-1440-20",
                     "sku": "r522-zolotoe-kolьtso-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r3",
                     "stock": 10,
                     "is_default": true,
@@ -10799,6 +11375,7 @@
                 {
                     "external_code": "sku_r531-donskaya-stepь-3050-1440-20",
                     "sku": "r531-donskaya-stepь-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r4",
                     "stock": 10,
                     "is_default": true,
@@ -10840,6 +11417,7 @@
                 {
                     "external_code": "sku_r538-gory-kavkaza-3050-1440-20",
                     "sku": "r538-gory-kavkaza-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r4",
                     "stock": 10,
                     "is_default": true,
@@ -10881,6 +11459,7 @@
                 {
                     "external_code": "sku_r541-snega-sibiri-3050-1440-20",
                     "sku": "r541-snega-sibiri-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r4",
                     "stock": 10,
                     "is_default": true,
@@ -10922,6 +11501,7 @@
                 {
                     "external_code": "sku_r541-snega-sibiri-3200-1600-20",
                     "sku": "r541-snega-sibiri-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_r10",
                     "stock": 10,
                     "is_default": true,
@@ -10963,6 +11543,7 @@
                 {
                     "external_code": "sku_r543-pik-elьbrusa-3050-1440-20",
                     "sku": "r543-pik-elьbrusa-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r4",
                     "stock": 10,
                     "is_default": true,
@@ -11004,6 +11585,7 @@
                 {
                     "external_code": "sku_r543-pik-elьbrusa-3200-1600-20",
                     "sku": "r543-pik-elьbrusa-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_r10",
                     "stock": 10,
                     "is_default": true,
@@ -11045,6 +11627,7 @@
                 {
                     "external_code": "sku_r555-baltijskij-bereg-3050-1440-20",
                     "sku": "r555-baltijskij-bereg-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r6",
                     "stock": 10,
                     "is_default": true,
@@ -11086,6 +11669,7 @@
                 {
                     "external_code": "sku_r558-prostory-povolzhьya-3050-1440-20",
                     "sku": "r558-prostory-povolzhьya-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r5",
                     "stock": 10,
                     "is_default": true,
@@ -11127,6 +11711,7 @@
                 {
                     "external_code": "sku_r575-krasnaya-polyana-3050-1440-20",
                     "sku": "r575-krasnaya-polyana-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r4",
                     "stock": 10,
                     "is_default": true,
@@ -11168,6 +11753,7 @@
                 {
                     "external_code": "sku_r590-severnoe-siyanie-3050-1440-20",
                     "sku": "r590-severnoe-siyanie-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r6",
                     "stock": 10,
                     "is_default": true,
@@ -11209,6 +11795,7 @@
                 {
                     "external_code": "sku_r677-moskovskaya-nochь-3050-1440-20",
                     "sku": "r677-moskovskaya-nochь-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r7",
                     "stock": 10,
                     "is_default": true,
@@ -11250,6 +11837,7 @@
                 {
                     "external_code": "sku_r711-beloe-more-3200-1600-20",
                     "sku": "r711-beloe-more-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_r12",
                     "stock": 10,
                     "is_default": true,
@@ -11291,6 +11879,7 @@
                 {
                     "external_code": "sku_r716-zhemchuzhina-kazani-3200-1600-20",
                     "sku": "r716-zhemchuzhina-kazani-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_r12",
                     "stock": 10,
                     "is_default": true,
@@ -11332,6 +11921,7 @@
                 {
                     "external_code": "sku_r723-solnechnye-sochi-3200-1600-20",
                     "sku": "r723-solnechnye-sochi-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_r12",
                     "stock": 10,
                     "is_default": true,
@@ -11373,6 +11963,7 @@
                 {
                     "external_code": "sku_r727-amurskie-volny-3200-1600-20",
                     "sku": "r727-amurskie-volny-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_r12",
                     "stock": 10,
                     "is_default": true,
@@ -11414,6 +12005,7 @@
                 {
                     "external_code": "sku_r760-krymskie-grozy-3200-1600-20",
                     "sku": "r760-krymskie-grozy-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_r12",
                     "stock": 10,
                     "is_default": true,
@@ -11455,6 +12047,7 @@
                 {
                     "external_code": "sku_r777-moskva-belokamennaya-3200-1600-20",
                     "sku": "r777-moskva-belokamennaya-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_r12",
                     "stock": 10,
                     "is_default": true,
@@ -11496,6 +12089,7 @@
                 {
                     "external_code": "sku_r797-yantarnyj-plyazh-3200-1600-20",
                     "sku": "r797-yantarnyj-plyazh-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_r12",
                     "stock": 10,
                     "is_default": true,
@@ -11537,6 +12131,7 @@
                 {
                     "external_code": "sku_rm104-belaya-tajga-3050-1440-20",
                     "sku": "rm104-belaya-tajga-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r6",
                     "stock": 10,
                     "is_default": true,
@@ -11578,6 +12173,7 @@
                 {
                     "external_code": "sku_rm403-skaly-karelii-3050-1440-20",
                     "sku": "rm403-skaly-karelii-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r6",
                     "stock": 10,
                     "is_default": true,
@@ -11619,6 +12215,7 @@
                 {
                     "external_code": "sku_rm444-aj-petri-3050-1440-20",
                     "sku": "rm444-aj-petri-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r8",
                     "stock": 10,
                     "is_default": true,
@@ -11660,6 +12257,7 @@
                 {
                     "external_code": "sku_rm510-chernoe-more-3050-1440-20",
                     "sku": "rm510-chernoe-more-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r9",
                     "stock": 10,
                     "is_default": true,
@@ -11701,6 +12299,7 @@
                 {
                     "external_code": "sku_rm511-lyod-bajkala-3050-1440-20",
                     "sku": "rm511-lyod-bajkala-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r9",
                     "stock": 10,
                     "is_default": true,
@@ -11742,6 +12341,7 @@
                 {
                     "external_code": "sku_rm520-astrakhanskie-peski-3050-1440-20",
                     "sku": "rm520-astrakhanskie-peski-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r9",
                     "stock": 10,
                     "is_default": true,
@@ -11783,6 +12383,7 @@
                 {
                     "external_code": "sku_rm543-pik-elьbrusa-3050-1440-20",
                     "sku": "rm543-pik-elьbrusa-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r9",
                     "stock": 10,
                     "is_default": true,
@@ -11824,6 +12425,7 @@
                 {
                     "external_code": "sku_rm560-zolotye-vorota-3050-1440-20",
                     "sku": "rm560-zolotye-vorota-3050-1440-20",
+                    "name": null,
                     "price_group_external_code": "pg_r9",
                     "stock": 10,
                     "is_default": true,
@@ -11865,6 +12467,7 @@
                 {
                     "external_code": "sku_rm711-beloe-more-3200-1600-20",
                     "sku": "rm711-beloe-more-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_r13",
                     "stock": 10,
                     "is_default": true,
@@ -11906,6 +12509,7 @@
                 {
                     "external_code": "sku_rm727-amurskie-volny-3200-1600-20",
                     "sku": "rm727-amurskie-volny-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_r13",
                     "stock": 10,
                     "is_default": true,
@@ -11947,6 +12551,7 @@
                 {
                     "external_code": "sku_rm760-krymskie-grozy-3200-1600-20",
                     "sku": "rm760-krymskie-grozy-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_r13",
                     "stock": 10,
                     "is_default": true,
@@ -11988,6 +12593,7 @@
                 {
                     "external_code": "sku_rm797-yantarnyj-plyazh-3200-1600-20",
                     "sku": "rm797-yantarnyj-plyazh-3200-1600-20",
+                    "name": null,
                     "price_group_external_code": "pg_r13",
                     "stock": 10,
                     "is_default": true,
@@ -12004,155 +12610,1192 @@
             ]
         },
         {
-            "external_code": "prod_omoikiri-taki-44",
+            "external_code": "blanco-subline-500-u",
             "product_type_external_code": "type_kitchen_sink",
             "category_external_code": "cat_kitchen-sinks",
             "catalog_type": "product",
             "unit_code": "pcs",
-            "slug": "omoikiri-taki-44-u-if-in",
+            "slug": "subline-500-u",
             "name": {
-                "ru": "Мойка Omoikiri Taki 44-U/IF-IN"
+                "ru": "Subline 500-U"
             },
             "preview_picture": null,
             "detail_picture": null,
             "eav": {
-                "brand": "opt_brand_omoikiri_143",
-                "set_sink": "opt_set_sink_podstolьnyj_522",
-                "material": "opt_material_nerzhaveyushchaya-stalь_732",
-                "steel_thickness_sink": "opt_steel_thickness_sink_1,2-mm_677",
-                "min_cab_width": "opt_min_cab_width_450_251",
-                "size_inner_sink": "400x400"
-            },
-            "variants": [
-                {
-                    "external_code": "sku_omoikiri-taki-44-u-if-in-bn",
-                    "sku": "omoikiri-taki-44-u-if-in-bn",
-                    "price_group_external_code": null,
-                    "stock": 10,
-                    "is_default": true,
-                    "preview_picture": "https://mojki.by/image/cache/webp/catalog/Product/2022/09/11/taki_44-uif-in-500x500.webp",
-                    "detail_picture": null,
-                    "eav": {
-                        "supplier_article": "4973044",
-                        "color": "opt_color_nerzhaveyushchaya-stalь-(bn)_704"
-                    },
-                    "is_manual_pricing": true,
-                    "cost_price": 240,
-                    "currency": "USD",
-                    "price": 312
-                }
-            ]
-        },
-        {
-            "external_code": "prod_omoikiri-bosen-54",
-            "product_type_external_code": "type_kitchen_sink",
-            "category_external_code": "cat_kitchen-sinks",
-            "catalog_type": "product",
-            "unit_code": "pcs",
-            "slug": "omoikiri-bosen-54-u",
-            "name": {
-                "ru": "Мойка Omoikiri Bosen 54-U"
-            },
-            "preview_picture": null,
-            "detail_picture": null,
-            "eav": {
-                "brand": "opt_brand_omoikiri_143",
-                "set_sink": "opt_set_sink_podstolьnyj_522",
-                "material": "opt_material_iskusstvennyj-granit_864",
+                "brand": "opt_brand_blanco_",
+                "set_sink": "opt_set_sink_undermount_",
+                "material": "opt_material_artificial_stone_",
                 "min_cab_width": "opt_min_cab_width_600_825",
-                "size_inner_sink": "500x400"
+                "size_inner_sink": "530x460"
             },
             "variants": [
                 {
-                    "external_code": "sku_omoikiri-bosen-54-u-beige",
-                    "sku": "omoikiri-bosen-54-u-beige",
+                    "external_code": "sku_subline-500-u-belyj",
+                    "sku": "subline-500-u-belyj",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://mojki.by/image/cache/webp/catalog/Product/2022/09/18/bosen_54-u-ch-500x500.webp",
+                    "preview_picture": "https://blanco-russia.com/data/190214/1129378182079468-800x600.png",
                     "detail_picture": null,
                     "eav": {
-                        "supplier_article": "4993181",
-                        "color": "opt_color_bezhevyj-sa_621"
+                        "supplier_article": "523436",
+                        "color": "opt_color_belyj_200"
                     },
                     "is_manual_pricing": true,
-                    "cost_price": 280,
-                    "currency": "USD",
-                    "price": 364
+                    "cost_price": 58200,
+                    "currency": "RUB",
+                    "price": 75660
+                },
+                {
+                    "external_code": "sku_subline-500-u-seryj-bezhevyj",
+                    "sku": "subline-500-u-seryj-bezhevyj",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/190214/1127263024333670-800x600.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "523439",
+                        "color": "opt_color_seryj_bezhevyj_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 58200,
+                    "currency": "RUB",
+                    "price": 75660
+                },
+                {
+                    "external_code": "sku_subline-500-u-antratsit",
+                    "sku": "subline-500-u-antratsit",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/240923/2111502379633334-800x600.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "523432",
+                        "color": "opt_color_anthracite_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 58200,
+                    "currency": "RUB",
+                    "price": 75660
+                },
+                {
+                    "external_code": "sku_subline-500-u-kofe",
+                    "sku": "subline-500-u-kofe",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/240923/2008489996741250-800x600.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "523441",
+                        "color": "opt_color_coffee_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 58800,
+                    "currency": "RUB",
+                    "price": 76440
+                },
+                {
+                    "external_code": "sku_subline-500-u-temnaya-skala",
+                    "sku": "subline-500-u-temnaya-skala",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/190214/1132302738563393-800x600.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "523433",
+                        "color": "opt_color_dark_rock_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 58200,
+                    "currency": "RUB",
+                    "price": 75660
+                },
+                {
+                    "external_code": "sku_subline-500-u-chernyj",
+                    "sku": "subline-500-u-chernyj",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/200404/1735134684782595-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "525995",
+                        "color": "opt_color_chernyj_992"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 58800,
+                    "currency": "RUB",
+                    "price": 76440
+                },
+                {
+                    "external_code": "sku_subline-500-u-vulkan-seryj",
+                    "sku": "subline-500-u-vulkan-seryj",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/230715/1104578559140070-800x600.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "527353",
+                        "color": "opt_color_grey_volcano_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 58800,
+                    "currency": "RUB",
+                    "price": 76440
+                },
+                {
+                    "external_code": "sku_subline-500-u-myagkij-belyj",
+                    "sku": "subline-500-u-myagkij-belyj",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/230715/1115593234331613-800x600.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "527170",
+                        "color": "opt_color_soft_white_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 58800,
+                    "currency": "RUB",
+                    "price": 76440
                 }
             ]
         },
         {
-            "external_code": "prod_omoikiri-kanto",
-            "product_type_external_code": "type_faucet",
-            "category_external_code": "cat_faucets",
+            "external_code": "blanco-subline-700-u",
+            "product_type_external_code": "type_kitchen_sink",
+            "category_external_code": "cat_kitchen-sinks",
             "catalog_type": "product",
             "unit_code": "pcs",
-            "slug": "omoikiri-kanto",
+            "slug": "subline-700-u",
             "name": {
-                "ru": "Смеситель Omoikiri Kanto"
+                "ru": "Subline 700-U"
             },
             "preview_picture": null,
             "detail_picture": null,
             "eav": {
-                "brand": "opt_brand_omoikiri_143",
-                "features_faucet": "opt_features_faucet_3-v-1-(filьtr+lejka)_353",
-                "type_faucet": "opt_type_faucet_smesitelь_180"
+                "brand": "opt_brand_blanco_",
+                "set_sink": "opt_set_sink_undermount_",
+                "material": "opt_material_artificial_stone_",
+                "min_cab_width": "opt_min_cab_width_800_",
+                "size_inner_sink": "730x460"
             },
             "variants": [
                 {
-                    "external_code": "sku_omoikiri-kanto-bn",
-                    "sku": "omoikiri-kanto-bn",
+                    "external_code": "sku_subline-700-u-antratsit",
+                    "sku": "subline-700-u-antratsit",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://mojki.by/image/cache/webp/catalog/Product/2025/12/23/1zgxj1d4qvjh4smkh46t0bwbsq99n0jd-500x500.webp",
+                    "preview_picture": "https://blanco-russia.com/data/191025/1138197334532060-800x600.jpg",
                     "detail_picture": null,
                     "eav": {
-                        "supplier_article": "4994294",
+                        "supplier_article": "523442",
+                        "color": "opt_color_anthracite_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 72200,
+                    "currency": "RUB",
+                    "price": 93860
+                },
+                {
+                    "external_code": "sku_subline-700-u-temnaya-skala",
+                    "sku": "subline-700-u-temnaya-skala",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/191025/1137391826397746-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "523443",
+                        "color": "opt_color_dark_rock_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 67900,
+                    "currency": "RUB",
+                    "price": 88270
+                },
+                {
+                    "external_code": "sku_subline-700-u-alyumetallik",
+                    "sku": "subline-700-u-alyumetallik",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/191025/1136587752892274-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "523444",
+                        "color": "opt_color_alumetallik_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 58300,
+                    "currency": "RUB",
+                    "price": 75790
+                },
+                {
+                    "external_code": "sku_subline-700-u-belyj",
+                    "sku": "subline-700-u-belyj",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/191025/1136031490125979-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "523446",
+                        "color": "opt_color_belyj_200"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 67900,
+                    "currency": "RUB",
+                    "price": 88270
+                },
+                {
+                    "external_code": "sku_subline-700-u-kofe",
+                    "sku": "subline-700-u-kofe",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/191025/1135156164259366-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "523451",
+                        "color": "opt_color_coffee_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 58300,
+                    "currency": "RUB",
+                    "price": 75790
+                },
+                {
+                    "external_code": "sku_subline-700-u-seryj-bezhevyj",
+                    "sku": "subline-700-u-seryj-bezhevyj",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/191025/1133439853167596-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "523449",
+                        "color": "opt_color_seryj_bezhevyj_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 67900,
+                    "currency": "RUB",
+                    "price": 88270
+                },
+                {
+                    "external_code": "sku_subline-700-u-chernyj",
+                    "sku": "subline-700-u-chernyj",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/200404/1635259286980285-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "526001",
+                        "color": "opt_color_chernyj_992"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 72200,
+                    "currency": "RUB",
+                    "price": 93860
+                }
+            ]
+        },
+        {
+            "external_code": "blanco-zia-5-s",
+            "product_type_external_code": "type_kitchen_sink",
+            "category_external_code": "cat_kitchen-sinks",
+            "catalog_type": "product",
+            "unit_code": "pcs",
+            "slug": "zia-5-s",
+            "name": {
+                "ru": "Zia 5 S"
+            },
+            "preview_picture": null,
+            "detail_picture": null,
+            "eav": {
+                "brand": "opt_brand_blanco_",
+                "set_sink": "opt_set_sink_inset_522",
+                "material": "opt_material_artificial_stone_",
+                "min_cab_width": "opt_min_cab_width_500_",
+                "size_inner_sink": "860x500"
+            },
+            "variants": [
+                {
+                    "external_code": "sku_zia-5-s-antratsit",
+                    "sku": "zia-5-s-antratsit",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": true,
+                    "preview_picture": "https://blanco-russia.com/data/160403/1948346175376103-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "520511",
+                        "color": "opt_color_anthracite_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 60700,
+                    "currency": "RUB",
+                    "price": 78910
+                },
+                {
+                    "external_code": "sku_zia-5-s-kofe",
+                    "sku": "zia-5-s-kofe",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/160403/1951064177390062-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "520519",
+                        "color": "opt_color_coffee_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 60700,
+                    "currency": "RUB",
+                    "price": 78910
+                },
+                {
+                    "external_code": "sku_zia-5-s-belyj",
+                    "sku": "zia-5-s-belyj",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/160403/1952013576591083-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "520515",
+                        "color": "opt_color_belyj_200"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 60700,
+                    "currency": "RUB",
+                    "price": 78910
+                },
+                {
+                    "external_code": "sku_zia-5-s-chernyj",
+                    "sku": "zia-5-s-chernyj",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/200711/2132356920636928-800x600.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "526016",
+                        "color": "opt_color_chernyj_992"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 60500,
+                    "currency": "RUB",
+                    "price": 78650
+                },
+                {
+                    "external_code": "sku_zia-5-s-myagkij-belyj",
+                    "sku": "zia-5-s-myagkij-belyj",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/251106/2220308288610370-800x600.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "527204",
+                        "color": "opt_color_soft_white_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 60700,
+                    "currency": "RUB",
+                    "price": 78910
+                }
+            ]
+        },
+        {
+            "external_code": "blanco-dalago-6",
+            "product_type_external_code": "type_kitchen_sink",
+            "category_external_code": "cat_kitchen-sinks",
+            "catalog_type": "product",
+            "unit_code": "pcs",
+            "slug": "dalago-6",
+            "name": {
+                "ru": "Dalago 6"
+            },
+            "preview_picture": null,
+            "detail_picture": null,
+            "eav": {
+                "brand": "opt_brand_blanco_",
+                "set_sink": "opt_set_sink_inset_522",
+                "material": "opt_material_artificial_stone_",
+                "min_cab_width": "opt_min_cab_width_600_825",
+                "size_inner_sink": "615x510"
+            },
+            "variants": [
+                {
+                    "external_code": "sku_dalago-6-belyj",
+                    "sku": "dalago-6-belyj",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": true,
+                    "preview_picture": "https://blanco-russia.com/data/200129/1145514903698368-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "514199",
+                        "color": "opt_color_belyj_200"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 51000,
+                    "currency": "RUB",
+                    "price": 66300
+                },
+                {
+                    "external_code": "sku_dalago-6-kofe",
+                    "sku": "dalago-6-kofe",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/200129/1144078823075038-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "515066",
+                        "color": "opt_color_coffee_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 58900,
+                    "currency": "RUB",
+                    "price": 76570
+                },
+                {
+                    "external_code": "sku_dalago-6-seryj-bezhevyj",
+                    "sku": "dalago-6-seryj-bezhevyj",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/200129/1143356777084579-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "517320",
+                        "color": "opt_color_seryj_bezhevyj_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 51000,
+                    "currency": "RUB",
+                    "price": 66300
+                },
+                {
+                    "external_code": "sku_dalago-6-antratsit",
+                    "sku": "dalago-6-antratsit",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/200129/1143031824936044-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "514197",
+                        "color": "opt_color_anthracite_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 58900,
+                    "currency": "RUB",
+                    "price": 76570
+                },
+                {
+                    "external_code": "sku_dalago-6-temnaya-skala",
+                    "sku": "dalago-6-temnaya-skala",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/200129/1142293464279510-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "518850",
+                        "color": "opt_color_dark_rock_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 51000,
+                    "currency": "RUB",
+                    "price": 66300
+                },
+                {
+                    "external_code": "sku_dalago-6-chernyj",
+                    "sku": "dalago-6-chernyj",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/200411/1227161939688835-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "525873",
+                        "color": "opt_color_chernyj_992"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 58900,
+                    "currency": "RUB",
+                    "price": 76570
+                }
+            ]
+        },
+        {
+            "external_code": "blanco-legra-8",
+            "product_type_external_code": "type_kitchen_sink",
+            "category_external_code": "cat_kitchen-sinks",
+            "catalog_type": "product",
+            "unit_code": "pcs",
+            "slug": "legra-8",
+            "name": {
+                "ru": "Legra 8"
+            },
+            "preview_picture": null,
+            "detail_picture": null,
+            "eav": {
+                "brand": "opt_brand_blanco_",
+                "set_sink": "opt_set_sink_inset_522",
+                "material": "opt_material_artificial_stone_",
+                "min_cab_width": "opt_min_cab_width_800_",
+                "size_inner_sink": "780x500"
+            },
+            "variants": [
+                {
+                    "external_code": "sku_legra-8-kofe",
+                    "sku": "legra-8-kofe",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": true,
+                    "preview_picture": "https://blanco-russia.com/data/210203/1305115263126547-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "526229",
+                        "color": "opt_color_coffee_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 63500,
+                    "currency": "RUB",
+                    "price": 82550
+                },
+                {
+                    "external_code": "sku_legra-8-antratsit",
+                    "sku": "legra-8-antratsit",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/210203/1309035760529454-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "526224",
+                        "color": "opt_color_anthracite_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 63500,
+                    "currency": "RUB",
+                    "price": 82550
+                },
+                {
+                    "external_code": "sku_legra-8-belyj",
+                    "sku": "legra-8-belyj",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/210203/1309332337875101-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "526226",
+                        "color": "opt_color_belyj_200"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 63500,
+                    "currency": "RUB",
+                    "price": 82550
+                },
+                {
+                    "external_code": "sku_legra-8-chernyj",
+                    "sku": "legra-8-chernyj",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/210203/1314108609161581-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "526223",
+                        "color": "opt_color_chernyj_992"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 63500,
+                    "currency": "RUB",
+                    "price": 82550
+                }
+            ]
+        },
+        {
+            "external_code": "blanco-claron-550-u",
+            "product_type_external_code": "type_kitchen_sink",
+            "category_external_code": "cat_kitchen-sinks",
+            "catalog_type": "product",
+            "unit_code": "pcs",
+            "slug": "claron-550-u",
+            "name": {
+                "ru": "Claron 550-U"
+            },
+            "preview_picture": null,
+            "detail_picture": null,
+            "eav": {
+                "brand": "opt_brand_blanco_",
+                "set_sink": "opt_set_sink_inset_522",
+                "material": "opt_material_nerzhaveyushchaya-stalь_732",
+                "steel_thickness_sink": "opt_steel_thickness_sink_1,1-mm_",
+                "min_cab_width": "opt_min_cab_width_600_825",
+                "size_inner_sink": "590x440"
+            },
+            "variants": [
+                {
+                    "external_code": "sku_claron-550-u-nerzhaveyushchaya-stalь",
+                    "sku": "claron-550-u-nerzhaveyushchaya-stalь",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": true,
+                    "preview_picture": "https://blanco-russia.com/data/180129/1930124015471675.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "521579",
                         "color": "opt_color_nerzhaveyushchaya-stalь-(bn)_704"
                     },
                     "is_manual_pricing": true,
-                    "cost_price": 320,
-                    "currency": "USD",
-                    "price": 416
+                    "cost_price": 111000,
+                    "currency": "RUB",
+                    "price": 144300
                 }
             ]
         },
         {
-            "external_code": "prod_omoikiri-nagano",
-            "product_type_external_code": "type_faucet",
-            "category_external_code": "cat_faucets",
+            "external_code": "blanco-claron-700-u",
+            "product_type_external_code": "type_kitchen_sink",
+            "category_external_code": "cat_kitchen-sinks",
             "catalog_type": "product",
             "unit_code": "pcs",
-            "slug": "omoikiri-nagano",
+            "slug": "claron-700-u",
             "name": {
-                "ru": "Смеситель Omoikiri Nagano"
+                "ru": "Claron 700-U"
             },
             "preview_picture": null,
             "detail_picture": null,
             "eav": {
-                "brand": "opt_brand_omoikiri_143",
-                "features_faucet": "opt_features_faucet_2-v-1-(s-filьtrom)_50",
+                "brand": "opt_brand_blanco_",
+                "set_sink": "opt_set_sink_undermount_",
+                "material": "opt_material_nerzhaveyushchaya-stalь_732",
+                "steel_thickness_sink": "opt_steel_thickness_sink_1,1-mm_",
+                "min_cab_width": "opt_min_cab_width_800_",
+                "size_inner_sink": "700x400"
+            },
+            "variants": [
+                {
+                    "external_code": "sku_claron-700-u-nerzhaveyushchaya-stalь",
+                    "sku": "claron-700-u-nerzhaveyushchaya-stalь",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": true,
+                    "preview_picture": "https://blanco-russia.com/data/190822/2125332965291688.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "521581",
+                        "color": "opt_color_nerzhaveyushchaya-stalь-(bn)_704"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 118000,
+                    "currency": "RUB",
+                    "price": 153400
+                }
+            ]
+        },
+        {
+            "external_code": "blanco-claron-400-u",
+            "product_type_external_code": "type_kitchen_sink",
+            "category_external_code": "cat_kitchen-sinks",
+            "catalog_type": "product",
+            "unit_code": "pcs",
+            "slug": "claron-400-u",
+            "name": {
+                "ru": "Claron 400-U"
+            },
+            "preview_picture": null,
+            "detail_picture": null,
+            "eav": {
+                "brand": "opt_brand_blanco_",
+                "set_sink": "opt_set_sink_undermount_",
+                "material": "opt_material_nerzhaveyushchaya-stalь_732",
+                "steel_thickness_sink": "opt_steel_thickness_sink_1,1-mm_",
+                "min_cab_width": "opt_min_cab_width_450_251",
+                "size_inner_sink": "440x440"
+            },
+            "variants": [
+                {
+                    "external_code": "sku_claron-400-u-nerzhaveyushchaya-stalь",
+                    "sku": "claron-400-u-nerzhaveyushchaya-stalь",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": true,
+                    "preview_picture": "https://blanco-russia.com/data/180125/2143256989841722.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "521573",
+                        "color": "opt_color_nerzhaveyushchaya-stalь-(bn)_704"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 106000,
+                    "currency": "RUB",
+                    "price": 137800
+                }
+            ]
+        },
+        {
+            "external_code": "blanco-andano-340-u",
+            "product_type_external_code": "type_kitchen_sink",
+            "category_external_code": "cat_kitchen-sinks",
+            "catalog_type": "product",
+            "unit_code": "pcs",
+            "slug": "andano-340-u",
+            "name": {
+                "ru": "Andano 340-U"
+            },
+            "preview_picture": null,
+            "detail_picture": null,
+            "eav": {
+                "brand": "opt_brand_blanco_",
+                "set_sink": "opt_set_sink_undermount_",
+                "material": "opt_material_nerzhaveyushchaya-stalь_732",
+                "steel_thickness_sink": "opt_steel_thickness_sink_0,9-mm_",
+                "min_cab_width": "opt_min_cab_width_400_",
+                "size_inner_sink": "380x440"
+            },
+            "variants": [
+                {
+                    "external_code": "sku_andano-340-u-nerzhaveyushchaya-stalь",
+                    "sku": "andano-340-u-nerzhaveyushchaya-stalь",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": true,
+                    "preview_picture": "https://blanco-russia.com/data/180207/1907256724741343.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "522955",
+                        "color": "opt_color_nerzhaveyushchaya-stalь-(bn)_704"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 58100,
+                    "currency": "RUB",
+                    "price": 75530
+                }
+            ]
+        },
+        {
+            "external_code": "blanco-andano-450-u",
+            "product_type_external_code": "type_kitchen_sink",
+            "category_external_code": "cat_kitchen-sinks",
+            "catalog_type": "product",
+            "unit_code": "pcs",
+            "slug": "andano-450-u",
+            "name": {
+                "ru": "Andano 450-U"
+            },
+            "preview_picture": null,
+            "detail_picture": null,
+            "eav": {
+                "brand": "opt_brand_blanco_",
+                "set_sink": "opt_set_sink_undermount_",
+                "material": "opt_material_nerzhaveyushchaya-stalь_732",
+                "steel_thickness_sink": "opt_steel_thickness_sink_0,9-mm_",
+                "min_cab_width": "opt_min_cab_width_500_",
+                "size_inner_sink": "490x440"
+            },
+            "variants": [
+                {
+                    "external_code": "sku_andano-450-u-nerzhaveyushchaya-stalь",
+                    "sku": "andano-450-u-nerzhaveyushchaya-stalь",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": true,
+                    "preview_picture": "https://blanco-russia.com/data/190215/2210485208239045.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "522963",
+                        "color": "opt_color_nerzhaveyushchaya-stalь-(bn)_704"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 56100,
+                    "currency": "RUB",
+                    "price": 72930
+                }
+            ]
+        },
+        {
+            "external_code": "blanco-andano-500-u",
+            "product_type_external_code": "type_kitchen_sink",
+            "category_external_code": "cat_kitchen-sinks",
+            "catalog_type": "product",
+            "unit_code": "pcs",
+            "slug": "andano-500-u",
+            "name": {
+                "ru": "Andano 500-U"
+            },
+            "preview_picture": null,
+            "detail_picture": null,
+            "eav": {
+                "brand": "opt_brand_blanco_",
+                "set_sink": "opt_set_sink_undermount_",
+                "material": "opt_material_nerzhaveyushchaya-stalь_732",
+                "steel_thickness_sink": "opt_steel_thickness_sink_0,9-mm_",
+                "min_cab_width": "opt_min_cab_width_600_825",
+                "size_inner_sink": "540x440"
+            },
+            "variants": [
+                {
+                    "external_code": "sku_andano-500-u-nerzhaveyushchaya-stalь",
+                    "sku": "andano-500-u-nerzhaveyushchaya-stalь",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": true,
+                    "preview_picture": "https://blanco-russia.com/data/190215/2232436575066150.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "522967",
+                        "color": "opt_color_nerzhaveyushchaya-stalь-(bn)_704"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 56900,
+                    "currency": "RUB",
+                    "price": 73970
+                }
+            ]
+        },
+        {
+            "external_code": "blanco-linus",
+            "product_type_external_code": "type_faucet",
+            "category_external_code": "cat_faucets",
+            "catalog_type": "product",
+            "unit_code": "pcs",
+            "slug": "linus",
+            "name": {
+                "ru": "Linus"
+            },
+            "preview_picture": null,
+            "detail_picture": null,
+            "eav": {
+                "brand": "opt_brand_blanco_",
+                "material": "opt_material_brass_",
                 "type_faucet": "opt_type_faucet_smesitelь_180"
             },
             "variants": [
                 {
-                    "external_code": "sku_omoikiri-nagano-gold",
-                    "sku": "omoikiri-nagano-gold",
+                    "external_code": "sku_linus-khrom",
+                    "sku": "linus-khrom",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,
-                    "preview_picture": "https://img.santehnica.ru/files/images/resized/products/1/6/1674630-167463.1200x1200.jpg",
+                    "preview_picture": "https://blanco-russia.com/data/190319/2222249086578601-800x600.png",
                     "detail_picture": null,
                     "eav": {
-                        "supplier_article": "4994222",
-                        "color": "opt_color_zoloto-(pvd)_70"
+                        "supplier_article": "514019",
+                        "color": "opt_color_chromium_"
                     },
                     "is_manual_pricing": true,
-                    "cost_price": 220,
-                    "currency": "USD",
-                    "price": 286
+                    "cost_price": 53000,
+                    "currency": "RUB",
+                    "price": 68900
+                },
+                {
+                    "external_code": "sku_linus-nerzhaveyushchaya-stalь",
+                    "sku": "linus-nerzhaveyushchaya-stalь",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/190319/2224421562211284-800x600.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "517183",
+                        "color": "opt_color_nerzhaveyushchaya-stalь-(bn)_704"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 82400,
+                    "currency": "RUB",
+                    "price": 107120
+                },
+                {
+                    "external_code": "sku_linus-satin-zoloto",
+                    "sku": "linus-satin-zoloto",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/230715/1246407789860305-800x600.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "526683",
+                        "color": "opt_color_gold_satin_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 66600,
+                    "currency": "RUB",
+                    "price": 86580
+                },
+                {
+                    "external_code": "sku_linus-stalь",
+                    "sku": "linus-stalь",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/230723/1832079442481997-800x600.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "526241",
+                        "color": "opt_color_steel_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 58100,
+                    "currency": "RUB",
+                    "price": 75530
+                },
+                {
+                    "external_code": "sku_linus-satin-temnaya-stalь",
+                    "sku": "linus-satin-temnaya-stalь",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/241226/2216184263818818-800x600.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "527732",
+                        "color": "opt_color_dark_steel_satin_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 72700,
+                    "currency": "RUB",
+                    "price": 94510
+                },
+                {
+                    "external_code": "sku_linus-satin-platina",
+                    "sku": "linus-satin-platina",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/241226/2221256689220014-800x600.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "527698",
+                        "color": "opt_color_platinum_satin_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 72700,
+                    "currency": "RUB",
+                    "price": 94510
+                }
+            ]
+        },
+        {
+            "external_code": "blanco-catris-s-flexo-filter",
+            "product_type_external_code": "type_faucet",
+            "category_external_code": "cat_faucets",
+            "catalog_type": "product",
+            "unit_code": "pcs",
+            "slug": "catris-s-flexo-filter",
+            "name": {
+                "ru": "Catris-S Flexo Filter"
+            },
+            "preview_picture": null,
+            "detail_picture": null,
+            "eav": {
+                "brand": "opt_brand_blanco_",
+                "material": "opt_material_brass_",
+                "type_faucet": "opt_type_faucet_smesitelь_180"
+            },
+            "variants": [
+                {
+                    "external_code": "sku_catris-s-flexo-filter-nerzhaveyushchaya-stalь",
+                    "sku": "catris-s-flexo-filter-nerzhaveyushchaya-stalь",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": true,
+                    "preview_picture": "https://blanco-russia.com/data/230715/1351583562368805-800x600.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "526706",
+                        "color": "opt_color_nerzhaveyushchaya-stalь-(bn)_704"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 88200,
+                    "currency": "RUB",
+                    "price": 114660
+                },
+                {
+                    "external_code": "sku_catris-s-flexo-filter-chernyj",
+                    "sku": "catris-s-flexo-filter-chernyj",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/230715/1358333017469991-800x600.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "526707",
+                        "color": "opt_color_chernyj_992"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 88200,
+                    "currency": "RUB",
+                    "price": 114660
+                },
+                {
+                    "external_code": "sku_catris-s-flexo-filter-khrom",
+                    "sku": "catris-s-flexo-filter-khrom",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/230715/1359112876184258-800x600.png",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "526705",
+                        "color": "opt_color_chromium_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 68700,
+                    "currency": "RUB",
+                    "price": 89310
+                }
+            ]
+        },
+        {
+            "external_code": "blanco-trima-silgranit",
+            "product_type_external_code": "type_faucet",
+            "category_external_code": "cat_faucets",
+            "catalog_type": "product",
+            "unit_code": "pcs",
+            "slug": "trima-silgranit",
+            "name": {
+                "ru": "Trima Silgranit"
+            },
+            "preview_picture": null,
+            "detail_picture": null,
+            "eav": {
+                "brand": "opt_brand_blanco_",
+                "material": "opt_material_brass_",
+                "type_faucet": "opt_type_faucet_smesitelь_180"
+            },
+            "variants": [
+                {
+                    "external_code": "sku_trima-silgranit-kofe",
+                    "sku": "trima-silgranit-kofe",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": true,
+                    "preview_picture": "https://blanco-russia.com/data/201021/2208422294466937-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "526269",
+                        "color": "opt_color_coffee_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 41800,
+                    "currency": "RUB",
+                    "price": 54340
+                },
+                {
+                    "external_code": "sku_trima-silgranit-seryj-bezhevyj",
+                    "sku": "trima-silgranit-seryj-bezhevyj",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/201021/2208101462720667-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "526270",
+                        "color": "opt_color_seryj_bezhevyj_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 51600,
+                    "currency": "RUB",
+                    "price": 67080
+                },
+                {
+                    "external_code": "sku_trima-silgranit-belyj",
+                    "sku": "trima-silgranit-belyj",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/201021/2206259800976180-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "526268",
+                        "color": "opt_color_belyj_200"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 41800,
+                    "currency": "RUB",
+                    "price": 54340
+                },
+                {
+                    "external_code": "sku_trima-silgranit-alyumetallik",
+                    "sku": "trima-silgranit-alyumetallik",
+                    "name": null,
+                    "price_group_external_code": null,
+                    "stock": 10,
+                    "is_default": false,
+                    "preview_picture": "https://blanco-russia.com/data/201021/2205164484895668-800x600.jpg",
+                    "detail_picture": null,
+                    "eav": {
+                        "supplier_article": "526265",
+                        "color": "opt_color_alumetallik_"
+                    },
+                    "is_manual_pricing": true,
+                    "cost_price": 41800,
+                    "currency": "RUB",
+                    "price": 54340
                 }
             ]
         },
@@ -12176,6 +13819,7 @@
                 {
                     "external_code": "sku_omoikiri-om-02-bn",
                     "sku": "omoikiri-om-02-bn",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,
@@ -12183,7 +13827,7 @@
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "4995003",
-                        "color": "opt_color_nerzhaveyushchaya-stalь-(bn)_704"
+                        "color": "opt_color_nerzhaveyushchaya-stalь-(bn)_71"
                     },
                     "is_manual_pricing": true,
                     "cost_price": 50,
@@ -12212,6 +13856,7 @@
                 {
                     "external_code": "sku_omoikiri-om-01-gold",
                     "sku": "omoikiri-om-01-gold",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,
@@ -12219,7 +13864,7 @@
                     "detail_picture": null,
                     "eav": {
                         "supplier_article": "4995015",
-                        "color": "opt_color_zoloto-(pvd)_70"
+                        "color": "opt_color_zoloto-(pvd)_647"
                     },
                     "is_manual_pricing": true,
                     "cost_price": 40,
@@ -12242,7 +13887,7 @@
             "detail_picture": null,
             "eav": {
                 "brand": "opt_brand_omoikiri_143",
-                "set_sink": "opt_set_sink_nadstolьnyj_150",
+                "set_sink": "opt_set_sink_nadstolьnyj_635",
                 "material": "opt_material_keramika_933",
                 "size_inner_sink": "410x410"
             },
@@ -12250,6 +13895,7 @@
                 {
                     "external_code": "sku_omoikiri-hitomi-41-wh",
                     "sku": "omoikiri-hitomi-41-wh",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,
@@ -12280,7 +13926,7 @@
             "detail_picture": null,
             "eav": {
                 "brand": "opt_brand_omoikiri_143",
-                "set_sink": "opt_set_sink_nadstolьnyj_150",
+                "set_sink": "opt_set_sink_nadstolьnyj_635",
                 "material": "opt_material_keramika_933",
                 "size_inner_sink": "405x405"
             },
@@ -12288,6 +13934,7 @@
                 {
                     "external_code": "sku_omoikiri-akira-41-bl",
                     "sku": "omoikiri-akira-41-bl",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,
@@ -12321,6 +13968,7 @@
                 {
                     "external_code": "sku_rounded-on-1-side-def",
                     "sku": "rounded-on-1-side-def",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 100,
                     "is_default": true,
@@ -12351,6 +13999,7 @@
                 {
                     "external_code": "sku_rounded-on-2-sides-def",
                     "sku": "rounded-on-2-sides-def",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 100,
                     "is_default": true,
@@ -12381,6 +14030,7 @@
                 {
                     "external_code": "sku_under-45-degrees-def",
                     "sku": "under-45-degrees-def",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 100,
                     "is_default": true,
@@ -12411,6 +14061,7 @@
                 {
                     "external_code": "sku_rectangular-def",
                     "sku": "rectangular-def",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 100,
                     "is_default": true,
@@ -12441,6 +14092,7 @@
                 {
                     "external_code": "sku_shaped1-def",
                     "sku": "shaped1-def",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 100,
                     "is_default": true,
@@ -12471,6 +14123,7 @@
                 {
                     "external_code": "sku_shaped2-def",
                     "sku": "shaped2-def",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 100,
                     "is_default": true,
@@ -12501,6 +14154,7 @@
                 {
                     "external_code": "sku_shaped3-def",
                     "sku": "shaped3-def",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 100,
                     "is_default": true,
@@ -12531,6 +14185,7 @@
                 {
                     "external_code": "sku_shaped4-def",
                     "sku": "shaped4-def",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 100,
                     "is_default": true,
@@ -12561,6 +14216,7 @@
                 {
                     "external_code": "sku_without-a-skirting-def",
                     "sku": "without-a-skirting-def",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,
@@ -12591,6 +14247,7 @@
                 {
                     "external_code": "sku_straight-skirting-def",
                     "sku": "straight-skirting-def",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,
@@ -12621,6 +14278,7 @@
                 {
                     "external_code": "sku_smooth-skirting-def",
                     "sku": "smooth-skirting-def",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,
@@ -12651,6 +14309,7 @@
                 {
                     "external_code": "sku_galtelny-skirting-def",
                     "sku": "galtelny-skirting-def",
+                    "name": null,
                     "price_group_external_code": null,
                     "stock": 10,
                     "is_default": true,

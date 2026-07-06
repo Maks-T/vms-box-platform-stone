@@ -53,7 +53,8 @@ export default function CalculatorShow({assets, initialData, currentType}: Props
 
         const fullConfig = {
           ...initialData,
-          user: auth?.user ?? null,
+          user: auth?.client ?? null,
+          employee: auth?.employee ?? null,
           type: currentType,
         };
 

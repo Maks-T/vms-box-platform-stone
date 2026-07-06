@@ -174,4 +174,40 @@ class OrderController extends Controller
     });
   }
 
+  /**
+   * Получить данные заказа по коду
+   *
+   * @param string $code
+   * @return JsonResponse
+   */
+  public function get(string $code): JsonResponse
+  {
+
+    $order = Order::with('customer')->where('code', $code)->firstOrFail();
+
+    return response()->json([
+      'status' => true,
+      'data' => [
+        'id' => $order->id,
+        'code' => $order->code,
+        'grand_total' => $order->grand_total,
+        'currency' => $order->currency,
+        'locale' => $order->locale,
+        'calc_state' => $order->calc_state,
+        'customer' => $order->customer ? [
+          'id' => $order->customer->id,
+          'first_name' => $order->customer->first_name,
+          'last_name' => $order->customer->last_name,
+          'middle_name' => $order->customer->middle_name,
+          'phone' => $order->customer->phone,
+          'phone_normalized' => $order->customer->phone_normalized,
+          'email' => $order->customer->email,
+          'address' => $order->customer->address,
+        ] : null,
+        'created_at' => $order->created_at->toIso8601String(),
+        'updated_at' => $order->updated_at->toIso8601String(),
+      ]
+    ]);
+  }
+
 }

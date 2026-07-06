@@ -21,7 +21,7 @@ class CalculatorController
    */
   public function show(Request $request, ?string $type = null): Response
   {
-    $widgetSlug = 'cpq-stone';
+    $widgetSlug = config('nicole.active_widget', 'widget');
 
     $assets = WidgetAssetHelper::getAssets($widgetSlug);
 

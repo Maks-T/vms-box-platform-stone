@@ -90,10 +90,10 @@ class AdminPanelProvider extends PanelProvider
         ValerieStonePlugin::make(),
 
         SpatieTranslatablePlugin::make()
-          ->defaultLocales(['ru', 'en']),
+          ->defaultLocales(config('nicole.locales', ['ru', 'en'])),
 
         TranslatableFieldsPlugin::make()
-          ->supportedLocales(['ru', 'en']),
+          ->supportedLocales(config('nicole.locales', ['ru', 'en'])),
 
         FilamentShieldPlugin::make()->navigationGroup('Контроль доступа'),
       ]);

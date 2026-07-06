@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Head, usePage} from '@inertiajs/react';
+import {Head} from '@inertiajs/react';
 import {Loader2} from 'lucide-react';
 import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/shared/components/layouts/SectionLayout';
@@ -12,9 +12,13 @@ interface Props {
   initialData: {
     apiUrl: string;
     assetsUrl: string;
+    baseUrl: string;
     policyLink?: string;
     ofertaLink?: string;
     state: any;
+    user: any;
+    employee: any;
+    type: string | null;
   };
   currentType: string | null;
 }
@@ -26,9 +30,7 @@ declare global {
 }
 
 export default function CalculatorShow({assets, initialData, currentType}: Props) {
-  const {auth} = usePage().props as any;
   const [isWidgetReady, setIsWidgetReady] = useState(false);
-
   const unmountFnRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
@@ -51,13 +53,10 @@ export default function CalculatorShow({assets, initialData, currentType}: Props
           container.innerHTML = '';
         }
 
-        const fullConfig = {
-          ...initialData,
-          user: auth?.user ?? null,
-          type: currentType,
-        };
+        console.log('initialData to widget', initialData);
 
-        unmountFnRef.current = window.initCalculator('calcAppRoot', fullConfig);
+        // Просто передаем весь объект initialData из контроллера без маппинга
+        unmountFnRef.current = window.initCalculator('calcAppRoot', initialData);
         setIsWidgetReady(true);
       }
     };
@@ -89,7 +88,7 @@ export default function CalculatorShow({assets, initialData, currentType}: Props
         unmountFnRef.current = null;
       }
     };
-  }, [assets, initialData, currentType, auth?.user]);
+  }, [assets, initialData]);
 
   return (
     <MainLayout headerOverlaps={false}>

@@ -14,6 +14,9 @@ Route::get('/{family}/products', [ProductController::class, 'index']);
 // Сохранение заказа
 Route::post('/order/save', [OrderController::class, 'save']);
 
+// Получение заказа по коду
+Route::get('/orders/{code}', [OrderController::class, 'get']);
+
 // Работа с PDF/HTML
 Route::get('/orders/{code}/pdf', [PdfExportController::class, 'streamPdf']);
 Route::get('/orders/{code}/html', [PdfExportController::class, 'viewHtml']);

@@ -12,7 +12,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Nicole\\Box\\Core\\NicoleCoreServiceProvider"
+        "Nicole\\Box\\Core\\Providers\\NicoleCoreServiceProvider"
       ]
     }
   },

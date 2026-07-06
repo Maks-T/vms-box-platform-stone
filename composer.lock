@@ -4840,11 +4840,11 @@
         },
         {
             "name": "nicole/box-core",
-            "version": "dev-feature/optimize",
+            "version": "dev-feature/price-groups",
             "dist": {
                 "type": "path",
                 "url": "packages/box/nicole/core",
-                "reference": "578ed4a740694510c8f66e3a6626fbb61e5ed7b5"
+                "reference": "e3976e4e0b57a0236adf40c6f975df4a62e9e3a4"
             },
             "require": {
                 "laravel/framework": "^13.0",
@@ -4854,7 +4854,7 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Nicole\\Box\\Core\\NicoleCoreServiceProvider"
+                        "Nicole\\Box\\Core\\Providers\\NicoleCoreServiceProvider"
                     ]
                 }
             },
@@ -10095,7 +10095,7 @@
         },
         {
             "name": "valerie/box-industry-stone",
-            "version": "dev-feature/optimize",
+            "version": "dev-feature/price-groups",
             "dist": {
                 "type": "path",
                 "url": "packages/box/valerie/industry-stone",

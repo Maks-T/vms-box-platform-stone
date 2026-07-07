@@ -15,44 +15,61 @@ use Illuminate\Database\Eloquent\Model;
 use Nicole\Box\Core\Filament\Resources\ProductVariants\ProductVariantResource;
 use Nicole\Box\Core\Filament\Resources\ProductVariants\Schemas\ProductVariantForm;
 use Nicole\Box\Core\Filament\Resources\ProductVariants\Tables\ProductVariantsTable;
+use Nicole\Box\Core\Filament\Concerns\HasDynamicEavFields;
 
 class VariantsRelationManager extends RelationManager
 {
-    protected static string $relationship = 'variants';
 
-    public static function getTitle(Model $ownerRecord, string $pageClass): string
-    {
-        return __('Product Variants');
-    }
+  use HasDynamicEavFields;
 
-    public function form(Schema $schema): Schema
-    {
-        return ProductVariantForm::configure($schema);
-    }
+  protected static string $relationship = 'variants';
 
-    public function table(Table $table): Table
-    {
-        return ProductVariantsTable::configure($table)
-          // Настраиваем действия для каждой строки таблицы
-          ->recordActions([
-            EditAction::make()
-              ->slideOver()->modalWidth(Width::SevenExtraLarge),
+  public static function getTitle(Model $ownerRecord, string $pageClass): string
+  {
+    return __('Product Variants');
+  }
 
-            Action::make('go_to_variant')
-              ->label(__('Full Edit'))
-              ->icon('heroicon-o-arrow-top-right-on-square')
-              ->url(
-                fn (Model $record): string => ProductVariantResource::getUrl(
-                  'edit',
-                  ['record' => $record],
-                ),
-              )
-              ->openUrlInNewTab(),
-          ])
-          ->headerActions([
-            CreateAction::make()
-            ->slideOver()->modalWidth(Width::SevenExtraLarge),
-          ]);
+  public function form(Schema $schema): Schema
+  {
+    return ProductVariantForm::configure($schema);
+  }
 
-    }
+  public function table(Table $table): Table
+  {
+    return ProductVariantsTable::configure($table)
+
+      ->recordActions([
+        EditAction::make()
+          ->slideOver()
+          ->modalWidth(Width::SevenExtraLarge)
+
+          ->mutateRecordDataUsing(function (Model $record, array $data): array {
+            $this->loadEavData($record, $data);
+            return $data;
+          })
+
+          ->after(function (Model $record, array $data) {
+            $this->saveEavData($record, $data['eav'] ?? []);
+          }),
+
+        Action::make('go_to_variant')
+          ->label(__('Full Edit'))
+          ->icon('heroicon-o-arrow-top-right-on-square')
+          ->url(
+            fn (Model $record): string => ProductVariantResource::getUrl(
+              'edit',
+              ['record' => $record],
+            ),
+          )
+          ->openUrlInNewTab(),
+      ])
+      ->headerActions([
+        CreateAction::make()
+          ->slideOver()
+          ->modalWidth(Width::SevenExtraLarge)
+          ->after(function (Model $record, array $data) {
+            $this->saveEavData($record, $data['eav'] ?? []);
+          }),
+      ]);
+  }
 }

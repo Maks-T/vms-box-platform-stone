@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Nicole\Box\Core\Filament\Concerns;
 
-use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -24,9 +23,9 @@ trait HasDynamicEavFields
   ): array {
     if (! $productTypeId) {
       return [
-        Placeholder::make('hint')
+        TextEntry::make('hint')
           ->hiddenLabel()
-          ->content(
+          ->state(
             __('Please select a type to view technical specifications.'),
           ),
       ];
@@ -66,7 +65,7 @@ trait HasDynamicEavFields
           ->options($attribute->options->pluck('value', 'id'))
           ->searchable()
           ->preload()
-          
+
           ->multiple((bool) $attribute->is_multiple),
 
         Attribute::TYPE_COMPLEX => Select::make("eav.{$attribute->id}")
@@ -81,7 +80,7 @@ trait HasDynamicEavFields
           )
           ->searchable()
           ->preload()
-          
+
           ->multiple((bool) $attribute->is_multiple),
 
         default => TextInput::make("eav.{$attribute->id}"),
@@ -103,7 +102,9 @@ trait HasDynamicEavFields
         'default' => 1,
         'md' => 2,
         'lg' => 3,
-      ])->schema($fields),
+      ])
+        ->schema($fields)
+        ->columnSpanFull(),
     ];
   }
 
@@ -113,7 +114,6 @@ trait HasDynamicEavFields
       ->where('attributable_type', $record->getMorphClass())
       ->get();
 
-    
     $attributeIds = $values->pluck('attribute_id')->unique();
     $attributes = Attribute::whereIn('id', $attributeIds)->get()->keyBy('id');
 
@@ -130,7 +130,7 @@ trait HasDynamicEavFields
         ($val->value_complex_id ??
           ($val->value_numeric ?? ($val->value_boolean ?? $val->value_string)));
 
-      
+
       if ($attr->is_multiple) {
         if (!isset($data['eav'][$val->attribute_id])) {
           $data['eav'][$val->attribute_id] = [];
@@ -161,22 +161,22 @@ trait HasDynamicEavFields
       $isComplex = $attribute->type === Attribute::TYPE_COMPLEX;
       $isOption = $attribute->type === Attribute::TYPE_DICTIONARY;
 
-      
+
       ProductAttributeValue::where([
         'attribute_id' => $attributeId,
         'attributable_id' => $record->id,
         'attributable_type' => $record->getMorphClass(),
       ])->delete();
 
-      
+
       if ($value === null || $value === '' || $value === []) {
         continue;
       }
 
-      
+
       $valuesToSave = is_array($value) ? $value : [$value];
 
-      
+
       foreach ($valuesToSave as $singleValue) {
         ProductAttributeValue::create([
           'attribute_id' => $attributeId,
@@ -189,6 +189,7 @@ trait HasDynamicEavFields
           'value_complex_id' => $isComplex ? (int) $singleValue : null,
         ]);
       }
+
     }
   }
 }

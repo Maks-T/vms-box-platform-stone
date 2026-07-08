@@ -31,7 +31,7 @@ class BootstrapController extends Controller
     $baseCurrency = $pricingManager->baseCurrency;
 
     // Сбор активных типов цен для текущего канала через PricingManager
-    $priceTypes = $pricingManager->channelPriceTypes->map(function ($type) {
+    $priceTypes = $pricingManager->channelPriceTypes->map(function ($type) use ($locale) {
       return [
         /**
          * Системный идентификатор типа цены (напр., retail).
@@ -42,23 +42,41 @@ class BootstrapController extends Controller
          * Название типа цены.
          * @var string
          */
-        'name' => (string) $type->name,
+        'name' => (string)$type->name,
         /**
          * Описание типа цены.
          * @var string|null
          */
-        'description' => $type->description ? (string) $type->description : null,
+        'description' => $type->description ? (string)$type->description : null,
         /**
          * Является ли тип цены основным (дефолтным) в системе.
          * @var bool
          */
-        'is_default' => (bool) $type->is_default,
+        'is_default' => (bool)$type->is_default,
         /**
          * Валюта типа цены.
          */
         'currency' => $type->currency ? [
+          /**
+           * Международный трехбуквенный ISO-код валюты.
+           * @var string
+           * @example "RUB"
+           */
           'code' => $type->currency->code,
+
+          /**
+           * Графический или укороченный символ валюты для компактного UI.
+           * @var string
+           * @example "₽"
+           */
           'symbol' => $type->currency->symbol,
+
+          /**
+           * Официальный нативный символ или сокращение валюты для печатных форм и смет.
+           * @var string
+           * @example "руб."
+           */
+          'symbol_native' => $type->currency->getTranslation('symbol_native', $locale) ?? $type->currency->symbol,
         ] : null,
       ];
     })->values();
@@ -138,11 +156,17 @@ class BootstrapController extends Controller
            * @example "₽"
            */
           'symbol' => $baseCurrency->symbol,
+          /**
+           * Официальный нативный символ или сокращение валюты для печатных форм и смет.
+           * @var string
+           * @example "руб."
+           */
+          'symbol_native' => $baseCurrency->getTranslation('symbol_native', $locale) ?? $baseCurrency->symbol,
         ],
 
         /**
          * Доступные типы цен в этом канале продаж.
-         * @var array<int, array{slug: string, name: string, description: string|null, is_default: bool, currency: array{code: string, symbol: string}|null}>
+         * @var array<int, array{slug: string, name: string, description: string|null, is_default: bool, currency: array{code: string, symbol: string, symbol_native: string}|null}>
          */
         'price_types' => $priceTypes,
 

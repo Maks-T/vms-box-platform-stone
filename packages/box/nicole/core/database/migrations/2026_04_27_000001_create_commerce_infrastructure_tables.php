@@ -12,12 +12,12 @@ return new class extends Migration {
     Schema::create('units', function (Blueprint $table) {
       $table->id();
       $table->string('external_code')->nullable()->index();
-      $table->string('slug')->unique(); 
-      $table->string('code')->nullable()->index(); 
+      $table->string('slug')->unique();
+      $table->string('code')->nullable()->index();
       $table->jsonb('name');
       $table->jsonb('symbol')->nullable();
 
-      $table->integer('sort_order')->default(0); 
+      $table->integer('sort_order')->default(0);
 
       $table->settings();
       $table->timestamps();
@@ -26,14 +26,14 @@ return new class extends Migration {
     Schema::create('currencies', function (Blueprint $table) {
       $table->id();
       $table->string('external_code')->nullable()->index();
-      $table->string('code', 3)->unique(); 
+      $table->string('code', 3)->unique();
       $table->jsonb('name');
       $table->string('symbol', 10);
-
+      $table->jsonb('symbol_native')->nullable();
       $table->decimal('rate', 15, 4)->default(1.0000);
       $table->boolean('is_default')->default(false);
 
-      $table->integer('sort_order')->default(0); 
+      $table->integer('sort_order')->default(0);
 
       $table->boolean('is_active')->default(true);
       $table->settings();
@@ -49,7 +49,7 @@ return new class extends Migration {
       $table->boolean('is_default')->default(false);
       $table->foreignId('currency_id')->nullable()->constrained('currencies')->nullOnDelete();
 
-      $table->integer('sort_order')->default(0); 
+      $table->integer('sort_order')->default(0);
 
       $table->settings();
       $table->timestamps();

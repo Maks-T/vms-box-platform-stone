@@ -26,13 +26,14 @@ class Currency extends Model
     'code',
     'name',
     'symbol',
+    'symbol_native',
     'rate',
     'is_default',
     'is_active',
     'sort_order',
   ];
 
-  public array $translatable = ['name'];
+  public array $translatable = ['name', 'symbol_native'];
 
   protected function casts(): array
   {
@@ -49,7 +50,7 @@ class Currency extends Model
       Cache::forget(CacheKey::CURRENCIES_LIST->value);
       Cache::forget(CacheKey::BASE_CURRENCY->value);
 
-      
+
       if ($currency->is_default && (float)$currency->rate !== 1.0) {
         $currency->updateQuietly(['rate' => 1.0]);
       }

@@ -22,11 +22,14 @@ class CurrenciesTable
         TextColumn::make('name')->label(__('Name'))->searchable()->sortable(),
         TextColumn::make('code')->label(__('Code'))->searchable()->badge(),
 
-
         TextColumn::make('rate')->label(__('Rate'))->numeric(4)->sortable(),
 
         IconColumn::make('is_default')->label(__('Base'))->boolean(),
         TextColumn::make('symbol')->label(__('Symbol')),
+
+        TextColumn::make('symbol_native')
+          ->label(__('Official Symbol'))
+          ->toggleable(),
 
         TableHelper::statusColumn(),
       ])

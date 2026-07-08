@@ -1,16 +1,32 @@
 import React from 'react';
 import { Phone, Mail } from 'lucide-react';
-import { cn } from '@/shared/lib/utils';
 import StatusBadge from '@/shared/components/ui/StatusBadge';
 import { siteConfig } from '@/shared/config/site';
+import { setDevMode } from '@/shared/lib/dev';
+
+import PillSwitcher, { PillOption } from '@/shared/components/ui/PillSwitcher';
 
 interface TopBarProps {
   locale: string;
   onLanguageChange: (lang: string) => void;
+  isDev: boolean;
+  isEmployee: boolean; 
 }
 
-export default function TopBar({ locale, onLanguageChange }: TopBarProps) {
+export default function TopBar({ locale, onLanguageChange, isDev, isEmployee }: TopBarProps) {
   const { contacts, company } = siteConfig;
+
+  
+  const languageOptions: PillOption<string>[] = [
+    { value: 'ru', label: 'RU' },
+    { value: 'en', label: 'EN' },
+  ];
+
+  
+  const modeOptions: PillOption<boolean>[] = [
+    { value: false, label: 'PROD', title: 'Переключить в обычный пользовательский режим' },
+    { value: true, label: 'DEV', title: 'Переключить в режим разработчика' },
+  ];
 
   return (
     <div className="hidden lg:block border-b border-white/5">
@@ -27,24 +43,29 @@ export default function TopBar({ locale, onLanguageChange }: TopBarProps) {
         </div>
 
         <div className="flex items-center gap-6">
-          <div className="flex items-center gap-2 bg-white/5 rounded-full p-1 border border-white/10">
-            <button
-              onClick={() => onLanguageChange('ru')}
-              className={cn("px-3 py-1 rounded-full text-xs font-bold transition-colors cursor-pointer", locale === 'ru' ? "bg-white text-slate-900" : "text-white/60 hover:text-white")}
-            >
-              RU
-            </button>
-            <button
-              onClick={() => onLanguageChange('en')}
-              className={cn("px-3 py-1 rounded-full text-xs font-bold transition-colors cursor-pointer", locale === 'en' ? "bg-white text-slate-900" : "text-white/60 hover:text-white")}
-            >
-              EN
-            </button>
-          </div>
 
-          <StatusBadge variant="success">
-            {company.status}
-          </StatusBadge>
+          {}
+          {(isDev || isEmployee) && (
+            <PillSwitcher
+              options={modeOptions}
+              activeValue={isDev}
+              onChange={(val) => setDevMode(val)} 
+            />
+          )}
+
+          {}
+          <PillSwitcher
+            options={languageOptions}
+            activeValue={locale}
+            onChange={(val) => onLanguageChange(val)} 
+          />
+
+          {}
+          {isDev && (
+            <StatusBadge variant="success">
+              {company.status}
+            </StatusBadge>
+          )}
         </div>
       </div>
     </div>

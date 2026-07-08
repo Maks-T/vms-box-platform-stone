@@ -22,7 +22,7 @@ export const siteConfig = {
   },
 
   contacts: {
-    phone: { label: "+375 29 743 43 17", href: "tel:+375297434317" },
+    phone: { label: "+375 29 189-83-22", href: "tel:++375291898322" },
     email: { label: "info@vistegra.by", href: "mailto:info@vistegra.by" },
   },
 

@@ -15,7 +15,7 @@ export function ProductHeader() {
           </IconBox>
           <span
             className="font-bold uppercase tracking-widest text-muted-foreground group-hover:text-foreground transition-colors text-[13px]">
-            В каталог (Sandbox)
+            В каталог
           </span>
         </Link>
       </div>

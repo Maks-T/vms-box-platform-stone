@@ -18,7 +18,7 @@ export default function InspectorHeader({request, isOpen, onToggle, onCopyUrl, o
     >
       <div className="flex items-center gap-4 overflow-hidden w-full flex-1 min-w-0">
         <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center shrink-0">
-          <Code2 className="w-5 h-5 text-primary-light"/>
+          <Code2 className="w-5 h-5 text-[#3D98FF]"/>
         </div>
 
         <div className="flex-1 min-w-0">
@@ -28,12 +28,14 @@ export default function InspectorHeader({request, isOpen, onToggle, onCopyUrl, o
               <ChevronDown className="w-4 h-4 text-white/50 shrink-0"/>}
           </h2>
 
-          <div className="flex items-center gap-2 mt-1 min-w-0">
+          {}
+          <div className="flex items-start gap-2 mt-1.5 min-w-0">
             <span
-              className="bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 px-2 py-0.5 rounded text-[10px] font-mono font-bold tracking-wider shrink-0 uppercase">
+              className="bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 px-2 py-0.5 rounded text-[10px] font-mono font-bold tracking-wider shrink-0 uppercase mt-0.5">
               {request.method || 'GET'}
             </span>
-            <span className="text-white/50 font-mono text-xs truncate">
+            {}
+            <span className="text-white/50 font-mono text-xs break-all block flex-1 min-w-0 leading-normal">
               {request.endpoint}
             </span>
           </div>

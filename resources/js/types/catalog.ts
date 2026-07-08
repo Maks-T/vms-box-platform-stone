@@ -91,11 +91,26 @@ export interface BootstrapFamily {
   types: BootstrapProductType[];
 }
 
+export interface BootstrapPriceType {
+  slug: string;
+  name: string;
+  description: string | null;
+  is_default: boolean;
+  currency: {
+    code: string;
+    symbol: string;
+    symbol_native?: string;
+  } | null;
+}
+
 export interface BootstrapConfig {
   base_currency: {
     code: string;
     symbol: string;
+    symbol_native?: string;
   };
+  languages: string[];
+  price_types: BootstrapPriceType[];
   dictionaries: any[];
   families: BootstrapFamily[];
 }

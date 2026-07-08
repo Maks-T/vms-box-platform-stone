@@ -49,8 +49,8 @@ class CurrencyForm
                   TextInput::make('symbol_native')
                     ->label(__('Official Symbol'))
                     ->placeholder('руб.')
-                    ->translatable()
-                    ->helperText(__('Used in printed forms and estimates')),
+                    ->helperText(__('Used in printed forms and estimates'))
+                    ->translatable(),
 
                   TextInput::make('rate')
                     ->label(__('Rate'))

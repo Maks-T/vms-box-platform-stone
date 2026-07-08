@@ -37,7 +37,7 @@ class CurrencyPriceTypeImporter implements ImportModuleInterface
     // Настройки видимости каналов по умолчанию
     $defaultChannelSettings = [
       'channels' => [
-        'widget'  => ['is_public' => true],
+        'widget' => ['is_public' => true],
         'catalog' => ['is_public' => true],
       ],
     ];
@@ -47,12 +47,13 @@ class CurrencyPriceTypeImporter implements ImportModuleInterface
       Currency::updateOrCreate(
         ['code' => $currData['code']],
         [
-          'symbol'     => $currData['symbol'],
-          'name'       => $currData['name'],
-          'rate'       => (float)$currData['rate'],
+          'symbol' => $currData['symbol'],
+          'symbol_native' => $currData['symbol_native'] ?? null,
+          'name' => $currData['name'],
+          'rate' => (float)$currData['rate'],
           'is_default' => (bool)($currData['is_default'] ?? false),
-          'is_active'  => (bool)($currData['is_active'] ?? true),
-          'settings'   => $currData['settings'] ?? $defaultChannelSettings,
+          'is_active' => (bool)($currData['is_active'] ?? true),
+          'settings' => $currData['settings'] ?? $defaultChannelSettings,
           'sort_order' => (int)($currData['sort_order'] ?? 0),
         ]
       );
@@ -66,12 +67,12 @@ class CurrencyPriceTypeImporter implements ImportModuleInterface
       PriceType::updateOrCreate(
         ['slug' => $ptData['slug']],
         [
-          'name'        => $ptData['name'],
+          'name' => $ptData['name'],
           'description' => $ptData['description'] ?? null,
-          'is_default'  => (bool)($ptData['is_default'] ?? false),
+          'is_default' => (bool)($ptData['is_default'] ?? false),
           'currency_id' => $currencyId,
-          'settings'    => $ptData['settings'] ?? $defaultChannelSettings,
-          'sort_order'  => (int)($ptData['sort_order'] ?? 0),
+          'settings' => $ptData['settings'] ?? $defaultChannelSettings,
+          'sort_order' => (int)($ptData['sort_order'] ?? 0),
         ]
       );
       $bar->advance();
@@ -80,5 +81,4 @@ class CurrencyPriceTypeImporter implements ImportModuleInterface
     $bar->finish();
     $command->line('');
   }
-
 }

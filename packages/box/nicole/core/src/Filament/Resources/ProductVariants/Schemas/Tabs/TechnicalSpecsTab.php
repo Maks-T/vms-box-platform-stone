@@ -9,6 +9,8 @@ use Filament\Schemas\Components\Utilities\Get;
 use Illuminate\Database\Eloquent\Model;
 use Nicole\Box\Core\Filament\Concerns\HasDynamicEavFields;
 use Nicole\Box\Core\Models\Product;
+use Livewire\Component; // <-- Импортируем базовый класс Livewire-компонента
+use Nicole\Box\Core\Filament\Resources\ProductVariants\Schemas\ProductVariantForm; // <-- Импортируем форму для доступа к хелперу
 
 class TechnicalSpecsTab
 {
@@ -18,13 +20,11 @@ class TechnicalSpecsTab
   {
     return Tab::make(__('Technical Specifications'))
       ->icon('heroicon-o-adjustments-vertical')
-      ->schema(function (Get $get, ?Model $record) {
-        $productId = $get('product_id') ?? $record?->product_id;
-        if (! $productId) {
-          return [];
-        }
+      ->schema(function (Get $get, ?Model $record, Component $livewire) {
 
-        $productType = Product::find($productId)?->product_type_id;
+        $product = ProductVariantForm::resolveProduct($get, $record, $livewire);
+
+        $productType = $product?->product_type_id;
 
         // Метод getDynamicEavSchema импортирован из трейта HasDynamicEavFields
         return static::getDynamicEavSchema($productType, 'product_variant');

@@ -1,4 +1,54 @@
 {
+  "currencies": [
+    {
+      "code": "BYN",
+      "symbol": "Br",
+      "name": {
+        "ru": "Белорусский рубль",
+        "en": "Belarusian Ruble"
+      },
+      "rate": 1.0,
+      "is_default": true,
+      "is_active": true
+    },
+    {
+      "code": "RUB",
+      "symbol": "₽",
+      "name": {
+        "ru": "Российский рубль",
+        "en": "Russian Ruble"
+      },
+      "rate": 0.0339,
+      "is_default": false,
+      "is_active": true
+    },
+    {
+      "code": "USD",
+      "symbol": "$",
+      "name": {
+        "ru": "Доллар США",
+        "en": "US Dollar"
+      },
+      "rate": 3.2,
+      "is_default": false,
+      "is_active": true
+    }
+  ],
+  "price_types": [
+    {
+      "slug": "retail",
+      "currency_code": "BYN",
+      "is_default": true,
+      "name": {
+        "ru": "Цена продажи",
+        "en": "Retail"
+      },
+      "description": {
+        "ru": "Основная розничная цена калькулятора",
+        "en": "Main calculator retail price"
+      }
+    }
+  ],
   "families": [
     {
       "external_code": "fam_stone",
@@ -1898,7 +1948,7 @@
             "ru": "Коэффициент наценки",
             "en": "Markup coefficient"
           },
-          "is_public" : true
+          "is_public": true
         }
       ],
       "records": [

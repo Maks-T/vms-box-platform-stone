@@ -87,6 +87,7 @@ return [
   */
   'import_modules' => [
     \Nicole\Box\Core\Importers\SettingsImporter::class,
+    \Nicole\Box\Core\Importers\CurrencyPriceTypeImporter::class,
     \Nicole\Box\Core\Importers\DictionaryImporter::class,
     \Nicole\Box\Core\Importers\AttributeImporter::class,
     \Nicole\Box\Core\Importers\FamilyTypeImporter::class,

@@ -5,151 +5,61 @@ declare(strict_types=1);
 namespace Nicole\Box\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Nicole\Box\Core\Models\Currency;
-use Nicole\Box\Core\Models\PriceType;
 use Nicole\Box\Core\Models\Unit;
-use Nicole\Box\Core\Models\OrderStatus;
 
 class CommerceInfrastructureSeeder extends Seeder
 {
   public function run(): void
   {
-    // Базовая настройка видимости для каналов
-    $channelSettings = [
-      'channels' => [
-        'widget' => ['is_public' => true],
-        'catalog' => ['is_public' => true],
-      ],
-    ];
-
     /**
-     * 1. Единицы измерения
+     * Стандартные единицы измерения (ОКЕИ / UN CEFACT)
      */
-    Unit::updateOrCreate(
-      ['slug' => 'pcs'],
+    $units = [
       [
-        'code' => '796',
+        'slug' => 'pcs',
+        'code' => '796', // Штука (ОКЕИ: 796, UN CEFACT: PCE/C62)
         'name' => ['ru' => 'Штука', 'en' => 'Piece'],
         'symbol' => ['ru' => 'шт.', 'en' => 'pcs'],
       ],
-    );
-
-    Unit::updateOrCreate(
-      ['slug' => 'srv'],
       [
-        'code' => 'E48',
+        'slug' => 'srv',
+        'code' => 'E48', // Услуга (UN CEFACT: E48)
         'name' => ['ru' => 'Услуга', 'en' => 'Service'],
         'symbol' => ['ru' => 'усл.', 'en' => 'srv'],
       ],
-    );
-
-    /**
-     * 2. Валюты
-     */
-    $rub = Currency::updateOrCreate(
-      ['code' => 'RUB'],
       [
-        'symbol' => '₽',
-        'name' => ['ru' => 'Российский рубль', 'en' => 'Russian Ruble'],
-        'rate' => 1.0,
-        'is_default' => true,
-        'is_active' => true,
-        'settings' => $channelSettings,
-      ],
-    );
-
-    Currency::updateOrCreate(
-      ['code' => 'USD'],
-      [
-        'symbol' => '$',
-        'name' => ['ru' => 'Доллар США', 'en' => 'US Dollar'],
-        'rate' => 95.5,
-        'is_default' => false,
-        'is_active' => true,
-        'settings' => $channelSettings,
-      ],
-    );
-
-    Currency::updateOrCreate(
-      ['code' => 'BYN'],
-      [
-        'symbol' => 'Br',
-        'name' => ['ru' => 'Белорусский рубль', 'en' => 'Belarusian Ruble'],
-        'rate' => 29.5,
-        'is_default' => false,
-        'is_active' => true,
-        'settings' => $channelSettings,
-      ],
-    );
-
-    /**
-     * 3. Типы цен
-     */
-    PriceType::updateOrCreate(
-      ['slug' => 'retail'],
-      [
-        'name' => ['ru' => 'Цена продажи', 'en' => 'Retail'],
-        'is_default' => true,
-        'currency_id' => $rub->id,
-        'settings' => $channelSettings,
-      ],
-    );
-
-    /**
-     * 4. Динамические статусы заказов
-     */
-    $statuses = [
-      [
-        'slug' => 'draft',
-        'name' => ['ru' => 'Черновик', 'en' => 'Draft'],
-        'color' => 'gray',
-        'is_default' => true,
-        'is_active' => true,
-        'sort_order' => 10,
+        'slug' => 'm2',
+        'code' => '055', // Квадратный метр (ОКЕИ: 055, UN CEFACT: MTK)
+        'name' => ['ru' => 'Квадратный метр', 'en' => 'Square Meter'],
+        'symbol' => ['ru' => 'м²', 'en' => 'm²'],
       ],
       [
-        'slug' => 'new',
-        'name' => ['ru' => 'Новый расчет', 'en' => 'New Quote'],
-        'color' => 'info',
-        'is_default' => false,
-        'is_active' => true,
-        'sort_order' => 20,
+        'slug' => 'm',
+        'code' => '018', // Погонный метр (ОКЕИ: 018, UN CEFACT: LM)
+        'name' => ['ru' => 'Погонный метр', 'en' => 'Linear Meter'],
+        'symbol' => ['ru' => 'м.п.', 'en' => 'lm'],
       ],
       [
-        'slug' => 'confirmed',
-        'name' => ['ru' => 'Подтвержден менеджером', 'en' => 'Confirmed'],
-        'color' => 'success',
-        'is_default' => false,
-        'is_active' => true,
-        'sort_order' => 30,
-      ],
-      [
-        'slug' => 'manufacturing',
-        'name' => ['ru' => 'В производстве', 'en' => 'In Production'],
-        'color' => 'warning',
-        'is_default' => false,
-        'is_active' => true,
-        'sort_order' => 40,
-      ],
-      [
-        'slug' => 'completed',
-        'name' => ['ru' => 'Завершен', 'en' => 'Completed'],
-        'color' => 'primary',
-        'is_default' => false,
-        'is_active' => true,
-        'sort_order' => 50,
+        'slug' => 'set',
+        'code' => '671', // Комплект (ОКЕИ: 671, UN CEFACT: SET)
+        'name' => ['ru' => 'Комплект', 'en' => 'Set'],
+        'symbol' => ['ru' => 'компл.', 'en' => 'set'],
       ],
     ];
 
-    foreach ($statuses as $status) {
-      OrderStatus::updateOrCreate(
-        ['slug' => $status['slug']],
-        $status
+    foreach ($units as $unit) {
+      Unit::updateOrCreate(
+        ['slug' => $unit['slug']],
+        [
+          'code' => $unit['code'],
+          'name' => $unit['name'],
+          'symbol' => $unit['symbol'],
+        ]
       );
     }
 
     $this->command->info(
-      'Core: Infrastructure (Units, Currencies, PriceTypes, OrderStatuses) seeded successfully.'
+      'Core: Standard Units (including m2, m, set with OKEI/UN codes) seeded successfully.'
     );
   }
 }

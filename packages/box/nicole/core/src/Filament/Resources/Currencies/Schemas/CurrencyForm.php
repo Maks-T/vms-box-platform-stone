@@ -36,7 +36,6 @@ class CurrencyForm
                     ->maxLength(3)
                     ->placeholder('USD'),
 
-
                   TextInput::make('external_code')
                     ->label(__('External Code'))
                     ->nullable()
@@ -46,6 +45,12 @@ class CurrencyForm
                     ->label(__('Symbol'))
                     ->required()
                     ->placeholder('$'),
+
+                  TextInput::make('symbol_native')
+                    ->label(__('Official Symbol'))
+                    ->placeholder('руб.')
+                    ->translatable()
+                    ->helperText(__('Used in printed forms and estimates')),
 
                   TextInput::make('rate')
                     ->label(__('Rate'))

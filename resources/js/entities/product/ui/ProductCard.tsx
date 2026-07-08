@@ -1,34 +1,30 @@
 import React, { useState } from 'react';
 import { Link } from '@inertiajs/react';
-import { Image as ImageIcon, Heart } from 'lucide-react';
+import { Image as ImageIcon } from 'lucide-react';
 import { StoneProduct, EavValueOption, BootstrapConfig, ProductVariant } from '@/types/catalog';
 import { route } from "ziggy-js";
 import Badge from '@/shared/components/ui/Badge';
 import { cn } from '@/shared/lib/utils';
+import { FavoriteButton } from '@/shared/components/ui/FavoriteButton';
 
 interface ProductCardProps {
   product: StoneProduct;
-  bootstrapConfig?: BootstrapConfig | null; 
+  bootstrapConfig?: BootstrapConfig | null;
 }
 
 export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
   const { id, name, slug, price_from, preview_picture, unit, attributes, variants } = product;
 
-  
   const [activeVariant, setActiveVariant] = useState<ProductVariant | null>(null);
 
-  
   const defaultPriceType = bootstrapConfig?.price_types?.find((pt: any) => pt.is_default)?.slug || 'retail';
 
-  
   const displayImage = activeVariant?.preview_picture || preview_picture;
 
-  
   const displayPrice = activeVariant
     ? (activeVariant.prices?.[defaultPriceType] || Object.values(activeVariant.prices || {})[0] || price_from)
     : price_from;
 
-  
   const currencySymbol = bootstrapConfig?.base_currency?.symbol_native || bootstrapConfig?.base_currency?.symbol || 'Br';
 
   const formattedNumber = displayPrice > 0
@@ -49,7 +45,6 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
     subtitle = serviceTags.map(t => t.name).join(', ');
   } else if (unit) subtitle = `Ед. изм: ${unit.name}`;
 
-  
   const parentColor = attributes?.color?.value as EavValueOption | undefined;
   const variantColors: EavValueOption[] = [];
 
@@ -66,17 +61,14 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
 
   const colorsToShow = variantColors.length > 0 ? variantColors : (parentColor ? [parentColor] : []);
 
-  
   const activeColorSlug = activeVariant
     ? (activeVariant.attributes?.color?.value as EavValueOption | undefined)?.slug
     : (variants?.find(v => v.is_default)?.attributes?.color?.value as EavValueOption | undefined)?.slug;
 
-  
   const handleColorClick = (e: React.MouseEvent, color: EavValueOption) => {
     e.preventDefault();
-    e.stopPropagation(); 
+    e.stopPropagation();
 
-    
     const match = variants?.find(v => {
       const vColor = v.attributes?.color?.value as EavValueOption | undefined;
       return vColor?.slug === color.slug;
@@ -127,12 +119,11 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
     <div
       className="group flex flex-col h-full bg-card rounded-2xl overflow-hidden border border-border hover:shadow-lg transition-all duration-300">
 
-      {}
       <div className="relative aspect-square bg-slate-50 overflow-hidden mb-5 border-b border-border">
         <Link href={route('product.show', slug)} className="block w-full h-full p-6">
           {displayImage ? (
             <img
-              src={displayImage} 
+              src={displayImage}
               alt={name}
               className="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105"
             />
@@ -146,9 +137,7 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
           className="absolute top-4 left-4 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest shadow-sm">
           ID {id}
         </div>
-        <button className="absolute top-4 right-4 text-muted-foreground hover:text-destructive transition-colors">
-          <Heart className="w-6 h-6 stroke-[1.5]"/>
-        </button>
+        <FavoriteButton product={product} className="absolute top-4 right-4" />
       </div>
 
       <div className="flex flex-col flex-1 px-5 pb-5">
@@ -158,7 +147,6 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
             className="text-[16px] md:text-[18px] font-bold text-foreground leading-snug tracking-tight group-hover:text-primary transition-colors line-clamp-2">{name}</h3>
         </Link>
 
-        {}
         {colorsToShow.length > 0 && (
           <div className="flex items-center gap-1.5 mb-4 mt-auto flex-wrap">
             {colorsToShow.length === 1 ? (
@@ -176,13 +164,11 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
           </div>
         )}
 
-        {}
         <div className="mt-auto flex flex-col gap-4">
           <div className="text-[20px] md:text-[24px] font-black text-foreground flex items-baseline gap-1 min-h-[32px]">
             {displayPrice > 0 ? (
               <>
                 <span>{formattedNumber}</span>
-                {}
                 <span className="text-xs md:text-sm font-normal text-muted-foreground lowercase">
                   {currencySymbol}
                 </span>

@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, BookOpen, ShieldCheck } from 'lucide-react';
+import { Menu, BookOpen, ShieldCheck, Heart } from 'lucide-react';
 import { Logo } from '@/shared/components/ui/Logo';
 import { siteConfig } from '@/shared/config/site';
-import { usePage } from '@inertiajs/react'; 
+import { usePage } from '@inertiajs/react';
 import { route } from 'ziggy-js';
+import { useFavorites } from '@/store/useFavorites';
 
 import TopBar from './ui/TopBar';
 import NavBar from './ui/NavBar';
 import MobileMenu from './ui/MobileMenu';
-import { checkDevMode } from '@/shared/lib/dev'; 
+import { checkDevMode } from '@/shared/lib/dev';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [locale, setLocale] = useState(localStorage.getItem('app_locale') || 'ru');
 
-  
   const { auth } = usePage().props as any;
   const isEmployee = !!auth?.employee;
 
-  
   const isDev = checkDevMode();
+  const { items, setIsOpen } = useFavorites();
 
   useEffect(() => {
     localStorage.setItem('app_locale', locale);
@@ -35,7 +35,6 @@ export default function Header() {
     return () => { document.body.style.overflow = 'unset'; };
   }, [isMobileMenuOpen]);
 
-  
   const visibleNavItems = siteConfig.headerNav.filter(item => {
     if (item.href === route('bootstrap') || item.href === route('services')) {
       return isDev;
@@ -58,7 +57,6 @@ export default function Header() {
 
           <NavBar items={visibleNavItems} />
 
-          {}
           {(isDev || isEmployee) && (
             <a href="/admin" target="_blank" rel="noreferrer" className="hidden lg:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 hover:bg-white/[0.08] text-white text-sm font-medium transition-all active:scale-[0.98]">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
@@ -67,7 +65,18 @@ export default function Header() {
           )}
 
           <div className="flex items-center gap-4">
-            {}
+            <button
+              onClick={() => setIsOpen(true)}
+              className="relative p-2.5 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 rounded-xl transition-all cursor-pointer text-white flex items-center justify-center"
+            >
+              <Heart className="w-5 h-5 stroke-[1.8]" />
+              {items.length > 0 && (
+                <span className="absolute -top-1 -right-1 bg-destructive text-white text-[9px] font-black w-4.5 h-4.5 flex items-center justify-center rounded-full px-0.5 border border-[#16191B]">
+                  {items.length}
+                </span>
+              )}
+            </button>
+
             {isDev && (
               <a href="/docs/api" target="_blank" rel="noreferrer" className="hidden lg:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 hover:bg-white/[0.08] text-white text-sm font-medium transition-all active:scale-[0.98]">
                 <BookOpen className="w-4 h-4 text-primary" />

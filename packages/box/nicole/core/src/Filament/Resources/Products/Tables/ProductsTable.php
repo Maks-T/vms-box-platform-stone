@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Nicole\Box\Core\Filament\Helpers\FilterHelper;
 use Nicole\Box\Core\Filament\Helpers\TableHelper;
 use Nicole\Box\Core\Models\ProductFamily;
+use Nicole\Box\Core\Services\PricingManager;
 
 class ProductsTable
 {
@@ -43,7 +44,7 @@ class ProductsTable
 
         TextColumn::make('min_price')
           ->label(__('Price From'))
-          ->money('RUB')
+          ->money(fn() => app(PricingManager::class)->baseCurrency->code)
           ->sortable(),
 
         TableHelper::statusColumn(), // Shared

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Code2, Copy } from 'lucide-react';
 import { toast } from 'sonner';
@@ -18,8 +17,9 @@ export function ApiInspectorBlock({ apiUrl }: { apiUrl: string }) {
           <span className="bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 px-2 py-0.5 rounded text-xs font-mono font-bold shrink-0">
             GET
           </span>
+
           {}
-          <span className="text-zinc-200 font-mono text-sm truncate">
+          <span className="text-zinc-200 font-mono text-sm truncate block flex-1 min-w-0">
             {apiUrl}
           </span>
         </div>

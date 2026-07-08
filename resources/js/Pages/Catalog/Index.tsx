@@ -9,8 +9,11 @@ import {useCatalogApi} from '@/features/catalog/hooks/useCatalogApi';
 
 import {CatalogHeroBlock} from './components/CatalogHeroBlock';
 import {CatalogNavigationBlock} from './components/CatalogNavigationBlock';
-import {ProductGridBlock} from './components/ProductGridBlock';
+
 import {ApiInspector} from '@widgets/ApiInspector';
+
+import {checkDevMode} from '@/shared/lib/dev';
+import {ProductGridBlock} from "@/Pages/Catalog/components/ProductGridBlock";
 
 export default function CatalogIndex() {
   const {
@@ -22,12 +25,13 @@ export default function CatalogIndex() {
     products, meta, filtersSchema, bootstrapConfig, isLoading, apiUrl
   } = useCatalogApi({family, productType, page, filters: activeFilters});
 
-  const familiesList = bootstrapConfig?.families || [];
+  
+  const isDev = checkDevMode();
 
+  const familiesList = bootstrapConfig?.families || [];
   const activeFamilyData = familiesList.find(f => f.code === family);
   const typesForActiveFamily = activeFamilyData?.types || [];
   const activeFamilyName = activeFamilyData?.name;
-
   const hasActiveFilters = Object.keys(activeFilters).length > 0;
 
   const apiRequests = [
@@ -80,18 +84,20 @@ export default function CatalogIndex() {
 
           <div className="lg:col-span-9 flex-1 relative flex flex-col pt-2 md:pt-4">
 
-            <div className="relative flex-1 mb-16">
+            <div className="flex-1">
               <ProductGridBlock
                 isLoading={isLoading}
                 products={products}
                 meta={meta}
                 setPage={setPage}
                 clearFilters={clearFilters}
+                bootstrapConfig={bootstrapConfig} 
               />
             </div>
 
-            {!isLoading && (
-              <div className="mt-8 border-t border-border pt-12 pb-8">
+            {}
+            {!isLoading && isDev && (
+              <div className="mt-8 border-t border-border pt-12 pb-8 w-full max-w-full overflow-hidden">
                 <h3 className="text-xl font-bold text-foreground mb-6">Инспектор API запросов</h3>
                 <ApiInspector requests={apiRequests}/>
               </div>

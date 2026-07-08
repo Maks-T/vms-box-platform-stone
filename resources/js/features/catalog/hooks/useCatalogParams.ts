@@ -17,7 +17,7 @@ export function useCatalogParams(defaultFamily: string = 'stone') {
       filters: {}
     };
 
-    // === ИЗМЕНЕНО: Безопасный парсинг вложенных параметров вида attributes[color]=... ===
+    
     for (const [key, value] of searchParams.entries()) {
       const match = key.match(/^attributes\[(.+?)\]$/);
       if (match) {

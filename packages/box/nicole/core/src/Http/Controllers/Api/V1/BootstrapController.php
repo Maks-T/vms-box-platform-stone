@@ -141,6 +141,13 @@ class BootstrapController extends Controller
 
       'data' => [
         /**
+         * Список поддерживаемых языков/локалей в системе.
+         * @var array<int, string>
+         * @example ["ru", "en"]
+         */
+        'languages' => config('nicole.locales', ['ru', 'en']),
+
+        /**
          * Базовая валюта системы.
          */
         'base_currency' => [

@@ -55,7 +55,7 @@ export default function CalculatorShow({assets, initialData, currentType}: Props
 
         console.log('initialData to widget', initialData);
 
-        // Просто передаем весь объект initialData из контроллера без маппинга
+        
         unmountFnRef.current = window.initCalculator('calcAppRoot', initialData);
         setIsWidgetReady(true);
       }

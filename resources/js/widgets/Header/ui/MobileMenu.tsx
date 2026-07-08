@@ -13,9 +13,10 @@ interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   items: ExtendedNavItem[];
+  isDev: boolean; 
 }
 
-export default function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) {
+export default function MobileMenu({ isOpen, onClose, items, isDev }: MobileMenuProps) {
   if (!isOpen) return null;
 
   const { url } = usePage();
@@ -78,15 +79,18 @@ export default function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) 
           );
         })}
 
-        <a
-          href="/docs/api"
-          target="_blank"
-          rel="noreferrer"
-          className="mt-8 flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-primary text-primary-foreground font-bold tracking-widest uppercase"
-        >
-          <BookOpen className="w-5 h-5" />
-          Swagger API
-        </a>
+        {}
+        {isDev && (
+          <a
+            href="/docs/api"
+            target="_blank"
+            rel="noreferrer"
+            className="mt-8 flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-primary text-primary-foreground font-bold tracking-widest uppercase"
+          >
+            <BookOpen className="w-5 h-5" />
+            Swagger API
+          </a>
+        )}
       </nav>
     </div>
   );

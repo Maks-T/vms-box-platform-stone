@@ -4,11 +4,12 @@ import { toast } from 'sonner';
 import { IconBox } from '@/shared/components/ui/IconBox';
 import StatusBadge from '@/shared/components/ui/StatusBadge';
 import GlassPanel from '@/shared/components/ui/GlassPanel';
-import { ServiceMatrixItem, EavValueOption } from '@/types/catalog';
+import { ServiceMatrixItem, EavValueOption, BootstrapConfig } from '@/types/catalog';
 import { cn } from '@/shared/lib/utils';
 
 interface ServiceCardProps {
   service: ServiceMatrixItem;
+  bootstrapConfig?: BootstrapConfig | null;
 }
 
 const MATERIAL_NAMES: Record<string, string> = {
@@ -16,7 +17,7 @@ const MATERIAL_NAMES: Record<string, string> = {
   quartz_stone: 'Кварцевый агломерат',
 };
 
-export function ServiceCard({ service }: ServiceCardProps) {
+export function ServiceCard({ service, bootstrapConfig }: ServiceCardProps) {
   const handleCopy = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -27,7 +28,12 @@ export function ServiceCard({ service }: ServiceCardProps) {
   const unitName = service.unit?.symbol || service.unit?.name || 'шт.';
 
   const tagsAttr = service.attributes?.service_tags?.value;
-  const tags: EavValueOption[] = Array.isArray(tagsAttr) ? tagsAttr : [];
+
+  
+  const tags = (Array.isArray(tagsAttr) ? tagsAttr : []) as EavValueOption[];
+
+  
+  const currencySymbol = bootstrapConfig?.base_currency?.symbol_native || bootstrapConfig?.base_currency?.symbol || 'Br';
 
   return (
     <GlassPanel
@@ -70,18 +76,31 @@ export function ServiceCard({ service }: ServiceCardProps) {
 
         <div className="flex flex-col gap-3">
           {Object.keys(service.prices || {}).length > 0 ? (
-            Object.entries(service.prices).map(([materialSlug, price]) => (
-              <div key={materialSlug} className="flex items-center justify-between border-b border-white/5 pb-3 last:border-0 last:pb-0">
-                <span className="text-[14px] font-medium text-white/60">
-                  {MATERIAL_NAMES[materialSlug] || materialSlug}
-                </span>
-                <span className="text-[15px] font-black text-[#3D98FF]">
-                  {price > 0
-                    ? new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB', minimumFractionDigits: 0 }).format(price)
-                    : 'Бесплатно'}
-                </span>
-              </div>
-            ))
+            Object.entries(service.prices).map(([materialSlug, price]) => {
+              const formattedPrice = price > 0
+                ? new Intl.NumberFormat('ru-RU', { minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(price)
+                : '';
+
+              return (
+                <div key={materialSlug} className="flex items-center justify-between border-b border-white/5 pb-3 last:border-0 last:pb-0">
+                  <span className="text-[14px] font-medium text-white/60">
+                    {MATERIAL_NAMES[materialSlug] || materialSlug}
+                  </span>
+
+                  {}
+                  <span className="text-[15px] font-black text-[#3D98FF] flex items-baseline gap-1">
+                    {price > 0 ? (
+                      <>
+                        <span>{formattedPrice}</span>
+                        <span className="text-[11px] font-normal opacity-70 text-slate-400 lowercase">{currencySymbol}</span>
+                      </>
+                    ) : (
+                      'Бесплатно'
+                    )}
+                  </span>
+                </div>
+              );
+            })
           ) : (
             <div className="text-sm text-white/30 italic">Цены не заданы</div>
           )}
@@ -109,3 +128,5 @@ export function ServiceCard({ service }: ServiceCardProps) {
     </GlassPanel>
   );
 }
+
+export default ServiceCard;

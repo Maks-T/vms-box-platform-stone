@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'; 
 import { Head } from '@inertiajs/react';
 import { Loader2 } from 'lucide-react';
 
@@ -9,8 +9,18 @@ import { ServiceCard } from '@/entities/service/ui/ServiceCard';
 import { ApiInspector } from '@widgets/ApiInspector';
 import { useServicesMatrix } from './hooks/useServicesMatrix';
 
+import { bootstrapApi } from '@/shared/api/bootstrap.api';
+import { BootstrapConfig } from '@/types/catalog';
+
 export default function ServicesIndex() {
   const { services, isLoading, endpoint } = useServicesMatrix();
+
+  
+  const [bootstrapConfig, setBootstrapConfig] = useState<BootstrapConfig | null>(null);
+
+  useEffect(() => {
+    bootstrapApi.getConfig().then(setBootstrapConfig);
+  }, []);
 
   const apiRequests = [{
     label: 'Матрица услуг',
@@ -40,7 +50,11 @@ export default function ServicesIndex() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-16">
               {services.map((service) => (
-                <ServiceCard key={service.id} service={service} />
+                <ServiceCard
+                  key={service.id}
+                  service={service}
+                  bootstrapConfig={bootstrapConfig} 
+                />
               ))}
             </div>
           )}

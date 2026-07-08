@@ -43,6 +43,24 @@
   },
   "services": [
     {
+      "slug": "gluing_on_site",
+      "category": "extra",
+      "unit": "m",
+      "name": {
+        "ru": "Склейка стыкуемых поверхностей",
+        "en": "On-site surfaces gluing"
+      },
+      "eav": {
+        "service_tags": [
+          "kitchen"
+        ]
+      },
+      "prices": {
+        "acrylic_stone": 11,
+        "quartz_stone": 12
+      }
+    },
+    {
       "slug": "cutout_price",
       "category": "cutouts",
       "unit": "pcs",
@@ -51,7 +69,11 @@
         "en": "Sink cutout price"
       },
       "eav": {
-        "service_tags": ["kitchen", "bathroom"]
+        "service_tags": [
+          "bathroom",
+          "kitchen",
+          "windowsill"
+        ]
       },
       "prices": {
         "acrylic_stone": 1500,
@@ -67,7 +89,9 @@
         "en": "Hob cutout price"
       },
       "eav": {
-        "service_tags": ["kitchen"]
+        "service_tags": [
+          "kitchen"
+        ]
       },
       "prices": {
         "acrylic_stone": 1200,
@@ -83,7 +107,10 @@
         "en": "Point cutout price"
       },
       "eav": {
-        "service_tags": ["kitchen", "bathroom"]
+        "service_tags": [
+          "kitchen",
+          "bathroom"
+        ]
       },
       "prices": {
         "acrylic_stone": 400,
@@ -99,7 +126,12 @@
         "en": "Socket cutout price"
       },
       "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill", "addon"]
+        "service_tags": [
+          "bathroom",
+          "kitchen",
+          "addon",
+          "windowsill"
+        ]
       },
       "prices": {
         "acrylic_stone": 400,
@@ -115,7 +147,10 @@
         "en": "Radiator grooves price"
       },
       "eav": {
-        "service_tags": ["windowsill", "addon"]
+        "service_tags": [
+          "addon",
+          "windowsill"
+        ]
       },
       "prices": {
         "acrylic_stone": 1250,
@@ -131,7 +166,12 @@
         "en": "Bevel price"
       },
       "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill", "addon"]
+        "service_tags": [
+          "kitchen",
+          "addon",
+          "windowsill",
+          "bathroom"
+        ]
       },
       "prices": {
         "acrylic_stone": 500,
@@ -147,7 +187,12 @@
         "en": "Radius surcharge"
       },
       "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill", "addon"]
+        "service_tags": [
+          "bathroom",
+          "windowsill",
+          "kitchen",
+          "addon"
+        ]
       },
       "prices": {
         "acrylic_stone": 1200,
@@ -163,7 +208,10 @@
         "en": "Sink gluing price"
       },
       "eav": {
-        "service_tags": ["kitchen", "bathroom"]
+        "service_tags": [
+          "kitchen",
+          "bathroom"
+        ]
       },
       "prices": {
         "acrylic_stone": 3000,
@@ -179,7 +227,10 @@
         "en": "Drain grooves milling price"
       },
       "eav": {
-        "service_tags": ["kitchen", "addon"]
+        "service_tags": [
+          "kitchen",
+          "addon"
+        ]
       },
       "prices": {
         "acrylic_stone": 4600,
@@ -195,7 +246,10 @@
         "en": "Countertop wing lowering price"
       },
       "eav": {
-        "service_tags": ["kitchen", "addon"]
+        "service_tags": [
+          "kitchen",
+          "addon"
+        ]
       },
       "prices": {
         "acrylic_stone": 4000,
@@ -211,7 +265,11 @@
         "en": "Base measure price"
       },
       "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill"]
+        "service_tags": [
+          "windowsill",
+          "bathroom",
+          "kitchen"
+        ]
       },
       "prices": {
         "acrylic_stone": 0,
@@ -227,7 +285,11 @@
         "en": "Measure per km surcharge"
       },
       "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill"]
+        "service_tags": [
+          "kitchen",
+          "windowsill",
+          "bathroom"
+        ]
       },
       "prices": {
         "acrylic_stone": 80,
@@ -243,7 +305,11 @@
         "en": "Base delivery price"
       },
       "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill"]
+        "service_tags": [
+          "bathroom",
+          "kitchen",
+          "windowsill"
+        ]
       },
       "prices": {
         "acrylic_stone": 3200,
@@ -259,7 +325,11 @@
         "en": "Delivery per km surcharge"
       },
       "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill"]
+        "service_tags": [
+          "kitchen",
+          "windowsill",
+          "bathroom"
+        ]
       },
       "prices": {
         "acrylic_stone": 120,
@@ -275,7 +345,11 @@
         "en": "Elevator lift price"
       },
       "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill"]
+        "service_tags": [
+          "windowsill",
+          "kitchen",
+          "bathroom"
+        ]
       },
       "prices": {
         "acrylic_stone": 0,
@@ -291,7 +365,11 @@
         "en": "Manual lift per floor price"
       },
       "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill"]
+        "service_tags": [
+          "bathroom",
+          "kitchen",
+          "windowsill"
+        ]
       },
       "prices": {
         "acrylic_stone": 1600,
@@ -307,7 +385,11 @@
         "en": "Installation price"
       },
       "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill"]
+        "service_tags": [
+          "windowsill",
+          "bathroom",
+          "kitchen"
+        ]
       },
       "prices": {
         "acrylic_stone": 5500,
@@ -323,7 +405,12 @@
         "en": "Dismantling price"
       },
       "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill", "addon"]
+        "service_tags": [
+          "addon",
+          "windowsill",
+          "bathroom",
+          "kitchen"
+        ]
       },
       "prices": {
         "acrylic_stone": 8000,

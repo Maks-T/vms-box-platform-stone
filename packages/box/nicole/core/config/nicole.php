@@ -93,6 +93,7 @@ return [
     \Nicole\Box\Core\Importers\PriceGroupImporter::class,
     \Nicole\Box\Core\Importers\CategoryImporter::class,
     \Nicole\Box\Core\Importers\ProductImporter::class,
+    \Nicole\Box\Core\Importers\PipelineImporter::class,
     \Nicole\Box\Core\Importers\ServiceImporter::class,
   ],
 

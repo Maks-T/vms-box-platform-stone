@@ -9,8 +9,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Nicole\Box\Core\Filament\Helpers\ProtectDefaultRecord;
 use Nicole\Box\Core\Models\OrderStatus;
-use Nicole\Box\Core\Support\Filament\ProtectDefaultRecord;
 
 class OrderStatusForm
 {

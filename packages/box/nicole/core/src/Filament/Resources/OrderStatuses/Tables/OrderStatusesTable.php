@@ -9,8 +9,8 @@ use Filament\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Nicole\Box\Core\Models\OrderStatus;
-use Nicole\Box\Core\Support\Filament\ProtectDefaultRecord;
+use Nicole\Box\Core\Filament\Helpers\ProtectDefaultRecord;
+
 
 class OrderStatusesTable
 {

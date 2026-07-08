@@ -196,7 +196,7 @@ class SettingSchemaForm
             ->reorderable()
             ->collapsible()
             ->itemLabel(fn(array $state): ?string => $state['key'] ?? null),
-        ]),
+        ])->columnSpanFull(),
     ]);
   }
 }

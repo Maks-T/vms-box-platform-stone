@@ -15,6 +15,6 @@
   <!-- Центр исходного блока: x=620, y=460 (прямоугольник 330..910 по x, 400..520 по y) -->
   <g transform="translate(620, 460) scale(2) translate(-620, -460)">
     <rect x="430" y="420" width="580" height="120" rx="60" fill="#06C9ED" />
-    <text x="720" y="510" font-family="Arial, sans-serif" font-size="76" font-weight="bold" fill="white" text-anchor="middle">ON-PREMISE</text>
+    <text x="720" y="510" font-family="Arial, sans-serif" font-size="76" font-weight="bold" fill="white" text-anchor="middle">Cloud SaaS</text>
   </g>
 </svg>

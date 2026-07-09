@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Nicole\Box\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Nicole\Box\Core\Models\OrderStatus;
 use Nicole\Box\Core\Models\Unit;
 
 class CommerceInfrastructureSeeder extends Seeder
@@ -55,6 +56,59 @@ class CommerceInfrastructureSeeder extends Seeder
           'name' => $unit['name'],
           'symbol' => $unit['symbol'],
         ]
+      );
+    }
+
+    /**
+     * Динамические статусы заказов
+     */
+    $statuses = [
+      [
+        'slug' => 'draft',
+        'name' => ['ru' => 'Черновик', 'en' => 'Draft'],
+        'color' => 'gray',
+        'is_default' => true,
+        'is_active' => true,
+        'sort_order' => 10,
+      ],
+      [
+        'slug' => 'new',
+        'name' => ['ru' => 'Новый расчет', 'en' => 'New Quote'],
+        'color' => 'info',
+        'is_default' => false,
+        'is_active' => true,
+        'sort_order' => 20,
+      ],
+      [
+        'slug' => 'confirmed',
+        'name' => ['ru' => 'Подтвержден менеджером', 'en' => 'Confirmed'],
+        'color' => 'success',
+        'is_default' => false,
+        'is_active' => true,
+        'sort_order' => 30,
+      ],
+      [
+        'slug' => 'manufacturing',
+        'name' => ['ru' => 'В производстве', 'en' => 'In Production'],
+        'color' => 'warning',
+        'is_default' => false,
+        'is_active' => true,
+        'sort_order' => 40,
+      ],
+      [
+        'slug' => 'completed',
+        'name' => ['ru' => 'Завершен', 'en' => 'Completed'],
+        'color' => 'primary',
+        'is_default' => false,
+        'is_active' => true,
+        'sort_order' => 50,
+      ],
+    ];
+
+    foreach ($statuses as $status) {
+      OrderStatus::updateOrCreate(
+        ['slug' => $status['slug']],
+        $status
       );
     }
 

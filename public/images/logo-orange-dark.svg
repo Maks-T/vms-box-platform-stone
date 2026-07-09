@@ -16,5 +16,5 @@
 
   <!-- В этом стиле плашка обычно имеет меньший радиус скругления -->
   <rect x="80" y="125" width="220" height="40" rx="6" class="badge-bg"/>
-  <text x="190" y="154" class="badge-text">ON-PREMISE</text>
+  <text x="190" y="154" class="badge-text">Cloud SaaS</text>
 </svg>

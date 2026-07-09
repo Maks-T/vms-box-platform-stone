@@ -23,9 +23,11 @@ class PdfExportController extends Controller
 
     putenv('HOME=/tmp');
 
+    $chromePath = config('nicole.chrome_path', '/usr/bin/google-chrome');
+
     $pdfContent = \Spatie\Browsershot\Browsershot::html($html)
       ->noSandbox()
-      ->setChromePath('/usr/bin/google-chrome')
+      ->setChromePath($chromePath)
       ->format('A4')
       ->pdf();
 

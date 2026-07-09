@@ -15,7 +15,7 @@
     <tspan class="text-vms">VMS-</tspan><tspan class="text-nc">NC</tspan>
   </text>
 
-  <!-- Плашка ON-PREMISE -->
+  <!-- Плашка Cloud SaaS -->
   <rect x="80" y="120" width="240" height="46" rx="23" class="badge-bg"/>
-  <text x="200" y="153" class="badge-text">ON-PREMISE</text>
+  <text x="200" y="153" class="badge-text">Cloud SaaS</text>
 </svg>

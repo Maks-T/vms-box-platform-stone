@@ -8,7 +8,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\Support\PathGenerator\PathGenerator;
 
 /**
- * Custom path generator for Box (On-Premise) Core.
+ * Custom path generator for Box (Cloud SaaS) Core.
  * Generates beautiful, human-readable semantic paths.
  */
 class NicolePathGenerator implements PathGenerator

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Nicole\Box\Core\Filament\Resources\Orders\Schemas;
 
-use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -29,6 +28,7 @@ class OrderForm
                   ->label(__('Total'))
                   ->numeric()
                   ->required()
+                  ->disabled()
                   ->prefix(fn ($record) => $record?->currency ?? '₽'),
 
                 Select::make('status_id')
@@ -46,7 +46,8 @@ class OrderForm
                 Textarea::make('customer_comment')
                   ->label(__('Client Comment'))
                   ->placeholder(__('Client requirements/wishes...'))
-                  ->rows(3),
+                  ->rows(3)
+                  ->disabled(),
 
                 Textarea::make('manager_comment')
                   ->label(__('Manager Comment'))

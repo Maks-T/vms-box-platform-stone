@@ -16,7 +16,7 @@ export interface SocialItem {
 
 export const siteConfig = {
   company: {
-    name: "VMS-NC Box (On-Premise)",
+    name: "VMS-NC Box (Cloud SaaS)",
     status: "Тестовая среда",
     copyright: `© ${new Date().getFullYear()} VMS-NC. Все права защищены.`,
   },

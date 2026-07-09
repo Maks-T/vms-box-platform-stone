@@ -4867,7 +4867,7 @@
             "license": [
                 "proprietary"
             ],
-            "description": "On-Premise (Box) Nicole Core Engine for VMS",
+            "description": "Cloud SaaS (Box) Nicole Core Engine for VMS",
             "transport-options": {
                 "symlink": true,
                 "relative": true
@@ -10122,7 +10122,7 @@
             "license": [
                 "proprietary"
             ],
-            "description": "On-Premise (Box) Stone Industry module for VMS",
+            "description": "Cloud SaaS (Box) Stone Industry module for VMS",
             "transport-options": {
                 "symlink": true,
                 "relative": true

@@ -1,6 +1,6 @@
 {
   "name": "nicole/box-core",
-  "description": "On-Premise (Box) Nicole Core Engine for VMS",
+  "description": "Cloud SaaS (Box) Nicole Core Engine for VMS",
   "type": "library",
   "license": "proprietary",
   "autoload": {

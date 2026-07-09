@@ -47,7 +47,7 @@ Route::get('/services', function () {
 
 // Переключение языка
 Route::get('/lang/{locale}', function (string $locale) {
-  if (in_array($locale, ['ru', 'en'])) {
+  if (in_array($locale, ['ru'])) {
     // Записываем в сессию для нашего API
     session(['locale' => $locale]);
 

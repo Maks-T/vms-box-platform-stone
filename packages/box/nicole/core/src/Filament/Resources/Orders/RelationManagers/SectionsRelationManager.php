@@ -176,6 +176,7 @@ class SectionsRelationManager extends RelationManager
 
                 Tab::make(__('Drawings'))
                   ->icon('heroicon-o-photo')
+                  ->visible(fn (OrderSection $record) => $record->hasMedia('drawing'))
                   ->schema([
                     TextEntry::make('drawing_preview')
                       ->hiddenLabel()

@@ -73,7 +73,7 @@ class ProductsRelationManager extends RelationManager
             if (!$record->variant) return 0;
             return app(PricingManager::class)->getVariantPrice($record->variant);
           })
-          ->money(fn (OrderProduct $record) => $record->order?->currency ?? 'RUB')
+          ->money(fn () => app(PricingManager::class)->baseCurrency->code)
           ->alignEnd(),
 
         TextColumn::make('quantity')

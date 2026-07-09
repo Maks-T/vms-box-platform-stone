@@ -1,6 +1,6 @@
 {
   "name": "valerie/box-industry-stone",
-  "description": "On-Premise (Box) Stone Industry module for VMS",
+  "description": "Cloud SaaS (Box) Stone Industry module for VMS",
   "type": "library",
   "license": "proprietary",
   "autoload": {

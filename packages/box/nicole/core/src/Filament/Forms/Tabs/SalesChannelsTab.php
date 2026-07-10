@@ -11,6 +11,8 @@ use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab as SchemaTab;
 use Nicole\Box\Core\Models\Channel;
 use Nicole\Box\Core\Models\SettingSchema;
+use Nicole\Box\Core\Support\Constants\SchemaFieldType;
+use Nicole\Box\Core\Support\Constants\SchemaKey;
 
 class SalesChannelsTab
 {
@@ -51,40 +53,40 @@ class SalesChannelsTab
     $locale = app()->getLocale();
 
     foreach ($fields as $f) {
-      $key = "settings.channels.{$chCode}.{$f['key']}";
+      $key = "settings.channels.{$chCode}.{$f[SchemaKey::KEY]}";
 
       $parsedOptions = [];
-      if ($f['type'] === 'select' && isset($f['options'])) {
-        foreach ($f['options'] as $optValue => $optLabel) {
+      if ($f[SchemaKey::TYPE] === SchemaFieldType::SELECT && isset($f[SchemaKey::OPTIONS])) {
+        foreach ($f[SchemaKey::OPTIONS] as $optValue => $optLabel) {
           $parsedOptions[$optValue] = is_array($optLabel) ? ($optLabel[$locale] ?? $optValue) : $optLabel;
         }
       }
 
-      // Привязываем дефолтные значения из схемы настроек (import_settings.json)
-      $component = match ($f['type']) {
-        'boolean' => Toggle::make($key)
-          ->default((bool) ($f['default'] ?? false)),
+      $component = match ($f[SchemaKey::TYPE]) {
+        SchemaFieldType::BOOLEAN => Toggle::make($key)
+          ->default((bool) ($f[SchemaKey::DEFAULT] ?? false)),
 
-        'number' => TextInput::make($key)
+        SchemaFieldType::NUMBER => TextInput::make($key)
           ->numeric()
-          ->default($f['default'] ?? null),
+          ->default($f[SchemaKey::DEFAULT] ?? null),
 
-        'select' => Select::make($key)
+        SchemaFieldType::SELECT => Select::make($key)
           ->options($parsedOptions)
           ->native(false)
-          ->default($f['default'] ?? null),
+          ->default($f[SchemaKey::DEFAULT] ?? null),
 
         default => TextInput::make($key)
-          ->default($f['default'] ?? null),
+          ->default($f[SchemaKey::DEFAULT] ?? null),
       };
 
-      $label = is_array($f['label']) ? ($f['label'][$locale] ?? $f['key']) : $f['label'];
+      $label = is_array($f[SchemaKey::LABEL]) ? ($f[SchemaKey::LABEL][$locale] ?? $f[SchemaKey::KEY]) : $f[SchemaKey::LABEL];
 
       $components[] = $component
         ->label($label)
-        ->columnSpan($f['width'] ?? 1);
+        ->columnSpan($f[SchemaKey::WIDTH] ?? 1);
     }
 
     return $components;
   }
+
 }

@@ -12,7 +12,9 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Schema;
 use Nicole\Box\Core\Filament\Forms\Tabs\SalesChannelsTab;
-use Nicole\Box\Core\Filament\Helpers\FormHelper;
+use Nicole\Box\Core\Support\Constants\SchemaFieldType;
+use Nicole\Box\Core\Support\Constants\SchemaKey;
+use Illuminate\Support\Arr;
 
 class ProductFamilyForm
 {
@@ -31,7 +33,7 @@ class ProductFamilyForm
                     ->required()
                     ->live(onBlur: true)
                     ->afterStateUpdated(function ($state, callable $set, $livewire) {
-                      
+
                       if ($livewire instanceof \Filament\Resources\Pages\CreateRecord) {
                         $set('code', \Illuminate\Support\Str::slug($state, '_'));
                         $set('slug', \Illuminate\Support\Str::slug($state, '-'));
@@ -45,7 +47,7 @@ class ProductFamilyForm
                     ->unique(ignoreRecord: true)
                     ->alphaDash(),
 
-                  
+
                   TextInput::make('slug')
                     ->label(__('Slug'))
                     ->required()
@@ -64,30 +66,36 @@ class ProductFamilyForm
                 ->columns(2),
             ]),
 
-          Tabs\Tab::make(__('Schema Builder')) 
-          ->icon('heroicon-o-rectangle-group') 
-          ->schema([
-            Section::make(__('Product Types Schema'))
+          Tabs\Tab::make(__('Schema Builder'))
+            ->icon('heroicon-o-rectangle-group')
+            ->schema([
+              Section::make(__('Product Types Schema'))
                 ->description(__('Define custom physical parameters (like size steps, max stack) that will be available for all product types within this family.'))
                 ->schema([
-                  
+
                   Repeater::make('meta_schema')
                     ->hiddenLabel()
                     ->schema([
-                      TextInput::make('key')->label(__('Key (System)'))->required()->alphaDash(),
-                      TextInput::make('label')->label(__('Label (Human readable)'))->required()->translatable(),
-                      Select::make('type')->label(__('Field Type'))->options([
-                        'text' => __('String'),
-                        'number' => __('Numeric'),
-                        'boolean' => __('Boolean (Toggle)'),
-                      ])->required()->native(false),
-                      Select::make('width')->label(__('UI Width'))->options([1 => __('Minimum Part'), 2 => __('Full Width')])->default(1),
+                      TextInput::make(SchemaKey::KEY)->label(__('Key (System)'))->required()->alphaDash(),
+                      TextInput::make(SchemaKey::LABEL)->label(__('Label (Human readable)'))->required()->translatable(),
+
+                      Select::make(SchemaKey::TYPE)
+                        ->label(__('Field Type'))
+                        ->options(Arr::only(SchemaFieldType::options(), [
+                          SchemaFieldType::TEXT,
+                          SchemaFieldType::NUMBER,
+                          SchemaFieldType::BOOLEAN,
+                        ]))
+                        ->required()
+                        ->native(false),
+
+                      Select::make(SchemaKey::WIDTH)->label(__('UI Width'))->options([1 => __('Minimum Part'), 2 => __('Full Width')])->default(1),
                     ])
                     ->columns(4)
                     ->addActionLabel(__('Add Field'))
                     ->reorderable()
                     ->collapsible()
-                    ->itemLabel(fn(array $state): ?string => $state['key'] ?? null),
+                    ->itemLabel(fn(array $state): ?string => $state[SchemaKey::KEY] ?? null),
                 ])
             ]),
 

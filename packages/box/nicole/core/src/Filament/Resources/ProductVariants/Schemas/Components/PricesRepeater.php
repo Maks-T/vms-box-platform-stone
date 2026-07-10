@@ -12,10 +12,8 @@ use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
 use Illuminate\Database\Eloquent\Model;
-use Nicole\Box\Core\Models\ComplexDictionary;
 use Nicole\Box\Core\Models\Currency;
 use Nicole\Box\Core\Models\PriceType;
-use Nicole\Box\Core\Models\Product;
 use Nicole\Box\Core\Models\ProductVariant;
 use Nicole\Box\Core\Services\PricingManager;
 
@@ -46,53 +44,6 @@ class PricesRepeater
               $markup = (float) $get('markup_percent');
               \Nicole\Box\Core\Filament\Resources\ProductVariants\Schemas\Tabs\PricingTab::updatePriceItem($get, $set, $targetCurrency, $markup);
             }
-          })
-          ->helperText(function (Get $get, ?Model $record) {
-            $productId = $get('../../product_id');
-            if (!$productId) return null;
-            $product = Product::with(['type', 'attributeValues.attribute', 'attributeValues.complexRecord.dictionary'])->find($productId);
-            if ($product?->type?->pricing_mode !== 'complex_dictionary') {
-              return null;
-            }
-
-            $priceTypeId = $get('price_type_id');
-            if (!$priceTypeId) return null;
-
-            $priceType = PriceType::with('currency')->find($priceTypeId);
-            if (!$priceType) return null;
-
-            $inputCurrency = $get('input_currency') ?? $priceType->currency?->code ?? 'RUB';
-            $attrId = $product->type->pricing_attribute_id;
-            $val = $product->attributeValues->firstWhere('attribute_id', $attrId);
-
-            if (!$val || !$val->complexRecord) {
-              return null;
-            }
-
-            $field = $product->type->pricing_field;
-            $meta = $val->complexRecord->meta ?? [];
-            $cost = (float) ($meta[$field] ?? 0.0);
-
-            if ($cost <= 0) {
-              return null;
-            }
-
-            $schema = $val->complexRecord->dictionary->meta_schema ?? [];
-            $currencyCode = app(PricingManager::class)->baseCurrency->code;
-            foreach ($schema as $sField) {
-              if (($sField['key'] ?? '') === $field && isset($sField['currency'])) {
-                $currencyCode = $sField['currency'];
-                break;
-              }
-            }
-
-            $markupKey = $field . '_markup_' . $priceType->slug;
-            $markup = (float) ($meta[$markupKey] ?? ($meta[$field . ComplexDictionary::MARKUP_SUFFIX] ?? 0));
-
-            $priceInCostCurrency = $cost * (1 + $markup / 100);
-            $converted = app(PricingManager::class)->convert($priceInCostCurrency, $currencyCode, $inputCurrency);
-
-            return __('Reference price (:currency):', ['currency' => $inputCurrency]) . ' ' . number_format($converted, 2, '.', ' ') . ' ' . $inputCurrency;
           }),
 
         Grid::make(3)
@@ -189,4 +140,5 @@ class PricesRepeater
           ]),
       ]);
   }
+
 }

@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace Nicole\Box\Core\Filament\Resources\SettingSchemas\Schemas;
 
-use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
-use Filament\Schemas\Schema;
 use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Config;
+use Nicole\Box\Core\Support\Constants\SchemaFieldType;
+use Nicole\Box\Core\Support\Constants\SchemaKey;
 
 class SettingSchemaForm
 {
@@ -43,12 +44,12 @@ class SettingSchemaForm
               $result = [];
               foreach ($state as $item) {
                 // Раскладываем общее поле default по виртуальным полям в зависимости от типа
-                $type = $item['type'] ?? 'text';
-                $default = $item['default'] ?? null;
+                $type = $item[SchemaKey::TYPE] ?? SchemaFieldType::TEXT;
+                $default = $item[SchemaKey::DEFAULT] ?? null;
 
-                $item['default_boolean'] = $type === 'boolean' ? (bool)$default : false;
-                $item['default_select'] = $type === 'select' ? $default : null;
-                $item['default_text'] = in_array($type, ['text', 'number']) ? $default : null;
+                $item['default_boolean'] = $type === SchemaFieldType::BOOLEAN ? (bool)$default : false;
+                $item['default_select'] = $type === SchemaFieldType::SELECT ? $default : null;
+                $item['default_text'] = in_array($type, [SchemaFieldType::TEXT, SchemaFieldType::NUMBER]) ? $default : null;
 
                 $result[] = $item;
               }
@@ -58,14 +59,14 @@ class SettingSchemaForm
             ->dehydrateStateUsing(function ($state) {
               if (!is_array($state)) return [];
               foreach ($state as &$item) {
-                $type = $item['type'] ?? 'text';
+                $type = $item[SchemaKey::TYPE] ?? SchemaFieldType::TEXT;
 
-                if ($type === 'boolean') {
-                  $item['default'] = (bool) ($item['default_boolean'] ?? false);
-                } elseif ($type === 'select') {
-                  $item['default'] = $item['default_select'] ?? null;
+                if ($type === SchemaFieldType::BOOLEAN) {
+                  $item[SchemaKey::DEFAULT] = (bool) ($item['default_boolean'] ?? false);
+                } elseif ($type === SchemaFieldType::SELECT) {
+                  $item[SchemaKey::DEFAULT] = $item['default_select'] ?? null;
                 } else {
-                  $item['default'] = $item['default_text'] ?? null;
+                  $item[SchemaKey::DEFAULT] = $item['default_text'] ?? null;
                 }
 
                 // Удаляем временные поля, чтобы они не попадали в БД
@@ -74,30 +75,26 @@ class SettingSchemaForm
               return $state;
             })
             ->schema([
-              TextInput::make('key')
+              TextInput::make(SchemaKey::KEY)
                 ->label(__('Key (System)'))
                 ->placeholder('is_collapsed')
                 ->required()
                 ->alphaDash(),
 
-              TextInput::make('label')
+              TextInput::make(SchemaKey::LABEL)
                 ->label(__('Label (Human readable)'))
                 ->required()
                 ->translatable(),
 
-              Select::make('type')
+              Select::make(SchemaKey::TYPE)
                 ->label(__('Field Type'))
-                ->options([
-                  'text' => __('String'),
-                  'number' => __('Numeric'),
-                  'boolean' => __('Boolean (Toggle)'),
-                  'select' => __('Dictionary (Select)'),
-                ])
+                // Используем умные опции из SchemaFieldType
+                ->options(SchemaFieldType::options())
                 ->required()
                 ->live()
                 ->native(false),
 
-              Select::make('width')
+              Select::make(SchemaKey::WIDTH)
                 ->label(__('UI Width'))
                 ->options([
                   1 => __('Minimum Part'),
@@ -108,20 +105,20 @@ class SettingSchemaForm
               // Дефолт для Boolean (Toggle)
               Toggle::make('default_boolean')
                 ->label(__('Default Value'))
-                ->visible(fn (Get $get) => $get('type') === 'boolean')
+                ->visible(fn (Get $get) => $get(SchemaKey::TYPE) === SchemaFieldType::BOOLEAN)
                 ->dehydrated(false),
 
               // Дефолт для Numeric / String
               TextInput::make('default_text')
                 ->label(__('Default Value'))
-                ->visible(fn (Get $get) => in_array($get('type'), ['text', 'number']))
+                ->visible(fn (Get $get) => in_array($get(SchemaKey::TYPE), [SchemaFieldType::TEXT, SchemaFieldType::NUMBER]))
                 ->dehydrated(false),
 
               // Дефолт для Select (Dictionary)
               Select::make('default_select')
                 ->label(__('Default Value'))
                 ->options(function (Get $get) {
-                  $rawOptions = $get('options') ?? [];
+                  $rawOptions = $get(SchemaKey::OPTIONS) ?? [];
                   $result = [];
 
                   // Сценарий А: Если форма только загрузилась и в $get('options') лежит сырой плоский массив из БД
@@ -135,30 +132,30 @@ class SettingSchemaForm
                   } else {
                     // Сценарий Б: Если репитер формы уже активен и возвращает структурированный массив
                     foreach ($rawOptions as $opt) {
-                      if (!empty($opt['key'])) {
-                        $result[$opt['key']] = is_array($opt['label'])
-                          ? ($opt['label'][app()->getLocale()] ?? $opt['key'])
-                          : ($opt['label'] ?? $opt['key']);
+                      if (!empty($opt[SchemaKey::KEY])) {
+                        $result[$opt[SchemaKey::KEY]] = is_array($opt[SchemaKey::LABEL])
+                          ? ($opt[SchemaKey::LABEL][app()->getLocale()] ?? $opt[SchemaKey::KEY])
+                          : ($opt[SchemaKey::LABEL] ?? $opt[SchemaKey::KEY]);
                       }
                     }
                   }
 
                   return $result;
                 })
-                ->visible(fn (Get $get) => $get('type') === 'select')
+                ->visible(fn (Get $get) => $get(SchemaKey::TYPE) === SchemaFieldType::SELECT)
                 ->native(false)
                 ->dehydrated(false),
 
-              Repeater::make('options')
+              Repeater::make(SchemaKey::OPTIONS)
                 ->label(__('Dictionary Options'))
-                ->visible(fn(Get $get) => $get('type') === 'select')
+                ->visible(fn(Get $get) => $get(SchemaKey::TYPE) === SchemaFieldType::SELECT)
                 ->schema([
-                  TextInput::make('key')
+                  TextInput::make(SchemaKey::KEY)
                     ->label(__('Value (System)'))
                     ->required()
                     ->alphaDash(),
 
-                  TextInput::make('label')
+                  TextInput::make(SchemaKey::LABEL)
                     ->label(__('Label (Human readable)'))
                     ->required()
                     ->translatable(),
@@ -173,8 +170,8 @@ class SettingSchemaForm
                   $result = [];
                   foreach ($state as $key => $label) {
                     $result[] = [
-                      'key' => $key,
-                      'label' => $label,
+                      SchemaKey::KEY => $key,
+                      SchemaKey::LABEL => $label,
                     ];
                   }
                   return $result;
@@ -184,8 +181,8 @@ class SettingSchemaForm
                   $result = [];
                   if (!is_array($state)) return $result;
                   foreach ($state as $item) {
-                    if (!empty($item['key'])) {
-                      $result[$item['key']] = $item['label'] ?? $item['key'];
+                    if (!empty($item[SchemaKey::KEY])) {
+                      $result[$item[SchemaKey::KEY]] = $item[SchemaKey::LABEL] ?? $item[SchemaKey::KEY];
                     }
                   }
                   return $result;
@@ -195,8 +192,9 @@ class SettingSchemaForm
             ->addActionLabel(__('Add Field'))
             ->reorderable()
             ->collapsible()
-            ->itemLabel(fn(array $state): ?string => $state['key'] ?? null),
+            ->itemLabel(fn(array $state): ?string => $state[SchemaKey::KEY] ?? null),
         ])->columnSpanFull(),
     ]);
   }
+
 }

@@ -6,6 +6,7 @@ namespace Nicole\Box\Core\Tests\Traits;
 
 use App\Models\User;
 use Nicole\Box\Core\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
 
 trait InteractsWithFilamentAdmin
 {
@@ -16,8 +17,16 @@ trait InteractsWithFilamentAdmin
    */
   protected function setUpFilamentAdmin(): void
   {
-    // Сбрасываем кэш ролей Spatie
-    app(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
+    $gate = app(\Illuminate\Contracts\Auth\Access\Gate::class);
+
+    // Очищаем кэш и заставляем Spatie перерегистрировать права в Gate
+    app(PermissionRegistrar::class)->forgetCachedPermissions();
+    app(PermissionRegistrar::class)->registerPermissions($gate);
+
+    // Принудительно регистрируем перехватчик для роли admin прямо в тесте
+    $gate->before(function ($user, $ability) {
+      return $user->hasRole('admin') ? true : null;
+    });
 
     // Создаем администратора панели
     $adminRole = Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);

@@ -15,7 +15,7 @@ class PricingManagerTest extends TestCase
 {
   use LazilyRefreshDatabase;
 
-  
+
 
   protected PricingManager $pricingManager;
 
@@ -107,6 +107,9 @@ class PricingManagerTest extends TestCase
   /**
    * Сценарий 4: Тестирование динамического расчета цены SKU на основе Умного Справочника.
    */
+  /**
+   * Тестирование динамического расчета цены SKU на основе выделенной Ценовой Группы.
+   */
   public function test_it_calculates_price_from_complex_dictionary(): void
   {
     // Создаем валюты (Базовая RUB и валюта закупки USD)
@@ -118,7 +121,7 @@ class PricingManagerTest extends TestCase
 
     $usd = Currency::factory()->create([
       'code' => 'USD',
-      'rate' => 100.0, // Для удобства счета: 100 рублей за доллар
+      'rate' => 100.0, // Условный курс закупки: 100 рублей за доллар
       'is_default' => false,
     ]);
 
@@ -129,60 +132,26 @@ class PricingManagerTest extends TestCase
       'currency_id' => $rub->id,
     ]);
 
-    // Создаем Умный Справочник (Ценовые группы) со схемой полей
-    $complexDictionary = \Nicole\Box\Core\Models\ComplexDictionary::factory()->create([
-      'code' => 'price_group',
-      'meta_schema' => [
-        [
-          'key' => 'material_cost',
-          'type' => 'price',
-          'currency' => 'USD', // Валюта закупки - доллары
-          'is_public' => true,
-        ],
-      ],
-    ]);
-
-    // Создаем конкретную запись в справочнике (Категория M0)
-    // Закупка: 100 USD, наценка: 15%
-    $complexRecord = \Nicole\Box\Core\Models\ComplexDictionaryRecord::factory()->create([
-      'dictionary_id' => $complexDictionary->id,
-      'slug' => 'm0',
+    // Создаем ценовую группу с базовой стоимостью 100 USD и наценкой 15%
+    $priceGroup = \Nicole\Box\Core\Models\PriceGroup::create([
+      'slug' => 'standard_stone',
+      'name' => ['ru' => 'Стандартный камень'],
       'meta' => [
-        'material_cost' => 100.0,
-        'material_cost_markup' => 15.0, // Наценка 15%
+        'purchase_cost' => 100.0,
+        'purchase_currency' => 'USD',
+        'purchase_cost_markup' => 15.0, // Наценка 15%
       ],
+      'is_active' => true,
     ]);
 
-    // Создаем EAV-атрибут типа "complex_reference" (ссылка на умный справочник)
-    $attribute = \Nicole\Box\Core\Models\Attribute::factory()->create([
-      'code' => 'price_group',
-      'type' => \Nicole\Box\Core\Models\Attribute::TYPE_COMPLEX,
-      'complex_dictionary_id' => $complexDictionary->id,
-    ]);
+    // Создаем товар и привязываем модификацию (SKU) к нашей ценовой группе
+    $product = Product::factory()->create();
 
-    // Создаем тип товара с режимом ценообразования через справочник
-    $productType = \Nicole\Box\Core\Models\ProductType::factory()->create([
-      'pricing_mode' => 'complex_dictionary',
-      'pricing_attribute_id' => $attribute->id,
-      'pricing_field' => 'material_cost',
-    ]);
-
-    // Создаем товар и привязываем к нему значение EAV (запись M0 из справочника)
-    $product = Product::factory()->create([
-      'product_type_id' => $productType->id,
-    ]);
-
-    \Nicole\Box\Core\Models\ProductAttributeValue::factory()->create([
-      'attribute_id' => $attribute->id,
-      'attributable_id' => $product->id,
-      'attributable_type' => $product->getMorphClass(),
-      'value_complex_id' => $complexRecord->id, // Привязали запись M0
-    ]);
-
-    // Создаем модификацию (SKU) для этого товара
     $variant = ProductVariant::factory()->create([
       'product_id' => $product->id,
-      'cost_price' => 0.0, // Ручная цена не задана
+      'price_group_id' => $priceGroup->id,
+      'is_manual_pricing' => false, // Используем автоматический групповой расчет
+      'cost_price' => 0.0,
     ]);
 
     // Запускаем расчет цены модификации через PricingManager

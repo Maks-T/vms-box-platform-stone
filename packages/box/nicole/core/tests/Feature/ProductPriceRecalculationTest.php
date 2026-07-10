@@ -14,7 +14,7 @@ use Nicole\Box\Core\Models\ProductVariantPrice;
 
 class ProductPriceRecalculationTest extends TestCase
 {
-  use LazilyRefreshDatabase; 
+  use LazilyRefreshDatabase;
 
   protected PriceType $retailPriceType;
 
@@ -47,17 +47,19 @@ class ProductPriceRecalculationTest extends TestCase
 
     $this->assertEquals(0.0, $product->min_price);
 
-    // Создаем модификацию товара
+    // Создаем модификацию товара с ценой закупки 5000 рублей в ручном режиме
     $variant = ProductVariant::factory()->create([
       'product_id' => $product->id,
       'is_active' => true,
+      'cost_price' => 5000.0,
+      'is_manual_pricing' => true,
     ]);
 
-    // Создаем цену для модификации (5000 рублей)
+    // Создаем цену для модификации (с наценкой 0%, итоговая цена = 5000.00)
     ProductVariantPrice::factory()->create([
       'product_variant_id' => $variant->id,
       'price_type_id' => $this->retailPriceType->id,
-      'price' => 5000.0,
+      'markup_percent' => 0.0,
     ]);
 
     // Проверяем, что товар автоматически пересчитал свою минимальную цену
@@ -76,22 +78,26 @@ class ProductPriceRecalculationTest extends TestCase
     $variant1 = ProductVariant::factory()->create([
       'product_id' => $product->id,
       'is_active' => true,
+      'cost_price' => 12000.0,
+      'is_manual_pricing' => true,
     ]);
     ProductVariantPrice::factory()->create([
       'product_variant_id' => $variant1->id,
       'price_type_id' => $this->retailPriceType->id,
-      'price' => 12000.0,
+      'markup_percent' => 0.0,
     ]);
 
     // Создаем дешевый вариант (8500 рублей)
     $variant2 = ProductVariant::factory()->create([
       'product_id' => $product->id,
       'is_active' => true,
+      'cost_price' => 8500.0,
+      'is_manual_pricing' => true,
     ]);
     ProductVariantPrice::factory()->create([
       'product_variant_id' => $variant2->id,
       'price_type_id' => $this->retailPriceType->id,
-      'price' => 8500.0,
+      'markup_percent' => 0.0,
     ]);
 
     // Товар должен выбрать минимальную цену из двух - 8500

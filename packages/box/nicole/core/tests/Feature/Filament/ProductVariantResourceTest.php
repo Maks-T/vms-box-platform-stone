@@ -91,6 +91,7 @@ class ProductVariantResourceTest extends TestCase
       ->set('data.cost_price', 3000.0)
       ->set('data.currency', 'RUB')
       ->set('data.is_active', true)
+      ->set('data.is_manual_pricing', true) // ВКЛЮЧАЕМ РУЧНОЙ РЕЖИМ
       // Заполняем репитер цен
       ->set('data.prices', [
         'price_row_1' => [
@@ -136,6 +137,14 @@ class ProductVariantResourceTest extends TestCase
       'product_id' => $this->product->id,
       'sku' => 'editable_sku',
       'is_active' => true,
+      'is_manual_pricing' => true,
+    ]);
+
+    // Создаем цену для модификации, чтобы репитер цен (матрица цен продаж) не был пустым при ручном режиме
+    \Nicole\Box\Core\Models\ProductVariantPrice::create([
+      'product_variant_id' => $variant->id,
+      'price_type_id' => $this->retailPriceType->id,
+      'markup_percent' => 15.00,
     ]);
 
     Livewire::test(EditProductVariant::class, [

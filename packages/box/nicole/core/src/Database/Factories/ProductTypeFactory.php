@@ -20,15 +20,13 @@ class ProductTypeFactory extends Factory
     return [
       'code' => Str::slug($name, '_'),
       'slug' => Str::slug($name, '-'),
-      'family_id' => ProductFamily::factory(), // Автоматическое создание семейства
+      'family_id' => ProductFamily::factory(),
       'name' => [
         'ru' => 'Тип ' . ucfirst($name),
         'en' => 'Type ' . ucfirst($name),
       ],
-      'pricing_mode' => 'manual',
       'is_active' => true,
       'sort_order' => 0,
     ];
   }
-
 }

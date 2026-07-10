@@ -30,7 +30,7 @@ class NicoleCoreSeeder extends Seeder
       ['email' => 'admin@vms.local'],
       [
         'name' => 'System Administrator',
-        'password' => Hash::make('password'),
+        'password' => 'password'
       ]
     );
     $adminUser->assignRole($adminRole);
@@ -72,7 +72,7 @@ class NicoleCoreSeeder extends Seeder
       ['email' => 'content@vms.local'],
       [
         'name' => 'Контент-менеджер',
-        'password' => Hash::make('password'),
+        'password' => 'password'
       ]
     );
     $contentUser->assignRole($contentManagerRole);
@@ -112,7 +112,7 @@ class NicoleCoreSeeder extends Seeder
       ['email' => 'dealer@vms.local'],
       [
         'name' => 'Дилер (Менеджер)',
-        'password' => Hash::make('password'),
+        'password' => 'password'
       ]
     );
     $dealerUser->assignRole($dealerRole);

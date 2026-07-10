@@ -139,7 +139,7 @@ class MatrixPriceEditorTest extends TestCase
   {
     $this->actingAs($this->adminUser);
 
-    // Вызываем метод обновления значения в ячейке таблицы (ставим 1750 вместо 1650)
+    // Вызываем метод обновления значения в ячейке таблицы
     Livewire::test(MatrixPriceEditor::class)
       ->call(
         'updateTableColumnState',
@@ -147,6 +147,9 @@ class MatrixPriceEditorTest extends TestCase
         (string) $this->service->id,
         '1750'
       );
+
+    // Освежаем модель в памяти, чтобы загрузить обновленные в БД cost_price и is_manual_pricing
+    $this->variantAcrylic->refresh();
 
     // Проверяем, что на лету рассчитанная цена продажи через PricingManager равна ровно 1750.00
     $calculatedPrice = app(PricingManager::class)->getVariantPrice($this->variantAcrylic, 'retail');

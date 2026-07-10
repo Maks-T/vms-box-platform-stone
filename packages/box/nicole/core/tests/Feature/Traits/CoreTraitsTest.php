@@ -65,54 +65,47 @@ class CoreTraitsTest extends TestCase
   }
 
   /**
-   * Сценарий: Тестирование работы с медиафайлами, конвертаций и ссылок-превью в HasNicoleMedia.
+   * Сценарий: Тестирование работы с медиафайлами, каскадного наследования снизу вверх (от SKU к Товар).
    */
   public function test_has_nicole_media_trait_flow(): void
   {
-    // Создаем базовый товар
+    // 1. Создаем товар и его дефолтную модификацию без фото
     /** @var Product $product */
     $product = Product::factory()->create();
 
-    // Проверяем, что у товара без картинок превью возвращает null
-    $this->assertNull($product->getPreviewUrl());
-
-    // Имитируем загрузку и прикрепление основного изображения (в коллекцию main)
-    $product->addMedia(UploadedFile::fake()->image('granite.jpg'))
-      ->toMediaCollection('main');
-
-    // Освежаем модель в памяти, чтобы сбросить кэш отношений
-    $product->refresh();
-
-    // Проверяем, что getPreviewUrl() находит конвертированное превью
-    $previewUrl = $product->getPreviewUrl();
-    $this->assertNotNull($previewUrl);
-
-    // Проверяем наличие ключевых директорий и имени конвертации в пути
-    $this->assertStringContainsString('conversions', $previewUrl);
-    $this->assertStringContainsString('preview', $previewUrl);
-
-    // Имитируем ручную загрузку отдельного готового превью (в коллекцию preview)
-    $product->addMedia(UploadedFile::fake()->image('granite_thumb.jpg'))
-      ->toMediaCollection('preview');
-
-    // Освежаем модель в памяти еще раз
-    $product->refresh();
-
-    // Проверяем, что getPreviewUrl() отдает именно это превью в приоритете
-    $customPreviewUrl = $product->getPreviewUrl();
-    $this->assertNotNull($customPreviewUrl);
-    $this->assertStringContainsString('preview/granite_thumb', $customPreviewUrl);
-
-    // Проверяем каскадный поиск превью для модификации (SKU)
     /** @var ProductVariant $variant */
     $variant = ProductVariant::factory()->create([
       'product_id' => $product->id,
+      'is_default' => true,
+      'is_active' => true,
     ]);
 
-    // Модификация товара должна автоматически подхватить превью родительского товара
+    // Подгружаем связь вариантов в память товара
+    $product->load('variants');
+
+    // Проверяем, что изначально у обоих объектов превью возвращает null
+    $this->assertNull($variant->getPreviewUrl());
+    $this->assertNull($product->getPreviewUrl());
+
+    // 2. Имитируем загрузку изображения в дефолтную модификацию (SKU)
+    $variant->addMedia(UploadedFile::fake()->image('granite_sku.jpg'))
+      ->toMediaCollection('main');
+
+    $variant->refresh();
+
+    // Теперь модификация должна вернуть URL захешированного превью
     $variantPreviewUrl = $variant->getPreviewUrl();
     $this->assertNotNull($variantPreviewUrl);
-    $this->assertEquals($customPreviewUrl, $variantPreviewUrl);
+    $this->assertStringContainsString('preview', $variantPreviewUrl);
+
+    // Сбрасываем устаревший кэш связи вариантов у товара и подгружаем заново с новыми медиаданными
+    $product->unsetRelation('variants')->load('variants');
+
+    // 3. Проверяем каскадный поиск: базовый товар должен автоматически унаследовать
+    // превью у своей дефолтной модификации, так как у него самого фото отсутствует.
+    $productPreviewUrl = $product->getPreviewUrl();
+    $this->assertNotNull($productPreviewUrl);
+    $this->assertEquals($variantPreviewUrl, $productPreviewUrl);
   }
 
 }

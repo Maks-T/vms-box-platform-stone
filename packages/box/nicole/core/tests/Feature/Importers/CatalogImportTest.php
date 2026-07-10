@@ -32,7 +32,7 @@ class CatalogImportTest extends TestCase
     $this->dataPath = storage_path('testing_import_data.json');
     $this->servicesPath = storage_path('testing_import_services.json');
 
-    // Запускаем сидер, необходимый для расчета цен импортируемых товаров
+    // Запускаем сидер, необходимый для работы статусов и единиц измерения
     $this->seed(\Nicole\Box\Core\Database\Seeders\CommerceInfrastructureSeeder::class);
 
     // Наполняем временный файл настроек (import_settings.json)
@@ -52,9 +52,27 @@ class CatalogImportTest extends TestCase
       ]
     ]));
 
-
-    // Наполняем временный файл данных (import_data.json)
+    // Наполняем временный файл данных (import_data.json) с поддержкой валют и типов цен
     File::put($this->dataPath, json_encode([
+      'currencies' => [
+        [
+          'code' => 'RUB',
+          'symbol' => '₽',
+          'symbol_native' => 'руб.',
+          'name' => ['ru' => 'Рубль', 'en' => 'Ruble'],
+          'rate' => 1.0,
+          'is_default' => true,
+          'is_active' => true,
+        ]
+      ],
+      'price_types' => [
+        [
+          'slug' => 'retail',
+          'name' => ['ru' => 'Розничная', 'en' => 'Retail'],
+          'is_default' => true,
+          'currency_code' => 'RUB',
+        ]
+      ],
       'families' => [
         [
           'external_code' => 'fam_stone',
@@ -145,7 +163,6 @@ class CatalogImportTest extends TestCase
     File::delete($this->settingsPath);
     File::delete($this->dataPath);
     File::delete($this->servicesPath);
-
 
     parent::tearDown();
   }

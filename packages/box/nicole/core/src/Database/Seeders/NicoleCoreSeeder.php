@@ -6,7 +6,6 @@ namespace Nicole\Box\Core\Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 use Nicole\Box\Core\Models\Channel;
 use Nicole\Box\Core\Models\Role;
 use Nicole\Box\Core\Models\Permission;
@@ -19,13 +18,40 @@ class NicoleCoreSeeder extends Seeder
 
     app(PermissionRegistrar::class)->forgetCachedPermissions();
 
-    // 1. Убеждаемся в наличии роли admin (Super Admin)
+    $models = [
+      'Product', 'ProductVariant', 'Category', 'ProductFamily', 'ProductType',
+      'Attribute', 'ComplexDictionary', 'PriceGroup', 'Unit', 'Currency',
+      'Warehouse', 'PriceType', 'SettingSchema', 'Order', 'Customer', 'OrderStatus',
+      'User', 'Staff', 'Role'
+    ];
+
+    $actions = [
+      'ViewAny', 'View', 'Create', 'Update', 'Delete', 'DeleteAny',
+      'Restore', 'RestoreAny', 'ForceDelete', 'ForceDeleteAny', 'Replicate', 'Reorder'
+    ];
+
+
+    Permission::firstOrCreate(['name' => 'page_Dashboard', 'guard_name' => 'web']);
+
+    foreach ($models as $model) {
+      foreach ($actions as $action) {
+        Permission::firstOrCreate([
+          'name' => "{$action}:{$model}",
+          'guard_name' => 'web',
+        ]);
+      }
+    }
+
+    $dashboardPermissions = Permission::where('name', 'like', '%Dashboard%')
+      ->orWhere('name', 'like', '%Widget%')
+      ->pluck('name')
+      ->toArray();
+
     $adminRole = Role::firstOrCreate(
       ['name' => 'admin'],
       ['guard_name' => 'web']
     );
 
-    // 2. Создаем Super Admin пользователя
     $adminUser = User::firstOrCreate(
       ['email' => 'admin@vms.local'],
       [
@@ -35,7 +61,8 @@ class NicoleCoreSeeder extends Seeder
     );
     $adminUser->assignRole($adminRole);
 
-    // 3. Настройка роли Контент-менеджера (Управление каталогом и его настройками)
+
+    // Настройка роли Контент-менеджера (Управление каталогом и его настройками)
     $contentManagerRole = Role::firstOrCreate(
       ['name' => 'content_manager'],
       ['guard_name' => 'web']
@@ -58,14 +85,15 @@ class NicoleCoreSeeder extends Seeder
       'SettingSchema'
     ];
 
-    // Динамически выбираем из базы данных права, сгенерированные Shield для этих моделей
     $contentPermissions = Permission::where(function ($query) use ($catalogModels) {
       foreach ($catalogModels as $model) {
         $query->orWhere('name', 'like', "%:{$model}");
       }
     })->pluck('name')->toArray();
 
-    $contentManagerRole->syncPermissions($contentPermissions);
+    // Объединяем права каталога с правами на доступ к панели (Dashboard)
+    $finalContentPermissions = array_merge($contentPermissions, $dashboardPermissions);
+    $contentManagerRole->syncPermissions($finalContentPermissions);
 
     // Создаем дефолтного пользователя для контент-менеджера
     $contentUser = User::firstOrCreate(
@@ -75,10 +103,11 @@ class NicoleCoreSeeder extends Seeder
         'password' => 'password'
       ]
     );
+
     $contentUser->assignRole($contentManagerRole);
 
 
-    // 4. Настройка роли Дилера (Менеджера) (Только виджет, заказы и клиенты)
+    // Настройка роли Дилера (Менеджера) (Только виджет, заказы и клиенты)
     $dealerRole = Role::firstOrCreate(
       ['name' => 'dealer'],
       ['guard_name' => 'web']
@@ -98,12 +127,7 @@ class NicoleCoreSeeder extends Seeder
         ->orWhere('name', 'ViewAny:OrderStatus');
     })->pluck('name')->toArray();
 
-    // Добавляем права на просмотр Dashboard/виджетов, если они сгенерированы Shield
-    $dashboardPermissions = Permission::where('name', 'like', '%Dashboard%')
-      ->orWhere('name', 'like', '%Widget%')
-      ->pluck('name')
-      ->toArray();
-
+    // Объединяем права на заказы с правами на просмотр статусов и доступ к панели (Dashboard)
     $finalDealerPermissions = array_merge($dealerPermissions, $statusReadPermissions, $dashboardPermissions);
     $dealerRole->syncPermissions($finalDealerPermissions);
 
@@ -117,24 +141,6 @@ class NicoleCoreSeeder extends Seeder
     );
     $dealerUser->assignRole($dealerRole);
 
-
-    // 5. Инициализируем каналы продаж
-    Channel::updateOrCreate(
-      ['code' => 'widget'],
-      [
-        'name' => ['ru' => 'Виджет калькулятора', 'en' => 'Calculator Widget'],
-        'is_active' => true,
-      ]
-    );
-
-    Channel::updateOrCreate(
-      ['code' => 'catalog'],
-      [
-        'name' => ['ru' => 'Основной сайт', 'en' => 'Main Web Catalog'],
-        'is_active' => true,
-      ]
-    );
-
     $this->command->info(
       'Nicole Core: Roles and default users synced successfully with Shield permissions:' . PHP_EOL .
       '  - admin@vms.local / password (Super Admin)' . PHP_EOL .
@@ -142,5 +148,4 @@ class NicoleCoreSeeder extends Seeder
       '  - dealer@vms.local / password (Dealer / Manager)'
     );
   }
-
 }

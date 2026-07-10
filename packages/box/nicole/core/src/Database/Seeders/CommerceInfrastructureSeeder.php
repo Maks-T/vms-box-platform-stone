@@ -116,4 +116,5 @@ class CommerceInfrastructureSeeder extends Seeder
       'Core: Standard Units (including m2, m, set with OKEI/UN codes) seeded successfully.'
     );
   }
+
 }

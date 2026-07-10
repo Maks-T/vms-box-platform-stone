@@ -28,7 +28,7 @@ class BaseCostSection
       ->description(__('Physical purchasing cost and currency for this SKU.'))
       ->schema([
         Toggle::make('is_manual_pricing')
-          ->label(__('Override standard pricing'))
+          ->label(__('Use customized prices'))
           ->helperText(__('Enable to set custom cost and individual selling prices instead of using the price group.'))
           ->live()
           ->columnSpanFull()

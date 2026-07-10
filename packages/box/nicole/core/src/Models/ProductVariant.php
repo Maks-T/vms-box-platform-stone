@@ -26,6 +26,7 @@ class ProductVariant extends Model implements HasMedia
   use HasFactory;
 
   protected $fillable = [
+    'name',
     'external_code',
     'product_id',
     'price_group_id',
@@ -39,6 +40,7 @@ class ProductVariant extends Model implements HasMedia
     'is_manual_pricing',
   ];
 
+  public array $translatable = ['name'];
 
   protected function casts(): array
   {

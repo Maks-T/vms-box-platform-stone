@@ -78,6 +78,7 @@ class ProductImporter implements ImportModuleInterface
       }
       $unitId = $this->mapUnits[$unitCode];
 
+      // Создаем или обновляем продукт
       $product = Product::updateOrCreate(
         ['external_code' => $item['external_code']],
         [
@@ -91,9 +92,63 @@ class ProductImporter implements ImportModuleInterface
         ]
       );
 
+      // Прикрепляем медиафайлы и EAV-характеристики
       $this->attachMedia($product, $item['preview_picture'] ?? null, $item['detail_picture'] ?? null, $command);
       $this->saveEav($product, $item['eav'] ?? []);
 
+      // динамическая генерация анонса из характеристик (если отсутствует в файле импорта)
+      if (empty($item['short_description'])) {
+        $shortDesc = [];
+        $locales = config('nicole.locales', ['ru', 'en']);
+
+        // получаем сохраненные EAV-характеристики этого продукта
+        $eavValues = ProductAttributeValue::where('attributable_id', $product->id)
+          ->where('attributable_type', $product->getMorphClass())
+          ->with(['attribute.unit', 'option', 'complexRecord'])
+          ->get();
+
+        foreach ($locales as $locale) {
+          $specs = [];
+
+          foreach ($eavValues as $val) {
+            $attrName = $val->attribute->getTranslation('name', $locale);
+            $valString = null;
+
+            // Вычисляем текстовое значение в зависимости от типа EAV-атрибута
+            if ($val->option) {
+              $valString = $val->option->getTranslation('value', $locale);
+            } elseif ($val->complexRecord) {
+              $valString = $val->complexRecord->getTranslation('name', $locale);
+            } elseif ($val->value_boolean !== null) {
+              $valString = $val->value_boolean
+                ? ($locale === 'ru' ? 'Да' : 'Yes')
+                : ($locale === 'ru' ? 'Нет' : 'No');
+            } elseif ($val->value_numeric !== null) {
+              $valString = (string)(float)$val->value_numeric;
+
+              if ($val->attribute->unit) {
+                $unitSymbol = $val->attribute->unit->getTranslation('symbol', $locale);
+                if ($unitSymbol) {
+                  $valString .= ' ' . $unitSymbol;
+                }
+              }
+            } else {
+              $valString = $val->value_string;
+            }
+
+            if (!empty($attrName) && !empty($valString)) {
+              $specs[] = "{$attrName}: {$valString}";
+            }
+          }
+
+          $shortDesc[$locale] = implode(', ', $specs);
+        }
+
+        // Обновляем напрямую, минуя триггеры observers
+        $product->updateQuietly(['short_description' => $shortDesc]);
+      }
+
+      // Импортируем модификации (SKU) товара
       foreach ($item['variants'] ?? [] as $vData) {
         $isManualPricing = $vData['is_manual_pricing'] ?? isset($vData['price']);
         $priceGroupId = $this->mapPriceGroups[$vData['price_group_external_code'] ?? ''] ?? null;

@@ -19,6 +19,7 @@ return new class extends Migration {
 
       $table->jsonb('name');
       $table->string('slug')->unique();
+      $table->jsonb('short_description')->nullable();
       $table->jsonb('description')->nullable();
 
       $table->decimal('min_price', 15, 2)->default(0)->index();
@@ -42,6 +43,7 @@ return new class extends Migration {
         ->constrained('price_groups')
         ->nullOnDelete();
 
+      $table->jsonb('name')->nullable();
       $table->string('sku')->unique();
 
       $table->decimal('cost_price', 15, 2)->default(0);

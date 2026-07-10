@@ -14,14 +14,20 @@ use Nicole\Box\Core\Models\Attribute;
 use Nicole\Box\Core\Models\ComplexDictionaryRecord;
 use Nicole\Box\Core\Models\ProductAttributeValue;
 use Nicole\Box\Core\Models\ProductType;
+use Nicole\Box\Core\Models\Product;
+use Nicole\Box\Core\Models\ProductVariant;
 
 trait HasDynamicEavFields
 {
   public static function getDynamicEavSchema(
-    ?int $productTypeId,
-    string $entityType = 'product',
-  ): array {
-    if (! $productTypeId) {
+    ?int    $productTypeId,
+    ?string $entityType = null,
+  ): array
+  {
+
+    $entityType = $entityType ?? new Product()->getMorphClass();
+
+    if (!$productTypeId) {
       return [
         TextEntry::make('hint')
           ->hiddenLabel()
@@ -37,18 +43,18 @@ trait HasDynamicEavFields
       },
     ])->find($productTypeId);
 
-    if (! $productType) {
+    if (!$productType) {
       return [];
     }
 
     $fields = [];
     foreach ($productType->attributes as $attribute) {
-      $isVariantOnly = (bool) ($attribute->pivot->is_variant_only ?? false);
+      $isVariantOnly = (bool)($attribute->pivot->is_variant_only ?? false);
 
-      if ($entityType === 'product' && $isVariantOnly) {
+      if ($entityType === new Product()->getMorphClass() && $isVariantOnly) {
         continue;
       }
-      if ($entityType === 'product_variant' && ! $isVariantOnly) {
+      if ($entityType === new ProductVariant()->getMorphClass() && !$isVariantOnly) {
         continue;
       }
 
@@ -65,8 +71,7 @@ trait HasDynamicEavFields
           ->options($attribute->options->pluck('value', 'id'))
           ->searchable()
           ->preload()
-
-          ->multiple((bool) $attribute->is_multiple),
+          ->multiple((bool)$attribute->is_multiple),
 
         Attribute::TYPE_COMPLEX => Select::make("eav.{$attribute->id}")
           ->options(
@@ -80,8 +85,7 @@ trait HasDynamicEavFields
           )
           ->searchable()
           ->preload()
-
-          ->multiple((bool) $attribute->is_multiple),
+          ->multiple((bool)$attribute->is_multiple),
 
         default => TextInput::make("eav.{$attribute->id}"),
       };
@@ -154,7 +158,7 @@ trait HasDynamicEavFields
 
     foreach ($eavData as $attributeId => $value) {
       $attribute = $attributes->get($attributeId);
-      if (! $attribute) {
+      if (!$attribute) {
         continue;
       }
 
@@ -182,11 +186,11 @@ trait HasDynamicEavFields
           'attribute_id' => $attributeId,
           'attributable_id' => $record->id,
           'attributable_type' => $record->getMorphClass(),
-          'value_string' => is_string($singleValue) && ! $isComplex && ! $isOption ? $singleValue : null,
-          'value_numeric' => is_numeric($singleValue) && ! $isComplex && ! $isOption ? (float) $singleValue : null,
+          'value_string' => is_string($singleValue) && !$isComplex && !$isOption ? $singleValue : null,
+          'value_numeric' => is_numeric($singleValue) && !$isComplex && !$isOption ? (float)$singleValue : null,
           'value_boolean' => is_bool($singleValue) ? $singleValue : null,
-          'value_option_id' => $isOption ? (int) $singleValue : null,
-          'value_complex_id' => $isComplex ? (int) $singleValue : null,
+          'value_option_id' => $isOption ? (int)$singleValue : null,
+          'value_complex_id' => $isComplex ? (int)$singleValue : null,
         ]);
       }
 

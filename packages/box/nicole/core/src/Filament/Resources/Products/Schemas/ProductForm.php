@@ -21,6 +21,8 @@ use Nicole\Box\Core\Filament\Forms\Tabs\MediaGalleryTab;
 use Nicole\Box\Core\Filament\Forms\Tabs\SalesChannelsTab;
 use Nicole\Box\Core\Filament\Helpers\FormHelper;
 use Nicole\Box\Core\Models\Product;
+use Nicole\Box\Core\Models\ProductFamily;
+use Nicole\Box\Core\Models\ProductType;
 use Nicole\Box\Core\Support\Constants\CatalogType;
 
 class ProductForm
@@ -54,6 +56,12 @@ class ProductForm
                       ->required()
                       ->unique(Product::class, 'slug', ignoreRecord: true),
 
+                    Textarea::make('short_description')
+                      ->label(__('Short Description'))
+                      ->rows(2)
+                      ->columnSpanFull()
+                      ->translatable(),
+
                     Textarea::make('description')
                       ->label(__('Description'))
                       ->rows(4)
@@ -77,7 +85,7 @@ class ProductForm
                     // 1. Виртуальное поле "Семейство"
                     Select::make('family_id')
                       ->label(__('Product Family'))
-                      ->options(\Nicole\Box\Core\Models\ProductFamily::pluck('name', 'id'))
+                      ->options(ProductFamily::pluck('name', 'id'))
                       ->live()
                       ->formatStateUsing(fn($record) => $record?->type?->family_id)
                       ->afterStateUpdated(fn(Set $set) => $set('product_type_id', null))
@@ -89,9 +97,9 @@ class ProductForm
                       ->options(function (Get $get) {
                         $familyId = $get('family_id');
                         if (!$familyId) {
-                          return \Nicole\Box\Core\Models\ProductType::pluck('name', 'id');
+                          return ProductType::pluck('name', 'id');
                         }
-                        return \Nicole\Box\Core\Models\ProductType::where('family_id', $familyId)->pluck('name', 'id');
+                        return ProductType::where('family_id', $familyId)->pluck('name', 'id');
                       })
                       ->required()
                       ->live()
@@ -118,7 +126,7 @@ class ProductForm
             ->schema(
               fn($get) => static::getDynamicEavSchema(
                 (int)$get('product_type_id'),
-                'product',
+                new Product()->getMorphClass(),
               ),
             ),
 

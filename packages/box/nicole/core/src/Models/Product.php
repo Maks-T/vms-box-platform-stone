@@ -39,13 +39,14 @@ class Product extends Model implements HasMedia
     'name',
     'slug',
     'unit_id',
+    'short_description',
     'description',
     'min_price',
     'is_active',
     'sort_order',
   ];
 
-  public array $translatable = ['name', 'description'];
+  public array $translatable = ['name', 'description', 'short_description'];
 
   protected function casts(): array
   {

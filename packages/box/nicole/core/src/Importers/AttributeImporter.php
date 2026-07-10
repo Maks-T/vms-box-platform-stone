@@ -10,6 +10,7 @@ use Nicole\Box\Core\Importers\Contracts\ImportModuleInterface;
 use Nicole\Box\Core\Models\Attribute;
 use Nicole\Box\Core\Models\AttributeOption;
 use Nicole\Box\Core\Models\ComplexDictionary;
+use Nicole\Box\Core\Support\Constants\MediaCollection;
 
 class AttributeImporter implements ImportModuleInterface
 {
@@ -27,7 +28,7 @@ class AttributeImporter implements ImportModuleInterface
 
     $bar = $command->getOutput()->createProgressBar(count($attributes));
 
-    
+
     $complexDictMap = ComplexDictionary::pluck('id', 'code')->toArray();
 
     foreach ($attributes as $attrData) {
@@ -61,32 +62,31 @@ class AttributeImporter implements ImportModuleInterface
             'attribute_id' => $attribute->id,
             'slug' => $optData['slug'],
             'value' => $optData['value'],
-            
+
             'meta' => $optData['meta'] ?? null,
             'sort_order' => $sortOrder,
           ]
         );
 
-        
+
         $imagePath = $optData['meta']['image'] ?? null;
 
         if ($imagePath) {
-          
+
           $fullPath = base_path('import/export_images/' . ltrim($imagePath, '/'));
 
           if (File::exists($fullPath)) {
-            
-            $existingMedia = $option->getFirstMedia('main');
+
+            $existingMedia = $option->getFirstMedia(MediaCollection::MAIN);
             $fileName = basename($fullPath);
 
             if (!$existingMedia || $existingMedia->file_name !== $fileName) {
-              
-              $option->clearMediaCollection('main');
+
+              $option->clearMediaCollection(MediaCollection::MAIN);
               $option->addMedia($fullPath)
                 ->preservingOriginal()
-                
                 ->withCustomProperties(['skip_conversions' => true])
-                ->toMediaCollection('main');
+                ->toMediaCollection(MediaCollection::MAIN);
             }
           } else {
             $command->warn("\n⚠ Опция {$option->slug}: Изображение не найдено -> {$fullPath}");

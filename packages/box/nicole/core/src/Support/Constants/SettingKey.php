@@ -16,4 +16,5 @@ class SettingKey
   public const string IS_FILTERABLE = 'is_filterable';
   public const string IS_COLLAPSED = 'is_collapsed';
   public const string FILTER_TYPE = 'filter_type';
+
 }

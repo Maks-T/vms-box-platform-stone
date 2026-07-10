@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Nicole\Box\Core\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
-use Nicole\Box\Core\Support\Enums\CacheKey;
+use Nicole\Box\Core\Support\Constants\CacheKey;
 use Nicole\Box\Core\Traits\HasExternalCode;
 use Nicole\Box\Core\Traits\HasGlobalDefault;
 use Nicole\Box\Core\Traits\HasSettings;
 use Spatie\Translatable\HasTranslations;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Currency extends Model
 {
@@ -47,9 +47,8 @@ class Currency extends Model
   protected static function booted(): void
   {
     static::saved(function (Currency $currency) {
-      Cache::forget(CacheKey::CURRENCIES_LIST->value);
-      Cache::forget(CacheKey::BASE_CURRENCY->value);
-
+      Cache::forget(CacheKey::CURRENCIES_LIST);
+      Cache::forget(CacheKey::BASE_CURRENCY);
 
       if ($currency->is_default && (float)$currency->rate !== 1.0) {
         $currency->updateQuietly(['rate' => 1.0]);

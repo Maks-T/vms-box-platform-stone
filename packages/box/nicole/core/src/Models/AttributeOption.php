@@ -6,6 +6,7 @@ namespace Nicole\Box\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Nicole\Box\Core\Support\Constants\MediaCollection;
 use Nicole\Box\Core\Traits\HasExternalCode;
 use Nicole\Box\Core\Traits\HasNicoleMedia;
 use Nicole\Box\Core\Traits\HasSettings;
@@ -48,7 +49,7 @@ class AttributeOption extends Model implements HasMedia
 
   public function registerMediaCollections(): void
   {
-    $this->addMediaCollection('main')->singleFile();
+    $this->addMediaCollection(MediaCollection::MAIN)->singleFile();
   }
 
   protected static function newFactory(): \Nicole\Box\Core\Database\Factories\AttributeOptionFactory

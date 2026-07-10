@@ -17,6 +17,7 @@ use Nicole\Box\Core\Models\ProductAttributeValue;
 use Nicole\Box\Core\Models\ProductType;
 use Nicole\Box\Core\Models\ProductVariant;
 use Nicole\Box\Core\Models\Unit;
+use Nicole\Box\Core\Support\Constants\MediaCollection;
 
 class ProductImporter implements ImportModuleInterface
 {
@@ -204,15 +205,15 @@ class ProductImporter implements ImportModuleInterface
     if ($previewPath) {
       $fullPath = $baseDir . ltrim($previewPath, '/');
       if (File::exists($fullPath)) {
-        $existingMedia = $model->getFirstMedia('preview');
+        $existingMedia = $model->getFirstMedia(MediaCollection::PREVIEW);
         $fileName = basename($fullPath);
 
         if (!$existingMedia || $existingMedia->file_name !== $fileName) {
-          $model->clearMediaCollection('preview');
+          $model->clearMediaCollection(MediaCollection::PREVIEW);
           $model->addMedia($fullPath)
             ->preservingOriginal()
             ->withCustomProperties(['skip_conversions' => true])
-            ->toMediaCollection('preview');
+            ->toMediaCollection(MediaCollection::PREVIEW);
         }
       } else {
         $command->warn("\n⚠ Товар/SKU {$model->external_code}: Превью не найдено -> {$fullPath}");
@@ -222,18 +223,18 @@ class ProductImporter implements ImportModuleInterface
     if ($detailPath) {
       $fullPath = $baseDir . ltrim($detailPath, '/');
       if (File::exists($fullPath)) {
-        $existingMedia = $model->getFirstMedia('main');
+        $existingMedia = $model->getFirstMedia(MediaCollection::MAIN);
         $fileName = basename($fullPath);
 
         if (!$existingMedia || $existingMedia->file_name !== $fileName) {
-          $model->clearMediaCollection('main');
+          $model->clearMediaCollection(MediaCollection::MAIN);
           $media = $model->addMedia($fullPath)->preservingOriginal();
 
           if ($previewPath) {
             $media->withCustomProperties(['skip_conversions' => true]);
           }
 
-          $media->toMediaCollection('main');
+          $media->toMediaCollection(MediaCollection::MAIN);
         }
       } else {
         $command->warn("\n⚠ Товар/SKU {$model->external_code}: Основное фото не найдено -> {$fullPath}");

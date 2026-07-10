@@ -6,23 +6,22 @@ namespace Nicole\Box\Core\Support;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Cache\TaggableStore;
+use Nicole\Box\Core\Support\Constants\CacheKey;
 
 class CatalogCache
 {
   /**
    * Умное кэширование каталога.
-   * Автоматически использует теги на Redis/Memcached, либо Cache Busting версию на File/Database.
    */
   public static function remember(string $key, int $ttl, \Closure $callback)
   {
     $store = Cache::getStore();
 
     if ($store instanceof TaggableStore) {
-      return Cache::tags(['catalog'])->remember($key, $ttl, $callback);
+      return Cache::tags([CacheKey::CATALOG_TAG])->remember($key, $ttl, $callback);
     }
 
-    // Если теги не поддерживаются (File/Database)
-    $version = Cache::get('catalog_version', 1);
+    $version = Cache::get(CacheKey::CATALOG_VERSION, 1);
     $versionedKey = "v{$version}_{$key}";
 
     return Cache::remember($versionedKey, $ttl, $callback);
@@ -36,9 +35,9 @@ class CatalogCache
     $store = Cache::getStore();
 
     if ($store instanceof TaggableStore) {
-      Cache::tags(['catalog'])->flush();
+      Cache::tags([CacheKey::CATALOG_TAG])->flush();
     } else {
-      Cache::increment('catalog_version');
+      Cache::increment(CacheKey::CATALOG_VERSION);
     }
   }
 

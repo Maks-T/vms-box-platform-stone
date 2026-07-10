@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Nicole\Box\Core\Support\Constants\MediaCollection;
 use Nicole\Box\Core\Traits\HasExternalCode;
 use Nicole\Box\Core\Traits\HasNicoleMedia;
 use Nicole\Box\Core\Traits\HasSettings;
@@ -86,8 +87,8 @@ class ProductVariant extends Model implements HasMedia
 
   public function registerMediaCollections(): void
   {
-    $this->addMediaCollection('main')->singleFile();
-    $this->addMediaCollection('preview')->singleFile();
+    $this->addMediaCollection(MediaCollection::MAIN)->singleFile();
+    $this->addMediaCollection(MediaCollection::PREVIEW)->singleFile();
   }
 
   protected static function booted(): void

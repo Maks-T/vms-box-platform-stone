@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Arr;
 use Nicole\Box\Core\Models\Attribute;
+use Nicole\Box\Core\Support\Constants\MediaCollection;
 use Nicole\Box\Core\Support\Constants\SettingKey as SK;
 
 /**
@@ -26,7 +27,7 @@ class FilterResource extends JsonResource
       ->map(function ($opt) {
         $meta = is_array($opt->meta) ? $opt->meta : [];
 
-        if ($imageUrl = $opt->getFirstMediaUrl('main')) {
+        if ($imageUrl = $opt->getFirstMediaUrl(MediaCollection::MAIN)) {
           $meta['image'] = $imageUrl;
         }
 

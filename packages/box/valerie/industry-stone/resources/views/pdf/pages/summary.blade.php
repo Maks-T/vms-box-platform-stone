@@ -36,7 +36,7 @@
 
 @foreach ($pages as $pageIndex => $pageData)
   <div class="page">
-    <!-- Линия позиционируется абсолютно и не сдвигает текст -->
+
     <div class="top-gradient-line"></div>
 
     @include('valerie-stone::pdf.partials.header', ['subtitle' => 'Состав заказа'])
@@ -55,9 +55,31 @@
 
       @foreach ($pageData['sections'] as $index => $section)
         @php
-          // Вычисляем сквозной порядковый индекс изделия (01, 02, 03...)
           $actualIndex = $pageData['is_first'] ? $index : 1 + ($pageIndex - 1) * 2 + $index;
-          $base64Images = PdfEstimateRenderer::resolveSectionImages($section);
+
+          $meta = is_array($section->meta) ? $section->meta : json_decode((string)$section->meta, true);
+          $productKey = $meta['properties']['product'] ?? 'kitchen';
+
+          // Маппинг типов изделий на папки в public/pdf/layouts/
+          $folderMap = [
+              'bathroom' => 'countertop',
+              'kitchen' => 'worktop',
+              'windowsill' => 'windowsill',
+          ];
+          $folder = $folderMap[$productKey] ?? 'worktop';
+
+          // Маппинг формы изделия на файлы (заменяем 'l-shaped' -> 'l_shaped')
+          $formKey = $meta['properties']['form'] ?? 'line';
+          $fileName = str_replace('-', '_', $formKey) . '.png';
+
+          $localPath = public_path("pdf/layouts/{$folder}/{$fileName}");
+          $staticLayoutBase64 = null;
+
+          if (file_exists($localPath)) {
+              $staticLayoutBase64 = 'data:image/png;base64,' . base64_encode(file_get_contents($localPath));
+          }
+
+          $hasImage = filled($staticLayoutBase64);
         @endphp
 
         <div class="section-card">
@@ -71,31 +93,22 @@
           </div>
 
           <div class="section-card-body">
-            <div class="section-body-left">
-              @forelse ($base64Images as $img)
-                <div class="section-render-item">
-                  <img src="{{ $img['base64'] }}" alt="{{ $section->title }}" style="max-height: {{ $img['height'] }}; width: auto; display: block; margin: 0 auto;">
-                  @if (!empty($img['label']))
-                    <span class="section-render-label">{{ $img['label'] }}</span>
-                  @endif
-                </div>
-              @empty
-                @if ($section->hasMedia('drawing'))
-                  <img src="{{ $section->getFirstMediaPath('drawing') }}" alt="{{ $section->title }}" class="section-fallback-img">
-                @else
-                  <img src="https://placehold.co/400x300" alt="Изображение отсутствует" class="section-fallback-img">
+            @if ($hasImage)
+              <div class="section-card-body-cell" style="display: table-cell; width: 50%; vertical-align: middle; background-color: #F5F2EB; border-right: 1px solid #DDD9D0; text-align: center; padding: 15px;">
+                @if ($staticLayoutBase64)
+                  <img src="{{ $staticLayoutBase64 }}" alt="{{ $section->title }}" class="section-fallback-img">
                 @endif
-              @endforelse
-            </div>
+              </div>
+            @endif
 
-            <div class="section-body-right">
+            <div class="section-body-right" style="width: {{ $hasImage ? '50%' : '100%' }} !important;">
               @if (!empty($section->description))
                 <table class="specs-table">
                   @foreach ($section->description as $spec)
                     @if (!empty($spec['name']) && !empty($spec['description']))
                       <tr>
-                        <td class="spec-label">{{ $spec['name'] }}</td>
-                        <td class="spec-value">{{ $spec['description'] }}</td>
+                        <td class="spec-label" style="width: {{ $hasImage ? '45%' : '25%' }} !important;">{{ $spec['name'] }}</td>
+                        <td class="spec-value" style="width: {{ $hasImage ? '55%' : '75%' }} !important;">{{ $spec['description'] }}</td>
                       </tr>
                     @endif
                   @endforeach

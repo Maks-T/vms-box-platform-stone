@@ -13,10 +13,13 @@ use Nicole\Box\Core\Models\ProductFamily;
 use Nicole\Box\Core\Models\ProductType;
 use Nicole\Box\Core\Models\ComplexDictionary;
 use Nicole\Box\Core\Models\ComplexDictionaryRecord;
+use Nicole\Box\Core\Support\Constants\SchemaKey;
+use Nicole\Box\Core\Support\Constants\SchemaFieldType;
+use Nicole\Box\Core\Support\Constants\SettingKey as SK;
 
 class BootstrapApiTest extends TestCase
 {
-  use LazilyRefreshDatabase; 
+  use LazilyRefreshDatabase;
 
   protected function setUp(): void
   {
@@ -29,7 +32,7 @@ class BootstrapApiTest extends TestCase
       'is_active' => true,
     ]);
 
-    // Создаем базовую валюту (Рубли) и валюту закупки (Доллары)
+    // Создаем базовую валюту
     Currency::factory()->create([
       'code' => 'RUB',
       'rate' => 1.0,
@@ -37,13 +40,7 @@ class BootstrapApiTest extends TestCase
       'is_default' => true,
     ]);
 
-    Currency::factory()->create([
-      'code' => 'USD',
-      'rate' => 100.0, // Для удобства: 100 руб. за доллар
-      'is_default' => false,
-    ]);
-
-    // Создаем дефолтный тип цен с описанием для покрытия ветки description
+    // Создаем дефолтный тип цен
     PriceType::factory()->create([
       'slug' => 'retail',
       'name' => ['ru' => 'Розничная цена', 'en' => 'Retail'],
@@ -56,9 +53,9 @@ class BootstrapApiTest extends TestCase
       'code' => 'stone',
       'meta_schema' => [
         [
-          'key' => 'max_slabs',
-          'type' => 'number',
-          'label' => [
+          SchemaKey::KEY => 'max_slabs',
+          SchemaKey::TYPE => SchemaFieldType::NUMBER,
+          SchemaKey::LABEL => [
             'ru' => 'Максимум плит в пачке',
             'en' => 'Max Slabs',
           ],
@@ -67,9 +64,9 @@ class BootstrapApiTest extends TestCase
       'settings' => [
         'channels' => [
           'widget' => [
-            'is_public' => true,
-            'is_settings_public' => true,
-            'show_in_menu' => true, // Проходим условие фильтрации меню
+            SK::IS_PUBLIC => true,
+            SK::IS_SETTINGS_PUBLIC => true,
+            SK::SHOW_IN_MENU => true,
           ]
         ]
       ]
@@ -85,45 +82,43 @@ class BootstrapApiTest extends TestCase
       'settings' => [
         'channels' => [
           'widget' => [
-            'is_public' => true,
-            'is_settings_public' => true,
+            SK::IS_PUBLIC => true,
+            SK::IS_SETTINGS_PUBLIC => true,
           ]
         ]
       ]
     ]);
 
-    // Создаем Умный Справочник с ценовым полем [2]
+    // Создаем Умный Справочник без ценового поля (используем числовое поле 'material_density')
     $complexDictionary = ComplexDictionary::factory()->create([
-      'code' => 'price_group',
+      'code' => 'density_group',
       'meta_schema' => [
         [
-          'key' => 'purchase_cost',
-          'type' => 'price', // Покрываем ветку FIELD_TYPE_PRICE [2]
-          'currency' => 'USD',
-          'is_public' => true,
-          'label' => [
-            'ru' => 'Закупка',
-            'en' => 'Purchase',
+          SchemaKey::KEY => 'material_density',
+          SchemaKey::TYPE => SchemaFieldType::NUMBER,
+          SchemaKey::IS_PUBLIC => true,
+          SchemaKey::LABEL => [
+            'ru' => 'Плотность',
+            'en' => 'Density',
           ],
         ]
       ],
       'settings' => [
         'channels' => [
           'widget' => [
-            'is_public' => true,
-            'is_settings_public' => true,
+            SK::IS_PUBLIC => true,
+            SK::IS_SETTINGS_PUBLIC => true,
           ]
         ]
       ]
     ]);
 
-    // Создаем запись умного справочника (Закупка 100 USD, наценка 15%) [2]
+    // Создаем запись умного справочника (Плотность: 1.5)
     ComplexDictionaryRecord::factory()->create([
       'dictionary_id' => $complexDictionary->id,
       'slug' => 'm0',
       'meta' => [
-        'purchase_cost' => 100.0,
-        'purchase_cost_markup' => 15.0,
+        'material_density' => 1.5,
       ],
     ]);
   }
@@ -140,7 +135,7 @@ class BootstrapApiTest extends TestCase
 
     $response->assertStatus(200);
 
-    // Проверяем полную JSON-структуру ответа [2]
+    // Проверяем полную JSON-структуру ответа
     $response->assertJsonStructure([
       'status',
       'data' => [
@@ -160,7 +155,7 @@ class BootstrapApiTest extends TestCase
                 'slug',
                 'name',
                 'meta' => [
-                  'purchase_cost_total', // Должно автоматически посчитаться в RUB
+                  'material_density', // Проверяем возвращаемый ключ плотности
                 ],
               ],
             ],
@@ -186,14 +181,12 @@ class BootstrapApiTest extends TestCase
     $response->assertJsonPath('status', 'success');
     $response->assertJsonPath('data.base_currency.code', 'RUB');
 
-    // Извлекаем рассчитанную цену из JSON-ответа
-    $calculatedPrice = $response->json('data.dictionaries.0.records.0.meta.purchase_cost_total');
+    // Извлекаем значение плотности из ответа
+    $density = $response->json('data.dictionaries.0.records.0.meta.material_density');
 
-    // Проверяем, что это числовое значение
-    $this->assertIsNumeric($calculatedPrice);
-
-    // Проверяем его значение через assertEquals (нестрогое сравнение int vs float)
-    $this->assertEquals(11500.0, $calculatedPrice);
+    // Проверяем корректность возвращенных данных
+    $this->assertIsNumeric($density);
+    $this->assertEquals(1.5, $density);
   }
 
   /**

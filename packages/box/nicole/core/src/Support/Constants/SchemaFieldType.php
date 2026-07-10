@@ -12,7 +12,6 @@ class SchemaFieldType implements ChoiceConstantInterface
   public const string NUMBER = 'number';
   public const string BOOLEAN = 'boolean';
   public const string SELECT = 'select';
-  public const string PRICE = 'price';
 
   public static function label(string $value): string
   {
@@ -21,7 +20,6 @@ class SchemaFieldType implements ChoiceConstantInterface
       self::NUMBER => __('Numeric'),
       self::BOOLEAN => __('Boolean (Toggle)'),
       self::SELECT => __('Dictionary (Select)'),
-      self::PRICE => __('Price'),
       default => '',
     };
   }
@@ -33,7 +31,6 @@ class SchemaFieldType implements ChoiceConstantInterface
       self::NUMBER => self::label(self::NUMBER),
       self::BOOLEAN => self::label(self::BOOLEAN),
       self::SELECT => self::label(self::SELECT),
-      self::PRICE => self::label(self::PRICE),
     ];
   }
 
@@ -44,7 +41,6 @@ class SchemaFieldType implements ChoiceConstantInterface
       self::NUMBER,
       self::BOOLEAN,
       self::SELECT,
-      self::PRICE,
     ];
   }
 

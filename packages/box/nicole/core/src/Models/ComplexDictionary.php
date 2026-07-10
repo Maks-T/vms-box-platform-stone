@@ -18,10 +18,6 @@ class ComplexDictionary extends Model
   use HasTranslations;
   use HasFactory;
 
-  public const string FIELD_TYPE_PRICE = 'price';
-  public const string MARKUP_SUFFIX = '_markup';
-  public const string TOTAL_SUFFIX = '_total';
-
   protected $fillable = [
     'external_code',
     'code',
@@ -48,7 +44,6 @@ class ComplexDictionary extends Model
       'dictionary_id',
     )->orderBy('sort_order');
   }
-
 
   protected static function booted(): void
   {

@@ -12,8 +12,10 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Arr;
 use Nicole\Box\Core\Filament\Forms\Tabs\SalesChannelsTab;
 use Nicole\Box\Core\Filament\Helpers\FormHelper;
+use Nicole\Box\Core\Support\Constants\SchemaFieldType;
 
 class ComplexDictionaryForm
 {
@@ -54,10 +56,10 @@ class ComplexDictionaryForm
           SalesChannelsTab::make('complex_dictionary'),
 
           Tabs\Tab::make(__('Schema Builder'))
-          ->icon('heroicon-o-rectangle-group')
-          ->schema([
-            Section::make(__('Dictionary Fields Schema'))
-                ->description(__('Define the dynamic fields that this dictionary will store (e.g. min_size, price_material).'))
+            ->icon('heroicon-o-rectangle-group')
+            ->schema([
+              Section::make(__('Dictionary Fields Schema'))
+                ->description(__('Define the dynamic fields that this dictionary will store (e.g. min_size, material_density).'))
                 ->schema([
 
                   Repeater::make('meta_schema')
@@ -65,27 +67,20 @@ class ComplexDictionaryForm
                     ->schema([
                       TextInput::make('key')
                         ->label(__('Key (System)'))
-                        ->placeholder('material_cost')
+                        ->placeholder('material_density')
                         ->required()
                         ->alphaDash(),
 
                       Select::make('type')
                         ->label(__('Field Type'))
-                        ->options([
-                          'text' => __('String'),
-                          'number' => __('Numeric'),
-                          'boolean' => __('Boolean (Checkbox)'),
-                        ])
+                        ->options(Arr::only(SchemaFieldType::options(), [
+                          SchemaFieldType::TEXT,
+                          SchemaFieldType::NUMBER,
+                          SchemaFieldType::BOOLEAN,
+                        ]))
                         ->required()
                         ->live()
                         ->native(false),
-
-                      Select::make('currency')
-                        ->label(__('Currency'))
-                        ->options(\Nicole\Box\Core\Models\Currency::where('is_active', true)->pluck('code', 'code'))
-                        ->default('USD')
-                        ->visible(fn (Get $get) => $get('type') === 'price')
-                        ->required(fn (Get $get) => $get('type') === 'price'),
 
                       TextInput::make('label')
                         ->label(__('Label (Human readable)'))

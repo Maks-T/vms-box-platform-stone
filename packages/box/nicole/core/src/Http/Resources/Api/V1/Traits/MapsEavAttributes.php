@@ -71,7 +71,7 @@ trait MapsEavAttributes
               $key = $field['key'] ?? '';
               $isPublic = $field['is_public'] ?? true;
 
-              if (!$isPublic || ($field['type'] ?? '') === ComplexDictionary::FIELD_TYPE_PRICE) {
+              if (!$isPublic) {
                 continue;
               }
 

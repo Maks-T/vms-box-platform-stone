@@ -15,8 +15,8 @@ class AppServiceProvider extends ServiceProvider
   public function boot(): void
   {
     // Регистрируем глобальный перехват прав для роли admin (Super Admin)
-    Gate::before(function ($user, $ability) {
-      return $user->hasRole('admin') ? true : null;
+    Gate::guessPolicyNamesUsing(function (string $modelClass) {
+      return 'App\\Policies\\' . class_basename($modelClass) . 'Policy';
     });
   }
 

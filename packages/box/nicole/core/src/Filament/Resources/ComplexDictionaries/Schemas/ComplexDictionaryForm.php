@@ -10,12 +10,12 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
-use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Arr;
 use Nicole\Box\Core\Filament\Forms\Tabs\SalesChannelsTab;
 use Nicole\Box\Core\Filament\Helpers\FormHelper;
 use Nicole\Box\Core\Support\Constants\SchemaFieldType;
+use Nicole\Box\Core\Support\Constants\SchemaKey;
 
 class ComplexDictionaryForm
 {
@@ -65,13 +65,14 @@ class ComplexDictionaryForm
                   Repeater::make('meta_schema')
                     ->hiddenLabel()
                     ->schema([
-                      TextInput::make('key')
+
+                      TextInput::make(SchemaKey::KEY)
                         ->label(__('Key (System)'))
                         ->placeholder('material_density')
                         ->required()
                         ->alphaDash(),
 
-                      Select::make('type')
+                      Select::make(SchemaKey::TYPE)
                         ->label(__('Field Type'))
                         ->options(Arr::only(SchemaFieldType::options(), [
                           SchemaFieldType::TEXT,
@@ -82,12 +83,12 @@ class ComplexDictionaryForm
                         ->live()
                         ->native(false),
 
-                      TextInput::make('label')
+                      TextInput::make(SchemaKey::LABEL)
                         ->label(__('Label (Human readable)'))
                         ->required()
                         ->translatable(),
 
-                      Toggle::make('is_public')
+                      Toggle::make(SchemaKey::IS_PUBLIC)
                         ->label(__('Public API Field'))
                         ->helperText(__('Master switch for this field visibility'))
                         ->default(true),
@@ -95,11 +96,13 @@ class ComplexDictionaryForm
                     ->columns(2)
                     ->reorderable()
                     ->collapsible()
-                    ->addActionLabel(__('Add Field')),
+                    ->addActionLabel(__('Add Field'))
+                    ->itemLabel(fn(array $state): ?string => $state[SchemaKey::KEY] ?? null),
                 ]),
             ]),
         ])
         ->columnSpanFull(),
     ]);
   }
+
 }

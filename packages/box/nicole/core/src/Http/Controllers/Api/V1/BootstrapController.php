@@ -11,6 +11,7 @@ use Nicole\Box\Core\Models\Attribute;
 use Nicole\Box\Core\Models\ComplexDictionary;
 use Nicole\Box\Core\Models\ProductFamily;
 use Nicole\Box\Core\Services\PricingManager;
+use Nicole\Box\Core\Support\Constants\SchemaKey;
 use Nicole\Box\Core\Support\Constants\SettingKey as SK;
 
 /**
@@ -80,7 +81,6 @@ class BootstrapController extends Controller
         ] : null,
       ];
     })->values();
-
     $dictionaries = ComplexDictionaryResource::collection(
       ComplexDictionary::query()
         ->where('is_active', true)
@@ -105,11 +105,14 @@ class BootstrapController extends Controller
 
         if ($isFamilySettingsPublic && is_array($f->meta_schema)) {
           foreach ($f->meta_schema as $field) {
-            $label = is_array($field['label']) ? ($field['label'][$locale] ?? $field['key']) : ($field['label'] ?? $field['key']);
+            $label = is_array($field[SchemaKey::LABEL])
+              ? ($field[SchemaKey::LABEL][$locale] ?? $field[SchemaKey::KEY])
+              : ($field[SchemaKey::LABEL] ?? $field[SchemaKey::KEY]);
+
             $schema[] = [
-              'key' => $field['key'],
-              'type' => $field['type'],
-              'label' => $label,
+              SchemaKey::KEY => $field[SchemaKey::KEY],
+              SchemaKey::TYPE => $field[SchemaKey::TYPE],
+              SchemaKey::LABEL => $label,
             ];
           }
         }

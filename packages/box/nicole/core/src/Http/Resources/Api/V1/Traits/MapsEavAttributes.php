@@ -7,7 +7,8 @@ namespace Nicole\Box\Core\Http\Resources\Api\V1\Traits;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Nicole\Box\Core\Models\Attribute;
-use Nicole\Box\Core\Models\ComplexDictionary;
+use Nicole\Box\Core\Support\Constants\MediaCollection;
+use Nicole\Box\Core\Support\Constants\SchemaKey;
 use Nicole\Box\Core\Support\Constants\SettingKey as SK;
 
 trait MapsEavAttributes
@@ -55,12 +56,12 @@ trait MapsEavAttributes
               'meta' => (object)[
                 'hex' => $meta['hex'] ?? null,
                 'icon' => $meta['icon'] ?? null,
-                'image' => $val->option->getFirstMediaUrl('main') ?: null,
+                'image' => $val->option->getFirstMediaUrl(MediaCollection::MAIN) ?: null,
               ],
             ];
           }
 
-          // Детальный вывод умных справочников (Цены, Раскрой) с метаданными
+          // Детальный вывод умных справочников (Раскрой, Категории) с метаданными
           if ($val->complexRecord) {
             $payload = $val->complexRecord->meta ?? [];
             $safeMeta = [];
@@ -68,8 +69,8 @@ trait MapsEavAttributes
             $schema = $attribute->complexDictionary?->meta_schema ?? [];
 
             foreach ($schema as $field) {
-              $key = $field['key'] ?? '';
-              $isPublic = $field['is_public'] ?? true;
+              $key = $field[SchemaKey::KEY] ?? '';
+              $isPublic = $field[SchemaKey::IS_PUBLIC] ?? true;
 
               if (!$isPublic) {
                 continue;
@@ -104,4 +105,5 @@ trait MapsEavAttributes
       })
       ->toArray();
   }
+
 }

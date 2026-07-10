@@ -25,6 +25,8 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Nicole\Box\Core\Filament\Forms\Tabs\SalesChannelsTab;
 use Nicole\Box\Core\Filament\Helpers\FormHelper;
+use Nicole\Box\Core\Support\Constants\SchemaKey;
+use Nicole\Box\Core\Support\Constants\SchemaFieldType;
 
 class RecordsRelationManager extends RelationManager
 {
@@ -42,15 +44,15 @@ class RecordsRelationManager extends RelationManager
     $processed = [];
 
     foreach ($schemaFields as $field) {
-      $key = $field['key'];
-      $label = is_array($field['label'])
-        ? $field['label'][app()->getLocale()] ?? (collect($field['label'])->first() ?? $key)
-        : $field['label'];
+      $key = $field[SchemaKey::KEY];
+      $label = is_array($field[SchemaKey::LABEL])
+        ? $field[SchemaKey::LABEL][app()->getLocale()] ?? (collect($field[SchemaKey::LABEL])->first() ?? $key)
+        : $field[SchemaKey::LABEL];
 
       $processed[] = [
-        'key' => $key,
-        'type' => $field['type'],
-        'label' => $label,
+        SchemaKey::KEY => $key,
+        SchemaKey::TYPE => $field[SchemaKey::TYPE],
+        SchemaKey::LABEL => $label,
         'payloadKey' => "meta.{$key}",
       ];
     }
@@ -63,12 +65,12 @@ class RecordsRelationManager extends RelationManager
     $dynamicComponents = [];
 
     foreach ($this->getProcessedFields() as $field) {
-      $input = match ($field['type']) {
-        'boolean' => Toggle::make($field['payloadKey'])->inline(false),
-        'number' => TextInput::make($field['payloadKey'])->numeric(),
+      $input = match ($field[SchemaKey::TYPE]) {
+        SchemaFieldType::BOOLEAN => Toggle::make($field['payloadKey'])->inline(false),
+        SchemaFieldType::NUMBER => TextInput::make($field['payloadKey'])->numeric(),
         default => TextInput::make($field['payloadKey']),
       };
-      $dynamicComponents[] = $input->label((string) $field['label']);
+      $dynamicComponents[] = $input->label((string) $field[SchemaKey::LABEL]);
     }
 
     return $schema->components([
@@ -116,20 +118,20 @@ class RecordsRelationManager extends RelationManager
     ];
 
     foreach ($this->getProcessedFields() as $field) {
-      if ($field['type'] === 'boolean') {
+      if ($field[SchemaKey::TYPE] === SchemaFieldType::BOOLEAN) {
         $columns[] = IconColumn::make($field['payloadKey'])
-          ->label($field['label'])
+          ->label($field[SchemaKey::LABEL])
           ->boolean()
           ->toggleable();
-      } elseif ($field['type'] === 'number') {
+      } elseif ($field[SchemaKey::TYPE] === SchemaFieldType::NUMBER) {
         $columns[] = TextColumn::make($field['payloadKey'])
-          ->label($field['label'])
+          ->label($field[SchemaKey::LABEL])
           ->numeric()
           ->sortable()
           ->toggleable();
       } else {
         $columns[] = TextColumn::make($field['payloadKey'])
-          ->label($field['label'])
+          ->label($field[SchemaKey::LABEL])
           ->searchable()
           ->toggleable();
       }

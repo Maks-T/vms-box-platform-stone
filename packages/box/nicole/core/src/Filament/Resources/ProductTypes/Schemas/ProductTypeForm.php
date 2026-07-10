@@ -13,6 +13,8 @@ use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 use Nicole\Box\Core\Filament\Forms\Tabs\SalesChannelsTab;
 use Nicole\Box\Core\Models\ProductFamily;
+use Nicole\Box\Core\Support\Constants\SchemaFieldType;
+use Nicole\Box\Core\Support\Constants\SchemaKey;
 
 class ProductTypeForm
 {
@@ -84,16 +86,18 @@ class ProductTypeForm
               $locale = app()->getLocale();
 
               foreach ($schema as $field) {
-                $key = "meta.{$field['key']}";
-                $label = is_array($field['label']) ? ($field['label'][$locale] ?? $field['key']) : ($field['label'] ?? $field['key']);
+                $key = "meta.{$field[SchemaKey::KEY]}";
+                $label = is_array($field[SchemaKey::LABEL])
+                  ? ($field[SchemaKey::LABEL][$locale] ?? $field[SchemaKey::KEY])
+                  : ($field[SchemaKey::LABEL] ?? $field[SchemaKey::KEY]);
 
-                $input = match ($field['type']) {
-                  'boolean' => Toggle::make($key)->inline(false),
-                  'number' => TextInput::make($key)->numeric(),
+                $input = match ($field[SchemaKey::TYPE]) {
+                  SchemaFieldType::BOOLEAN => Toggle::make($key)->inline(false),
+                  SchemaFieldType::NUMBER => TextInput::make($key)->numeric(),
                   default => TextInput::make($key),
                 };
 
-                $components[] = $input->label($label)->columnSpan($field['width'] ?? 1);
+                $components[] = $input->label($label)->columnSpan($field[SchemaKey::WIDTH] ?? 1);
               }
 
               return [
@@ -108,4 +112,5 @@ class ProductTypeForm
         ->columnSpanFull(),
     ]);
   }
+
 }

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Nicole\Box\Core\Models\ComplexDictionary;
 use Nicole\Box\Core\Support\Constants\SettingKey as SK;
+use Nicole\Box\Core\Support\Constants\SchemaKey;
 
 /**
  * @mixin ComplexDictionary
@@ -32,14 +33,14 @@ class ComplexDictionaryResource extends JsonResource
     if ($isSettingsPublic && is_array($schema)) {
       $publicSchema = [];
       foreach ($schema as $field) {
-        if (!($field['is_public'] ?? true)) continue;
+        if (!($field[SchemaKey::IS_PUBLIC] ?? true)) continue;
 
-        $label = is_array($field['label']) ? ($field['label'][$locale] ?? $field['key']) : ($field['label'] ?? $field['key']);
+        $label = is_array($field[SchemaKey::LABEL]) ? ($field[SchemaKey::LABEL][$locale] ?? $field[SchemaKey::KEY]) : ($field[SchemaKey::LABEL] ?? $field[SchemaKey::KEY]);
 
         $publicSchema[] = [
-          'key' => $field['key'],
-          'type' => $field['type'],
-          'label' => $label,
+          SchemaKey::KEY => $field[SchemaKey::KEY],
+          SchemaKey::TYPE => $field[SchemaKey::TYPE],
+          SchemaKey::LABEL => $label,
         ];
       }
     }
@@ -73,8 +74,8 @@ class ComplexDictionaryResource extends JsonResource
           $safeMeta = [];
 
           foreach ($schema as $field) {
-            $key = $field['key'];
-            $isFieldPublic = $field['is_public'] ?? true;
+            $key = $field[SchemaKey::KEY];
+            $isFieldPublic = $field[SchemaKey::IS_PUBLIC] ?? true;
 
             if (!$isFieldPublic) continue;
 
@@ -91,5 +92,4 @@ class ComplexDictionaryResource extends JsonResource
         ->toArray(),
     ];
   }
-
 }

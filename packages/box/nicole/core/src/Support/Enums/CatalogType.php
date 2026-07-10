@@ -18,4 +18,5 @@ enum CatalogType: string
       self::BUNDLE => __('Bundle (Kit)'),
     };
   }
+
 }

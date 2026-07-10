@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Cache;
 use Nicole\Box\Core\Models\Attribute;
 use Nicole\Box\Core\Models\Product;
 use Nicole\Box\Core\Http\Resources\Api\V1\ProductResource;
+use Nicole\Box\Core\Support\CatalogCache;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -53,13 +54,11 @@ class ProductController extends Controller
       'catalog_type' => $catalogType,
     ];
 
-    $version = Cache::get('catalog_version', 1);
-    $cacheKey = "catalog_products_v{$version}_{$familyCode}_{$channel}_{$locale}_p{$page}_l{$limit}_" . md5(json_encode($filterState));
+    $cacheKey = "catalog_products_{$familyCode}_{$channel}_{$locale}_p{$page}_l{$limit}_" . md5(json_encode($filterState));
 
-    $jsonResponse = Cache::remember($cacheKey, 86400, function () use ($limit, $familyCode, $id, $catalogType, $productTypeCode, $channel) {
+    $jsonResponse = CatalogCache::remember($cacheKey, 86400, function () use ($limit, $familyCode, $id, $catalogType, $productTypeCode, $channel) {
       $query = $this->buildBaseQuery($familyCode, $channel, $id, $catalogType, $productTypeCode, []);
-      $data = ProductResource::collection($query->paginate($limit))->response()->getData(true);
-      return json_encode($data);
+      return json_encode(ProductResource::collection($query->paginate($limit))->response()->getData(true));
     });
 
     return response($jsonResponse)->header('Content-Type', 'application/json');

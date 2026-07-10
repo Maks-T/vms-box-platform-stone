@@ -13,6 +13,7 @@ use Nicole\Box\Core\Models\Product;
 use Nicole\Box\Core\Models\ProductAttributeValue;
 use Nicole\Box\Core\Models\ProductVariant;
 use Nicole\Box\Core\Http\Resources\Api\V1\FilterResource;
+use Nicole\Box\Core\Support\Constants\CatalogType;
 
 /**
  * @group Core: Фильтры
@@ -34,7 +35,7 @@ class FilterController extends Controller
 
     // ID активных и публичных товаров
     $productIds = Product::query()
-      ->where('catalog_type', 'product')
+      ->where('catalog_type', CatalogType::PRODUCT)
       ->where('is_active', true)
       ->publicInChannel($channel)
       ->whereHas('type.family', fn ($q) => $q->where('code', $familyCode))

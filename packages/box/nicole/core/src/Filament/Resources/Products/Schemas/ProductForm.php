@@ -21,122 +21,117 @@ use Nicole\Box\Core\Filament\Forms\Tabs\MediaGalleryTab;
 use Nicole\Box\Core\Filament\Forms\Tabs\SalesChannelsTab;
 use Nicole\Box\Core\Filament\Helpers\FormHelper;
 use Nicole\Box\Core\Models\Product;
+use Nicole\Box\Core\Support\Constants\CatalogType;
 
 class ProductForm
 {
-    use HasDynamicEavFields;
+  use HasDynamicEavFields;
 
-    public static function configure(Schema $schema): Schema
-    {
-        return $schema->components([
-            Tabs::make('ProductData')
-                ->tabs([
-                    
-                    Tabs\Tab::make(__('General Information'))
-                        ->icon('heroicon-o-information-circle')
-                        ->schema([
-                            Grid::make(3)->schema([
-                                Section::make(__('Identity'))
-                                    ->columnSpan(2)
-                                    ->schema([
-                                        TextInput::make('name')
-                                            ->label(__('Name'))
-                                            ->required()
-                                            ->live(onBlur: true)
-                                            ->afterStateUpdated(
-                                                FormHelper::generateSlug('slug', '-', false),
-                                            )
-                                            ->translatable(),
+  public static function configure(Schema $schema): Schema
+  {
+    return $schema->components([
+      Tabs::make('ProductData')
+        ->tabs([
 
-                                        TextInput::make('slug')
-                                            ->label(__('Slug'))
-                                            ->required()
-                                            ->unique(Product::class, 'slug', ignoreRecord: true),
+          Tabs\Tab::make(__('General Information'))
+            ->icon('heroicon-o-information-circle')
+            ->schema([
+              Grid::make(3)->schema([
+                Section::make(__('Identity'))
+                  ->columnSpan(2)
+                  ->schema([
+                    TextInput::make('name')
+                      ->label(__('Name'))
+                      ->required()
+                      ->live(onBlur: true)
+                      ->afterStateUpdated(
+                        FormHelper::generateSlug('slug', '-', false),
+                      )
+                      ->translatable(),
 
-                                        Textarea::make('description')
-                                            ->label(__('Description'))
-                                            ->rows(4)
-                                            ->columnSpanFull()
-                                            ->translatable(),
-                                    ]),
+                    TextInput::make('slug')
+                      ->label(__('Slug'))
+                      ->required()
+                      ->unique(Product::class, 'slug', ignoreRecord: true),
 
-                              Section::make(__('Classification'))
-                                ->columnSpan(1)
-                                ->schema([
-                                  Toggle::make('is_active')
-                                    ->label(__('Is Active'))
-                                    ->default(true),
+                    Textarea::make('description')
+                      ->label(__('Description'))
+                      ->rows(4)
+                      ->columnSpanFull()
+                      ->translatable(),
+                  ]),
 
-                                  Select::make('catalog_type')
-                                    ->label(__('Catalog Type'))
-                                    ->options([
-                                      'product' => __('Product (Physical)'),
-                                      'service' => __('Service / Work'),
-                                      'bundle' => __('Bundle (Kit)'),
-                                    ])
-                                    ->default('product')
-                                    ->required(),
+                Section::make(__('Classification'))
+                  ->columnSpan(1)
+                  ->schema([
+                    Toggle::make('is_active')
+                      ->label(__('Is Active'))
+                      ->default(true),
 
-                                  // 1. Виртуальное поле "Семейство"
-                                  Select::make('family_id')
-                                    ->label(__('Product Family'))
-                                    ->options(\Nicole\Box\Core\Models\ProductFamily::pluck('name', 'id'))
-                                    ->live()
-                                    
-                                    ->formatStateUsing(fn ($record) => $record?->type?->family_id)
-                                    ->afterStateUpdated(fn (Set $set) => $set('product_type_id', null)) 
-                                    ->dehydrated(false), 
+                    Select::make('catalog_type')
+                      ->label(__('Catalog Type'))
+                      ->options(CatalogType::options())
+                      ->default(CatalogType::PRODUCT)
+                      ->required(),
 
-                                  // 2. Поле "Тип товара" (Фильтруется по семейству)
-                                  Select::make('product_type_id')
-                                    ->label(__('Product Type'))
-                                    ->options(function (Get $get) {
-                                      $familyId = $get('family_id');
-                                      if (! $familyId) {
-                                        return \Nicole\Box\Core\Models\ProductType::pluck('name', 'id');
-                                      }
-                                      return \Nicole\Box\Core\Models\ProductType::where('family_id', $familyId)->pluck('name', 'id');
-                                    })
-                                    ->required()
-                                    ->live()
-                                    ->afterStateUpdated(fn (Set $set) => $set('eav', [])), 
+                    // 1. Виртуальное поле "Семейство"
+                    Select::make('family_id')
+                      ->label(__('Product Family'))
+                      ->options(\Nicole\Box\Core\Models\ProductFamily::pluck('name', 'id'))
+                      ->live()
+                      ->formatStateUsing(fn($record) => $record?->type?->family_id)
+                      ->afterStateUpdated(fn(Set $set) => $set('product_type_id', null))
+                      ->dehydrated(false),
 
-                                  SelectTree::make('category_id')
-                                    ->label(__('Category'))
-                                    ->relationship('category', 'name', 'parent_id')
-                                    ->enableBranchNode()
-                                    ->searchable(),
+                    // 2. Поле "Тип товара" (Фильтруется по семейству)
+                    Select::make('product_type_id')
+                      ->label(__('Product Type'))
+                      ->options(function (Get $get) {
+                        $familyId = $get('family_id');
+                        if (!$familyId) {
+                          return \Nicole\Box\Core\Models\ProductType::pluck('name', 'id');
+                        }
+                        return \Nicole\Box\Core\Models\ProductType::where('family_id', $familyId)->pluck('name', 'id');
+                      })
+                      ->required()
+                      ->live()
+                      ->afterStateUpdated(fn(Set $set) => $set('eav', [])),
 
-                                  Select::make('unit_id')
-                                    ->label(__('Unit'))
-                                    ->relationship('unit', 'name')
-                                    ->searchable()
-                                    ->preload(),
-                                ]),
-                            ]),
-                        ]),
+                    SelectTree::make('category_id')
+                      ->label(__('Category'))
+                      ->relationship('category', 'name', 'parent_id')
+                      ->enableBranchNode()
+                      ->searchable(),
 
-                    
-                    Tabs\Tab::make(__('Technical Specifications'))
-                        ->icon('heroicon-o-adjustments-vertical')
-                      
-                        ->schema(
-                            fn ($get) => static::getDynamicEavSchema(
-                                (int) $get('product_type_id'),
-                                'product',
-                            ),
-                        ),
+                    Select::make('unit_id')
+                      ->label(__('Unit'))
+                      ->relationship('unit', 'name')
+                      ->searchable()
+                      ->preload(),
+                  ]),
+              ]),
+            ]),
 
-                    
-                    MediaGalleryTab::make(),
 
-                    
-                    LinkedItemsTab::make(),
+          Tabs\Tab::make(__('Technical Specifications'))
+            ->icon('heroicon-o-adjustments-vertical')
+            ->schema(
+              fn($get) => static::getDynamicEavSchema(
+                (int)$get('product_type_id'),
+                'product',
+              ),
+            ),
 
-                    
-                    SalesChannelsTab::make('product'),
-                ])
-                ->columnSpanFull(),
-        ]);
-    }
+
+          MediaGalleryTab::make(),
+
+
+          LinkedItemsTab::make(),
+
+
+          SalesChannelsTab::make('product'),
+        ])
+        ->columnSpanFull(),
+    ]);
+  }
 }

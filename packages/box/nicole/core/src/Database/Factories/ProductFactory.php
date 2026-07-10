@@ -10,6 +10,7 @@ use Nicole\Box\Core\Models\Category;
 use Nicole\Box\Core\Models\Product;
 use Nicole\Box\Core\Models\ProductType;
 use Nicole\Box\Core\Models\Unit;
+use Nicole\Box\Core\Support\Constants\CatalogType;
 
 class ProductFactory extends Factory
 {
@@ -20,10 +21,10 @@ class ProductFactory extends Factory
     $name = $this->faker->unique()->word();
 
     return [
-      'catalog_type' => 'product', // по умолчанию физический товар
-      'product_type_id' => ProductType::factory(), // Автоматически создает тип товара
-      'category_id' => Category::factory(), // Автоматически создает категорию
-      'unit_id' => Unit::factory(), // Автоматически создает единицу измерения
+      'catalog_type' => CatalogType::PRODUCT,
+      'product_type_id' => ProductType::factory(),
+      'category_id' => Category::factory(),
+      'unit_id' => Unit::factory(),
       'name' => [
         'ru' => 'Камень ' . ucfirst($name),
         'en' => 'Stone ' . ucfirst($name),
@@ -45,12 +46,11 @@ class ProductFactory extends Factory
   public function service(): self
   {
     return $this->state(fn (array $attributes) => [
-      'catalog_type' => 'service',
+      'catalog_type' => CatalogType::SERVICE,
       'name' => [
         'ru' => 'Услуга обработки',
         'en' => 'Processing service',
       ],
     ]);
   }
-
 }

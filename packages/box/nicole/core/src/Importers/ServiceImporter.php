@@ -17,6 +17,7 @@ use Nicole\Box\Core\Models\ProductType;
 use Nicole\Box\Core\Models\ProductVariant;
 use Nicole\Box\Core\Models\ProductVariantPrice;
 use Nicole\Box\Core\Models\Unit;
+use Nicole\Box\Core\Support\Constants\CatalogType;
 
 class ServiceImporter implements ImportModuleInterface
 {
@@ -139,7 +140,7 @@ class ServiceImporter implements ImportModuleInterface
       $product = Product::updateOrCreate(
         ['external_code' => "prod_srv_{$item['slug']}"],
         [
-          'catalog_type' => 'service',
+          'catalog_type' => CatalogType::SERVICE,
           'product_type_id' => $this->serviceTypeId,
           'category_id' => $categoryId,
           'unit_id' => $unitId,

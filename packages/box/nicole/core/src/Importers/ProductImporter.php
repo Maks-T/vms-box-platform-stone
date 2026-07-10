@@ -17,6 +17,7 @@ use Nicole\Box\Core\Models\ProductAttributeValue;
 use Nicole\Box\Core\Models\ProductType;
 use Nicole\Box\Core\Models\ProductVariant;
 use Nicole\Box\Core\Models\Unit;
+use Nicole\Box\Core\Support\Constants\CatalogType;
 use Nicole\Box\Core\Support\Constants\MediaCollection;
 
 class ProductImporter implements ImportModuleInterface
@@ -82,7 +83,7 @@ class ProductImporter implements ImportModuleInterface
         [
           'product_type_id' => $typeId,
           'category_id' => $categoryId,
-          'catalog_type' => $item['catalog_type'] ?? 'product',
+          'catalog_type' => $item['catalog_type'] ?? CatalogType::PRODUCT,
           'unit_id' => $unitId,
           'slug' => $item['slug'],
           'name' => $item['name'],

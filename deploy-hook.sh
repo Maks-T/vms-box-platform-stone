@@ -7,7 +7,7 @@ echo "Обновление статических файлов виджета к
 
 rm -rf public/cpq-stone
 
-git clone -b "$BRANCH_NAME" --single-branch git@github.com:kapitulin24/cpq-stone-calc.gitpublic/cpq-stone
+git clone -b "$BRANCH_NAME" --single-branch git@github.com:kapitulin24/cpq-stone-calc.git public/cpq-stone
 
 rm -rf public/widget/.git
 

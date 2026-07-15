@@ -16,7 +16,7 @@ class SaveOrderRequest extends FormRequest
   public function rules(): array
   {
     return [
-
+      'code' => ['nullable', 'string', 'exists:orders,code'],
       'calc_state' => ['required'],
 
       'currency' => ['required', 'string', 'max:3'],
@@ -56,7 +56,7 @@ class SaveOrderRequest extends FormRequest
       'results.*.price.discount_percent' => ['required', 'numeric', 'min:0'],
 
       'results.*.meta.properties' => ['nullable', 'array'],
-      'results.*.meta.properties.form' => ['required', 'string', 'max:50'],
+      'results.*.meta.properties.form' => ['nullable', 'string', 'max:50'],
       'results.*.meta.items' => ['required', 'array'],
     ];
   }

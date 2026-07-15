@@ -16,7 +16,7 @@ return [
   |
   */
   'catalog' => [
-    'storage_disk'     => 'public',
+    'storage_disk' => 'public',
     'image_collection' => 'products',
   ],
 
@@ -31,9 +31,9 @@ return [
   |
   */
   'models' => [
-    'role'       => Role::class,
+    'role' => Role::class,
     'permission' => Permission::class,
-    'staff'      => User::class,
+    'staff' => User::class,
   ],
 
   /*
@@ -175,4 +175,27 @@ return [
   |
   */
   'chrome_path' => env('VMS_CHROME_PATH', '/usr/bin/google-chrome'),
+
+  /*
+  |--------------------------------------------------------------------------
+  | Общий системная обертка деплоя
+  |--------------------------------------------------------------------------
+  |
+  | Путь к исполняемому файлу обертки на сервере (запускается через sudo).
+  | Отвечает за безопасный переход в папку релиза и запуск локального хука от root.
+  |
+  */
+  'deploy_widget_wrapper' => env('VMS_DEPLOY_WIDGET_WRAPPER', '/usr/bin/sudo /var/www/scripts/deploy-wrapper.sh'),
+
+  /*
+  |--------------------------------------------------------------------------
+  | Локальный скрипт автодеплоя виджета (Deploy Hook Script Name)
+  |--------------------------------------------------------------------------
+  |
+  | Имя файла или относительный путь к bash-скрипту для автообновления виджета.
+  | По умолчанию запускает 'deploy-hook.sh' в корневом каталоге активного релиза.
+  |
+  */
+  'deploy_script_name' => env('VMS_DEPLOY_SCRIPT_NAME', 'deploy-hook.sh'),
+
 ];

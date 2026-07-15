@@ -1,0 +1,3 @@
+[submodule "packages/box/nicole/core"]
+	path = packages/box/nicole/core
+	url = git@github.com:Maks-T/vms-box-nicole-core.git

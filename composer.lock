@@ -4840,11 +4840,11 @@
         },
         {
             "name": "nicole/box-core",
-            "version": "dev-feature/price-groups",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/box/nicole/core",
-                "reference": "e3976e4e0b57a0236adf40c6f975df4a62e9e3a4"
+                "reference": "ecd67375e55f4ddd211fdebb992bfc84f5af89cd"
             },
             "require": {
                 "laravel/framework": "^13.0",
@@ -10095,11 +10095,11 @@
         },
         {
             "name": "valerie/box-industry-stone",
-            "version": "dev-feature/price-groups",
+            "version": "dev-client/mebel-stone",
             "dist": {
                 "type": "path",
                 "url": "packages/box/valerie/industry-stone",
-                "reference": "ab92eef7f7023b37bf58409bc0e11723a6089cdf"
+                "reference": "b567de104d23a8e2c96b963333083da86d223f86"
             },
             "require": {
                 "nicole/box-core": "@dev",

@@ -11,24 +11,34 @@
   },
   "categories": {
     "cutouts": {
-      "ru": "Вырезы и отверстия",
-      "en": "Cutouts & Holes"
+      "name": {
+        "ru": "Вырезы и отверстия",
+        "en": "Cutouts & Holes"
+      }
     },
     "surface_sinks": {
-      "ru": "Интеграция моек и поверхности",
-      "en": "Sinks & Surface"
+      "name": {
+        "ru": "Интеграция моек и поверхности",
+        "en": "Sinks & Surface"
+      }
     },
     "logistics": {
-      "ru": "Замер и Доставка",
-      "en": "Measurement & Delivery"
+      "name": {
+        "ru": "Замер и Доставка",
+        "en": "Measurement & Delivery"
+      }
     },
     "installation": {
-      "ru": "Монтаж и Демонтаж",
-      "en": "Installation & Dismantling"
+      "name": {
+        "ru": "Монтаж и Демонтаж",
+        "en": "Installation & Dismantling"
+      }
     },
     "extra": {
-      "ru": "Прочие работы",
-      "en": "Extra works"
+      "name": {
+        "ru": "Прочие работы",
+        "en": "Extra works"
+      }
     }
   },
   "services": [

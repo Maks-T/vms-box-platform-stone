@@ -1,5 +1,3 @@
-// resources/js/Pages/Product/components/ProductVariantsList.tsx
-
 import React from 'react';
 import {Layers, Image as ImageIcon} from 'lucide-react';
 import {H3} from '@/shared/components/ui/Typography';
@@ -53,7 +51,7 @@ export function ProductVariantsList({variants, bootstrapConfig}: Props) {
       <div className="flex flex-col gap-3">
         {variants.map((variant) => {
           // Сверяем имя с системным ключом 'code' (бывший 'sku')
-          const hasFriendlyName = variant.name && variant.name !== variant.code;
+          const hasFriendlyName = variant.name && variant.name !== variant.sku;
 
           return (
             <GlassPanel key={variant.id} variant="default" padding="sm"
@@ -62,7 +60,7 @@ export function ProductVariantsList({variants, bootstrapConfig}: Props) {
 
                 <IconBox variant="light" className="w-14 h-14 shrink-0 rounded-xl overflow-hidden p-0 border-border">
                   {variant.preview_picture ? (
-                    <img src={variant.preview_picture} alt={variant.code} className="w-full h-full object-cover"/>
+                    <img src={variant.preview_picture} alt={variant.sku} className="w-full h-full object-cover"/>
                   ) : (
                     <ImageIcon className="w-6 h-6 text-muted-foreground/40"/>
                   )}
@@ -71,13 +69,13 @@ export function ProductVariantsList({variants, bootstrapConfig}: Props) {
                 <div className="min-w-0 flex-1">
                   {/* Если есть красивое имя (например, цвет), выводим его, иначе системный код */}
                   <div className="font-bold text-foreground tracking-tight text-[15px]">
-                    {hasFriendlyName ? variant.name : variant.code}
+                    {hasFriendlyName ? variant.name : variant.sku}
                   </div>
 
                   {/* Если вывели красивое имя, то ниже показываем системный код */}
                   {hasFriendlyName && (
                     <div className="text-[11px] font-mono text-muted-foreground/75 mt-0.5 lowercase">
-                      Код: {variant.code}
+                      Код: {variant.sku}
                     </div>
                   )}
 

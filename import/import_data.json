@@ -1579,7 +1579,7 @@
                     "meta": {
                         "material_code": "acrylic_stone",
                         "thickness": 20,
-                        "coefficient": "2026-04-30T21:00:00.000Z"
+                        "coefficient": 1
                     }
                 },
                 {
@@ -1591,7 +1591,7 @@
                     "meta": {
                         "material_code": "acrylic_stone",
                         "thickness": 30,
-                        "coefficient": 2
+                        "coefficient": 1
                     }
                 },
                 {
@@ -1615,7 +1615,7 @@
                     "meta": {
                         "material_code": "quartz_stone",
                         "thickness": 20,
-                        "coefficient": "2026-02-28T21:00:00.000Z"
+                        "coefficient": 1
                     }
                 }
             ]

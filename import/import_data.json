@@ -1692,7 +1692,8 @@
         "ru": "Артикул поставщика"
       },
       "is_multiple": false,
-      "options": []
+      "options": [],
+      "option_param_type": null
     },
     {
       "external_code": "attr_effect_akril",
@@ -1712,7 +1713,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "bez-effektov"
         },
         {
           "external_code": "opt_effect_akril_svetopronitsaemye_66",
@@ -1723,7 +1725,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "svetopronitsaemye"
         },
         {
           "external_code": "opt_effect_akril_s-blestkami_752",
@@ -1734,9 +1737,11 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "s-blestkami"
         }
-      ]
+      ],
+      "option_param_type": "string"
     },
     {
       "external_code": "attr_is_bend",
@@ -1746,7 +1751,8 @@
         "ru": "Термоформинг"
       },
       "is_multiple": false,
-      "options": []
+      "options": [],
+      "option_param_type": null
     },
     {
       "external_code": "attr_texture",
@@ -1766,7 +1772,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "pod-mramor"
         },
         {
           "external_code": "opt_texture_odnotonnye_23",
@@ -1777,7 +1784,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "odnotonnye"
         },
         {
           "external_code": "opt_texture_odnorodnye-vkrapleniya_10",
@@ -1788,7 +1796,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "odnorodnye-vkrapleniya"
         },
         {
           "external_code": "opt_texture_pod-beton_296",
@@ -1799,7 +1808,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "pod-beton"
         },
         {
           "external_code": "opt_texture_v-stile-loft_808",
@@ -1810,9 +1820,11 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "v-stile-loft"
         }
-      ]
+      ],
+      "option_param_type": "string"
     },
     {
       "external_code": "attr_inclusions_akril",
@@ -1832,7 +1844,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "glyantsevaya"
         },
         {
           "external_code": "opt_inclusions_akril_matovaya_535",
@@ -1843,7 +1856,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "matovaya"
         },
         {
           "external_code": "opt_inclusions_akril_fakturnaya_303",
@@ -1854,7 +1868,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "fakturnaya"
         },
         {
           "external_code": "opt_inclusions_akril_bez-vkraplenij_997",
@@ -1865,9 +1880,11 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "bez-vkraplenij"
         }
-      ]
+      ],
+      "option_param_type": "string"
     },
     {
       "external_code": "attr_marketing_tags",
@@ -1877,7 +1894,8 @@
         "ru": "Теги"
       },
       "is_multiple": true,
-      "options": []
+      "options": [],
+      "option_param_type": "string"
     },
     {
       "external_code": "attr_polishing_quartz",
@@ -1897,7 +1915,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "glyantsevaya"
         },
         {
           "external_code": "opt_polishing_quartz_matovaya_743",
@@ -1908,7 +1927,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "matovaya"
         },
         {
           "external_code": "opt_polishing_quartz_fakturnaya_71",
@@ -1919,9 +1939,11 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "fakturnaya"
         }
-      ]
+      ],
+      "option_param_type": "string"
     },
     {
       "external_code": "attr_brand",
@@ -1941,7 +1963,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "grandex"
         },
         {
           "external_code": "opt_brand_calisco_340",
@@ -1952,7 +1975,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "calisco"
         },
         {
           "external_code": "opt_brand_noblle_971",
@@ -1963,7 +1987,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "noblle"
         },
         {
           "external_code": "opt_brand_avarus_824",
@@ -1974,7 +1999,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "avarus"
         },
         {
           "external_code": "opt_brand_omoikiri_143",
@@ -1985,7 +2011,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "omoikiri"
         },
         {
           "external_code": "opt_brand_blanco_",
@@ -1996,9 +2023,11 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "blanco"
         }
-      ]
+      ],
+      "option_param_type": "string"
     },
     {
       "external_code": "attr_set_sink",
@@ -2018,7 +2047,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "inset"
         },
         {
           "external_code": "opt_set_sink_surface_mounted_150",
@@ -2029,7 +2059,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "surface_mounted"
         },
         {
           "external_code": "opt_set_sink_undermount_",
@@ -2040,7 +2071,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "undermount"
         },
         {
           "external_code": "opt_set_sink_integrated_",
@@ -2051,7 +2083,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "integrated"
         },
         {
           "external_code": "opt_set_sink_nadstolьnyj_635",
@@ -2062,9 +2095,11 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "nadstolьnyj"
         }
-      ]
+      ],
+      "option_param_type": "string"
     },
     {
       "external_code": "attr_material",
@@ -2084,7 +2119,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "nerzhaveyushchaya-stalь"
         },
         {
           "external_code": "opt_material_brass_",
@@ -2095,7 +2131,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "brass"
         },
         {
           "external_code": "opt_material_iskusstvennyj-granit_864",
@@ -2106,7 +2143,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "iskusstvennyj-granit"
         },
         {
           "external_code": "opt_material_artificial_stone_",
@@ -2117,7 +2155,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "artificial_stone"
         },
         {
           "external_code": "opt_material_keramika_933",
@@ -2128,9 +2167,11 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "keramika"
         }
-      ]
+      ],
+      "option_param_type": "string"
     },
     {
       "external_code": "attr_steel_thickness_sink",
@@ -2150,7 +2191,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": 0.7
         },
         {
           "external_code": "opt_steel_thickness_sink_0,8-mm_",
@@ -2161,7 +2203,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": 0.8
         },
         {
           "external_code": "opt_steel_thickness_sink_0,9-mm_",
@@ -2172,7 +2215,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": 0.9
         },
         {
           "external_code": "opt_steel_thickness_sink_1,1-mm_",
@@ -2183,7 +2227,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": 1.1
         },
         {
           "external_code": "opt_steel_thickness_sink_1,2-mm_677",
@@ -2194,9 +2239,11 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": 1.2
         }
-      ]
+      ],
+      "option_param_type": "numeric"
     },
     {
       "external_code": "attr_min_cab_width",
@@ -2217,7 +2264,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": 400
         },
         {
           "external_code": "opt_min_cab_width_450_251",
@@ -2229,7 +2277,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": 450
         },
         {
           "external_code": "opt_min_cab_width_500_",
@@ -2241,7 +2290,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": 500
         },
         {
           "external_code": "opt_min_cab_width_550_",
@@ -2253,7 +2303,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": 550
         },
         {
           "external_code": "opt_min_cab_width_600_825",
@@ -2265,7 +2316,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": 600
         },
         {
           "external_code": "opt_min_cab_width_650_",
@@ -2277,7 +2329,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": 650
         },
         {
           "external_code": "opt_min_cab_width_700_",
@@ -2289,7 +2342,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": 700
         },
         {
           "external_code": "opt_min_cab_width_750_",
@@ -2301,7 +2355,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": 750
         },
         {
           "external_code": "opt_min_cab_width_800_",
@@ -2313,9 +2368,11 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": 800
         }
-      ]
+      ],
+      "option_param_type": "numeric"
     },
     {
       "external_code": "attr_features_faucet",
@@ -2335,7 +2392,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "3-v-1-(filьtr+lejka)"
         },
         {
           "external_code": "opt_features_faucet_2-v-1-(s-filьtrom)_50",
@@ -2346,9 +2404,11 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "2-v-1-(s-filьtrom)"
         }
-      ]
+      ],
+      "option_param_type": "string"
     },
     {
       "external_code": "attr_type_faucet",
@@ -2368,7 +2428,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "smesitelь"
         },
         {
           "external_code": "opt_type_faucet_dozator_156",
@@ -2379,9 +2440,11 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "dozator"
         }
-      ]
+      ],
+      "option_param_type": "string"
     },
     {
       "external_code": "attr_color",
@@ -2401,7 +2464,8 @@
           "meta": {
             "hex": "#EFD5B8",
             "image": null
-          }
+          },
+          "param": "#EFD5B8"
         },
         {
           "external_code": "opt_color_belyj-monokolor_301",
@@ -2412,7 +2476,8 @@
           "meta": {
             "hex": "#F8F6F0",
             "image": null
-          }
+          },
+          "param": "#F8F6F0"
         },
         {
           "external_code": "opt_color_chernyj-melkozernistyj_200",
@@ -2423,7 +2488,8 @@
           "meta": {
             "hex": "#1C1C1C",
             "image": null
-          }
+          },
+          "param": "#1C1C1C"
         },
         {
           "external_code": "opt_color_krasnyj_789",
@@ -2434,7 +2500,8 @@
           "meta": {
             "hex": "#C8102E",
             "image": null
-          }
+          },
+          "param": "#C8102E"
         },
         {
           "external_code": "opt_color_seryj-monokolor_528",
@@ -2445,7 +2512,8 @@
           "meta": {
             "hex": "#A8A9AD",
             "image": null
-          }
+          },
+          "param": "#A8A9AD"
         },
         {
           "external_code": "opt_color_svetlo-seryj_875",
@@ -2456,7 +2524,8 @@
           "meta": {
             "hex": "#D1D3D8",
             "image": null
-          }
+          },
+          "param": "#D1D3D8"
         },
         {
           "external_code": "opt_color_temno-seryj_670",
@@ -2467,7 +2536,8 @@
           "meta": {
             "hex": "#4A4A4A",
             "image": null
-          }
+          },
+          "param": "#4A4A4A"
         },
         {
           "external_code": "opt_color_teplyj-belyj_918",
@@ -2478,7 +2548,8 @@
           "meta": {
             "hex": "#F5EDE4",
             "image": null
-          }
+          },
+          "param": "#F5EDE4"
         },
         {
           "external_code": "opt_color_temno-sinij_969",
@@ -2489,7 +2560,8 @@
           "meta": {
             "hex": "#1E2A44",
             "image": null
-          }
+          },
+          "param": "#1E2A44"
         },
         {
           "external_code": "opt_color_oranzhevyj_51",
@@ -2500,7 +2572,8 @@
           "meta": {
             "hex": "#FF7F00",
             "image": null
-          }
+          },
+          "param": "#FF7F00"
         },
         {
           "external_code": "opt_color_zelenyj_392",
@@ -2511,7 +2584,8 @@
           "meta": {
             "hex": "#4CAF50",
             "image": null
-          }
+          },
+          "param": "#4CAF50"
         },
         {
           "external_code": "opt_color_seryj-melkozernistyj_807",
@@ -2522,7 +2596,8 @@
           "meta": {
             "hex": "#7D7F82",
             "image": null
-          }
+          },
+          "param": "#7D7F82"
         },
         {
           "external_code": "opt_color_bezhevyj-melkozernistyj_21",
@@ -2533,7 +2608,8 @@
           "meta": {
             "hex": "#D9C2A3",
             "image": null
-          }
+          },
+          "param": "#D9C2A3"
         },
         {
           "external_code": "opt_color_belyj-melkozernistyj_550",
@@ -2544,7 +2620,8 @@
           "meta": {
             "hex": "#EDE9E0",
             "image": null
-          }
+          },
+          "param": "#EDE9E0"
         },
         {
           "external_code": "opt_color_bezhevo-seryj_318",
@@ -2555,7 +2632,8 @@
           "meta": {
             "hex": "#B8A78E",
             "image": null
-          }
+          },
+          "param": "#B8A78E"
         },
         {
           "external_code": "opt_color_yantarno-bezhevyj_907",
@@ -2566,7 +2644,8 @@
           "meta": {
             "hex": "#E8B77E",
             "image": null
-          }
+          },
+          "param": "#E8B77E"
         },
         {
           "external_code": "opt_color_temno-korichnevyj-mramor_523",
@@ -2577,7 +2656,8 @@
           "meta": {
             "hex": "#3F2A1E",
             "image": null
-          }
+          },
+          "param": "#3F2A1E"
         },
         {
           "external_code": "opt_color_korichnevyj-mramor_412",
@@ -2588,7 +2668,8 @@
           "meta": {
             "hex": "#6B4E3D",
             "image": null
-          }
+          },
+          "param": "#6B4E3D"
         },
         {
           "external_code": "opt_color_belyj-glitter_383",
@@ -2599,7 +2680,8 @@
           "meta": {
             "hex": "#F0EDE6",
             "image": null
-          }
+          },
+          "param": "#F0EDE6"
         },
         {
           "external_code": "opt_color_seryj-glitter_646",
@@ -2610,7 +2692,8 @@
           "meta": {
             "hex": "#8C8E92",
             "image": null
-          }
+          },
+          "param": "#8C8E92"
         },
         {
           "external_code": "opt_color_seryj-beton_913",
@@ -2621,7 +2704,8 @@
           "meta": {
             "hex": "#8A8D8F",
             "image": null
-          }
+          },
+          "param": "#8A8D8F"
         },
         {
           "external_code": "opt_color_chernyj-glitter_629",
@@ -2632,7 +2716,8 @@
           "meta": {
             "hex": "#1A1A1A",
             "image": null
-          }
+          },
+          "param": "#1A1A1A"
         },
         {
           "external_code": "opt_color_bezhevyj-kvartsit_575",
@@ -2643,7 +2728,8 @@
           "meta": {
             "hex": "#D4BFA8",
             "image": null
-          }
+          },
+          "param": "#D4BFA8"
         },
         {
           "external_code": "opt_color_belyj-mramor_316",
@@ -2654,7 +2740,8 @@
           "meta": {
             "hex": "#F5F3ED",
             "image": null
-          }
+          },
+          "param": "#F5F3ED"
         },
         {
           "external_code": "opt_color_seryj-mramor_432",
@@ -2665,7 +2752,8 @@
           "meta": {
             "hex": "#A9A9A7",
             "image": null
-          }
+          },
+          "param": "#A9A9A7"
         },
         {
           "external_code": "opt_color_bezhevyj-mramor_995",
@@ -2676,7 +2764,8 @@
           "meta": {
             "hex": "#D9C8B0",
             "image": null
-          }
+          },
+          "param": "#D9C8B0"
         },
         {
           "external_code": "opt_color_svetlo-seryj-mramor_5",
@@ -2687,7 +2776,8 @@
           "meta": {
             "hex": "#E0E0E0",
             "image": null
-          }
+          },
+          "param": "#E0E0E0"
         },
         {
           "external_code": "opt_color_chernyj-mramor_403",
@@ -2698,7 +2788,8 @@
           "meta": {
             "hex": "#212121",
             "image": null
-          }
+          },
+          "param": "#212121"
         },
         {
           "external_code": "opt_color_temno-seryj-mramor_703",
@@ -2709,7 +2800,8 @@
           "meta": {
             "hex": "#5E5E5E",
             "image": null
-          }
+          },
+          "param": "#5E5E5E"
         },
         {
           "external_code": "opt_color_temno-seryj-monokolor_77",
@@ -2720,7 +2812,8 @@
           "meta": {
             "hex": "#404040",
             "image": null
-          }
+          },
+          "param": "#404040"
         },
         {
           "external_code": "opt_color_svetlo-seryj-beton_800",
@@ -2731,7 +2824,8 @@
           "meta": {
             "hex": "#BEBEBE",
             "image": null
-          }
+          },
+          "param": "#BEBEBE"
         },
         {
           "external_code": "opt_color_temno-seryj-beton_976",
@@ -2742,7 +2836,8 @@
           "meta": {
             "hex": "#555555",
             "image": null
-          }
+          },
+          "param": "#555555"
         },
         {
           "external_code": "opt_color_seryj-kvartsit_270",
@@ -2753,7 +2848,8 @@
           "meta": {
             "hex": "#8E8F91",
             "image": null
-          }
+          },
+          "param": "#8E8F91"
         },
         {
           "external_code": "opt_color_temno-seryj-granit_78",
@@ -2764,7 +2860,8 @@
           "meta": {
             "hex": "#424242",
             "image": null
-          }
+          },
+          "param": "#424242"
         },
         {
           "external_code": "opt_color_zolotisto-bezhevyj_370",
@@ -2775,7 +2872,8 @@
           "meta": {
             "hex": "#E6C9A0",
             "image": null
-          }
+          },
+          "param": "#E6C9A0"
         },
         {
           "external_code": "opt_color_belyj-oblachnyj_425",
@@ -2786,7 +2884,8 @@
           "meta": {
             "hex": "#F2EFEA",
             "image": null
-          }
+          },
+          "param": "#F2EFEA"
         },
         {
           "external_code": "opt_color_bezhevo-seryj-beton_515",
@@ -2797,7 +2896,8 @@
           "meta": {
             "hex": "#B5A58F",
             "image": null
-          }
+          },
+          "param": "#B5A58F"
         },
         {
           "external_code": "opt_color_seryj_bezhevyj_",
@@ -2808,7 +2908,8 @@
           "meta": {
             "hex": "#B8A98F",
             "image": null
-          }
+          },
+          "param": "#B8A98F"
         },
         {
           "external_code": "opt_color_anthracite_",
@@ -2819,7 +2920,8 @@
           "meta": {
             "hex": "#282828",
             "image": null
-          }
+          },
+          "param": "#282828"
         },
         {
           "external_code": "opt_color_coffee_",
@@ -2830,7 +2932,8 @@
           "meta": {
             "hex": "#4A2C1F",
             "image": null
-          }
+          },
+          "param": "#4A2C1F"
         },
         {
           "external_code": "opt_color_dark_rock_",
@@ -2841,7 +2944,8 @@
           "meta": {
             "hex": "#363636",
             "image": null
-          }
+          },
+          "param": "#363636"
         },
         {
           "external_code": "opt_color_black_",
@@ -2852,7 +2956,8 @@
           "meta": {
             "hex": "#0F0F0F",
             "image": null
-          }
+          },
+          "param": "#0F0F0F"
         },
         {
           "external_code": "opt_color_grey_volcano_",
@@ -2863,7 +2968,8 @@
           "meta": {
             "hex": "#5A5A5A",
             "image": null
-          }
+          },
+          "param": "#5A5A5A"
         },
         {
           "external_code": "opt_color_soft_white_",
@@ -2874,7 +2980,8 @@
           "meta": {
             "hex": "#F7F4ED",
             "image": null
-          }
+          },
+          "param": "#F7F4ED"
         },
         {
           "external_code": "opt_color_alumetallik_",
@@ -2885,7 +2992,8 @@
           "meta": {
             "hex": "#B5B8BC",
             "image": null
-          }
+          },
+          "param": "#B5B8BC"
         },
         {
           "external_code": "opt_color_nerzhaveyushchaya-stalь-(bn)_704",
@@ -2896,7 +3004,8 @@
           "meta": {
             "hex": "#C8C9CC",
             "image": null
-          }
+          },
+          "param": "#C8C9CC"
         },
         {
           "external_code": "opt_color_bezhevyj-sa_621",
@@ -2907,7 +3016,8 @@
           "meta": {
             "hex": "#D9C6A5",
             "image": null
-          }
+          },
+          "param": "#D9C6A5"
         },
         {
           "external_code": "opt_color_zoloto-(pvd)_70",
@@ -2918,7 +3028,8 @@
           "meta": {
             "hex": "#D4AF37",
             "image": null
-          }
+          },
+          "param": "#D4AF37"
         },
         {
           "external_code": "opt_color_belyj_200",
@@ -2929,7 +3040,8 @@
           "meta": {
             "hex": "#FAF9F5",
             "image": null
-          }
+          },
+          "param": "#FAF9F5"
         },
         {
           "external_code": "opt_color_chernyj_992",
@@ -2940,7 +3052,8 @@
           "meta": {
             "hex": "#1A1A1A",
             "image": null
-          }
+          },
+          "param": "#1A1A1A"
         },
         {
           "external_code": "opt_color_chromium_",
@@ -2951,7 +3064,8 @@
           "meta": {
             "hex": "#D0D0D0",
             "image": null
-          }
+          },
+          "param": "#D0D0D0"
         },
         {
           "external_code": "opt_color_gold_satin_",
@@ -2962,7 +3076,8 @@
           "meta": {
             "hex": "#C9A227",
             "image": null
-          }
+          },
+          "param": "#C9A227"
         },
         {
           "external_code": "opt_color_steel_",
@@ -2973,7 +3088,8 @@
           "meta": {
             "hex": "#B0B2B5",
             "image": null
-          }
+          },
+          "param": "#B0B2B5"
         },
         {
           "external_code": "opt_color_dark_steel_satin_",
@@ -2984,7 +3100,8 @@
           "meta": {
             "hex": "#5E5F62",
             "image": null
-          }
+          },
+          "param": "#5E5F62"
         },
         {
           "external_code": "opt_color_platinum_satin_",
@@ -2995,7 +3112,8 @@
           "meta": {
             "hex": "#BEBFC2",
             "image": null
-          }
+          },
+          "param": "#BEBFC2"
         },
         {
           "external_code": "opt_color_nerzhaveyushchaya-stalь-(bn)_71",
@@ -3006,7 +3124,8 @@
           "meta": {
             "hex": "#C6C7CA",
             "image": null
-          }
+          },
+          "param": "#C6C7CA"
         },
         {
           "external_code": "opt_color_bezhevyj-sa_962",
@@ -3017,7 +3136,8 @@
           "meta": {
             "hex": "#D8C4A3",
             "image": null
-          }
+          },
+          "param": "#D8C4A3"
         },
         {
           "external_code": "opt_color_zoloto-(pvd)_647",
@@ -3028,9 +3148,11 @@
           "meta": {
             "hex": "#D8B03C",
             "image": null
-          }
+          },
+          "param": "#D8B03C"
         }
-      ]
+      ],
+      "option_param_type": "string"
     },
     {
       "external_code": "attr_collection",
@@ -3050,7 +3172,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "pure-color"
         },
         {
           "external_code": "opt_collection_sand-and-sky_596",
@@ -3061,7 +3184,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "sand-and-sky"
         },
         {
           "external_code": "opt_collection_delicious-edition_142",
@@ -3072,7 +3196,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "delicious-edition"
         },
         {
           "external_code": "opt_collection_adventur_364",
@@ -3083,7 +3208,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "adventur"
         },
         {
           "external_code": "opt_collection_jewel_881",
@@ -3094,7 +3220,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "jewel"
         },
         {
           "external_code": "opt_collection_explorer_464",
@@ -3105,7 +3232,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "explorer"
         },
         {
           "external_code": "opt_collection_marble-ocean_390",
@@ -3116,7 +3244,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "marble-ocean"
         },
         {
           "external_code": "opt_collection_crevice_35",
@@ -3127,7 +3256,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "crevice"
         },
         {
           "external_code": "opt_collection_calisco_520",
@@ -3138,7 +3268,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "calisco"
         },
         {
           "external_code": "opt_collection_basic_855",
@@ -3149,7 +3280,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "basic"
         },
         {
           "external_code": "opt_collection_marble_812",
@@ -3160,7 +3292,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "marble"
         },
         {
           "external_code": "opt_collection_calacatta_858",
@@ -3171,7 +3304,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "calacatta"
         },
         {
           "external_code": "opt_collection_oxide_867",
@@ -3182,7 +3316,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "oxide"
         },
         {
           "external_code": "opt_collection_unique_915",
@@ -3193,7 +3328,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "unique"
         },
         {
           "external_code": "opt_collection_monokolor_625",
@@ -3204,7 +3340,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "monokolor"
         },
         {
           "external_code": "opt_collection_granitnaya-kollektsiya_597",
@@ -3215,7 +3352,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "granitnaya-kollektsiya"
         },
         {
           "external_code": "opt_collection_mramornaya-kollektsiya_439",
@@ -3226,7 +3364,8 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "mramornaya-kollektsiya"
         },
         {
           "external_code": "opt_collection_kalakatta_826",
@@ -3237,9 +3376,11 @@
           "meta": {
             "hex": null,
             "image": null
-          }
+          },
+          "param": "kalakatta"
         }
-      ]
+      ],
+      "option_param_type": "string"
     },
     {
       "external_code": "attr_length",
@@ -3249,7 +3390,8 @@
         "ru": "Длина"
       },
       "is_multiple": false,
-      "options": []
+      "options": [],
+      "option_param_type": null
     },
     {
       "external_code": "attr_width",
@@ -3259,7 +3401,8 @@
         "ru": "Ширина"
       },
       "is_multiple": false,
-      "options": []
+      "options": [],
+      "option_param_type": null
     },
     {
       "external_code": "attr_height",
@@ -3269,7 +3412,8 @@
         "ru": "Толщина"
       },
       "is_multiple": false,
-      "options": []
+      "options": [],
+      "option_param_type": null
     },
     {
       "external_code": "attr_size_inner_sink",
@@ -3279,7 +3423,8 @@
         "ru": "Размер (внутренний)"
       },
       "is_multiple": false,
-      "options": []
+      "options": [],
+      "option_param_type": null
     },
     {
       "external_code": "attr_cutting_groups",
@@ -3289,7 +3434,8 @@
         "ru": "Группа раскроя"
       },
       "is_multiple": false,
-      "options": []
+      "options": [],
+      "option_param_type": null
     }
   ],
   "products": [

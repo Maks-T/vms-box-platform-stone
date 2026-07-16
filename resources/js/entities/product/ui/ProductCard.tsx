@@ -39,10 +39,10 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
   const serviceTags = attributes?.service_tags?.value as EavValueOption[] | undefined;
 
   let subtitle = 'Каталог';
-  if (brand) subtitle = brand.name;
-  else if (collection) subtitle = collection.name;
+  if (brand) subtitle = brand.label; // Был brand.name
+  else if (collection) subtitle = collection.label; // Был collection.name
   else if (serviceTags && Array.isArray(serviceTags) && serviceTags.length > 0) {
-    subtitle = serviceTags.map(t => t.name).join(', ');
+    subtitle = serviceTags.map(t => t.label).join(', '); // Был t.name
   } else if (unit) subtitle = `Ед. изм: ${unit.name}`;
 
   const parentColor = attributes?.color?.value as EavValueOption | undefined;
@@ -52,8 +52,8 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
     const seen = new Set();
     variants.forEach(v => {
       const vColor = v.attributes?.color?.value as EavValueOption | undefined;
-      if (vColor && !seen.has(vColor.slug)) {
-        seen.add(vColor.slug);
+      if (vColor && !seen.has(vColor.key)) { // Был vColor.slug
+        seen.add(vColor.key); // Был vColor.slug
         variantColors.push(vColor);
       }
     });
@@ -62,8 +62,8 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
   const colorsToShow = variantColors.length > 0 ? variantColors : (parentColor ? [parentColor] : []);
 
   const activeColorSlug = activeVariant
-    ? (activeVariant.attributes?.color?.value as EavValueOption | undefined)?.slug
-    : (variants?.find(v => v.is_default)?.attributes?.color?.value as EavValueOption | undefined)?.slug;
+    ? (activeVariant.attributes?.color?.value as EavValueOption | undefined)?.key
+    : (variants?.find(v => v.is_default)?.attributes?.color?.value as EavValueOption | undefined)?.key;
 
   const handleColorClick = (e: React.MouseEvent, color: EavValueOption) => {
     e.preventDefault();
@@ -71,7 +71,7 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
 
     const match = variants?.find(v => {
       const vColor = v.attributes?.color?.value as EavValueOption | undefined;
-      return vColor?.slug === color.slug;
+      return vColor?.key === color.key;
     });
 
     if (match) {
@@ -80,7 +80,7 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
   };
 
   const renderSwatch = (color: EavValueOption) => {
-    const isSelected = color.slug === activeColorSlug;
+    const isSelected = color.key === activeColorSlug;
 
     const swatchClasses = cn(
       "w-5 h-5 rounded-full object-cover border border-slate-200/80 shadow-sm cursor-pointer transition-all duration-300",
@@ -92,10 +92,10 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
     if (color.meta?.image) {
       return (
         <img
-          key={color.slug}
+          key={color.key}
           src={color.meta.image}
-          title={color.name}
-          alt={color.name}
+          title={color.label}
+          alt={color.label}
           onClick={(e) => handleColorClick(e, color)}
           className={swatchClasses}
         />
@@ -104,8 +104,8 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
     if (color.meta?.hex) {
       return (
         <div
-          key={color.slug}
-          title={color.name}
+          key={color.key}
+          title={color.label}
           onClick={(e) => handleColorClick(e, color)}
           className={swatchClasses}
           style={{backgroundColor: color.meta.hex}}
@@ -152,7 +152,7 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
             {colorsToShow.length === 1 ? (
               <div className="flex items-center gap-2">
                 {renderSwatch(colorsToShow[0])}
-                <span className="text-xs text-muted-foreground truncate">{colorsToShow[0].name}</span>
+                <span className="text-xs text-muted-foreground truncate">{colorsToShow[0].label}</span>
               </div>
             ) : (
               <>

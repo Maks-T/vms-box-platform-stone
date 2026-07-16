@@ -1,5 +1,5 @@
 import React from 'react';
-import {EavValueOption} from '@/types/catalog';
+import { EavValueOption } from '@/types/catalog';
 
 interface Props {
   option: EavValueOption;
@@ -16,7 +16,7 @@ export function ValueSingleOption({option}: Props) {
         <img src={option.meta.image} alt=""
              className="w-5 h-5 rounded-full object-cover border border-border shadow-sm shrink-0"/>
       )}
-      <span className="font-semibold text-foreground">{option.name}</span>
+      <span className="font-semibold text-foreground">{option.label}</span>
     </div>
   );
 }

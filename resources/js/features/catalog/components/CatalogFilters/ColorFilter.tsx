@@ -6,11 +6,11 @@ import { FilterSwatch } from './FilterSwatch';
 export const ColorFilter = ({ options, activeValues, onToggle }: any) => (
   <div className="flex flex-col gap-3">
     {options.map((opt: any) => {
-      const isChecked = activeValues.includes(opt.slug);
+      const isChecked = activeValues.includes(opt.key);
 
       return (
         <label
-          key={opt.slug}
+          key={opt.key}
           className="flex items-center gap-3.5 cursor-pointer group select-none py-0.5"
         >
           <div className="relative flex items-center justify-center shrink-0">
@@ -18,10 +18,9 @@ export const ColorFilter = ({ options, activeValues, onToggle }: any) => (
               type="checkbox"
               className="peer sr-only"
               checked={isChecked}
-              onChange={() => onToggle(opt.slug)}
+              onChange={() => onToggle(opt.key)}
             />
 
-            {}
             <div className="relative rounded-full transition-colors duration-200">
               <FilterSwatch
                 image={opt.meta?.image}
@@ -29,7 +28,6 @@ export const ColorFilter = ({ options, activeValues, onToggle }: any) => (
                 size="sm"
                 className="w-6 h-6 border-slate-200 group-hover:border-slate-300 transition-colors"
               />
-
 
               {isChecked && (
                 <div className="absolute inset-0 flex items-center justify-center bg-black/30 rounded-full transition-opacity">
@@ -47,7 +45,7 @@ export const ColorFilter = ({ options, activeValues, onToggle }: any) => (
                 : "text-muted-foreground font-medium group-hover:text-primary"
             )}
           >
-            {opt.value}
+            {opt.label} {/* Был value */}
           </span>
         </label>
       );

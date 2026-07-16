@@ -9,6 +9,72 @@ BASE_DIR = "/home/maks-t/vms-box-platform-stone/import" if os.name == 'posix' el
 INPUT_JSON = os.path.join(BASE_DIR, "import_mebel_raw_ru_pic.json")
 OUTPUT_JSON = os.path.join(BASE_DIR, "import_data.json")
 
+# Константный список валют для инъекции
+STATIC_CURRENCIES = [
+    {
+      "code": "BYN",
+      "symbol": "Br",
+      "symbol_native": {
+        "ru": "руб.",
+        "en": "Br"
+      },
+      "name": {
+        "ru": "Белорусский рубль",
+        "en": "Belarusian Ruble"
+      },
+      "rate": 1.0,
+      "is_default": True,
+      "is_active": True
+    },
+    {
+      "code": "RUB",
+      "symbol": "₽",
+      "symbol_native": {
+        "ru": "руб.",
+        "en": "rub."
+      },
+      "name": {
+        "ru": "Российский рубль",
+        "en": "Russian Ruble"
+      },
+      "rate": 0.0339,
+      "is_default": False,
+      "is_active": True
+    },
+    {
+      "code": "USD",
+      "symbol": "$",
+      "symbol_native": {
+        "ru": "долл.",
+        "en": "$"
+      },
+      "name": {
+        "ru": "Доллар США",
+        "en": "US Dollar"
+      },
+      "rate": 3.2,
+      "is_default": False,
+      "is_active": True
+    }
+]
+
+# Константный список типов цен для инъекции
+STATIC_PRICE_TYPES = [
+    {
+      "slug": "retail",
+      "currency_code": "BYN",
+      "is_default": True,
+      "name": {
+        "ru": "Цена продажи",
+        "en": "Retail"
+      },
+      "description": {
+        "ru": "Базовая розничная цена в системе",
+        "en": "Base retail price in the system"
+      }
+    }
+]
+
 # Карта типов параметров для ваших атрибутов
 ATTR_PARAM_TYPES = {
     "color": "string",
@@ -45,6 +111,11 @@ def main():
     with open(INPUT_JSON, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
+    # Принудительно внедряем константные валюты и типы цен
+    print("Внедрение константных настроек валют и типов цен...")
+    data["currencies"] = STATIC_CURRENCIES
+    data["price_types"] = STATIC_PRICE_TYPES
+
     # 1. Трансформируем блок Атрибутов и их Опций
     for attr in data.get("attributes", []):
         code = attr.get("code")
@@ -63,20 +134,22 @@ def main():
             # Рассчитываем значение param в зависимости от типа
             param_val = None
             if param_type == "numeric":
-                # Вытаскиваем число из слага (например, "0,9-mm" -> 0.9) или из значения
                 param_val = parse_float(slug)
                 if param_val is None:
                     param_val = parse_float(opt.get("value", {}).get("ru"))
             elif code == "color":
-                # Для цвета параметром по умолчанию будет hex-код
                 param_val = meta.get("hex") or str(slug)
             else:
-                # Для остальных строк параметром будет сам слаг
-                param_val = str(slug) if slug is not None else null
+                param_val = str(slug) if slug is not None else None
 
             opt["param"] = param_val
 
-    # Сохраняем итоговый import_data.json для Laravel импортера
+    # 2. Трансформируем блок Продуктов (генерируем code на основе slug)
+    for prod in data.get("products", []):
+        if "code" not in prod:
+            prod["code"] = prod.get("slug")
+
+    # Сохраняем итоговый import_data.json
     print(f"Сохранение готового файла импорта -> {OUTPUT_JSON}")
     with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)

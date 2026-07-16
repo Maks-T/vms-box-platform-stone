@@ -29,10 +29,10 @@ export function ServiceCard({ service, bootstrapConfig }: ServiceCardProps) {
 
   const tagsAttr = service.attributes?.service_tags?.value;
 
-  
+
   const tags = (Array.isArray(tagsAttr) ? tagsAttr : []) as EavValueOption[];
 
-  
+
   const currencySymbol = bootstrapConfig?.base_currency?.symbol_native || bootstrapConfig?.base_currency?.symbol || 'Br';
 
   return (
@@ -110,15 +110,15 @@ export function ServiceCard({ service, bootstrapConfig }: ServiceCardProps) {
       {tags.length > 0 && (
         <div className="px-6 py-5 border-t border-white/5 flex flex-wrap gap-2 bg-white/[0.02]">
           {tags.map(tag => {
-            const isAddon = tag.slug === 'addon';
+            const isAddon = tag.key === 'addon';
 
             return (
-              <StatusBadge key={tag.slug} variant={isAddon ? "warning" : "success"} className="px-2.5 py-1.5">
+              <StatusBadge key={tag.key} variant={isAddon ? "warning" : "success"} className="px-2.5 py-1.5">
                 <span className={cn(
                   "uppercase tracking-widest text-[9px] font-bold",
                   isAddon ? "text-amber-400" : "text-emerald-400"
                 )}>
-                  {tag.name}
+                  {tag.label} // Был name
                 </span>
               </StatusBadge>
             );

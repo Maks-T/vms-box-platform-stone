@@ -4,6 +4,15 @@ import json
 import re
 import sys
 
+# ==============================================================================
+# НАСТРОЙКИ КОНВЕРТАЦИИ И ИМПОРТА
+# ==============================================================================
+RENAME_IMAGES_TO_WEBP = True  # Если True, расширения всех изображений будут заменены на .webp
+
+# Если True, все товары без каких-либо изображений (и у товара, и у всех его вариаций)
+# будут автоматически импортироваться как неактивные (скрытые) [2]
+HIDE_PRODUCTS_WITHOUT_IMAGES = True
+
 # Определяем пути к файлам
 BASE_DIR = "/home/maks-t/vms-box-platform-stone/import" if os.name == 'posix' else r"\\wsl.localhost\Ubuntu-24.04\home\maks-t\vms-box-platform-stone\import"
 INPUT_JSON = os.path.join(BASE_DIR, "import_mebel_raw_ru_pic.json")
@@ -102,6 +111,10 @@ def parse_float(text) -> float | int | None:
         return float(num_str) if '.' in num_str else int(num_str)
     return None
 
+def is_valid_image(path) -> bool:
+    """Проверяет, задан ли валидный путь к файлу изображения"""
+    return path is not None and str(path).strip() != ""
+
 def main():
     if not os.path.exists(INPUT_JSON):
         print(f"Error: Input JSON file not found: {INPUT_JSON}")
@@ -144,10 +157,39 @@ def main():
 
             opt["param"] = param_val
 
-    # 2. Трансформируем блок Продуктов (генерируем code на основе slug)
+    # 2. Трансформируем блок Продуктов (генерируем code на основе slug и проверяем фото)
+    deactivated_count = 0
     for prod in data.get("products", []):
         if "code" not in prod:
             prod["code"] = prod.get("slug")
+
+        # Проверяем изображения у самого товара
+        prod_has_preview = is_valid_image(prod.get("preview_picture"))
+        prod_has_detail = is_valid_image(prod.get("detail_picture"))
+
+        # Проверяем изображения у всех вариаций этого товара
+        variants_have_images = False
+        for v in prod.get("variants", []):
+            v_preview = is_valid_image(v.get("preview_picture"))
+            v_detail = is_valid_image(v.get("detail_picture"))
+            if v_preview or v_detail:
+                variants_have_images = True
+                break
+
+        # Объединяем результаты проверки
+        has_any_photo = prod_has_preview or prod_has_detail or variants_have_images
+
+        # Если в исходном JSON активность уже была задана явно, сохраняем её, иначе по умолчанию True
+        if "is_active" not in prod:
+            prod["is_active"] = True
+
+        # Если включена скрывающая опция и фото вообще нет, то деактивируем
+        if HIDE_PRODUCTS_WITHOUT_IMAGES and not has_any_photo:
+            prod["is_active"] = False
+            deactivated_count += 1
+
+    if HIDE_PRODUCTS_WITHOUT_IMAGES and deactivated_count > 0:
+        print(f"  ⚠ Автоматически деактивировано товаров без фото: {deactivated_count}")
 
     # Сохраняем итоговый import_data.json
     print(f"Сохранение готового файла импорта -> {OUTPUT_JSON}")

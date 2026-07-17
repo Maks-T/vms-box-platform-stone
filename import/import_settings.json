@@ -1,404 +1,413 @@
 {
-  "attributes": {
-    "service_tags": {
-      "type": "dictionary",
-      "name": {
-        "ru": "Теги услуг",
-        "en": "Service Tags"
+  "languages": [
+    "ru"
+  ],
+  "channels": {
+    "widget": {
+      "is_public_default": true
+    },
+    "catalog": {
+      "is_public_default": true
+    }
+  },
+  "setting_schemas": {
+    "attribute": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
       },
-      "is_multiple": true,
-      "option_param_type": "string",
-      "options": [
-        {
-          "external_code": "opt_service_tags_kitchen",
-          "slug": "kitchen",
-          "value": {
-            "ru": "Кухня",
-            "en": "Kitchen"
-          },
-          "param": "kitchen"
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
         },
-        {
-          "external_code": "opt_service_tags_bathroom",
-          "slug": "bathroom",
-          "value": {
-            "ru": "Ванная",
-            "en": "Bathroom"
-          },
-          "param": "bathroom"
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_filterable",
+        "type": "boolean",
+        "label": {
+          "ru": "Использовать как фильтр",
+          "en": "Use as filter"
         },
-        {
-          "external_code": "opt_service_tags_windowsill",
-          "slug": "windowsill",
-          "value": {
-            "ru": "Подоконник",
-            "en": "Windowsill"
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_collapsed",
+        "type": "boolean",
+        "label": {
+          "ru": "Свернуть по умолчанию",
+          "en": "Collapsed by default"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
+      },
+      {
+        "key": "filter_type",
+        "type": "select",
+        "label": {
+          "ru": "Вид фильтра",
+          "en": "Filter UI type"
+        },
+        "width": 2,
+        "is_system": true,
+        "default": "checkbox",
+        "options": {
+          "checkbox": {
+            "ru": "Список чекбоксов",
+            "en": "Checkboxes"
           },
-          "param": "windowsill"
+          "radio": {
+            "ru": "Одиночный выбор",
+            "en": "Radio buttons"
+          },
+          "color": {
+            "ru": "Цветовые кружки",
+            "en": "Color swatches"
+          },
+          "range": {
+            "ru": "Диапазон (слайдер)",
+            "en": "Range slider"
+          }
         }
-      ]
-    }
-  },
-  "categories": {
-    "cutouts": {
-      "name": {
-        "ru": "Вырезы под мойки и технику",
-        "en": "Cutouts"
       }
-    },
-    "processing": {
-      "name": {
-        "ru": "Обработка кромок и бортов",
-        "en": "Edge Processing"
+    ],
+    "price_group": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
       }
-    },
-    "logistics": {
-      "name": {
-        "ru": "Замер, доставка и установка",
-        "en": "Logistics & Montage"
+    ],
+    "complex_dictionary": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
+      },
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
       }
-    }
-  },
-  "services": [
-    {
-      "code": "cutout_price",
-      "slug": "cutout_price",
-      "category": "cutouts",
-      "unit": "pcs",
-      "name": {
-        "ru": "Вырез под подстольную мойку (смеситель)",
-        "en": "Undermount cutout"
+    ],
+    "family": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
       },
-      "eav": {
-        "service_tags": ["kitchen", "bathroom"]
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
       },
-      "prices": {
-        "acrylic_stone": 1650.0,
-        "quartz_stone": 2500.0
+      {
+        "key": "show_in_menu",
+        "type": "boolean",
+        "label": {
+          "ru": "Показывать в меню",
+          "en": "Show in menu"
+        },
+        "width": 2,
+        "is_system": true,
+        "default": true
       }
-    },
-    {
-      "code": "gluing_price",
-      "slug": "gluing_price",
-      "category": "cutouts",
-      "unit": "pcs",
-      "name": {
-        "ru": "Подклейка мойки",
-        "en": "Sink gluing"
+    ],
+    "category": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
       },
-      "eav": {
-        "service_tags": ["kitchen", "bathroom"]
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
       },
-      "prices": {
-        "acrylic_stone": 1650.0,
-        "quartz_stone": 2500.0
+      {
+        "key": "show_in_menu",
+        "type": "boolean",
+        "label": {
+          "ru": "Показывать в меню",
+          "en": "Show in menu"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
       }
-    },
-    {
-      "code": "cutout_hob_price",
-      "slug": "cutout_hob_price",
-      "category": "cutouts",
-      "unit": "pcs",
-      "name": {
-        "ru": "Вырез под варочную панель",
-        "en": "Hob cutout"
+    ],
+    "product_type": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
       },
-      "eav": {
-        "service_tags": ["kitchen"]
-      },
-      "prices": {
-        "acrylic_stone": 1650.0,
-        "quartz_stone": 2500.0
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
       }
-    },
-    {
-      "code": "point_cutout_price",
-      "slug": "point_cutout_price",
-      "category": "cutouts",
-      "unit": "pcs",
-      "name": {
-        "ru": "Отверстие под смеситель (дозатор)",
-        "en": "Faucet cutout"
+    ],
+    "product": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
       },
-      "eav": {
-        "service_tags": ["kitchen", "bathroom"]
-      },
-      "prices": {
-        "acrylic_stone": 500.0,
-        "quartz_stone": 800.0
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
       }
-    },
-    {
-      "code": "socket_cutout_price",
-      "slug": "socket_cutout_price",
-      "category": "cutouts",
-      "unit": "pcs",
-      "name": {
-        "ru": "Вырез под розетку",
-        "en": "Socket cutout"
+    ],
+    "product_variant": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
       },
-      "eav": {
-        "service_tags": ["kitchen", "bathroom"]
-      },
-      "prices": {
-        "acrylic_stone": 1000.0,
-        "quartz_stone": 1500.0
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
       }
-    },
-    {
-      "code": "lowering_wing_price",
-      "slug": "lowering_wing_price",
-      "category": "cutouts",
-      "unit": "pcs",
-      "name": {
-        "ru": "Обнижение крыла (проточки)",
-        "en": "Lowering wing"
+    ],
+    "attribute_option": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
       },
-      "eav": {
-        "service_tags": ["kitchen", "bathroom"]
-      },
-      "prices": {
-        "acrylic_stone": 2000.0,
-        "quartz_stone": 3000.0
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
       }
-    },
-    {
-      "code": "grooves_sink_drain_price",
-      "slug": "grooves_sink_drain_price",
-      "category": "cutouts",
-      "unit": "pcs",
-      "name": {
-        "ru": "Проточки под слив",
-        "en": "Drain grooves"
+    ],
+    "price_type": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
       },
-      "eav": {
-        "service_tags": ["kitchen", "bathroom"]
-      },
-      "prices": {
-        "acrylic_stone": 2000.0,
-        "quartz_stone": 3000.0
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
       }
-    },
-    {
-      "code": "radiator_grooves_price",
-      "slug": "radiator_grooves_price",
-      "category": "cutouts",
-      "unit": "pcs",
-      "name": {
-        "ru": "Проточки под радиатор",
-        "en": "Radiator grooves"
+    ],
+    "currency": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
       },
-      "eav": {
-        "service_tags": ["windowsill"]
-      },
-      "prices": {
-        "acrylic_stone": 2000.0,
-        "quartz_stone": 3000.0
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
       }
-    },
-    {
-      "code": "bevel_price",
-      "slug": "bevel_price",
-      "category": "processing",
-      "unit": "pcs",
-      "name": {
-        "ru": "Обработка скоса",
-        "en": "Bevel processing"
+    ],
+    "warehouse": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": true
       },
-      "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill"]
-      },
-      "prices": {
-        "acrylic_stone": 300.0,
-        "quartz_stone": 500.0
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
       }
-    },
-    {
-      "code": "round_price",
-      "slug": "round_price",
-      "category": "processing",
-      "unit": "pcs",
-      "name": {
-        "ru": "Обработка скругления",
-        "en": "Round processing"
-      },
-      "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill"]
-      },
-      "prices": {
-        "acrylic_stone": 300.0,
-        "quartz_stone": 500.0
+    ],
+    "stock": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
       }
-    },
-    {
-      "code": "measure_price",
-      "slug": "measure_price",
-      "category": "logistics",
-      "unit": "srv",
-      "name": {
-        "ru": "Вызов замерщика (город)",
-        "en": "Measure inside city"
+    ],
+    "pipeline": [
+      {
+        "key": "is_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Опубликовано",
+          "en": "Published"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
       },
-      "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill"]
-      },
-      "prices": {
-        "acrylic_stone": 2000.0,
-        "quartz_stone": 2000.0
+      {
+        "key": "is_settings_public",
+        "type": "boolean",
+        "label": {
+          "ru": "Настройки публичны",
+          "en": "Settings are public"
+        },
+        "width": 1,
+        "is_system": true,
+        "default": false
       }
-    },
-    {
-      "code": "measure_per_km_price",
-      "slug": "measure_per_km_price",
-      "category": "logistics",
-      "unit": "km",
-      "name": {
-        "ru": "Замер за городом (цена за км)",
-        "en": "Measure outside city (per km)"
-      },
-      "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill"]
-      },
-      "prices": {
-        "acrylic_stone": 30.0,
-        "quartz_stone": 30.0
-      }
-    },
-    {
-      "code": "delivery",
-      "slug": "delivery",
-      "category": "logistics",
-      "unit": "srv",
-      "name": {
-        "ru": "Доставка изделий (город)",
-        "en": "Delivery inside city"
-      },
-      "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill"]
-      },
-      "prices": {
-        "acrylic_stone": 3000.0,
-        "quartz_stone": 3000.0
-      }
-    },
-    {
-      "code": "delivery_per_km_price",
-      "slug": "delivery_per_km_price",
-      "category": "logistics",
-      "unit": "km",
-      "name": {
-        "ru": "Доставка за город (цена за км)",
-        "en": "Delivery outside city (per km)"
-      },
-      "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill"]
-      },
-      "prices": {
-        "acrylic_stone": 45.0,
-        "quartz_stone": 45.0
-      }
-    },
-    {
-      "code": "lift_elevator_price",
-      "slug": "lift_elevator_price",
-      "category": "logistics",
-      "unit": "floor",
-      "name": {
-        "ru": "Подъем на лифте (за этаж)",
-        "en": "Lift with elevator"
-      },
-      "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill"]
-      },
-      "prices": {
-        "acrylic_stone": 200.0,
-        "quartz_stone": 200.0
-      }
-    },
-    {
-      "code": "lift_per_level_price",
-      "slug": "lift_per_level_price",
-      "category": "logistics",
-      "unit": "floor",
-      "name": {
-        "ru": "Ручной подъем (за этаж/деталь)",
-        "en": "Manual lift per floor"
-      },
-      "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill"]
-      },
-      "prices": {
-        "acrylic_stone": 200.0,
-        "quartz_stone": 250.0
-      }
-    },
-    {
-      "code": "montage_price",
-      "slug": "montage_price",
-      "category": "logistics",
-      "unit": "m",
-      "name": {
-        "ru": "Монтаж изделий (за п.м.)",
-        "en": "Montage per meter"
-      },
-      "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill"]
-      },
-      "prices": {
-        "acrylic_stone": 1500.0,
-        "quartz_stone": 2000.0
-      }
-    },
-    {
-      "code": "dismantling_price",
-      "slug": "dismantling_price",
-      "category": "logistics",
-      "unit": "pcs",
-      "name": {
-        "ru": "Демонтаж старой столешницы",
-        "en": "Dismantling old worktop"
-      },
-      "eav": {
-        "service_tags": ["kitchen", "bathroom"]
-      },
-      "prices": {
-        "acrylic_stone": 1000.0,
-        "quartz_stone": 1000.0
-      }
-    },
-    {
-      "code": "gluing_on_site",
-      "slug": "gluing_on_site",
-      "category": "cutouts",
-      "unit": "pcs",
-      "name": {
-        "ru": "Склейка по месту",
-        "en": "On-site gluing"
-      },
-      "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill"]
-      },
-      "prices": {
-        "acrylic_stone": 1500.0,
-        "quartz_stone": 2500.0
-      }
-    },
-    {
-      "code": "make_product_price",
-      "slug": "make_product_price",
-      "category": "processing",
-      "unit": "m2",
-      "name": {
-        "ru": "Изготовление изделий (за м²)",
-        "en": "Manufacturing per m2"
-      },
-      "eav": {
-        "service_tags": ["kitchen", "bathroom", "windowsill"]
-      },
-      "prices": {
-        "acrylic_stone": 3500.0,
-        "quartz_stone": 5000.0
-      }
-    }
-  ]
+    ]
+  }
 }

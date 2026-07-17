@@ -53,27 +53,15 @@ class MatrixPriceEditor extends Page implements HasForms, HasTable
 
   public function table(Table $table): Table
   {
-     // Получаем материалы для динамических колонок (Акрил, Кварц)
+    // Получаем материалы для динамических колонок (Акрил, Кварц)
     $materials = AttributeOption::whereHas(
       'attribute',
-      fn ($q) => $q->where('code', 'target_material'),
+      fn($q) => $q->where('code', 'target_material'),
     )
       ->get()
       ->keyBy('slug');
 
     $columns = [
-      ImageColumn::make('image')
-        ->label(__('Photo'))
-        ->state(function (Product $record) {
-          $url = $record->getPreviewUrl();
-          if (! $url) {
-            return null;
-          }
-
-          return str_starts_with($url, 'http') ? $url : url($url);
-        })
-        ->circular()
-        ->toggleable(),
 
       TextColumn::make('name')
         ->label(__('Service / Work'))
@@ -81,6 +69,14 @@ class MatrixPriceEditor extends Page implements HasForms, HasTable
         ->sortable()
         ->weight('medium')
         ->wrap(),
+
+      TextColumn::make('code')
+        ->label(__('Code'))
+        ->searchable()
+        ->fontFamily('mono')
+        ->color('gray')
+        ->copyable()
+        ->toggleable(isToggledHiddenByDefault: true),
 
       TextColumn::make('slug')
         ->label(__('Slug'))
@@ -95,22 +91,35 @@ class MatrixPriceEditor extends Page implements HasForms, HasTable
         ->badge()
         ->color('gray')
         ->sortable()
-        ->toggleable(),
+        ->toggleable(isToggledHiddenByDefault: true),
     ];
 
     foreach ($materials as $slug => $option) {
       $columns[] = TextInputColumn::make("mat_{$slug}")
-        ->label((string) $option->value)
+        ->label((string)$option->value)
         ->alignCenter()
         ->type('number')
         ->toggleable()
         ->disabled(function (Product $record) use ($slug) {
-          return ! $record->variants->contains(function ($v) use ($slug) {
-            return $v->attributeValues->contains(fn ($av) => $av->option?->slug === $slug);
+          return !$record->variants->contains(function ($v) use ($slug) {
+            return $v->attributeValues->contains(fn($av) => $av->option?->slug === $slug);
           });
         })
 
+        // Поле ввода отображает базовую себестоимость (cost_price)
         ->state(function (Product $record) use ($slug) {
+          $variant = $record->variants->first(function ($v) use ($slug) {
+            return $v->attributeValues->contains(fn($av) => $av->option?->slug === $slug);
+          });
+
+          if (!$variant) {
+            return null;
+          }
+
+          return $variant->cost_price;
+        })
+
+        ->suffix(function (Product $record) use ($slug) {
           $variant = $record->variants->first(function ($v) use ($slug) {
             return $v->attributeValues->contains(fn ($av) => $av->option?->slug === $slug);
           });
@@ -119,24 +128,28 @@ class MatrixPriceEditor extends Page implements HasForms, HasTable
             return null;
           }
 
-          return app(PricingManager::class)->getVariantPrice($variant, 'retail');
-        })
+          $pricingManager = app(PricingManager::class);
+          $retailPrice = $pricingManager->getVariantPrice($variant, 'retail');
+          $currencySymbol = $pricingManager->baseCurrency->symbol_native
+            ?? ($pricingManager->baseCurrency->symbol ?? 'Br');
 
+          return '→ ' . number_format($retailPrice, 0, '.', ' ') . ' ' . $currencySymbol;
+        })
         ->updateStateUsing(function (Product $record, $state) use ($slug) {
           if ($state === null) {
             return;
           }
 
           $variant = $record->variants->first(function ($v) use ($slug) {
-            return $v->attributeValues->contains(fn ($av) => $av->option?->slug === $slug);
+            return $v->attributeValues->contains(fn($av) => $av->option?->slug === $slug);
           });
 
-          if (! $variant) {
+          if (!$variant) {
             return;
           }
 
           $variant->update([
-            'cost_price' => (float) $state,
+            'cost_price' => (float)$state,
             'is_manual_pricing' => true,
           ]);
         });
@@ -160,9 +173,9 @@ class MatrixPriceEditor extends Page implements HasForms, HasTable
           ->relationship(
             'category',
             'name',
-            fn ($query) => $query->whereHas(
+            fn($query) => $query->whereHas(
               'products',
-              fn ($q) => $q->where('catalog_type', 'service'),
+              fn($q) => $q->where('catalog_type', 'service'),
             ),
           )
           ->multiple()
@@ -171,6 +184,8 @@ class MatrixPriceEditor extends Page implements HasForms, HasTable
         TernaryFilter::make('is_active')->label(__('Is Active'))->native(false),
       ])
       ->searchable()
+
+      ->defaultGroup('category.name')
       ->recordActions([
         Action::make('edit_service')
           ->label(__('Details'))
@@ -178,15 +193,15 @@ class MatrixPriceEditor extends Page implements HasForms, HasTable
           ->color('gray')
           ->tooltip(__('Open service details'))
           ->url(
-            fn (Product $record): string => ProductResource::getUrl('edit', [
+            fn(Product $record): string => ProductResource::getUrl('edit', [
               'record' => $record,
             ]),
           )
           ->openUrlInNewTab(),
       ])
       ->striped()
-      ->defaultSort('category_id')
       ->paginationPageOptions([25, 50, 100])
       ->defaultPaginationPageOption(50);
   }
+
 }

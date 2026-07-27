@@ -62,6 +62,8 @@ export default function ProductShow({ product, familyCode }: Props) {
                   name={product.name}
                   priceFrom={product.price_from}
                   bootstrapConfig={bootstrapConfig}
+                  shortDescription={product.short_description}
+                  description={product.description}
                 />
                 <ProductAttributes attributes={product.attributes} />
                 <ProductVariantsList

@@ -6,20 +6,20 @@ import { FilterSwatch } from './FilterSwatch';
 export const CheckboxFilter = ({ options, activeValues, onToggle }: any) => (
   <div className="flex flex-col gap-3">
     {options.map((opt: any) => {
-      const isChecked = activeValues.includes(opt.slug);
+      const isChecked = activeValues.includes(opt.key);
       const { hex, image } = opt.meta || {};
 
       const hasVisual = (typeof image === 'string' && image.trim() !== '') ||
         (typeof hex === 'string' && hex.trim() !== '');
 
       return (
-        <label key={opt.slug} className="flex items-center gap-3.5 cursor-pointer group select-none py-0.5">
+        <label key={opt.key} className="flex items-center gap-3.5 cursor-pointer group select-none py-0.5">
           <div className="relative flex items-center justify-center shrink-0">
             <input
               type="checkbox"
               className="peer sr-only"
               checked={isChecked}
-              onChange={() => onToggle(opt.slug)}
+              onChange={() => onToggle(opt.key)}
             />
             <div className={cn(
               "w-5 h-5 border-2 rounded-[6px] transition-all duration-200 flex items-center justify-center",
@@ -30,14 +30,13 @@ export const CheckboxFilter = ({ options, activeValues, onToggle }: any) => (
           </div>
 
           <div className="flex items-center gap-3">
-
             {hasVisual && <FilterSwatch image={image} hex={hex} size="sm" />}
 
             <span className={cn(
               "text-[14px] leading-tight transition-colors",
               isChecked ? "text-foreground font-bold" : "text-muted-foreground font-medium group-hover:text-primary"
             )}>
-              {opt.value}
+              {opt.label} {/* Был value */}
             </span>
           </div>
         </label>

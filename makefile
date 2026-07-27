@@ -81,14 +81,6 @@ cc:
 	@find . \( -name "*_combine*" -o -name "tree.txt" -o -name "*Zone.Identifier" \) -type f -delete
 	@echo "Done!"
 
-uw: update-widget
-
-update-widget:
-	@echo "Updating CPQ Stone widget..."
-	rm -rf public/cpq-stone
-	git clone --branch deploy/build --single-branch git@github.com:kapitulin24/cpq-stone-calc.git public/cpq-stone
-	rm -rf public/cpq-stone/.git
-	@echo "Widget updated successfully!"
 
 DATE ?= 2026-05-03
 EXCLUDE ?=
@@ -111,6 +103,36 @@ test-valerie:
 
 package-update:
 	$(COMPOSE) exec app composer update nicole/box-core valerie/box-industry-stone
+
+uw: update-widget
+
+update-widget:
+	@echo "Updating CPQ Stone widget..."
+	rm -rf public/cpq-stone
+	git clone --branch deploy/build --single-branch git@github.com:kapitulin24/cpq-stone-calc.git public/cpq-stone
+	rm -rf public/cpq-stone/.git
+	@echo "Widget updated successfully!"
+
+dw:
+	@echo "Cleaning old widget files..."
+	rm -rf /home/maks-t/vms-box-platform-stone/public/cpq-stone/*
+	@echo "Copying new dev files..."
+	mkdir -p /home/maks-t/vms-box-platform-stone/public/cpq-stone/
+	cp -r /mnt/d/Vistegra/projects/cpq-stone-calc/build/* /home/maks-t/vms-box-platform-stone/public/cpq-stone/
+	@echo "Clearing Laravel cache..."
+	$(COMPOSE) exec app $(ARTISAN) cache:clear
+	@echo "Done!"
+
+dww:
+	@echo "Cleaning old widget files..."
+	rm -rf /home/maks-t/vms-box-platform-stone/public/cpq-stone/*
+	@echo "Copying new dev files..."
+	mkdir -p /home/maks-t/vms-box-platform-stone/public/cpq-stone/
+	cp -r /mnt/d/projects/cpq-stone-calc/build/* /home/maks-t/vms-box-platform-stone/public/cpq-stone/
+	@echo "Clearing Laravel cache..."
+	$(COMPOSE) exec app $(ARTISAN) cache:clear
+	@echo "Done!"
+
 
 # Help
 help:

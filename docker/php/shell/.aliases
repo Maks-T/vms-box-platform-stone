@@ -5,3 +5,5 @@ pa() {
         php /var/www/html/artisan "$@"
     fi
 }
+
+alias cls='clear'

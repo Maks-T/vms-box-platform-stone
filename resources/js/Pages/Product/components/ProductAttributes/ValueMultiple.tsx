@@ -1,6 +1,6 @@
 import React from 'react';
 import Badge from '@/shared/components/ui/Badge';
-import {EavValueOption} from '@/types/catalog';
+import { EavValueOption } from '@/types/catalog';
 
 interface Props {
   values: Array<EavValueOption | string | number | boolean>;
@@ -10,8 +10,8 @@ export function ValueMultiple({values}: Props) {
   return (
     <div className="flex flex-wrap gap-2 justify-end">
       {values.map((v, idx) => {
-
-        const isOption = typeof v === 'object' && v !== null && 'name' in v;
+        // Проверяем наличие ключа 'label' вместо 'name'
+        const isOption = typeof v === 'object' && v !== null && 'label' in v;
         const option = isOption ? (v as EavValueOption) : null;
 
         return (
@@ -23,7 +23,7 @@ export function ValueMultiple({values}: Props) {
             {option?.meta?.image && (
               <img src={option.meta.image} alt="" className="w-3.5 h-3.5 rounded-full object-cover mr-1.5"/>
             )}
-            {isOption ? option.name : String(v)}
+            {isOption ? option.label : String(v)}
           </Badge>
         );
       })}

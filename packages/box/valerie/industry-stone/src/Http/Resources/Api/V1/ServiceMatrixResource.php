@@ -6,15 +6,17 @@ namespace Valerie\Box\IndustryStone\Http\Resources\Api\V1;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Nicole\Box\Core\Http\Resources\Api\V1\Traits\HasSharedResourceFields;
+use Nicole\Box\Core\Http\Resources\Api\V1\Traits\MapsEavAttributes;
 use Nicole\Box\Core\Services\PricingManager;
 
 /**
+ * Ресурс услуги из матрицы цен.
+ *
  * @mixin \Nicole\Box\Core\Models\Product
  */
 class ServiceMatrixResource extends JsonResource
 {
-  use HasSharedResourceFields;
+  use MapsEavAttributes;
 
   public function toArray(Request $request): array
   {
@@ -33,9 +35,55 @@ class ServiceMatrixResource extends JsonResource
       }
     }
 
-    return array_merge($this->getSharedEntityFields($this->resource), [
+    return [
       /**
-       * Информация о единице измерения
+       * Внутренний ID услуги.
+       * @var int
+       * @example 15
+       */
+      'id' => $this->id,
+
+      /**
+       * Системный код услуги для формул и расчетов.
+       * @var string
+       * @example "cutout_top"
+       */
+      'code' => $this->code,
+
+      /**
+       * Уникальный идентификатор для URL (ЧПУ).
+       * @var string
+       * @example "cutout-top"
+       */
+      'slug' => $this->slug,
+
+      /**
+       * Внешний код для интеграции с 1C / ERP.
+       * @var string|null
+       */
+      'external_code' => $this->external_code ?? null,
+
+      /**
+       * Название услуги.
+       * @var string
+       * @example "Вырез под накладную мойку"
+       */
+      'name' => (string)$this->name,
+
+      /**
+       * URL картинки превью услуги.
+       * @var string|null
+       */
+      'preview_picture' => $this->getPreviewUrl(),
+
+      /**
+       * URL детальной картинки услуги.
+       * @var string|null
+       */
+      'detail_picture' => $this->getDetailUrl(),
+
+      /**
+       * Информация о единице измерения.
        * @var array{slug: string, name: string, symbol: string}|null
        */
       'unit' => $this->unit ? [
@@ -50,6 +98,19 @@ class ServiceMatrixResource extends JsonResource
        * @example {"acrylic_stone": 1650.0, "quartz_stone": 2500.0}
        */
       'prices' => $prices,
-    ]);
+
+      /**
+       * Динамические характеристики (EAV) услуги.
+       * @var array<string, array{name: string, type: string, param_type: string|null, is_multiple: bool, value: mixed}>
+       */
+      'attributes' => $this->mapEavAttributes($this->attributeValues ?? collect()),
+
+      /**
+       * Настройки канала услуги.
+       * @var object|null
+       */
+      'settings' => $this->getPublicSettings($this->resource),
+    ];
   }
+
 }

@@ -230,12 +230,12 @@
       ],
       "prices": {
         "acrylic_stone": {
-          "cost_price": 500,
+          "cost_price": 0,
           "currency": "RUB",
           "markup": 0
         },
         "quartz_stone": {
-          "cost_price": 800,
+          "cost_price": 0,
           "currency": "RUB",
           "markup": 0
         }

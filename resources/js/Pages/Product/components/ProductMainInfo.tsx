@@ -28,7 +28,7 @@ export function ProductMainInfo({name, priceFrom, bootstrapConfig, shortDescript
       {isDev && (
         <StatusBadge variant="success" className="mb-6 w-max">
           <div className="flex items-center gap-1.5 whitespace-nowrap">
-            <span>API Data Object</span>
+            <span>В наличии</span>
           </div>
         </StatusBadge>
       )}

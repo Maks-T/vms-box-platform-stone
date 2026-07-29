@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 
 export interface CatalogParams {
   family: string;
   productType: string;
+  search: string;
   page: number;
   filters: Record<string, string[]>;
 }
@@ -13,13 +14,13 @@ export function useCatalogParams(defaultFamily: string = 'stone') {
     const initial: CatalogParams = {
       family: searchParams.get('family') || defaultFamily,
       productType: searchParams.get('product_type') || '',
+      search: searchParams.get('search') || '',
       page: Number(searchParams.get('page')) || 1,
       filters: {}
     };
 
-    
     for (const [key, value] of searchParams.entries()) {
-      const match = key.match(/^attributes\[(.+?)\]$/);
+      const match = key.match(/^attr\[(.+?)\]$/) || key.match(/^attributes\[(.+?)\]$/);
       if (match) {
         const attrCode = match[1];
         initial.filters[attrCode] = value.split(',');
@@ -34,6 +35,7 @@ export function useCatalogParams(defaultFamily: string = 'stone') {
     searchParams.set('family', params.family);
 
     if (params.productType) searchParams.set('product_type', params.productType);
+    if (params.search) searchParams.set('search', params.search);
     if (params.page > 1) searchParams.set('page', params.page.toString());
 
     Object.entries(params.filters).forEach(([key, values]) => {
@@ -47,16 +49,20 @@ export function useCatalogParams(defaultFamily: string = 'stone') {
   }, [params]);
 
   const setPage = (page: number) => {
-    setParams(prev => ({ ...prev, page }));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setParams(prev => ({...prev, page}));
+    window.scrollTo({top: 0, behavior: 'smooth'});
   };
 
   const setFamily = (family: string) => {
-    setParams({ family, productType: '', page: 1, filters: {} });
+    setParams({family, productType: '', search: '', page: 1, filters: {}});
   };
 
   const setProductType = (type: string) => {
-    setParams(prev => ({ ...prev, productType: type, page: 1 }));
+    setParams(prev => ({...prev, productType: type, page: 1}));
+  };
+
+  const setSearch = (search: string) => {
+    setParams(prev => ({...prev, search, page: 1}));
   };
 
   const toggleFilter = (code: string, slug: string) => {
@@ -66,28 +72,30 @@ export function useCatalogParams(defaultFamily: string = 'stone') {
         ? currentValues.filter(v => v !== slug)
         : [...currentValues, slug];
 
-      const newFilters = { ...prev.filters };
+      const newFilters = {...prev.filters};
       if (newValues.length > 0) {
         newFilters[code] = newValues;
       } else {
         delete newFilters[code];
       }
 
-      return { ...prev, page: 1, filters: newFilters };
+      return {...prev, page: 1, filters: newFilters};
     });
   };
 
   const clearFilters = () => {
-    setParams(prev => ({ ...prev, page: 1, filters: {} }));
+    setParams(prev => ({...prev, search: '', page: 1, filters: {}}));
   };
 
   return {
     family: params.family,
     productType: params.productType,
+    search: params.search,
     page: params.page,
     filters: params.filters,
     setFamily,
     setProductType,
+    setSearch,
     setPage,
     toggleFilter,
     clearFilters

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from '@inertiajs/react';
 import {ArrowLeft} from 'lucide-react';
-import {route} from "ziggy-js";
+import {route} from 'ziggy-js';
 import {IconBox} from '@/shared/components/ui/IconBox';
 
 export function ProductHeader() {
@@ -15,7 +15,7 @@ export function ProductHeader() {
           </IconBox>
           <span
             className="font-bold uppercase tracking-widest text-muted-foreground group-hover:text-foreground transition-colors text-[13px]">
-            В каталог
+            Назад в каталог
           </span>
         </Link>
       </div>

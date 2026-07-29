@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import GlassPanel from '@/shared/components/ui/GlassPanel';
-import { toast } from "sonner";
-import { ApiRequestInfo } from './types';
+import {toast} from "sonner";
+import {ApiRequestInfo} from './types';
 import InspectorHeader from './ui/InspectorHeader';
 import InspectorBody from './ui/InspectorBody';
+import {useDevMode} from '@/shared/hooks/useDevMode';
 
 interface Props {
   requests: ApiRequestInfo[];
 }
 
-export function ApiInspector({ requests }: Props) {
+export function ApiInspector({requests}: Props) {
+  const isDev = useDevMode();
+
+  if (!isDev) {
+    return null;
+  }
+
   const [openIndex, setOpenIndex] = useState<number>(0);
 
   const copyApiUrl = (e: React.MouseEvent, endpoint: string) => {
@@ -37,7 +44,8 @@ export function ApiInspector({ requests }: Props) {
         const currentHeaders = req.headers || getDefaultHeaders();
 
         return (
-          <GlassPanel key={index} variant="deep" className="!bg-[#0B0F19] overflow-hidden p-0 rounded-2xl shadow-xl border-white/10 w-full">
+          <GlassPanel key={index} variant="deep"
+                      className="!bg-[#0B0F19] overflow-hidden p-0 rounded-2xl shadow-xl border-white/10 w-full">
             <InspectorHeader
               request={req}
               isOpen={isOpen}
@@ -47,7 +55,7 @@ export function ApiInspector({ requests }: Props) {
             />
 
             {isOpen && (
-              <InspectorBody headers={currentHeaders} data={req.data} />
+              <InspectorBody headers={currentHeaders} data={req.data}/>
             )}
           </GlassPanel>
         );

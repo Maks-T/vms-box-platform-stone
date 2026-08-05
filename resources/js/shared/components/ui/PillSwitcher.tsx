@@ -1,6 +1,5 @@
 import React from 'react';
-import { cn } from '@/shared/lib/utils';
-
+import {cn} from '@/shared/lib/utils';
 
 export interface PillOption<T> {
   value: T;
@@ -15,17 +14,16 @@ interface PillSwitcherProps<T> {
   className?: string;
 }
 
-
 export default function PillSwitcher<T extends string | number | boolean>({
-  options,
-  activeValue,
-  onChange,
-  className,
-}: PillSwitcherProps<T>) {
+                                                                            options,
+                                                                            activeValue,
+                                                                            onChange,
+                                                                            className,
+                                                                          }: PillSwitcherProps<T>) {
   return (
     <div
       className={cn(
-        "flex items-center gap-2 bg-white/5 rounded-full p-1 border border-white/10 select-none",
+        "flex items-center gap-1 bg-zinc-100 rounded p-0.5 border border-zinc-200 select-none",
         className
       )}
     >
@@ -37,10 +35,10 @@ export default function PillSwitcher<T extends string | number | boolean>({
             key={String(option.value)}
             onClick={() => onChange(option.value)}
             className={cn(
-              "px-3 py-1 rounded-full text-xs font-bold transition-colors cursor-pointer uppercase",
+              "px-2.5 py-0.5 rounded-sm text-[11px] font-bold transition-colors cursor-pointer uppercase",
               isActive
-                ? "bg-white text-slate-900 shadow-sm"
-                : "text-white/60 hover:text-white"
+                ? "bg-white text-zinc-900 shadow-sm border border-zinc-200/60"
+                : "text-zinc-500 hover:text-zinc-900"
             )}
             title={option.title}
           >

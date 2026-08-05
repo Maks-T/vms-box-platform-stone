@@ -1,37 +1,33 @@
 import React from 'react';
-import {Image as ImageIcon} from 'lucide-react';
-import GlassPanel from '@/shared/components/ui/GlassPanel';
-import StatusBadge from '@/shared/components/ui/StatusBadge';
+import { Image as ImageIcon } from 'lucide-react';
 
 interface Props {
   image: string | null;
   name: string;
   externalCode: string | null;
+  sku?: string | null;
   id: number;
 }
 
-export function ProductImagePreview({image, name, externalCode, id}: Props) {
+export function ProductImagePreview({ image, name, externalCode, sku, id }: Props) {
   return (
-    <GlassPanel variant="glow" padding="none"
-                className="relative aspect-square overflow-hidden flex items-center justify-center p-8 bg-slate-50/50">
+    <div className="relative aspect-square rounded border border-zinc-200 overflow-hidden flex items-center justify-center p-8 bg-zinc-50/50">
       {image ? (
         <img
           src={image}
           alt={name}
-          className="w-full h-full object-contain mix-blend-multiply"
+          className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
         />
       ) : (
-        <div className="flex flex-col items-center text-muted-foreground/50">
-          <ImageIcon className="w-24 h-24 mb-4"/>
-          <span className="text-sm font-medium uppercase tracking-widest">Нет фото</span>
+        <div className="flex flex-col items-center text-zinc-400">
+          <ImageIcon className="w-16 h-16 mb-2" />
+          <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Нет фото</span>
         </div>
       )}
 
-      <div className="absolute top-6 left-6">
-        <StatusBadge variant="blue">
-          Артикул: {externalCode || id}
-        </StatusBadge>
+      <div className="absolute top-4 left-4 bg-zinc-900 text-white text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider">
+        Арт: {sku || externalCode || id}
       </div>
-    </GlassPanel>
+    </div>
   );
 }

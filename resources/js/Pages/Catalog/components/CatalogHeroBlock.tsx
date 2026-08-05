@@ -1,13 +1,12 @@
 import React from 'react';
-import { Accent } from '@/shared/components/ui/Typography';
-import {PageHero} from "@shared/components/ui/PageHero";
+import { PageHero } from '@/shared/components/ui/PageHero';
 
 export function CatalogHeroBlock() {
   return (
     <PageHero
-      badge="Каталог продукции"
-      title={<>Каталог <Accent variant="light">материалов</Accent></>}
-      description="Широкий выбор материалов, декоров и комплектующих. Удобная фильтрация по категориям, брендам, цветам и техническим характеристикам."
+      badge="Склад и раскрой в Москве"
+      title="Каталог искусственного камня"
+      description="Слэбы, полуслэбы, готовые мойки и комплектующие от мировых брендов (Staron, Corian, LG Hi-Macs, Grandex). Прямые продажи со склада, раскрой по вашим размерам."
     />
   );
 }

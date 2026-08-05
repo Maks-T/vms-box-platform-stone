@@ -44,7 +44,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="w-full z-50 bg-[#16191B] sticky top-0 shadow-lg border-b border-white/5">
+      <header className="w-full z-50 bg-white sticky top-0 border-b border-border shadow-sm">
         <TopBar
           locale={locale}
           onLanguageChange={handleLanguageChange}
@@ -53,39 +53,50 @@ export default function Header() {
         />
 
         <div className="max-w-[1400px] mx-auto px-4 md:px-8 h-20 flex justify-between items-center">
-          <Logo variant="dark-solid" />
+          <Logo variant="orange-dark" imgClassName="h-14 md:h-16 w-auto" />
 
           <NavBar items={visibleNavItems} />
 
           {(isDev || isEmployee) && (
-            <a href="/admin" target="_blank" rel="noreferrer" className="hidden lg:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 hover:bg-white/[0.08] text-white text-sm font-medium transition-all active:scale-[0.98]">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+            <a
+              href="/admin"
+              target="_blank"
+              rel="noreferrer"
+              className="hidden lg:flex items-center gap-2 px-3.5 py-2 rounded border border-zinc-300 hover:border-zinc-900 bg-white text-zinc-900 text-xs font-semibold transition-all active:scale-[0.98]"
+            >
+              <ShieldCheck className="w-4 h-4 text-emerald-600" />
               Админ-панель
             </a>
           )}
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <button
               onClick={() => setIsOpen(true)}
-              className="relative p-2.5 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 rounded-xl transition-all cursor-pointer text-white flex items-center justify-center"
+              className="relative p-2.5 bg-white hover:bg-zinc-50 border border-zinc-200 hover:border-zinc-400 rounded transition-all cursor-pointer text-zinc-800 flex items-center justify-center"
+              title="Избранное"
             >
-              <Heart className="w-5 h-5 stroke-[1.8]" />
+              <Heart className="w-4.5 h-4.5 stroke-[1.8]" />
               {items.length > 0 && (
-                <span className="absolute -top-1 -right-1 bg-destructive text-white text-[9px] font-black w-4.5 h-4.5 flex items-center justify-center rounded-full px-0.5 border border-[#16191B]">
+                <span className="absolute -top-1 -right-1 bg-zinc-900 text-white text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-sm">
                   {items.length}
                 </span>
               )}
             </button>
 
             {isDev && (
-              <a href="/docs/api" target="_blank" rel="noreferrer" className="hidden lg:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 hover:bg-white/[0.08] text-white text-sm font-medium transition-all active:scale-[0.98]">
-                <BookOpen className="w-4 h-4 text-primary" />
+              <a
+                href="/docs/api"
+                target="_blank"
+                rel="noreferrer"
+                className="hidden lg:flex items-center gap-2 px-3.5 py-2 rounded border border-zinc-200 hover:border-zinc-400 bg-white text-zinc-700 text-xs font-medium transition-all"
+              >
+                <BookOpen className="w-4 h-4 text-zinc-500" />
                 API Docs
               </a>
             )}
 
-            <button className="lg:hidden p-2 text-white/80 hover:text-white" onClick={() => setIsMobileMenuOpen(true)}>
-              <Menu className="w-6 h-6" />
+            <button className="lg:hidden p-2 text-zinc-700 hover:text-zinc-900" onClick={() => setIsMobileMenuOpen(true)}>
+              <Menu className="w-5 h-5" />
             </button>
           </div>
         </div>

@@ -13,13 +13,20 @@ interface ProductCardProps {
 }
 
 export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
-  const { id, name, slug, price_from, preview_picture, unit, attributes, variants } = product;
+  const { id, name, slug, price_from, preview_picture, detail_picture, attributes, variants, unit } = product;
 
   const [activeVariant, setActiveVariant] = useState<ProductVariant | null>(null);
 
   const defaultPriceType = bootstrapConfig?.price_types?.find((pt: any) => pt.is_default)?.slug || 'retail';
 
-  const displayImage = activeVariant?.preview_picture || preview_picture;
+  const defaultVariant = variants?.find(v => v.is_default) || variants?.[0];
+
+  const displayImage = activeVariant?.preview_picture
+    || activeVariant?.detail_picture
+    || preview_picture
+    || defaultVariant?.preview_picture
+    || defaultVariant?.detail_picture
+    || detail_picture;
 
   const displayPrice = activeVariant
     ? (activeVariant.prices?.[defaultPriceType] || Object.values(activeVariant.prices || {})[0] || price_from)
@@ -34,16 +41,22 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
     }).format(displayPrice)
     : '';
 
-  const collection = attributes?.collection?.value as EavValueOption | undefined;
   const brand = attributes?.brand?.value as EavValueOption | undefined;
+  const collection = attributes?.collection?.value as EavValueOption | undefined;
   const serviceTags = attributes?.service_tags?.value as EavValueOption[] | undefined;
 
-  let subtitle = 'Каталог';
-  if (brand) subtitle = brand.label; // Был brand.name
-  else if (collection) subtitle = collection.label; // Был collection.name
-  else if (serviceTags && Array.isArray(serviceTags) && serviceTags.length > 0) {
-    subtitle = serviceTags.map(t => t.label).join(', '); // Был t.name
-  } else if (unit) subtitle = `Ед. изм: ${unit.name}`;
+  let subtitle = '';
+  if (brand?.label) {
+    subtitle = brand.label;
+  } else if (collection?.label) {
+    subtitle = collection.label;
+  } else if (serviceTags && Array.isArray(serviceTags) && serviceTags.length > 0) {
+    subtitle = serviceTags.map(t => t.label).join(', ');
+  } else if (unit?.name) {
+    subtitle = unit.name;
+  } else {
+    subtitle = 'Каталог';
+  }
 
   const parentColor = attributes?.color?.value as EavValueOption | undefined;
   const variantColors: EavValueOption[] = [];
@@ -52,8 +65,8 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
     const seen = new Set();
     variants.forEach(v => {
       const vColor = v.attributes?.color?.value as EavValueOption | undefined;
-      if (vColor && !seen.has(vColor.key)) { // Был vColor.slug
-        seen.add(vColor.key); // Был vColor.slug
+      if (vColor && !seen.has(vColor.key)) {
+        seen.add(vColor.key);
         variantColors.push(vColor);
       }
     });
@@ -83,10 +96,10 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
     const isSelected = color.key === activeColorSlug;
 
     const swatchClasses = cn(
-      "w-5 h-5 rounded-full object-cover border border-slate-200/80 shadow-sm cursor-pointer transition-all duration-300",
+      "w-4 h-4 rounded-sm object-cover border border-slate-200 shadow-sm cursor-pointer transition-all duration-200",
       isSelected
-        ? "ring-1 ring-sky-800/40 ring-offset-[1.5px] scale-105 opacity-100"
-        : "opacity-65 hover:opacity-100 hover:scale-105"
+        ? "ring-1 ring-zinc-900 ring-offset-1 scale-105 opacity-100"
+        : "opacity-75 hover:opacity-100 hover:scale-105"
     );
 
     if (color.meta?.image) {
@@ -108,7 +121,7 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
           title={color.label}
           onClick={(e) => handleColorClick(e, color)}
           className={swatchClasses}
-          style={{backgroundColor: color.meta.hex}}
+          style={{ backgroundColor: color.meta.hex }}
         />
       );
     }
@@ -116,71 +129,74 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
   };
 
   return (
-    <div
-      className="group flex flex-col h-full bg-card rounded-2xl overflow-hidden border border-border hover:shadow-lg transition-all duration-300">
-
-      <div className="relative aspect-square bg-slate-50 overflow-hidden mb-5 border-b border-border">
-        <Link href={route('product.show', slug)} className="block w-full h-full p-6">
+    <div className="group flex flex-col h-full bg-white rounded border border-border hover:border-zinc-400 transition-all duration-200 overflow-hidden">
+      <div className="relative aspect-[4/3] bg-zinc-50 overflow-hidden mb-3 border-b border-border">
+        <Link href={route('product.show', slug)} className="block w-full h-full p-4">
           {displayImage ? (
             <img
               src={displayImage}
               alt={name}
-              className="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
             />
           ) : (
-            <div className="flex items-center justify-center w-full h-full opacity-20 text-muted-foreground">
-              <ImageIcon className="w-16 h-16"/>
+            <div className="flex flex-col items-center justify-center w-full h-full opacity-20 text-zinc-400">
+              <ImageIcon className="w-10 h-10" />
             </div>
           )}
         </Link>
-        <div
-          className="absolute top-4 left-4 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest shadow-sm">
+        <div className="absolute top-3 left-3 bg-zinc-900 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-sm uppercase tracking-wider">
           ID {id}
         </div>
-        <FavoriteButton product={product} className="absolute top-4 right-4" />
+        <FavoriteButton product={product} className="absolute top-3 right-3 text-zinc-400 hover:text-red-600" />
       </div>
 
-      <div className="flex flex-col flex-1 px-5 pb-5">
-        <p className="text-[11px] text-muted-foreground uppercase tracking-widest mb-2 line-clamp-1">{subtitle}</p>
-        <Link href={route('product.show', slug)} className="block mb-3 flex-1">
-          <h3
-            className="text-[16px] md:text-[18px] font-bold text-foreground leading-snug tracking-tight group-hover:text-primary transition-colors line-clamp-2">{name}</h3>
+      <div className="flex flex-col flex-1 px-4 pb-4">
+        {subtitle && (
+          <p className="text-[10px] text-zinc-400 uppercase font-bold tracking-widest mb-1 line-clamp-1">{subtitle}</p>
+        )}
+        <Link href={route('product.show', slug)} className="block mb-2 flex-1">
+          <h3 className="text-sm font-bold text-zinc-900 leading-snug tracking-tight group-hover:text-[#B92B3A] transition-colors line-clamp-2">
+            {name}
+          </h3>
         </Link>
 
         {colorsToShow.length > 0 && (
-          <div className="flex items-center gap-1.5 mb-4 mt-auto flex-wrap">
+          <div className="flex items-center gap-1.5 mb-3 mt-auto flex-wrap">
             {colorsToShow.length === 1 ? (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 {renderSwatch(colorsToShow[0])}
-                <span className="text-xs text-muted-foreground truncate">{colorsToShow[0].label}</span>
+                <span className="text-[11px] text-zinc-500 font-medium truncate">{colorsToShow[0].label}</span>
               </div>
             ) : (
               <>
                 {colorsToShow.slice(0, 6).map(c => renderSwatch(c))}
-                {colorsToShow.length > 6 && <span
-                  className="text-[11px] font-medium text-muted-foreground ml-1">+{colorsToShow.length - 6}</span>}
+                {colorsToShow.length > 6 && (
+                  <span className="text-[10px] font-medium text-zinc-400 ml-1">+{colorsToShow.length - 6}</span>
+                )}
               </>
             )}
           </div>
         )}
 
-        <div className="mt-auto flex flex-col gap-4">
-          <div className="text-[20px] md:text-[24px] font-black text-foreground flex items-baseline gap-1 min-h-[32px]">
+        <div className="mt-auto pt-2 border-t border-zinc-100 flex items-center justify-between gap-2">
+          <div className="text-base md:text-lg font-bold text-zinc-900 flex items-baseline gap-1">
             {displayPrice > 0 ? (
               <>
                 <span>{formattedNumber}</span>
-                <span className="text-xs md:text-sm font-normal text-muted-foreground lowercase">
+                <span className="text-xs font-normal text-zinc-500 lowercase">
                   {currencySymbol}
                 </span>
               </>
             ) : (
-              <Badge variant="gray" className="!bg-muted !border-border !text-muted-foreground !shadow-none !px-3 !py-1 text-xs">
-                Бесплатно / По запросу
+              <Badge variant="gray" className="!bg-zinc-100 !border-zinc-200 !text-zinc-500 !shadow-none !px-2 !py-0.5 text-[10px]">
+                По запросу
               </Badge>
             )}
           </div>
-          <Link href={route('product.show', slug)}
-                className="w-full h-[46px] bg-slate-900 text-white hover:bg-sky-600 active:scale-[0.98] text-[13px] font-bold tracking-[0.1em] uppercase transition-all duration-300 flex items-center justify-center rounded-xl shadow-md">
+          <Link
+            href={route('product.show', slug)}
+            className="h-8 px-3.5 bg-zinc-900 hover:bg-[#B92B3A] text-white text-[11px] font-bold tracking-wider uppercase transition-colors flex items-center justify-center rounded-sm"
+          >
             Подробнее
           </Link>
         </div>

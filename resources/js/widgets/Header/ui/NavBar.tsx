@@ -26,7 +26,7 @@ export default function NavBar({ items }: { items: ExtendedNavItem[] }) {
       {items.map((item) => {
         if (item.disabled) {
           return (
-            <span key={item.label} className="text-white/30 cursor-not-allowed select-none text-[15px] font-medium py-4">
+            <span key={item.label} className="text-zinc-300 cursor-not-allowed select-none text-xs font-medium py-3">
               {item.label}
             </span>
           );
@@ -35,8 +35,8 @@ export default function NavBar({ items }: { items: ExtendedNavItem[] }) {
         const isActive = currentPathname === getPathname(item.href);
 
         const classes = cn(
-          "text-[15px] py-4 relative group transition-colors",
-          isActive ? "text-white font-semibold" : "text-white/80 hover:text-white font-medium"
+          "text-xs uppercase tracking-wider py-3 relative transition-colors font-semibold",
+          isActive ? "text-zinc-900" : "text-zinc-500 hover:text-zinc-900"
         );
 
         if (item.forceRefresh) {
@@ -48,8 +48,8 @@ export default function NavBar({ items }: { items: ExtendedNavItem[] }) {
             >
               {item.label}
               <span className={cn(
-                "absolute bottom-3 left-0 h-[2px] bg-primary transition-all duration-300",
-                isActive ? "w-full" : "w-0 group-hover:w-full"
+                "absolute bottom-0 left-0 h-[2px] bg-zinc-900 transition-all duration-200",
+                isActive ? "w-full" : "w-0 hover:w-full"
               )} />
             </a>
           );
@@ -63,8 +63,8 @@ export default function NavBar({ items }: { items: ExtendedNavItem[] }) {
           >
             {item.label}
             <span className={cn(
-              "absolute bottom-3 left-0 h-[2px] bg-primary transition-all duration-300",
-              isActive ? "w-full" : "w-0 group-hover:w-full"
+              "absolute bottom-0 left-0 h-[2px] bg-zinc-900 transition-all duration-200",
+              isActive ? "w-full" : "w-0 hover:w-full"
             )} />
           </Link>
         );

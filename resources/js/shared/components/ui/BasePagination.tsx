@@ -1,5 +1,5 @@
 import React from 'react';
-import {cn} from '@/shared/lib/utils';
+import { cn } from '@/shared/lib/utils';
 
 interface PaginationLink {
   url: string | null;
@@ -34,8 +34,7 @@ export function BasePagination({
   }
 
   return (
-    <div
-      className={cn("mt-12 flex flex-wrap items-center justify-center gap-1 md:gap-2 text-[14px] font-medium", className)}>
+    <div className={cn("mt-12 flex flex-wrap items-center justify-center gap-1.5 text-xs font-semibold", className)}>
       {meta.links.map((link, idx) => {
         let label = link.label;
 
@@ -44,7 +43,7 @@ export function BasePagination({
 
         if (!link.url) {
           return (
-            <span key={idx} className="px-3 py-2 text-slate-300">
+            <span key={idx} className="px-3 py-2 text-zinc-300 select-none">
               {label}
             </span>
           );
@@ -58,10 +57,10 @@ export function BasePagination({
             key={idx}
             onClick={() => onPageChange(pageNum)}
             className={cn(
-              "px-3.5 py-2 rounded-lg transition-colors",
+              "px-3 py-1.5 rounded border transition-all cursor-pointer min-w-[32px] text-center",
               link.active
-                ? "bg-sky-50 text-sky-700 font-bold cursor-default pointer-events-none"
-                : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
+                ? "bg-zinc-900 border-zinc-900 text-white font-bold shadow-sm"
+                : "bg-white border-zinc-200 text-zinc-700 hover:border-zinc-900 hover:text-zinc-900"
             )}
           >
             {label}

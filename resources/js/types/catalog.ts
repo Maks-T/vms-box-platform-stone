@@ -87,6 +87,15 @@ export interface Filter {
 }
 
 /** 8. Конфигурация (Bootstrap) */
+export interface BootstrapFamily {
+  code: string;
+  name: string;
+  schema: { key: string; type: string; label: string }[] | null;
+  types: BootstrapProductType[];
+}
+
+export type ProductFamily = BootstrapFamily;
+
 export interface BootstrapProductType {
   code: string;
   name: string;

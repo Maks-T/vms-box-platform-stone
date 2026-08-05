@@ -5,17 +5,18 @@ use Inertia\Inertia;
 use Nicole\Box\Core\Http\Resources\Api\V1\ProductResource;
 use Nicole\Box\Core\Models\Product;
 
-// 1. Главная страница (Каталог)
 Route::get('/', function () {
   return Inertia::render('Catalog/Index');
 })->name('catalog');
 
-// Страница конфигурации Bootstrap
+Route::get('/about', function () {
+  return Inertia::render('About/Index');
+})->name('about');
+
 Route::get('/bootstrap', function () {
   return Inertia::render('Bootstrap/Index');
 })->name('bootstrap');
 
-// Детальная страница товара
 Route::get('/product/{slug}', function (string $slug) {
   $product = Product::where('slug', $slug)
     ->where('is_active', true)
@@ -40,18 +41,13 @@ Route::get('/product/{slug}', function (string $slug) {
   ]);
 })->name('product.show');
 
-// Страница услуг калькулятора
 Route::get('/services', function () {
   return Inertia::render('Services/Index');
 })->name('services');
 
-// Переключение языка
 Route::get('/lang/{locale}', function (string $locale) {
   if (in_array($locale, ['ru'])) {
-    // Записываем в сессию для нашего API
     session(['locale' => $locale]);
-
-    // Записываем в куку, чтобы Filament Language Switch не сбрасывал язык
     cookie()->queue(cookie()->forever('filament_language_switch_locale', $locale));
   }
 

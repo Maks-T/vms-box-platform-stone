@@ -21,12 +21,11 @@
     }
 }
 
-
-/** ИНТЕГРАЦИЯ С TAILWIND V4 */
+/** ИНТЕГРАЦИЯ С TAILWIND V4 — НОВЫЙ АРХИТЕКТУРНЫЙ СТИЛЬ */
 @theme {
-    --font-sans: "DM Sans", sans-serif;
+    --font-sans: "Inter", "Manrope", sans-serif;
 
-    /* Базовые цвета shadcn */
+    /* Базовые цвета */
     --color-background: var(--background);
     --color-foreground: var(--foreground);
     --color-card: var(--card);
@@ -47,7 +46,7 @@
     --color-input: var(--input);
     --color-ring: var(--ring);
 
-    /* Кастомные цвета Vistegra */
+    /* Дополнительные системные цвета */
     --color-heading: var(--heading);
     --color-nav: var(--nav);
     --color-meta: var(--meta);
@@ -56,66 +55,61 @@
     --color-dark: var(--dark);
     --color-primary-light: #3D98FF;
 
-    /* Радиусы скруглений */
-    --radius-sm: calc(var(--radius) - 4px);
-    --radius-md: calc(var(--radius) - 2px);
-    --radius-lg: var(--radius);
-    --radius-xl: calc(var(--radius) + 10px);
-    --radius-2xl: calc(var(--radius) + 20px);
+    /* Строгие минимальные радиусы скругления (2-4px max) */
+    --radius-sm: 2px;
+    --radius-md: 4px;
+    --radius-lg: 4px;
+    --radius-xl: 6px;
+    --radius-2xl: 8px;
 
-    /* Тени Vistegra */
-    --shadow-subtle: 0 0 1px 0 rgba(0, 0, 0, 0.15);
-    --shadow-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
-    --shadow-card: inset 0 0 14px 0 rgba(144, 198, 221, 0.2);
-    --shadow-icon: inset 0 0 5px 0 rgba(89, 171, 206, 0.25);
-    --shadow-deep: inset 0 1px 8px 0 rgba(175, 203, 234, 0.5);
-    --shadow-cta: 0 5px 12px 0 rgba(0, 103, 216, 0.55);
+    /* Легкие архитектурные тени (без тяжелых цветных свечений) */
+    --shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
+    --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.02);
+    --shadow-icon: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+    --shadow-deep: inset 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+    --shadow-cta: 0 2px 6px 0 rgba(24, 24, 27, 0.15);
 
-    /* тени для стекла */
-    --shadow-glass-inset: inset 0 0 14px 0 rgba(144, 198, 221, 0.20);
-    --shadow-glass-panel: 0 0 6px 0 rgba(0, 0, 0, 0.25), inset 0 0 14px 0 rgba(144, 198, 221, 0.20);
-    --blur-glass: 2.5px;
+    /* Тени для стекла */
+    --shadow-glass-inset: inset 0 0 1px 0 rgba(255, 255, 255, 0.1);
+    --shadow-glass-panel: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    --blur-glass: 4px;
 }
 
-/** ПЕРЕМЕННЫЕ SHADCN */
+/** ПЕРЕМЕННЫЕ ЦВЕТОВОЙ ПАЛИТРЫ (:ROOT) */
 :root {
-    --radius: 0.625rem;
-    --background: #FFFFFF;
-    --foreground: #222222;
+    --radius: 0.25rem; /* 4px по умолчанию */
+    --background: #F3F3F5;
+    --foreground: #18181B;
     --card: #FFFFFF;
-    --card-foreground: #222222;
+    --card-foreground: #18181B;
     --popover: #FFFFFF;
-    --popover-foreground: #222222;
-    --primary: #005ECA;
+    --popover-foreground: #18181B;
+    --primary: #18181B;
     --primary-foreground: #FFFFFF;
-    --secondary: #F5F5F5;
-    --secondary-foreground: #222222;
-    --muted: #EFF1F4;
-    --muted-foreground: #728499;
-    --accent: #E4F1FF;
-    --accent-foreground: #003F87;
-    --destructive: #DD2C2C;
+    --secondary: #F4F4F5;
+    --secondary-foreground: #18181B;
+    --muted: #F7F8FA;
+    --muted-foreground: #71717A;
+    --accent: #F4F4F5;
+    --accent-foreground: #18181B;
+    --destructive: #991B1B;
     --destructive-foreground: #FFFFFF;
-    --border: #E8EBEF;
-    --input: #DAE3EE;
-    --ring: #005ECA;
-    --heading: #16191B;
-    --nav: #ABBCCF;
-    --meta: #6B86A5;
-    --success: #229E35;
-    --warning: #FDBC30;
-    --dark: #16191B;
+    --border: #E4E4E7;
+    --input: #E4E4E7;
+    --ring: #18181B;
+    --heading: #18181B;
+    --nav: #71717A;
+    --meta: #71717A;
+    --success: #16A34A;
+    --warning: #D97706;
+    --dark: #18181B;
 }
-
 
 /** БАЗОВЫЕ СТИЛИ (BASE) */
 @layer base {
     * {
         @apply border-border outline-ring/50;
-    }
-
-    html {
-
     }
 
     body {
@@ -128,8 +122,7 @@
         user-select: none !important;
     }
 
-    /**     СТИЛИ АВТОЗАПОЛНЕНИЯ (AUTOFILL) */
-    /* Базовый сброс для всех типов автозаполнения */
+    /** СТИЛИ АВТОЗАПОЛНЕНИЯ (AUTOFILL) */
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
@@ -138,13 +131,13 @@
     textarea:-webkit-autofill:focus {
         font-family: var(--font-sans), sans-serif !important;
         transition: background-color 5000s ease-in-out 0s !important;
-        caret-color: white;
+        caret-color: #18181B;
     }
 
-    /* Вариант DARK (Модалки) */
+    /* Вариант DARK */
     .autofill-dark:-webkit-autofill {
         -webkit-text-fill-color: #FFFFFF !important;
-        box-shadow: 0 0 0 1000px #1A1D21 inset !important;
+        box-shadow: 0 0 0 1000px #18181B inset !important;
         border-color: rgba(255, 255, 255, 0.1) !important;
     }
 
@@ -152,21 +145,10 @@
         border-color: var(--color-primary) !important;
     }
 
-    /*  Вариант BLUE (Синие баннеры) */
-    .autofill-blue:-webkit-autofill {
-        -webkit-text-fill-color: #FFFFFF !important;
-        box-shadow: 0 0 0 1000px #005ECA inset !important;
-        border-color: rgba(255, 255, 255, 0.2) !important;
-    }
-
-    .autofill-blue:-webkit-autofill:focus {
-        border-color: #FFFFFF !important;
-    }
-
-    /* Вариант WHITE (Светлые секции) */
+    /* Вариант WHITE */
     .autofill-white:-webkit-autofill {
         -webkit-text-fill-color: var(--color-heading) !important;
-        box-shadow: 0 0 0 1000px #F8F9FA inset !important;
+        box-shadow: 0 0 0 1000px #FFFFFF inset !important;
         border-color: var(--color-border) !important;
         caret-color: var(--color-heading);
     }
@@ -174,7 +156,6 @@
     .autofill-white:-webkit-autofill:focus {
         border-color: var(--color-primary) !important;
     }
-
 
     /* Хак для iOS Zoom */
     @media screen and (max-width: 768px) {
@@ -191,7 +172,7 @@
     }
 
     .container-content {
-        @apply w-full max-w-[1280px] mx-auto px-4 md:px-8 lg:px-10;
+        @apply w-full max-w-[1400px] mx-auto px-4 md:px-8 lg:px-10;
     }
 
     /* Safe Areas */
@@ -224,24 +205,15 @@
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
-
-    /* Маска для скролл-контейнеров */
-    .mask-fade-right {
-        --mask-stop: calc(100% - 40px);
-        --mask-grad: linear-gradient(to right, black var(--mask-stop), transparent 100%);
-        -webkit-mask-image: var(--mask-grad);
-        mask-image: var(--mask-grad);
-    }
 }
 
 @utility text-shadow-sm {
-    text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.25);
+    text-shadow: none;
 }
 
 /** КАСТОМНЫЙ СКРОЛЛБАР */
-
 .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -249,81 +221,31 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    background: #E4E4E7;
+    border-radius: 2px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: var(--color-primary);
-}
-
-/** АНИМАЦИИ И ЭФФЕКТЫ */
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px) rotateY(-15deg) rotateX(5deg);
-    }
-    50% {
-        transform: translateY(-15px) rotateY(-12deg) rotateX(2deg);
-    }
-}
-
-.animate-float-3d {
-    animation: float 6s ease-in-out infinite;
-}
-
-[data-slot="dialog-content"],
-[data-slot="drawer-content"] {
-    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
-    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+    background: #18181B;
 }
 
 /** СТИЛИ УВЕДОМЛЕНИЙ (SONNER TOASTS) */
 [data-sonner-toast] {
-    background-color: rgba(255, 255, 255, 0.85) !important;
-    backdrop-filter: blur(16px) saturate(150%);
-    border-radius: 14px !important;
+    background-color: #FFFFFF !important;
+    border-radius: 4px !important;
     font-family: var(--font-sans), sans-serif !important;
-    padding: 14px 18px !important;
-    color: #16191B !important;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12) !important;
-    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    padding: 12px 16px !important;
+    color: #18181B !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid #E4E4E7 !important;
 }
 
-/* Успешное уведомление */
-[data-sonner-toast][data-type="success"] {
-    background-color: rgba(240, 253, 244, 0.9) !important;
-    border: 1px solid rgba(34, 158, 53, 0.2) !important;
-}
-
-[data-sonner-toast][data-type="success"] [data-icon] {
-    color: #229E35 !important;
-}
-
-/* Ошибка */
-[data-sonner-toast][data-type="error"] {
-    background-color: rgba(254, 242, 242, 0.9) !important;
-    border: 1px solid rgba(221, 44, 44, 0.2) !important;
-}
-
-[data-sonner-toast][data-type="error"] [data-icon] {
-    color: #DD2C2C !important;
-}
-
-/* Заголовок сообщения */
 [data-sonner-toast] [data-title] {
     font-weight: 600 !important;
-    color: #16191B !important;
+    color: #18181B !important;
 }
 
-/* Описание сообщения */
 [data-sonner-toast] [data-description] {
-    color: rgba(22, 25, 27, 0.7) !important;
-    font-size: 13px !important;
-}
-
-/* Кнопка закрытия (если есть) */
-[data-sonner-toast] [data-close-button] {
-    background: rgba(0, 0, 0, 0.05) !important;
-    border-color: rgba(0, 0, 0, 0.1) !important;
-    color: #16191B !important;
+    color: #71717A !important;
+    font-size: 12px !important;
 }

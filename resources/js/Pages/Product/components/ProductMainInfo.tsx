@@ -1,77 +1,110 @@
 import React from 'react';
-import {H1, Text} from '@/shared/components/ui/Typography';
-import StatusBadge from '@/shared/components/ui/StatusBadge';
+import {H1} from '@/shared/components/ui/Typography';
 import Badge from "@shared/components/ui/Badge";
 import {checkDevMode} from '@/shared/lib/dev';
+import {ProductVariant, EavAttribute, EavValueOption} from '@/types/catalog';
 
 interface Props {
   name: string;
-  priceFrom: number;
+  displayPrice: number;
+  activeVariant?: ProductVariant | null;
+  attributes?: Record<string, EavAttribute>;
+  unitName?: string;
   bootstrapConfig?: any;
-  shortDescription?: string | null; // Добавили краткое описание
-  description?: string | null;      // Добавили полное описание
+  shortDescription?: string | null;
+  description?: string | null;
 }
 
-export function ProductMainInfo({name, priceFrom, bootstrapConfig, shortDescription, description}: Props) {
+export function ProductMainInfo({
+                                  name,
+                                  displayPrice,
+                                  activeVariant,
+                                  attributes,
+                                  unitName = 'шт.',
+                                  bootstrapConfig,
+                                  shortDescription,
+                                  description
+                                }: Props) {
   const isDev = checkDevMode();
   const currencySymbol = bootstrapConfig?.base_currency?.symbol_native || bootstrapConfig?.base_currency?.symbol || 'Br';
 
-  const formattedNumber = priceFrom > 0
+  const formattedNumber = displayPrice > 0
     ? new Intl.NumberFormat('ru-RU', {
       minimumFractionDigits: 0,
       maximumFractionDigits: 2
-    }).format(priceFrom)
+    }).format(displayPrice)
     : '';
 
-  return (
-    <div className="mb-8 border-b border-border pb-8">
-      {isDev && (
-        <StatusBadge variant="success" className="mb-6 w-max">
-          <div className="flex items-center gap-1.5 whitespace-nowrap">
-            <span>В наличии</span>
-          </div>
-        </StatusBadge>
-      )}
+  const stockCount = activeVariant ? activeVariant.stock : null;
 
-      <H1 className="!text-foreground !text-[32px] md:!text-[44px] mb-6">
+  const brandAttr = attributes?.brand?.value;
+  const brandObj = (typeof brandAttr === 'object' && brandAttr !== null && 'label' in brandAttr)
+    ? (brandAttr as EavValueOption)
+    : null;
+
+  const cleanShortDesc = shortDescription?.startsWith('Бренд:')
+    ? null
+    : shortDescription;
+
+  return (
+    <div className="mb-4 border-b border-zinc-200 pb-5">
+      <div className="flex items-center justify-between gap-4 mb-2">
+        <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">
+          {activeVariant?.sku ? `Код: ${activeVariant.sku}` : 'Товар'}
+        </span>
+
+        {stockCount !== null && (
+          <span
+            className={`text-xs font-semibold px-2.5 py-0.5 rounded ${stockCount > 0 ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-amber-50 text-amber-700 border border-amber-200'}`}>
+            {stockCount > 0 ? `В наличии: ${stockCount} ${unitName}` : 'Под заказ'}
+          </span>
+        )}
+      </div>
+
+      <H1 className="!text-zinc-900 !text-2xl md:!text-3xl font-extrabold mb-4">
         {name}
       </H1>
 
-      <div className="flex items-end gap-6 mb-8">
-        <div>
-          <Text className="text-[11px] !text-muted-foreground font-bold uppercase tracking-widest mb-2">
-            Базовая цена от
-          </Text>
-
-          <div className="text-[32px] font-black text-primary leading-none flex items-baseline gap-1.5">
-            {priceFrom > 0 ? (
-              <>
-                <span>{formattedNumber}</span>
-                <span className="text-sm md:text-base font-normal text-muted-foreground lowercase">
-                  {currencySymbol}
-                </span>
-              </>
+      <div
+        className="flex items-center justify-between gap-4 mb-4 bg-zinc-50/80 border border-zinc-200/80 p-1 rounded">
+        {brandObj ? (
+          <div className="flex items-center gap-2.5">
+            {brandObj.meta?.image ? (
+              <img src={brandObj.meta.image} alt={brandObj.label} className="h-7 md:h-12 max-w-[240px] object-contain"/>
             ) : (
-              <Badge variant="gray"
-                     className="!bg-muted !border-border !text-muted-foreground !shadow-none !px-3 !py-1 text-xs">
-                Нет в наличии
-              </Badge>
+              <span className="text-sm font-bold text-zinc-900">{brandObj.label}</span>
             )}
           </div>
+        ) : (
+          <span className="text-xs font-semibold text-zinc-400">Столешка.Ру</span>
+        )}
+
+        <div className="text-right">
+          {displayPrice > 0 ? (
+            <div className="text-2xl md:text-3xl font-extrabold text-[#B92B3A] leading-none flex items-baseline gap-1">
+              <span>{formattedNumber}</span>
+              <span className="text-xs md:text-sm font-medium text-zinc-500 lowercase">
+                {currencySymbol} / {unitName}
+              </span>
+            </div>
+          ) : (
+            <Badge variant="gray"
+                   className="!bg-zinc-100 !border-zinc-200 !text-zinc-500 !shadow-none !px-3 !py-1 text-xs">
+              Цена по запросу
+            </Badge>
+          )}
         </div>
       </div>
 
-      {/* Рендеринг краткого описания товара (анонса) */}
-      {shortDescription && (
-        <div className="text-sm text-slate-500 leading-relaxed max-w-2xl mb-6 italic">
-          {shortDescription}
+      {cleanShortDesc && (
+        <div className="text-xs sm:text-sm text-zinc-500 leading-relaxed max-w-2xl mb-3">
+          {cleanShortDesc}
         </div>
       )}
 
-      {/* Рендеринг полного описания товара с поддержкой HTML */}
       {description && (
         <div
-          className="text-sm text-slate-600 leading-relaxed max-w-2xl border-t border-border/50 pt-6 prose prose-slate"
+          className="text-xs sm:text-sm text-zinc-600 leading-relaxed max-w-2xl border-t border-zinc-100 pt-3 prose prose-zinc"
           dangerouslySetInnerHTML={{__html: description}}
         />
       )}

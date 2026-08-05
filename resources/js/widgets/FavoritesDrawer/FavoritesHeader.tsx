@@ -9,17 +9,17 @@ interface FavoritesHeaderProps {
 
 export const FavoritesHeader = ({ count, onClear }: FavoritesHeaderProps) => {
   return (
-    <SheetHeader className="p-6 border-b border-white/5 bg-[#0B0F19] flex flex-row items-center justify-between shrink-0">
-      <div className="flex items-center gap-3">
-        <Heart className="w-5 h-5 text-destructive fill-destructive" />
-        <SheetTitle className="text-lg font-bold tracking-tight text-white m-0">
-          Избранное <span className="text-white/40 text-sm font-normal">({count})</span>
+    <SheetHeader className="p-5 border-b border-zinc-200 bg-white flex flex-row items-center justify-between shrink-0">
+      <div className="flex items-center gap-2.5">
+        <Heart className="w-4.5 h-4.5 fill-[#B92B3A] text-[#B92B3A]" />
+        <SheetTitle className="text-base font-bold tracking-tight text-zinc-900 m-0">
+          Избранное <span className="text-zinc-400 text-xs font-normal">({count})</span>
         </SheetTitle>
       </div>
       {count > 0 && (
         <button
           onClick={onClear}
-          className="text-xs font-semibold text-muted-foreground hover:text-destructive transition-colors uppercase tracking-wider cursor-pointer mr-8"
+          className="text-[11px] font-semibold text-zinc-400 hover:text-[#B92B3A] transition-colors uppercase tracking-wider cursor-pointer mr-6"
         >
           Очистить
         </button>

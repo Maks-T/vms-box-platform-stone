@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from '@inertiajs/react';
-import { cn } from '@/shared/lib/utils';
-import { route } from 'ziggy-js';
+import {Link} from '@inertiajs/react';
+import {cn} from '@/shared/lib/utils';
+import {route} from 'ziggy-js';
 
-type LogoVariant = 'dark-outline' | 'light-solid' | 'dark-solid' | 'orange-dark';
+type LogoVariant = 'white' | 'black' | 'dark-outline' | 'light-solid' | 'dark-solid' | 'orange-dark';
 
 interface LogoProps {
   variant?: LogoVariant;
@@ -14,7 +14,7 @@ interface LogoProps {
 }
 
 export function Logo({
-                       variant = 'orange-dark',
+                       variant = 'black',
                        className,
                        imgClassName,
                        href = route('catalog'),
@@ -22,15 +22,12 @@ export function Logo({
                      }: LogoProps) {
   const getLogoSrc = () => {
     switch (variant) {
-      case 'dark-outline':
-        return '/images/logo-dark-outline.svg';
       case 'light-solid':
-        return '/images/logo-light-solid.svg';
-      case 'dark-solid':
-        return '/images/logo-dark-solid.svg';
-      case 'orange-dark':
+        return '/images/logo_stoleshka_white.png';
+      case 'black':
+        return '/images/logo_stoleshka_black.png';
       default:
-        return '/images/logo-orange-dark.svg';
+        return '/images/logo_stoleshka_white.png';
     }
   };
 
@@ -45,8 +42,8 @@ export function Logo({
     >
       <img
         src={getLogoSrc()}
-        alt="VMS-NC Box"
-        className={cn("h-12 md:h-16 w-auto", imgClassName)}
+        alt="Столешка Ру"
+        className={cn("h-12 md:h-16 w-auto object-contain", imgClassName)}
       />
     </Link>
   );

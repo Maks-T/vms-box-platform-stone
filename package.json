@@ -7,9 +7,9 @@
     "dev": "vite",
     "generate-api": "npx openapi-typescript http://localhost/docs/api.json -o resources/js/types/schema.d.ts",
 
-    "core-push": "cd packages/box/nicole/core && git add . && git commit -m 'update: auto-sync core' && git push origin main",
-    "core-commit": "cd packages/box/nicole/core && git add . && git commit && git push origin main",
     "core-pull": "git submodule update --remote --merge",
+    "core-push": "cd packages/box/nicole/core && git add . && git commit -m 'update: auto-sync core' && git push origin core/main",
+    "core-commit": "cd packages/box/nicole/core && git add . && git commit && git push origin core/main",
     "core-sync": "git add packages/box/nicole/core && git commit -m 'chore: bump core submodule pointer' && git push"
   },
   "devDependencies": {

@@ -71,9 +71,9 @@
             "ru": "Список чекбоксов",
             "en": "Checkboxes"
           },
-          "radio": {
-            "ru": "Одиночный выбор",
-            "en": "Radio buttons"
+          "select": {
+            "ru": "Выпадающий список (Select)",
+            "en": "Dropdown select"
           },
           "color": {
             "ru": "Цветовые кружки",
@@ -190,7 +190,7 @@
         },
         "width": 1,
         "is_system": true,
-        "default": false
+        "default": true
       },
       {
         "key": "show_in_menu",
@@ -249,7 +249,7 @@
         },
         "width": 1,
         "is_system": true,
-        "default": false
+        "default": true
       }
     ],
     "product_variant": [
@@ -273,7 +273,7 @@
         },
         "width": 1,
         "is_system": true,
-        "default": false
+        "default": true
       }
     ],
     "attribute_option": [
@@ -310,7 +310,7 @@
         },
         "width": 1,
         "is_system": true,
-        "default": false
+        "default": true
       },
       {
         "key": "is_settings_public",
@@ -321,7 +321,7 @@
         },
         "width": 1,
         "is_system": true,
-        "default": false
+        "default": true
       }
     ],
     "currency": [
@@ -334,7 +334,7 @@
         },
         "width": 1,
         "is_system": true,
-        "default": false
+        "default": true
       },
       {
         "key": "is_settings_public",
@@ -345,7 +345,7 @@
         },
         "width": 1,
         "is_system": true,
-        "default": false
+        "default": true
       }
     ],
     "warehouse": [
@@ -395,7 +395,7 @@
         },
         "width": 1,
         "is_system": true,
-        "default": false
+        "default": true
       },
       {
         "key": "is_settings_public",
@@ -406,7 +406,7 @@
         },
         "width": 1,
         "is_system": true,
-        "default": false
+        "default": true
       }
     ]
   }

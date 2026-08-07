@@ -10,7 +10,7 @@ export default function Footer() {
     <footer className="w-full bg-[#18181B] text-white pt-12 pb-8 mt-20 border-t border-zinc-800">
       <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-xs font-normal text-zinc-400 leading-relaxed border-b border-zinc-800/80 pb-10">
         <div className="space-y-3">
-          <Logo variant="white" imgClassName="h-10 w-auto mb-2" />
+          <Logo variant="black" imgClassName="h-10 w-auto mb-2" />
           <p className="text-zinc-400 leading-relaxed">
             Производство и профессиональная обработка изделий из искусственного и натурального камня.
           </p>

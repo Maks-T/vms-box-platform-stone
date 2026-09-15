@@ -1,14 +1,11 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Head} from '@inertiajs/react';
-import {Loader2} from 'lucide-react';
+import React, { useEffect } from 'react';
+import { Head } from '@inertiajs/react';
 import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/shared/components/layouts/SectionLayout';
 
 interface Props {
-  assets: {
-    js: string | null;
-    css: string | null;
-  };
+  embedUrl: string;
+  widgetSlug?: string;
   initialData: {
     apiUrl: string;
     assetsUrl: string;
@@ -16,9 +13,9 @@ interface Props {
     policyLink?: string;
     ofertaLink?: string;
     state: any;
-    user: any;
-    employee: any;
+    auth: any;
     type: string | null;
+    widget?: string;
   };
   currentType: string | null;
 }
@@ -26,86 +23,53 @@ interface Props {
 declare global {
   interface Window {
     initCalculator?: (containerId: string, config: any) => () => void;
+    initialData?: any;
   }
 }
 
-export default function CalculatorShow({assets, initialData, currentType}: Props) {
-  const [isWidgetReady, setIsWidgetReady] = useState(false);
-  const unmountFnRef = useRef<(() => void) | null>(null);
-
+export default function CalculatorShow({
+                                         embedUrl,
+                                         widgetSlug = 'cpq-stone',
+                                         initialData,
+                                         currentType,
+                                       }: Props) {
   useEffect(() => {
-    if (!assets.js) {
-      console.error('Калькулятор: JS-файл точки входа не найден в manifest.json');
-      return;
-    }
+    window.initialData = initialData;
 
-    setIsWidgetReady(false);
+    const scriptId = `vms-embed-script-${widgetSlug}`;
+    let script = document.getElementById(scriptId) as HTMLScriptElement;
 
-    const initWidget = () => {
-      if (window.initCalculator) {
-        if (unmountFnRef.current) {
-          unmountFnRef.current();
-          unmountFnRef.current = null;
-        }
-
-        const container = document.getElementById('calcAppRoot');
-        if (container) {
-          container.innerHTML = '';
-        }
-
-        console.log('initialData to widget', initialData);
-
-        
-        unmountFnRef.current = window.initCalculator('calcAppRoot', initialData);
-        setIsWidgetReady(true);
-      }
-    };
-
-    const existingScript = document.getElementById('external-calc-js');
-
-    if (!existingScript) {
-      if (assets.css && !document.getElementById('external-calc-css')) {
-        const link = document.createElement('link');
-        link.id = 'external-calc-css';
-        link.rel = 'stylesheet';
-        link.href = assets.css;
-        document.head.appendChild(link);
-      }
-
-      const script = document.createElement('script');
-      script.id = 'external-calc-js';
-      script.src = assets.js;
+    if (!script) {
+      script = document.createElement('script');
+      script.id = scriptId;
+      script.src = embedUrl;
+      script.dataset.target = 'calcAppRoot';
+      script.dataset.type = currentType || 'user';
+      script.dataset.widget = widgetSlug;
       script.async = true;
-      script.onload = initWidget;
       document.body.appendChild(script);
-    } else {
-      initWidget();
+    } else if (typeof window.initCalculator === 'function') {
+      const container = document.getElementById('calcAppRoot');
+      if (container) {
+        container.innerHTML = '';
+      }
+      window.initCalculator('calcAppRoot', initialData);
     }
 
     return () => {
-      if (unmountFnRef.current) {
-        unmountFnRef.current();
-        unmountFnRef.current = null;
+      const container = document.getElementById('calcAppRoot');
+      if (container) {
+        container.innerHTML = '';
       }
     };
-  }, [assets, initialData]);
+  }, [embedUrl, widgetSlug, initialData, currentType]);
 
   return (
     <MainLayout headerOverlaps={false}>
-      <Head title="Онлайн-калькулятор изделий - VMS-NC"/>
+      <Head title="Онлайн-калькулятор изделий" />
       <SectionLayout containerVariant="page" className="pt-8 md:pt-12 pb-24">
         <div className="w-full relative z-10 bg-white rounded-2xl border border-border p-4 md:p-8 shadow-sm">
-          <div className="relative w-full min-h-[650px]">
-            {!isWidgetReady && (
-              <div className="absolute inset-0 z-10 bg-white flex flex-col items-center justify-center rounded-2xl">
-                <Loader2 className="w-10 h-10 text-primary animate-spin mb-4"/>
-                <p className="text-slate-500 font-medium text-sm">
-                  Загрузка модулей калькулятора...
-                </p>
-              </div>
-            )}
-            <div id="calcAppRoot" className="w-full min-h-[650px]"/>
-          </div>
+          <div id="calcAppRoot" className="w-full min-h-[650px]" />
         </div>
       </SectionLayout>
     </MainLayout>

@@ -38,13 +38,13 @@ export function ProductVariantsList({variants, bootstrapConfig}: Props) {
   };
 
   return (
-    <div className="mt-12 pt-8 border-t border-border">
+    <div className="mt-10 pt-8 border-t border-[#E2E6EA]">
       <div className="flex items-center gap-3 mb-6">
-        <IconBox variant="glass" size="sm" className="bg-muted text-muted-foreground border-transparent">
-          <Layers className="w-4 h-4"/>
+        <IconBox variant="light" size="sm" className="bg-slate-100 text-[#08274D] border-[#E2E6EA]">
+          <Layers className="w-4 h-4 text-[#9B6A38]"/>
         </IconBox>
-        <H3 className="!text-muted-foreground !text-[13px] uppercase tracking-[0.15em] m-0">
-          Торговые предложения (SKU)
+        <H3 className="font-heading font-bold text-[#08274D] text-[13px] uppercase tracking-wider m-0">
+          Доступные слэбы и размеры (SKU)
         </H3>
       </div>
 
@@ -54,11 +54,11 @@ export function ProductVariantsList({variants, bootstrapConfig}: Props) {
           const hasFriendlyName = variant.name && variant.name !== variant.sku;
 
           return (
-            <GlassPanel key={variant.id} variant="default" padding="sm"
-                        className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-muted/30">
+            <div key={variant.id}
+                 className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-xl border border-[#E2E6EA] hover:border-[#9B6A38]/40 shadow-xs transition-colors">
               <div className="flex items-center gap-4 overflow-hidden w-full">
 
-                <IconBox variant="light" className="w-14 h-14 shrink-0 rounded-xl overflow-hidden p-0 border-border">
+                <IconBox variant="light" className="w-14 h-14 shrink-0 rounded-xl overflow-hidden p-0 border-[#E2E6EA] bg-[#F8F9FA]">
                   {variant.preview_picture ? (
                     <img src={variant.preview_picture} alt={variant.sku} className="w-full h-full object-cover"/>
                   ) : (
@@ -68,7 +68,7 @@ export function ProductVariantsList({variants, bootstrapConfig}: Props) {
 
                 <div className="min-w-0 flex-1">
                   {/* Если есть красивое имя (например, цвет), выводим его, иначе системный код */}
-                  <div className="font-bold text-foreground tracking-tight text-[15px]">
+                  <div className="font-heading font-bold text-[#08274D] tracking-tight text-[15px]">
                     {hasFriendlyName ? variant.name : variant.sku}
                   </div>
 
@@ -109,25 +109,25 @@ export function ProductVariantsList({variants, bootstrapConfig}: Props) {
                     : '';
 
                   return displayPrice > 0 ? (
-                    <div className="font-black text-foreground text-[18px] flex items-baseline gap-1">
+                    <div className="font-heading font-black text-[#08274D] text-[18px] flex items-baseline gap-1">
                       <span>{formattedNumber}</span>
-                      <span className="text-xs font-normal text-muted-foreground lowercase">{currencySymbol}</span>
+                      <span className="text-xs font-normal text-[#696973] lowercase">{currencySymbol} / м²</span>
                     </div>
                   ) : (
                     <Badge variant="gray"
-                           className="!bg-background !border-border !text-muted-foreground !shadow-none !px-2.5 !py-1 text-[11px] uppercase tracking-wider">
+                           className="!bg-slate-50 !border-[#E2E6EA] !text-[#696973] !shadow-none !px-2.5 !py-1 text-[11px] uppercase tracking-wider font-heading font-bold">
                       По запросу
                     </Badge>
                   );
                 })()}
 
                 <StatusBadge variant={variant.stock > 0 ? 'success' : 'warning'} className="px-2.5 py-1">
-                  {variant.stock > 0 ? `Остаток: ${variant.stock} шт` : 'Под заказ'}
+                  {variant.stock > 0 ? `На складе в СПб: ${variant.stock} слэбов` : 'Под заказ (распил)'}
                 </StatusBadge>
 
               </div>
 
-            </GlassPanel>
+            </div>
           );
         })}
       </div>

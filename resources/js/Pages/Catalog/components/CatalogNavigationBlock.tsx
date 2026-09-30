@@ -26,14 +26,14 @@ export function CatalogNavigationBlock({
 
       {}
       {typesSchema.length > 0 && (
-        <div className="flex flex-wrap items-center gap-2 mt-2 pt-6 border-t border-border/50">
+        <div className="flex flex-wrap items-center gap-2.5 mt-2 pt-6 border-t border-[#E2E6EA]">
           <button
             onClick={() => setProductType('')}
             className={cn(
-              "px-5 py-2 rounded-full text-[13px] font-medium transition-colors border",
+              "px-4 py-2 rounded-lg text-[12px] font-heading font-bold uppercase tracking-wider transition-all border cursor-pointer",
               productType === ''
-                ? "bg-primary/10 border-primary/20 text-primary"
-                : "bg-transparent border-transparent text-muted-foreground hover:bg-muted hover:text-foreground"
+                ? "bg-[#08274D] border-[#08274D] text-white shadow-sm"
+                : "bg-white border-[#E2E6EA] text-[#696973] hover:text-[#08274D] hover:border-[#08274D]"
             )}
           >
             Все типы
@@ -43,10 +43,10 @@ export function CatalogNavigationBlock({
               key={t.code}
               onClick={() => setProductType(t.code)}
               className={cn(
-                "px-5 py-2 rounded-full text-[13px] font-medium transition-colors border",
+                "px-4 py-2 rounded-lg text-[12px] font-heading font-bold uppercase tracking-wider transition-all border cursor-pointer",
                 productType === t.code
-                  ? "bg-primary/10 border-primary/20 text-primary"
-                  : "bg-transparent border-transparent text-muted-foreground hover:bg-muted hover:text-foreground"
+                  ? "bg-[#08274D] border-[#08274D] text-white shadow-sm"
+                  : "bg-white border-[#E2E6EA] text-[#696973] hover:text-[#08274D] hover:border-[#08274D]"
               )}
             >
               {t.name}

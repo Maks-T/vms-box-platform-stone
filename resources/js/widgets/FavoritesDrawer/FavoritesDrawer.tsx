@@ -23,7 +23,7 @@ export const FavoritesDrawer = () => {
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetContent
         side="right"
-        className="w-full sm:max-w-[460px] p-0 flex flex-col gap-0 border-l border-white/10 bg-[#111827] text-white shadow-2xl"
+        className="w-full sm:max-w-[460px] p-0 flex flex-col gap-0 border-l border-[#E2E6EA] bg-white text-[#1E252D] shadow-2xl"
       >
         <FavoritesHeader count={items.length} onClear={clearFavorites} />
 
@@ -45,8 +45,8 @@ export const FavoritesDrawer = () => {
           )}
         </div>
 
-        <div className="p-6 border-t border-white/5 bg-[#0B0F19] shrink-0 text-center text-white/30 text-[11px] tracking-wide">
-          VMS-NC PLATFORM • FAVORITES SYSTEM
+        <div className="p-4 border-t border-[#E2E6EA] bg-[#F8F9FA] shrink-0 text-center text-[#8B9198] text-[11px] font-heading font-semibold uppercase tracking-wider">
+          МАСТЕРСТОУН • ИЗБРАННЫЕ МАТЕРИАЛЫ
         </div>
       </SheetContent>
     </Sheet>

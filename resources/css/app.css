@@ -19,14 +19,51 @@
     .dummy-calc-anchor {
         display: none;
     }
+
+    /* Фирменный шрифт Montserrat для заголовков шагов калькулятора */
+    #calcAppRoot [class*="calc-text-uppercase"],
+    #calcAppRoot [class*="lg:calc-text-3xl"],
+    #calcAppRoot [class*="lg:calc-text-xl"] {
+        font-family: var(--font-heading), sans-serif !important;
+        font-weight: 700 !important;
+        color: #08274D !important;
+    }
+
+    /* Кнопка «Отправить заявку» с эффектом MasterStone (Navy -> Coral) */
+    #calcAppRoot button.calc-bg-primary {
+        background-color: #08274D !important;
+        color: #FFFFFF !important;
+        font-family: var(--font-heading), sans-serif !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+        border-radius: 12px !important;
+        transition: all 0.3s ease !important;
+    }
+
+    #calcAppRoot button.calc-bg-primary:hover {
+        background-color: #EF5042 !important; /* Коралловый при наведении */
+    }
+
+    /* Активные карточки выбора формы и типа */
+    #calcAppRoot .calc-border-primary {
+        border-color: #08274D !important;
+    }
 }
 
-
-/** ИНТЕГРАЦИЯ С TAILWIND V4 */
+/**
+ * ДИЗАЙН-СИСТЕМА MASTERSTONE (TAILWIND CSS V4)
+ */
 @theme {
-    --font-sans: "DM Sans", sans-serif;
+    /* ========================================================
+       1. Шрифты (Архитектурная пара: Montserrat + Inter)
+       ======================================================== */
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-heading: "Montserrat", sans-serif;
 
-    /* Базовые цвета shadcn */
+    /* ========================================================
+       2. Базовые семантические токены shadcn
+       ======================================================== */
     --color-background: var(--background);
     --color-foreground: var(--foreground);
     --color-card: var(--card);
@@ -47,80 +84,148 @@
     --color-input: var(--input);
     --color-ring: var(--ring);
 
-    /* Кастомные цвета Vistegra */
+    /* ========================================================
+       3. Фирменная палитра МастерСтоун (Deep Navy / Slate)
+       ======================================================== */
+    --color-stone-navy-50: #f0f4f8;
+    --color-stone-navy-100: #d9e2ec;
+    --color-stone-navy-200: #bcccdc;
+    --color-stone-navy-300: #9fb3c8;
+    --color-stone-navy-400: #627d98;
+    --color-stone-navy-500: #486581;
+    --color-stone-navy-600: #334e68;
+    --color-stone-navy-700: #243b53;
+    --color-stone-navy-800: #102a43;
+    --color-stone-navy-900: #08274d; /* Основной глубокий графитово-синий */
+    --color-stone-navy-950: #05162b;
+
+    /* ========================================================
+       4. Бронзово-золотой акцент натурального камня
+       ======================================================== */
+    --color-stone-bronze-light: #dfc2a5;
+    --color-stone-bronze: #9b6a38;       /* Цвет шестеренки из логотипа */
+    --color-stone-bronze-hover: #825629;
+    --color-stone-bronze-dark: #5c3c1b;
+
+    /* ========================================================
+       5. Кораллово-терракотовый акцент (Акции / Бейджи / Hover)
+       ======================================================== */
+    --color-stone-coral-50: #fef2f2;
+    --color-stone-coral-100: #fee2e2;
+    --color-stone-coral-500: #ef5042;   /* Фирменный красный плашек и бейджей */
+    --color-stone-coral-600: #dc392a;
+    --color-stone-coral-700: #b92619;
+
+    /* ========================================================
+       6. Минеральные светлые поверхности (Stone Surfaces)
+       ======================================================== */
+    --color-surface-base: #ffffff;
+    --color-surface-subtle: #f8f9fa;
+    --color-surface-muted: #f0f2f5;     /* Фирменный серый подложек категорий */
+    --color-surface-border: #e2e6ea;
+
+    /* ========================================================
+       7. Мессенджеры и служебные токены
+       ======================================================== */
+    --color-social-telegram: #0b9bf5;
+    --color-social-max: #1943ef;
+    --color-social-whatsapp: #25d366;
+    --color-social-vk: #0077ff;
+
     --color-heading: var(--heading);
     --color-nav: var(--nav);
     --color-meta: var(--meta);
     --color-success: var(--success);
     --color-warning: var(--warning);
     --color-dark: var(--dark);
-    --color-primary-light: #3D98FF;
+    --color-primary-light: #579ac1;
 
-    /* Радиусы скруглений */
+    /* ========================================================
+       8. Радиусы скруглений
+       ======================================================== */
     --radius-sm: calc(var(--radius) - 4px);
     --radius-md: calc(var(--radius) - 2px);
     --radius-lg: var(--radius);
-    --radius-xl: calc(var(--radius) + 10px);
-    --radius-2xl: calc(var(--radius) + 20px);
+    --radius-xl: calc(var(--radius) + 6px);
+    --radius-2xl: calc(var(--radius) + 14px);
 
-    /* Тени Vistegra */
-    --shadow-subtle: 0 0 1px 0 rgba(0, 0, 0, 0.15);
-    --shadow-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
-    --shadow-card: inset 0 0 14px 0 rgba(144, 198, 221, 0.2);
-    --shadow-icon: inset 0 0 5px 0 rgba(89, 171, 206, 0.25);
-    --shadow-deep: inset 0 1px 8px 0 rgba(175, 203, 234, 0.5);
-    --shadow-cta: 0 5px 12px 0 rgba(0, 103, 216, 0.55);
+    /* ========================================================
+       9. Тени для каменных плит и архитектурных карточек
+       ======================================================== */
+    --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 12px 35px -8px rgba(8, 39, 77, 0.12);
+    --shadow-card: 0 5px 25px -4px rgba(0, 0, 0, 0.06);
+    --shadow-icon: 0 2px 6px 0 rgba(0, 0, 0, 0.08);
+    --shadow-deep: 0 20px 45px -10px rgba(8, 39, 77, 0.18);
+    --shadow-cta: 0 8px 20px -4px rgba(8, 39, 77, 0.35);
 
-    /* тени для стекла */
-    --shadow-glass-inset: inset 0 0 14px 0 rgba(144, 198, 221, 0.20);
-    --shadow-glass-panel: 0 0 6px 0 rgba(0, 0, 0, 0.25), inset 0 0 14px 0 rgba(144, 198, 221, 0.20);
-    --blur-glass: 2.5px;
+    /* Тени для полупрозрачных панелей */
+    --shadow-glass-inset: inset 0 0 14px 0 rgba(8, 39, 77, 0.05);
+    --shadow-glass-panel: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+    --blur-glass: 4px;
 }
 
-/** ПЕРЕМЕННЫЕ SHADCN */
+/**
+ * ПЕРЕМЕННЫЕ ЦВЕТОВ (ROOT)
+ */
 :root {
     --radius: 0.625rem;
     --background: #FFFFFF;
-    --foreground: #222222;
+    --foreground: #1E252D;
+
     --card: #FFFFFF;
-    --card-foreground: #222222;
+    --card-foreground: #1E252D;
+
     --popover: #FFFFFF;
-    --popover-foreground: #222222;
-    --primary: #005ECA;
+    --popover-foreground: #1E252D;
+
+    /* Основной глубокий контрастный синий MasterStone */
+    --primary: #08274D;
     --primary-foreground: #FFFFFF;
-    --secondary: #F5F5F5;
-    --secondary-foreground: #222222;
-    --muted: #EFF1F4;
-    --muted-foreground: #728499;
-    --accent: #E4F1FF;
-    --accent-foreground: #003F87;
-    --destructive: #DD2C2C;
+
+    /* Вторичный цвет подложек */
+    --secondary: #F0F2F5;
+    --secondary-foreground: #08274D;
+
+    /* Приглушенные тона */
+    --muted: #F0F2F5;
+    --muted-foreground: #696973;
+
+    /* Бронзово-песочный акцент */
+    --accent: #F5EFE6;
+    --accent-foreground: #9B6A38;
+
+    /* Кораллово-терракотовый для акций и бейджей */
+    --destructive: #EF5042;
     --destructive-foreground: #FFFFFF;
-    --border: #E8EBEF;
-    --input: #DAE3EE;
-    --ring: #005ECA;
-    --heading: #16191B;
-    --nav: #ABBCCF;
-    --meta: #6B86A5;
-    --success: #229E35;
+
+    --border: #E2E6EA;
+    --input: #DDE2E7;
+    --ring: #08274D;
+
+    --heading: #08274D;
+    --nav: #486581;
+    --meta: #8B9198;
+    --success: #50AD55;
     --warning: #FDBC30;
-    --dark: #16191B;
+    --dark: #1E252D;
 }
 
-
-/** БАЗОВЫЕ СТИЛИ (BASE) */
+/**
+ * БАЗОВЫЕ СТИЛИ (BASE)
+ */
 @layer base {
     * {
-        @apply border-border outline-ring/50;
-    }
-
-    html {
-
+        @apply border-border outline-ring/40;
     }
 
     body {
-        @apply selection:bg-primary selection:text-white;
+        @apply font-sans antialiased bg-[#F8F9FA] text-[#1E252D];
         touch-action: manipulation;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-heading), sans-serif;
     }
 
     a[href="#?"] {
@@ -128,8 +233,7 @@
         user-select: none !important;
     }
 
-    /**     СТИЛИ АВТОЗАПОЛНЕНИЯ (AUTOFILL) */
-    /* Базовый сброс для всех типов автозаполнения */
+    /** СТИЛИ АВТОЗАПОЛНЕНИЯ (AUTOFILL) */
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
@@ -138,45 +242,33 @@
     textarea:-webkit-autofill:focus {
         font-family: var(--font-sans), sans-serif !important;
         transition: background-color 5000s ease-in-out 0s !important;
-        caret-color: white;
+        caret-color: #08274D;
     }
 
-    /* Вариант DARK (Модалки) */
+    /* Темные формы */
     .autofill-dark:-webkit-autofill {
         -webkit-text-fill-color: #FFFFFF !important;
-        box-shadow: 0 0 0 1000px #1A1D21 inset !important;
-        border-color: rgba(255, 255, 255, 0.1) !important;
+        box-shadow: 0 0 0 1000px #08274D inset !important;
+        border-color: rgba(255, 255, 255, 0.15) !important;
     }
 
     .autofill-dark:-webkit-autofill:focus {
-        border-color: var(--color-primary) !important;
+        border-color: var(--color-stone-bronze) !important;
     }
 
-    /*  Вариант BLUE (Синие баннеры) */
-    .autofill-blue:-webkit-autofill {
-        -webkit-text-fill-color: #FFFFFF !important;
-        box-shadow: 0 0 0 1000px #005ECA inset !important;
-        border-color: rgba(255, 255, 255, 0.2) !important;
-    }
-
-    .autofill-blue:-webkit-autofill:focus {
-        border-color: #FFFFFF !important;
-    }
-
-    /* Вариант WHITE (Светлые секции) */
+    /* Светлые формы (основные на сайте) */
     .autofill-white:-webkit-autofill {
-        -webkit-text-fill-color: var(--color-heading) !important;
-        box-shadow: 0 0 0 1000px #F8F9FA inset !important;
-        border-color: var(--color-border) !important;
-        caret-color: var(--color-heading);
+        -webkit-text-fill-color: #1E252D !important;
+        box-shadow: 0 0 0 1000px #FFFFFF inset !important;
+        border-color: #E2E6EA !important;
+        caret-color: #08274D;
     }
 
     .autofill-white:-webkit-autofill:focus {
         border-color: var(--color-primary) !important;
     }
 
-
-    /* Хак для iOS Zoom */
+    /* Защита от авто-зума на iOS */
     @media screen and (max-width: 768px) {
         input, textarea, select {
             font-size: 16px !important;
@@ -184,35 +276,26 @@
     }
 }
 
-/** УТИЛИТЫ */
+/**
+ * УТИЛИТЫ И КОМПОНЕНТЫ
+ */
 @layer utilities {
     .container-page {
-        @apply w-full max-w-[1920px] mx-auto px-2 md:px-6;
+        @apply w-full max-w-[1650px] mx-auto px-4 md:px-8;
     }
 
     .container-content {
         @apply w-full max-w-[1280px] mx-auto px-4 md:px-8 lg:px-10;
     }
 
-    /* Safe Areas */
-    .pt-safe {
-        padding-top: env(safe-area-inset-top);
-    }
-
-    .pb-safe {
-        padding-bottom: env(safe-area-inset-bottom);
-    }
-
-    .pl-safe {
-        padding-left: env(safe-area-inset-left);
-    }
-
-    .pr-safe {
-        padding-right: env(safe-area-inset-right);
-    }
-
-    .h-safe-screen {
-        height: calc(100vh - (env(safe-area-inset-top) + env(safe-area-inset-bottom)));
+    /* Декоративная линия под заголовками секций MasterStone */
+    .stone-heading-divider::after {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 2px;
+        background-color: var(--color-stone-coral-500);
+        margin: 12px auto 0 auto;
     }
 
     /* Скрытие скроллбара */
@@ -225,21 +308,20 @@
         scrollbar-width: none;
     }
 
-    /* Маска для скролл-контейнеров */
-    .mask-fade-right {
-        --mask-stop: calc(100% - 40px);
-        --mask-grad: linear-gradient(to right, black var(--mask-stop), transparent 100%);
-        -webkit-mask-image: var(--mask-grad);
-        mask-image: var(--mask-grad);
-    }
+    /* Safe Areas */
+    .pt-safe { padding-top: env(safe-area-inset-top); }
+    .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+    .pl-safe { padding-left: env(safe-area-inset-left); }
+    .pr-safe { padding-right: env(safe-area-inset-right); }
 }
 
 @utility text-shadow-sm {
     text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.25);
 }
 
-/** КАСТОМНЫЙ СКРОЛЛБАР */
-
+/**
+ * КАСТОМНЫЙ СКРОЛЛБАР
+ */
 .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
 }
@@ -249,7 +331,7 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(8, 39, 77, 0.15);
     border-radius: 10px;
 }
 
@@ -257,73 +339,44 @@
     background: var(--color-primary);
 }
 
-/** АНИМАЦИИ И ЭФФЕКТЫ */
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px) rotateY(-15deg) rotateX(5deg);
-    }
-    50% {
-        transform: translateY(-15px) rotateY(-12deg) rotateX(2deg);
-    }
-}
-
-.animate-float-3d {
-    animation: float 6s ease-in-out infinite;
-}
-
-[data-slot="dialog-content"],
-[data-slot="drawer-content"] {
-    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
-    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-/** СТИЛИ УВЕДОМЛЕНИЙ (SONNER TOASTS) */
+/**
+ * СТИЛИ УВЕДОМЛЕНИЙ (SONNER TOASTS)
+ */
 [data-sonner-toast] {
-    background-color: rgba(255, 255, 255, 0.85) !important;
-    backdrop-filter: blur(16px) saturate(150%);
-    border-radius: 14px !important;
+    background-color: #FFFFFF !important;
+    border-radius: 12px !important;
     font-family: var(--font-sans), sans-serif !important;
     padding: 14px 18px !important;
-    color: #16191B !important;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12) !important;
-    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    color: #1E252D !important;
+    box-shadow: 0 10px 40px rgba(8, 39, 77, 0.12) !important;
+    border: 1px solid #E2E6EA !important;
 }
 
-/* Успешное уведомление */
 [data-sonner-toast][data-type="success"] {
-    background-color: rgba(240, 253, 244, 0.9) !important;
-    border: 1px solid rgba(34, 158, 53, 0.2) !important;
+    background-color: #F0FDF4 !important;
+    border: 1px solid rgba(80, 173, 85, 0.3) !important;
 }
 
 [data-sonner-toast][data-type="success"] [data-icon] {
-    color: #229E35 !important;
+    color: #50AD55 !important;
 }
 
-/* Ошибка */
 [data-sonner-toast][data-type="error"] {
-    background-color: rgba(254, 242, 242, 0.9) !important;
-    border: 1px solid rgba(221, 44, 44, 0.2) !important;
+    background-color: #FEF2F2 !important;
+    border: 1px solid rgba(239, 80, 66, 0.3) !important;
 }
 
 [data-sonner-toast][data-type="error"] [data-icon] {
-    color: #DD2C2C !important;
+    color: #EF5042 !important;
 }
 
-/* Заголовок сообщения */
 [data-sonner-toast] [data-title] {
-    font-weight: 600 !important;
-    color: #16191B !important;
+    font-weight: 700 !important;
+    font-family: var(--font-heading), sans-serif !important;
+    color: #08274D !important;
 }
 
-/* Описание сообщения */
 [data-sonner-toast] [data-description] {
-    color: rgba(22, 25, 27, 0.7) !important;
+    color: #696973 !important;
     font-size: 13px !important;
-}
-
-/* Кнопка закрытия (если есть) */
-[data-sonner-toast] [data-close-button] {
-    background: rgba(0, 0, 0, 0.05) !important;
-    border-color: rgba(0, 0, 0, 0.1) !important;
-    color: #16191B !important;
 }

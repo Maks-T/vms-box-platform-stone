@@ -16,35 +16,37 @@ export interface SocialItem {
 
 export const siteConfig = {
   company: {
-    name: "VMS-NC Box (Cloud SaaS)",
-    status: "Тестовая среда",
-    copyright: `© ${new Date().getFullYear()} VMS-NC. Все права защищены.`,
+    name: "МастерСтоун",
+    status: "Изделия из камня в СПб",
+    tagline: "Производство изделий из натурального и искусственного камня",
+    copyright: `© 2010–${new Date().getFullYear()} МастерСтоун. Все права защищены.`,
+    address: "г. Санкт-Петербург, Студенческая ул., д. 10, ТЦ «Ланской», 3 эт., С-12",
+    productionAddress: "Ленинградская область, г. Гатчина, ул. 120-й Гатчинской Дивизии, 10",
+    workHours: "Ежедневно с 10:00 до 20:00",
   },
 
   contacts: {
-    phone: { label: "+375 29 189-83-22", href: "tel:++375291898322" },
-    email: { label: "info@vistegra.by", href: "mailto:info@vistegra.by" },
+    phone: { label: "+7 (812) 243-99-98", href: "tel:+78122439998" },
+    email: { label: "info@masterstone-spb.ru", href: "mailto:info@masterstone-spb.ru" },
+    telegram: { label: "TELEGRAM", href: "https://t.me/Masterstone_bot" },
+    max: { label: "MAX", href: "https://max.ru/id4705049517_bot" },
+    whatsapp: { label: "WhatsApp", href: "https://wa.me/79818875667" },
+    orderCalc: { label: "Заказать расчет", href: "https://forms.amocrm.ru/rzlrcrm" },
   },
 
   socials: [
-    { id: 'telegram', src: "/images/icons/telegram.svg", href: "https://t.me/Andrey_Uglikov", label: "Telegram" },
-    { id: 'viber', src: "/images/icons/viber.svg", href: "viber://chat?number=+375291898322", label: "Viber" },
-    { id: 'whatsapp', src: "/images/icons/whatsapp.svg", href: "https://wa.me/375291898322", label: "WhatsApp" },
-    { id: 'chanel', src: "/images/icons/chanel.svg", href: "https://t.me/margin_sense", label: "Канал основателя" },
-    {
-      id: 'linkedin',
-      src: "/images/icons/linkedin.svg",
-      href: "https://www.linkedin.com/in/andrey-uglikov-4945881a8/",
-      label: "LinkedIn"
-    },
+    { id: 'telegram', src: "/images/icons/telegram.svg", href: "https://t.me/Masterstone_bot", label: "Telegram" },
+    { id: 'whatsapp', src: "/images/icons/whatsapp.svg", href: "https://wa.me/79818875667", label: "WhatsApp" },
+    { id: 'vk', src: "/images/icons/vk.svg", href: "https://vk.com/marble_granite", label: "ВКонтакте" },
   ] as SocialItem[],
 
   headerNav: [
+    { label: 'Каталог камня', href: route('catalog'), disabled: false },
+    { label: 'Услуги', href: route('services'), disabled: false },
     { label: 'Калькулятор', href: route('calculator.show'), disabled: false, forceRefresh: true },
     { label: 'Конфигурация', href: route('bootstrap'), disabled: false },
-    { label: 'Каталог', href: route('catalog'), disabled: false },
-    { label: 'Услуги (Матрица)', href: route('services'), disabled: false },
     { label: 'О компании', href: '#', disabled: true },
+    { label: 'Контакты', href: '#', disabled: true },
   ] as (NavItem & { forceRefresh?: boolean })[],
 
 };

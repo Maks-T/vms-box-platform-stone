@@ -6,16 +6,16 @@ import {IconBox} from '@/shared/components/ui/IconBox';
 
 export function ProductHeader() {
   return (
-    <header className="bg-background border-b border-border sticky top-0 z-50 shadow-sm">
-      <div className="max-w-[1920px] mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
+    <header className="bg-white border-b border-[#E2E6EA] sticky top-0 z-40 shadow-xs">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
         <Link href={route('catalog')} className="flex items-center gap-4 group">
-          <IconBox variant="light" size="default"
-                   className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary">
-            <ArrowLeft className="w-5 h-5"/>
+          <IconBox variant="light" size="sm"
+                   className="group-hover:bg-[#08274D] group-hover:text-white group-hover:border-[#08274D] transition-colors">
+            <ArrowLeft className="w-4 h-4"/>
           </IconBox>
           <span
-            className="font-bold uppercase tracking-widest text-muted-foreground group-hover:text-foreground transition-colors text-[13px]">
-            В каталог
+            className="font-heading font-bold uppercase tracking-wider text-[#696973] group-hover:text-[#08274D] transition-colors text-[12px]">
+            ← В каталог камня
           </span>
         </Link>
       </div>

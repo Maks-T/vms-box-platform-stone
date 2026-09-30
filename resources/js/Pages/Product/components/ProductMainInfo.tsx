@@ -1,8 +1,9 @@
 import React from 'react';
 import {H1, Text} from '@/shared/components/ui/Typography';
-import StatusBadge from '@/shared/components/ui/StatusBadge';
 import Badge from "@shared/components/ui/Badge";
 import {checkDevMode} from '@/shared/lib/dev';
+import {Calculator, PhoneCall} from 'lucide-react';
+import {siteConfig} from '@/shared/config/site';
 
 interface Props {
   name: string;
@@ -24,40 +25,49 @@ export function ProductMainInfo({name, priceFrom, bootstrapConfig, shortDescript
     : '';
 
   return (
-    <div className="mb-8 border-b border-border pb-8">
+    <div className="mb-8 border-b border-[#E2E6EA] pb-8">
       {isDev && (
-        <StatusBadge variant="success" className="mb-6 w-max">
-          <div className="flex items-center gap-1.5 whitespace-nowrap">
-            <span>API Data Object</span>
-          </div>
-        </StatusBadge>
+        <span className="inline-block mb-4 px-2.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-mono font-bold uppercase">
+          API Item
+        </span>
       )}
 
-      <H1 className="!text-foreground !text-[32px] md:!text-[44px] mb-6">
+      <H1 className="font-heading font-extrabold text-[#08274D] text-[30px] md:text-[38px] leading-tight mb-4">
         {name}
       </H1>
 
-      <div className="flex items-end gap-6 mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8 bg-[#F8F9FA] p-5 rounded-xl border border-[#E2E6EA]">
         <div>
-          <Text className="text-[11px] !text-muted-foreground font-bold uppercase tracking-widest mb-2">
-            Базовая цена от
+          <Text className="text-[11px] font-heading font-bold text-[#8B9198] uppercase tracking-wider mb-1">
+            Стоимость материала за м²
           </Text>
 
-          <div className="text-[32px] font-black text-primary leading-none flex items-baseline gap-1.5">
+          <div className="text-[32px] md:text-[36px] font-heading font-black text-[#08274D] leading-none flex items-baseline gap-1.5">
             {priceFrom > 0 ? (
               <>
                 <span>{formattedNumber}</span>
-                <span className="text-sm md:text-base font-normal text-muted-foreground lowercase">
-                  {currencySymbol}
+                <span className="text-sm md:text-base font-normal text-[#696973] lowercase">
+                  {currencySymbol} / м²
                 </span>
               </>
             ) : (
               <Badge variant="gray"
-                     className="!bg-muted !border-border !text-muted-foreground !shadow-none !px-3 !py-1 text-xs">
-                Нет в наличии
+                     className="!bg-white !border-[#E2E6EA] !text-[#696973] !shadow-none !px-3 !py-1 text-xs font-heading font-bold uppercase">
+                Цена по запросу
               </Badge>
             )}
           </div>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <a
+            href={siteConfig.contacts.orderCalc?.href || "#"}
+            target="_blank"
+            rel="noreferrer"
+            className="h-[46px] px-6 rounded-xl bg-[#08274D] hover:bg-[#EF5042] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2 shadow-sm"
+          >
+            <Calculator className="w-4 h-4" /> Рассчитать изделие
+          </a>
         </div>
       </div>
 

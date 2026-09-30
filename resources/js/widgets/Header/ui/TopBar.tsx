@@ -1,6 +1,5 @@
 import React from 'react';
-import { Phone, Mail } from 'lucide-react';
-import StatusBadge from '@/shared/components/ui/StatusBadge';
+import { Phone, Mail, Send, MessageSquare, CheckSquare } from 'lucide-react';
 import { siteConfig } from '@/shared/config/site';
 import { setDevMode } from '@/shared/lib/dev';
 
@@ -14,7 +13,7 @@ interface TopBarProps {
 }
 
 export default function TopBar({ locale, onLanguageChange, isDev, isEmployee }: TopBarProps) {
-  const { contacts, company } = siteConfig;
+  const { contacts } = siteConfig;
 
   
   const languageOptions: PillOption<string>[] = [
@@ -29,43 +28,81 @@ export default function TopBar({ locale, onLanguageChange, isDev, isEmployee }: 
   ];
 
   return (
-    <div className="hidden lg:block border-b border-white/5">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8 py-2.5 flex justify-between items-center">
-        <div className="flex items-center gap-6">
-          <a href={contacts.phone.href} className="flex items-center gap-2 text-white/60 hover:text-white transition-colors text-sm font-medium">
-            <Phone className="w-4 h-4 opacity-70" />
-            {contacts.phone.label}
-          </a>
-          <a href={contacts.email.href} className="flex items-center gap-2 text-white/60 hover:text-white transition-colors text-sm font-medium">
-            <Mail className="w-4 h-4 opacity-70" />
+    <div className="hidden lg:block bg-white border-b border-[#E2E6EA] text-[13px]">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-2 flex justify-between items-center">
+        {/* Левая колонка: контакты СПб */}
+        <div className="flex items-center gap-6 font-heading">
+          <a
+            href={contacts.email.href}
+            className="flex items-center gap-2 font-bold text-[#08274D] hover:text-[#EF5042] uppercase tracking-wide transition-colors"
+          >
+            <Mail className="w-3.5 h-3.5 text-[#9B6A38]" />
             {contacts.email.label}
+          </a>
+          <a
+            href={contacts.phone.href}
+            className="flex items-center gap-2 font-bold text-[#08274D] hover:text-[#EF5042] tracking-wide transition-colors"
+          >
+            <Phone className="w-3.5 h-3.5 text-[#9B6A38]" />
+            {contacts.phone.label}
           </a>
         </div>
 
-        <div className="flex items-center gap-6">
+        {/* Правая колонка: мессенджеры и заказ расчета */}
+        <div className="flex items-center gap-5">
+          {contacts.telegram && (
+            <a
+              href={contacts.telegram.href}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1.5 font-heading font-extrabold text-[12px] text-[#0B9BF5] hover:opacity-80 uppercase tracking-wider transition-opacity"
+            >
+              <Send className="w-3.5 h-3.5" />
+              {contacts.telegram.label}
+            </a>
+          )}
 
-          {}
+          {contacts.max && (
+            <a
+              href={contacts.max.href}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1.5 font-heading font-extrabold text-[12px] text-[#1943EF] hover:opacity-80 uppercase tracking-wider transition-opacity"
+            >
+              <MessageSquare className="w-3.5 h-3.5" />
+              {contacts.max.label}
+            </a>
+          )}
+
+          {contacts.orderCalc && (
+            <a
+              href={contacts.orderCalc.href}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1.5 font-heading font-bold text-[12px] text-[#08274D] hover:text-[#EF5042] uppercase tracking-wider transition-colors ml-1"
+            >
+              <CheckSquare className="w-4 h-4 text-[#08274D]" />
+              {contacts.orderCalc.label}
+            </a>
+          )}
+
+          {(isDev || isEmployee) && (
+            <div className="h-4 w-[1px] bg-[#E2E6EA] mx-1" />
+          )}
+
           {(isDev || isEmployee) && (
             <PillSwitcher
               options={modeOptions}
               activeValue={isDev}
-              onChange={(val) => setDevMode(val)} 
+              onChange={(val) => setDevMode(val)}
             />
           )}
 
-          {}
           <PillSwitcher
             options={languageOptions}
             activeValue={locale}
-            onChange={(val) => onLanguageChange(val)} 
+            onChange={(val) => onLanguageChange(val)}
           />
-
-          {}
-          {isDev && (
-            <StatusBadge variant="success">
-              {company.status}
-            </StatusBadge>
-          )}
         </div>
       </div>
     </div>

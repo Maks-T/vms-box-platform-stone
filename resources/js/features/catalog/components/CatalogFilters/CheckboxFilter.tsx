@@ -23,7 +23,7 @@ export const CheckboxFilter = ({ options, activeValues, onToggle }: any) => (
             />
             <div className={cn(
               "w-5 h-5 border-2 rounded-[6px] transition-all duration-200 flex items-center justify-center",
-              isChecked ? "bg-primary border-primary shadow-sm" : "bg-white border-slate-200 group-hover:border-slate-300"
+              isChecked ? "bg-[#08274D] border-[#08274D] shadow-sm" : "bg-white border-[#DDE2E7] group-hover:border-[#08274D]"
             )}>
               <Check className={cn("w-3.5 h-3.5 text-white stroke-[4px] transition-opacity", isChecked ? "opacity-100" : "opacity-0")} />
             </div>
@@ -33,8 +33,8 @@ export const CheckboxFilter = ({ options, activeValues, onToggle }: any) => (
             {hasVisual && <FilterSwatch image={image} hex={hex} size="sm" />}
 
             <span className={cn(
-              "text-[14px] leading-tight transition-colors",
-              isChecked ? "text-foreground font-bold" : "text-muted-foreground font-medium group-hover:text-primary"
+              "text-[13px] md:text-[14px] leading-tight transition-colors select-none",
+              isChecked ? "text-[#08274D] font-bold" : "text-[#696973] font-medium group-hover:text-[#08274D]"
             )}>
               {opt.label} {/* Был value */}
             </span>

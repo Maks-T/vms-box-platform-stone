@@ -85,7 +85,7 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
     const swatchClasses = cn(
       "w-5 h-5 rounded-full object-cover border border-slate-200/80 shadow-sm cursor-pointer transition-all duration-300",
       isSelected
-        ? "ring-1 ring-sky-800/40 ring-offset-[1.5px] scale-105 opacity-100"
+        ? "ring-2 ring-[#9B6A38] ring-offset-1 scale-105 opacity-100"
         : "opacity-65 hover:opacity-100 hover:scale-105"
     );
 
@@ -117,9 +117,9 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
 
   return (
     <div
-      className="group flex flex-col h-full bg-card rounded-2xl overflow-hidden border border-border hover:shadow-lg transition-all duration-300">
+      className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-[#E2E6EA] hover:border-[#9B6A38]/40 hover:shadow-xl transition-all duration-300">
 
-      <div className="relative aspect-square bg-slate-50 overflow-hidden mb-5 border-b border-border">
+      <div className="relative aspect-square bg-[#F8F9FA] overflow-hidden mb-5 border-b border-[#E2E6EA]">
         <Link href={route('product.show', slug)} className="block w-full h-full p-6">
           {displayImage ? (
             <img
@@ -133,18 +133,22 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
             </div>
           )}
         </Link>
+
+        {/* Фирменный бейдж «Цена за м²» в стиле MasterStone */}
         <div
-          className="absolute top-4 left-4 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest shadow-sm">
-          ID {id}
+          className="absolute top-3.5 left-3.5 bg-[#EF5042] text-white text-[10px] font-heading font-extrabold px-2.5 py-1 rounded uppercase tracking-wider shadow-sm">
+          Цена за м²
         </div>
+
         <FavoriteButton product={product} className="absolute top-4 right-4" />
       </div>
 
       <div className="flex flex-col flex-1 px-5 pb-5">
-        <p className="text-[11px] text-muted-foreground uppercase tracking-widest mb-2 line-clamp-1">{subtitle}</p>
-        <Link href={route('product.show', slug)} className="block mb-3 flex-1">
+        <p className="text-[11px] font-semibold text-[#8B9198] uppercase tracking-wider mb-1.5 line-clamp-1">{subtitle}</p>
+        <Link href={route('product.show', slug)} className="block mb-2 flex-1">
           <h3
-            className="text-[16px] md:text-[18px] font-bold text-foreground leading-snug tracking-tight group-hover:text-primary transition-colors line-clamp-2">{name}</h3>
+            className="font-heading font-bold text-[16px] md:text-[17px] text-[#08274D] leading-snug tracking-tight group-hover:text-[#EF5042] transition-colors line-clamp-2"
+          >{name}</h3>
         </Link>
 
         {colorsToShow.length > 0 && (
@@ -165,11 +169,11 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
         )}
 
         <div className="mt-auto flex flex-col gap-4">
-          <div className="text-[20px] md:text-[24px] font-black text-foreground flex items-baseline gap-1 min-h-[32px]">
+          <div className="font-heading text-[20px] md:text-[22px] font-black text-[#08274D] flex items-baseline gap-1 min-h-[32px]">
             {displayPrice > 0 ? (
               <>
                 <span>{formattedNumber}</span>
-                <span className="text-xs md:text-sm font-normal text-muted-foreground lowercase">
+                <span className="text-xs md:text-sm font-normal text-[#696973] lowercase">
                   {currencySymbol}
                 </span>
               </>
@@ -180,7 +184,7 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
             )}
           </div>
           <Link href={route('product.show', slug)}
-                className="w-full h-[46px] bg-slate-900 text-white hover:bg-sky-600 active:scale-[0.98] text-[13px] font-bold tracking-[0.1em] uppercase transition-all duration-300 flex items-center justify-center rounded-xl shadow-md">
+                className="w-full h-[44px] bg-[#08274D] text-white hover:bg-[#EF5042] active:scale-[0.98] font-heading text-[12px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center rounded-xl shadow-sm cursor-pointer">
             Подробнее
           </Link>
         </div>

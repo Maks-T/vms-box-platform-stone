@@ -15,7 +15,7 @@ export function ProductHeader() {
           </IconBox>
           <span
             className="font-heading font-bold uppercase tracking-wider text-[#696973] group-hover:text-[#08274D] transition-colors text-[12px]">
-            ← В каталог камня
+            В каталог камня
           </span>
         </Link>
       </div>

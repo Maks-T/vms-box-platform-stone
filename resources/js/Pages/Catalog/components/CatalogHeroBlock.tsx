@@ -78,18 +78,18 @@ export function CatalogHeroBlock() {
   const activeSlide = SLIDES[current];
 
   return (
-    <section className="w-full relative z-0 bg-white border-b border-[#E2E6EA] overflow-hidden">
+    <div className="w-full max-w-[1280px] mx-auto px-4 md:px-8 lg:px-10 pt-4 md:pt-6 mb-4">
       <div
-        className="relative w-full min-h-[440px] sm:min-h-[500px] lg:min-h-[560px] flex items-center overflow-hidden select-none"
+        className="relative w-full rounded-2xl border border-[#E2E6EA] overflow-hidden bg-white shadow-xs min-h-[360px] sm:min-h-[400px] lg:min-h-[440px] flex items-center select-none"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        {/* Анимированная полоса таймера как в MasterSlider */}
+        {/* Анимированная полоса таймера */}
         <div className="absolute top-0 left-0 w-full h-[3px] bg-slate-200/40 z-30 overflow-hidden">
           <div
             key={current}
             className={cn(
-              "h-full bg-[#EF5042] transition-all duration-[5500ms] ease-linear",
+              "h-full bg-[#EF5042] transition-all duration-[5500ms] ease-linear rounded-full",
               isPaused ? "opacity-60" : "w-full"
             )}
             style={{ width: isPaused ? undefined : '100%' }}
@@ -115,7 +115,7 @@ export function CatalogHeroBlock() {
             {/* Адаптивный градиент подложки для читаемости текста */}
             <div
               className={cn(
-                "absolute inset-0 transition-colors duration-500",
+                "absolute inset-0 transition-colors duration-500 rounded-2xl",
                 slide.isDarkText
                   ? "bg-gradient-to-r from-white/95 via-white/85 to-white/20 md:to-transparent"
                   : "bg-gradient-to-r from-black/85 via-black/60 to-black/20 md:to-transparent"
@@ -124,8 +124,8 @@ export function CatalogHeroBlock() {
           </div>
         ))}
 
-        {/* Содержимое текущего активного слайда, выровненное по контейнеру сайта */}
-        <div className="relative z-10 max-w-[1440px] mx-auto w-full px-6 md:px-12 lg:px-16 py-12 md:py-16 flex flex-col items-start text-left">
+        {/* Содержимое активного слайда с аккуратными отступами */}
+        <div className="relative z-10 max-w-xl px-6 py-8 md:px-10 lg:px-12 flex flex-col items-start text-left">
           <div className="flex items-center gap-2 mb-3">
             <span className="w-1.5 h-5 bg-[#EF5042] rounded-full inline-block shrink-0" />
             <span
@@ -140,7 +140,7 @@ export function CatalogHeroBlock() {
 
           <h1
             className={cn(
-              "font-heading font-bold text-[24px] sm:text-[32px] lg:text-[38px] leading-[1.2] mb-4 tracking-tight transition-colors duration-500",
+              "font-heading font-bold text-[20px] sm:text-[26px] lg:text-[30px] leading-[1.2] mb-3 tracking-tight transition-colors duration-500",
               activeSlide.isDarkText ? "text-[#08274D]" : "text-white"
             )}
           >
@@ -149,70 +149,70 @@ export function CatalogHeroBlock() {
 
           <p
             className={cn(
-              "font-sans text-[15px] sm:text-[17px] leading-relaxed mb-8 max-w-xl transition-colors duration-500",
+              "font-sans text-[13px] sm:text-[15px] leading-relaxed mb-6 max-w-lg transition-colors duration-500",
               activeSlide.isDarkText ? "text-[#486581]" : "text-slate-200"
             )}
           >
             {activeSlide.subtitle}
           </p>
 
-          <div className="flex flex-wrap items-center gap-3.5">
+          <div className="flex flex-wrap items-center gap-3">
             <Link
               href={route('catalog')}
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#08274D] hover:bg-[#EF5042] text-white font-heading font-bold text-[12px] md:text-[13px] uppercase tracking-wider rounded-xl transition-all shadow-sm active:scale-[0.98] cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#08274D] hover:bg-[#EF5042] text-white font-heading font-bold text-[11px] md:text-[12px] uppercase tracking-wider rounded-lg transition-all shadow-xs active:scale-[0.98] cursor-pointer"
             >
-              Каталог камня <ArrowRight className="w-4 h-4" />
+              В каталог <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
             <Link
               href={route('calculator.show')}
               className={cn(
-                "inline-flex items-center gap-2 px-6 py-3.5 font-heading font-bold text-[12px] md:text-[13px] uppercase tracking-wider rounded-xl transition-all shadow-xs active:scale-[0.98] border cursor-pointer",
+                "inline-flex items-center gap-2 px-5 py-2.5 font-heading font-bold text-[11px] md:text-[12px] uppercase tracking-wider rounded-lg transition-all shadow-xs active:scale-[0.98] border cursor-pointer",
                 activeSlide.isDarkText
                   ? "bg-white/95 hover:bg-white text-[#08274D] border-[#E2E6EA] hover:border-[#08274D]"
                   : "bg-white/10 hover:bg-white/20 text-white border-white/20 hover:border-white"
               )}
             >
-              <Calculator className="w-4 h-4" /> Калькулятор
+              <Calculator className="w-3.5 h-3.5" /> Калькулятор
             </Link>
           </div>
         </div>
 
-        {/* Боковые кнопки переключения слайдов (Next / Prev) */}
-        <div className="hidden md:flex flex-col gap-2 absolute right-6 top-1/2 -translate-y-1/2 z-20">
+        {/* Боковые кнопки переключения */}
+        <div className="hidden md:flex flex-col gap-2 absolute right-5 top-1/2 -translate-y-1/2 z-20">
           <button
             onClick={handlePrev}
             aria-label="Предыдущий слайд"
-            className="w-10 h-10 rounded-full bg-white/90 hover:bg-white text-[#08274D] hover:text-[#EF5042] border border-[#E2E6EA] flex items-center justify-center shadow-md transition-all cursor-pointer active:scale-95"
+            className="w-8 h-8 rounded-full bg-white/90 hover:bg-white text-[#08274D] hover:text-[#EF5042] border border-[#E2E6EA] flex items-center justify-center shadow-sm transition-all cursor-pointer active:scale-95"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-4 h-4" />
           </button>
           <button
             onClick={handleNext}
             aria-label="Следующий слайд"
-            className="w-10 h-10 rounded-full bg-white/90 hover:bg-white text-[#08274D] hover:text-[#EF5042] border border-[#E2E6EA] flex items-center justify-center shadow-md transition-all cursor-pointer active:scale-95"
+            className="w-8 h-8 rounded-full bg-white/90 hover:bg-white text-[#08274D] hover:text-[#EF5042] border border-[#E2E6EA] flex items-center justify-center shadow-sm transition-all cursor-pointer active:scale-95"
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Буллеты пагинации слайдов внизу */}
-        <div className="absolute bottom-6 left-6 md:left-12 z-20 flex items-center gap-2">
+        {/* Буллеты пагинации слайдов */}
+        <div className="absolute bottom-4 left-6 md:left-10 z-20 flex items-center gap-1.5">
           {SLIDES.map((slide, idx) => (
             <button
               key={slide.id}
               onClick={() => setCurrent(idx)}
               className={cn(
-                "transition-all duration-300 rounded-full cursor-pointer h-2.5",
+                "transition-all duration-300 rounded-full cursor-pointer h-2",
                 current === idx
-                  ? "w-8 bg-[#EF5042]"
-                  : "w-2.5 bg-slate-400/60 hover:bg-slate-500"
+                  ? "w-6 bg-[#EF5042]"
+                  : "w-2 bg-slate-400/50 hover:bg-slate-500"
               )}
               aria-label={`Перейти к слайду ${idx + 1}`}
             />
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

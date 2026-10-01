@@ -2,8 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, usePage } from '@inertiajs/react';
 import { NavItem } from '@/shared/config/site';
 import { cn } from '@/shared/lib/utils';
-import { ChevronDown, Menu as MenuIcon, ArrowRight, Tag, Calculator, Sparkles } from 'lucide-react';
+import { ChevronDown, Menu as MenuIcon, ArrowRight, Calculator } from 'lucide-react';
 import { route } from 'ziggy-js';
+import { bootstrapApi } from '@/shared/api/bootstrap.api';
+import { BootstrapFamily } from '@/types/catalog';
 
 interface ExtendedNavItem extends NavItem {
   forceRefresh?: boolean;
@@ -13,7 +15,16 @@ export default function NavBar({ items }: { items: ExtendedNavItem[] }) {
   const { url } = usePage();
   const currentPathname = url.split('?')[0];
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
+  const [families, setFamilies] = useState<BootstrapFamily[]>([]);
   const catalogRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    bootstrapApi.getConfig().then((cfg) => {
+      if (cfg?.families) {
+        setFamilies(cfg.families);
+      }
+    });
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -64,7 +75,7 @@ export default function NavBar({ items }: { items: ExtendedNavItem[] }) {
           isActive ? "text-[#08274D]" : "text-[#1E252D] hover:text-[#EF5042]"
         );
 
-        /* Специальный интерактивный пункт «Каталог камня» с выпадающим меню */
+        /* Динамический пункт «Каталог камня» с данными из API */
         if (isMainCatalog) {
           return (
             <div key={item.label} className="relative h-full flex items-center" ref={catalogRef}>
@@ -86,66 +97,45 @@ export default function NavBar({ items }: { items: ExtendedNavItem[] }) {
                 )} />
               </button>
 
-              {/* Выпадающее окно меню каталога */}
+              {/* Элегантное выпадающее меню на основе API */}
               {isCatalogOpen && (
-                <div className="absolute top-[calc(100%-6px)] left-0 z-50 bg-white rounded-2xl border border-[#E2E6EA] shadow-2xl p-6 lg:p-7 min-w-[700px] xl:min-w-[820px] animate-in fade-in-0 zoom-in-95 duration-200">
-                  <div className="grid grid-cols-3 gap-6 lg:gap-8 pb-5 border-b border-[#E2E6EA]">
-                    {/* Колонка 1: Натуральный камень */}
-                    <div className="flex flex-col">
-                      <h4 className="font-heading font-extrabold text-[12px] uppercase text-[#08274D] tracking-wider pb-2 border-b border-[#E2E6EA] mb-2.5 flex items-center gap-1.5">
-                        <Sparkles className="w-3.5 h-3.5 text-[#9B6A38]" /> Натуральный камень
-                      </h4>
-                      <ul className="flex flex-col gap-1.5 text-[13px] font-sans">
-                        <li><Link href={`${route('catalog')}?family=stone&product_type=marble`} onClick={() => setIsCatalogOpen(false)} className="text-[#486581] hover:text-[#EF5042] hover:translate-x-1 transition-all block py-0.5">Мрамор</Link></li>
-                        <li><Link href={`${route('catalog')}?family=stone&product_type=granite`} onClick={() => setIsCatalogOpen(false)} className="text-[#486581] hover:text-[#EF5042] hover:translate-x-1 transition-all block py-0.5">Гранит</Link></li>
-                        <li><Link href={`${route('catalog')}?family=stone&product_type=quartzite`} onClick={() => setIsCatalogOpen(false)} className="text-[#486581] hover:text-[#EF5042] hover:translate-x-1 transition-all block py-0.5">Кварцит</Link></li>
-                        <li><Link href={`${route('catalog')}?family=stone&product_type=onyx`} onClick={() => setIsCatalogOpen(false)} className="text-[#486581] hover:text-[#EF5042] hover:translate-x-1 transition-all block py-0.5">Оникс</Link></li>
-                        <li><Link href={`${route('catalog')}?family=stone&product_type=travertine`} onClick={() => setIsCatalogOpen(false)} className="text-[#486581] hover:text-[#EF5042] hover:translate-x-1 transition-all block py-0.5">Травертин</Link></li>
-                        <li><Link href={`${route('catalog')}?family=stone&product_type=labradorite`} onClick={() => setIsCatalogOpen(false)} className="text-[#486581] hover:text-[#EF5042] hover:translate-x-1 transition-all block py-0.5">Лабрадорит</Link></li>
-                      </ul>
-                    </div>
-
-                    {/* Колонка 2: Искусственный камень */}
-                    <div className="flex flex-col">
-                      <h4 className="font-heading font-extrabold text-[12px] uppercase text-[#08274D] tracking-wider pb-2 border-b border-[#E2E6EA] mb-2.5">
-                        Искусственный камень
-                      </h4>
-                      <ul className="flex flex-col gap-1.5 text-[13px] font-sans">
-                        <li><Link href={`${route('catalog')}?family=agglomerate`} onClick={() => setIsCatalogOpen(false)} className="text-[#486581] hover:text-[#EF5042] hover:translate-x-1 transition-all block py-0.5">Кварцевый агломерат</Link></li>
-                        <li><Link href={`${route('catalog')}?family=acrylic`} onClick={() => setIsCatalogOpen(false)} className="text-[#486581] hover:text-[#EF5042] hover:translate-x-1 transition-all block py-0.5">Акриловый камень</Link></li>
-                        <li><Link href={`${route('catalog')}?family=ceramics`} onClick={() => setIsCatalogOpen(false)} className="text-[#486581] hover:text-[#EF5042] hover:translate-x-1 transition-all block py-0.5">Керамогранит</Link></li>
-                      </ul>
-
-                      <h4 className="font-heading font-extrabold text-[12px] uppercase text-[#08274D] tracking-wider pb-2 border-b border-[#E2E6EA] mt-4 mb-2.5">
-                        Специальные предложения
-                      </h4>
-                      <ul className="flex flex-col gap-1.5 text-[13px] font-sans">
-                        <li>
-                          <Link href={`${route('catalog')}?family=stone&sale=true`} onClick={() => setIsCatalogOpen(false)} className="text-[#486581] hover:text-[#EF5042] flex items-center justify-between py-0.5">
-                            <span>Остатки слэбов</span>
-                            <span className="bg-[#EF5042] text-white text-[9px] font-heading font-extrabold px-1.5 py-0.2 rounded uppercase">Sale</span>
+                <div className="absolute top-[calc(100%-6px)] left-0 z-50 bg-white rounded-xl border border-[#E2E6EA] shadow-xl p-5 md:p-6 min-w-[620px] xl:min-w-[740px] animate-in fade-in-0 zoom-in-95 duration-150">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-5 pb-4 border-b border-[#E2E6EA]">
+                    {families.length > 0 ? (
+                      families.map((family) => (
+                        <div key={family.code} className="flex flex-col">
+                          <Link
+                            href={`${route('catalog')}?family=${family.code}`}
+                            onClick={() => setIsCatalogOpen(false)}
+                            className="font-heading font-bold text-[12px] uppercase text-[#08274D] hover:text-[#EF5042] tracking-wider pb-1.5 border-b border-[#E2E6EA] mb-2 block transition-colors"
+                          >
+                            {family.name}
                           </Link>
-                        </li>
-                      </ul>
-                    </div>
-
-                    {/* Колонка 3: Изделия из камня */}
-                    <div className="flex flex-col">
-                      <h4 className="font-heading font-extrabold text-[12px] uppercase text-[#08274D] tracking-wider pb-2 border-b border-[#E2E6EA] mb-2.5">
-                        Изделия из камня
-                      </h4>
-                      <ul className="flex flex-col gap-1.5 text-[13px] font-sans">
-                        <li><Link href={`${route('catalog')}?product_type=countertop`} onClick={() => setIsCatalogOpen(false)} className="text-[#486581] hover:text-[#EF5042] hover:translate-x-1 transition-all block py-0.5">Столешницы для кухни</Link></li>
-                        <li><Link href={`${route('catalog')}?product_type=sills`} onClick={() => setIsCatalogOpen(false)} className="text-[#486581] hover:text-[#EF5042] hover:translate-x-1 transition-all block py-0.5">Подоконники из камня</Link></li>
-                        <li><Link href={`${route('catalog')}?product_type=stairs`} onClick={() => setIsCatalogOpen(false)} className="text-[#486581] hover:text-[#EF5042] hover:translate-x-1 transition-all block py-0.5">Лестницы и ступени</Link></li>
-                        <li><Link href={`${route('catalog')}?product_type=fireplaces`} onClick={() => setIsCatalogOpen(false)} className="text-[#486581] hover:text-[#EF5042] hover:translate-x-1 transition-all block py-0.5">Камины и порталы</Link></li>
-                        <li><Link href={`${route('catalog')}?product_type=sinks`} onClick={() => setIsCatalogOpen(false)} className="text-[#486581] hover:text-[#EF5042] hover:translate-x-1 transition-all block py-0.5">Мойки и раковины</Link></li>
-                      </ul>
-                    </div>
+                          {family.types && family.types.length > 0 && (
+                            <ul className="flex flex-col gap-1 text-[13px]">
+                              {family.types.map((t) => (
+                                <li key={t.code}>
+                                  <Link
+                                    href={`${route('catalog')}?family=${family.code}&product_type=${t.code}`}
+                                    onClick={() => setIsCatalogOpen(false)}
+                                    className="text-[#486581] hover:text-[#EF5042] hover:translate-x-0.5 transition-all block py-0.5"
+                                  >
+                                    {t.name}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                      ))
+                    ) : (
+                      <div className="text-xs text-muted-foreground italic col-span-full py-2">
+                        Загрузка категорий...
+                      </div>
+                    )}
                   </div>
 
-                  {/* Нижняя полоса быстрого перехода */}
-                  <div className="pt-4 flex items-center justify-between text-xs">
+                  <div className="pt-3.5 flex items-center justify-between text-xs">
                     <Link href={route('catalog')} onClick={() => setIsCatalogOpen(false)} className="font-heading font-bold text-[#08274D] hover:text-[#EF5042] flex items-center gap-1.5 uppercase tracking-wider">
                       Смотреть весь каталог камня <ArrowRight className="w-3.5 h-3.5" />
                     </Link>

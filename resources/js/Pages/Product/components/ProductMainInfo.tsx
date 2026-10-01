@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from '@inertiajs/react';
 import {H1, Text} from '@/shared/components/ui/Typography';
 import Badge from "@shared/components/ui/Badge";
 import {checkDevMode} from '@/shared/lib/dev';
-import {Calculator, PhoneCall} from 'lucide-react';
-import {siteConfig} from '@/shared/config/site';
+import {Calculator} from 'lucide-react';
+import {route} from 'ziggy-js';
 
 interface Props {
   name: string;
@@ -60,14 +61,12 @@ export function ProductMainInfo({name, priceFrom, bootstrapConfig, shortDescript
         </div>
 
         <div className="flex items-center gap-3">
-          <a
-            href={siteConfig.contacts.orderCalc?.href || "#"}
-            target="_blank"
-            rel="noreferrer"
-            className="h-10 px-5 rounded-lg bg-[#08274D] hover:bg-[#EF5042] text-white font-heading font-semibold text-xs uppercase tracking-wider transition-all flex items-center gap-2 shadow-2xs cursor-pointer"
+          <Link
+            href={route('calculator.show')}
+            className="h-10 px-5 rounded-lg bg-[#EF5042] hover:bg-[#08274D] text-white font-heading font-semibold text-xs uppercase tracking-wider transition-all flex items-center gap-2 shadow-2xs cursor-pointer"
           >
             <Calculator className="w-4 h-4" /> Рассчитать изделие
-          </a>
+          </Link>
         </div>
       </div>
 

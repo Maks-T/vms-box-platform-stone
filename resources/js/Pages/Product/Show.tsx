@@ -46,7 +46,7 @@ export default function ProductShow({ product, familyCode }: Props) {
 
       <div className="flex-1 py-8 md:py-12">
         <BaseContainer containerVariant="content">
-          <GlassPanel variant="light" className="mb-8 p-6 md:p-10 lg:p-12 bg-card border-border">
+          <GlassPanel variant="light" className="mb-8 p-6 md:p-10 lg:p-12 bg-white rounded-xl border border-slate-200/80 shadow-2xs">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
               <div className="lg:col-span-5">
                 <ProductImagePreview

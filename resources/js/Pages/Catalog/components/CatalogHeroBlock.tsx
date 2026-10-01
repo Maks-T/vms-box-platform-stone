@@ -62,10 +62,10 @@ export function CatalogHeroBlock() {
 
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % SLIDES.length);
-    }, 5500);
+    }, 6000);
 
     return () => clearInterval(interval);
-  }, [isPaused, current]);
+  }, [isPaused]);
 
   const handlePrev = () => {
     setCurrent((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
@@ -80,11 +80,11 @@ export function CatalogHeroBlock() {
   return (
     <div className="w-full max-w-[1280px] mx-auto px-4 md:px-8 lg:px-10 pt-4 md:pt-6 mb-4">
       <div
-        className="relative w-full rounded-2xl border border-slate-200/80 overflow-hidden bg-white shadow-xs min-h-[360px] sm:min-h-[400px] lg:min-h-[440px] flex items-center select-none"
+        className="relative w-full rounded-xl border border-slate-200/90 overflow-hidden bg-[#08274D] shadow-xs min-h-[380px] sm:min-h-[420px] lg:min-h-[460px] flex items-center select-none"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        {/* Фоновые изображения слайдов с плавной кросс-анимацией */}
+        {/* Фоновые широкоформатные фотографии фактуры камня */}
         {SLIDES.map((slide, idx) => (
           <div
             key={slide.id}
@@ -100,101 +100,79 @@ export function CatalogHeroBlock() {
               className="w-full h-full object-cover object-right md:object-center"
               draggable="false"
             />
-            {/* Адаптивный градиент подложки для читаемости текста */}
+            {/* Тонкий благородный градиент для контраста */}
             <div
               className={cn(
-                "absolute inset-0 transition-colors duration-500 rounded-2xl",
-                slide.isDarkText
-                  ? "bg-gradient-to-r from-white/95 via-white/85 to-white/20 md:to-transparent"
-                  : "bg-gradient-to-r from-black/85 via-black/60 to-black/20 md:to-transparent"
+                "absolute inset-0 transition-colors duration-500 bg-gradient-to-r from-slate-950/70 via-slate-900/40 to-transparent md:from-slate-950/50"
               )}
             />
           </div>
         ))}
 
-        {/* Содержимое активного слайда с аккуратными отступами */}
-        <div className="relative z-10 max-w-xl px-6 py-8 md:px-10 lg:px-12 flex flex-col items-start text-left">
-          <div className="flex items-center gap-2.5 mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#9B6A38] inline-block shrink-0" />
-            <span
-              className={cn(
-                "text-[11px] md:text-[12px] font-heading font-bold uppercase tracking-[0.14em]",
-                activeSlide.isDarkText ? "text-[#08274D]" : "text-white/90"
-              )}
-            >
-              {activeSlide.tag}
-            </span>
-          </div>
+        {/* Парящая архитектурная карточка коллекции в стиле Vicostone / Lookbook */}
+        <div className="relative z-10 p-6 sm:p-8 lg:p-10 w-full max-w-xl">
+          <div className="bg-white/95 backdrop-blur-md p-6 sm:p-8 rounded-xl border border-white/40 shadow-xl flex flex-col items-start text-left">
+            <div className="flex items-center gap-2 mb-2.5">
+              <span className="text-[10px] sm:text-[11px] font-heading font-bold uppercase tracking-[0.18em] text-[#9B6A38]">
+                {activeSlide.tag}
+              </span>
+            </div>
 
-          <h1
-            className={cn(
-              "font-heading font-bold text-[22px] sm:text-[28px] lg:text-[32px] leading-[1.2] mb-3 tracking-tight transition-colors duration-500",
-              activeSlide.isDarkText ? "text-[#08274D]" : "text-white"
-            )}
-          >
-            {activeSlide.title}
-          </h1>
+            <h1 className="font-heading font-bold text-[20px] sm:text-[24px] lg:text-[27px] leading-[1.25] mb-3 text-[#08274D] tracking-tight">
+              {activeSlide.title}
+            </h1>
 
-          <p
-            className={cn(
-              "font-sans text-[13px] sm:text-[15px] leading-relaxed mb-6 max-w-md transition-colors duration-500",
-              activeSlide.isDarkText ? "text-[#486581]" : "text-slate-200"
-            )}
-          >
-            {activeSlide.subtitle}
-          </p>
+            <p className="font-sans text-[13px] sm:text-[14px] leading-relaxed mb-6 text-slate-600 line-clamp-3">
+              {activeSlide.subtitle}
+            </p>
 
-          <div className="flex flex-wrap items-center gap-3">
-            <Link
-              href={route('catalog')}
-              className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#08274D] hover:bg-[#EF5042] text-white font-heading font-semibold text-[11px] md:text-[12px] uppercase tracking-wider rounded-xl transition-all shadow-xs active:scale-[0.98] cursor-pointer"
-            >
-              В каталог <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+            <div className="flex flex-wrap items-center gap-3">
+              <Link
+                href={route('catalog')}
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#08274D] hover:bg-[#EF5042] text-white font-heading font-semibold text-[11px] uppercase tracking-wider rounded-lg transition-all shadow-2xs active:scale-[0.98] cursor-pointer"
+              >
+                Смотреть коллекцию <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
 
-            <Link
-              href={route('calculator.show')}
-              className={cn(
-                "inline-flex items-center gap-2 px-5 py-2.5 font-heading font-semibold text-[11px] md:text-[12px] uppercase tracking-wider rounded-xl transition-all shadow-2xs active:scale-[0.98] border cursor-pointer",
-                activeSlide.isDarkText
-                  ? "bg-white/90 hover:bg-white text-[#08274D] border-slate-200 hover:border-slate-300"
-                  : "bg-white/10 hover:bg-white/20 text-white border-white/20 hover:border-white"
-              )}
-            >
-              <Calculator className="w-3.5 h-3.5" /> Калькулятор
-            </Link>
+              <Link
+                href={route('calculator.show')}
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 font-heading font-semibold text-[11px] uppercase tracking-wider rounded-lg transition-all text-[#08274D] hover:text-[#EF5042] border border-slate-200 hover:border-slate-300 cursor-pointer bg-white"
+              >
+                <Calculator className="w-3.5 h-3.5 text-[#9B6A38]" /> Расчет
+              </Link>
+            </div>
           </div>
         </div>
 
-        {/* Боковые кнопки переключения */}
+        {/* Боковые кнопки переключения слайдов */}
         <div className="hidden md:flex flex-col gap-2 absolute right-5 top-1/2 -translate-y-1/2 z-20">
           <button
             onClick={handlePrev}
             aria-label="Предыдущий слайд"
-            className="w-8 h-8 rounded-full bg-white/90 hover:bg-white text-[#08274D] hover:text-[#EF5042] border border-slate-200/80 flex items-center justify-center shadow-2xs transition-all cursor-pointer active:scale-95"
+            className="w-8 h-8 rounded-lg bg-white/95 hover:bg-white text-[#08274D] hover:text-[#EF5042] border border-slate-200 flex items-center justify-center shadow-2xs transition-all cursor-pointer active:scale-95"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
           <button
             onClick={handleNext}
             aria-label="Следующий слайд"
-            className="w-8 h-8 rounded-full bg-white/90 hover:bg-white text-[#08274D] hover:text-[#EF5042] border border-slate-200/80 flex items-center justify-center shadow-2xs transition-all cursor-pointer active:scale-95"
+            className="w-8 h-8 rounded-lg bg-white/95 hover:bg-white text-[#08274D] hover:text-[#EF5042] border border-slate-200 flex items-center justify-center shadow-2xs transition-all cursor-pointer active:scale-95"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Архитектурные индикаторы слайдов */}
-        <div className="absolute bottom-5 left-6 md:left-10 z-20 flex items-center gap-2">
+        {/* Тонкие индикаторы слайдов в стиле лукбука */}
+        <div className="absolute bottom-4 right-6 md:right-8 z-20 flex items-center gap-1.5 bg-black/30 backdrop-blur-xs px-3 py-1.5 rounded-full">
           {SLIDES.map((slide, idx) => (
             <button
               key={slide.id}
               onClick={() => setCurrent(idx)}
               className={cn(
-                "transition-all duration-300 rounded-full cursor-pointer h-1",
+                "transition-all duration-300 rounded-full cursor-pointer h-1.5",
                 current === idx
-                  ? "w-7 bg-[#08274D]"
-                  : "w-2 bg-slate-300 hover:bg-slate-400"
+                  ? "w-6 bg-white"
+                  : "w-1.5 bg-white/40 hover:bg-white/70"
               )}
               aria-label={`Перейти к слайду ${idx + 1}`}
             />
@@ -204,3 +182,5 @@ export function CatalogHeroBlock() {
     </div>
   );
 }
+
+export default CatalogHeroBlock;

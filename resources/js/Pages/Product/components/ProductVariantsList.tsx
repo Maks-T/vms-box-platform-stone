@@ -38,9 +38,9 @@ export function ProductVariantsList({variants, bootstrapConfig}: Props) {
   };
 
   return (
-    <div className="mt-10 pt-8 border-t border-[#E2E6EA]">
+    <div className="mt-10 pt-8 border-t border-slate-200/70">
       <div className="flex items-center gap-3 mb-6">
-        <IconBox variant="light" size="sm" className="bg-slate-100 text-[#08274D] border-[#E2E6EA]">
+        <IconBox variant="light" size="sm" className="bg-slate-100 text-[#08274D] border-slate-200 rounded-md">
           <Layers className="w-4 h-4 text-[#9B6A38]"/>
         </IconBox>
         <H3 className="font-heading font-bold text-[#08274D] text-[13px] uppercase tracking-wider m-0">
@@ -55,10 +55,10 @@ export function ProductVariantsList({variants, bootstrapConfig}: Props) {
 
           return (
             <div key={variant.id}
-                 className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-xl border border-[#E2E6EA] hover:border-[#9B6A38]/40 shadow-xs transition-colors">
+                 className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-lg border border-slate-200 hover:border-slate-300 transition-colors">
               <div className="flex items-center gap-4 overflow-hidden w-full">
 
-                <IconBox variant="light" className="w-14 h-14 shrink-0 rounded-xl overflow-hidden p-0 border-[#E2E6EA] bg-[#F8F9FA]">
+                <IconBox variant="light" className="w-14 h-14 shrink-0 rounded-lg overflow-hidden p-0 border-slate-200 bg-slate-50">
                   {variant.preview_picture ? (
                     <img src={variant.preview_picture} alt={variant.sku} className="w-full h-full object-cover"/>
                   ) : (
@@ -115,13 +115,13 @@ export function ProductVariantsList({variants, bootstrapConfig}: Props) {
                     </div>
                   ) : (
                     <Badge variant="gray"
-                           className="!bg-slate-50 !border-[#E2E6EA] !text-[#696973] !shadow-none !px-2.5 !py-1 text-[11px] uppercase tracking-wider font-heading font-bold">
+                           className="!bg-slate-50 !border-slate-200 !text-slate-600 !shadow-none !px-2.5 !py-1 text-[11px] uppercase tracking-wider font-heading font-bold rounded-md">
                       По запросу
                     </Badge>
                   );
                 })()}
 
-                <StatusBadge variant={variant.stock > 0 ? 'success' : 'warning'} className="px-2.5 py-1">
+                <StatusBadge variant={variant.stock > 0 ? 'success' : 'warning'} className="px-2.5 py-1 rounded-md text-[11px]">
                   {variant.stock > 0 ? `На складе в СПб: ${variant.stock} слэбов` : 'Под заказ (распил)'}
                 </StatusBadge>
 

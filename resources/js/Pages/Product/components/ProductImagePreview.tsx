@@ -13,7 +13,7 @@ interface Props {
 export function ProductImagePreview({image, name, externalCode, id}: Props) {
   return (
     <GlassPanel variant="glow" padding="none"
-                className="relative aspect-square overflow-hidden flex items-center justify-center p-8 bg-slate-50/50">
+                className="relative aspect-square overflow-hidden flex items-center justify-center p-8 bg-slate-50/60 rounded-xl border border-slate-200/90 shadow-2xs">
       {image ? (
         <img
           src={image}
@@ -27,8 +27,8 @@ export function ProductImagePreview({image, name, externalCode, id}: Props) {
         </div>
       )}
 
-      <div className="absolute top-6 left-6">
-        <StatusBadge variant="blue">
+      <div className="absolute top-4 left-4">
+        <StatusBadge variant="blue" className="rounded-md px-2.5 py-1 text-[11px] font-mono">
           Артикул: {externalCode || id}
         </StatusBadge>
       </div>

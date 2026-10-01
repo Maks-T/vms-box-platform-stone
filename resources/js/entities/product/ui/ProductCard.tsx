@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from '@inertiajs/react';
 import { Image as ImageIcon, ArrowUpRight } from 'lucide-react';
 import { StoneProduct, EavValueOption, BootstrapConfig, ProductVariant } from '@/types/catalog';
-import { route } from "ziggy-js";
+import { route } from 'ziggy-js';
 import Badge from '@/shared/components/ui/Badge';
 import { cn } from '@/shared/lib/utils';
 import { FavoriteButton } from '@/shared/components/ui/FavoriteButton';
@@ -38,11 +38,11 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
   const brand = attributes?.brand?.value as EavValueOption | undefined;
   const serviceTags = attributes?.service_tags?.value as EavValueOption[] | undefined;
 
-  let subtitle = 'Каталог';
-  if (brand) subtitle = brand.label; // Был brand.name
-  else if (collection) subtitle = collection.label; // Был collection.name
+  let subtitle = 'Каталог камня';
+  if (brand) subtitle = brand.label;
+  else if (collection) subtitle = collection.label;
   else if (serviceTags && Array.isArray(serviceTags) && serviceTags.length > 0) {
-    subtitle = serviceTags.map(t => t.label).join(', '); // Был t.name
+    subtitle = serviceTags.map(t => t.label).join(', ');
   } else if (unit) subtitle = `Ед. изм: ${unit.name}`;
 
   const parentColor = attributes?.color?.value as EavValueOption | undefined;
@@ -52,8 +52,8 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
     const seen = new Set();
     variants.forEach(v => {
       const vColor = v.attributes?.color?.value as EavValueOption | undefined;
-      if (vColor && !seen.has(vColor.key)) { // Был vColor.slug
-        seen.add(vColor.key); // Был vColor.slug
+      if (vColor && !seen.has(vColor.key)) {
+        seen.add(vColor.key);
         variantColors.push(vColor);
       }
     });
@@ -83,10 +83,10 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
     const isSelected = color.key === activeColorSlug;
 
     const swatchClasses = cn(
-      "w-5 h-5 rounded-full object-cover border border-slate-200/80 shadow-sm cursor-pointer transition-all duration-300",
+      "w-5 h-5 rounded-full object-cover border border-slate-200/80 shadow-2xs cursor-pointer transition-all duration-200",
       isSelected
-        ? "ring-2 ring-[#9B6A38] ring-offset-1 scale-105 opacity-100"
-        : "opacity-65 hover:opacity-100 hover:scale-105"
+        ? "ring-2 ring-[#08274D] ring-offset-1 scale-105 opacity-100"
+        : "opacity-75 hover:opacity-100 hover:scale-105"
     );
 
     if (color.meta?.image) {
@@ -108,7 +108,7 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
           title={color.label}
           onClick={(e) => handleColorClick(e, color)}
           className={swatchClasses}
-          style={{backgroundColor: color.meta.hex}}
+          style={{ backgroundColor: color.meta.hex }}
         />
       );
     }
@@ -116,10 +116,10 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
   };
 
   return (
-    <div
-      className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-slate-200/80 hover:border-[#9B6A38]/50 hover:shadow-lg hover:shadow-slate-200/50 transition-all duration-300">
+    <div className="group flex flex-col h-full bg-white rounded-xl overflow-hidden border border-slate-200/90 hover:border-[#08274D] hover:shadow-xs transition-all duration-200">
 
-      <div className="relative aspect-square bg-[#FBFBFC] overflow-hidden border-b border-slate-100">
+      {/* Изображение слэба / текстуры */}
+      <div className="relative aspect-square bg-slate-50/50 overflow-hidden border-b border-slate-100">
         <Link href={route('product.show', slug)} className="block w-full h-full p-6">
           {displayImage ? (
             <img
@@ -129,22 +129,32 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
             />
           ) : (
             <div className="flex items-center justify-center w-full h-full opacity-20 text-slate-400">
-              <ImageIcon className="w-16 h-16"/>
+              <ImageIcon className="w-16 h-16" />
             </div>
           )}
         </Link>
 
-        <FavoriteButton product={product} className="absolute top-3.5 right-3.5 bg-white/90 backdrop-blur-xs p-2 rounded-full shadow-2xs hover:bg-white transition-colors" iconClassName="w-4.5 h-4.5" />
+        {/* Кнопка «В избранное» с лаконичным скруглением */}
+        <FavoriteButton
+          product={product}
+          className="absolute top-3 right-3 bg-white/95 p-1.5 rounded-md border border-slate-200/70 shadow-2xs hover:bg-white transition-colors"
+          iconClassName="w-4 h-4"
+        />
       </div>
 
+      {/* Описание и характеристики */}
       <div className="flex flex-col flex-1 p-5">
-        <p className="text-[10px] md:text-[11px] font-heading font-bold text-[#9B6A38] uppercase tracking-wider mb-1.5 line-clamp-1">{subtitle}</p>
+        <p className="text-[10px] font-heading font-bold text-[#9B6A38] uppercase tracking-[0.14em] mb-1 line-clamp-1">
+          {subtitle}
+        </p>
+
         <Link href={route('product.show', slug)} className="block mb-3">
-          <h3
-            className="font-heading font-bold text-[15px] md:text-[16px] text-[#08274D] leading-snug tracking-tight group-hover:text-[#EF5042] transition-colors line-clamp-2"
-          >{name}</h3>
+          <h3 className="font-heading font-bold text-[15px] text-[#08274D] leading-snug tracking-tight group-hover:text-[#EF5042] transition-colors line-clamp-2">
+            {name}
+          </h3>
         </Link>
 
+        {/* Свотчи оттенков и фактур */}
         {colorsToShow.length > 0 && (
           <div className="flex items-center gap-1.5 mb-4 flex-wrap">
             {colorsToShow.length === 1 ? (
@@ -155,41 +165,50 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
             ) : (
               <>
                 {colorsToShow.slice(0, 6).map(c => renderSwatch(c))}
-                {colorsToShow.length > 6 && <span
-                  className="text-[11px] font-medium text-muted-foreground ml-1">+{colorsToShow.length - 6}</span>}
+                {colorsToShow.length > 6 && (
+                  <span className="text-[11px] font-medium text-slate-400 ml-1">
+                    +{colorsToShow.length - 6}
+                  </span>
+                )}
               </>
             )}
           </div>
         )}
 
+        {/* Стоимость и интерактивный переход */}
         <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
           <div className="flex flex-col">
-            <span className="text-[10px] font-heading uppercase text-slate-400 font-semibold tracking-wider">Цена за м²</span>
+            <span className="text-[10px] font-heading uppercase text-slate-400 font-semibold tracking-wider">
+              Цена за м²
+            </span>
             <div className="font-heading text-[18px] md:text-[20px] font-black text-[#08274D] flex items-baseline gap-1">
-            {displayPrice > 0 ? (
-              <>
-                <span>{formattedNumber}</span>
-                <span className="text-[11px] font-normal text-slate-500 lowercase">
-                  {currencySymbol}
+              {displayPrice > 0 ? (
+                <>
+                  <span>{formattedNumber}</span>
+                  <span className="text-[11px] font-normal text-slate-500 lowercase">
+                    {currencySymbol}
+                  </span>
+                </>
+              ) : (
+                <span className="text-xs font-heading font-semibold text-slate-500 uppercase tracking-wide">
+                  По запросу
                 </span>
-              </>
-            ) : (
-              <span className="text-xs font-heading font-semibold text-slate-500 uppercase tracking-wide">
-                По запросу
-              </span>
-            )}
+              )}
             </div>
           </div>
 
           <Link
             href={route('product.show', slug)}
             aria-label={`Подробнее о ${name}`}
-            className="w-9 h-9 rounded-xl bg-slate-100/80 group-hover:bg-[#08274D] text-[#08274D] group-hover:text-white flex items-center justify-center transition-all duration-200 shadow-2xs group-hover:shadow-xs"
+            className="w-8 h-8 rounded-lg bg-slate-100/90 group-hover:bg-[#08274D] text-[#08274D] group-hover:text-white flex items-center justify-center transition-all duration-150"
           >
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
       </div>
+
     </div>
   );
 };
+
+export default ProductCard;

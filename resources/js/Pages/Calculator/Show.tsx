@@ -68,7 +68,7 @@ export default function CalculatorShow({
     <MainLayout headerOverlaps={false}>
       <Head title="Онлайн-калькулятор изделий" />
       <SectionLayout containerVariant="page" className="pt-8 md:pt-12 pb-24">
-        <div className="w-full relative z-10 bg-white rounded-2xl border border-border p-4 md:p-8 shadow-sm">
+        <div className="w-full relative z-10 bg-white rounded-xl border border-slate-200/90 p-4 md:p-8 shadow-2xs">
           <div id="calcAppRoot" className="w-full min-h-[650px]" />
         </div>
       </SectionLayout>

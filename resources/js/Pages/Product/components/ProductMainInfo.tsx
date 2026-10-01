@@ -27,7 +27,7 @@ export function ProductMainInfo({name, priceFrom, bootstrapConfig, shortDescript
   return (
     <div className="mb-8 border-b border-[#E2E6EA] pb-8">
       {isDev && (
-        <span className="inline-block mb-4 px-2.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-mono font-bold uppercase">
+        <span className="inline-block mb-4 px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-mono font-bold uppercase">
           API Item
         </span>
       )}
@@ -36,7 +36,7 @@ export function ProductMainInfo({name, priceFrom, bootstrapConfig, shortDescript
         {name}
       </H1>
 
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8 bg-[#F8F9FA] p-5 rounded-xl border border-[#E2E6EA]">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8 bg-slate-50/70 p-5 rounded-lg border border-slate-200/80">
         <div>
           <Text className="text-[11px] font-heading font-bold text-[#8B9198] uppercase tracking-wider mb-1">
             Стоимость материала за м²
@@ -52,7 +52,7 @@ export function ProductMainInfo({name, priceFrom, bootstrapConfig, shortDescript
               </>
             ) : (
               <Badge variant="gray"
-                     className="!bg-white !border-[#E2E6EA] !text-[#696973] !shadow-none !px-3 !py-1 text-xs font-heading font-bold uppercase">
+                     className="!bg-white !border-slate-200 !text-slate-600 !shadow-none !px-3 !py-1 text-xs font-heading font-bold uppercase rounded-md">
                 Цена по запросу
               </Badge>
             )}
@@ -64,7 +64,7 @@ export function ProductMainInfo({name, priceFrom, bootstrapConfig, shortDescript
             href={siteConfig.contacts.orderCalc?.href || "#"}
             target="_blank"
             rel="noreferrer"
-            className="h-[46px] px-6 rounded-xl bg-[#08274D] hover:bg-[#EF5042] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2 shadow-sm"
+            className="h-10 px-5 rounded-lg bg-[#08274D] hover:bg-[#EF5042] text-white font-heading font-semibold text-xs uppercase tracking-wider transition-all flex items-center gap-2 shadow-2xs cursor-pointer"
           >
             <Calculator className="w-4 h-4" /> Рассчитать изделие
           </a>

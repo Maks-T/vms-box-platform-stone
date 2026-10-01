@@ -99,7 +99,7 @@ export default function NavBar({ items }: { items: ExtendedNavItem[] }) {
 
               {/* Элегантное выпадающее меню на основе API */}
               {isCatalogOpen && (
-                <div className="absolute top-[calc(100%-6px)] left-0 z-50 bg-white rounded-2xl border border-slate-200/80 shadow-2xl p-6 min-w-[640px] xl:min-w-[760px] animate-in fade-in-0 zoom-in-95 duration-150">
+                <div className="absolute top-[calc(100%-6px)] left-0 z-50 bg-white rounded-xl border border-slate-200 shadow-lg p-6 min-w-[640px] xl:min-w-[760px] animate-in fade-in-0 zoom-in-95 duration-150">
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pb-5 border-b border-slate-100">
                     {families.length > 0 ? (
                       families.map((family) => (

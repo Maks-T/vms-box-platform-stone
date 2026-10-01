@@ -19,9 +19,9 @@ export default function StatusBadge({
   const isInteractive = props.href || props.onClick || Component === 'a';
 
   const variants = {
-    blue: "text-[#3D98FF] border-white/5 shadow-[inset_0_0_14px_rgba(144,198,221,0.20)] bg-white/[0.01] hover:bg-white/[0.04]",
-    success: "text-emerald-500 border-emerald-500/30 shadow-[inset_0_0_12px_rgba(16,185,129,0.15)] bg-emerald-500/5 hover:bg-emerald-500/10",
-    warning: "text-amber-500 border-amber-500/30 shadow-[inset_0_0_12px_rgba(245,158,11,0.15)] bg-amber-500/5 hover:bg-amber-500/10",
+    blue: "text-[#08274D] border-slate-200 bg-slate-50",
+    success: "text-emerald-700 border-emerald-200 bg-emerald-50/70",
+    warning: "text-amber-800 border-amber-200 bg-amber-50/70",
   };
 
   const dotVariants = {
@@ -33,7 +33,7 @@ export default function StatusBadge({
   return (
     <Component
       className={cn(
-        "group inline-flex items-center gap-2.5 px-3 py-1.5 md:px-4 md:py-2 rounded-full transition-all duration-300 backdrop-blur-md border",
+        "group inline-flex items-center gap-2 px-2.5 py-1 rounded-md transition-all duration-150 border",
         isInteractive && "cursor-pointer active:scale-[0.98]",
         variants[variant],
         className

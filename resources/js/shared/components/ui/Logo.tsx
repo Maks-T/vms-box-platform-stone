@@ -36,7 +36,7 @@ export function Logo({
         <svg viewBox="0 0 100 100" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="50" cy="50" r="44" stroke="#9B6A38" strokeWidth="7" strokeDasharray="14 5" />
           <circle cx="50" cy="50" r="32" stroke="#9B6A38" strokeWidth="2.5" />
-          <path d="M42 35L50 65L58 35" stroke="#9B6A38" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M35 63V37L50 51L65 37V63" stroke="#9B6A38" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>
 

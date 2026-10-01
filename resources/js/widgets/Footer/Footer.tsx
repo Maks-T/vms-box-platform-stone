@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from '@inertiajs/react';
 import { Logo } from '@/shared/components/ui/Logo';
 import { siteConfig } from '@/shared/config/site';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, ArrowUpRight } from 'lucide-react';
+import { route } from 'ziggy-js';
 
 export default function Footer() {
   const { company, contacts } = siteConfig;
@@ -22,31 +24,31 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Колонка 2: Изделия */}
+          {/* Колонка 2: Изделия и услуги */}
           <div className="flex flex-col gap-3">
             <h4 className="font-heading font-bold text-white uppercase text-[14px] tracking-wider mb-2">
-              Изделия из камня
+              Изделия и расчет
             </h4>
             <ul className="flex flex-col gap-2 text-sm text-slate-300">
-              <li><a href="/catalog?product_type=countertop" className="hover:text-[#EF5042] transition-colors">Столешницы для кухни и ванной</a></li>
-              <li><a href="/catalog?product_type=sills" className="hover:text-[#EF5042] transition-colors">Подоконники из камня</a></li>
-              <li><a href="/catalog?product_type=stairs" className="hover:text-[#EF5042] transition-colors">Лестницы и ступени</a></li>
-              <li><a href="/catalog?product_type=fireplaces" className="hover:text-[#EF5042] transition-colors">Камины и порталы</a></li>
-              <li><a href="/catalog?product_type=reception" className="hover:text-[#EF5042] transition-colors">Стойки ресепшн и барные зоны</a></li>
+              <li><Link href={route('calculator.show')} className="hover:text-[#EF5042] transition-colors">Онлайн-калькулятор изделий</Link></li>
+              <li><Link href={route('calculator.show')} className="hover:text-[#EF5042] transition-colors">Столешницы для кухни и ванной</Link></li>
+              <li><Link href={route('calculator.show')} className="hover:text-[#EF5042] transition-colors">Подоконники и барные стойки</Link></li>
+              <li><Link href={route('services')} className="hover:text-[#EF5042] transition-colors">Услуги обработки и распила</Link></li>
+              <li><a href={contacts.orderCalc?.href || '#'} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-[#EF5042] hover:underline font-semibold">Заказать расчет по чертежу <ArrowUpRight className="w-3.5 h-3.5" /></a></li>
             </ul>
           </div>
 
-          {/* Колонка 3: Материалы */}
+          {/* Колонка 3: Каталог материалов */}
           <div className="flex flex-col gap-3">
             <h4 className="font-heading font-bold text-white uppercase text-[14px] tracking-wider mb-2">
-              Материалы
+              Каталог камня
             </h4>
             <ul className="flex flex-col gap-2 text-sm text-slate-300">
-              <li><a href="/catalog?family=stone&product_type=marble" className="hover:text-[#EF5042] transition-colors">Мрамор</a></li>
-              <li><a href="/catalog?family=stone&product_type=granite" className="hover:text-[#EF5042] transition-colors">Гранит</a></li>
-              <li><a href="/catalog?family=stone&product_type=quartzite" className="hover:text-[#EF5042] transition-colors">Кварцит</a></li>
-              <li><a href="/catalog?family=stone&product_type=onyx" className="hover:text-[#EF5042] transition-colors">Оникс</a></li>
-              <li><a href="/catalog?family=agglomerate" className="hover:text-[#EF5042] transition-colors">Кварцевый агломерат</a></li>
+              <li><Link href={route('catalog')} className="hover:text-[#EF5042] transition-colors font-medium text-white">Все материалы каталога</Link></li>
+              <li><Link href={`${route('catalog')}?family=stone&product_type=quartz_stone`} className="hover:text-[#EF5042] transition-colors">Кварцевый агломерат</Link></li>
+              <li><Link href={`${route('catalog')}?family=stone&product_type=acrylic_stone`} className="hover:text-[#EF5042] transition-colors">Акриловый камень</Link></li>
+              <li><Link href={`${route('catalog')}?family=stone`} className="hover:text-[#EF5042] transition-colors">Натуральный камень (мрамор, гранит)</Link></li>
+              <li><Link href={`${route('catalog')}?family=sinks`} className="hover:text-[#EF5042] transition-colors">Мойки и раковины</Link></li>
             </ul>
           </div>
 

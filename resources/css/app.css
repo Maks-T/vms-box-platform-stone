@@ -15,44 +15,145 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* ========================================================
+   СЛОЙ КАЛЬКУЛЯТОРА И ВИДЖЕТА (#calcAppRoot)
+   Стиль каталогов кварцевого камня: контрастные контуры,
+   видимые границы карточек и благородная палитра
+   ======================================================== */
 @layer calc {
     .dummy-calc-anchor {
         display: none;
     }
 
-    /* Фирменный шрифт Montserrat для заголовков шагов калькулятора */
+    /* 1. Фирменный шрифт Montserrat для заголовков шагов */
     #calcAppRoot [class*="calc-text-uppercase"],
     #calcAppRoot [class*="lg:calc-text-3xl"],
-    #calcAppRoot [class*="lg:calc-text-xl"] {
+    #calcAppRoot [class*="lg:calc-text-xl"],
+    #calcAppRoot h2,
+    #calcAppRoot h3 {
         font-family: var(--font-heading), sans-serif !important;
         font-weight: 700 !important;
+        letter-spacing: 0.05em !important;
         color: #08274D !important;
     }
 
-    /* Кнопка «Отправить заявку» с эффектом MasterStone (Navy -> Coral) */
-    #calcAppRoot button.calc-bg-primary {
+    /* 2. ЧЕТКИЕ ВИДИМЫЕ ГРАНИЦЫ КАРТОЧЕК ВЫБОРА (Мойка, вырез, кромка, бортик) */
+    /* Неактивное состояние: контрастная рамка 1.5px вместо размытого calc-border-muted */
+    #calcAppRoot [class*="calc-border-muted"],
+    #calcAppRoot [role="radiogroup"] label,
+    #calcAppRoot label[class*="calc-border-2"],
+    #calcAppRoot label[class*="calc-border-muted"],
+    #calcAppRoot div[class*="calc-grid"] > div[class*="calc-border"] {
+        border-color: #CBD5E1 !important;
+        background-color: #FFFFFF !important;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04) !important;
+        transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease !important;
+    }
+
+    /* Ховер неактивной карточки: элегантная подсветка благородной бронзой */
+    #calcAppRoot [role="radiogroup"] label:hover,
+    #calcAppRoot label[class*="calc-border-muted"]:hover,
+    #calcAppRoot div[class*="calc-grid"] > div[class*="calc-border"]:hover {
+        border-color: #9B6A38 !important;
+    }
+
+    /* Активное/выбранное состояние карточки: плотный контур #08274D и минеральный фон */
+    #calcAppRoot [class*="calc-border-primary"],
+    #calcAppRoot label[class*="calc-border-primary"],
+    #calcAppRoot label:has(button[data-state="checked"]),
+    #calcAppRoot label:has([aria-checked="true"]),
+    #calcAppRoot [role="radiogroup"] label[class*="calc-bg-primary"],
+    #calcAppRoot div[class*="calc-border-primary"] {
+        border-color: #08274D !important;
+        background-color: rgba(8, 39, 77, 0.04) !important;
+        box-shadow: 0 0 0 1px #08274D !important;
+    }
+
+    /* 3. КОНТРАСТНЫЕ РАДИО-ИНДИКАТОРЫ ВНУТРИ КАРТОЧЕК */
+    /* Неактивный radio: четкий видимый контур */
+    #calcAppRoot button[role="radio"] {
+        border: 1.5px solid #94A3B8 !important;
+        background-color: #FFFFFF !important;
+        transition: border-color 0.15s ease !important;
+    }
+
+    /* Выбранный radio: заливка точкой фирменного цвета MasterStone */
+    #calcAppRoot button[role="radio"][data-state="checked"],
+    #calcAppRoot button[role="radio"][aria-checked="true"] {
+        border-color: #08274D !important;
+    }
+
+    #calcAppRoot button[role="radio"][data-state="checked"] svg,
+    #calcAppRoot button[role="radio"][data-state="checked"] [class*="calc-fill-primary"] {
+        fill: #08274D !important;
+        color: #08274D !important;
+    }
+
+    /* 4. ВИДИМЫЕ ГРАНИЦЫ ДЛЯ ИНПУТОВ И СЕЛЕКТОВ */
+    #calcAppRoot input[type="text"],
+    #calcAppRoot input[type="number"],
+    #calcAppRoot input:not([type]),
+    #calcAppRoot select,
+    #calcAppRoot textarea,
+    #calcAppRoot [role="combobox"] {
+        border: 1px solid #CBD5E1 !important;
+        border-radius: 6px !important;
+        background-color: #FFFFFF !important;
+        color: #08274D !important;
+        font-family: var(--font-sans), sans-serif !important;
+        font-size: 14px !important;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04) !important;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+    }
+
+    #calcAppRoot input[type="text"]:focus,
+    #calcAppRoot input[type="number"]:focus,
+    #calcAppRoot input:not([type]):focus,
+    #calcAppRoot select:focus,
+    #calcAppRoot textarea:focus,
+    #calcAppRoot [role="combobox"]:focus {
+        border-color: #08274D !important;
+        outline: none !important;
+        box-shadow: 0 0 0 1px #08274D !important;
+    }
+
+    /* 5. ИНПУТЫ РАЗМЕРОВ НА 3D/2D СХЕМЕ ИЗДЕЛИЯ */
+    #calcAppRoot input[dimension] {
+        border: 1px solid #94A3B8 !important;
+        background-color: #FFFFFF !important;
+        font-weight: 600 !important;
+        text-align: center;
+        border-radius: 6px !important;
+    }
+
+    /* 6. КНОПКИ ДЕЙСТВИЙ (Navy -> Coral) СО СТРОГИМ РАДИУСОМ 8px */
+    #calcAppRoot button.calc-bg-primary,
+    #calcAppRoot button[class*="calc-bg-primary"],
+    #calcAppRoot button[class*="bg-primary"] {
         background-color: #08274D !important;
         color: #FFFFFF !important;
         font-family: var(--font-heading), sans-serif !important;
-        font-weight: 700 !important;
+        font-weight: 600 !important;
         text-transform: uppercase !important;
         letter-spacing: 0.05em !important;
-        border-radius: 12px !important;
-        transition: all 0.3s ease !important;
+        border-radius: 8px !important;
+        transition: background-color 0.25s ease, transform 0.15s ease !important;
     }
 
-    #calcAppRoot button.calc-bg-primary:hover {
+    #calcAppRoot button.calc-bg-primary:hover,
+    #calcAppRoot button[class*="calc-bg-primary"]:hover,
+    #calcAppRoot button[class*="bg-primary"]:hover {
         background-color: #EF5042 !important; /* Коралловый при наведении */
     }
 
-    /* Активные карточки выбора формы и типа */
-    #calcAppRoot .calc-border-primary {
-        border-color: #08274D !important;
+    #calcAppRoot button.calc-bg-primary:active {
+        transform: scale(0.98);
     }
 }
 
 /**
  * ДИЗАЙН-СИСТЕМА MASTERSTONE (TAILWIND CSS V4)
+ * Архитектурный стиль: строгость, hairline-границы, естественные фактуры камня
  */
 @theme {
     /* ========================================================
@@ -62,7 +163,7 @@
     --font-heading: "Montserrat", sans-serif;
 
     /* ========================================================
-       2. Базовые семантические токены shadcn
+       2. Базовые семантические токены
        ======================================================== */
     --color-background: var(--background);
     --color-foreground: var(--foreground);
@@ -121,7 +222,7 @@
        ======================================================== */
     --color-surface-base: #ffffff;
     --color-surface-subtle: #f8f9fa;
-    --color-surface-muted: #f0f2f5;     /* Фирменный серый подложек категорий */
+    --color-surface-muted: #f0f2f5;
     --color-surface-border: #e2e6ea;
 
     /* ========================================================
@@ -141,35 +242,29 @@
     --color-primary-light: #579ac1;
 
     /* ========================================================
-       8. Радиусы скруглений
+       8. Строгие радиусы скруглений (6–12px)
        ======================================================== */
-    --radius-sm: calc(var(--radius) - 4px);
-    --radius-md: calc(var(--radius) - 2px);
-    --radius-lg: var(--radius);
-    --radius-xl: calc(var(--radius) + 6px);
-    --radius-2xl: calc(var(--radius) + 14px);
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 12px;
+    --radius-2xl: 16px;
 
     /* ========================================================
-       9. Тени для каменных плит и архитектурных карточек
+       9. Сдержанные архитектурные тени (минимализм)
        ======================================================== */
+    --shadow-2xs: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+    --shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
     --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-    --shadow-hover: 0 12px 35px -8px rgba(8, 39, 77, 0.12);
-    --shadow-card: 0 5px 25px -4px rgba(0, 0, 0, 0.06);
-    --shadow-icon: 0 2px 6px 0 rgba(0, 0, 0, 0.08);
-    --shadow-deep: 0 20px 45px -10px rgba(8, 39, 77, 0.18);
-    --shadow-cta: 0 8px 20px -4px rgba(8, 39, 77, 0.35);
-
-    /* Тени для полупрозрачных панелей */
-    --shadow-glass-inset: inset 0 0 14px 0 rgba(8, 39, 77, 0.05);
-    --shadow-glass-panel: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
-    --blur-glass: 4px;
+    --shadow-hover: 0 6px 20px -4px rgba(8, 39, 77, 0.08);
+    --shadow-card: 0 2px 10px -2px rgba(0, 0, 0, 0.04);
 }
 
 /**
  * ПЕРЕМЕННЫЕ ЦВЕТОВ (ROOT)
  */
 :root {
-    --radius: 0.625rem;
+    --radius: 0.5rem; /* 8px строгий базовый радиус */
     --background: #FFFFFF;
     --foreground: #1E252D;
 
@@ -200,7 +295,7 @@
     --destructive-foreground: #FFFFFF;
 
     --border: #E2E6EA;
-    --input: #DDE2E7;
+    --input: #CBD5E1;
     --ring: #08274D;
 
     --heading: #08274D;
@@ -260,7 +355,7 @@
     .autofill-white:-webkit-autofill {
         -webkit-text-fill-color: #1E252D !important;
         box-shadow: 0 0 0 1000px #FFFFFF inset !important;
-        border-color: #E2E6EA !important;
+        border-color: #CBD5E1 !important;
         caret-color: #08274D;
     }
 
@@ -332,7 +427,7 @@
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
     background: rgba(8, 39, 77, 0.15);
-    border-radius: 10px;
+    border-radius: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
@@ -344,12 +439,12 @@
  */
 [data-sonner-toast] {
     background-color: #FFFFFF !important;
-    border-radius: 12px !important;
+    border-radius: 8px !important;
     font-family: var(--font-sans), sans-serif !important;
     padding: 14px 18px !important;
     color: #1E252D !important;
-    box-shadow: 0 10px 40px rgba(8, 39, 77, 0.12) !important;
-    border: 1px solid #E2E6EA !important;
+    box-shadow: 0 4px 20px rgba(8, 39, 77, 0.08) !important;
+    border: 1px solid #CBD5E1 !important;
 }
 
 [data-sonner-toast][data-type="success"] {

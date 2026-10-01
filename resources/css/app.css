@@ -37,47 +37,28 @@
         color: #08274D !important;
     }
 
-    /* 2. ЧЕТКИЕ ВИДИМЫЕ ГРАНИЦЫ КАРТОЧЕК ВЫБОРА (Мойка, вырез, кромка, бортик) */
-    /* Неактивное состояние: контрастная рамка 1.5px вместо размытого calc-border-muted */
-    #calcAppRoot [class*="calc-border-muted"],
-    #calcAppRoot [role="radiogroup"] label,
-    #calcAppRoot label[class*="calc-border-2"],
-    #calcAppRoot label[class*="calc-border-muted"],
-    #calcAppRoot div[class*="calc-grid"] > div[class*="calc-border"] {
-        border-color: #CBD5E1 !important;
+    /* 2. ИНТЕРЬЕРНЫЕ ТОНКИЕ ГРАНИЦЫ КАРТОЧЕК (1px Hairline, без агрессивных обводок) */
+    /* Спокойное состояние: деликатный контур 1px */
+    #calcAppRoot .calc-border-muted,
+    #calcAppRoot .calc-border {
+        border-color: #E2E8F0 !important;
+        border-width: 1px !important;
         background-color: #FFFFFF !important;
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04) !important;
-        transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease !important;
     }
 
-    /* Ховер неактивной карточки: элегантная подсветка благородной бронзой */
-    #calcAppRoot [role="radiogroup"] label:hover,
-    #calcAppRoot label[class*="calc-border-muted"]:hover,
-    #calcAppRoot div[class*="calc-grid"] > div[class*="calc-border"]:hover {
-        border-color: #9B6A38 !important;
-    }
-
-    /* Активное/выбранное состояние карточки: плотный контур #08274D и минеральный фон */
-    #calcAppRoot [class*="calc-border-primary"],
-    #calcAppRoot label[class*="calc-border-primary"],
-    #calcAppRoot label:has(button[data-state="checked"]),
-    #calcAppRoot label:has([aria-checked="true"]),
-    #calcAppRoot [role="radiogroup"] label[class*="calc-bg-primary"],
-    #calcAppRoot div[class*="calc-border-primary"] {
+    /* Выбранная карточка: точечный класс .calc-border-primary с легкой минеральной подложкой */
+    #calcAppRoot label.calc-border-primary,
+    #calcAppRoot div.calc-border-primary {
         border-color: #08274D !important;
-        background-color: rgba(8, 39, 77, 0.04) !important;
-        box-shadow: 0 0 0 1px #08274D !important;
+        border-width: 1.5px !important;
+        background-color: rgba(8, 39, 77, 0.03) !important;
     }
 
     /* 3. КОНТРАСТНЫЕ РАДИО-ИНДИКАТОРЫ ВНУТРИ КАРТОЧЕК */
-    /* Неактивный radio: четкий видимый контур */
     #calcAppRoot button[role="radio"] {
-        border: 1.5px solid #94A3B8 !important;
-        background-color: #FFFFFF !important;
-        transition: border-color 0.15s ease !important;
+        border: 1px solid #CBD5E1 !important;
     }
 
-    /* Выбранный radio: заливка точкой фирменного цвета MasterStone */
     #calcAppRoot button[role="radio"][data-state="checked"],
     #calcAppRoot button[role="radio"][aria-checked="true"] {
         border-color: #08274D !important;
@@ -102,8 +83,6 @@
         color: #08274D !important;
         font-family: var(--font-sans), sans-serif !important;
         font-size: 14px !important;
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04) !important;
-        transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
     }
 
     #calcAppRoot input[type="text"]:focus,

@@ -22,19 +22,19 @@ export const CheckboxFilter = ({ options, activeValues, onToggle }: any) => (
               onChange={() => onToggle(opt.key)}
             />
             <div className={cn(
-              "w-5 h-5 border-2 rounded-[6px] transition-all duration-200 flex items-center justify-center",
-              isChecked ? "bg-[#08274D] border-[#08274D] shadow-sm" : "bg-white border-[#DDE2E7] group-hover:border-[#08274D]"
+              "w-4 h-4 border rounded-[4px] transition-all duration-150 flex items-center justify-center",
+              isChecked ? "bg-[#08274D] border-[#08274D]" : "bg-white border-slate-300 group-hover:border-slate-400"
             )}>
-              <Check className={cn("w-3.5 h-3.5 text-white stroke-[4px] transition-opacity", isChecked ? "opacity-100" : "opacity-0")} />
+              <Check className={cn("w-3 h-3 text-white stroke-[2.5px] transition-opacity", isChecked ? "opacity-100" : "opacity-0")} />
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             {hasVisual && <FilterSwatch image={image} hex={hex} size="sm" />}
 
             <span className={cn(
-              "text-[13px] md:text-[14px] leading-tight transition-colors select-none",
-              isChecked ? "text-[#08274D] font-bold" : "text-[#696973] font-medium group-hover:text-[#08274D]"
+              "text-[13px] leading-tight transition-colors select-none",
+              isChecked ? "text-[#08274D] font-semibold" : "text-slate-600 font-normal group-hover:text-[#08274D]"
             )}>
               {opt.label} {/* Был value */}
             </span>

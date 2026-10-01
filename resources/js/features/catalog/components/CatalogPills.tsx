@@ -9,10 +9,9 @@ interface Props {
 }
 
 export const CatalogPills = ({ families, activeFamily, onChange }: Props) => {
-  const basePill = "group flex items-center gap-3 h-[46px] md:h-[52px] rounded-full border transition-all duration-300 shrink-0 overflow-hidden cursor-pointer pl-2 pr-6 md:pr-7 select-none font-heading";
-
-  const activeClass = "bg-[#08274D] border-[#08274D] text-white shadow-md";
-  const inactiveClass = "bg-white border-[#E2E6EA] text-[#696973] hover:border-[#9B6A38] hover:text-[#08274D] shadow-sm";
+  const basePill = "group flex items-center px-5 py-2.5 rounded-full border transition-all duration-200 shrink-0 cursor-pointer select-none font-heading text-[12px] md:text-[13px] font-semibold uppercase tracking-wider";
+  const activeClass = "bg-[#08274D] border-[#08274D] text-white shadow-xs";
+  const inactiveClass = "bg-white border-[#E2E6EA] text-slate-600 hover:text-[#08274D] hover:border-[#9B6A38]/50 hover:bg-slate-50/80 shadow-2xs";
 
   return (
     <div className="mb-2">
@@ -26,15 +25,7 @@ export const CatalogPills = ({ families, activeFamily, onChange }: Props) => {
               onClick={() => onChange(family.code)}
               className={cn(basePill, isActive ? activeClass : inactiveClass)}
             >
-              <div className={cn(
-                "w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-xs shrink-0 transition-colors",
-                isActive
-                  ? "bg-[#9B6A38] text-white shadow-inner"
-                  : "bg-[#F0F2F5] text-[#08274D] group-hover:bg-[#9B6A38]/15 group-hover:text-[#9B6A38]"
-              )}>
-                {family.name.charAt(0)}
-              </div>
-              <span className="text-[12px] md:text-[13px] font-bold uppercase tracking-wider whitespace-nowrap">
+              <span className="whitespace-nowrap">
                 {family.name}
               </span>
             </button>

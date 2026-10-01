@@ -92,22 +92,22 @@ export default function NavBar({ items }: { items: ExtendedNavItem[] }) {
                   isCatalogOpen ? "rotate-180 text-[#EF5042]" : "group-hover:text-[#EF5042]"
                 )} />
                 <span className={cn(
-                  "absolute bottom-2 left-0 h-[2px] bg-[#EF5042] transition-all duration-300",
+                  "absolute bottom-2 left-0 h-[1.5px] bg-[#08274D] transition-all duration-300",
                   (isActive || isCatalogOpen) ? "w-full" : "w-0 group-hover:w-full"
                 )} />
               </button>
 
               {/* Элегантное выпадающее меню на основе API */}
               {isCatalogOpen && (
-                <div className="absolute top-[calc(100%-6px)] left-0 z-50 bg-white rounded-xl border border-[#E2E6EA] shadow-xl p-5 md:p-6 min-w-[620px] xl:min-w-[740px] animate-in fade-in-0 zoom-in-95 duration-150">
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-5 pb-4 border-b border-[#E2E6EA]">
+                <div className="absolute top-[calc(100%-6px)] left-0 z-50 bg-white rounded-2xl border border-slate-200/80 shadow-2xl p-6 min-w-[640px] xl:min-w-[760px] animate-in fade-in-0 zoom-in-95 duration-150">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pb-5 border-b border-slate-100">
                     {families.length > 0 ? (
                       families.map((family) => (
                         <div key={family.code} className="flex flex-col">
                           <Link
                             href={`${route('catalog')}?family=${family.code}`}
                             onClick={() => setIsCatalogOpen(false)}
-                            className="font-heading font-bold text-[12px] uppercase text-[#08274D] hover:text-[#EF5042] tracking-wider pb-1.5 border-b border-[#E2E6EA] mb-2 block transition-colors"
+                            className="font-heading font-bold text-[12px] uppercase text-[#08274D] hover:text-[#EF5042] tracking-wider pb-1 mb-2 block transition-colors"
                           >
                             {family.name}
                           </Link>
@@ -118,7 +118,7 @@ export default function NavBar({ items }: { items: ExtendedNavItem[] }) {
                                   <Link
                                     href={`${route('catalog')}?family=${family.code}&product_type=${t.code}`}
                                     onClick={() => setIsCatalogOpen(false)}
-                                    className="text-[#486581] hover:text-[#EF5042] hover:translate-x-0.5 transition-all block py-0.5"
+                                    className="text-slate-600 hover:text-[#08274D] hover:translate-x-0.5 transition-all block py-0.5"
                                   >
                                     {t.name}
                                   </Link>
@@ -135,7 +135,7 @@ export default function NavBar({ items }: { items: ExtendedNavItem[] }) {
                     )}
                   </div>
 
-                  <div className="pt-3.5 flex items-center justify-between text-xs">
+                  <div className="pt-4 flex items-center justify-between text-xs">
                     <Link href={route('catalog')} onClick={() => setIsCatalogOpen(false)} className="font-heading font-bold text-[#08274D] hover:text-[#EF5042] flex items-center gap-1.5 uppercase tracking-wider">
                       Смотреть весь каталог камня <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
@@ -160,7 +160,7 @@ export default function NavBar({ items }: { items: ExtendedNavItem[] }) {
               {item.label}
               {hasDropdown && <ChevronDown className="w-3.5 h-3.5 text-[#8B9198] group-hover:text-[#EF5042] transition-colors" />}
               <span className={cn(
-                "absolute bottom-2 left-0 h-[2px] bg-[#EF5042] transition-all duration-300",
+                "absolute bottom-2 left-0 h-[1.5px] bg-[#08274D] transition-all duration-300",
                 isActive ? "w-full" : "w-0 group-hover:w-full"
               )} />
             </a>
@@ -177,7 +177,7 @@ export default function NavBar({ items }: { items: ExtendedNavItem[] }) {
             {item.label}
             {hasDropdown && <ChevronDown className="w-3.5 h-3.5 text-[#8B9198] group-hover:text-[#EF5042] transition-colors" />}
             <span className={cn(
-              "absolute bottom-2 left-0 h-[2px] bg-[#EF5042] transition-all duration-300",
+              "absolute bottom-2 left-0 h-[1.5px] bg-[#08274D] transition-all duration-300",
               isActive ? "w-full" : "w-0 group-hover:w-full"
             )} />
           </Link>

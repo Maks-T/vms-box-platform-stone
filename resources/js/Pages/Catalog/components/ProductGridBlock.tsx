@@ -17,10 +17,13 @@ interface Props {
 export function ProductGridBlock({ isLoading, products, meta, setPage, clearFilters, bootstrapConfig }: Props) {
   return (
     <div className="relative min-h-[500px] flex flex-col">
-      <div className="flex items-center justify-between mb-6 border-b border-border pb-4">
-        <h2 className="text-2xl font-semibold text-foreground tracking-tight">Результаты</h2>
-        <span className="text-sm font-medium text-muted-foreground bg-muted px-3 py-1 rounded-full">
-          {meta?.total || products.length} товаров
+      <div className="flex items-center justify-between mb-6 border-b border-slate-200/70 pb-4">
+        <div className="flex items-baseline gap-3">
+          <h2 className="font-heading font-bold text-[18px] md:text-[22px] text-[#08274D] tracking-tight">Материалы</h2>
+          <span className="text-xs text-slate-400 font-medium hidden sm:inline">• в наличии и под заказ</span>
+        </div>
+        <span className="text-[12px] font-heading font-bold text-slate-500 uppercase tracking-wider">
+          {meta?.total || products.length} позиций
         </span>
       </div>
 
@@ -37,7 +40,7 @@ export function ProductGridBlock({ isLoading, products, meta, setPage, clearFilt
         )}
 
         <div className={cn(
-          "transition-all duration-500",
+          "transition-opacity duration-300",
           isLoading ? "opacity-30 scale-[0.99] grayscale-[0.5]" : "opacity-100 scale-100"
         )}>
           {products.length > 0 ? (

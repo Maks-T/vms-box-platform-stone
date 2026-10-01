@@ -80,22 +80,10 @@ export function CatalogHeroBlock() {
   return (
     <div className="w-full max-w-[1280px] mx-auto px-4 md:px-8 lg:px-10 pt-4 md:pt-6 mb-4">
       <div
-        className="relative w-full rounded-2xl border border-[#E2E6EA] overflow-hidden bg-white shadow-xs min-h-[360px] sm:min-h-[400px] lg:min-h-[440px] flex items-center select-none"
+        className="relative w-full rounded-2xl border border-slate-200/80 overflow-hidden bg-white shadow-xs min-h-[360px] sm:min-h-[400px] lg:min-h-[440px] flex items-center select-none"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        {/* Анимированная полоса таймера */}
-        <div className="absolute top-0 left-0 w-full h-[3px] bg-slate-200/40 z-30 overflow-hidden">
-          <div
-            key={current}
-            className={cn(
-              "h-full bg-[#EF5042] transition-all duration-[5500ms] ease-linear rounded-full",
-              isPaused ? "opacity-60" : "w-full"
-            )}
-            style={{ width: isPaused ? undefined : '100%' }}
-          />
-        </div>
-
         {/* Фоновые изображения слайдов с плавной кросс-анимацией */}
         {SLIDES.map((slide, idx) => (
           <div
@@ -126,11 +114,11 @@ export function CatalogHeroBlock() {
 
         {/* Содержимое активного слайда с аккуратными отступами */}
         <div className="relative z-10 max-w-xl px-6 py-8 md:px-10 lg:px-12 flex flex-col items-start text-left">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="w-1.5 h-5 bg-[#EF5042] rounded-full inline-block shrink-0" />
+          <div className="flex items-center gap-2.5 mb-3">
+            <span className="w-2 h-2 rounded-full bg-[#9B6A38] inline-block shrink-0" />
             <span
               className={cn(
-                "text-[11px] md:text-[12px] font-heading font-extrabold uppercase tracking-widest",
+                "text-[11px] md:text-[12px] font-heading font-bold uppercase tracking-[0.14em]",
                 activeSlide.isDarkText ? "text-[#08274D]" : "text-white/90"
               )}
             >
@@ -140,7 +128,7 @@ export function CatalogHeroBlock() {
 
           <h1
             className={cn(
-              "font-heading font-bold text-[20px] sm:text-[26px] lg:text-[30px] leading-[1.2] mb-3 tracking-tight transition-colors duration-500",
+              "font-heading font-bold text-[22px] sm:text-[28px] lg:text-[32px] leading-[1.2] mb-3 tracking-tight transition-colors duration-500",
               activeSlide.isDarkText ? "text-[#08274D]" : "text-white"
             )}
           >
@@ -149,7 +137,7 @@ export function CatalogHeroBlock() {
 
           <p
             className={cn(
-              "font-sans text-[13px] sm:text-[15px] leading-relaxed mb-6 max-w-lg transition-colors duration-500",
+              "font-sans text-[13px] sm:text-[15px] leading-relaxed mb-6 max-w-md transition-colors duration-500",
               activeSlide.isDarkText ? "text-[#486581]" : "text-slate-200"
             )}
           >
@@ -159,7 +147,7 @@ export function CatalogHeroBlock() {
           <div className="flex flex-wrap items-center gap-3">
             <Link
               href={route('catalog')}
-              className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#08274D] hover:bg-[#EF5042] text-white font-heading font-bold text-[11px] md:text-[12px] uppercase tracking-wider rounded-lg transition-all shadow-xs active:scale-[0.98] cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#08274D] hover:bg-[#EF5042] text-white font-heading font-semibold text-[11px] md:text-[12px] uppercase tracking-wider rounded-xl transition-all shadow-xs active:scale-[0.98] cursor-pointer"
             >
               В каталог <ArrowRight className="w-3.5 h-3.5" />
             </Link>
@@ -167,9 +155,9 @@ export function CatalogHeroBlock() {
             <Link
               href={route('calculator.show')}
               className={cn(
-                "inline-flex items-center gap-2 px-5 py-2.5 font-heading font-bold text-[11px] md:text-[12px] uppercase tracking-wider rounded-lg transition-all shadow-xs active:scale-[0.98] border cursor-pointer",
+                "inline-flex items-center gap-2 px-5 py-2.5 font-heading font-semibold text-[11px] md:text-[12px] uppercase tracking-wider rounded-xl transition-all shadow-2xs active:scale-[0.98] border cursor-pointer",
                 activeSlide.isDarkText
-                  ? "bg-white/95 hover:bg-white text-[#08274D] border-[#E2E6EA] hover:border-[#08274D]"
+                  ? "bg-white/90 hover:bg-white text-[#08274D] border-slate-200 hover:border-slate-300"
                   : "bg-white/10 hover:bg-white/20 text-white border-white/20 hover:border-white"
               )}
             >
@@ -183,30 +171,30 @@ export function CatalogHeroBlock() {
           <button
             onClick={handlePrev}
             aria-label="Предыдущий слайд"
-            className="w-8 h-8 rounded-full bg-white/90 hover:bg-white text-[#08274D] hover:text-[#EF5042] border border-[#E2E6EA] flex items-center justify-center shadow-sm transition-all cursor-pointer active:scale-95"
+            className="w-8 h-8 rounded-full bg-white/90 hover:bg-white text-[#08274D] hover:text-[#EF5042] border border-slate-200/80 flex items-center justify-center shadow-2xs transition-all cursor-pointer active:scale-95"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
           <button
             onClick={handleNext}
             aria-label="Следующий слайд"
-            className="w-8 h-8 rounded-full bg-white/90 hover:bg-white text-[#08274D] hover:text-[#EF5042] border border-[#E2E6EA] flex items-center justify-center shadow-sm transition-all cursor-pointer active:scale-95"
+            className="w-8 h-8 rounded-full bg-white/90 hover:bg-white text-[#08274D] hover:text-[#EF5042] border border-slate-200/80 flex items-center justify-center shadow-2xs transition-all cursor-pointer active:scale-95"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Буллеты пагинации слайдов */}
-        <div className="absolute bottom-4 left-6 md:left-10 z-20 flex items-center gap-1.5">
+        {/* Архитектурные индикаторы слайдов */}
+        <div className="absolute bottom-5 left-6 md:left-10 z-20 flex items-center gap-2">
           {SLIDES.map((slide, idx) => (
             <button
               key={slide.id}
               onClick={() => setCurrent(idx)}
               className={cn(
-                "transition-all duration-300 rounded-full cursor-pointer h-2",
+                "transition-all duration-300 rounded-full cursor-pointer h-1",
                 current === idx
-                  ? "w-6 bg-[#EF5042]"
-                  : "w-2 bg-slate-400/50 hover:bg-slate-500"
+                  ? "w-7 bg-[#08274D]"
+                  : "w-2 bg-slate-300 hover:bg-slate-400"
               )}
               aria-label={`Перейти к слайду ${idx + 1}`}
             />

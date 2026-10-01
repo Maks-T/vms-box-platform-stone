@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from '@inertiajs/react';
-import { Image as ImageIcon } from 'lucide-react';
+import { Image as ImageIcon, ArrowUpRight } from 'lucide-react';
 import { StoneProduct, EavValueOption, BootstrapConfig, ProductVariant } from '@/types/catalog';
 import { route } from "ziggy-js";
 import Badge from '@/shared/components/ui/Badge';
@@ -117,46 +117,40 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
 
   return (
     <div
-      className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-[#E2E6EA] hover:border-[#9B6A38]/40 hover:shadow-xl transition-all duration-300">
+      className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-slate-200/80 hover:border-[#9B6A38]/50 hover:shadow-lg hover:shadow-slate-200/50 transition-all duration-300">
 
-      <div className="relative aspect-square bg-[#F8F9FA] overflow-hidden mb-5 border-b border-[#E2E6EA]">
+      <div className="relative aspect-square bg-[#FBFBFC] overflow-hidden border-b border-slate-100">
         <Link href={route('product.show', slug)} className="block w-full h-full p-6">
           {displayImage ? (
             <img
               src={displayImage}
               alt={name}
-              className="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105"
             />
           ) : (
-            <div className="flex items-center justify-center w-full h-full opacity-20 text-muted-foreground">
+            <div className="flex items-center justify-center w-full h-full opacity-20 text-slate-400">
               <ImageIcon className="w-16 h-16"/>
             </div>
           )}
         </Link>
 
-        {/* Фирменный бейдж «Цена за м²» в стиле MasterStone */}
-        <div
-          className="absolute top-3.5 left-3.5 bg-[#EF5042] text-white text-[10px] font-heading font-extrabold px-2.5 py-1 rounded uppercase tracking-wider shadow-sm">
-          Цена за м²
-        </div>
-
-        <FavoriteButton product={product} className="absolute top-4 right-4" />
+        <FavoriteButton product={product} className="absolute top-3.5 right-3.5 bg-white/90 backdrop-blur-xs p-2 rounded-full shadow-2xs hover:bg-white transition-colors" iconClassName="w-4.5 h-4.5" />
       </div>
 
-      <div className="flex flex-col flex-1 px-5 pb-5">
-        <p className="text-[11px] font-semibold text-[#8B9198] uppercase tracking-wider mb-1.5 line-clamp-1">{subtitle}</p>
-        <Link href={route('product.show', slug)} className="block mb-2 flex-1">
+      <div className="flex flex-col flex-1 p-5">
+        <p className="text-[10px] md:text-[11px] font-heading font-bold text-[#9B6A38] uppercase tracking-wider mb-1.5 line-clamp-1">{subtitle}</p>
+        <Link href={route('product.show', slug)} className="block mb-3">
           <h3
-            className="font-heading font-bold text-[16px] md:text-[17px] text-[#08274D] leading-snug tracking-tight group-hover:text-[#EF5042] transition-colors line-clamp-2"
+            className="font-heading font-bold text-[15px] md:text-[16px] text-[#08274D] leading-snug tracking-tight group-hover:text-[#EF5042] transition-colors line-clamp-2"
           >{name}</h3>
         </Link>
 
         {colorsToShow.length > 0 && (
-          <div className="flex items-center gap-1.5 mb-4 mt-auto flex-wrap">
+          <div className="flex items-center gap-1.5 mb-4 flex-wrap">
             {colorsToShow.length === 1 ? (
               <div className="flex items-center gap-2">
                 {renderSwatch(colorsToShow[0])}
-                <span className="text-xs text-muted-foreground truncate">{colorsToShow[0].label}</span>
+                <span className="text-xs text-slate-500 truncate">{colorsToShow[0].label}</span>
               </div>
             ) : (
               <>
@@ -168,24 +162,31 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
           </div>
         )}
 
-        <div className="mt-auto flex flex-col gap-4">
-          <div className="font-heading text-[20px] md:text-[22px] font-black text-[#08274D] flex items-baseline gap-1 min-h-[32px]">
+        <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
+          <div className="flex flex-col">
+            <span className="text-[10px] font-heading uppercase text-slate-400 font-semibold tracking-wider">Цена за м²</span>
+            <div className="font-heading text-[18px] md:text-[20px] font-black text-[#08274D] flex items-baseline gap-1">
             {displayPrice > 0 ? (
               <>
                 <span>{formattedNumber}</span>
-                <span className="text-xs md:text-sm font-normal text-[#696973] lowercase">
+                <span className="text-[11px] font-normal text-slate-500 lowercase">
                   {currencySymbol}
                 </span>
               </>
             ) : (
-              <Badge variant="gray" className="!bg-muted !border-border !text-muted-foreground !shadow-none !px-3 !py-1 text-xs">
-                Бесплатно / По запросу
-              </Badge>
+              <span className="text-xs font-heading font-semibold text-slate-500 uppercase tracking-wide">
+                По запросу
+              </span>
             )}
+            </div>
           </div>
-          <Link href={route('product.show', slug)}
-                className="w-full h-[44px] bg-[#08274D] text-white hover:bg-[#EF5042] active:scale-[0.98] font-heading text-[12px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center rounded-xl shadow-sm cursor-pointer">
-            Подробнее
+
+          <Link
+            href={route('product.show', slug)}
+            aria-label={`Подробнее о ${name}`}
+            className="w-9 h-9 rounded-xl bg-slate-100/80 group-hover:bg-[#08274D] text-[#08274D] group-hover:text-white flex items-center justify-center transition-all duration-200 shadow-2xs group-hover:shadow-xs"
+          >
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
       </div>

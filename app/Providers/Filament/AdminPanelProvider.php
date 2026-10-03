@@ -42,7 +42,7 @@ class AdminPanelProvider extends PanelProvider
       ])
       ->maxContentWidth(Width::Full)
       ->brandLogo(asset('images/logo.svg'))
-      ->brandLogoHeight('3rem')
+      ->brandLogoHeight('4rem')
       ->homeUrl('/')
       ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
       ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')

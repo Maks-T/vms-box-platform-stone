@@ -133,6 +133,22 @@
                         "ru": "Допускает скругления"
                     },
                     "width": 1
+                },
+                {
+                    "key": "trim_offset",
+                    "type": "number",
+                    "label": {
+                        "ru": "Технический отступ от края (мм)"
+                    },
+                    "width": 1
+                },
+                {
+                    "key": "max_transport_size",
+                    "type": "number",
+                    "label": {
+                        "ru": "Макс. транспортировочный размер (мм)"
+                    },
+                    "width": 1
                 }
             ]
         },
@@ -188,7 +204,115 @@
                 "is_separate": false,
                 "corner_add_length": 920,
                 "corner_add_width": 760,
-                "allow_rounding": true
+                "allow_rounding": true,
+                "trim_offset": 10,
+                "max_transport_size": 2800,
+                "shape_allowances": {
+                    "worktop_line": {
+                        "front": { "has_edge": true, "has_hem": true, "edge_width": 40, "hem_width": 40 },
+                        "left": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "right": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "back": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 }
+                    },
+                    "worktop_l_shaped": {
+                        "front": { "has_edge": true, "has_hem": true, "edge_width": 40, "hem_width": 40 },
+                        "left": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "right": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "back": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 }
+                    },
+                    "worktop_u_shaped": {
+                        "front": { "has_edge": true, "has_hem": true, "edge_width": 40, "hem_width": 40 },
+                        "left": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "right": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "back": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 }
+                    },
+                    "island": {
+                        "front": { "has_edge": true, "has_hem": true, "edge_width": 40, "hem_width": 40 },
+                        "back": { "has_edge": true, "has_hem": true, "edge_width": 40, "hem_width": 40 },
+                        "left": { "has_edge": true, "has_hem": true, "edge_width": 40, "hem_width": 40 },
+                        "right": { "has_edge": true, "has_hem": true, "edge_width": 40, "hem_width": 40 }
+                    },
+                    "windowsill": {
+                        "front": { "has_edge": true, "has_hem": true, "edge_width": 40, "hem_width": 40 },
+                        "ears": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "left": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 },
+                        "right": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 },
+                        "back": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 }
+                    }
+                }
+            },
+            "attached_attributes": [
+                {
+                    "code": "supplier_article",
+                    "is_variant_only": true
+                },
+                {
+                    "code": "effect_akril",
+                    "is_variant_only": false
+                },
+                {
+                    "code": "is_bend",
+                    "is_variant_only": false
+                },
+                {
+                    "code": "texture",
+                    "is_variant_only": false
+                },
+                {
+                    "code": "inclusions_akril",
+                    "is_variant_only": false
+                },
+                {
+                    "code": "brand",
+                    "is_variant_only": false
+                },
+                {
+                    "code": "color",
+                    "is_variant_only": true
+                },
+                {
+                    "code": "collection",
+                    "is_variant_only": false
+                },
+                {
+                    "code": "length",
+                    "is_variant_only": false
+                },
+                {
+                    "code": "width",
+                    "is_variant_only": false
+                },
+                {
+                    "code": "height",
+                    "is_variant_only": false
+                },
+                {
+                    "code": "cutting_groups",
+                    "is_variant_only": false
+                }
+            ],
+            "pricing_mode": "complex_dictionary",
+            "pricing_attr_code": null,
+            "pricing_field": "purchase_cost"
+        },
+        {
+            "external_code": "type_acrylic_neomarm",
+            "family_external_code": "fam_stone",
+            "code": "acrylic_neomarm",
+            "name": {
+                "ru": "Акриловый камень (Neomarm)"
+            },
+            "meta": {
+                "step": 0.25,
+                "maxStack": 1,
+                "axisX": true,
+                "minPart": 12,
+                "is_separate": false,
+                "corner_add_length": 920,
+                "corner_add_width": 760,
+                "allow_rounding": true,
+                "trim_offset": 10,
+                "max_transport_size": 2800
             },
             "attached_attributes": [
                 {
@@ -259,7 +383,42 @@
                 "is_separate": true,
                 "corner_add_length": 750,
                 "corner_add_width": 700,
-                "allow_rounding": false
+                "allow_rounding": false,
+                "trim_offset": 15,
+                "max_transport_size": 2800,
+                "shape_allowances": {
+                    "worktop_line": {
+                        "front": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "left": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "right": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "back": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 }
+                    },
+                    "worktop_l_shaped": {
+                        "front": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "left": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "right": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "back": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 }
+                    },
+                    "worktop_u_shaped": {
+                        "front": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "left": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "right": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "back": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 }
+                    },
+                    "island": {
+                        "front": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "back": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "left": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "right": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 }
+                    },
+                    "windowsill": {
+                        "front": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "ears": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
+                        "left": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 },
+                        "right": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 },
+                        "back": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 }
+                    }
+                }
             },
             "attached_attributes": [
                 {
@@ -1532,11 +1691,25 @@
                     "key": "rotate",
                     "type": "boolean",
                     "label": {
-                        "ru": "Повтор рисунка"
+                        "ru": "Разрешить поворот на 90°"
                     }
                 },
                 {
                     "key": "cut",
+                    "type": "boolean",
+                    "label": {
+                        "ru": "Оптимизационный распил"
+                    }
+                },
+                {
+                    "key": "max_joints",
+                    "type": "number",
+                    "label": {
+                        "ru": "Макс. количество стыков"
+                    }
+                },
+                {
+                    "key": "is_separate_cutting",
                     "type": "boolean",
                     "label": {
                         "ru": "Раздельный раскрой"
@@ -1552,7 +1725,9 @@
                     },
                     "meta": {
                         "rotate": true,
-                        "cut": true
+                        "cut": true,
+                        "max_joints": 2,
+                        "is_separate_cutting": true
                     }
                 },
                 {
@@ -1563,7 +1738,9 @@
                     },
                     "meta": {
                         "rotate": true,
-                        "cut": false
+                        "cut": true,
+                        "max_joints": 1,
+                        "is_separate_cutting": false
                     }
                 },
                 {
@@ -1574,7 +1751,9 @@
                     },
                     "meta": {
                         "rotate": false,
-                        "cut": true
+                        "cut": false,
+                        "max_joints": 0,
+                        "is_separate_cutting": true
                     }
                 },
                 {
@@ -1585,7 +1764,9 @@
                     },
                     "meta": {
                         "rotate": false,
-                        "cut": false
+                        "cut": false,
+                        "max_joints": 0,
+                        "is_separate_cutting": false
                     }
                 }
             ]

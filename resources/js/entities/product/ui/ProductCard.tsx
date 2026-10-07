@@ -32,6 +32,25 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
   const slabCode = external_code || (attributes?.code?.value as string) || `R${id}`;
   const unitLabel = unit?.symbol || unit?.name || 'м²';
 
+  // Определение типа: слэб/текстура камня (object-cover) или оборудование/сантехника (object-contain)
+  const isSlab = (() => {
+    const nameLower = (name || '').toLowerCase();
+    const slugLower = (slug || '').toLowerCase();
+    const codeLower = (external_code || '').toLowerCase();
+
+    const nonSlabKeywords = [
+      'смесител', 'мойк', 'раковина', 'дозатор', 'сифон', 'кран',
+      'труб', 'опор', 'сва', 'кляймер', 'крепеж', 'профил', 'поддон',
+      'faucet', 'sink', 'tap', 'dispenser', 'level', 'blanco', 'omoikiri'
+    ];
+
+    if (nonSlabKeywords.some((kw) => nameLower.includes(kw) || slugLower.includes(kw) || codeLower.includes(kw))) {
+      return false;
+    }
+
+    return true;
+  })();
+
   // Извлечение всех доступных цветов для свотчей карточки
   const parentColor = attributes?.color?.value as EavValueOption | EavValueOption[] | undefined;
   const variantColors: EavValueOption[] = [];
@@ -73,7 +92,10 @@ export const ProductCard = ({ product, bootstrapConfig }: ProductCardProps) => {
           <img
             src={displayImage}
             alt={name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            className={cn(
+              "w-full h-full transition-transform duration-300 group-hover:scale-105",
+              isSlab ? "object-cover" : "object-contain p-4 mix-blend-multiply"
+            )}
           />
         ) : (
           <div className="flex items-center justify-center w-full h-full opacity-20 text-slate-400">

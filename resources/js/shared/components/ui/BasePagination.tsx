@@ -1,5 +1,6 @@
 import React from 'react';
 import {cn} from '@/shared/lib/utils';
+import { ChevronRight } from 'lucide-react';
 
 interface PaginationLink {
   url: string | null;
@@ -25,8 +26,8 @@ interface BasePaginationProps {
 export function BasePagination({
                                  meta,
                                  onPageChange,
-                                 prevLabel = '‹ Назад',
-                                 nextLabel = 'Вперед ›',
+                                 prevLabel = '‹',
+                                 nextLabel = '›',
                                  className = ''
                                }: BasePaginationProps) {
   if (!meta || !meta.last_page || meta.last_page <= 1) {
@@ -35,7 +36,7 @@ export function BasePagination({
 
   return (
     <div
-      className={cn("mt-12 flex flex-wrap items-center justify-center gap-1.5 md:gap-2 select-none", className)}>
+      className={cn("border border-[#E5E5E5] rounded-md bg-white p-2 sm:p-3 flex items-center justify-center gap-1 sm:gap-2 text-sm font-semibold text-gray-700 select-none mt-10", className)}>
       {meta.links.map((link, idx) => {
         let label = link.label;
 
@@ -44,7 +45,7 @@ export function BasePagination({
 
         if (!link.url) {
           return (
-            <span key={idx} className="min-w-[38px] h-[38px] flex items-center justify-center text-[#8B9198] text-sm font-medium">
+            <span key={idx} className="w-9 h-9 flex items-center justify-center text-gray-400">
               {label}
             </span>
           );
@@ -52,19 +53,16 @@ export function BasePagination({
 
         const urlObj = new URL(link.url, 'http://localhost');
         const pageNum = Number(urlObj.searchParams.get('page'));
-        const isNavButton = label === prevLabel || label === nextLabel;
 
         return (
           <button
             key={idx}
             onClick={() => onPageChange(pageNum)}
             className={cn(
-              "transition-all duration-200 cursor-pointer",
-              isNavButton
-                ? "px-4 py-2 rounded-lg border border-[#E2E6EA] bg-white text-[#08274D] hover:text-[#EF5042] hover:border-[#08274D] font-heading font-bold text-xs uppercase tracking-wider"
-                : link.active
-                  ? "min-w-[38px] h-[38px] rounded-lg bg-[#08274D] text-white border border-[#08274D] font-heading font-bold text-sm shadow-xs flex items-center justify-center cursor-default pointer-events-none"
-                  : "min-w-[38px] h-[38px] rounded-lg border border-[#E2E6EA] bg-white text-[#1E252D] hover:text-[#08274D] hover:border-[#08274D] hover:bg-[#F0F2F5] font-medium text-sm flex items-center justify-center"
+              "w-9 h-9 flex items-center justify-center transition-colors cursor-pointer rounded-md",
+              link.active
+                ? "border-b-2 border-[#212B36] text-[#212B36] font-bold cursor-default pointer-events-none rounded-none"
+                : "text-gray-600 hover:bg-[#F8F8F8] hover:text-[#212B36]"
             )}
           >
             {label}

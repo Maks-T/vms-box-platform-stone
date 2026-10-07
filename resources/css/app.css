@@ -1,6 +1,7 @@
 /* Строгий приоритет слоев для избежания конфликтов */
 @layer properties, theme, base, calc, components, utilities;
 
+/* Ресурсы Laravel и шаблоны пагинации */
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
@@ -17,15 +18,23 @@
 
 /* ========================================================
    СЛОЙ КАЛЬКУЛЯТОРА И ВИДЖЕТА (#calcAppRoot)
-   Стиль каталогов кварцевого камня: контрастные контуры,
-   видимые границы карточек и благородная палитра
+   Минималистичный архитектурный стиль QuartzMaster:
+   строгий графит #212B36, деликатные контуры 1px, чистые чекбоксы
    ======================================================== */
 @layer calc {
     .dummy-calc-anchor {
         display: none;
     }
 
-    /* 1. Фирменный шрифт Montserrat для заголовков шагов */
+    /* Базовые переменные виджета: графит #212B36 */
+    #calcAppRoot {
+        --calc-primary: 210 24% 17% !important; /* #212B36 */
+        --calc-primary-foreground: 0 0% 100% !important;
+        --calc-ring: 210 24% 17% !important;
+        --calc-border: 214 32% 91% !important; /* #E2E8F0 */
+    }
+
+    /* 1. Фирменный шрифт для заголовков калькулятора и шагов */
     #calcAppRoot [class*="calc-text-uppercase"],
     #calcAppRoot [class*="lg:calc-text-3xl"],
     #calcAppRoot [class*="lg:calc-text-xl"],
@@ -33,44 +42,83 @@
     #calcAppRoot h3 {
         font-family: var(--font-heading), sans-serif !important;
         font-weight: 700 !important;
-        letter-spacing: 0.05em !important;
-        color: #08274D !important;
+        letter-spacing: 0.02em !important;
+        color: #212B36 !important;
     }
 
-    /* 2. ИНТЕРЬЕРНЫЕ ТОНКИЕ ГРАНИЦЫ КАРТОЧЕК (1px Hairline, без агрессивных обводок) */
-    /* Спокойное состояние: деликатный контур 1px */
+    /* 2. Тонкие контуры карточек (1px Hairline, спокойное состояние) */
     #calcAppRoot .calc-border-muted,
     #calcAppRoot .calc-border {
         border-color: #E2E8F0 !important;
         border-width: 1px !important;
         background-color: #FFFFFF !important;
+        border-radius: 6px !important;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
     }
 
-    /* Выбранная карточка: точечный класс .calc-border-primary с легкой минеральной подложкой */
+    #calcAppRoot .calc-border:hover {
+        border-color: #CBD5E1 !important;
+    }
+
+    /* Выбранная карточка камня / формы: благородный строгий графит #212B36 (без бирюзы) */
     #calcAppRoot label.calc-border-primary,
-    #calcAppRoot div.calc-border-primary {
-        border-color: #08274D !important;
+    #calcAppRoot div.calc-border-primary,
+    #calcAppRoot [class*="calc-border-primary"]:not([role="checkbox"]):not([role="radio"]):not([role="switch"]) {
+        border-color: #212B36 !important;
         border-width: 1.5px !important;
-        background-color: rgba(8, 39, 77, 0.03) !important;
+        background-color: #FFFFFF !important;
+        border-radius: 6px !important;
+        box-shadow: 0 2px 8px rgba(33, 43, 54, 0.06) !important;
     }
 
-    /* 3. КОНТРАСТНЫЕ РАДИО-ИНДИКАТОРЫ ВНУТРИ КАРТОЧЕК */
+    /* 3. Чекбоксы: аккуратные белые квадратики, при выборе - графит #212B36 (устранена заливка сплошным красным) */
+    #calcAppRoot button[role="checkbox"] {
+        background-color: #FFFFFF !important;
+        border: 1.5px solid #CBD5E1 !important;
+        border-radius: 4px !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+        transition: all 0.15s ease !important;
+    }
+
+    #calcAppRoot button[role="checkbox"]:hover {
+        border-color: #212B36 !important;
+    }
+
+    #calcAppRoot button[role="checkbox"][data-state="checked"],
+    #calcAppRoot button[role="checkbox"][aria-checked="true"] {
+        background-color: #212B36 !important;
+        border-color: #212B36 !important;
+    }
+
+    #calcAppRoot button[role="checkbox"][data-state="checked"] svg,
+    #calcAppRoot button[role="checkbox"][data-state="checked"] path {
+        stroke: #FFFFFF !important;
+    }
+
+    /* 4. Радио-индикаторы внутри карточек */
     #calcAppRoot button[role="radio"] {
-        border: 1px solid #CBD5E1 !important;
+        background-color: #FFFFFF !important;
+        border: 1.5px solid #CBD5E1 !important;
+        border-radius: 50% !important;
     }
 
     #calcAppRoot button[role="radio"][data-state="checked"],
     #calcAppRoot button[role="radio"][aria-checked="true"] {
-        border-color: #08274D !important;
+        border-color: #212B36 !important;
     }
 
     #calcAppRoot button[role="radio"][data-state="checked"] svg,
     #calcAppRoot button[role="radio"][data-state="checked"] [class*="calc-fill-primary"] {
-        fill: #08274D !important;
-        color: #08274D !important;
+        fill: #212B36 !important;
+        color: #212B36 !important;
     }
 
-    /* 4. ВИДИМЫЕ ГРАНИЦЫ ДЛЯ ИНПУТОВ И СЕЛЕКТОВ */
+    /* Свитчеры переключения опций */
+    #calcAppRoot [role="switch"][data-state="checked"] {
+        background-color: #212B36 !important;
+    }
+
+    /* 5. Поля ввода и селекты параметров изделий */
     #calcAppRoot input[type="text"],
     #calcAppRoot input[type="number"],
     #calcAppRoot input:not([type]),
@@ -78,9 +126,9 @@
     #calcAppRoot textarea,
     #calcAppRoot [role="combobox"] {
         border: 1px solid #CBD5E1 !important;
-        border-radius: 6px !important;
+        border-radius: 4px !important;
         background-color: #FFFFFF !important;
-        color: #08274D !important;
+        color: #212B36 !important;
         font-family: var(--font-sans), sans-serif !important;
         font-size: 14px !important;
     }
@@ -91,55 +139,72 @@
     #calcAppRoot select:focus,
     #calcAppRoot textarea:focus,
     #calcAppRoot [role="combobox"]:focus {
-        border-color: #08274D !important;
+        border-color: #212B36 !important;
         outline: none !important;
-        box-shadow: 0 0 0 1px #08274D !important;
+        box-shadow: 0 0 0 1px #212B36 !important;
     }
 
-    /* 5. ИНПУТЫ РАЗМЕРОВ НА 3D/2D СХЕМЕ ИЗДЕЛИЯ */
+    /* Инпуты размеров на 3D/2D чертеже */
     #calcAppRoot input[dimension] {
         border: 1px solid #94A3B8 !important;
         background-color: #FFFFFF !important;
         font-weight: 600 !important;
         text-align: center;
-        border-radius: 6px !important;
+        border-radius: 4px !important;
+        color: #212B36 !important;
     }
 
-    /* 6. КНОПКИ ДЕЙСТВИЙ (Navy -> Coral) СО СТРОГИМ РАДИУСОМ 8px */
-    #calcAppRoot button.calc-bg-primary,
-    #calcAppRoot button[class*="calc-bg-primary"],
-    #calcAppRoot button[class*="bg-primary"] {
-        background-color: #08274D !important;
+    /* 6. Кнопка «ДАЛЕЕ» и действия шагов (Сдержанный архитектурный графит #212B36 вместо кричащего красного) */
+    #calcAppRoot button.calc-bg-primary:not([role="checkbox"]):not([role="radio"]):not([role="switch"]),
+    #calcAppRoot button.calc-inline-flex.calc-bg-primary:not([role="checkbox"]):not([role="radio"]),
+    #calcAppRoot button[type="submit"]:not([role="checkbox"]) {
+        background-color: #212B36 !important;
         color: #FFFFFF !important;
         font-family: var(--font-heading), sans-serif !important;
-        font-weight: 600 !important;
+        font-weight: 700 !important;
         text-transform: uppercase !important;
-        letter-spacing: 0.05em !important;
-        border-radius: 8px !important;
+        letter-spacing: 0.06em !important;
+        border-radius: 6px !important;
+        border: none !important;
         transition: background-color 0.25s ease, transform 0.15s ease !important;
     }
 
-    #calcAppRoot button.calc-bg-primary:hover,
-    #calcAppRoot button[class*="calc-bg-primary"]:hover,
-    #calcAppRoot button[class*="bg-primary"]:hover {
-        background-color: #EF5042 !important; /* Коралловый при наведении */
+    #calcAppRoot button.calc-bg-primary:not([role="checkbox"]):not([role="radio"]):not([role="switch"]):hover,
+    #calcAppRoot button.calc-inline-flex.calc-bg-primary:not([role="checkbox"]):not([role="radio"]):hover {
+        background-color: #2D3A49 !important;
     }
 
     #calcAppRoot button.calc-bg-primary:active {
         transform: scale(0.98);
     }
+
+    /* 7. Карточка «Добавить материал» (лаконичный пунктир) */
+    #calcAppRoot button:has(svg.lucide-circle-plus) {
+        border: 1px dashed #CBD5E1 !important;
+        background-color: #FAFAFA !important;
+        border-radius: 6px !important;
+        color: #64748B !important;
+        transition: all 0.2s ease !important;
+    }
+
+    #calcAppRoot button:has(svg.lucide-circle-plus):hover {
+        border-color: #212B36 !important;
+        color: #212B36 !important;
+        background-color: #F8FAFC !important;
+    }
 }
 
 /**
- * ДИЗАЙН-СИСТЕМА MASTERSTONE (TAILWIND CSS V4)
- * Архитектурный стиль: строгость, hairline-границы, естественные фактуры камня
+ * ДИЗАЙН-СИСТЕМА QUARTZMASTER (TAILWIND CSS V4)
+ * Архитектурный стиль: изделия из кварца и керамики, строгий радиус 4px,
+ * графитово-сланцевая палитра, яркий бирюзовый акцент и красный CTA
  */
 @theme {
     /* ========================================================
-       1. Шрифты (Архитектурная пара: Montserrat + Inter)
+       1. Шрифты (Фирменная пара: IBM Plex Sans + Montserrat)
        ======================================================== */
-    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-heading: "Montserrat", sans-serif;
+    --font-sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-heading: "Montserrat", "IBM Plex Sans", sans-serif;
 
     /* ========================================================
        2. Базовые семантические токены
@@ -165,77 +230,80 @@
     --color-ring: var(--ring);
 
     /* ========================================================
-       3. Фирменная палитра МастерСтоун (Deep Navy / Slate)
+       3. Фирменная палитра QuartzMaster (Graphite Slate / Navy)
        ======================================================== */
-    --color-stone-navy-50: #f0f4f8;
-    --color-stone-navy-100: #d9e2ec;
-    --color-stone-navy-200: #bcccdc;
-    --color-stone-navy-300: #9fb3c8;
-    --color-stone-navy-400: #627d98;
-    --color-stone-navy-500: #486581;
-    --color-stone-navy-600: #334e68;
-    --color-stone-navy-700: #243b53;
-    --color-stone-navy-800: #102a43;
-    --color-stone-navy-900: #08274d; /* Основной глубокий графитово-синий */
-    --color-stone-navy-950: #05162b;
+    --color-quartz-slate-50: #f4f6f8;
+    --color-quartz-slate-100: #e4e7eb;
+    --color-quartz-slate-200: #cbd2d9;
+    --color-quartz-slate-300: #9aa5b1;
+    --color-quartz-slate-400: #627282;
+    --color-quartz-slate-500: #3e4e5e;
+    --color-quartz-slate-600: #2d3a49; /* Фирменная плашка шапки/инпутов */
+    --color-quartz-slate-700: #26323f;
+    --color-quartz-slate-800: #212b36; /* Основной графитовый цвет темы */
+    --color-quartz-slate-900: #171f28;
+    --color-quartz-slate-950: #0e1319;
 
     /* ========================================================
-       4. Бронзово-золотой акцент натурального камня
+       4. Бирюзово-циановый акцент камня (Theme-More-Color)
        ======================================================== */
-    --color-stone-bronze-light: #dfc2a5;
-    --color-stone-bronze: #9b6a38;       /* Цвет шестеренки из логотипа */
-    --color-stone-bronze-hover: #825629;
-    --color-stone-bronze-dark: #5c3c1b;
+    --color-quartz-cyan-light: #81e6e8;
+    --color-quartz-cyan: #25ced1;       /* Акцент разделителей, цитат, бейджей */
+    --color-quartz-cyan-hover: #1eb5b8;
+    --color-quartz-cyan-dark: #148587;
 
     /* ========================================================
-       5. Кораллово-терракотовый акцент (Акции / Бейджи / Hover)
+       5. Конверсионный красный CTA (Кнопки заказа / Акции)
        ======================================================== */
-    --color-stone-coral-50: #fef2f2;
-    --color-stone-coral-100: #fee2e2;
-    --color-stone-coral-500: #ef5042;   /* Фирменный красный плашек и бейджей */
-    --color-stone-coral-600: #dc392a;
-    --color-stone-coral-700: #b92619;
+    --color-quartz-red-50: #fef2f2;
+    --color-quartz-red-100: #fee2e2;
+    --color-quartz-red: #ed1c24;
+    --color-quartz-red-500: #ed1c24;    /* Фирменный красный кнопок .btn-default */
+    --color-quartz-red-600: #d8141b;
+    --color-quartz-red-700: #b50d13;
 
     /* ========================================================
        6. Минеральные светлые поверхности (Stone Surfaces)
        ======================================================== */
     --color-surface-base: #ffffff;
-    --color-surface-subtle: #f8f9fa;
-    --color-surface-muted: #f0f2f5;
-    --color-surface-border: #e2e6ea;
+    --color-surface-subtle: #f8f8f8;
+    --color-surface-muted: #f1f1f1;     /* Фоновые блоки преимуществ grey-block */
+    --color-surface-border: #e5e5e5;
+    --color-quartz-border: #e5e5e5;
+    --color-quartz-muted: #f1f1f1;
 
     /* ========================================================
        7. Мессенджеры и служебные токены
        ======================================================== */
-    --color-social-telegram: #0b9bf5;
-    --color-social-max: #1943ef;
-    --color-social-whatsapp: #25d366;
     --color-social-vk: #0077ff;
+    --color-social-telegram: #0b9bf5;
+    --color-social-whatsapp: #25d366;
+    --color-social-inst: #e4405f;
 
     --color-heading: var(--heading);
     --color-nav: var(--nav);
     --color-meta: var(--meta);
-    --color-success: var(--success);
-    --color-warning: var(--warning);
-    --color-dark: var(--dark);
-    --color-primary-light: #579ac1;
+    --color-success: #50ad55;
+    --color-warning: #1e90ff;
+    --color-dark: #212b36;
+    --color-primary-light: #2d3a49;
 
     /* ========================================================
-       8. Строгие радиусы скруглений (6–12px)
+       8. Строгие радиусы скруглений QuartzMaster (база 4px)
        ======================================================== */
-    --radius-sm: 4px;
-    --radius-md: 6px;
-    --radius-lg: 8px;
-    --radius-xl: 12px;
-    --radius-2xl: 16px;
+    --radius-sm: 2px;
+    --radius-md: 4px; /* Стандарт Aspro Allcorp3 */
+    --radius-lg: 6px;
+    --radius-xl: 8px;
+    --radius-2xl: 12px;
 
     /* ========================================================
-       9. Сдержанные архитектурные тени (минимализм)
+       9. Архитектурные тени
        ======================================================== */
     --shadow-2xs: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
     --shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-    --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-    --shadow-hover: 0 6px 20px -4px rgba(8, 39, 77, 0.08);
+    --shadow-subtle: 0 2px 8px 0 rgba(33, 43, 54, 0.06);
+    --shadow-hover: 0 5px 20px -2px rgba(33, 43, 54, 0.12);
     --shadow-card: 0 2px 10px -2px rgba(0, 0, 0, 0.04);
 }
 
@@ -243,46 +311,46 @@
  * ПЕРЕМЕННЫЕ ЦВЕТОВ (ROOT)
  */
 :root {
-    --radius: 0.5rem; /* 8px строгий базовый радиус */
+    --radius: 0.25rem; /* Строгий базовый 4px */
     --background: #FFFFFF;
-    --foreground: #1E252D;
+    --foreground: #333333;
 
     --card: #FFFFFF;
-    --card-foreground: #1E252D;
+    --card-foreground: #333333;
 
     --popover: #FFFFFF;
-    --popover-foreground: #1E252D;
+    --popover-foreground: #333333;
 
-    /* Основной глубокий контрастный синий MasterStone */
-    --primary: #08274D;
+    /* Основной графитовый цвет бренда QuartzMaster */
+    --primary: #212B36;
     --primary-foreground: #FFFFFF;
 
-    /* Вторичный цвет подложек */
-    --secondary: #F0F2F5;
-    --secondary-foreground: #08274D;
+    /* Подложки шапки и второстепенных плашек */
+    --secondary: #2D3A49;
+    --secondary-foreground: #FFFFFF;
 
     /* Приглушенные тона */
-    --muted: #F0F2F5;
-    --muted-foreground: #696973;
+    --muted: #F1F1F1;
+    --muted-foreground: #666666;
 
-    /* Бронзово-песочный акцент */
-    --accent: #F5EFE6;
-    --accent-foreground: #9B6A38;
+    /* Бирюзово-циановый акцент натурального камня */
+    --accent: rgba(37, 206, 209, 0.1);
+    --accent-foreground: #25CED1;
 
-    /* Кораллово-терракотовый для акций и бейджей */
-    --destructive: #EF5042;
+    /* Конверсионный красный для кнопок и форм */
+    --destructive: #ED1C24;
     --destructive-foreground: #FFFFFF;
 
-    --border: #E2E6EA;
-    --input: #CBD5E1;
-    --ring: #08274D;
+    --border: #E5E5E5;
+    --input: #E5E5E5;
+    --ring: #212B36;
 
-    --heading: #08274D;
-    --nav: #486581;
-    --meta: #8B9198;
+    --heading: #212B36;
+    --nav: #2D3A49;
+    --meta: #999999;
     --success: #50AD55;
-    --warning: #FDBC30;
-    --dark: #1E252D;
+    --warning: #1E90FF;
+    --dark: #212B36;
 }
 
 /**
@@ -294,12 +362,13 @@
     }
 
     body {
-        @apply font-sans antialiased bg-[#F8F9FA] text-[#1E252D];
+        @apply font-sans antialiased bg-[#FFFFFF] text-[#333333];
         touch-action: manipulation;
     }
 
     h1, h2, h3, h4, h5, h6 {
         font-family: var(--font-heading), sans-serif;
+        color: #212B36;
     }
 
     a[href="#?"] {
@@ -316,33 +385,33 @@
     textarea:-webkit-autofill:focus {
         font-family: var(--font-sans), sans-serif !important;
         transition: background-color 5000s ease-in-out 0s !important;
-        caret-color: #08274D;
+        caret-color: #212B36;
     }
 
     /* Темные формы */
     .autofill-dark:-webkit-autofill {
         -webkit-text-fill-color: #FFFFFF !important;
-        box-shadow: 0 0 0 1000px #08274D inset !important;
-        border-color: rgba(255, 255, 255, 0.15) !important;
+        box-shadow: 0 0 0 1000px #212B36 inset !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
     }
 
     .autofill-dark:-webkit-autofill:focus {
-        border-color: var(--color-stone-bronze) !important;
+        border-color: var(--color-quartz-cyan) !important;
     }
 
-    /* Светлые формы (основные на сайте) */
+    /* Светлые формы */
     .autofill-white:-webkit-autofill {
-        -webkit-text-fill-color: #1E252D !important;
+        -webkit-text-fill-color: #333333 !important;
         box-shadow: 0 0 0 1000px #FFFFFF inset !important;
-        border-color: #CBD5E1 !important;
-        caret-color: #08274D;
+        border-color: #E5E5E5 !important;
+        caret-color: #212B36;
     }
 
     .autofill-white:-webkit-autofill:focus {
         border-color: var(--color-primary) !important;
     }
 
-    /* Защита от авто-зума на iOS */
+    /* Защита от авто-зума на мобильных Safari */
     @media screen and (max-width: 768px) {
         input, textarea, select {
             font-size: 16px !important;
@@ -355,24 +424,25 @@
  */
 @layer utilities {
     .container-page {
-        @apply w-full max-w-[1650px] mx-auto px-4 md:px-8;
+        @apply w-full max-w-[1412px] mx-auto px-4 md:px-8;
     }
 
     .container-content {
-        @apply w-full max-w-[1280px] mx-auto px-4 md:px-8 lg:px-10;
+        @apply w-full max-w-[1348px] mx-auto px-4 md:px-6;
     }
 
-    /* Декоративная линия под заголовками секций MasterStone */
-    .stone-heading-divider::after {
+    /* Фирменная линия QuartzMaster под заголовками секций */
+    .stone-heading-divider::after,
+    .quartz-heading-divider::after {
         content: '';
         display: block;
         width: 50px;
-        height: 2px;
-        background-color: var(--color-stone-coral-500);
-        margin: 12px auto 0 auto;
+        height: 3px;
+        background-color: var(--color-quartz-cyan);
+        margin: 12px 0 0 0;
     }
 
-    /* Скрытие скроллбара */
+    /* Скрытие полосы прокрутки */
     .scrollbar-hide::-webkit-scrollbar {
         display: none;
     }
@@ -390,7 +460,7 @@
 }
 
 @utility text-shadow-sm {
-    text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.25);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /**
@@ -398,6 +468,7 @@
  */
 .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
+    height: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -405,8 +476,8 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(8, 39, 77, 0.15);
-    border-radius: 6px;
+    background: rgba(33, 43, 54, 0.2);
+    border-radius: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
@@ -418,17 +489,17 @@
  */
 [data-sonner-toast] {
     background-color: #FFFFFF !important;
-    border-radius: 8px !important;
+    border-radius: 4px !important;
     font-family: var(--font-sans), sans-serif !important;
     padding: 14px 18px !important;
-    color: #1E252D !important;
-    box-shadow: 0 4px 20px rgba(8, 39, 77, 0.08) !important;
-    border: 1px solid #CBD5E1 !important;
+    color: #333333 !important;
+    box-shadow: 0 4px 20px rgba(33, 43, 54, 0.12) !important;
+    border: 1px solid #E5E5E5 !important;
 }
 
 [data-sonner-toast][data-type="success"] {
     background-color: #F0FDF4 !important;
-    border: 1px solid rgba(80, 173, 85, 0.3) !important;
+    border: 1px solid rgba(80, 173, 85, 0.4) !important;
 }
 
 [data-sonner-toast][data-type="success"] [data-icon] {
@@ -437,20 +508,20 @@
 
 [data-sonner-toast][data-type="error"] {
     background-color: #FEF2F2 !important;
-    border: 1px solid rgba(239, 80, 66, 0.3) !important;
+    border: 1px solid rgba(237, 28, 36, 0.4) !important;
 }
 
 [data-sonner-toast][data-type="error"] [data-icon] {
-    color: #EF5042 !important;
+    color: #ED1C24 !important;
 }
 
 [data-sonner-toast] [data-title] {
     font-weight: 700 !important;
     font-family: var(--font-heading), sans-serif !important;
-    color: #08274D !important;
+    color: #212B36 !important;
 }
 
 [data-sonner-toast] [data-description] {
-    color: #696973 !important;
+    color: #666666 !important;
     font-size: 13px !important;
 }

@@ -1,8 +1,7 @@
 import React from 'react';
-import {Head} from '@inertiajs/react';
+import {Head, Link} from '@inertiajs/react';
 
 import MainLayout from '@/layouts/MainLayout';
-import SectionLayout from '@/shared/components/layouts/SectionLayout';
 import {CatalogFilters} from '@/features/catalog/components/CatalogFilters';
 import {useCatalogParams} from '@/features/catalog/hooks/useCatalogParams';
 import {useCatalogApi} from '@/features/catalog/hooks/useCatalogApi';
@@ -54,11 +53,28 @@ export default function CatalogIndex() {
 
   return (
     <MainLayout headerOverlaps={false}>
-      <Head title={`${activeFamilyName || 'Каталог'} - VMS-NC Box`}/>
+      <Head title={`${activeFamilyName || 'Кварцевый камень'} купить в Москве | Каталог QuartzMaster`}/>
 
       <CatalogHeroBlock/>
 
-      <SectionLayout containerVariant="content" className="pt-0 -mt-6 md:-mt-10">
+      <div className="max-w-[1412px] mx-auto px-4 md:px-8 py-6 lg:py-10 text-left">
+        
+        {/* Заголовок страницы и хлебные крошки */}
+        <div className="mb-8 lg:mb-10">
+          <div className="flex items-center gap-3.5 mb-2.5">
+            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl text-[#212B36] tracking-tight">
+              {activeFamilyName || 'Кварцевый камень'}
+            </h1>
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-md border border-[#E5E5E5] text-xs font-semibold text-gray-500 bg-[#F8F8F8]">
+              {meta?.total || products.length}
+            </span>
+          </div>
+          <nav className="flex items-center gap-2 text-xs sm:text-sm text-gray-400">
+            <Link href="/" className="hover:text-[#212B36] transition-colors">Главная</Link>
+            <span>—</span>
+            <span className="text-gray-500 font-medium">Каталог камня</span>
+          </nav>
+        </div>
 
         <CatalogNavigationBlock
           familiesList={familiesList}
@@ -70,19 +86,13 @@ export default function CatalogIndex() {
         />
 
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
-          <aside className="hidden lg:block lg:w-[260px] xl:w-[280px] shrink-0">
-            <div className="sticky top-28 max-h-[calc(100vh-140px)] overflow-y-auto pr-4 custom-scrollbar">
-              {hasActiveFilters && (
-                <button onClick={clearFilters}
-                        className="mb-8 text-[12px] font-bold text-muted-foreground hover:text-primary uppercase tracking-widest border-b border-border hover:border-primary pb-1 transition-colors">
-                  Сбросить фильтры
-                </button>
-              )}
+          <aside className="w-full lg:w-[280px] shrink-0">
+            <div className="sticky top-28">
               <CatalogFilters filters={filtersSchema} activeFilters={activeFilters} onToggle={toggleFilter}/>
             </div>
           </aside>
 
-          <div className="lg:col-span-9 flex-1 relative flex flex-col pt-2 md:pt-4">
+          <div className="flex-1 min-w-0 w-full relative flex flex-col">
 
             <div className="flex-1">
               <ProductGridBlock
@@ -105,7 +115,7 @@ export default function CatalogIndex() {
 
           </div>
         </div>
-      </SectionLayout>
+      </div>
     </MainLayout>
   );
 }

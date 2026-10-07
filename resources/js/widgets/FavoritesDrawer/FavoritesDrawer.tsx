@@ -17,7 +17,7 @@ export const FavoritesDrawer = () => {
     }
   }, [isOpen]);
 
-  const currencySymbol = bootstrapConfig?.base_currency?.symbol_native || bootstrapConfig?.base_currency?.symbol || 'Br';
+  const currencySymbol = '₽';
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -45,8 +45,8 @@ export const FavoritesDrawer = () => {
           )}
         </div>
 
-        <div className="p-4 border-t border-[#E2E6EA] bg-[#F8F9FA] shrink-0 text-center text-[#8B9198] text-[11px] font-heading font-semibold uppercase tracking-wider">
-          МАСТЕРСТОУН • ИЗБРАННЫЕ МАТЕРИАЛЫ
+        <div className="p-4 border-t border-[#E5E5E5] bg-[#F8F8F8] shrink-0 text-center text-[#212B36] text-[11px] font-heading font-semibold uppercase tracking-wider">
+          QUARTZMASTER • ИЗБРАННЫЕ МАТЕРИАЛЫ
         </div>
       </SheetContent>
     </Sheet>

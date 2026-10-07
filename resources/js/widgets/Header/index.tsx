@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, BookOpen, ShieldCheck, Heart, Search } from 'lucide-react';
-import { Logo } from '@/shared/components/ui/Logo';
+import { Menu, Heart } from 'lucide-react';
 import { siteConfig } from '@/shared/config/site';
 import { usePage } from '@inertiajs/react';
 import { route } from 'ziggy-js';
@@ -44,7 +43,8 @@ export default function Header() {
 
   return (
     <>
-      <header className="w-full z-50 bg-white sticky top-0 shadow-sm border-b border-[#E2E6EA]">
+      <header className="sticky top-0 z-50 bg-[#212B36] text-white shadow-md w-full">
+        {/* Верхний ряд: Логотип, поиск, телефон с шоурумом и CTA */}
         <TopBar
           locale={locale}
           onLanguageChange={handleLanguageChange}
@@ -52,50 +52,36 @@ export default function Header() {
           isEmployee={isEmployee}
         />
 
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 h-20 flex justify-between items-center gap-4">
-          <Logo variant="dark-solid" />
+        {/* Нижний ряд: Основное меню навигации */}
+        <div className="border-t border-[#2D3A49] bg-[#212B36]/95 backdrop-blur-md hidden lg:block">
+          <div className="max-w-[1412px] mx-auto px-4 md:px-8 flex items-center justify-between">
+            <NavBar items={visibleNavItems} />
 
-          <NavBar items={visibleNavItems} />
-
-          {(isDev || isEmployee) && (
-            <a href="/admin" target="_blank" rel="noreferrer" className="hidden xl:flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-[#E2E6EA] text-[#08274D] text-xs font-bold uppercase tracking-wider transition-all active:scale-[0.98]">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              Админ-панель
-            </a>
-          )}
-
-          <div className="flex items-center gap-4">
-            {/* Кнопка поиска в стиле каталога камня */}
-            <button
-              aria-label="Поиск"
-              className="p-2.5 text-[#08274D] hover:text-[#EF5042] hover:bg-slate-50 rounded-xl transition-all cursor-pointer flex items-center justify-center border border-transparent hover:border-[#E2E6EA]"
-            >
-              <Search className="w-5 h-5 stroke-[2]" />
-            </button>
-
+            {/* Кнопка "В избранное" */}
             <button
               onClick={() => setIsOpen(true)}
-              className="relative p-2.5 bg-slate-50 hover:bg-slate-100 border border-[#E2E6EA] rounded-xl transition-all cursor-pointer text-[#08274D] flex items-center justify-center"
+              aria-label="Избранное"
+              className="relative p-2 text-gray-300 hover:text-[#25CED1] transition-colors cursor-pointer flex items-center"
             >
-              <Heart className="w-5 h-5 stroke-[1.8]" />
+              <Heart className="w-4 h-4" />
               {items.length > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#EF5042] text-white text-[9px] font-black w-4.5 h-4.5 flex items-center justify-center rounded-full px-0.5 border-2 border-white">
+                <span className="absolute -top-1 -right-1 bg-[#ED1C24] text-white text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
                   {items.length}
                 </span>
               )}
             </button>
-
-            {isDev && (
-              <a href="/docs/api" target="_blank" rel="noreferrer" className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-[#E2E6EA] text-[#08274D] text-xs font-bold uppercase tracking-wider transition-all active:scale-[0.98]">
-                <BookOpen className="w-4 h-4 text-[#08274D]" />
-                API Docs
-              </a>
-            )}
-
-            <button className="lg:hidden p-2 text-[#08274D] hover:text-[#EF5042]" onClick={() => setIsMobileMenuOpen(true)}>
-              <Menu className="w-6 h-6" />
-            </button>
           </div>
+        </div>
+
+        {/* Кнопка вызова мобильного меню на экранах < lg */}
+        <div className="lg:hidden absolute right-4 top-5 flex items-center gap-3">
+          <button
+            className="p-2 text-gray-300 hover:text-white cursor-pointer"
+            onClick={() => setIsMobileMenuOpen(true)}
+            aria-label="Меню"
+          >
+            <Menu className="w-6 h-6" />
+          </button>
         </div>
       </header>
 

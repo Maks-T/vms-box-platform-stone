@@ -9,9 +9,9 @@ interface Props {
 }
 
 export const CatalogPills = ({ families, activeFamily, onChange }: Props) => {
-  const basePill = "group flex items-center px-4 py-2 rounded-lg border transition-all duration-150 shrink-0 cursor-pointer select-none font-heading text-[12px] font-semibold uppercase tracking-wider";
-  const activeClass = "bg-[#08274D] border-[#08274D] text-white shadow-2xs";
-  const inactiveClass = "bg-white border-slate-200 text-slate-600 hover:text-[#08274D] hover:border-slate-300 hover:bg-slate-50/80";
+  const basePill = "group flex items-center px-4 py-2 rounded-md border transition-all duration-150 shrink-0 cursor-pointer select-none font-heading text-[12px] font-bold uppercase tracking-wider";
+  const activeClass = "bg-[#212B36] border-[#212B36] text-white shadow-2xs";
+  const inactiveClass = "bg-white border-[#E5E5E5] text-gray-700 hover:text-[#212B36] hover:border-gray-400 hover:bg-[#F8F8F8]";
 
   return (
     <div className="mb-2">

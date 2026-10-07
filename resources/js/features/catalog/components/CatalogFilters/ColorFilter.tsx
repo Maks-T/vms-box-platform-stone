@@ -1,53 +1,41 @@
 import React from 'react';
 import { Check } from 'lucide-react';
 import { cn } from '@/shared/lib/utils';
-import { FilterSwatch } from './FilterSwatch';
 
 export const ColorFilter = ({ options, activeValues, onToggle }: any) => (
-  <div className="flex flex-col gap-3">
+  <div className="flex flex-wrap gap-2 pt-1">
     {options.map((opt: any) => {
       const isChecked = activeValues.includes(opt.key);
+      const hex = opt.meta?.hex || '#CBD5E1';
+      const image = opt.meta?.image;
 
       return (
-        <label
+        <button
           key={opt.key}
-          className="flex items-center gap-3.5 cursor-pointer group select-none py-0.5"
+          type="button"
+          onClick={() => onToggle(opt.key)}
+          title={opt.label}
+          className={cn(
+            "relative w-7 h-7 rounded-sm border cursor-pointer transition-all duration-150 flex items-center justify-center shrink-0",
+            isChecked
+              ? "border-[#25CED1] ring-2 ring-[#25CED1] ring-offset-1 scale-105 shadow-xs"
+              : "border-gray-200 hover:border-gray-400 hover:scale-105"
+          )}
+          style={{ backgroundColor: image ? undefined : hex }}
         >
-          <div className="relative flex items-center justify-center shrink-0">
-            <input
-              type="checkbox"
-              className="peer sr-only"
-              checked={isChecked}
-              onChange={() => onToggle(opt.key)}
+          {image && (
+            <img
+              src={image}
+              alt={opt.label}
+              className="w-full h-full object-cover rounded-xs"
             />
-
-            <div className="relative rounded-full transition-colors duration-200">
-              <FilterSwatch
-                image={opt.meta?.image}
-                hex={opt.meta?.hex}
-                size="sm"
-                className="w-6 h-6 border-slate-200 group-hover:border-slate-300 transition-colors"
-              />
-
-              {isChecked && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/30 rounded-full transition-opacity">
-                  <Check className="w-4 h-4 text-white drop-shadow-md stroke-[4px]" />
-                </div>
-              )}
+          )}
+          {isChecked && (
+            <div className="absolute inset-0 bg-black/30 rounded-xs flex items-center justify-center">
+              <Check className="w-3.5 h-3.5 text-white stroke-[3px]" />
             </div>
-          </div>
-
-          <span
-            className={cn(
-              "text-[14px] leading-tight transition-colors",
-              isChecked
-                ? "text-foreground font-bold"
-                : "text-muted-foreground font-medium group-hover:text-primary"
-            )}
-          >
-            {opt.label} {/* Был value */}
-          </span>
-        </label>
+          )}
+        </button>
       );
     })}
   </div>

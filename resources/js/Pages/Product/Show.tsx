@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Head } from '@inertiajs/react';
-import { StoneProduct, BootstrapConfig } from '@/types/catalog';
-import BaseContainer from '@/shared/components/layouts/SectionLayout';
-import GlassPanel from '@/shared/components/ui/GlassPanel';
-import { ApiInspector } from '@widgets/ApiInspector';
+import { Head, Link } from '@inertiajs/react';
+import { StoneProduct, BootstrapConfig, ProductVariant, EavValueOption } from '@/types/catalog';
+import { route } from 'ziggy-js';
 import { ProductHeader } from './components/ProductHeader';
 import { ProductImagePreview } from './components/ProductImagePreview';
 import { ProductMainInfo } from './components/ProductMainInfo';
 import { ProductAttributes } from './components/ProductAttributes';
 import ProductVariantsList from './components/ProductVariantsList';
 import MainLayout from '@/layouts/MainLayout';
-
-import { checkDevMode } from '@/shared/lib/dev';
 import { bootstrapApi } from '@/shared/api/bootstrap.api';
 
 interface Props {
@@ -19,67 +15,122 @@ interface Props {
   familyCode: string;
 }
 
-export default function ProductShow({ product, familyCode }: Props) {
+export default function ProductShow({ product }: Props) {
   const [bootstrapConfig, setBootstrapConfig] = useState<BootstrapConfig | null>(null);
+  const [activeVariant, setActiveVariant] = useState<ProductVariant | null>(null);
 
   useEffect(() => {
     bootstrapApi.getConfig().then(setBootstrapConfig);
   }, []);
 
-  const isDev = checkDevMode();
-  const apiEndpoint = `/api/v1/${familyCode}/products?id=${product.id}`;
-
-  const apiRequests = [
-    {
-      label: 'Карточка товара',
-      method: 'GET',
-      endpoint: apiEndpoint,
-      data: product
+  // Инициализация дефолтного варианта товара
+  useEffect(() => {
+    if (product.variants && product.variants.length > 0) {
+      const defaultVar = product.variants.find((v) => v.is_default) || product.variants[0];
+      setActiveVariant(defaultVar);
     }
-  ];
+  }, [product]);
+
+  // Извлечение всех доступных уникальных цветов товара и вариантов
+  const parentColor = product.attributes?.color?.value as EavValueOption | EavValueOption[] | undefined;
+  const colorsMap = new Map<string, { option: EavValueOption; variant?: ProductVariant }>();
+
+  if (product.variants?.length > 0) {
+    product.variants.forEach((v) => {
+      const vColor = v.attributes?.color?.value as EavValueOption | undefined;
+      if (vColor && vColor.key && !colorsMap.has(vColor.key)) {
+        colorsMap.set(vColor.key, { option: vColor, variant: v });
+      }
+    });
+  }
+
+  if (colorsMap.size === 0 && parentColor) {
+    const list = Array.isArray(parentColor) ? parentColor : [parentColor];
+    list.forEach((c) => {
+      if (c && typeof c === 'object' && 'key' in c && !colorsMap.has(c.key)) {
+        colorsMap.set(c.key, { option: c });
+      }
+    });
+  }
+
+  const availableColors = Array.from(colorsMap.values());
+
+  const handleSelectColor = (item: { option: EavValueOption; variant?: ProductVariant }) => {
+    if (item.variant) {
+      setActiveVariant(item.variant);
+    } else {
+      const match = product.variants?.find(
+        (v) => (v.attributes?.color?.value as EavValueOption)?.key === item.option.key
+      );
+      if (match) setActiveVariant(match);
+    }
+  };
+
+  const currentImage = activeVariant?.detail_picture || activeVariant?.preview_picture || product.detail_picture || product.preview_picture;
+  const currentCode = activeVariant?.sku || activeVariant?.external_code || product.external_code;
 
   return (
     <MainLayout headerOverlaps={false}>
-      <Head title={`${product.name} - Детали`} />
+      <Head title={`Кварцевый камень ${product.name} | QuartzMaster`} />
 
-      <ProductHeader />
+      <main className="max-w-[1412px] mx-auto px-4 md:px-8 py-6 lg:py-10 space-y-10 lg:space-y-14 text-left">
+        {/* 1. Хлебные крошки и кнопка "Поделиться" */}
+        <ProductHeader productName={product.name} />
 
-      <div className="flex-1 py-8 md:py-12">
-        <BaseContainer containerVariant="content">
-          <GlassPanel variant="light" className="mb-8 p-6 md:p-10 lg:p-12 bg-white rounded-xl border border-slate-200/80 shadow-2xs">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-              <div className="lg:col-span-5">
-                <ProductImagePreview
-                  image={product.preview_picture}
-                  name={product.name}
-                  externalCode={product.external_code}
-                  id={product.id}
-                />
-              </div>
+        {/* 2. Главный блок товара (Большое фото + Заголовок + CTA + Характеристики) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div className="lg:col-span-6 xl:col-span-5">
+            <ProductImagePreview
+              image={currentImage}
+              name={product.name}
+              externalCode={currentCode}
+              id={product.id}
+            />
+          </div>
 
-              <div className="lg:col-span-7 flex flex-col">
-                <ProductMainInfo
-                  name={product.name}
-                  priceFrom={product.price_from}
-                  bootstrapConfig={bootstrapConfig}
-                  shortDescription={product.short_description}
-                  description={product.description}
-                />
-                <ProductAttributes attributes={product.attributes} />
-                <ProductVariantsList
-                  variants={product.variants || []}
-                  bootstrapConfig={bootstrapConfig}
-                />
-              </div>
-            </div>
-          </GlassPanel>
+          <div className="lg:col-span-6 xl:col-span-7">
+            <ProductMainInfo
+              product={product}
+              activeVariant={activeVariant}
+              availableColors={availableColors}
+              onSelectColor={handleSelectColor}
+              bootstrapConfig={bootstrapConfig}
+            />
 
-          {}
-          {isDev && (
-            <ApiInspector requests={apiRequests} />
-          )}
-        </BaseContainer>
-      </div>
+            {/* Торговые предложения (SKU) слэбов */}
+            <ProductVariantsList
+              variants={product.variants || []}
+              bootstrapConfig={bootstrapConfig}
+            />
+          </div>
+        </div>
+
+        {/* 3. Текстовое описание изделия из референса */}
+        <section className="text-sm text-gray-600 leading-relaxed max-w-5xl border-t border-[#E5E5E5] pt-8">
+          <p>
+            Столешница для кухни из кварцевого камня {product.name} – идеальное решение для Вашего интерьера.
+            Также мы можем изготовить для Вас подоконники, ступени и другие изделия из кварца {product.name}.
+            Для расчета стоимости изделия обратитесь к нашим менеджерам по телефону +7 (495) 565 31 66
+            или воспользуйтесь разделом On-line дизайнера.
+          </p>
+        </section>
+
+        {/* 4. Полная таблица характеристик с точечными линиями-лидерами */}
+        <ProductAttributes attributes={product.attributes} productName={product.name} />
+
+        {/* 5. Нижняя навигация (возврат к каталогу) */}
+        <div className="pt-6 border-t border-[#E5E5E5] flex items-center justify-between">
+          <Link
+            href={route('catalog')}
+            className="inline-flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-[#212B36] group transition-colors"
+          >
+            <span className="w-7 h-7 rounded-md border border-[#E5E5E5] flex items-center justify-center group-hover:border-[#212B36] transition-colors">
+              ←
+            </span>
+            <span>Назад к списку камня</span>
+          </Link>
+        </div>
+      </main>
     </MainLayout>
   );
 }

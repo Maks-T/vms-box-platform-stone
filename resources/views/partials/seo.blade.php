@@ -1,12 +1,12 @@
 {{-- resources/views/partials/seo.blade.php --}}
 @php
-  $title = $seo['title'] ?? config('app.name', 'Vistegra');
-  $description = $seo['description'] ?? 'Разработка кастомного ПО и автоматизация процессов для B2B.';
-  $keywords = $seo['keywords'] ?? 'автоматизация, разработка по, b2b, vistegra, сложные расчеты';
+  $title = $seo['title'] ?? 'Кварцевый камень купить в Москве | Каталог QuartzMaster';
+  $description = $seo['description'] ?? 'Изделия из кварцевого камня и широкоформатной керамики от производителя в Москве: столешницы, подоконники, ступени.';
+  $keywords = $seo['keywords'] ?? 'кварцевый камень, кварцевый агломерат, столешницы из кварца, подоконники, quartzmaster, москва';
 
   $image = $seo['og_image'] ?? asset('images/og-default.webp');
   $url = url()->current();
-  $siteName = 'Vistegra';
+  $siteName = 'QuartzMaster';
 @endphp
 
   <!-- Базовые SEO теги -->

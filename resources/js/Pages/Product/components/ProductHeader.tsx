@@ -1,24 +1,46 @@
 import React from 'react';
-import {Link} from '@inertiajs/react';
-import {ArrowLeft} from 'lucide-react';
-import {route} from "ziggy-js";
-import {IconBox} from '@/shared/components/ui/IconBox';
+import { Link } from '@inertiajs/react';
+import { Share2 } from 'lucide-react';
+import { route } from 'ziggy-js';
+import { toast } from 'sonner';
 
-export function ProductHeader() {
+interface Props {
+  productName?: string;
+  categoryName?: string;
+}
+
+export function ProductHeader({ productName, categoryName = 'Кварцевый камень' }: Props) {
+  const handleShare = () => {
+    navigator.clipboard.writeText(window.location.href);
+    toast.success('Ссылка на слэб скопирована в буфер обмена');
+  };
+
   return (
-    <header className="bg-white border-b border-[#E2E6EA] sticky top-0 z-40 shadow-xs">
-      <div className="max-w-[1440px] mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
-        <Link href={route('catalog')} className="flex items-center gap-4 group">
-          <IconBox variant="light" size="sm"
-                   className="group-hover:bg-[#08274D] group-hover:text-white group-hover:border-[#08274D] transition-colors">
-            <ArrowLeft className="w-4 h-4"/>
-          </IconBox>
-          <span
-            className="font-heading font-bold uppercase tracking-wider text-[#696973] group-hover:text-[#08274D] transition-colors text-[12px]">
-            В каталог камня
-          </span>
-        </Link>
-      </div>
-    </header>
+    <div className="flex items-center justify-between border-b border-[#E5E5E5] pb-4 mb-6 sm:mb-8 text-left">
+      <nav className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-400">
+        <Link href="/" className="hover:text-[#212B36] transition-colors">Главная</Link>
+        <span>—</span>
+        <Link href={route('catalog')} className="hover:text-[#212B36] transition-colors">Каталог камня</Link>
+        <span>—</span>
+        <Link href={route('catalog')} className="hover:text-[#212B36] transition-colors">{categoryName}</Link>
+        {productName && (
+          <>
+            <span>—</span>
+            <span className="text-gray-600 font-medium">{productName}</span>
+          </>
+        )}
+      </nav>
+
+      <button
+        type="button"
+        onClick={handleShare}
+        className="text-gray-400 hover:text-[#212B36] transition-colors p-1.5 rounded-sm hover:bg-gray-100 cursor-pointer"
+        title="Поделиться"
+      >
+        <Share2 className="w-4 h-4" />
+      </button>
+    </div>
   );
 }
+
+export default ProductHeader;

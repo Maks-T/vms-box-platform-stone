@@ -1,11 +1,6 @@
 import React from 'react';
-import {Layers, Image as ImageIcon} from 'lucide-react';
-import {H3} from '@/shared/components/ui/Typography';
-import {IconBox} from '@/shared/components/ui/IconBox';
-import StatusBadge from '@/shared/components/ui/StatusBadge';
-import GlassPanel from '@/shared/components/ui/GlassPanel';
+import {Image as ImageIcon} from 'lucide-react';
 import {ProductVariant, BootstrapConfig} from '@/types/catalog';
-import Badge from "@/shared/components/ui/Badge";
 
 interface Props {
   variants: ProductVariant[];
@@ -16,7 +11,7 @@ export function ProductVariantsList({variants, bootstrapConfig}: Props) {
   if (!variants || variants.length === 0) return null;
 
   const defaultPriceType = bootstrapConfig?.price_types?.find((pt: any) => pt.is_default)?.slug || 'retail';
-  const currencySymbol = bootstrapConfig?.base_currency?.symbol_native || bootstrapConfig?.base_currency?.symbol || 'Br';
+  const currencySymbol = '₽';
 
   const renderAttributeValue = (data: any) => {
     if (typeof data === 'object' && data !== null) {
@@ -38,14 +33,12 @@ export function ProductVariantsList({variants, bootstrapConfig}: Props) {
   };
 
   return (
-    <div className="mt-10 pt-8 border-t border-slate-200/70">
-      <div className="flex items-center gap-3 mb-6">
-        <IconBox variant="light" size="sm" className="bg-slate-100 text-[#08274D] border-slate-200 rounded-md">
-          <Layers className="w-4 h-4 text-[#9B6A38]"/>
-        </IconBox>
-        <H3 className="font-heading font-bold text-[#08274D] text-[13px] uppercase tracking-wider m-0">
+    <div className="space-y-4 pt-6 text-left">
+      <div className="flex items-center justify-between border-b border-[#E5E5E5] pb-2 text-xs">
+        <h3 className="font-heading font-bold text-sm text-[#212B36] uppercase tracking-wider">
           Доступные слэбы и размеры (SKU)
-        </H3>
+        </h3>
+        <span className="text-gray-400">{variants.length} предложений</span>
       </div>
 
       <div className="flex flex-col gap-3">
@@ -55,20 +48,20 @@ export function ProductVariantsList({variants, bootstrapConfig}: Props) {
 
           return (
             <div key={variant.id}
-                 className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-lg border border-slate-200 hover:border-slate-300 transition-colors">
+                 className="border border-[#E5E5E5] rounded-md p-3.5 bg-white flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-2xs hover:border-gray-300 transition">
               <div className="flex items-center gap-4 overflow-hidden w-full">
 
-                <IconBox variant="light" className="w-14 h-14 shrink-0 rounded-lg overflow-hidden p-0 border-slate-200 bg-slate-50">
+                <div className="w-14 h-14 shrink-0 rounded-sm overflow-hidden p-0 border border-[#E5E5E5] bg-[#F8F8F8]">
                   {variant.preview_picture ? (
                     <img src={variant.preview_picture} alt={variant.sku} className="w-full h-full object-cover"/>
                   ) : (
                     <ImageIcon className="w-6 h-6 text-muted-foreground/40"/>
                   )}
-                </IconBox>
+                </div>
 
                 <div className="min-w-0 flex-1">
                   {/* Если есть красивое имя (например, цвет), выводим его, иначе системный код */}
-                  <div className="font-heading font-bold text-[#08274D] tracking-tight text-[15px]">
+                  <div className="font-heading font-bold text-[#212B36] tracking-tight text-[14px]">
                     {hasFriendlyName ? variant.name : variant.sku}
                   </div>
 
@@ -109,21 +102,20 @@ export function ProductVariantsList({variants, bootstrapConfig}: Props) {
                     : '';
 
                   return displayPrice > 0 ? (
-                    <div className="font-heading font-black text-[#08274D] text-[18px] flex items-baseline gap-1">
-                      <span>{formattedNumber}</span>
-                      <span className="text-xs font-normal text-[#696973] lowercase">{currencySymbol} / м²</span>
+                    <div className="font-heading font-black text-[#212B36] text-[16px]">
+                      {formattedNumber} {currencySymbol} / м²
                     </div>
                   ) : (
-                    <Badge variant="gray"
-                           className="!bg-slate-50 !border-slate-200 !text-slate-600 !shadow-none !px-2.5 !py-1 text-[11px] uppercase tracking-wider font-heading font-bold rounded-md">
+                    <span className="text-xs text-gray-500 font-medium">
                       По запросу
-                    </Badge>
+                    </span>
                   );
                 })()}
 
-                <StatusBadge variant={variant.stock > 0 ? 'success' : 'warning'} className="px-2.5 py-1 rounded-md text-[11px]">
-                  {variant.stock > 0 ? `На складе в СПб: ${variant.stock} слэбов` : 'Под заказ (распил)'}
-                </StatusBadge>
+                <span className="inline-flex items-center gap-1.5 text-xs text-emerald-600 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                  {variant.stock > 0 ? `В наличии: ${variant.stock} слэбов` : 'Склад РФ (под заказ)'}
+                </span>
 
               </div>
 

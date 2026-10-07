@@ -46,7 +46,7 @@ export default function NavBar({ items }: { items: ExtendedNavItem[] }) {
   }, []);
 
   const getPathname = (urlStr: string) => {
-    if (!urlStr || urlStr.startsWith('#')) return '';
+    if (!urlStr || urlStr.startsWith('#') || urlStr.startsWith('http')) return '';
     try {
       const parsed = new URL(urlStr, window.location.origin);
       return parsed.pathname;
@@ -56,133 +56,148 @@ export default function NavBar({ items }: { items: ExtendedNavItem[] }) {
   };
 
   return (
-    <nav className="hidden lg:flex items-center gap-5 xl:gap-7 h-full">
-      {items.map((item) => {
-        if (item.disabled) {
-          return (
-            <span key={item.label} className="text-[#8B9198]/40 cursor-not-allowed select-none font-heading font-bold text-[12px] xl:text-[13px] uppercase tracking-wider py-4">
-              {item.label}
-            </span>
-          );
-        }
+    <nav className="h-[52px] flex items-center justify-between text-[13px] font-semibold text-gray-200 uppercase tracking-wide w-full select-none">
+      <div className="flex items-center gap-7 h-full">
+        {items.map((item) => {
+          const isMainCatalog = item.label.toLowerCase().includes('каталог');
+          const isActive = currentPathname === getPathname(item.href);
 
-        const isActive = currentPathname === getPathname(item.href);
-        const hasDropdown = item.label.includes('Каталог') || item.label.includes('Услуги') || item.label.includes('Изделия');
-        const isMainCatalog = item.label.includes('Каталог');
-
-        const classes = cn(
-          "font-heading font-bold text-[12px] xl:text-[13px] uppercase tracking-wider py-4 relative group transition-colors select-none flex items-center gap-1.5",
-          isActive ? "text-[#08274D]" : "text-[#1E252D] hover:text-[#EF5042]"
-        );
-
-        /* Динамический пункт «Каталог камня» с данными из API */
-        if (isMainCatalog) {
-          return (
-            <div key={item.label} className="relative h-full flex items-center" ref={catalogRef}>
-              <button
-                type="button"
-                onClick={() => setIsCatalogOpen(prev => !prev)}
-                className={cn(classes, "cursor-pointer bg-transparent border-0")}
-                aria-expanded={isCatalogOpen}
+          /* Задизейбленные пункты (О компании, Контакты) */
+          if (item.disabled) {
+            return (
+              <span
+                key={item.label}
+                className="text-gray-400/50 cursor-not-allowed select-none font-heading font-semibold text-[13px] uppercase tracking-wide py-4"
               >
-                <MenuIcon className="w-3.5 h-3.5 text-[#08274D] group-hover:text-[#EF5042]" />
                 {item.label}
-                <ChevronDown className={cn(
-                  "w-3.5 h-3.5 text-[#8B9198] transition-transform duration-300",
-                  isCatalogOpen ? "rotate-180 text-[#EF5042]" : "group-hover:text-[#EF5042]"
-                )} />
-                <span className={cn(
-                  "absolute bottom-2 left-0 h-[1.5px] bg-[#08274D] transition-all duration-300",
-                  (isActive || isCatalogOpen) ? "w-full" : "w-0 group-hover:w-full"
-                )} />
-              </button>
+              </span>
+            );
+          }
 
-              {/* Элегантное выпадающее меню на основе API */}
-              {isCatalogOpen && (
-                <div className="absolute top-[calc(100%-6px)] left-0 z-50 bg-white rounded-xl border border-slate-200 shadow-lg p-6 min-w-[640px] xl:min-w-[760px] animate-in fade-in-0 zoom-in-95 duration-150">
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pb-5 border-b border-slate-100">
-                    {families.length > 0 ? (
-                      families.map((family) => (
-                        <div key={family.code} className="flex flex-col">
-                          <Link
-                            href={`${route('catalog')}?family=${family.code}`}
-                            onClick={() => setIsCatalogOpen(false)}
-                            className="font-heading font-bold text-[12px] uppercase text-[#08274D] hover:text-[#EF5042] tracking-wider pb-1 mb-2 block transition-colors"
-                          >
-                            {family.name}
-                          </Link>
-                          {family.types && family.types.length > 0 && (
-                            <ul className="flex flex-col gap-1 text-[13px]">
-                              {family.types.map((t) => (
-                                <li key={t.code}>
-                                  <Link
-                                    href={`${route('catalog')}?family=${family.code}&product_type=${t.code}`}
-                                    onClick={() => setIsCatalogOpen(false)}
-                                    className="text-slate-600 hover:text-[#08274D] hover:translate-x-0.5 transition-all block py-0.5"
-                                  >
-                                    {t.name}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </div>
-                      ))
-                    ) : (
-                      <div className="text-xs text-muted-foreground italic col-span-full py-2">
-                        Загрузка категорий...
-                      </div>
+          /* Пункт «Каталог камня» с динамическим выпадающим списком из API */
+          if (isMainCatalog) {
+            return (
+              <div key={item.label} className="relative h-full flex items-center" ref={catalogRef}>
+                <button
+                  type="button"
+                  onClick={() => setIsCatalogOpen((prev) => !prev)}
+                  className={cn(
+                    "font-heading font-semibold text-[13px] uppercase tracking-wide py-4 relative group transition-colors select-none flex items-center gap-1.5 cursor-pointer bg-transparent border-0",
+                    isCatalogOpen || isActive ? "text-[#25CED1]" : "text-gray-200 hover:text-[#25CED1]"
+                  )}
+                  aria-expanded={isCatalogOpen}
+                >
+                  <MenuIcon className="w-3.5 h-3.5 text-gray-300 group-hover:text-[#25CED1]" />
+                  <span>{item.label}</span>
+                  <ChevronDown
+                    className={cn(
+                      "w-3.5 h-3.5 text-gray-400 transition-transform duration-200",
+                      isCatalogOpen ? "rotate-180 text-[#25CED1]" : "group-hover:text-[#25CED1]"
                     )}
-                  </div>
+                  />
+                  <span
+                    className={cn(
+                      "absolute bottom-0 left-0 h-[2px] bg-[#25CED1] transition-all duration-300",
+                      isActive || isCatalogOpen ? "w-full" : "w-0 group-hover:w-full"
+                    )}
+                  />
+                </button>
 
-                  <div className="pt-4 flex items-center justify-between text-xs">
-                    <Link href={route('catalog')} onClick={() => setIsCatalogOpen(false)} className="font-heading font-bold text-[#08274D] hover:text-[#EF5042] flex items-center gap-1.5 uppercase tracking-wider">
-                      Смотреть весь каталог камня <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                    <Link href={route('calculator.show')} onClick={() => setIsCatalogOpen(false)} className="font-heading font-bold text-[#08274D] hover:text-[#EF5042] flex items-center gap-1.5 uppercase tracking-wider">
-                      <Calculator className="w-3.5 h-3.5 text-[#9B6A38]" /> Онлайн-калькулятор изделий
-                    </Link>
+                {/* Выпадающее меню с реальными разделами VMS-NC */}
+                {isCatalogOpen && (
+                  <div className="absolute top-[calc(100%-4px)] left-0 z-50 bg-white rounded-md border border-[#E5E5E5] shadow-2xl p-6 min-w-[720px] xl:min-w-[820px] animate-in fade-in-0 zoom-in-95 duration-150">
+                    <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 pb-4 border-b border-[#E5E5E5]">
+                      {families.length > 0 ? (
+                        families.map((family) => (
+                          <div key={family.code} className="flex flex-col text-left">
+                            <Link
+                              href={`${route('catalog')}?family=${family.code}`}
+                              onClick={() => setIsCatalogOpen(false)}
+                              className="font-heading font-bold text-[12px] uppercase text-[#212B36] hover:text-[#25CED1] tracking-wider pb-1 mb-2 block border-b border-[#E5E5E5] transition-colors"
+                            >
+                              {family.name}
+                            </Link>
+                            {family.types && family.types.length > 0 && (
+                              <ul className="flex flex-col gap-1 text-[13px] text-gray-600">
+                                {family.types.map((t) => (
+                                  <li key={t.code}>
+                                    <Link
+                                      href={`${route('catalog')}?family=${family.code}&product_type=${t.code}`}
+                                      onClick={() => setIsCatalogOpen(false)}
+                                      className="hover:text-[#25CED1] hover:translate-x-0.5 transition-all block py-0.5"
+                                    >
+                                      {t.name}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+                        ))
+                      ) : (
+                        <div className="text-xs text-gray-400 italic py-2 col-span-full">
+                          Загрузка категорий...
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="pt-3.5 flex items-center justify-between text-xs">
+                      <Link
+                        href={route('catalog')}
+                        onClick={() => setIsCatalogOpen(false)}
+                        className="font-heading font-bold text-[#212B36] hover:text-[#25CED1] uppercase tracking-wider flex items-center gap-1.5 transition-colors"
+                      >
+                        <span>Смотреть весь каталог камня</span>
+                        <ArrowRight className="w-3.5 h-3.5 text-[#25CED1]" />
+                      </Link>
+                      <Link
+                        href={route('calculator.show')}
+                        onClick={() => setIsCatalogOpen(false)}
+                        className="font-heading font-bold text-[#25CED1] hover:text-[#148587] uppercase tracking-wider flex items-center gap-1.5 transition-colors"
+                      >
+                        <Calculator className="w-3.5 h-3.5" />
+                        <span>Онлайн-калькулятор изделий</span>
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
+            );
+          }
+
+          /* Обычный активный пункт (Калькулятор) */
+          const classes = cn(
+            "font-heading font-semibold text-[13px] uppercase tracking-wide py-4 relative group transition-colors select-none",
+            isActive ? "text-[#25CED1]" : "text-gray-200 hover:text-[#25CED1]"
           );
-        }
 
-        if (item.forceRefresh) {
+          if (item.forceRefresh) {
+            return (
+              <a key={item.label} href={item.href} className={classes}>
+                {item.label}
+                <span
+                  className={cn(
+                    "absolute bottom-0 left-0 h-[2px] bg-[#25CED1] transition-all duration-300",
+                    isActive ? "w-full" : "w-0 group-hover:w-full"
+                  )}
+                />
+              </a>
+            );
+          }
+
           return (
-            <a
-              key={item.label}
-              href={item.href}
-              className={classes}
-            >
-              {isMainCatalog && <MenuIcon className="w-3.5 h-3.5 text-[#08274D] group-hover:text-[#EF5042]" />}
+            <Link key={item.label} href={item.href} className={classes}>
               {item.label}
-              {hasDropdown && <ChevronDown className="w-3.5 h-3.5 text-[#8B9198] group-hover:text-[#EF5042] transition-colors" />}
-              <span className={cn(
-                "absolute bottom-2 left-0 h-[1.5px] bg-[#08274D] transition-all duration-300",
-                isActive ? "w-full" : "w-0 group-hover:w-full"
-              )} />
-            </a>
+              <span
+                className={cn(
+                  "absolute bottom-0 left-0 h-[2px] bg-[#25CED1] transition-all duration-300",
+                  isActive ? "w-full" : "w-0 group-hover:w-full"
+                )}
+              />
+            </Link>
           );
-        }
-
-        return (
-          <Link
-            key={item.label}
-            href={item.href}
-            className={classes}
-          >
-            {isMainCatalog && <MenuIcon className="w-3.5 h-3.5 text-[#08274D] group-hover:text-[#EF5042]" />}
-            {item.label}
-            {hasDropdown && <ChevronDown className="w-3.5 h-3.5 text-[#8B9198] group-hover:text-[#EF5042] transition-colors" />}
-            <span className={cn(
-              "absolute bottom-2 left-0 h-[1.5px] bg-[#08274D] transition-all duration-300",
-              isActive ? "w-full" : "w-0 group-hover:w-full"
-            )} />
-          </Link>
-        );
-      })}
+        })}
+      </div>
     </nav>
   );
 }

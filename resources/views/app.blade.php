@@ -9,7 +9,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
 
     @routes
 
@@ -17,7 +17,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.tsx'])
     @inertiaHead
 </head>
-<body class="font-sans antialiased bg-bg-light text-tx-primary overflow-x-hidden">
+<body class="font-sans antialiased bg-white text-[#333333] overflow-x-hidden selection:bg-[#25CED1]/20 selection:text-[#212B36]">
 @inertia
 <div class="dummy-calc-anchor">dummy-calc-anchor</div>
 </body>

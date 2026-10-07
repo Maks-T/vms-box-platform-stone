@@ -66,12 +66,12 @@ export default function CalculatorShow({
 
   return (
     <MainLayout headerOverlaps={false}>
-      <Head title="Онлайн-калькулятор изделий" />
-      <SectionLayout containerVariant="page" className="pt-8 md:pt-12 pb-24">
-        <div className="w-full relative z-10 bg-white rounded-xl border border-slate-200/90 p-4 md:p-8 shadow-2xs">
+      <Head title="Онлайн-калькулятор изделий из кварца | QuartzMaster" />
+      <div className="w-full max-w-[1412px] mx-auto px-4 md:px-8 py-8 md:py-12 flex-1 flex flex-col">
+        <div className="w-full flex-1 relative z-10 bg-white rounded-md border border-[#E5E5E5] p-4 md:p-8 shadow-2xs text-left">
           <div id="calcAppRoot" className="w-full min-h-[650px]" />
         </div>
-      </SectionLayout>
+      </div>
     </MainLayout>
   );
 }

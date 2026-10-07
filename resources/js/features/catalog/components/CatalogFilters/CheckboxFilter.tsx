@@ -1,7 +1,6 @@
 import React from 'react';
 import { Check } from 'lucide-react';
 import { cn } from '@/shared/lib/utils';
-import { FilterSwatch } from './FilterSwatch';
 
 export const CheckboxFilter = ({ options, activeValues, onToggle }: any) => (
   <div className="flex flex-col gap-3">
@@ -22,19 +21,17 @@ export const CheckboxFilter = ({ options, activeValues, onToggle }: any) => (
               onChange={() => onToggle(opt.key)}
             />
             <div className={cn(
-              "w-4 h-4 border rounded-[4px] transition-all duration-150 flex items-center justify-center",
-              isChecked ? "bg-[#08274D] border-[#08274D]" : "bg-white border-slate-300 group-hover:border-slate-400"
+              "w-4 h-4 border rounded-sm transition-all duration-150 flex items-center justify-center",
+              isChecked ? "bg-[#212B36] border-[#212B36]" : "bg-white border-gray-300 group-hover:border-[#25CED1]"
             )}>
-              <Check className={cn("w-3 h-3 text-white stroke-[2.5px] transition-opacity", isChecked ? "opacity-100" : "opacity-0")} />
+              <Check className={cn("w-3 h-3 text-white stroke-[3px] transition-opacity", isChecked ? "opacity-100" : "opacity-0")} />
             </div>
           </div>
 
           <div className="flex items-center gap-2.5">
-            {hasVisual && <FilterSwatch image={image} hex={hex} size="sm" />}
-
             <span className={cn(
-              "text-[13px] leading-tight transition-colors select-none",
-              isChecked ? "text-[#08274D] font-semibold" : "text-slate-600 font-normal group-hover:text-[#08274D]"
+              "text-xs leading-tight transition-colors select-none",
+              isChecked ? "text-[#212B36] font-semibold" : "text-gray-600 font-normal group-hover:text-[#212B36]"
             )}>
               {opt.label} {/* Был value */}
             </span>

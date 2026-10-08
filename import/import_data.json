@@ -1878,6 +1878,471 @@
                     }
                 }
             ]
+        },
+        {
+            "external_code": "dict_stone_shapes",
+            "code": "stone_shapes",
+            "name": {
+                "ru": "Формы каменных изделий",
+                "en": "Stone Product Shapes"
+            },
+            "meta_schema": [
+                {
+                    "key": "geometry_type",
+                    "type": "select",
+                    "options": ["line", "l_shaped", "u_shaped", "island", "bay", "corner"],
+                    "label": {
+                        "ru": "Тип декомпозиции раскроя"
+                    }
+                },
+                {
+                    "key": "category_scope",
+                    "type": "entity",
+                    "target_entity": "category",
+                    "value_key": "slug",
+                    "label": {
+                        "ru": "Область применения"
+                    }
+                },
+                {
+                    "key": "image_layout",
+                    "type": "text",
+                    "label": {
+                        "ru": "Схема изделия (чертеж)"
+                    }
+                },
+                {
+                    "key": "allowed_services",
+                    "type": "text",
+                    "label": {
+                        "ru": "Разрешенные услуги (коды через запятую)"
+                    }
+                },
+                {
+                    "key": "length_min",
+                    "type": "number",
+                    "label": {
+                        "ru": "Мин. длина (мм)"
+                    }
+                },
+                {
+                    "key": "length_max",
+                    "type": "number",
+                    "label": {
+                        "ru": "Макс. длина (мм)"
+                    }
+                },
+                {
+                    "key": "width_min",
+                    "type": "number",
+                    "label": {
+                        "ru": "Мин. ширина (мм)"
+                    }
+                },
+                {
+                    "key": "width_max",
+                    "type": "number",
+                    "label": {
+                        "ru": "Макс. ширина (мм)"
+                    }
+                }
+            ],
+            "records": [
+                {
+                    "external_code": "rec_shape_worktop_line",
+                    "slug": "worktop_line",
+                    "name": {
+                        "ru": "Прямая столешница",
+                        "en": "Straight Worktop"
+                    },
+                    "meta": {
+                        "geometry_type": "line",
+                        "category_scope": "kitchen",
+                        "image_layout": "pdf/layouts/worktop/line.png",
+                        "allowed_services": "cutout_price,cutout_hob_price,gluing_price,point_cutout_price,socket_cutout_price,lowering_wing_price,grooves_sink_drain_price",
+                        "length_min": 300,
+                        "length_max": 4000,
+                        "width_min": 400,
+                        "width_max": 1200
+                    }
+                },
+                {
+                    "external_code": "rec_shape_worktop_l_shaped",
+                    "slug": "worktop_l_shaped",
+                    "name": {
+                        "ru": "Г-образная столешница",
+                        "en": "L-Shaped Worktop"
+                    },
+                    "meta": {
+                        "geometry_type": "l_shaped",
+                        "category_scope": "kitchen",
+                        "image_layout": "pdf/layouts/worktop/l_shaped.png",
+                        "allowed_services": "cutout_price,cutout_hob_price,gluing_price,gluing_on_site,point_cutout_price,socket_cutout_price,lowering_wing_price,grooves_sink_drain_price",
+                        "length_min": 300,
+                        "length_max": 4000,
+                        "width_min": 400,
+                        "width_max": 1200
+                    }
+                },
+                {
+                    "external_code": "rec_shape_worktop_u_shaped",
+                    "slug": "worktop_u_shaped",
+                    "name": {
+                        "ru": "П-образная столешница",
+                        "en": "U-Shaped Worktop"
+                    },
+                    "meta": {
+                        "geometry_type": "u_shaped",
+                        "category_scope": "kitchen",
+                        "image_layout": "pdf/layouts/worktop/u_shaped.png",
+                        "allowed_services": "cutout_price,cutout_hob_price,gluing_price,gluing_on_site,point_cutout_price,socket_cutout_price,lowering_wing_price,grooves_sink_drain_price",
+                        "length_min": 300,
+                        "length_max": 4000,
+                        "width_min": 400,
+                        "width_max": 1200
+                    }
+                },
+                {
+                    "external_code": "rec_shape_island",
+                    "slug": "island",
+                    "name": {
+                        "ru": "Кухонный остров",
+                        "en": "Kitchen Island"
+                    },
+                    "meta": {
+                        "geometry_type": "island",
+                        "category_scope": "kitchen",
+                        "image_layout": "pdf/layouts/worktop/line.png",
+                        "allowed_services": "cutout_price,cutout_hob_price,gluing_price,point_cutout_price,socket_cutout_price",
+                        "length_min": 600,
+                        "length_max": 3500,
+                        "width_min": 600,
+                        "width_max": 1800
+                    }
+                },
+                {
+                    "external_code": "rec_shape_bar_counter",
+                    "slug": "bar_counter",
+                    "name": {
+                        "ru": "Барная стойка",
+                        "en": "Bar Counter"
+                    },
+                    "meta": {
+                        "geometry_type": "line",
+                        "category_scope": "kitchen",
+                        "image_layout": "pdf/layouts/worktop/line.png",
+                        "allowed_services": "socket_cutout_price",
+                        "length_min": 500,
+                        "length_max": 3000,
+                        "width_min": 250,
+                        "width_max": 800
+                    }
+                },
+                {
+                    "external_code": "rec_shape_windowsill_line",
+                    "slug": "windowsill_line",
+                    "name": {
+                        "ru": "Подоконник прямой",
+                        "en": "Straight Windowsill"
+                    },
+                    "meta": {
+                        "geometry_type": "line",
+                        "category_scope": "windowsill",
+                        "image_layout": "pdf/layouts/windowsill/line.png",
+                        "allowed_services": "radiator_grooves_price,round_price,bevel_price",
+                        "length_min": 300,
+                        "length_max": 4000,
+                        "width_min": 100,
+                        "width_max": 1000
+                    }
+                },
+                {
+                    "external_code": "rec_shape_windowsill_corner",
+                    "slug": "windowsill_corner",
+                    "name": {
+                        "ru": "Подоконник угловой",
+                        "en": "Corner Windowsill"
+                    },
+                    "meta": {
+                        "geometry_type": "corner",
+                        "category_scope": "windowsill",
+                        "image_layout": "pdf/layouts/windowsill/corner.png",
+                        "allowed_services": "radiator_grooves_price,round_price,bevel_price,gluing_on_site",
+                        "length_min": 300,
+                        "length_max": 3500,
+                        "width_min": 100,
+                        "width_max": 1000
+                    }
+                },
+                {
+                    "external_code": "rec_shape_windowsill_bay",
+                    "slug": "windowsill_bay",
+                    "name": {
+                        "ru": "Подоконник эркерный",
+                        "en": "Bay Windowsill"
+                    },
+                    "meta": {
+                        "geometry_type": "bay",
+                        "category_scope": "windowsill",
+                        "image_layout": "pdf/layouts/windowsill/bay.png",
+                        "allowed_services": "radiator_grooves_price,round_price,bevel_price,gluing_on_site",
+                        "length_min": 300,
+                        "length_max": 4000,
+                        "width_min": 100,
+                        "width_max": 1000
+                    }
+                },
+                {
+                    "external_code": "rec_shape_wall_panel",
+                    "slug": "wall_panel",
+                    "name": {
+                        "ru": "Стеновая панель (фартук)",
+                        "en": "Wall Panel (Backsplash)"
+                    },
+                    "meta": {
+                        "geometry_type": "line",
+                        "category_scope": "kitchen",
+                        "image_layout": "pdf/layouts/worktop/line.png",
+                        "allowed_services": "socket_cutout_price",
+                        "length_min": 300,
+                        "length_max": 3500,
+                        "width_min": 200,
+                        "width_max": 1200
+                    }
+                }
+            ]
+        },
+        {
+            "external_code": "dict_stone_interface_settings",
+            "code": "stone_interface_settings",
+            "name": {
+                "ru": "Настройки интерфейса и слэбов камня",
+                "en": "Stone Interface Settings"
+            },
+            "meta_schema": [
+                {
+                    "key": "show_user",
+                    "type": "boolean",
+                    "label": {
+                        "ru": "Клиент на сайте (User)"
+                    }
+                },
+                {
+                    "key": "show_manager",
+                    "type": "boolean",
+                    "label": {
+                        "ru": "Менеджер (CRM)"
+                    }
+                },
+                {
+                    "key": "show_admin",
+                    "type": "boolean",
+                    "label": {
+                        "ru": "Администратор"
+                    }
+                },
+                {
+                    "key": "value_user",
+                    "type": "text",
+                    "label": {
+                        "ru": "Значение для клиента"
+                    }
+                },
+                {
+                    "key": "value_manager",
+                    "type": "text",
+                    "label": {
+                        "ru": "Значение для менеджера"
+                    }
+                },
+                {
+                    "key": "value_admin",
+                    "type": "text",
+                    "label": {
+                        "ru": "Значение для администратора"
+                    }
+                }
+            ],
+            "records": [
+                {
+                    "external_code": "rec_ui_price_materials",
+                    "slug": "price_materials",
+                    "name": {
+                        "ru": "Отображение розничной цены слэба в каталоге"
+                    },
+                    "meta": {
+                        "show_user": true,
+                        "show_manager": true,
+                        "show_admin": true,
+                        "userShow": true,
+                        "managerShow": true,
+                        "adminShow": true
+                    }
+                },
+                {
+                    "external_code": "rec_ui_price_breakdown",
+                    "slug": "price_breakdown",
+                    "name": {
+                        "ru": "Блок разбивки стоимости (Материал, Изготовление, Монтаж)"
+                    },
+                    "meta": {
+                        "show_user": false,
+                        "show_manager": true,
+                        "show_admin": true,
+                        "userShow": false,
+                        "managerShow": true,
+                        "adminShow": true
+                    }
+                },
+                {
+                    "external_code": "rec_ui_estimate_table",
+                    "slug": "estimate_table",
+                    "name": {
+                        "ru": "Детализированная таблица сметных позиций"
+                    },
+                    "meta": {
+                        "show_user": false,
+                        "show_manager": true,
+                        "show_admin": true,
+                        "userShow": false,
+                        "managerShow": true,
+                        "adminShow": true
+                    }
+                },
+                {
+                    "external_code": "rec_ui_total_amount",
+                    "slug": "total_amount",
+                    "name": {
+                        "ru": "Нижняя плашка итоговой суммы расчета"
+                    },
+                    "meta": {
+                        "show_user": true,
+                        "show_manager": true,
+                        "show_admin": true,
+                        "userShow": true,
+                        "managerShow": true,
+                        "adminShow": true
+                    }
+                },
+                {
+                    "external_code": "rec_ui_show_sinks_step",
+                    "slug": "show_sinks_step",
+                    "name": {
+                        "ru": "Шаг выбора моек и смесителей"
+                    },
+                    "meta": {
+                        "show_user": true,
+                        "show_manager": true,
+                        "show_admin": true,
+                        "userShow": true,
+                        "managerShow": true,
+                        "adminShow": true
+                    }
+                },
+                {
+                    "external_code": "rec_ui_show_wall_panel_step",
+                    "slug": "show_wall_panel_step",
+                    "name": {
+                        "ru": "Шаг добавления стеновых панелей (фартуков)"
+                    },
+                    "meta": {
+                        "show_user": true,
+                        "show_manager": true,
+                        "show_admin": true,
+                        "userShow": true,
+                        "managerShow": true,
+                        "adminShow": true
+                    }
+                },
+                {
+                    "external_code": "rec_ui_show_bar_counter_step",
+                    "slug": "show_bar_counter_step",
+                    "name": {
+                        "ru": "Шаг добавления барной стойки / острова"
+                    },
+                    "meta": {
+                        "show_user": true,
+                        "show_manager": true,
+                        "show_admin": true,
+                        "userShow": true,
+                        "managerShow": true,
+                        "adminShow": true
+                    }
+                },
+                {
+                    "external_code": "rec_ui_show_edge_step",
+                    "slug": "show_edge_step",
+                    "name": {
+                        "ru": "Шаг выбора фигурного профиля кромки"
+                    },
+                    "meta": {
+                        "show_user": true,
+                        "show_manager": true,
+                        "show_admin": true,
+                        "userShow": true,
+                        "managerShow": true,
+                        "adminShow": true
+                    }
+                },
+                {
+                    "external_code": "rec_ui_btn_download_pdf",
+                    "slug": "btn_download_pdf",
+                    "name": {
+                        "ru": "Кнопка 'Скачать КП' (PDF со схемами)"
+                    },
+                    "meta": {
+                        "show_user": false,
+                        "show_manager": true,
+                        "show_admin": true,
+                        "userShow": false,
+                        "managerShow": true,
+                        "adminShow": true
+                    }
+                },
+                {
+                    "external_code": "rec_ui_btn_print_html",
+                    "slug": "btn_print_html",
+                    "name": {
+                        "ru": "Кнопка 'Печать коммерческого предложения'"
+                    },
+                    "meta": {
+                        "show_user": false,
+                        "show_manager": true,
+                        "show_admin": true,
+                        "userShow": false,
+                        "managerShow": true,
+                        "adminShow": true
+                    }
+                },
+                {
+                    "external_code": "rec_ui_btn_share_link",
+                    "slug": "btn_share_link",
+                    "name": {
+                        "ru": "Кнопка 'Поделиться расчетом' (по ссылке)"
+                    },
+                    "meta": {
+                        "show_user": true,
+                        "show_manager": true,
+                        "show_admin": true,
+                        "userShow": true,
+                        "managerShow": true,
+                        "adminShow": true
+                    }
+                },
+                {
+                    "external_code": "rec_ui_montage_rate_type",
+                    "slug": "montage_rate_type",
+                    "name": {
+                        "ru": "Принцип тарификации монтажа",
+                        "en": "Montage rate type"
+                    },
+                    "meta": {
+                        "value_user": "per_linear_meter",
+                        "value_manager": "per_linear_meter",
+                        "value_admin": "per_linear_meter"
+                    }
+                }
+            ]
         }
     ],
     "attributes": [

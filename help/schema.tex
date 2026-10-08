@@ -1,0 +1,146 @@
+\documentclass[tikz,border=12pt]{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, fit}
+
+\begin{document}
+
+  \begin{tikzpicture}[
+    font=\sffamily,
+    >=Stealth,
+    node distance=1.6cm,
+  % Стили блоков
+    actor/.style={
+      draw=blue!80!black,
+      fill=blue!10,
+      rounded corners=8pt,
+      line width=1.5pt,
+      align=center,
+      inner sep=10pt,
+      text width=8cm
+    },
+    orchestrator/.style={
+      draw=orange!90!black,
+      fill=orange!10,
+      rounded corners=8pt,
+      line width=2pt,
+      align=center,
+      inner sep=12pt,
+      text width=14cm
+    },
+    storage/.style={
+      draw=teal!80!black,
+      fill=teal!8,
+      rounded corners=6pt,
+      line width=1.2pt,
+      align=left,
+      inner sep=10pt,
+      text width=4.3cm,
+      minimum height=3.8cm
+    },
+    consumer/.style={
+      draw=purple!80!black,
+      fill=purple!10,
+      rounded corners=8pt,
+      line width=1.5pt,
+      align=center,
+      inner sep=10pt,
+      text width=6.5cm
+    },
+    arrow/.style={
+      ->,
+      line width=1.5pt,
+      draw=gray!80!black
+    },
+    lbl/.style={
+      font=\small\bfseries,
+      fill=white,
+      inner sep=2pt
+    }
+  ]
+
+    % 1. Пользователь (Технолог / Руководитель)
+    \node[actor] (user) {
+      \textbf{\Large 👤 Технолог / Руководитель фабрики}\\[3pt]
+      {\small Заходит в единую страницу Filament: \texttt{/admin/stone/calculator-settings}}
+    };
+
+    % 2. Оркестратор (Единый пульт)
+    \node[orchestrator, below=of user] (orch) {
+      \textbf{\LARGE 🎛️ Единый Оркестратор настроек калькулятора}\\[4pt]
+      \textit{\normalsize «Одно окно вместо десятка разрозненных таблиц»}\\[6pt]
+      \footnotesize
+      \begin{tabular}{cccc}
+        \textbf{Вкладка 1:} Формы и лимиты &
+        \textbf{Вкладка 2:} Припуски сторон &
+        \textbf{Вкладка 3:} Материалы &
+        \textbf{Вкладка 4:} Права UI
+      \end{tabular}
+    };
+
+    % 3. Три системных хранилища под капотом
+    \node[storage, below left=2.2cm and 0.2cm of orch] (storeA) {
+      \textbf{\large 📐 Формы изделий}\\[-2pt]
+      \rule{4.3cm}{0.5pt}\\[3pt]
+      \scriptsize
+      \textbf{Где:} \texttt{stone\_shapes}\\[3pt]
+      • Прямая, Г-, П-образная\\
+      • Картинка/чертеж\\
+      • Лимиты (длина, ширина)\\
+      • Разрешенные вырезы/услуги
+    };
+
+    \node[storage, below=2.2cm of orch] (storeB) {
+      \textbf{\large 🪚 Профили припусков}\\[-2pt]
+      \rule{4.3cm}{0.5pt}\\[3pt]
+      \scriptsize
+      \textbf{Где:} \texttt{stone\_allowances}\\[3pt]
+      • Профиль «Акрил» (+40мм)\\
+      • Профиль «Кварц» (+0мм)\\
+      • Правила сторон (фасад, торцы, пристенный борт)
+    };
+
+    \node[storage, below right=2.2cm and 0.2cm of orch] (storeC) {
+      \textbf{\large 💎 Физика слэбов}\\[-2pt]
+      \rule{4.3cm}{0.5pt}\\[3pt]
+      \scriptsize
+      \textbf{Где:} \texttt{ProductType.meta}\\[3pt]
+      • Акрил, Кварц, Мрамор...\\
+      • Шаг деления (0.25 / 0.5 / 1.0)\\
+      • Срез кромки листа (10мм)\\
+      • Предел длины (2800мм)
+    };
+
+    % 4. Потребители (Витрина и Производство)
+    \node[consumer, below left=2.2cm and 0.4cm of storeB] (clientApp) {
+      \textbf{\large 💻 Клиентский калькулятор}\\[3pt]
+      {\small Показывает клиенту только доступные опции, чертежи и скрывает технические подгибы}
+    };
+
+    \node[consumer, below right=2.2cm and 0.4cm of storeB] (cutterApp) {
+      \textbf{\large ⚙️ Раскрой и Производство (BOM)}\\[3pt]
+      {\small Автоматически увеличивает заготовку на кромку и пилит длинные детали по лимиту доставки}
+    };
+
+    % Связи (Стрелки)
+    \draw[arrow] (user) -- node[lbl, right=3pt] {Редактирует и жмет «Сохранить»} (orch);
+
+    \draw[arrow] (orch.south) -- ++(0,-0.6) -| node[lbl, near start] {Сохраняет формы} (storeA.north);
+    \draw[arrow] (orch.south) -- node[lbl] {Сохраняет припуски} (storeB.north);
+    \draw[arrow] (orch.south) -- ++(0,-0.6) -| node[lbl, near start] {Обновляет тип камня} (storeC.north);
+
+    % Связи к потребителям
+    \draw[arrow] (storeA.south) -- ++(0,-0.6) -| (clientApp.north);
+    \draw[arrow] (storeB.south) -- ++(0,-0.4) -| (clientApp.north);
+    \draw[arrow] (storeB.south) -- ++(0,-0.4) -| (cutterApp.north);
+    \draw[arrow] (storeC.south) -- ++(0,-0.6) -| (cutterApp.north);
+
+    % Фоновые рамки для пояснения
+    \begin{scope}[on background layer]
+      \node[draw=gray!40, dashed, fill=gray!3, rounded corners=10pt, fit=(storeA) (storeB) (storeC), inner sep=12pt, label=above:{\small\textbf{База данных (Умные справочники и Типы товаров)}}] {};
+    \end{scope}
+
+  \end{tikzpicture}
+
+\end{document}

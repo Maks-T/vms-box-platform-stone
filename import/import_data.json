@@ -149,6 +149,14 @@
                         "ru": "Макс. транспортировочный размер (мм)"
                     },
                     "width": 1
+                },
+                {
+                    "key": "allowance_profile",
+                    "type": "text",
+                    "label": {
+                        "ru": "Профиль припусков"
+                    },
+                    "width": 1
                 }
             ]
         },
@@ -207,39 +215,7 @@
                 "allow_rounding": true,
                 "trim_offset": 10,
                 "max_transport_size": 2800,
-                "shape_allowances": {
-                    "worktop_line": {
-                        "front": { "has_edge": true, "has_hem": true, "edge_width": 40, "hem_width": 40 },
-                        "left": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "right": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "back": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 }
-                    },
-                    "worktop_l_shaped": {
-                        "front": { "has_edge": true, "has_hem": true, "edge_width": 40, "hem_width": 40 },
-                        "left": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "right": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "back": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 }
-                    },
-                    "worktop_u_shaped": {
-                        "front": { "has_edge": true, "has_hem": true, "edge_width": 40, "hem_width": 40 },
-                        "left": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "right": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "back": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 }
-                    },
-                    "island": {
-                        "front": { "has_edge": true, "has_hem": true, "edge_width": 40, "hem_width": 40 },
-                        "back": { "has_edge": true, "has_hem": true, "edge_width": 40, "hem_width": 40 },
-                        "left": { "has_edge": true, "has_hem": true, "edge_width": 40, "hem_width": 40 },
-                        "right": { "has_edge": true, "has_hem": true, "edge_width": 40, "hem_width": 40 }
-                    },
-                    "windowsill": {
-                        "front": { "has_edge": true, "has_hem": true, "edge_width": 40, "hem_width": 40 },
-                        "ears": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "left": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 },
-                        "right": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 },
-                        "back": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 }
-                    }
-                }
+                "allowance_profile": "acrylic_standard"
             },
             "attached_attributes": [
                 {
@@ -312,7 +288,8 @@
                 "corner_add_width": 760,
                 "allow_rounding": true,
                 "trim_offset": 10,
-                "max_transport_size": 2800
+                "max_transport_size": 2800,
+                "allowance_profile": "acrylic_standard"
             },
             "attached_attributes": [
                 {
@@ -386,39 +363,7 @@
                 "allow_rounding": false,
                 "trim_offset": 15,
                 "max_transport_size": 2800,
-                "shape_allowances": {
-                    "worktop_line": {
-                        "front": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "left": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "right": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "back": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 }
-                    },
-                    "worktop_l_shaped": {
-                        "front": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "left": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "right": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "back": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 }
-                    },
-                    "worktop_u_shaped": {
-                        "front": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "left": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "right": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "back": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 }
-                    },
-                    "island": {
-                        "front": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "back": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "left": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "right": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 }
-                    },
-                    "windowsill": {
-                        "front": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "ears": { "has_edge": true, "has_hem": false, "edge_width": 40, "hem_width": 0 },
-                        "left": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 },
-                        "right": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 },
-                        "back": { "has_edge": false, "has_hem": false, "edge_width": 0, "hem_width": 0 }
-                    }
-                }
+                "allowance_profile": "quartz_standard"
             },
             "attached_attributes": [
                 {
@@ -1780,9 +1725,14 @@
             "meta_schema": [
                 {
                     "key": "material_code",
-                    "type": "text",
+                    "type": "entity",
+                    "target_entity": "product_type",
+                    "value_key": "code",
+                    "filter": {
+                        "family": "stone"
+                    },
                     "label": {
-                        "ru": "Системный код материала"
+                        "ru": "Тип материала"
                     }
                 },
                 {
@@ -1859,6 +1809,72 @@
                         "material_code": "quartz_stone",
                         "thickness": 20,
                         "coefficient": 1
+                    }
+                }
+            ]
+        },
+        {
+            "external_code": "dict_stone_allowance_profiles",
+            "code": "stone_allowance_profiles",
+            "name": {
+                "ru": "Профили припусков камня"
+            },
+            "meta_schema": [
+                {
+                    "key": "sides",
+                    "type": "text",
+                    "label": {
+                        "ru": "Спецификация сторон"
+                    }
+                }
+            ],
+            "records": [
+                {
+                    "external_code": "rec_profile_acrylic_standard",
+                    "slug": "acrylic_standard",
+                    "name": {
+                        "ru": "Акриловый профиль"
+                    },
+                    "meta": {
+                        "sides": {
+                            "front": { "has_edge": true, "edge_width": 40, "has_hem": true, "hem_width": 40 },
+                            "left": { "has_edge": true, "edge_width": 40, "has_hem": false, "hem_width": 0 },
+                            "right": { "has_edge": true, "edge_width": 40, "has_hem": false, "hem_width": 0 },
+                            "back": { "has_edge": false, "edge_width": 0, "has_hem": false, "hem_width": 0 },
+                            "ears": { "has_edge": true, "edge_width": 40, "has_hem": false, "hem_width": 0 }
+                        }
+                    }
+                },
+                {
+                    "external_code": "rec_profile_quartz_standard",
+                    "slug": "quartz_standard",
+                    "name": {
+                        "ru": "Кварцевый профиль"
+                    },
+                    "meta": {
+                        "sides": {
+                            "front": { "has_edge": true, "edge_width": 40, "has_hem": false, "hem_width": 0 },
+                            "left": { "has_edge": true, "edge_width": 40, "has_hem": false, "hem_width": 0 },
+                            "right": { "has_edge": true, "edge_width": 40, "has_hem": false, "hem_width": 0 },
+                            "back": { "has_edge": false, "edge_width": 0, "has_hem": false, "hem_width": 0 },
+                            "ears": { "has_edge": true, "edge_width": 40, "has_hem": false, "hem_width": 0 }
+                        }
+                    }
+                },
+                {
+                    "external_code": "rec_profile_natural_stone",
+                    "slug": "natural_stone",
+                    "name": {
+                        "ru": "Профиль натурального камня"
+                    },
+                    "meta": {
+                        "sides": {
+                            "front": { "has_edge": true, "edge_width": 30, "has_hem": false, "hem_width": 0 },
+                            "left": { "has_edge": true, "edge_width": 30, "has_hem": false, "hem_width": 0 },
+                            "right": { "has_edge": true, "edge_width": 30, "has_hem": false, "hem_width": 0 },
+                            "back": { "has_edge": false, "edge_width": 0, "has_hem": false, "hem_width": 0 },
+                            "ears": { "has_edge": true, "edge_width": 30, "has_hem": false, "hem_width": 0 }
+                        }
                     }
                 }
             ]

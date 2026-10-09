@@ -2012,7 +2012,7 @@
                     "meta": {
                         "geometry_type": "island",
                         "category_scope": "kitchen",
-                        "image_layout": "pdf/layouts/worktop/line.png",
+                        "image_layout": "pdf/layouts/island/island.webp",
                         "allowed_services": "cutout_price,cutout_hob_price,gluing_price,point_cutout_price,socket_cutout_price",
                         "length_min": 600,
                         "length_max": 3500,
@@ -2030,7 +2030,7 @@
                     "meta": {
                         "geometry_type": "line",
                         "category_scope": "kitchen",
-                        "image_layout": "pdf/layouts/worktop/line.png",
+                        "image_layout": "pdf/layouts/bar/bar.webp",
                         "allowed_services": "socket_cutout_price",
                         "length_min": 500,
                         "length_max": 3000,
@@ -2102,7 +2102,7 @@
                     "meta": {
                         "geometry_type": "line",
                         "category_scope": "kitchen",
-                        "image_layout": "pdf/layouts/worktop/line.png",
+                        "image_layout": "pdf/layouts/panels/panel.webp",
                         "allowed_services": "socket_cutout_price",
                         "length_min": 300,
                         "length_max": 3500,

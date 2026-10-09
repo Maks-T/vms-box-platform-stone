@@ -13,6 +13,7 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
 use Illuminate\Support\HtmlString;
+use Nicole\Box\Core\Models\Product;
 
 /**
  * Вкладка настройки геометрических форм изделий и размерных лимитов.
@@ -22,57 +23,66 @@ use Illuminate\Support\HtmlString;
 class ShapesTab
 {
     /**
-     * Реестр геометрических форм изделий из камня.
+     * Реестр геометрических форм изделий из камня с группировкой по категориям.
      *
-     * @return array<string, array{name: string, desc: string, blueprint: string}>
+     * @return array<string, array{group: string, name: string, desc: string, blueprint: string}>
      */
     public static function getRegistry(): array
     {
         return [
             'worktop_line' => [
+                'group' => 'worktop',
                 'name' => __('Straight Worktop'),
                 'desc' => __('Straight worktop for kitchen or bathroom along a single wall'),
                 'blueprint' => asset('pdf/layouts/worktop/line.png'),
             ],
             'worktop_l_shaped' => [
+                'group' => 'worktop',
                 'name' => __('L-Shaped Worktop'),
                 'desc' => __('Corner construction of two joined wings with a seam'),
                 'blueprint' => asset('pdf/layouts/worktop/l_shaped.png'),
             ],
             'worktop_u_shaped' => [
+                'group' => 'worktop',
                 'name' => __('U-Shaped Worktop'),
                 'desc' => __('Three-section construction with two corner joints'),
                 'blueprint' => asset('pdf/layouts/worktop/u_shaped.png'),
             ],
             'island' => [
+                'group' => 'modules',
                 'name' => __('Kitchen Island'),
                 'desc' => __('Freestanding island module with perimeter processing'),
-                'blueprint' => asset('pdf/layouts/worktop/line.png'),
+                'blueprint' => asset('pdf/layouts/island/island.webp'),
             ],
             'bar_counter' => [
+                'group' => 'modules',
                 'name' => __('Bar Counter'),
                 'desc' => __('Narrow cantilever or wall panel with front edge'),
-                'blueprint' => asset('pdf/layouts/worktop/line.png'),
+                'blueprint' => asset('pdf/layouts/bar/bar.webp'),
             ],
             'windowsill_line' => [
+                'group' => 'windowsill',
                 'name' => __('Straight Windowsill'),
                 'desc' => __('Rectangular windowsill with front drip edge and ears'),
                 'blueprint' => asset('pdf/layouts/windowsill/line.png'),
             ],
             'windowsill_corner' => [
+                'group' => 'windowsill',
                 'name' => __('Corner Windowsill'),
                 'desc' => __('Corner windowsill for 90 degree bay or balcony unit'),
                 'blueprint' => asset('pdf/layouts/windowsill/corner.png'),
             ],
             'windowsill_bay' => [
+                'group' => 'windowsill',
                 'name' => __('Bay Windowsill'),
                 'desc' => __('Multi-section bay windowsill with obtuse corner joints'),
                 'blueprint' => asset('pdf/layouts/windowsill/bay.png'),
             ],
             'wall_panel' => [
+                'group' => 'modules',
                 'name' => __('Wall Panel (Backsplash)'),
                 'desc' => __('Vertical wall panel between worktop and upper cabinets'),
-                'blueprint' => asset('pdf/layouts/worktop/line.png'),
+                'blueprint' => asset('pdf/layouts/panels/panel.webp'),
             ],
         ];
     }
@@ -80,9 +90,49 @@ class ShapesTab
     public static function make(?array $shapesRegistry = null): Tab
     {
         $shapesRegistry ??= static::getRegistry();
-        $shapesTabs = [];
 
-        foreach ($shapesRegistry as $shapeSlug => $shapeDef) {
+        $groupDefinitions = [
+            'worktop' => [
+                'title' => __('Worktops (Kitchen & Bath)'),
+                'icon' => 'heroicon-o-rectangle-stack',
+            ],
+            'modules' => [
+                'title' => __('Kitchen Addon Modules'),
+                'icon' => 'heroicon-o-puzzle-piece',
+            ],
+            'windowsill' => [
+                'title' => __('Windowsills'),
+                'icon' => 'heroicon-o-window',
+            ],
+        ];
+
+        $categoryTabs = [];
+        foreach ($groupDefinitions as $groupKey => $groupInfo) {
+            $groupShapes = [];
+            foreach ($shapesRegistry as $shapeSlug => $shapeDef) {
+                if (($shapeDef['group'] ?? 'worktop') !== $groupKey) {
+                    continue;
+                }
+                $groupShapes[] = static::buildShapeTab($shapeSlug, $shapeDef);
+            }
+
+            $categoryTabs[] = Tab::make('group_' . $groupKey)
+                ->label($groupInfo['title'])
+                ->icon($groupInfo['icon'])
+                ->schema([
+                    Tabs::make('InnerTabs_' . $groupKey)->tabs($groupShapes),
+                ]);
+        }
+
+        return Tab::make(__('Shapes and Limits'))
+            ->icon('heroicon-o-cube-transparent')
+            ->schema([
+                Tabs::make('ShapesGroupTabs')->tabs($categoryTabs),
+            ]);
+    }
+
+    protected static function buildShapeTab(string $shapeSlug, array $shapeDef): Tab
+    {
             $upperCode = strtoupper($shapeSlug);
             $visualHtml = '
                 <div style="display:flex;align-items:center;gap:16px;padding:12px 16px;border-radius:12px;border:1px solid rgba(156,163,175,0.25);background:rgba(243,244,246,0.6);width:100%;box-sizing:border-box;">
@@ -96,7 +146,7 @@ class ShapesTab
                     </div>
                 </div>';
 
-            $shapesTabs[] = Tab::make($shapeSlug)
+            return Tab::make($shapeSlug)
                 ->label($shapeDef['name'])
                 ->schema([
                     Section::make()->schema([
@@ -120,30 +170,85 @@ class ShapesTab
                     Section::make(__('Dimensional Limits'))
                         ->description(__('Limits the min and max dimensions in the configurator wizard'))
                         ->schema([
-                            Grid::make(4)->schema([
-                                TextInput::make('shapes.' . $shapeSlug . '.length_min')->label(__('Min Length (mm)'))->numeric()->required(),
-                                TextInput::make('shapes.' . $shapeSlug . '.length_max')->label(__('Max Length (mm)'))->numeric()->required(),
-                                TextInput::make('shapes.' . $shapeSlug . '.width_min')->label(__('Min Width (mm)'))->numeric()->required(),
-                                TextInput::make('shapes.' . $shapeSlug . '.width_max')->label(__('Max Width (mm)'))->numeric()->required(),
+                            Grid::make(12)->schema([
+                                TextInput::make('shapes.' . $shapeSlug . '.length_min')
+                                    ->label(__('Min Length (mm)'))
+                                    ->numeric()
+                                    ->required()
+                                    ->columnSpan(['default' => 6, 'md' => 3, 'xl' => 2]),
+
+                                TextInput::make('shapes.' . $shapeSlug . '.length_max')
+                                    ->label(__('Max Length (mm)'))
+                                    ->numeric()
+                                    ->required()
+                                    ->columnSpan(['default' => 6, 'md' => 3, 'xl' => 2]),
+
+                                TextInput::make('shapes.' . $shapeSlug . '.width_min')
+                                    ->label(__('Min Width (mm)'))
+                                    ->numeric()
+                                    ->required()
+                                    ->columnSpan(['default' => 6, 'md' => 3, 'xl' => 2]),
+
+                                TextInput::make('shapes.' . $shapeSlug . '.width_max')
+                                    ->label(__('Max Width (mm)'))
+                                    ->numeric()
+                                    ->required()
+                                    ->columnSpan(['default' => 6, 'md' => 3, 'xl' => 2]),
                             ]),
                         ]),
 
                     Section::make(__('Allowed Services & Geometry Engine'))
                         ->description(__('Defines the math decomposition type and services permitted for this shape'))
                         ->schema([
-                            Grid::make(3)->schema([
-                                TextInput::make('shapes.' . $shapeSlug . '.geometry_type')->label(__('Geometry Type (line, l_shaped...)'))->default('line')->required(),
-                                TextInput::make('shapes.' . $shapeSlug . '.category_scope')->label(__('Category Scope (kitchen, windowsill...)'))->default('kitchen')->required(),
-                                TextInput::make('shapes.' . $shapeSlug . '.allowed_services')->label(__('Allowed Service Codes (comma separated)'))->placeholder('cutout_price,cutout_hob_price...')->columnSpan(1),
+                            Grid::make(12)->schema([
+                                Select::make('shapes.' . $shapeSlug . '.geometry_type')
+                                    ->label(__('Geometry Type'))
+                                    ->options([
+                                        'line' => __('Straight (Line)'),
+                                        'l_shaped' => __('L-Shaped (Corner seam)'),
+                                        'u_shaped' => __('U-Shaped (Three sections)'),
+                                        'island' => __('Island (Perimeter finish)'),
+                                        'corner' => __('Corner Windowsill'),
+                                        'bay' => __('Bay Windowsill'),
+                                    ])
+                                    ->default('line')
+                                    ->required()
+                                    ->native(false)
+                                    ->columnSpan(['default' => 12, 'md' => 6, 'xl' => 4]),
+
+                                Select::make('shapes.' . $shapeSlug . '.category_scope')
+                                    ->label(__('Category Scope'))
+                                    ->options([
+                                        'kitchen' => __('Kitchen'),
+                                        'bathroom' => __('Bathroom'),
+                                        'windowsill' => __('Windowsills'),
+                                    ])
+                                    ->default('kitchen')
+                                    ->required()
+                                    ->native(false)
+                                    ->columnSpan(['default' => 12, 'md' => 6, 'xl' => 4]),
                             ]),
+
+                            Select::make('shapes.' . $shapeSlug . '.allowed_services')
+                                ->label(__('Allowed Services for this Shape'))
+                                ->helperText(__('Select services available for this shape in the calculator'))
+                                ->multiple()
+                                ->searchable()
+                                ->preload()
+                                ->options(function () {
+                                    $locale = app()->getLocale();
+                                    return Product::query()
+                                        ->where('catalog_type', 'service')
+                                        ->where('is_active', true)
+                                        ->get()
+                                        ->mapWithKeys(function ($p) use ($locale) {
+                                            $name = $p->getTranslation('name', $locale) ?: $p->name;
+                                            return [$p->code => "{$name} ({$p->code})"];
+                                        })
+                                        ->toArray();
+                                })
+                                ->columnSpanFull(),
                         ]),
                 ]);
-        }
-
-        return Tab::make(__('Shapes and Limits'))
-            ->icon('heroicon-o-cube-transparent')
-            ->schema([
-                Tabs::make('ShapesInnerTabs')->tabs($shapesTabs),
-            ]);
     }
 }

@@ -14,6 +14,8 @@ use Filament\Pages\Page;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 use Nicole\Box\Core\Models\ComplexDictionary;
 use Nicole\Box\Core\Models\ComplexDictionaryRecord;
 use Nicole\Box\Core\Models\ProductType;
@@ -61,11 +63,25 @@ class ManageStoneCalculatorSettings extends Page implements HasForms
     $this->form->fill($this->loadCurrentSettings());
   }
 
+  /**
+   * Кэшированная выборка типов камня для текущего запроса.
+   *
+   * @return Collection<int, ProductType>
+   */
+  protected function getStoneTypes(): Collection
+  {
+    return once(fn () => ProductType::query()
+      ->whereHas('family', fn ($q) => $q->whereIn('code', ['stone', 'natural-stone']))
+      ->get()
+    );
+  }
+
   public function form(Schema $schema): Schema
   {
     $profileOptions = collect(AllowanceProfilesTab::getRegistry())->mapWithKeys(
       fn ($item, $key) => [$key => $item['name']]
     )->toArray();
+    $stoneTypes = $this->getStoneTypes();
 
     return $schema
       ->statePath('data')
@@ -73,7 +89,7 @@ class ManageStoneCalculatorSettings extends Page implements HasForms
         Tabs::make('MasterStoneTabs')->tabs([
           ShapesTab::make(),
           AllowanceProfilesTab::make(),
-          MaterialsTab::make($profileOptions),
+          MaterialsTab::make($stoneTypes, $profileOptions),
           PermissionsTab::make(),
           ServicesTab::make(),
         ]),
@@ -82,18 +98,25 @@ class ManageStoneCalculatorSettings extends Page implements HasForms
 
   protected function loadCurrentSettings(): array
   {
-    // 1. Загрузка форм из stone_shapes
-    /** @var ComplexDictionary|null $shapesDict */
-    $shapesDict = ComplexDictionary::query()
-      ->where('code', 'stone_shapes')
+    $dictionaries = ComplexDictionary::query()
+      ->whereIn('code', ['stone_shapes', 'stone_allowance_profiles', 'stone_interface_settings'])
       ->with('records')
-      ->first();
-    $shapeRecords = $shapesDict?->records?->keyBy('slug') ?? collect();
+      ->get()
+      ->keyBy('code');
+
+    $shapeRecords = $dictionaries->get('stone_shapes')?->records?->keyBy('slug') ?? collect();
+    $profileRecords = $dictionaries->get('stone_allowance_profiles')?->records?->keyBy('slug') ?? collect();
+    $interfaceRecords = $dictionaries->get('stone_interface_settings')?->records?->keyBy('slug') ?? collect();
 
     $shapesState = [];
     foreach (ShapesTab::getRegistry() as $shapeSlug => $shapeDef) {
       $rec = $shapeRecords->get($shapeSlug);
       $meta = $rec?->meta ?? [];
+      $rawServices = $meta['allowed_services'] ?? [];
+      $allowedServices = is_array($rawServices)
+        ? $rawServices
+        : array_values(array_filter(array_map('trim', explode(',', (string) $rawServices))));
+
       $shapesState[$shapeSlug] = [
         'is_active' => (bool) ($rec?->is_active ?? true),
         'length_min' => (int) ($meta['length_min'] ?? 300),
@@ -102,17 +125,9 @@ class ManageStoneCalculatorSettings extends Page implements HasForms
         'width_max' => (int) ($meta['width_max'] ?? 1200),
         'geometry_type' => (string) ($meta['geometry_type'] ?? 'line'),
         'category_scope' => (string) ($meta['category_scope'] ?? 'kitchen'),
-        'allowed_services' => (string) ($meta['allowed_services'] ?? ''),
+        'allowed_services' => $allowedServices,
       ];
     }
-
-    // 2. Загрузка профилей припусков из stone_allowance_profiles
-    /** @var ComplexDictionary|null $profilesDict */
-    $profilesDict = ComplexDictionary::query()
-      ->where('code', 'stone_allowance_profiles')
-      ->with('records')
-      ->first();
-    $profileRecords = $profilesDict?->records?->keyBy('slug') ?? collect();
 
     $profilesState = [];
     foreach (AllowanceProfilesTab::getRegistry() as $profileSlug => $profileDef) {
@@ -135,9 +150,7 @@ class ManageStoneCalculatorSettings extends Page implements HasForms
     }
 
     // 3. Загрузка физики слэбов напрямую из ProductType
-    $stoneTypes = ProductType::query()
-      ->whereHas('family', fn ($q) => $q->whereIn('code', ['stone', 'natural-stone']))
-      ->get();
+    $stoneTypes = $this->getStoneTypes();
     $materialsState = [];
     foreach ($stoneTypes as $type) {
       $meta = $type->meta ?? [];
@@ -157,14 +170,7 @@ class ManageStoneCalculatorSettings extends Page implements HasForms
       ];
     }
 
-    // 4. Загрузка матрицы прав интерфейса из stone_interface_settings
-    /** @var ComplexDictionary|null $interfaceDict */
-    $interfaceDict = ComplexDictionary::query()
-      ->where('code', 'stone_interface_settings')
-      ->with('records')
-      ->first();
-    $interfaceRecords = $interfaceDict?->records?->keyBy('slug') ?? collect();
-
+    // 4. Загрузка матрицы прав интерфейса
     $uiMatrix = [];
     foreach (PermissionsTab::getZones() as $zones) {
       foreach ($zones as $zoneKey => $info) {
@@ -198,6 +204,7 @@ class ManageStoneCalculatorSettings extends Page implements HasForms
 
   public function save(): void
   {
+    DB::transaction(function () {
     $state = $this->form->getState();
 
     // 1. Сохранение форм в stone_shapes
@@ -213,6 +220,9 @@ class ManageStoneCalculatorSettings extends Page implements HasForms
     foreach ($state['shapes'] ?? [] as $shapeSlug => $shapeData) {
       $registry = ShapesTab::getRegistry();
       $shapeTitle = $registry[$shapeSlug]['name'] ?? $shapeSlug;
+      $allowedServices = is_array($shapeData['allowed_services'] ?? null)
+        ? array_values(array_filter($shapeData['allowed_services']))
+        : array_values(array_filter(array_map('trim', explode(',', (string) ($shapeData['allowed_services'] ?? '')))));
 
       ComplexDictionaryRecord::query()->updateOrCreate(
         ['dictionary_id' => $shapesDict->id, 'slug' => $shapeSlug],
@@ -226,7 +236,7 @@ class ManageStoneCalculatorSettings extends Page implements HasForms
             'width_max' => (int) ($shapeData['width_max'] ?? 1200),
             'geometry_type' => (string) ($shapeData['geometry_type'] ?? 'line'),
             'category_scope' => (string) ($shapeData['category_scope'] ?? 'kitchen'),
-            'allowed_services' => (string) ($shapeData['allowed_services'] ?? ''),
+            'allowed_services' => $allowedServices,
           ],
         ]
       );
@@ -326,6 +336,7 @@ class ManageStoneCalculatorSettings extends Page implements HasForms
         'is_active' => true,
       ]
     );
+    });
 
     CatalogCache::invalidate();
 

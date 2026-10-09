@@ -24,12 +24,13 @@ class MaterialsTab
     /**
      * Генерация суб-табов по типам камня, привязанным к семейству камней.
      *
+     * @param iterable<\Nicole\Box\Core\Models\ProductType>|null $stoneTypes Предзагруженная коллекция типов камня
      * @param array<string, string> $profileOptions Словарь доступных профилей [slug => label]
      * @return Tab
      */
-    public static function make(array $profileOptions = []): Tab
+    public static function make(?iterable $stoneTypes = null, array $profileOptions = []): Tab
     {
-        $stoneTypes = ProductType::query()
+        $stoneTypes ??= ProductType::query()
             ->whereHas('family', fn ($q) => $q->whereIn('code', ['stone', 'natural-stone']))
             ->get();
 
@@ -44,11 +45,24 @@ class MaterialsTab
                 ->schema([
                     Section::make(__('Cutting Physics & Sales Step'))
                         ->schema([
-                            Grid::make(3)->schema([
+                            Grid::make(12)->schema([
                                 TextInput::make('materials.' . $type->code . '.step')
                                     ->label(__('Sale Step (0.25 / 0.5 / 1.0)'))
                                     ->numeric()
-                                    ->required(),
+                                    ->required()
+                                    ->columnSpan(['default' => 12, 'md' => 4, 'xl' => 2]),
+
+                                TextInput::make('materials.' . $type->code . '.minPart')
+                                    ->label(__('Min Part Size (mm)'))
+                                    ->numeric()
+                                    ->required()
+                                    ->columnSpan(['default' => 12, 'md' => 4, 'xl' => 2]),
+
+                                TextInput::make('materials.' . $type->code . '.maxStack')
+                                    ->label(__('Max Stack'))
+                                    ->numeric()
+                                    ->default(1)
+                                    ->columnSpan(['default' => 12, 'md' => 4, 'xl' => 2]),
 
                                 Radio::make('materials.' . $type->code . '.axisX')
                                     ->label(__('Cutting Axis Direction'))
@@ -56,52 +70,57 @@ class MaterialsTab
                                         1 => __('Along length (Axis X)'),
                                         0 => __('Across width (Axis Y)'),
                                     ])
-                                    ->inline(),
-
-                                TextInput::make('materials.' . $type->code . '.minPart')
-                                    ->label(__('Min Part Size (mm)'))
-                                    ->numeric()
-                                    ->required(),
-                            ]),
-
-                            Grid::make(3)->schema([
-                                TextInput::make('materials.' . $type->code . '.maxStack')
-                                    ->label(__('Max Stack'))
-                                    ->numeric()
-                                    ->default(1),
+                                    ->inline()
+                                    ->columnSpan(['default' => 12, 'md' => 6, 'xl' => 3]),
 
                                 Toggle::make('materials.' . $type->code . '.allow_rounding')
                                     ->label(__('Allow Corner Roundings (R1-R8)'))
-                                    ->inline(false),
+                                    ->inline(false)
+                                    ->columnSpan(['default' => 6, 'md' => 3, 'xl' => 1]),
 
                                 Toggle::make('materials.' . $type->code . '.is_separate')
                                     ->label(__('Cut Separately from Wall Panel'))
-                                    ->inline(false),
+                                    ->inline(false)
+                                    ->columnSpan(['default' => 6, 'md' => 3, 'xl' => 2]),
                             ]),
                         ]),
 
                     Section::make(__('Technological Allowances & Transport'))
                         ->schema([
-                            Grid::make(2)->schema([
+                            Grid::make(12)->schema([
                                 TextInput::make('materials.' . $type->code . '.trim_offset')
                                     ->label(__('Trim Offset (mm)'))
                                     ->helperText(__('Perimeter margin cut from raw factory slab'))
                                     ->numeric()
-                                    ->required(),
+                                    ->required()
+                                    ->columnSpan(['default' => 12, 'md' => 6, 'xl' => 3]),
 
                                 TextInput::make('materials.' . $type->code . '.max_transport_size')
                                     ->label(__('Max Transport Size (mm)'))
                                     ->helperText(__('Indivisible part length limit. Exceeding parts will be cut on site.'))
                                     ->numeric()
-                                    ->required(),
-                            ]),
+                                    ->required()
+                                    ->columnSpan(['default' => 12, 'md' => 6, 'xl' => 3]),
 
-                            Grid::make(2)->schema([
-                                TextInput::make('materials.' . $type->code . '.corner_add_length')->label(__('Inner Corner Add Length (mm)'))->numeric()->required(),
-                                TextInput::make('materials.' . $type->code . '.corner_add_width')->label(__('Inner Corner Add Width (mm)'))->numeric()->required(),
-                            ]),
+                                TextInput::make('materials.' . $type->code . '.corner_add_length')
+                                    ->label(__('Inner Corner Add Length (mm)'))
+                                    ->numeric()
+                                    ->required()
+                                    ->columnSpan(['default' => 12, 'md' => 6, 'xl' => 3]),
 
-                            Select::make('materials.' . $type->code . '.allowance_profile')->label(__('Assigned Allowance Profile'))->options($profileOptions)->required()->native(false),
+                                TextInput::make('materials.' . $type->code . '.corner_add_width')
+                                    ->label(__('Inner Corner Add Width (mm)'))
+                                    ->numeric()
+                                    ->required()
+                                    ->columnSpan(['default' => 12, 'md' => 6, 'xl' => 3]),
+
+                                Select::make('materials.' . $type->code . '.allowance_profile')
+                                    ->label(__('Assigned Allowance Profile'))
+                                    ->options($profileOptions)
+                                    ->required()
+                                    ->native(false)
+                                    ->columnSpan(['default' => 12, 'md' => 8, 'xl' => 6]),
+                            ]),
                         ]),
                 ]);
         }

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Providers\Filament;
 
-use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
-use CmsMulti\FilamentClearCache\FilamentClearCachePlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -23,10 +21,8 @@ use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use LaraZeus\SpatieTranslatable\SpatieTranslatablePlugin;
 use Nicole\Box\Core\NicoleCorePlugin;
 use Valerie\Box\IndustryStone\ValerieStonePlugin;
-use Outerweb\FilamentTranslatableFields\TranslatableFieldsPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -40,6 +36,7 @@ class AdminPanelProvider extends PanelProvider
       ->colors([
         'primary' => Color::Blue,
       ])
+      ->viteTheme('resources/css/filament/admin/theme.css')
       ->maxContentWidth(Width::Full)
       ->brandLogo(asset('images/logo.svg'))
       ->brandLogoHeight('4rem')
@@ -86,17 +83,8 @@ class AdminPanelProvider extends PanelProvider
           ->collapsed(),
       ])
       ->plugins([
-        FilamentClearCachePlugin::make(),
         NicoleCorePlugin::make(),
         ValerieStonePlugin::make(),
-
-        SpatieTranslatablePlugin::make()
-          ->defaultLocales(config('nicole.locales', ['ru', 'en'])),
-
-        TranslatableFieldsPlugin::make()
-          ->supportedLocales(config('nicole.locales', ['ru', 'en'])),
-
-        FilamentShieldPlugin::make()->navigationGroup('Контроль доступа'),
       ]);
   }
 }

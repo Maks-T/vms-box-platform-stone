@@ -1,0 +1,5 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+/* Сканируем кастомные blade-шаблоны пакетов для компиляции их классов в админку */
+@source "../../../../packages/box/nicole/core/resources/views/**/*.blade.php";
+@source "../../../../packages/box/valerie/industry-wpc/resources/views/**/*.blade.php";

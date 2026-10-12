@@ -20,8 +20,10 @@ deploy_item() {
     rm -rf "$target" || true
     git clone -b "$branch" --single-branch "$repo" "$target"
     rm -rf "$target/.git" || true
-    chown -R www-data:www-data "$target" || true
-    chmod -R 775 "$target" || true
+    if [ "$(id -u)" -eq 0 ]; then
+        chown -R www-data:www-data "$target" 2>/dev/null || true
+        chmod -R 775 "$target" 2>/dev/null || true
+    fi
     echo "✔ Виджет [$key] успешно развернут в $target."
 }
 

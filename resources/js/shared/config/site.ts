@@ -44,6 +44,7 @@ export const siteConfig = {
     { label: 'Каталог камня', href: route('catalog'), disabled: false },
     { label: 'Услуги', href: route('services'), disabled: false },
     { label: 'Калькулятор', href: route('calculator.show'), disabled: false, forceRefresh: true },
+    { label: 'Раскрой камня', href: route('cutting.show'), disabled: false, forceRefresh: true },
     { label: 'Конфигурация', href: route('bootstrap'), disabled: false },
     { label: 'О компании', href: '#', disabled: true },
     { label: 'Контакты', href: '#', disabled: true },

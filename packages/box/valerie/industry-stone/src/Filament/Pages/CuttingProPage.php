@@ -2,13 +2,18 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Pages;
+namespace Valerie\Box\IndustryStone\Filament\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 use Filament\Pages\Page;
 use Filament\Support\Enums\Width;
 
+/**
+ * Страница профессионального раскроя слэбов камня в панели управления.
+ *
+ * @since 2026-10-12
+ */
 class CuttingProPage extends Page
 {
     use HasPageShield;
@@ -19,21 +24,21 @@ class CuttingProPage extends Page
 
     protected static ?int $navigationSort = 15;
 
-    protected string $view = 'filament.pages.cutting-pro';
+    protected string $view = 'valerie-stone::filament.pages.cutting-pro';
 
     public static function getNavigationGroup(): ?string
     {
-        return 'Каталог';
+        return __('Catalog');
     }
 
     public static function getNavigationLabel(): string
     {
-        return 'Раскрой';
+        return __('Раскрой');
     }
 
     public function getTitle(): string
     {
-        return 'Профессиональный раскрой';
+        return __('Профессиональный раскрой');
     }
 
     public function getMaxContentWidth(): Width|string|null

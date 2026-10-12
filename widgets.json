@@ -1,0 +1,12 @@
+{
+  "cpq-stone": {
+    "repo": "git@github.com:kapitulin24/cpq-stone-calc.git",
+    "target": "public/cpq-stone",
+    "branch": "deploy/build"
+  },
+  "cutting-pro": {
+    "repo": "git@github.com:kapitulin24/vms-cutting-pro.git",
+    "target": "public/cutting-pro",
+    "branch": "deploy/build"
+  }
+}

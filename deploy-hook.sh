@@ -2,16 +2,47 @@
 set -e # Останавливать выполнение при критических ошибках
 
 BRANCH_NAME=${1:-"deploy/build"}
+TARGET_WIDGET=${2:-"all"}
+CONFIG_FILE="$(dirname "$0")/widgets.json"
 
-echo "Обновление статических файлов виджета калькулятора (Ветка: $BRANCH_NAME)..."
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "✖ Файл конфигурации виджетов widgets.json не найден!"
+    exit 1
+fi
 
-rm -rf public/cpq-stone || true
+deploy_item() {
+    local key="$1"
+    local repo="$2"
+    local target="$3"
+    local branch="${BRANCH_NAME:-$4}"
 
-git clone -b "$BRANCH_NAME" --single-branch git@github.com:kapitulin24/cpq-stone-calc.git public/cpq-stone
+    echo "===> Развёртывание виджета [$key] (Ветка: $branch, Путь: $target)..."
+    rm -rf "$target" || true
+    git clone -b "$branch" --single-branch "$repo" "$target"
+    rm -rf "$target/.git" || true
+    chown -R www-data:www-data "$target" || true
+    chmod -R 775 "$target" || true
+    echo "✔ Виджет [$key] успешно развернут в $target."
+}
 
-rm -rf public/cpq-stone/.git || true
+if [ "$TARGET_WIDGET" = "all" ]; then
+    echo "===> Развёртывание всех виджетов из widgets.json..."
+    for key in $(jq -r 'keys[]' "$CONFIG_FILE"); do
+        repo=$(jq -r ".[\"$key\"].repo" "$CONFIG_FILE")
+        target=$(jq -r ".[\"$key\"].target" "$CONFIG_FILE")
+        def_branch=$(jq -r ".[\"$key\"].branch // \"deploy/build\"" "$CONFIG_FILE")
+        deploy_item "$key" "$repo" "$target" "$def_branch"
+    done
+else
+    if jq -e ".[\"$TARGET_WIDGET\"]" "$CONFIG_FILE" >/dev/null 2>&1; then
+        repo=$(jq -r ".[\"$TARGET_WIDGET\"].repo" "$CONFIG_FILE")
+        target=$(jq -r ".[\"$TARGET_WIDGET\"].target" "$CONFIG_FILE")
+        def_branch=$(jq -r ".[\"$TARGET_WIDGET\"].branch // \"deploy/build\"" "$CONFIG_FILE")
+        deploy_item "$TARGET_WIDGET" "$repo" "$target" "$def_branch"
+    else
+        echo "✖ Виджет [$TARGET_WIDGET] не зарегистрирован в widgets.json."
+        exit 1
+    fi
+fi
 
-chown -R www-data:www-data public/cpq-stone || true
-chmod -R 775 public/cpq-stone || true
-
-echo "Виджет успешно обновлен."
+echo "Все операции развёртывания виджетов завершены."

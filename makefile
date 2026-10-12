@@ -113,6 +113,17 @@ update-widget:
 	rm -rf public/cpq-stone/.git
 	@echo "Widget updated successfully!"
 
+uc: update-cutting
+
+update-cutting:
+	@echo "Updating Cutting Pro widget..."
+	rm -rf public/cutting-pro
+	git clone --branch deploy/build --single-branch git@github.com:kapitulin24/vms-cutting-pro.git public/cutting-pro
+	rm -rf public/cutting-pro/.git
+	@echo "Cutting Pro widget updated successfully!"
+
+update-widgets: update-widget update-cutting
+
 dw:
 	@echo "Cleaning old widget files..."
 	rm -rf /home/maks-t/vms-box-platform-stone/public/cpq-stone/*

@@ -40,6 +40,7 @@ export const siteConfig = {
   headerNav: [
     { label: 'Каталог камня', href: route('catalog'), disabled: false },
     { label: 'Калькулятор', href: route('calculator.show'), disabled: false, forceRefresh: true },
+    { label: 'Раскрой камня', href: route('cutting.show'), disabled: false, forceRefresh: true },
     { label: 'О компании', href: '#', disabled: true },
     { label: 'Контакты', href: '#', disabled: true },
   ] as (NavItem & { forceRefresh?: boolean })[],

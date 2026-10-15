@@ -16,8 +16,8 @@ if os.name == 'posix':
 else:
     BASE_DIR = r"\\wsl.localhost\Ubuntu-24.04\home\maks-t\vms-box-platform-stone\import"
 
-INPUT_JSON = os.path.join(BASE_DIR, "import_mebel_raw_ru.json")
-OUTPUT_JSON = os.path.join(BASE_DIR, "import_mebel_raw_ru_pic.json")
+INPUT_JSON = os.path.join(BASE_DIR, "import_data_raw.json")
+OUTPUT_JSON = os.path.join(BASE_DIR, "import_data.json")
 CACHE_FILE = os.path.join(BASE_DIR, "image_cache.json")
 IMAGES_DIR = os.path.join(BASE_DIR, "export_images", "products")
 JSON_PATH_PREFIX = "products/"

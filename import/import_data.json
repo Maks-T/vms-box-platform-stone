@@ -198,154 +198,6 @@
     ],
     "types": [
         {
-            "external_code": "type_acrylic_stone",
-            "family_external_code": "fam_stone",
-            "code": "acrylic_stone",
-            "name": {
-                "ru": "Акриловый камень"
-            },
-            "meta": {
-                "step": 0.5,
-                "maxStack": 1,
-                "axisX": true,
-                "minPart": 12,
-                "is_separate": false,
-                "corner_add_length": 920,
-                "corner_add_width": 760,
-                "allow_rounding": true,
-                "trim_offset": 10,
-                "max_transport_size": 2800,
-                "allowance_profile": "acrylic_standard"
-            },
-            "attached_attributes": [
-                {
-                    "code": "supplier_article",
-                    "is_variant_only": true
-                },
-                {
-                    "code": "effect_akril",
-                    "is_variant_only": false
-                },
-                {
-                    "code": "is_bend",
-                    "is_variant_only": false
-                },
-                {
-                    "code": "texture",
-                    "is_variant_only": false
-                },
-                {
-                    "code": "inclusions_akril",
-                    "is_variant_only": false
-                },
-                {
-                    "code": "brand",
-                    "is_variant_only": false
-                },
-                {
-                    "code": "color",
-                    "is_variant_only": true
-                },
-                {
-                    "code": "collection",
-                    "is_variant_only": false
-                },
-                {
-                    "code": "length",
-                    "is_variant_only": false
-                },
-                {
-                    "code": "width",
-                    "is_variant_only": false
-                },
-                {
-                    "code": "height",
-                    "is_variant_only": false
-                },
-                {
-                    "code": "cutting_groups",
-                    "is_variant_only": false
-                }
-            ],
-            "pricing_mode": "complex_dictionary",
-            "pricing_attr_code": null,
-            "pricing_field": "purchase_cost"
-        },
-        {
-            "external_code": "type_acrylic_neomarm",
-            "family_external_code": "fam_stone",
-            "code": "acrylic_neomarm",
-            "name": {
-                "ru": "Акриловый камень (Neomarm)"
-            },
-            "meta": {
-                "step": 0.25,
-                "maxStack": 1,
-                "axisX": true,
-                "minPart": 12,
-                "is_separate": false,
-                "corner_add_length": 920,
-                "corner_add_width": 760,
-                "allow_rounding": true,
-                "trim_offset": 10,
-                "max_transport_size": 2800,
-                "allowance_profile": "acrylic_standard"
-            },
-            "attached_attributes": [
-                {
-                    "code": "supplier_article",
-                    "is_variant_only": true
-                },
-                {
-                    "code": "effect_akril",
-                    "is_variant_only": false
-                },
-                {
-                    "code": "is_bend",
-                    "is_variant_only": false
-                },
-                {
-                    "code": "texture",
-                    "is_variant_only": false
-                },
-                {
-                    "code": "inclusions_akril",
-                    "is_variant_only": false
-                },
-                {
-                    "code": "brand",
-                    "is_variant_only": false
-                },
-                {
-                    "code": "color",
-                    "is_variant_only": true
-                },
-                {
-                    "code": "collection",
-                    "is_variant_only": false
-                },
-                {
-                    "code": "length",
-                    "is_variant_only": false
-                },
-                {
-                    "code": "width",
-                    "is_variant_only": false
-                },
-                {
-                    "code": "height",
-                    "is_variant_only": false
-                },
-                {
-                    "code": "cutting_groups",
-                    "is_variant_only": false
-                }
-            ],
-            "pricing_mode": "complex_dictionary",
-            "pricing_attr_code": null,
-            "pricing_field": "purchase_cost"
-        },
-        {
             "external_code": "type_quartz_stone",
             "family_external_code": "fam_stone",
             "code": "quartz_stone",
@@ -863,12 +715,12 @@
                 "ru": "PX540"
             },
             "description": {
-                "ru": "PRIMAX Quartz: прайс PrimaxQuartz_Vip (12.08.2026), $540 за слэб"
+                "ru": "PRIMAX Quartz: $540 за слэб (PrimaxQuartz_Vip, 12.08.2026), цена как в прайсе"
             },
             "meta": {
                 "purchase_cost": 540,
                 "purchase_currency": "USD",
-                "markup_retail": 30
+                "markup_retail": 0
             }
         },
         {
@@ -879,12 +731,12 @@
                 "ru": "PX595"
             },
             "description": {
-                "ru": "PRIMAX Quartz: прайс PrimaxQuartz_Vip (12.08.2026), $595 за слэб"
+                "ru": "PRIMAX Quartz: $595 за слэб (PrimaxQuartz_Vip, 12.08.2026), цена как в прайсе"
             },
             "meta": {
                 "purchase_cost": 595,
                 "purchase_currency": "USD",
-                "markup_retail": 30
+                "markup_retail": 0
             }
         },
         {
@@ -895,12 +747,12 @@
                 "ru": "PX600"
             },
             "description": {
-                "ru": "PRIMAX Quartz: прайс PrimaxQuartz_Vip (12.08.2026), $600 за слэб"
+                "ru": "PRIMAX Quartz: $600 за слэб (PrimaxQuartz_Vip, 12.08.2026), цена как в прайсе"
             },
             "meta": {
                 "purchase_cost": 600,
                 "purchase_currency": "USD",
-                "markup_retail": 30
+                "markup_retail": 0
             }
         },
         {
@@ -911,12 +763,12 @@
                 "ru": "PX700"
             },
             "description": {
-                "ru": "PRIMAX Quartz: прайс PrimaxQuartz_Vip (12.08.2026), $700 за слэб"
+                "ru": "PRIMAX Quartz: $700 за слэб (PrimaxQuartz_Vip, 12.08.2026), цена как в прайсе"
             },
             "meta": {
                 "purchase_cost": 700,
                 "purchase_currency": "USD",
-                "markup_retail": 30
+                "markup_retail": 0
             }
         },
         {
@@ -927,12 +779,12 @@
                 "ru": "PX730"
             },
             "description": {
-                "ru": "PRIMAX Quartz: прайс PrimaxQuartz_Vip (12.08.2026), $730 за слэб"
+                "ru": "PRIMAX Quartz: $730 за слэб (PrimaxQuartz_Vip, 12.08.2026), цена как в прайсе"
             },
             "meta": {
                 "purchase_cost": 730,
                 "purchase_currency": "USD",
-                "markup_retail": 30
+                "markup_retail": 0
             }
         },
         {
@@ -943,12 +795,12 @@
                 "ru": "PX810"
             },
             "description": {
-                "ru": "PRIMAX Quartz: прайс PrimaxQuartz_Vip (12.08.2026), $810 за слэб"
+                "ru": "PRIMAX Quartz: $810 за слэб (PrimaxQuartz_Vip, 12.08.2026), цена как в прайсе"
             },
             "meta": {
                 "purchase_cost": 810,
                 "purchase_currency": "USD",
-                "markup_retail": 30
+                "markup_retail": 0
             }
         },
         {
@@ -959,12 +811,12 @@
                 "ru": "PX845"
             },
             "description": {
-                "ru": "PRIMAX Quartz: прайс PrimaxQuartz_Vip (12.08.2026), $845 за слэб"
+                "ru": "PRIMAX Quartz: $845 за слэб (PrimaxQuartz_Vip, 12.08.2026), цена как в прайсе"
             },
             "meta": {
                 "purchase_cost": 845,
                 "purchase_currency": "USD",
-                "markup_retail": 30
+                "markup_retail": 0
             }
         },
         {
@@ -975,12 +827,12 @@
                 "ru": "PX1000"
             },
             "description": {
-                "ru": "PRIMAX Quartz: прайс PrimaxQuartz_Vip (12.08.2026), $1000 за слэб"
+                "ru": "PRIMAX Quartz: $1000 за слэб (PrimaxQuartz_Vip, 12.08.2026), цена как в прайсе"
             },
             "meta": {
                 "purchase_cost": 1000,
                 "purchase_currency": "USD",
-                "markup_retail": 30
+                "markup_retail": 0
             }
         },
         {
@@ -991,12 +843,12 @@
                 "ru": "PX1090"
             },
             "description": {
-                "ru": "PRIMAX Quartz: прайс PrimaxQuartz_Vip (12.08.2026), $1090 за слэб"
+                "ru": "PRIMAX Quartz: $1090 за слэб (PrimaxQuartz_Vip, 12.08.2026), цена как в прайсе"
             },
             "meta": {
                 "purchase_cost": 1090,
                 "purchase_currency": "USD",
-                "markup_retail": 30
+                "markup_retail": 0
             }
         },
         {
@@ -1007,12 +859,12 @@
                 "ru": "PX1180"
             },
             "description": {
-                "ru": "PRIMAX Quartz: прайс PrimaxQuartz_Vip (12.08.2026), $1180 за слэб"
+                "ru": "PRIMAX Quartz: $1180 за слэб (PrimaxQuartz_Vip, 12.08.2026), цена как в прайсе"
             },
             "meta": {
                 "purchase_cost": 1180,
                 "purchase_currency": "USD",
-                "markup_retail": 30
+                "markup_retail": 0
             }
         },
         {
@@ -1023,12 +875,12 @@
                 "ru": "PX1390"
             },
             "description": {
-                "ru": "PRIMAX Quartz: прайс PrimaxQuartz_Vip (12.08.2026), $1390 за слэб"
+                "ru": "PRIMAX Quartz: $1390 за слэб (PrimaxQuartz_Vip, 12.08.2026), цена как в прайсе"
             },
             "meta": {
                 "purchase_cost": 1390,
                 "purchase_currency": "USD",
-                "markup_retail": 30
+                "markup_retail": 0
             }
         }
     ],
@@ -5484,9 +5336,7 @@
                         "supplier_article": "100",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 540,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "100-ivory-white-3200-1600-20",
@@ -5527,9 +5377,7 @@
                         "supplier_article": "111",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 810,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "111-snow-white-3200-1600-20-glyantsevaya",
@@ -5570,9 +5418,7 @@
                         "supplier_article": "111",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 810,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "111-snow-white-3200-1600-20-matovaya",
@@ -5613,9 +5459,7 @@
                         "supplier_article": "112",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 600,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "112-crystal-white-3200-1600-20",
@@ -5656,9 +5500,7 @@
                         "supplier_article": "150",
                         "color": "opt_color_primax_temnyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1390,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "150-black-satin-3200-1600-20",
@@ -5699,9 +5541,7 @@
                         "supplier_article": "312",
                         "color": "opt_color_primax_mnogotsvetnyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1390,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "312-patagonia-3200-1600-20",
@@ -5742,9 +5582,7 @@
                         "supplier_article": "313",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1390,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "313-white-arctic-3200-1600-20",
@@ -5785,9 +5623,7 @@
                         "supplier_article": "315",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1390,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "315-ivory-onyx-3200-1600-20",
@@ -5828,9 +5664,7 @@
                         "supplier_article": "321",
                         "color": "opt_color_primax_bezhevyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1390,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "321-travertine-3200-1600-20",
@@ -5871,9 +5705,7 @@
                         "supplier_article": "335",
                         "color": "opt_color_primax_mnogotsvetnyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1390,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "335-tiffani-blue-3200-1600-20",
@@ -5914,9 +5746,7 @@
                         "supplier_article": "340",
                         "color": "opt_color_primax_bezhevyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1390,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "340-taj-mahal-3200-1600-20",
@@ -5957,9 +5787,7 @@
                         "supplier_article": "341",
                         "color": "opt_color_primax_bezhevyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1390,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "341-taj-mahal-3200-1600-20-glyantsevaya",
@@ -6000,9 +5828,7 @@
                         "supplier_article": "341",
                         "color": "opt_color_primax_bezhevyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1390,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "341-taj-mahal-3200-1600-20-matovaya",
@@ -6043,9 +5869,7 @@
                         "supplier_article": "342",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1390,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "342-mountain-ridge-3200-1600-20",
@@ -6086,9 +5910,7 @@
                         "supplier_article": "345",
                         "color": "opt_color_primax_mnogotsvetnyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1090,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "345-black-sea-3200-1600-20",
@@ -6129,9 +5951,7 @@
                         "supplier_article": "702",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1090,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "702-light-calacatta-3200-1600-20",
@@ -6172,9 +5992,7 @@
                         "supplier_article": "722",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1090,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "722-calacatta-warm-venatto-3200-1600-20",
@@ -6215,9 +6033,7 @@
                         "supplier_article": "723",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1090,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "723-calacatta-gold-3200-1600-20",
@@ -6258,9 +6074,7 @@
                         "supplier_article": "740",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1090,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "740-rainbow-calacatta-3200-1600-20",
@@ -6301,9 +6115,7 @@
                         "supplier_article": "770",
                         "color": "opt_color_primax_mnogotsvetnyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1090,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "770-sahara-noir-3200-1600-20",
@@ -6344,9 +6156,7 @@
                         "supplier_article": "773",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1090,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "773-calacatta-mirage-3200-1600-20",
@@ -6387,9 +6197,7 @@
                         "supplier_article": "778",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1090,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "778-calacatta-flow-3200-1600-20",
@@ -6430,9 +6238,7 @@
                         "supplier_article": "781",
                         "color": "opt_color_primax_seryj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1390,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "781-vesuvio-3200-1600-20",
@@ -6473,9 +6279,7 @@
                         "supplier_article": "786",
                         "color": "opt_color_primax_mnogotsvetnyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1390,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "786-calacatta-black-gold-3200-1600-20",
@@ -6516,9 +6320,7 @@
                         "supplier_article": "796",
                         "color": "opt_color_primax_temnyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1390,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "796-noir-satin-3200-1600-20",
@@ -6559,9 +6361,7 @@
                         "supplier_article": "812",
                         "color": "opt_color_primax_temnyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1180,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "812-black-rock-3200-1600-20",
@@ -6602,9 +6402,7 @@
                         "supplier_article": "826",
                         "color": "opt_color_primax_seryj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1000,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "826-concrete-grey-3200-1600-20",
@@ -6645,9 +6443,7 @@
                         "supplier_article": "833",
                         "color": "opt_color_primax_bezhevyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1180,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "833-terracotta-3200-1600-20",
@@ -6688,9 +6484,7 @@
                         "supplier_article": "848",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1180,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "848-white-oxid-3200-1600-20",
@@ -6731,9 +6525,7 @@
                         "supplier_article": "884",
                         "color": "opt_color_primax_seryj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1180,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "884-dark-concrete-3200-1600-20",
@@ -6774,9 +6566,7 @@
                         "supplier_article": "892",
                         "color": "opt_color_primax_seryj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 1180,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "892-grey-oxid-3200-1600-20",
@@ -6817,9 +6607,7 @@
                         "supplier_article": "912",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 595,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "912-white-carrara-3000-1400-20",
@@ -6860,9 +6648,7 @@
                         "supplier_article": "912",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 700,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "912-white-carrara-3200-1600-20",
@@ -6903,9 +6689,7 @@
                         "supplier_article": "913",
                         "color": "opt_color_primax_bezhevyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 730,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "913-golden-sunset-3000-1400-20",
@@ -6946,9 +6730,7 @@
                         "supplier_article": "913",
                         "color": "opt_color_primax_bezhevyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 845,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "913-golden-sunset-3200-1600-20",
@@ -6989,9 +6771,7 @@
                         "supplier_article": "915",
                         "color": "opt_color_primax_temnyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 595,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "915-dark-mist-3000-1400-20",
@@ -7032,9 +6812,7 @@
                         "supplier_article": "915",
                         "color": "opt_color_primax_temnyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 700,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "915-dark-mist-3200-1600-20",
@@ -7075,9 +6853,7 @@
                         "supplier_article": "916",
                         "color": "opt_color_primax_temnyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 700,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "916-emperador-3200-1600-20",
@@ -7118,9 +6894,7 @@
                         "supplier_article": "920",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 595,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "920-white-marble-3000-1400-20",
@@ -7161,9 +6935,7 @@
                         "supplier_article": "920",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 700,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "920-white-marble-3200-1600-20",
@@ -7204,9 +6976,7 @@
                         "supplier_article": "931",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 595,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "931-sunny-carrara-3000-1400-20",
@@ -7247,9 +7017,7 @@
                         "supplier_article": "931",
                         "color": "opt_color_primax_svetlyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 700,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "931-sunny-carrara-3200-1600-20",
@@ -7290,9 +7058,7 @@
                         "supplier_article": "942",
                         "color": "opt_color_primax_bezhevyj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 700,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "942-ivory-grey-3200-1600-20",
@@ -7333,9 +7099,7 @@
                         "supplier_article": "961",
                         "color": "opt_color_primax_seryj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 730,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "961-ice-storm-3000-1400-20",
@@ -7376,9 +7140,7 @@
                         "supplier_article": "961",
                         "color": "opt_color_primax_seryj"
                     },
-                    "is_manual_pricing": false,
-                    "cost_price": 845,
-                    "currency": "USD"
+                    "is_manual_pricing": false
                 }
             ],
             "code": "961-ice-storm-3200-1600-20",

@@ -1,9 +1,11 @@
-import os
+import argparse
+import hashlib
 import json
+import os
 import re
-import urllib.request
-import urllib.parse
 import sys
+import urllib.parse
+import urllib.request
 
 try:
     from PIL import Image
@@ -11,29 +13,50 @@ except ImportError:
     print("Error: Pillow library is not installed. Run: pip install Pillow")
     sys.exit(1)
 
-if os.name == 'posix':
+if os.name == "posix":
     BASE_DIR = "/home/maks-t/vms-box-platform-stone/import"
 else:
     BASE_DIR = r"\\wsl.localhost\Ubuntu-24.04\home\maks-t\vms-box-platform-stone\import"
 
-INPUT_JSON = os.path.join(BASE_DIR, "import_mebel_raw_ru.json")
-OUTPUT_JSON = os.path.join(BASE_DIR, "import_mebel_raw_ru_pic.json")
+MERGED_JSON = os.path.join(BASE_DIR, "import_data_merged.json")
+DEFAULT_INPUT_JSON = (
+    MERGED_JSON if os.path.exists(MERGED_JSON) else os.path.join(BASE_DIR, "import_data.json")
+)
+DEFAULT_OUTPUT_JSON = os.path.join(BASE_DIR, "import_data.json")
 CACHE_FILE = os.path.join(BASE_DIR, "image_cache.json")
 IMAGES_DIR = os.path.join(BASE_DIR, "export_images", "products")
 JSON_PATH_PREFIX = "products/"
 
+# Скачиваем изображения только из ключей картинок, чтобы не задеть source_url
+IMAGE_KEYS = {"preview_picture", "detail_picture", "image"}
 
-def clean_filename(filename: str) -> str:
+
+def resolve_cross_os_path(path_str: str) -> str:
+    """Автоматически приводит путь к формату текущей ОС (Windows <-> WSL)."""
+    path_str = path_str.strip().strip("'").strip('"')
+    if os.name == "posix" and re.match(r"^[a-zA-Z]:[\\/]", path_str):
+        drive = path_str[0].lower()
+        tail = path_str[2:].replace("\\", "/")
+        return f"/mnt/{drive}{tail}"
+    return os.path.abspath(path_str)
+
+
+def clean_filename(filename: str, url: str) -> str:
     name, _ = os.path.splitext(filename)
-    cleaned = re.sub(r'-sl\d+x\d+px?', '', name, flags=re.IGNORECASE)
-    cleaned = re.sub(r'-+', '-', cleaned)
-    return cleaned + ".webp"
+    name = urllib.parse.unquote(name)
+    cleaned = re.sub(r"-sl\d+x\d+px?", "", name, flags=re.IGNORECASE)
+    cleaned = re.sub(r"[^a-zA-Zа-яА-Я0-9_-]+", "-", cleaned)
+    cleaned = re.sub(r"-+", "-", cleaned).strip("-")
+    short_hash = hashlib.md5(url.encode("utf-8")).hexdigest()[:6]
+    base = cleaned or "stone"
+    return f"{base}-{short_hash}.webp"
 
 
-def crop_to_square_and_resize(source_path: str, dest_path: str, target_size: int = 528):
-    """Обрезка изображения до квадрата и изменение размера (для камня)"""
+def crop_to_square_and_resize(source_path: str, dest_path: str, target_size: int = 528) -> bool:
     try:
         with Image.open(source_path) as img:
+            if img.mode not in ("RGB", "RGBA"):
+                img = img.convert("RGB")
             width, height = img.size
             min_side = min(width, height)
 
@@ -45,129 +68,145 @@ def crop_to_square_and_resize(source_path: str, dest_path: str, target_size: int
             img_cropped = img.crop((left, top, right, bottom))
             img_resized = img_cropped.resize((target_size, target_size), Image.Resampling.LANCZOS)
             img_resized.save(dest_path, "WEBP", quality=85)
+        return True
     except Exception as e:
         print(f"Error processing image from {source_path} to {dest_path}: {e}")
+        return False
 
 
-def resize_image_preserve_aspect(source_path: str, dest_path: str, target_max_size: int = 528):
-    """Пропорциональное сжатие по максимальной стороне без обрезки (для моек, смесителей и др.)"""
-    try:
-        with Image.open(source_path) as img:
-            width, height = img.size
+def download_and_process_image(url: str, cache: dict, stats: dict) -> str:
+    if url in cache:
+        cached_rel = cache[url]
+        cached_filename = os.path.basename(cached_rel)
+        if os.path.exists(os.path.join(IMAGES_DIR, cached_filename)):
+            stats["cached"] += 1
+            return cached_rel
 
-            # Рассчитываем новые размеры с сохранением соотношения сторон
-            if width > height:
-                new_width = target_max_size
-                new_height = max(1, int(height * (target_max_size / width)))
-            else:
-                new_height = target_max_size
-                new_width = max(1, int(width * (target_max_size / height)))
-
-            img_resized = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
-            img_resized.save(dest_path, "WEBP", quality=85)
-    except Exception as e:
-        print(f"Error resizing image from {source_path} to {dest_path}: {e}")
-
-
-def download_and_process_image(url: str, cache: dict, is_stone: bool = False) -> str:
     parsed_url = urllib.parse.urlparse(url)
-    raw_filename = os.path.basename(parsed_url.path)
+    raw_filename = os.path.basename(parsed_url.path) or "downloaded_image.jpg"
 
-    if not raw_filename:
-        raw_filename = "downloaded_image.jpg"
-
-    filename = clean_filename(raw_filename)
+    filename = clean_filename(raw_filename, url)
     local_path = os.path.join(IMAGES_DIR, filename)
     new_json_path = JSON_PATH_PREFIX + filename
 
-    if url in cache and os.path.exists(local_path):
-        return cache[url]
+    if os.path.exists(local_path):
+        cache[url] = new_json_path
+        stats["cached"] += 1
+        return new_json_path
 
-    print(f"Downloading: {url} -> {filename} (Is Stone: {is_stone})")
-    temp_path = os.path.join(IMAGES_DIR, "temp_download.tmp")
+    print(f"Downloading: {url} -> {new_json_path}")
+    temp_path = os.path.join(IMAGES_DIR, f"temp_{os.getpid()}.tmp")
     try:
         req = urllib.request.Request(
             url,
-            headers={'User-Agent': 'Mozilla/5.0'}
+            headers={
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+            },
         )
-        with urllib.request.urlopen(req) as response, open(temp_path, 'wb') as out_file:
+        with urllib.request.urlopen(req, timeout=25) as response, open(temp_path, "wb") as out_file:
             out_file.write(response.read())
 
-        # Выбираем алгоритм обработки в зависимости от типа товара
-        if is_stone:
-            crop_to_square_and_resize(temp_path, local_path, target_size=528)
-        else:
-            resize_image_preserve_aspect(temp_path, local_path, target_max_size=528)
+        ok = crop_to_square_and_resize(temp_path, local_path, target_size=528)
 
         if os.path.exists(temp_path):
             os.remove(temp_path)
 
-        cache[url] = new_json_path
-        return new_json_path
+        if ok:
+            cache[url] = new_json_path
+            stats["downloaded"] += 1
+            return new_json_path
+
+        stats["errors"] += 1
+        return url
 
     except Exception as e:
         print(f"Error downloading {url}: {e}")
         if os.path.exists(temp_path):
             os.remove(temp_path)
+        stats["errors"] += 1
         return url
 
 
-def process_json_data(node, cache: dict, is_stone: bool = False):
-    """
-    Контекстный обход JSON.
-    Передает флаг is_stone вниз по дереву, если обнаруживает тип товара со словом 'stone'.
-    """
+def recursive_json_search(node, cache: dict, stats: dict, current_key: str | None = None):
     if isinstance(node, dict):
-        current_is_stone = is_stone
-        # Если в словаре есть тип продукта, проверяем, камень ли это
-        if "product_type_external_code" in node:
-            type_code = str(node["product_type_external_code"]).lower()
-            current_is_stone = "stone" in type_code
-
-        new_dict = {}
         for k, v in node.items():
-            # Модификации (variants) автоматически унаследуют статус parent-товара
-            new_dict[k] = process_json_data(v, cache, is_stone=current_is_stone)
-        return new_dict
-
+            node[k] = recursive_json_search(v, cache, stats, current_key=k)
+        return node
     elif isinstance(node, list):
-        return [process_json_data(item, cache, is_stone=is_stone) for item in node]
-
-    elif isinstance(node, str) and (node.startswith("http://") or node.startswith("https://")):
-        return download_and_process_image(node, cache, is_stone=is_stone)
-
+        return [recursive_json_search(item, cache, stats, current_key=current_key) for item in node]
+    elif (
+        isinstance(node, str)
+        and current_key in IMAGE_KEYS
+        and (node.startswith("http://") or node.startswith("https://"))
+    ):
+        return download_and_process_image(node, cache, stats)
     return node
 
 
 def main():
+    parser = argparse.ArgumentParser(
+        description="Скачивание внешних изображений из JSON, обрезка в квадрат 528x528 WebP и замена путей."
+    )
+    parser.add_argument(
+        "-i", "--input",
+        default=DEFAULT_INPUT_JSON,
+        help="Путь к входному JSON файлу (например: D:\\sand\\PARSERS\\masterstone\\import_data_merged.json)",
+    )
+    parser.add_argument(
+        "-o", "--output",
+        default=DEFAULT_OUTPUT_JSON,
+        help="Путь к выходному JSON файлу (по умолчанию: import/import_data.json)",
+    )
+    args = parser.parse_args()
+
+    input_json = resolve_cross_os_path(args.input)
+    output_json = resolve_cross_os_path(args.output)
+
     os.makedirs(IMAGES_DIR, exist_ok=True)
+
+    print("=" * 60)
+    print(f"Входной JSON:  {input_json}")
+    print(f"Выходной JSON: {output_json}")
+    print(f"Папка фото:    {IMAGES_DIR}")
+    print("=" * 60)
 
     url_cache = {}
     if os.path.exists(CACHE_FILE):
         try:
-            with open(CACHE_FILE, 'r', encoding='utf-8') as cf:
+            with open(CACHE_FILE, "r", encoding="utf-8") as cf:
                 url_cache = json.load(cf)
         except Exception as e:
             print(f"Failed to read cache file: {e}")
 
-    if not os.path.exists(INPUT_JSON):
-        print(f"Error: Input JSON file not found: {INPUT_JSON}")
+    if not os.path.exists(input_json):
+        print(f"Error: Input JSON file not found: {input_json}")
         sys.exit(1)
 
-    with open(INPUT_JSON, 'r', encoding='utf-8') as f:
+    with open(input_json, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # Запускаем контекстную обработку данных с дефолтным флагом is_stone=False
-    processed_data = process_json_data(data, url_cache, is_stone=False)
+    stats = {"downloaded": 0, "cached": 0, "errors": 0}
+    try:
+        processed_data = recursive_json_search(data, url_cache, stats)
+    except KeyboardInterrupt:
+        print("\n[!] Прервано пользователем, сохраняем прогресс...")
+        processed_data = data
 
     try:
-        with open(CACHE_FILE, 'w', encoding='utf-8') as cf:
+        with open(CACHE_FILE, "w", encoding="utf-8") as cf:
             json.dump(url_cache, cf, ensure_ascii=False, indent=4)
     except Exception as e:
         print(f"Failed to save cache file: {e}")
 
-    with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
+    os.makedirs(os.path.dirname(output_json), exist_ok=True)
+    with open(output_json, "w", encoding="utf-8") as f:
         json.dump(processed_data, f, ensure_ascii=False, indent=4)
+
+    print("-" * 60)
+    print(f"Скачано новых картинок: {stats['downloaded']}")
+    print(f"Взято из кэша:          {stats['cached']}")
+    print(f"Ошибок:                 {stats['errors']}")
+    print(f"Готовый файл сохранён:  {output_json}")
 
 
 if __name__ == "__main__":
